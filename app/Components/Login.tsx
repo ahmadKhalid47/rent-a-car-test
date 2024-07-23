@@ -1,6 +1,9 @@
 import loginPage1 from "@/public/Vector 10.svg";
 import loginPage2 from "@/public/Vector 11.svg";
 import car from "@/public/Layer_1 (1).svg";
+import { FaEye } from "react-icons/fa";
+
+
 export default function Login() {
   return (
     <>
@@ -30,11 +33,22 @@ export default function Login() {
               </p>
               <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[10px] font-[400] text-[18px] leading-[12px] pb-2">
                 <h3 className="">Email or Username</h3>
-                <input className="w-full py-3 px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] " placeholder="Email or Username"/>
+                <input
+                  className="w-full py-3 px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
+                  type="text"
+                  placeholder="Email or Username"
+                />
               </div>
               <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[10px] font-[400] text-[18px] leading-[12px] pb-2">
                 <h3 className="">Password</h3>
-                <input className="w-full py-3 px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] " placeholder="Password"/>
+                <div className="w-full h-fit relative">
+                  <input
+                    className="w-full py-3 ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <FaEye className="absolute right-5 top-[25%]"/>
+                </div>
               </div>
               <p className="font-[400] text-[16px] leading-[20px] text-red-600">
                 Forgot Password ?

@@ -1,11 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "@fontsource/rubik";
 
 .bg-main-blue {
   background-color: #242e69;
 }
 
 .input-color {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
+}
+* {
+  font-family: "Rubik";
 }
