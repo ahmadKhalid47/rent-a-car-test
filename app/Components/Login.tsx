@@ -6,6 +6,7 @@ import loginPage2 from "@/public/Vector 10 (1).png";
 import car from "@/public/Layer_1 (1).svg";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,8 +14,14 @@ export default function Login() {
     <>
       <div className="w-full h-[100vh] flex justify-center items-center bg-green-20">
         <div className="w-[50%] h-full flex justify-center items-center bg-main-blue relative">
-          <img src={loginPage2.src} className="w-[100% h-[90%] absolute bottom-0 right-0" />
-          <img src={loginPage1.src} className="w-[100%] h-[50%] absolute bottom-0 left-0" />
+          <img
+            src={loginPage2.src}
+            className="w-[100% h-[90%] absolute bottom-0 right-0"
+          />
+          <img
+            src={loginPage1.src}
+            className="w-[100%] h-[50%] absolute bottom-0 left-0"
+          />
 
           <div className="w-[70%] h-fit bg-yellow-30 flex flex-col justify-start items-start gap-[20px]">
             <img src={car.src} className="w-[175px]" />
@@ -70,9 +77,12 @@ export default function Login() {
                   Forgot Password ?
                 </p>
               </div>
-              <button className="w-full py-4 rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px]">
+              <Link
+                className="w-full py-4 rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
+                href={"Components/Home"}
+              >
                 Login
-              </button>
+              </Link>
             </div>
           </div>
         </div>

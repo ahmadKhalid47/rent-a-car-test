@@ -7,6 +7,15 @@
   background-color: #242e69;
 }
 
+.bg-light-grey {
+  background-color: #d9d9d9;
+}
+
+
+.border-light-grey {
+  border-color: #d9d9d9;
+}
+
 .input-color {
   background-color: #f9f9f9;
 }
