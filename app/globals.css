@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-main-blue {
+  background-color: #242e69;
+}
+
+.input-color {
+  background-color: #F9F9F9;
+}
