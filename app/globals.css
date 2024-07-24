@@ -8,15 +8,15 @@
 }
 
 .bg-hover-blue:hover {
-  background-color:#666D96;
+  background-color: #666d96;
   border: none;
 }
 .bg-light-blue {
-  background-color:#666D96;
+  background-color: #666d96;
 }
 
 .bg-light-grey {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 }
 
 .border-light-grey {
@@ -26,7 +26,7 @@
   border-color: #808080;
 }
 .border-grey {
-  border-color:#D9D9D9;
+  border-color: #d9d9d9;
 }
 
 .input-color {
@@ -45,4 +45,9 @@
 }
 .text-grey {
   color: #808080;
+}
+.shadow {
+  box-shadow:        -2px 5px 5px rgba(0, 0, 0, 0.1),
+    /* left shadow */ 2px 5px 5px rgba(0, 0, 0, 0.1),
+    /* right shadow */0 0px 5px rgba(0, 0, 0, 0.1); /* bottom shadow */
 }

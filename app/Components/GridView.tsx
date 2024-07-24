@@ -21,8 +21,11 @@ import { BiMenu } from "react-icons/bi";
 import { FcMenu } from "react-icons/fc";
 export default function GridView() {
   return (
-    <div className="w-full h-fit">
-      <div></div>
+    <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] p-[5%] pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-6">
+      <div className="w-[47%] h-[183px] bg-green-200 mt-[5%] rounded-[15px] shadow"></div>
+      <div className="w-[47%] h-[183px] bg-green-200 mt-[5%]"></div>
+      <div className="w-[47%] h-[183px] bg-green-200 mt-[5%]"></div>
+      <div className="w-[47%] h-[183px] bg-green-200 mt-[5%]"></div>
     </div>
   );
 }
