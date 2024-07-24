@@ -125,7 +125,7 @@ export default function Vehicles() {
         <div>
           <div className="w-full h-fit flex justify-end gap-4 items-center">
             <div className="w-fit h-fit flex justify-end items-center gap-3">
-              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-light-grey border-2 border-grey text-main-blue font-[500] text-[20px] leading-[30px] text-center">
                 <GridViewRounded />
               </button>
               <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-main-blue text-white font-[900] text-[20px] leading-[30px] text-center">
@@ -142,9 +142,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-[400px]">
-          <table>
-
-          </table>
+          <table></table>
         </div>
       </div>
     </div>
