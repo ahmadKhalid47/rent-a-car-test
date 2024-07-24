@@ -78,7 +78,7 @@ export default function Login() {
                 </p>
               </div>
               <Link
-                className="w-full py-4 rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
+                className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
                 href={"Components/Home"}
               >
                 Login
