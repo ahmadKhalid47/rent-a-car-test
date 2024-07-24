@@ -41,14 +41,14 @@ export default function Login() {
               <h2 className="font-[600] text-[35px] leading-[28px] pb-2">
                 Login Now
               </h2>
-              <p className="font-[400] text-[18px] leading-[22px] text-[#808080] pb-3">
+              <p className="font-[400] text-[18px] leading-[22px] text-[#808080] pb-[20px]">
                 Lorem ipsum is a placeholder text commonly used to demonstrate
                 the visual form.
               </p>
               <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[10px] font-[500] text-[18px] leading-[12px] pb-2">
                 <h3 className="font-[600]">Email or Username</h3>
                 <input
-                  className="w-full py-3 px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
+                  className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
                   type="text"
                   placeholder="Email or Username"
                 />
@@ -57,18 +57,18 @@ export default function Login() {
                 <h3 className="font-[600]">Password</h3>
                 <div className="w-full h-fit relative">
                   <input
-                    className="w-full py-3 ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
+                    className="w-full h-[59px] ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
                     placeholder="Password"
-                    type={showPassword ? "text" : "Password"}
+                    type={!showPassword ? "Password" : "text"}
                   />
-                  {showPassword ? (
+                  {!showPassword ? (
                     <FaEyeSlash
-                      className="absolute right-5 top-[25%]"
+                      className="absolute right-5 top-[20px] text-[20px]"
                       onClick={(e) => setShowPassword(!showPassword)}
                     />
                   ) : (
                     <FaEye
-                      className="absolute right-5 top-[25%]"
+                      className="absolute right-5 top-[20px] text-[20px]"
                       onClick={(e) => setShowPassword(!showPassword)}
                     />
                   )}
