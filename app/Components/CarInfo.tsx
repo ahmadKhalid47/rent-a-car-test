@@ -75,37 +75,61 @@ export default function CarInfo() {
           </div>
           <div className="w-full h-fit flex justify-between items-center mt-5">
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-grey border-light-grey items-center text-white font-[500] text-[16px] leading-[18px] bg-main-blue"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "General"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("General")}
             >
               General Info.
             </div>
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "Rental"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("Rental")}
             >
               Rental Info
             </div>
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "Insurance"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("Insurance")}
             >
               Insurance Info
             </div>
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "Maintenance"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("Maintenance")}
             >
               Maintenance Info
             </div>
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "Additional"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("Additional")}
             >
               Additional Ft
             </div>
             <div
-              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                activeButton === "Others"
+                  ? "text-white bg-main-blue"
+                  : " border-2 border-light-grey text-black bg-light-grey"
+              } font-[500] text-[16px] leading-[18px]`}
               onClick={() => setActiveButton("Others")}
             >
               Others
