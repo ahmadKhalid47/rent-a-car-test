@@ -28,7 +28,7 @@ export default function Vehicles() {
   const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   return (
-    <div className="nav-width h-full absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px]">
+    <div className="nav-width h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14">
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           All Vehicles
