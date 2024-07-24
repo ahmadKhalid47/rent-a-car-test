@@ -1,24 +1,8 @@
-import {
-  FaBars,
-  FaBeer,
-  FaChevronDown,
-  FaHamburger,
-  FaSquare,
-} from "react-icons/fa";
-import check from "@/public/check.svg";
-import edit from "@/public/Layer_1 (2).svg";
-import deleteIcon from "@/public/Group 9.svg";
-import shape from "@/public/Shape.svg";
-import list from "@/public/Group 110 (1).svg";
-import GridViewIcon from "@mui/icons-material/GridView";
-import {
-  GridViewRounded,
-  Menu,
-  MenuOpen,
-  MenuRounded,
-} from "@mui/icons-material";
-import { BiMenu } from "react-icons/bi";
-import { FcMenu } from "react-icons/fc";
+import car1 from "@/public/car (1).svg";
+import car2 from "@/public/car (2).svg";
+import car3 from "@/public/car (3).svg";
+import car4 from "@/public/car (4).svg";
+
 import { FaEllipsis } from "react-icons/fa6";
 export default function GridView() {
   return (
@@ -27,7 +11,9 @@ export default function GridView() {
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
-        <div className="w-[170px] h-[139px] bg-yellow-500 overflow-hidden rounded-[15px]"></div>
+        <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <img src={car2.src} className="w-full h-full" />
+        </div>
         <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-2">
           <div className="flex justify-start items-center gap-2 w-fit pe-5">
             <p className="font-[400] text-[12px] leading-[18px]">Vehicle ID:</p>
@@ -78,7 +64,9 @@ export default function GridView() {
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
-        <div className="w-[170px] h-[139px] bg-yellow-500 overflow-hidden rounded-[15px]"></div>
+        <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <img src={car1.src} className="w-full h-full" />
+        </div>
         <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-2">
           <div className="flex justify-start items-center gap-2 w-fit pe-5">
             <p className="font-[400] text-[12px] leading-[18px]">Vehicle ID:</p>
@@ -129,7 +117,9 @@ export default function GridView() {
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
-        <div className="w-[170px] h-[139px] bg-yellow-500 overflow-hidden rounded-[15px]"></div>
+        <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <img src={car4.src} className="w-full h-full" />
+        </div>
         <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-2">
           <div className="flex justify-start items-center gap-2 w-fit pe-5">
             <p className="font-[400] text-[12px] leading-[18px]">Vehicle ID:</p>
@@ -180,7 +170,9 @@ export default function GridView() {
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
-        <div className="w-[170px] h-[139px] bg-yellow-500 overflow-hidden rounded-[15px]"></div>
+        <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <img src={car3.src} className="w-full h-full" />
+        </div>
         <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-2">
           <div className="flex justify-start items-center gap-2 w-fit pe-5">
             <p className="font-[400] text-[12px] leading-[18px]">Vehicle ID:</p>
