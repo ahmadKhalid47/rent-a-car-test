@@ -6,6 +6,7 @@ import Rental from "./Rental";
 import Insurance from "./Insurance";
 import Maintenance from "./Maintanace";
 import Additional from "./Additional";
+import Other from "./Other";
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   return (
@@ -130,9 +131,9 @@ export default function CarInfo() {
             <>
               <Additional />
             </>
-          ) : activeButton === "General" ? (
+          ) : activeButton === "Others" ? (
             <>
-              <General />
+              <Other />
             </>
           ) : null}
         </div>
