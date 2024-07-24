@@ -18,8 +18,10 @@ export default function CarInfo() {
             <div className="w-[340px] h-[212px] flex justify-between items-start bg-red-100 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey">
               <img src={car.src} />
             </div>
-                      <div className="w-[50%] bg-blue-300 h-[100%]">
-                          
+            <div className="w-[50%] bg-blue-300  flex justify-start flex-col items-start">
+              <h3 className="font-[600] text-[28px] leading-[42px] text-black">
+                Suzuki Swift
+              </h3>
             </div>
           </div>
         </div>
