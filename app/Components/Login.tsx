@@ -58,7 +58,7 @@ export default function Login() {
                 <div className="w-full h-fit relative">
                   <input
                     className="w-full py-3 ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] "
-                    placeholder="password"
+                    placeholder="Password"
                     type={showPassword ? "text" : "Password"}
                   />
                   {showPassword ? (
