@@ -7,6 +7,13 @@
   background-color: #242e69;
 }
 
+.bg-hover-blue:hover {
+  background-color:#666D96;
+}
+.bg-light-blue {
+  background-color:#666D96;
+}
+
 .bg-light-grey {
   background-color: #F9F9F9;
 }
