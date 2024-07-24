@@ -14,7 +14,7 @@ export default function CarInfo() {
       </div>
       <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-8">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] py-10 px-10 rounded-[10px] bg-white border-2 border-grey">
-          <div className="w-full h-fit flex justify-between items-center">
+          <div className="w-full h-fit flex justify-between items-center px-8">
             <div className="w-[340px] h-[212px] flex justify-between items-start rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey">
               <img src={car.src} />
             </div>
@@ -62,6 +62,26 @@ export default function CarInfo() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-center mt-5">
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-grey border-light-grey items-center text-white font-[500] text-[16px] leading-[18px] bg-main-blue">
+              General Info.
+            </div>
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
+              Rental Info{" "}
+            </div>
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
+              Insurance Info{" "}
+            </div>
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
+              Maintenance Info{" "}
+            </div>
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
+              Additional Ft{" "}
+            </div>
+            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
+              Others{" "}
             </div>
           </div>
         </div>
