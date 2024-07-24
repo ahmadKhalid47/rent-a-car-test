@@ -25,7 +25,7 @@ import ListView from "./ListView";
 import { useState } from "react";
 import GridView from "./GridView";
 export default function Vehicles() {
-  const [gridView, setGridView] = useState(false);
+  const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
   return (
     <div className="nav-width h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14">
