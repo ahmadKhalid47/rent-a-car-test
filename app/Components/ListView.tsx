@@ -19,6 +19,7 @@ import {
 } from "@mui/icons-material";
 import { BiMenu } from "react-icons/bi";
 import { FcMenu } from "react-icons/fc";
+import Link from "next/link";
 export default function ListView() {
   return (
     <div className="w-full h-fit">
@@ -41,7 +42,7 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[10%]">Fuel Type</h5>
           <h5 className="text-start pe-3 w-[8%]">Actions</h5>
         </div>
-        <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
+        <Link href={"/Components/CarInfo"} className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
           <h5 className="text-center w-[5%] flex justify-center items-center ">
             <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </h5>
@@ -58,7 +59,7 @@ export default function ListView() {
             <img src={edit.src} />
             <img src={deleteIcon.src} />
           </div>
-        </div>
+        </Link>
         <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
           <h5 className="text-center w-[5%] flex justify-center items-center ">
             <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
