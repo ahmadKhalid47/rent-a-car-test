@@ -1,3 +1,4 @@
+"use client";
 import {
   FaBars,
   FaBeer,
@@ -10,6 +11,7 @@ import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import shape from "@/public/Shape.svg";
 import list from "@/public/Group 110 (1).svg";
+import listBlack from "@/public/Group 110.svg";
 import GridViewIcon from "@mui/icons-material/GridView";
 import {
   GridViewRounded,
@@ -19,7 +21,11 @@ import {
 } from "@mui/icons-material";
 import { BiMenu } from "react-icons/bi";
 import { FcMenu } from "react-icons/fc";
+import ListView from "./ListView";
+import { useState } from "react";
+import GridView from "./GridView";
 export default function Vehicles() {
+  const [gridView, setGridView] = useState(false);
   return (
     <div className="nav-width h-full absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px]">
       <div className="w-full h-[200px bg-yellow-30">
@@ -150,184 +156,37 @@ export default function Vehicles() {
         <div>
           <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
             <div className="w-fit h-fit flex justify-end items-center gap-3">
-              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-light-grey border-2 border-grey text-main-blue font-[500] text-[20px] leading-[30px] text-center">
+              <button
+                className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+                  gridView
+                    ? "bg-main-blue text-white"
+                    : "bg-light-grey border-2 border-grey"
+                }  font-[500] text-[20px] leading-[30px] text-center bg-hover-blue`}
+                onClick={() => setGridView(true)}
+              >
                 <GridViewRounded />
               </button>
-              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-main-blu bg-light-blue text-white font-[900] text-[20px] leading-[30px] text-center">
-                <img src={list.src} />
+              <button
+                className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+                  !gridView
+                    ? "bg-main-blue text-white"
+                    : "bg-light-grey border-2 border-grey"
+                } font-[500] text-[20px] leading-[30px] text-center bg-hover-blue`}
+                onClick={() => setGridView(false)}
+              >
+                {!gridView ? (
+                  <img src={list.src} />
+                ) : (
+                  <img src={listBlack.src} />
+                )}
               </button>
             </div>
             <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
               Export
             </button>
           </div>
-          <h3 className="font-[400] text-[14px] leading-[17px] text-grey">
-            Delete Multiple <span className="ps-1"></span>|
-            <span className="ps-1"></span> Active/Inactive Multiple
-          </h3>
         </div>
-        <div className="w-full h-fit">
-          <div className="w-full h-fit flex flex-col justify-start items-start rounded-[10px] bg-light-grey border-2 border-grey overflow-hidden mt-2">
-            <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%] ps-4">ID</h5>
-              <h5 className="text-start pe-3 w-[15%]">Registration no.</h5>
-              <h5 className="text-start pe-3 w-[10%]">Make</h5>
-              <h5 className="text-start pe-3 w-[10%]">Model</h5>
-              <h5 className="text-start pe-3 w-[10%]">Year</h5>
-              <h5 className="text-start pe-3 w-[10%]">Type</h5>
-              <h5 className="text-start pe-3 w-[10%]">Color</h5>
-              <h5 className="text-start pe-3 w-[10%]">Fuel Type</h5>
-              <h5 className="text-start pe-3 w-[10%]">Actions</h5>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Suzuki</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Suzuki</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">White</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Suzuki</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Honda</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Suzuki</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Toyota</h5>
-              <h5 className="text-start pe-3 w-[10%]">Corolla Grandee</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Suzuki</h5>
-              <h5 className="text-start pe-3 w-[10%]">Swift</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-            <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center">
-              <h5 className="text-center w-[5%] flex justify-center items-center ">
-                <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-grey"></div>
-              </h5>
-              <h5 className="text-start pe-3 w-[10%]">539485</h5>
-              <h5 className="text-start pe-3 w-[15%]">MBU 5667</h5>
-              <h5 className="text-start pe-3 w-[10%]">Honda</h5>
-              <h5 className="text-start pe-3 w-[10%]">Corolla Grandee</h5>
-              <h5 className="text-start pe-3 w-[10%]">2023</h5>
-              <h5 className="text-start pe-3 w-[10%]">Sedan</h5>
-              <h5 className="text-start pe-3 w-[10%]">Red</h5>
-              <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
-              <div className="flex justify-start gap-2 items-center w-[10%]">
-                <img src={check.src} />
-                <img src={edit.src} />
-                <img src={deleteIcon.src} />
-              </div>
-            </div>
-          </div>
-        </div>
+        {gridView ? <GridView /> : <ListView />}
       </div>
     </div>
   );

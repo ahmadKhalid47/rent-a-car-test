@@ -9,6 +9,7 @@
 
 .bg-hover-blue:hover {
   background-color:#666D96;
+  border: none;
 }
 .bg-light-blue {
   background-color:#666D96;
