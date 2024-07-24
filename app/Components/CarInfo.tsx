@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import car from "@/public/carInfoCar.svg";
 import { useState } from "react";
+import General from "./General";
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   return (
@@ -67,7 +68,7 @@ export default function CarInfo() {
               </div>
             </div>
           </div>
-          <div className="w-full h-fit flex justify-between items-center mt-5 mb-2">
+          <div className="w-full h-fit flex justify-between items-center mt-5">
             <div
               className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-grey border-light-grey items-center text-white font-[500] text-[16px] leading-[18px] bg-main-blue"
               onClick={() => setActiveButton("General")}
@@ -105,7 +106,13 @@ export default function CarInfo() {
               Others
             </div>
           </div>
-          {activeButton === "General" ? <>General</> : <>else</>}
+          {activeButton === "General" ? (
+            <>
+              <General />
+            </>
+          ) : (
+            <>else</>
+          )}
         </div>
       </div>
     </div>
