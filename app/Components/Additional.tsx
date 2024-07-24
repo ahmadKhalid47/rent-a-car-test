@@ -1,25 +1,27 @@
+import ft1 from "@/public/ft (1).svg";
+import ft2 from "@/public/ft (2).svg";
+import ft3 from "@/public/ft (3).svg";
+
 export default function Additional() {
   return (
     <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-5">
-      <div className="w-[35%] h-fit flex flex-col justify-start items-start bg-red-30">
-        <div className="w-full h-fit flex justify-between items-start py-[3px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Last Maintenance:
-          </p>
-          <p className="w-[35%] text-start font-[400] text-[18px] leading-[27px]">
-            13 Sept 2023{" "}
-          </p>
-        </div>
+      <div className="w-[25%] h-fit flex gap-2 justify-center items-start bg-red-30">
+        <img src={ft1.src} />
+        <p className="w-[35%] text-start font-[400] text-[18px] leading-[21px]">
+          GPS
+        </p>
       </div>
-      <div className="w-[35%] h-fit flex flex-col justify-start items-start bg-red-30 me-10">
-        <div className="w-full h-fit flex justify-between items-start py-[3px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Next Maintenance Schd:{" "}
-          </p>
-          <p className="w-[35%] text-start font-[400] text-[18px] leading-[27px]">
-            24 Sept 2023{" "}
-          </p>
-        </div>
+      <div className="w-[25%] h-fit flex gap-2 justify-center items-start bg-red-30">
+        <img src={ft3.src} />
+        <p className="w-fit text-start font-[400] text-[18px] leading-[21px]">
+          Air Conditioning
+        </p>
+      </div>
+      <div className="w-[25%] h-fit flex gap-2 justify-center items-start bg-red-30">
+        <img src={ft2.src} />
+        <p className="w-fit text-start font-[400] text-[18px] leading-[21px]">
+          Bluetooth
+        </p>
       </div>
     </div>
   );
