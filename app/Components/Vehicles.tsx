@@ -43,13 +43,13 @@ export default function Vehicles() {
           </button>
         </div>
       </div>
-      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-10 flex flex-col justify-start items-start gap-[15px]">
+      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-11 flex flex-col justify-start items-start gap-[15px]">
         <div className="w-full h-fit">
           <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1">
             Search
           </h3>
           <div className="w-full h-fit flex justify-between items-center">
-            <input className="px-5 w-[80%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"></input>
+            <input className="px-5 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"></input>
             <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
               Search
             </button>
