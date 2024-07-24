@@ -37,7 +37,7 @@
   height: 100vh;
 }
 .nav-width {
-  width: calc(100vw - 400px);
+  width: calc(100vw - 350px);
 }
 .text-grey {
   color: #808080;

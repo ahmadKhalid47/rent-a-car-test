@@ -21,7 +21,7 @@ import { BiMenu } from "react-icons/bi";
 import { FcMenu } from "react-icons/fc";
 export default function Vehicles() {
   return (
-    <div className="nav-width h-full bg-green-30 absolute right-0 flex flex-col justify-start items-start gap-[20px]">
+    <div className="nav-width h-full bg-green-30 absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px]">
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           All Vehicles
