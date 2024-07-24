@@ -68,7 +68,7 @@ export default function Vehicles() {
                 ></input>
               </div>
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[16%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Make
               </h3>
@@ -84,7 +84,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[16%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Model
               </h3>
@@ -100,7 +100,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[16%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Year
               </h3>
@@ -116,7 +116,7 @@ export default function Vehicles() {
                 </div>
               </div>{" "}
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[16%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Type
               </h3>
@@ -132,7 +132,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[10%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Color
               </h3>
