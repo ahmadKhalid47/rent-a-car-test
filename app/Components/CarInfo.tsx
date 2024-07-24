@@ -4,6 +4,8 @@ import { useState } from "react";
 import General from "./General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
+import Maintenance from "./Maintanace";
+import Additional from "./Additional";
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   return (
@@ -120,13 +122,13 @@ export default function CarInfo() {
             <>
               <Insurance />
             </>
-          ) : activeButton === "General" ? (
+          ) : activeButton === "Maintenance" ? (
             <>
-              <General />
+              <Maintenance />
             </>
-          ) : activeButton === "General" ? (
+          ) : activeButton === "Additional" ? (
             <>
-              <General />
+              <Additional />
             </>
           ) : activeButton === "General" ? (
             <>
