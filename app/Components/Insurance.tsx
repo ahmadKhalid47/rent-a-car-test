@@ -28,14 +28,6 @@ export default function Insurance() {
             Lorem Ipsum{" "}
           </p>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-t-[2px text-transparent ">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Insurance Provider:{" "}
-          </p>
-          <p className="w-[35%] text-start font-[400] text-[18px] leading-[27px]">
-            Lorem Ipsum{" "}
-          </p>
-        </div>
       </div>
     </div>
   );
