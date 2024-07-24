@@ -2,6 +2,8 @@
 import car from "@/public/carInfoCar.svg";
 import { useState } from "react";
 import General from "./General";
+import Rental from "./Rental";
+import Insurance from "./Insurance";
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   return (
@@ -110,9 +112,27 @@ export default function CarInfo() {
             <>
               <General />
             </>
-          ) : (
-            <>else</>
-          )}
+          ) : activeButton === "Rental" ? (
+            <>
+              <Rental />
+            </>
+          ) : activeButton === "Insurance" ? (
+            <>
+              <Insurance />
+            </>
+          ) : activeButton === "General" ? (
+            <>
+              <General />
+            </>
+          ) : activeButton === "General" ? (
+            <>
+              <General />
+            </>
+          ) : activeButton === "General" ? (
+            <>
+              <General />
+            </>
+          ) : null}
         </div>
       </div>
     </div>
