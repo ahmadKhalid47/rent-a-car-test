@@ -23,7 +23,7 @@ export default function Login() {
             className="w-[100%] h-[50%] absolute bottom-0 left-0"
           />
 
-          <div className="w-[70%] h-fit bg-yellow-30 flex flex-col justify-start items-start gap-[20px]">
+          <div className="w-fit h-fit flex flex-col justify-start items-start gap-[20px]">
             <img src={car.src} className="w-[175px]" />
             <h1 className="font-[600] text-[70px] leading-[70px] capitalize text-white">
               welcome <br /> back!
@@ -34,6 +34,7 @@ export default function Login() {
               <br /> without relying on meaningful content.
             </p>
           </div>
+
         </div>
         <div className="w-[50%] h-full bg-red-20 flex justify-center items-center ">
           <div className="flex justify-center items-center ">
