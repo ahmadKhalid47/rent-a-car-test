@@ -2,12 +2,13 @@ import car1 from "@/public/car (1).svg";
 import car2 from "@/public/car (2).svg";
 import car3 from "@/public/car (3).svg";
 import car4 from "@/public/car (4).svg";
+import Link from "next/link";
 
 import { FaEllipsis } from "react-icons/fa6";
 export default function GridView() {
   return (
     <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] p-[5%] pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-6">
-      <div className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
+      <Link href={"/Components/CarInfo"} className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
@@ -59,8 +60,8 @@ export default function GridView() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
+      </Link>
+              <Link href={"/Components/CarInfo"} className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
@@ -112,8 +113,8 @@ export default function GridView() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
+      </Link>
+     <Link href={"/Components/CarInfo"} className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
@@ -165,8 +166,8 @@ export default function GridView() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
+      </Link>
+      <Link href={"/Components/CarInfo"} className="w-[47%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-5 py-6 flex justify-between items-center relative">
         <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
           <FaEllipsis />
         </div>
@@ -218,7 +219,7 @@ export default function GridView() {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

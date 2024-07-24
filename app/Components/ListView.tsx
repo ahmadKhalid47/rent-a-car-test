@@ -190,8 +190,7 @@ export default function ListView() {
             <img src={deleteIcon.src} />
           </div>
         </Link>
-        <Link
-          href={"/Components/CarInfo"}
+        <Link href={"/Components/CarInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center"
         >
           <h5 className="text-center w-[5%] flex justify-center items-center ">
