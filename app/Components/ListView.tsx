@@ -6,6 +6,7 @@ import {
   FaSquare,
 } from "react-icons/fa";
 import check from "@/public/check.svg";
+import unCheck from "@/public/inActive.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import shape from "@/public/Shape.svg";
@@ -33,7 +34,7 @@ export default function ListView() {
             <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </h5>
           <h5 className="text-start pe-3 w-[12%] ps-7">ID</h5>
-          <h5 className="text-start pe-3 w-[15%]">Registration no.</h5>
+          <h5 className="text-start pe-3 w-[15%]">Registration No.</h5>
           <h5 className="text-start pe-3 w-[10%]">Make</h5>
           <h5 className="text-start pe-3 w-[10%]">Model</h5>
           <h5 className="text-start pe-3 w-[10%]">Year</h5>
@@ -145,7 +146,7 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[10%]">Red</h5>
           <h5 className="text-start pe-3 w-[10%]">Petrol</h5>
           <div className="flex justify-start gap-2 items-center w-[8%]">
-            <img src={check.src} />
+            <img src={unCheck.src} />
             <img src={edit.src} />
             <img src={deleteIcon.src} />
           </div>

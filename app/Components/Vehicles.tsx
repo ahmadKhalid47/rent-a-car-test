@@ -38,7 +38,7 @@ export default function Vehicles() {
             Lorem ipsum is a placeholder text commonly used
             <br /> to demonstrate the visual form.
           </p>
-          <button className="px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+          <button className="px-6 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
             Add New Vehicle
           </button>
         </div>
@@ -50,7 +50,7 @@ export default function Vehicles() {
           </h3>
           <div className="w-full h-fit flex justify-between items-center">
             <input className="px-5 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"></input>
-            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
               Search
             </button>
           </div>
@@ -188,7 +188,7 @@ export default function Vehicles() {
                 )}
               </button>
             </div>
-            <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+            <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
               Export
             </button>
           </div>
