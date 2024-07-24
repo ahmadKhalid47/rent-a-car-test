@@ -1,5 +1,15 @@
-import { FaBars, FaBeer } from "react-icons/fa";
-
+import { FaBars, FaBeer, FaHamburger, FaSquare } from "react-icons/fa";
+import grid from "@/public/Group 109.svg";
+import list from "@/public/Group 110.svg";
+import GridViewIcon from "@mui/icons-material/GridView";
+import {
+  GridViewRounded,
+  Menu,
+  MenuOpen,
+  MenuRounded,
+} from "@mui/icons-material";
+import { BiMenu } from "react-icons/bi";
+import { FcMenu } from "react-icons/fc";
 export default function Vehicles() {
   return (
     <div className="nav-width h-full bg-green-30 absolute right-0 flex flex-col justify-start items-start gap-[20px]">
@@ -110,6 +120,32 @@ export default function Vehicles() {
         <h3 className="font-[400] text-[14px] leading-[17px] text-black underline">
           Show Less
         </h3>
+      </div>
+      <div className="w-full h-fit">
+        <div>
+          <div className="w-full h-fit flex justify-end gap-4 items-center">
+            <div className="w-fit h-fit flex justify-end items-center gap-3">
+              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+                <GridViewRounded />
+              </button>
+              <button className="w-[42px] flex justify-center items-center h-[39px] rounded-[10px] bg-main-blue text-white font-[900] text-[20px] leading-[30px] text-center">
+                <MenuRounded />
+              </button>
+            </div>
+            <button className="w-fit px-8 py-1 rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+              Export
+            </button>
+          </div>
+          <h3 className="font-[400] text-[14px] leading-[17px] text-grey">
+            Delete Multiple <span className="ps-1"></span>|
+            <span className="ps-1"></span> Active/Inactive Multiple
+          </h3>
+        </div>
+        <div className="w-full h-[400px]">
+          <table>
+
+          </table>
+        </div>
       </div>
     </div>
   );
