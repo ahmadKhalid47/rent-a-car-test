@@ -1,3 +1,5 @@
+import { FaBars, FaBeer } from "react-icons/fa";
+
 export default function Vehicles() {
   return (
     <div className="nav-width h-full bg-green-30 absolute right-0 flex flex-col justify-start items-start gap-[20px]">
