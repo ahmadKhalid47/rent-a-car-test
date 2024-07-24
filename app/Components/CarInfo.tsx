@@ -1,5 +1,8 @@
+'use client'
 import car from "@/public/carInfoCar.svg";
+import { useState } from "react";
 export default function CarInfo() {
+  let [activeButton, setActiveButton] = useState("General");
   return (
     <div className="nav-width h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14">
       <div className="w-full h-[200px bg-yellow-30">
@@ -64,26 +67,45 @@ export default function CarInfo() {
               </div>
             </div>
           </div>
-          <div className="w-full h-fit flex justify-between items-center mt-5">
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-grey border-light-grey items-center text-white font-[500] text-[16px] leading-[18px] bg-main-blue">
+          <div className="w-full h-fit flex justify-between items-center mt-5 mb-2">
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-grey border-light-grey items-center text-white font-[500] text-[16px] leading-[18px] bg-main-blue"
+              onClick={() => setActiveButton("General")}
+            >
               General Info.
             </div>
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
-              Rental Info{" "}
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              onClick={() => setActiveButton("Rental")}
+            >
+              Rental Info
             </div>
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
-              Insurance Info{" "}
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              onClick={() => setActiveButton("Insurance")}
+            >
+              Insurance Info
             </div>
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
-              Maintenance Info{" "}
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              onClick={() => setActiveButton("Maintenance")}
+            >
+              Maintenance Info
             </div>
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
-              Additional Ft{" "}
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              onClick={() => setActiveButton("Additional")}
+            >
+              Additional Ft
             </div>
-            <div className="w-[16%] h-[43px] flex justify-center rounded-[10px] border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey">
-              Others{" "}
+            <div
+              className="w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer border-2 border-light-grey items-center text-black font-[400] text-[16px] leading-[18px] bg-light-grey"
+              onClick={() => setActiveButton("Others")}
+            >
+              Others
             </div>
           </div>
+          {activeButton === "General" ? <>General</> : <>else</>}
         </div>
       </div>
     </div>
