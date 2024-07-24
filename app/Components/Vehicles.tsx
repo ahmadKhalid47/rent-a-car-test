@@ -166,9 +166,9 @@ export default function Vehicles() {
               <button
                 className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
                   gridView
-                    ? "bg-main-blue text-white"
+                    ? "bg-light-blue text-white"
                     : "bg-light-grey border-2 border-grey"
-                }  font-[500] text-[20px] leading-[30px] text-center bg-hover-blue`}
+                }  font-[500] text-[20px] leading-[30px] text-center`}
                 onClick={() => setGridView(true)}
               >
                 <GridViewRounded />
@@ -176,9 +176,9 @@ export default function Vehicles() {
               <button
                 className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
                   !gridView
-                    ? "bg-main-blue text-white"
+                    ? "bg-light-blue text-white"
                     : "bg-light-grey border-2 border-grey"
-                } font-[500] text-[20px] leading-[30px] text-center bg-hover-blue`}
+                } font-[500] text-[20px] leading-[30px] text-center`}
                 onClick={() => setGridView(false)}
               >
                 {!gridView ? (
