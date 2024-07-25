@@ -24,11 +24,15 @@ import { FcMenu } from "react-icons/fc";
 import ListView from "./ListView";
 import { useState } from "react";
 import GridView from "./GridView";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
+
 export default function Vehicles() {
+  let global = useSelector((state: RootState) => state.Global);
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
   return (
-    <div className="nav-width h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14">
+    <div className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}>
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           All Vehicles

@@ -43,6 +43,9 @@
 .nav-width {
   width: calc(100% - 300px);
 }
+.nav-closed-width {
+  width: calc(100% - 120px);
+}
 .text-grey {
   color: #808080;
 }
