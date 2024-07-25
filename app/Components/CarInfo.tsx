@@ -34,23 +34,23 @@ export default function CarInfo() {
               <div className="w-full flex justify-start items-center">
                 <div className="flex justify-start items-center gap-2 w-[26%] pe-5">
                   <p className="font-[400] text-[18px] leading-[27px]">Make:</p>
-                  <p className="font-[400] text-[18px] leading-[15px]">Honda</p>
+                  <p className="font-[400] text-[18px] leading-[27px]">Honda</p>
                 </div>
                 <div className="flex justify-start items-center gap-2 w-[50%]">
                   <p className="font-[400] text-[18px] leading-[27px]">
                     Model:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[15px]">Civic</p>
+                  <p className="font-[400] text-[18px] leading-[27px]">Civic</p>
                 </div>
               </div>
               <div className="w-full flex justify-start items-center">
                 <div className="flex justify-start items-center gap-2 w-[26%] pe-5">
                   <p className="font-[400] text-[18px] leading-[27px]">Year:</p>
-                  <p className="font-[400] text-[18px] leading-[15px]">2024</p>
+                  <p className="font-[400] text-[18px] leading-[27px]">2024</p>
                 </div>
                 <div className="flex justify-start items-center gap-2 w-[50%]">
                   <p className="font-[400] text-[18px] leading-[27px]">Type:</p>
-                  <p className="font-[400] text-[18px] leading-[15px]">
+                  <p className="font-[400] text-[18px] leading-[27px]">
                     539485
                   </p>
                 </div>
@@ -60,13 +60,13 @@ export default function CarInfo() {
                   <p className="font-[400] text-[18px] leading-[27px]">
                     Color:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[15px]">White</p>
+                  <p className="font-[400] text-[18px] leading-[27px]">White</p>
                 </div>
                 <div className="flex justify-start items-center gap-2 w-[50%]">
                   <p className="font-[400] text-[18px] leading-[27px]">
                     Fuel Type:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[15px]">
+                  <p className="font-[400] text-[18px] leading-[27px]">
                     Petrol
                   </p>
                 </div>
