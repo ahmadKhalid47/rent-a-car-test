@@ -7,10 +7,15 @@ import Insurance from "./Insurance";
 import Maintenance from "./Maintanace";
 import Additional from "./Additional";
 import Other from "./Other";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
+
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
+  let global = useSelector((state: RootState) => state.Global);
   return (
-    <div className="nav-width h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14">
+    <div className={`${global.sidebarShow ? "nav-width" : "nav-closed-width"
+      } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}>
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           Suzuki Swift

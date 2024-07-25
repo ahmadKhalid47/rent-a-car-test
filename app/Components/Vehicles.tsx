@@ -12,15 +12,9 @@ import deleteIcon from "@/public/Group 9.svg";
 import shape from "@/public/Shape.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
-import GridViewIcon from "@mui/icons-material/GridView";
 import {
   GridViewRounded,
-  Menu,
-  MenuOpen,
-  MenuRounded,
 } from "@mui/icons-material";
-import { BiMenu } from "react-icons/bi";
-import { FcMenu } from "react-icons/fc";
 import ListView from "./ListView";
 import { useState } from "react";
 import GridView from "./GridView";
