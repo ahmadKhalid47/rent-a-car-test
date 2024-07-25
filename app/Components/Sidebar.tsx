@@ -16,6 +16,8 @@ import {
   FaTachometerAlt,
   FaTrademark,
   FaMapMarkerAlt,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 import { CalendarMonth } from "@mui/icons-material";
 import { FaListCheck } from "react-icons/fa6";
@@ -24,10 +26,12 @@ import { SlCalender } from "react-icons/sl";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import { RiFileSettingsFill } from "react-icons/ri";
+import Vehicles from "./Vehicles";
+import { useState } from "react";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  console.log(global);
+  let [vehiclesShow, setVehiclesShow] = useState(false);
 
   return (
     <div
@@ -80,12 +84,28 @@ export default function Sidebar() {
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
+            global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
+          } bg-main-blue-hover hover:text-white bg-green-30 rounded-[10px]`}
         >
-          <FaCar />
-          {global.sidebarShow ? "Vehicles" : null}
+          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+            <FaCar />
+            {global.sidebarShow ? "Vehicles" : null}
+          </div>
+          {global.sidebarShow ? (
+            <div onClick={() => setVehiclesShow(!vehiclesShow)}>
+              {vehiclesShow ? (
+                <FaChevronUp className="float-right me-5" />
+              ) : (
+                <FaChevronDown className="float-right me-5" />
+              )}
+            </div>
+          ) : null}
         </div>
+
+        {vehiclesShow ? (
+          <div className="w-full h-[100px] bg-green-300 -mt-2"></div>
+        ) : null}
+
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
