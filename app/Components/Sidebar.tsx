@@ -57,47 +57,47 @@ export default function Sidebar() {
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbLayoutDashboardFilled />
-          <span className="transitions">
+          <span className="">
             {global.sidebarShow ? "Dashboard" : null}
           </span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <MdCalendarMonth />
-          <span className="transitions">
+          <span className="">
             {global.sidebarShow ? "Calendar" : null}
           </span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <FaUsers className="ml-[2px]" />
-          <span className="transitions ">
+          <span className="">
             {global.sidebarShow ? "Customers" : null}
           </span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <FaListCheck className="ml-[2px]" />
-          <span className="transitions">
+          <span className="">
             {global.sidebarShow ? "Reservations" : null}
           </span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white bg-green-30 rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white bg-green-30 rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar className="ml-[1px]" />
@@ -170,20 +170,20 @@ export default function Sidebar() {
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbTargetArrow className="ml-[1px]" />
-          <span className="transitions">
+          <span className="">
             {global.sidebarShow ? "Tracking" : null}
           </span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px] transitions`}
+          } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <RiFileSettingsFill />
-          <span className="transitions">
+          <span className="">
             {global.sidebarShow ? "Offer Generator" : null}
           </span>
         </div>
