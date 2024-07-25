@@ -21,7 +21,7 @@ export default function CarInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-14">
+      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-10">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] py-10 px-10 rounded-[10px] bg-white border-2 border-grey">
           <div className="w-full h-fit flex justify-between items-center px-8">
             <div className="w-[340px] h-[212px] flex justify-between items-start rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey">
