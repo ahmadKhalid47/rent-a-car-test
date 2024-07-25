@@ -15,7 +15,7 @@ export default function Home() {
         <div
           className={`${
             global.sidebarShow ? "nav-width" : "nav-closed-width"
-          } absolute right-0 w-fit h-fit mt-[90px] pt-5 border-t-[1px]`}
+          } absolute right-0 w-fit h-fit mt-[90px] pt-5 border-t-[1px] transitions`}
         >
           <Vehicles />
         </div>

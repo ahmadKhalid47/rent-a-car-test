@@ -14,7 +14,7 @@ export default function Nav() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } h-[90px] pe-[50px] ps-[20px] flex justify-between items-center border-b-[2px] z-[10] float-end fixed bg-white right-0`}
+      } h-[90px] pe-[50px] ps-[20px] flex justify-between items-center border-b-[2px] z-[10] float-end fixed bg-white right-0 transitions`}
     >
       <button onClick={() => dispatch(setSidebarShowR(!global.sidebarShow))}>
         <img src={bar.src} />
