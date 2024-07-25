@@ -64,12 +64,12 @@ export default function Login() {
                   />
                   {!showPassword ? (
                     <FaEyeSlash
-                      className="absolute right-5 top-[20px] text-[20px]"
+                      className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
                       onClick={(e) => setShowPassword(!showPassword)}
                     />
                   ) : (
                     <FaEye
-                      className="absolute right-5 top-[20px] text-[20px]"
+                      className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
                       onClick={(e) => setShowPassword(!showPassword)}
                     />
                   )}
