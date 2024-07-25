@@ -68,3 +68,6 @@ box-shadow:
 .transitions2{
   transition: all 1s;
 }
+.font-weight{
+  font-weight: 500;
+}
