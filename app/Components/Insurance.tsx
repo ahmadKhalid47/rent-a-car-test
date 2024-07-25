@@ -6,7 +6,7 @@ export default function Insurance() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Insurance Policy No:
           </p>
-          <p className="w-[35%] text-start font-[400] text-[18px] leading-[27px]">
+          <p className="w-[33%] text-start font-[400] text-[18px] leading-[27px]">
             8434554
           </p>
         </div>
@@ -14,7 +14,7 @@ export default function Insurance() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Insurance Expiry Date:{" "}
           </p>
-          <p className="w-[35%] text-start font-[400] text-[18px] leading-[27px]">
+          <p className="w-[33%] text-start font-[400] text-[18px] leading-[27px]">
             12 Aug 2027{" "}
           </p>
         </div>
