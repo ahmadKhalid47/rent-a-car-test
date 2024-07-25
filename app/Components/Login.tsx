@@ -15,6 +15,7 @@ export default function Login() {
           <img
             src={loginPage2.src}
             className="w-[100% h-[90%] absolute bottom-0 right-0"
+            // className="w-[720] h-[90%] absolute bottom-0 right-0"
           />
           <img
             src={loginPage1.src}
