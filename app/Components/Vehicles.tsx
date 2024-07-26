@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
+  const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   return (
     <div className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}>
@@ -159,7 +159,7 @@ export default function Vehicles() {
       </div>
       <div className="w-full h-fit">
         <div>
-          <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
+          {/* <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
             <div className="w-fit h-fit flex justify-end items-center gap-3">
               <button
                 className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
@@ -189,7 +189,7 @@ export default function Vehicles() {
             <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
               Export
             </button>
-          </div>
+          </div> */}
         </div>
         {gridView ? <GridView /> : <ListView />}
       </div>
