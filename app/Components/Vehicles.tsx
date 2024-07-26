@@ -47,7 +47,7 @@ export default function Vehicles() {
               {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
             </button>
           </div>
-          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[27px] text-center">
             Add New Vehicle
           </button>
         </div>
@@ -59,7 +59,7 @@ export default function Vehicles() {
           </h3>
           <div className="w-full h-fit flex justify-between items-center">
             <input
-              className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:placeholder-color"
+              className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
               placeholder="Search By Car Name, Reg No, City.."
             ></input>
             <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
