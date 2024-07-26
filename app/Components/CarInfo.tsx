@@ -81,7 +81,7 @@ export default function CarInfo() {
               </div>
             </div>
           </div> */}
-          <div className="w-full h-fit flex justify-between items-center mt-4">
+          <div className="w-full h-fit flex justify-between items-center mt-3">
             <div
               className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                 activeButton === "General"
