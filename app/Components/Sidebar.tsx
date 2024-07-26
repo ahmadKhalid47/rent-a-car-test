@@ -94,7 +94,7 @@ export default function Sidebar() {
           <span className="">{global.sidebarShow ? "Reservations" : null}</span>
         </div>
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
         >
