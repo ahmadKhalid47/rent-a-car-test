@@ -1,6 +1,6 @@
 "use client";
 import bar from "@/public/Layer_1 bar.svg";
-import account from "@/public/account.png";
+import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";

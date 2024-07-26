@@ -1,4 +1,6 @@
 import {
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
   FaBars,
   FaBeer,
   FaChevronDown,
@@ -13,7 +15,7 @@ import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 export default function ListView() {
   return (
-    <div className="w-full h-fit">
+    <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400] text-[18px] leading-[21px] text-grey">
         <span>
           <span className="cursor-pointer">Delete Multiple</span>
@@ -220,7 +222,7 @@ export default function ListView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white border-b-2 border-grey"
+          className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] rounded-t-[10px] leading-[17px text-center bg-white  border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -242,6 +244,25 @@ export default function ListView() {
             <img src={deleteIcon.src} />
           </div>
         </Link>
+      </div>
+      <div className="w-full h-[32px] mt-10 flex justify-between items-center">
+        <div className="font-[400] text-[14px] leading-[17px] text-[#878787]">
+          Showing 12 from 100 data
+        </div>
+        <div className="font-[600] text-[14px] leading-[17px]">
+          <div className="w-fit h-full flex justify-end items-center gap-4">
+            <FaAngleDoubleLeft />
+            <div className="flex justify-center items-center">
+              <div className="ms-4 bg-main-blue text-white rounded-[10px] w-[32px] h-[32px] flex justify-center items-center">
+                1
+              </div>
+              <div className="w-[32px] h-[32px] flex justify-center items-center bg- text-[#878787]">
+                2
+              </div>
+            </div>
+            <FaAngleDoubleRight />
+          </div>
+        </div>
       </div>
     </div>
   );

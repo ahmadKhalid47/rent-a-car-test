@@ -1,10 +1,13 @@
 "use client";
 import shape from "@/public/Shape2.svg";
+import list from "@/public/Group 110 (1).svg";
+import listBlack from "@/public/Group 110.svg";
 import ListView from "./ListView";
 import { useState } from "react";
 import GridView from "./GridView";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
+import { GridViewRounded } from "@mui/icons-material";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -12,17 +15,38 @@ export default function Vehicles() {
   const [showLess, setShowLess] = useState(false);
   return (
     <div
-      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}
+      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
     >
-      <div className="w-full h-[200px bg-yellow-30">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black">
+      <div className="w-[100%] h-[200px bg-yellow-30 flex justify-start items-end">
+        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
           All Vehicles
-        </h3>
-        <div className="flex justify-between items-start">
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            Lorem ipsum is a placeholder text commonly used
-            <br /> to demonstrate the visual form.
+            Vehicles / All Vehicles
           </p>
+        </h3>
+        <div className="flex justify-end gap-3 items-end w-[50%]">
+          <div className="w-fit h-fit flex justify-end items-end gap-3">
+            <button
+              className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+                gridView
+                  ? "bg-main-blue text-white"
+                  : "bg-[#F2F2F2] border-2 border-grey"
+              }  font-[500] text-[20px] leading-[30px] text-center`}
+              onClick={() => setGridView(true)}
+            >
+              <GridViewRounded />
+            </button>
+            <button
+              className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+                !gridView
+                  ? "bg-main-blue text-white"
+                  : "bg-[#F2F2F2] border-2 border-grey"
+              } font-[500] text-[20px] leading-[30px] text-center`}
+              onClick={() => setGridView(false)}
+            >
+              {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
+            </button>
+          </div>
           <button className="px-6 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
             Add New Vehicle
           </button>
@@ -153,8 +177,8 @@ export default function Vehicles() {
         </h3>
       </div>
       <div className="w-full h-fit">
-        <div>
-          {/* <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
+        {/* <div>
+          <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
             <div className="w-fit h-fit flex justify-end items-center gap-3">
               <button
                 className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
@@ -184,8 +208,8 @@ export default function Vehicles() {
             <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
               Export
             </button>
-          </div> */}
-        </div>
+          </div>
+        </div> */}
         {gridView ? <GridView /> : <ListView />}
       </div>
     </div>
