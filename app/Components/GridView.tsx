@@ -45,7 +45,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -58,7 +58,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -102,7 +102,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -146,7 +146,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -190,7 +190,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -234,7 +234,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -278,7 +278,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -322,7 +322,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -353,7 +353,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -366,7 +366,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -397,7 +397,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -410,7 +410,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -441,7 +441,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -454,7 +454,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -485,7 +485,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -498,7 +498,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
@@ -529,7 +529,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Type:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">539485</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Sedan</p>
               </div>
             </div>
 
@@ -542,7 +542,7 @@ export default function GridView() {
               </div>
               <div className="flex justify-start items-center gap-2 w-[50%]">
                 <p className="font-[400] text-[12px] leading-[18px]">City:</p>
-                <p className="font-[400] text-[12px] leading-[18px]">Petrol</p>
+                <p className="font-[400] text-[12px] leading-[18px]">Atlanta</p>
               </div>
             </div>
           </div>
