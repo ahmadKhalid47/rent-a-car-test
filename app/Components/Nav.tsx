@@ -25,7 +25,7 @@ export default function Nav() {
           <img src={bell.src} className="w-[24px] h-[24px]" />
         </div>
         <div className="w-[50px] h-[50px] bg-light-grey rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
-          <img src={account.src} />
+          <img src={account.src} className="w-[26px] h-[26px]" />
         </div>
       </div>
     </div>
