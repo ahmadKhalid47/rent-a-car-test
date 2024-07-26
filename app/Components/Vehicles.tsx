@@ -11,8 +11,8 @@ import { GridViewRounded } from "@mui/icons-material";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(false);
-  const [showLess, setShowLess] = useState(false);
+  const [gridView, setGridView] = useState(true);
+  const [showLess, setShowLess] = useState(true);
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
