@@ -22,15 +22,15 @@ export default function Login() {
             className="w-[100%] h-[50%] absolute bottom-0 left-0"
           />
 
-          <div className="w-fit h-fit flex flex-col justify-start items-start gap-[20px]">
-            <img src={car.src} className="w-[175px]" />
+          <div className="w-fit bg-red-30 h-fit flex flex-col justify-start items-start gap-[20px]">
+            <img src={car.src} className="w-[175px] z-10" />
             <h1 className="font-[600] text-[70px] leading-[73px] capitalize text-white">
               welcome <br /> back!
             </h1>
-            <p className="font-[400] text-[18px] leading-[22px] text-white z-10">
-              Lorem ipsum is a placeholder text commonly used to
-              <br /> demonstrate the visual form of a document or a typeface
-              <br /> without relying on meaningful content.
+            <p className="font-[400] text-[18px] leading-[22px] text-white z-10 ">
+              Welcome back! Ready to manage your fleet and
+              <br />
+              reservations? Let's keep things running smoothly together.{" "}
             </p>
           </div>
         </div>
