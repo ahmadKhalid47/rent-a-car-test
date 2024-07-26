@@ -30,10 +30,11 @@ import Vehicles from "./Vehicles";
 import { useState } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let [vehiclesShow, setVehiclesShow] = useState(false);
+  let [vehiclesShow, setVehiclesShow] = useState(true);
   let dispatch = useDispatch();
 
   return (
@@ -60,9 +61,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbLayoutDashboardFilled />
-          <span className="">
-            {global.sidebarShow ? "Dashboard" : null}
-          </span>
+          <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -70,9 +69,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <MdCalendarMonth />
-          <span className="">
-            {global.sidebarShow ? "Calendar" : null}
-          </span>
+          <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -80,9 +77,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <FaUsers className="ml-[2px]" />
-          <span className="">
-            {global.sidebarShow ? "Customers" : null}
-          </span>
+          <span className="">{global.sidebarShow ? "Customers" : null}</span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -90,14 +85,12 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <FaListCheck className="ml-[2px]" />
-          <span className="">
-            {global.sidebarShow ? "Reservations" : null}
-          </span>
+          <span className="">{global.sidebarShow ? "Reservations" : null}</span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white bg-green-30 rounded-[10px]`}
+          } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar className="ml-[1px]" />
@@ -109,9 +102,9 @@ export default function Sidebar() {
               className="cursor-pointer"
             >
               {vehiclesShow ? (
-                <FaChevronUp className="float-right me-5" />
+                <GoTriangleDown className="float-right me-5" />
               ) : (
-                <FaChevronDown className="float-right me-5" />
+                <GoTriangleUp className="float-right me-5" />
               )}
             </div>
           ) : null}
@@ -129,7 +122,7 @@ export default function Sidebar() {
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
-                } bg-main-blue-hover hover:text-white rounded-[10px]`}
+                } bg-main-blue-hover bg-main-blue hover: text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Vehicles" : null}
               </div>{" "}
@@ -173,9 +166,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbTargetArrow className="ml-[1px]" />
-          <span className="">
-            {global.sidebarShow ? "Tracking" : null}
-          </span>
+          <span className="">{global.sidebarShow ? "Tracking" : null}</span>
         </div>
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${

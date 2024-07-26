@@ -27,7 +27,7 @@ export default function Vehicles() {
         <div className="flex justify-end gap-3 items-end w-[50%]">
           <div className="w-fit h-fit flex justify-end items-end gap-3">
             <button
-              className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+              className={`w-[42px] flex justify-center items-center h-[42px] rounded-[10px] ${
                 gridView
                   ? "bg-main-blue text-white"
                   : "bg-[#F2F2F2] border-2 border-grey"
@@ -37,7 +37,7 @@ export default function Vehicles() {
               <GridViewRounded />
             </button>
             <button
-              className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
+              className={`w-[42px] flex justify-center items-center h-[42px] rounded-[10px] ${
                 !gridView
                   ? "bg-main-blue text-white"
                   : "bg-[#F2F2F2] border-2 border-grey"
@@ -47,7 +47,7 @@ export default function Vehicles() {
               {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
             </button>
           </div>
-          <button className="px-6 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
+          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[30px] text-center">
             Add New Vehicle
           </button>
         </div>
@@ -62,7 +62,7 @@ export default function Vehicles() {
               className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color"
               placeholder="Search By Car Name, Reg No, City.."
             ></input>
-            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
+            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
               Search
             </button>
           </div>
