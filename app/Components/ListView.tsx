@@ -9,17 +9,6 @@ import check from "@/public/check.svg";
 import unCheck from "@/public/inActive.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import shape from "@/public/Shape.svg";
-import list from "@/public/Group 110 (1).svg";
-import GridViewIcon from "@mui/icons-material/GridView";
-import {
-  GridViewRounded,
-  Menu,
-  MenuOpen,
-  MenuRounded,
-} from "@mui/icons-material";
-import { BiMenu } from "react-icons/bi";
-import { FcMenu } from "react-icons/fc";
 import Link from "next/link";
 export default function ListView() {
   return (
