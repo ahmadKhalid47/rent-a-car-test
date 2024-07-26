@@ -21,10 +21,10 @@ export default function Nav() {
       </button>
 
       <div className="w-[300px] h-fit flex justify-end items-center gap-4">
-        <div className="w-[50px] h-[50px] bg-light-grey rounded-2xl text-[30px] flex justify-center items-center">
+        <div className="w-[50px] h-[50px] bg-light-grey rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={bell.src} className="w-[24px] h-[24px]" />
         </div>
-        <div className="w-[50px] h-[50px] bg-light-grey rounded-2xl text-[30px] flex justify-center items-center">
+        <div className="w-[50px] h-[50px] bg-light-grey rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={account.src} />
         </div>
       </div>
