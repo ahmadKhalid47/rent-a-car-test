@@ -22,7 +22,7 @@ export default function Login() {
             className="w-[100%] h-[50%] absolute bottom-0 left-0"
           />
 
-          <div className="w-fit bg-red-30 h-fit flex flex-col justify-center items-start gap-[20px]">
+          <div className="w-fit bg-red-30 h-fit flex flex-col justify-center items-start gap-[20px] z-[10]">
             <img src={car.src} className="w-[175px] z-10" />
             <h1 className="font-[600] text-[70px] leading-[73px] capitalize text-white">
               welcome <br /> back!
