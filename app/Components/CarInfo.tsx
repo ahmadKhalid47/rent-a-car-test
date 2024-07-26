@@ -14,8 +14,11 @@ export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   return (
-    <div className={`${global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}>
+    <div
+      className={`${
+        global.sidebarShow ? "nav-width" : "nav-closed-width"
+      } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-14`}
+    >
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           Suzuki Swift
@@ -28,7 +31,7 @@ export default function CarInfo() {
       </div>
       <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-10">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] py-10 px-10 rounded-[10px] bg-white border-2 border-grey">
-          <div className="w-full h-fit flex justify-between items-center px-8">
+          {/* <div className="w-full h-fit flex justify-between items-center px-8">
             <div className="w-[340px] h-[212px] flex justify-between items-start rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey">
               <img src={car.src} />
             </div>
@@ -77,8 +80,8 @@ export default function CarInfo() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-full h-fit flex justify-between items-center mt-5">
+          </div> */}
+          <div className="w-full h-fit flex justify-between items-center mt-4">
             <div
               className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                 activeButton === "General"
