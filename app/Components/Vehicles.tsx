@@ -173,7 +173,7 @@ export default function Vehicles() {
           className="font-[400] text-[16px] leading-[19px] text-black pb-1 underline hover:no-underline cursor-pointer"
           onClick={() => setShowLess(!showLess)}
         >
-          {showLess ? "Advanced Features" : "Show Less"}
+          {showLess ? "Advanced Filters" : "Show Less"}
         </h3>
       </div>
       <div className="w-full h-fit">
