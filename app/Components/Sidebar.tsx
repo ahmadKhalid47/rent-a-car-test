@@ -94,7 +94,7 @@ export default function Sidebar() {
           <span className="">{global.sidebarShow ? "Reservations" : null}</span>
         </div>
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
         >
@@ -119,7 +119,7 @@ export default function Sidebar() {
         </div>
 
         {vehiclesShow && global.sidebarShow ? (
-          <div className="w-full h-fit -mt-2  flex flex-col justify-start items-start">
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
