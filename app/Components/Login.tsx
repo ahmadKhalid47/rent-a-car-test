@@ -28,9 +28,9 @@ export default function Login() {
               welcome <br /> back!
             </h1>
             <p className="font-[400] text-[18px] leading-[22px] text-white z-10 ">
-              Welcome back! Ready to manage your fleet and
+              Ready to manage your fleet and reservations?
               <br />
-              reservations? Let's keep things running smoothly together.{" "}
+              Let's keep things running smoothly together.{" "}
             </p>
           </div>
         </div>
