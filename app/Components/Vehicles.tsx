@@ -115,7 +115,7 @@ export default function Vehicles() {
                 </div>
               </div>{" "}
             </div>
-            <div className="w-[16%] h-fit ">
+            <div className="w-[15%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 Type
               </h3>
