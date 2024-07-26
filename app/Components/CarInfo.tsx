@@ -143,31 +143,36 @@ export default function CarInfo() {
               Others
             </div>
           </div>
-          {activeButton === "General" ? (
-            <>
-              <General />
-            </>
-          ) : activeButton === "Rental" ? (
-            <>
-              <Rental />
-            </>
-          ) : activeButton === "Insurance" ? (
-            <>
-              <Insurance />
-            </>
-          ) : activeButton === "Maintenance" ? (
-            <>
-              <Maintenance />
-            </>
-          ) : activeButton === "Additional" ? (
-            <>
-              <Additional />
-            </>
-          ) : activeButton === "Others" ? (
-            <>
-              <Other />
-            </>
-          ) : null}
+          <div className="w-full h-fit flex justify-center items-start gap-8">
+            <div className="w-[422px] h-[320px] flex justify-center items-center bg-white rounded-[10px] bg-light-gre border-2 border-grey mt-5 p-0 overflow-hidden">
+              <img src={car.src} className="w-full h-full " />
+            </div>
+            {activeButton === "General" ? (
+              <>
+                <General />
+              </>
+            ) : activeButton === "Rental" ? (
+              <>
+                <Rental />
+              </>
+            ) : activeButton === "Insurance" ? (
+              <>
+                <Insurance />
+              </>
+            ) : activeButton === "Maintenance" ? (
+              <>
+                <Maintenance />
+              </>
+            ) : activeButton === "Additional" ? (
+              <>
+                <Additional />
+              </>
+            ) : activeButton === "Others" ? (
+              <>
+                <Other />
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
