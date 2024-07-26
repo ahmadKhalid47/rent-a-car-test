@@ -59,7 +59,7 @@ export default function Vehicles() {
           </h3>
           <div className="w-full h-fit flex justify-between items-center">
             <input
-              className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color"
+              className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:placeholder-color"
               placeholder="Search By Car Name, Reg No, City.."
             ></input>
             <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
@@ -92,7 +92,7 @@ export default function Vehicles() {
               </h3>
               <div className="w-full h-fit flex justify-between items-center ">
                 <input
-                  className=" font-[400] text-[16px] leading-[19px] px-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color"
+                  className=" font-[400] text-[16px] leading-[19px] px-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:placeholder-color"
                   placeholder="Type"
                 ></input>
               </div>
