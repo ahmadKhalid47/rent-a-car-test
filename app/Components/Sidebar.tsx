@@ -68,7 +68,9 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <MdCalendarMonth />
+          <MdCalendarMonth
+            className={`${global.sidebarShow ? "ml-[0px]" : "ml-[-1px]"}`}
+          />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
         <div
@@ -76,7 +78,9 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <FaUsers className="ml-[2px]" />
+          <FaUsers
+            className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
+          />
           <span className="">{global.sidebarShow ? "Customers" : null}</span>
         </div>
         <div
@@ -84,7 +88,9 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <FaListCheck className="ml-[2px]" />
+          <FaListCheck
+            className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
+          />
           <span className="">{global.sidebarShow ? "Reservations" : null}</span>
         </div>
         <div
@@ -93,7 +99,9 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
-            <FaCar className="ml-[1px]" />
+            <FaCar
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+            />
             {global.sidebarShow ? "Vehicles" : null}
           </div>
           {global.sidebarShow ? (
