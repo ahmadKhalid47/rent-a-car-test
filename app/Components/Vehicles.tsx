@@ -132,7 +132,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[16%] h-fit ">
+            <div className="w-[14%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-1 ">
                 City
               </h3>
