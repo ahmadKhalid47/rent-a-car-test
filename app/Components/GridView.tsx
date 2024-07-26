@@ -9,12 +9,7 @@ import { FaEllipsis } from "react-icons/fa6";
 export default function GridView() {
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-between items-center font-[400] text-[18px] leading-[21px] text-grey">
-        <span>
-          <span className="cursor-pointer">Delete Multiple</span>
-          <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span className=" cursor-pointer">Active/Inactive Multiple</span>
-        </span>
+      <h3 className="w-full flex justify-end items-center font-[400] text-[18px] leading-[21px] text-grey">
         <span className="underline cursor-pointer">Export</span>
       </h3>
 
