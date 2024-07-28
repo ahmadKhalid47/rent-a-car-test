@@ -73,8 +73,8 @@ export default function ListView() {
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Dahlonega</h5>
           <div className="flex justify-start gap items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -97,8 +97,8 @@ export default function ListView() {
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Fort Valley</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -119,8 +119,8 @@ export default function ListView() {
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -139,12 +139,12 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[9%]">2023</h5>
           <h5 className="text-start pe-3 w-[9%]">Sedan</h5>
           <h5 className="text-start pe-3 w-[9%]">
-            <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
+            <div className="w-[23px] h-[12px] bg-red-500 rounded-full"></div>
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -163,12 +163,12 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[9%]">2023</h5>
           <h5 className="text-start pe-3 w-[9%]">Sedan</h5>
           <h5 className="text-start pe-3 w-[9%]">
-            <div className="w-[23px] h-[12px] bg-red-500 rounded-full"></div>
+            <div className="w-[23px] h-[12px] bg-green-500 rounded-full"></div>
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -191,8 +191,8 @@ export default function ListView() {
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap- items-center w-[8%]">
-            <img src={unCheck.src}  className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={unCheck.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -215,8 +215,8 @@ export default function ListView() {
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
@@ -235,12 +235,12 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[9%]">2023</h5>
           <h5 className="text-start pe-3 w-[9%]">Sedan</h5>
           <h5 className="text-start pe-3 w-[9%]">
-            <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
+            <div className="w-[23px] h-[12px] bg-blue-500 rounded-full"></div>
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]"/>
-            <img src={edit.src}  className="me-[5.8px]"/>
+            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+            <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
         </Link>
