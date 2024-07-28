@@ -56,7 +56,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -112,7 +112,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -168,7 +168,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -224,7 +224,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -280,7 +280,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -336,7 +336,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -392,7 +392,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -448,7 +448,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -504,7 +504,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -560,7 +560,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -616,7 +616,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">
@@ -672,7 +672,7 @@ export default function GridView() {
               <div className="flex justify-start items-center gap-2 w-[40%]">
                 <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
                 <p className="font-[400] text-[12px] leading-[18px]">
-                  <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+                  <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
                 </p>
               </div>
               <div className="flex justify-start items-center gap- w-[50%]">

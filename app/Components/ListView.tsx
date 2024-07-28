@@ -139,7 +139,7 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[9%]">2023</h5>
           <h5 className="text-start pe-3 w-[9%]">Sedan</h5>
           <h5 className="text-start pe-3 w-[9%]">
-            <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+            <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
@@ -235,7 +235,7 @@ export default function ListView() {
           <h5 className="text-start pe-3 w-[9%]">2023</h5>
           <h5 className="text-start pe-3 w-[9%]">Sedan</h5>
           <h5 className="text-start pe-3 w-[9%]">
-            <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
+            <span className="w-[23px] h-[12px] bg-black rounded-full"></span>
           </h5>
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
           <div className="flex justify-start gap2 items-end w-[8%]">
