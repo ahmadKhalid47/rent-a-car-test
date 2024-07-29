@@ -7,11 +7,15 @@ import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
 import Info from "./Info";
+import Rental from "./Rental";
+import Insurances from "./Insurances";
+import Others from "./Others";
+import Damages from "./Damages";
+import Feature from "./Feature";
 
 export default function VehicleForms() {
-  let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
-  const [showLess, setShowLess] = useState(true);
+  let [currentPage, setCurrentPage] = useState(0);
+
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
@@ -27,60 +31,165 @@ export default function VehicleForms() {
       <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-10 px-8 flex flex-col justify-start items-start">
         <div className="w-full h-fit flex flex-col justify-start items-center">
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[24px] leading-[36px]">
-            <div className="w-[80%] h-[10px] flex justify-between items-center absolute top-[20px] left-[10%] border-[1px] border-grey bg-white z-[0]"></div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-main-blue text-white flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[9%] border-[1px] border-grey bg-white z-[0]">
+              <div
+                className={` h-full flex justify-start items-center bg-main-blue z-[0]`}
+                style={{ width: `${currentPage * 20}%` }}
+              ></div>
+            </div>
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(0)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 0
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                } flex justify-center items-center rounded-full z-[5]`}
+              >
                 1
-              </div>
+              </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-white border-[1px] border-grey flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(1)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 1
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                } flex justify-center items-center rounded-full z-[5]`}
+              >
                 2
-              </div>
+              </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-white border-[1px] border-grey flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(2)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 2
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                }
+                     flex justify-center items-center rounded-full z-[5]`}
+              >
                 3
-              </div>
+              </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-white border-[1px] border-grey flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(3)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 3
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                } flex justify-center items-center rounded-full z-[5]`}
+              >
                 4
-              </div>
+              </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-white border-[1px] border-grey flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(4)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 4
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                } flex justify-center items-center rounded-full z-[5]`}
+              >
                 5
-              </div>
+              </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[10]">
-              <div className="w-[60px] h-[60px] bg-white border-[1px] border-grey flex justify-center items-center rounded-full z-[10]">
+            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <button
+                onClick={() => setCurrentPage(5)}
+                className={`w-[60px] h-[60px] ${
+                  currentPage >= 5
+                    ? "bg-main-blue text-white"
+                    : "bg-white border-[1px] border-grey"
+                } flex justify-center items-center rounded-full z-[5]`}
+              >
                 6
-              </div>
+              </button>
             </div>
           </div>
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[16px] leading-[19px]">
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center text-main-blue">
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 0 ? "text-main-blue" : ""
+              }`}
+            >
               Vehicle Information
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center">
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 1 ? "text-main-blue" : ""
+              }`}
+            >
               Rental Information
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center">
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 2 ? "text-main-blue" : ""
+              }`}
+            >
               Insurance Info
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center">
-              Damages
-            </div>
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center">
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 3 ? "text-main-blue" : ""
+              }`}
+            >
               Features
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center text-center items-center">
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 4 ? "text-main-blue" : ""
+              }`}
+            >
+              Damages
+            </div>
+            <div
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                currentPage === 5 ? "text-main-blue" : ""
+              }`}
+            >
               Others
             </div>
           </div>
         </div>
-        <Info />
+        {currentPage === 0 ? (
+          <Info />
+        ) : currentPage === 1 ? (
+          <Rental />
+        ) : currentPage === 2 ? (
+          <Insurances />
+        ) : currentPage === 3 ? (
+          <Feature />
+        ) : currentPage === 4 ? (
+          <Damages />
+        ) : currentPage === 5 ? (
+          <Others />
+        ) : null}
+
+        <div
+          className={`w-full h-[100px] flex ${
+            currentPage === 0 ? "justify-end" : "justify-between"
+          } items-center`}
+        >
+          {currentPage !== 0 ? (
+            <button
+              className="px-6 h-[44px] rounded-[10px] bg-white border-2 border-grey   font-[500] text-[18px] leading-[21px] text-center"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              Back
+            </button>
+          ) : null}
+          <button
+            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            Save and Continue
+          </button>
+        </div>
       </div>
     </div>
   );
