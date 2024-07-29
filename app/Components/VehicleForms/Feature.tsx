@@ -15,8 +15,19 @@ export default function Feature() {
   return (
     <div className="w-full h-fit  ">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
-          Feature{" "}
+        <div className="flex flex-wrap justify-start items-start gap-x-[6.66%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
+          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+            GPS
+          </button>
+          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+            Air Conditioning
+          </button>
+          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+            Bluetooth
+          </button>
+          <button className="w-[20%] h-[44px] rounded-[10px] bg-white border-2 border-grey   font-[400] text-[18px] leading-[21px] text-center">
+            Child Seat{" "}
+          </button>
         </div>
       </div>
     </div>
