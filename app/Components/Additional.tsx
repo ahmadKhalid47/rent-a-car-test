@@ -12,7 +12,7 @@ export default function Additional() {
           Air Conditioning
         </p>
       </div>
-      <div className="w-[25%] h-fit flex justify-center items-start py-[3px] border-b-[2px]">
+      <div className="w-[25%] h-fit flex justify-center items-start py-[3px] border-b-[2px">
         <p className="font-[400] text-[18px] leading-[27px]">Bluetooth</p>
       </div>
       <div className="w-[25%] h-fit flex justify-center items-start py-[3px] border-b-[2px">
