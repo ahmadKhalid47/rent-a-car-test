@@ -4,7 +4,7 @@ import ft3 from "@/public/ft (3).svg";
 
 export default function Additional() {
   return (
-    <div className="w-[50%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] py-5 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-5">
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
         <p className="font-[600] text-[18px] leading-[27px]">GPS</p>
       </div>

@@ -1,7 +1,7 @@
 
 export default function Other() {
   return (
-    <div className="w-[50%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] py-5 pb-10 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-5">
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[100%] h-fit font-[400] text-[18px] leading-[27px]">
         There are many variations of passages of Lorem Ipsum available, but the
         majority have suffered alteration in some form, by injected humour, or
