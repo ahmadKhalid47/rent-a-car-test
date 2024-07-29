@@ -29,7 +29,7 @@ export default function CarInfo() {
         </h3>
         <div className="flex justify-between items-start">
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            All Vehicles / Suzuki Swift
+            Vehicles / All Vehicles / Suzuki Swift
           </p>
         </div>
       </div>
