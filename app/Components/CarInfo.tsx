@@ -54,7 +54,7 @@ export default function CarInfo() {
                   <img src={smallCar4.src} className="w-[100%]" />
                 </div>
               </div>
-              <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white">
+              <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                 <img src={car.src} className="w-full h-full" />
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function CarInfo() {
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("General")}
               >
-                General Info.
+                General Info
               </div>
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
