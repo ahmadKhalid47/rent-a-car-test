@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
+import Info from "./Info";
 
 export default function VehicleForms() {
   let global = useSelector((state: RootState) => state.Global);
@@ -79,7 +80,7 @@ export default function VehicleForms() {
             </div>
           </div>
         </div>
-        {/* <div className="w-full h-[400px] bg-white mt-5 rounded-[10px] border-2 border-grey"></div> */}
+        <Info />
       </div>
     </div>
   );
