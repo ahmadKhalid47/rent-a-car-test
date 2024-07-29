@@ -33,9 +33,9 @@ export default function CarInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-6">
-        <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] py-10 px-10 rounded-[10px] bg-white border-2 border-grey">
-          <div className="w-full h-fit flex justify-start gap-[5%] items-center px-">
+      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-6">
+        <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
+          <div className="w-full h-fit flex justify-start gap-[5%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
             <div className="w-fit flex justify-start items-center gap-1">
               <div className="h-[464px] fex justify-start flex-col items-center gap-[8.5px] overflow-y-auto overflow-x-hidden scroll">
                 <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
@@ -103,97 +103,96 @@ export default function CarInfo() {
               </div>
             </div>
           </div>
-          <div className="w-full h-fit flex justify-between items-center mt-3">
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "General"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("General")}
-            >
-              General Info.
+          <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
+            <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "General"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("General")}
+              >
+                General Info.
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Rental"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Rental")}
+              >
+                Rental Info
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Insurance"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Insurance")}
+              >
+                Insurance Info
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Maintenance"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Maintenance")}
+              >
+                Maintenance Info
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Additional"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Additional")}
+              >
+                Additional Ft
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Others"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Others")}
+              >
+                Others
+              </div>
             </div>
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "Rental"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("Rental")}
-            >
-              Rental Info
+            <div className="w-full h-fit flex justify-center items-start gap-8">
+              {activeButton === "General" ? (
+                <>
+                  <General />
+                </>
+              ) : activeButton === "Rental" ? (
+                <>
+                  <Rental />
+                </>
+              ) : activeButton === "Insurance" ? (
+                <>
+                  <Insurance />
+                </>
+              ) : activeButton === "Maintenance" ? (
+                <>
+                  <Maintenance />
+                </>
+              ) : activeButton === "Additional" ? (
+                <>
+                  <Additional />
+                </>
+              ) : activeButton === "Others" ? (
+                <>
+                  <Other />
+                </>
+              ) : null}
             </div>
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "Insurance"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("Insurance")}
-            >
-              Insurance Info
-            </div>
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "Maintenance"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("Maintenance")}
-            >
-              Maintenance Info
-            </div>
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "Additional"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("Additional")}
-            >
-              Additional Ft
-            </div>
-            <div
-              className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                activeButton === "Others"
-                  ? "text-white bg-main-blue"
-                  : " border-2 border-light-grey text-black bg-light-grey"
-              } font-[500] text-[16px] leading-[18px]`}
-              onClick={() => setActiveButton("Others")}
-            >
-              Others
-            </div>
-          </div>
-          <div className="w-full h-fit flex justify-center items-start gap-8">
-            <div className="w-[422px] h-[320px] flex justify-center items-center bg-white rounded-[10px] bg-light-gre border-2 border-grey mt-5 p-0 overflow-hidden">
-              <img src={car.src} className="w-full h-full " />
-            </div>
-            {activeButton === "General" ? (
-              <>
-                <General />
-              </>
-            ) : activeButton === "Rental" ? (
-              <>
-                <Rental />
-              </>
-            ) : activeButton === "Insurance" ? (
-              <>
-                <Insurance />
-              </>
-            ) : activeButton === "Maintenance" ? (
-              <>
-                <Maintenance />
-              </>
-            ) : activeButton === "Additional" ? (
-              <>
-                <Additional />
-              </>
-            ) : activeButton === "Others" ? (
-              <>
-                <Other />
-              </>
-            ) : null}
           </div>
         </div>
       </div>
