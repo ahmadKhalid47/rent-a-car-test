@@ -6,16 +6,16 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Hour:
           </p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
             8$
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Week:
           </p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">150$</p>
+          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">150$</p>
         </div>
      
       </div>
@@ -24,16 +24,16 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Day:
           </p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
             90$
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Month:
           </p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">400$</p>
+          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">400$</p>
         </div>
      
       </div>
@@ -45,7 +45,7 @@ export default function Rental() {
     //       <p className="font-[600] text-[18px] leading-[27px]">
     //         Rental Price Per Hour:
     //       </p>
-    //       <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+    //       <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
     //         8$
     //       </p>
     //     </div>
@@ -53,7 +53,7 @@ export default function Rental() {
     //       <p className="font-[600] text-[18px] leading-[27px]">
     //         Rental Price Per Week:
     //       </p>
-    //       <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+    //       <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
     //         150$
     //       </p>
     //     </div>
@@ -61,7 +61,7 @@ export default function Rental() {
     //       <p className="font-[600] text-[18px] leading-[27px]">
     //         Rental Price Per Day:{" "}
     //       </p>
-    //       <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+    //       <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
     //         90$
     //       </p>
     //     </div>
@@ -69,7 +69,7 @@ export default function Rental() {
     //       <p className="font-[600] text-[18px] leading-[27px]">
     //         Rental Price Per Month:
     //       </p>
-    //       <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
+    //       <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
     //         400$
     //       </p>
     //     </div>

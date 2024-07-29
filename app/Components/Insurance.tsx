@@ -11,7 +11,7 @@ export default function Insurance() {
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Insurance Expiry Date:
           </p>
@@ -21,7 +21,7 @@ export default function Insurance() {
         </div>
       </div>
       <div className="w-[37%] h-fit flex flex-col justify-start items-start bg-red-30 ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Insurance Provider:{" "}
           </p>

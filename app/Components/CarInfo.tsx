@@ -8,11 +8,11 @@ import { useState } from "react";
 import General from "./General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
-import Maintenance from "./Maintanace";
 import Additional from "./Additional";
 import Other from "./Other";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
+import Damages from "./Damages";
 
 export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
@@ -137,23 +137,23 @@ export default function CarInfo() {
               </div>
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Maintenance"
-                    ? "text-white bg-main-blue"
-                    : " text-black "
-                } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Maintenance")}
-              >
-                Maintenance Info
-              </div>
-              <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Additional"
                     ? "text-white bg-main-blue"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Additional")}
               >
-                Additional Ft
+                Features
+              </div>
+              <div
+                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Damages"
+                    ? "text-white bg-main-blue"
+                    : " text-black "
+                } font-[400] text-[18px] leading-[22px]`}
+                onClick={() => setActiveButton("Damages")}
+              >
+                Damages
               </div>
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
@@ -179,9 +179,9 @@ export default function CarInfo() {
                 <>
                   <Insurance />
                 </>
-              ) : activeButton === "Maintenance" ? (
+              ) : activeButton === "Damages" ? (
                 <>
-                  <Maintenance />
+                  <Damages />
                 </>
               ) : activeButton === "Additional" ? (
                 <>
