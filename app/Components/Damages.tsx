@@ -6,10 +6,10 @@ import { FaEye } from "react-icons/fa";
 
 export default function Damages() {
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-fit h-fit flex flex-col justify-start items-start relative">
-        <img src={exterior.src} className="w-[100%" />
-        <img src={exteriorNum.src} className="absolute left-[58%] top-[27%]" />
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
+      <div className="w-[23%] h-fit flex flex-col justify-start items-start relative">
+        <img src={exterior.src} className="w-[100%]" />
+        <img src={exteriorNum.src} className="absolute left-[58%] top-[27%] w-[12px]" />
       </div>
       <div className="w-[40%] h-fit flex flex-col justify-start items-start  ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
@@ -70,8 +70,8 @@ export default function Damages() {
           </p>
         </div>
       </div>
-      <div className="w-[23% h-[100%] flex flex-col justify-start items-start ">
-        <img src={dent.src} className="h-[100%" />
+      <div className="w-[25%] h-[100%] flex flex-col justify-start items-start ">
+        <img src={dent.src} className="w-[100%]" />
       </div>
     </div>
   );
