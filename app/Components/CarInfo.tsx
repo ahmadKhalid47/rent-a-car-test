@@ -59,7 +59,7 @@ export default function CarInfo() {
               </div>
             </div>
             <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
-              <h3 className="font-[500] text-[36px] leading-[54px] text-black">
+              <h3 className="font-[600] text-[36px] leading-[54px] text-black">
                 Suzuki Swift
               </h3>
               <p className="font-[400] text-[28px] leading-[42px] text-black">
@@ -108,7 +108,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "General"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("General")}
@@ -118,7 +118,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Rental"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Rental")}
@@ -128,7 +128,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Insurance"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Insurance")}
@@ -138,7 +138,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Additional"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Additional")}
@@ -148,7 +148,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Damages"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Damages")}
@@ -158,7 +158,7 @@ export default function CarInfo() {
               <div
                 className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Others"
-                    ? "text-white bg-main-blue"
+                    ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
                 onClick={() => setActiveButton("Others")}

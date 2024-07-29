@@ -29,9 +29,7 @@ export default function General() {
           </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Transformation:
-          </p>
+          <p className="font-[400] text-[18px] leading-[27px]">Transmission:</p>
           <p className="w-[25%] text-start font-[400] text-[18px] leading-[27px]">
             Auto
           </p>
