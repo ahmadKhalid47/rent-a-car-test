@@ -156,6 +156,7 @@ export default function VehicleForms() {
             </div>
           </div>
         </div>
+
         {currentPage === 0 ? (
           <Info />
         ) : currentPage === 1 ? (
@@ -183,12 +184,28 @@ export default function VehicleForms() {
               Back
             </button>
           ) : null}
-          <button
-            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            Save and Continue
-          </button>
+          {currentPage === 5 ? (
+            <div className="flex justify-start items-center gap-3">
+              <button
+                className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+              >
+                Save and New
+              </button>
+              <button
+                className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+              >
+                Save and Close
+              </button>
+              <div />
+            </div>
+          ) : (
+            <button
+              className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              Save and Continue
+            </button>
+          )}
         </div>
       </div>
     </div>
