@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sidebarShow: true,
+  fieldName: "Home",
   sidebarShowTemp: true,
 };
 
@@ -12,12 +13,16 @@ export const GlobalSlice = createSlice({
     setSidebarShowR: (state, action) => {
       state.sidebarShow = action.payload;
     },
+    setFieldNameR: (state, action) => {
+      state.fieldName = action.payload;
+    },
     setSidebarShowTempR: (state, action) => {
       state.sidebarShowTemp = action.payload;
     },
   },
 });
 
-export const { setSidebarShowR, setSidebarShowTempR } = GlobalSlice.actions;
+export const { setSidebarShowR, setSidebarShowTempR, setFieldNameR } =
+  GlobalSlice.actions;
 
 export default GlobalSlice.reducer;
