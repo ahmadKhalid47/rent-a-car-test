@@ -23,9 +23,10 @@ export default function General() {
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Color:</p>
-          <p className="w-[25%] text-start font-[400] text-[18px] leading-[27px]">
+          <div className="w-[25%] text-start font-[400] text-[18px] leading-[27px]">
             Red
-          </p>
+            <div className="w-[32px] h-[18px] bg-red-500 rounded-[5px]"></div>
+          </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
