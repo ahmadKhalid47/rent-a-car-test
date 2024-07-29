@@ -27,7 +27,7 @@ export default function ListView() {
       <div className="w-full h-fit flex flex-col justify-start items-start rounded-[10px] bg-light-grey border-2 border-grey overflow-hidden mt-2 leading-[17px]">
         <div className="w-full h-[43px] flex justify-between items-center font-[500] text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-7">
             ID <img src={arrows.src} />
@@ -59,7 +59,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -83,7 +83,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -107,7 +107,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">Suzuki Swift</h5>
@@ -129,7 +129,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -153,7 +153,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -177,7 +177,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -201,7 +201,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
@@ -225,7 +225,7 @@ export default function ListView() {
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
-            <div className="w-[10px] h-[10px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+            <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
           <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
           <h5 className="text-start pe-3 w-[20%]">
