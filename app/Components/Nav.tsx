@@ -4,7 +4,7 @@ import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setSidebarShowR } from "../store/Global";
+import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
 import { RootState } from "../store";
 export default function Nav() {
   let global = useSelector((state: RootState) => state.Global);
@@ -16,7 +16,12 @@ export default function Nav() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } h-[90px] pe-[50px] ps-[20px] flex justify-between items-center border-b-[2px] z-[10] float-end fixed bg-white right-0 transitions`}
     >
-      <button onClick={() => dispatch(setSidebarShowR(!global.sidebarShow))}>
+      <button
+        onClick={() => {
+          dispatch(setSidebarShowR(!global.sidebarShow));
+          dispatch(setSidebarShowTempR(!global.sidebarShowTemp));
+        }}
+      >
         <img src={bar.src} />
       </button>
 

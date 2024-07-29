@@ -3,30 +3,12 @@ import bar from "@/public/car.svg";
 import Link from "next/link";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import car1 from "@/public/sb (1).svg";
-import car2 from "@/public/sb (2).svg";
-import car3 from "@/public/sb (3).svg";
-import car4 from "@/public/sb (4).svg";
-import car5 from "@/public/sb (5).svg";
-import car6 from "@/public/sb (6).svg";
-import car7 from "@/public/sb (7).svg";
-import {
-  FaCar,
-  FaUsers,
-  FaTachometerAlt,
-  FaTrademark,
-  FaMapMarkerAlt,
-  FaChevronDown,
-  FaChevronUp,
-} from "react-icons/fa";
-import { CalendarMonth } from "@mui/icons-material";
+import { FaCar, FaUsers } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { TbTargetArrow } from "react-icons/tb";
-import { SlCalender } from "react-icons/sl";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import { RiFileSettingsFill } from "react-icons/ri";
-import Vehicles from "./Vehicles";
 import { useState } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
@@ -42,7 +24,10 @@ export default function Sidebar() {
       className={`${
         global.sidebarShow ? "w-[300px]" : "w-[120px]"
       } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-0 transitions`}
-      onMouseOver={() => dispatch(setSidebarShowR(true))}
+      onMouseEnter={() => dispatch(setSidebarShowR(true))}
+      onMouseLeave={() =>
+        dispatch(setSidebarShowR(global.sidebarShowTemp ? true : false))
+      }
     >
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
         <Link href={"/Components/Home"} className="w-fit h-fit">
