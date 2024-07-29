@@ -13,13 +13,13 @@ export default function Damages() {
       </div>
       <div className="w-[40%] h-fit flex flex-col justify-start items-start  ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="w-[50px]  font-[500] text-[18px] leading-[27px] text-start">
+          <p className="w-[50px]  font-[600] text-[18px] leading-[27px] text-start">
             No
           </p>
-          <p className="w-[60%]  font-[500] text-[18px] leading-[27px] text-start">
+          <p className="w-[60%]  font-[600] text-[18px] leading-[27px] text-start">
             Damage Type
           </p>
-          <p className="w-[80px]  font-[500] text-[18px] leading-[27px] text-start">
+          <p className="w-[80px]  font-[600] text-[18px] leading-[27px] text-start">
             Degree
           </p>
         </div>
