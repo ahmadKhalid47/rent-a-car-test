@@ -110,7 +110,8 @@ export default function Sidebar() {
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
               </div>
-              <div
+              <Link
+                href={"/Components/Home"}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
@@ -118,9 +119,12 @@ export default function Sidebar() {
                 } bg-main-blue-hover bg-main-blue hover: text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Vehicles" : null}
-              </div>{" "}
+              </Link>{" "}
             </div>
-            <div className="flex justify-start items-center w-full">
+            <Link
+              href={"/Components/AddVehicles"}
+              className="flex justify-start items-center w-full"
+            >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
@@ -134,7 +138,7 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Add New Vehicle" : null}
               </div>{" "}
-            </div>
+            </Link>
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>

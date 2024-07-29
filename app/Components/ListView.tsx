@@ -36,7 +36,7 @@ export default function ListView() {
             Car Name <img src={arrows.src} />
           </div>
           <div className="text-start pe-3 flex justify-between items-center w-[13%]">
-            Registration No. <img src={arrows.src} />
+            Registration No <img src={arrows.src} />
           </div>
           <div className="text-start pe-3 flex justify-between items-center w-[9%]">
             Year <img src={arrows.src} />

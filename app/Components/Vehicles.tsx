@@ -88,7 +88,7 @@ export default function Vehicles() {
             </div>
             <div className="w-[15%] h-fit">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Registration No.
+                Registration No
               </h3>
               <div className="w-full h-fit flex justify-between items-center ">
                 <input
