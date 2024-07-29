@@ -37,24 +37,24 @@ export default function CarInfo() {
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
           <div className="w-full h-fit flex justify-start gap-[5%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
             <div className="w-fit flex justify-start items-center gap-1">
-              <div className="h-[464px] fex justify-start flex-col items-center gap-[8.5px] overflow-y-auto overflow-x-hidden scroll">
-                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+              <div className="h-[464px] fex justify-start flex-col items-center gap-[8px] overflow-y-auto overflow-x-hidden scroll">
+                <div className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
                   <img src={smallCar1.src} className="w-[100%]" />
                 </div>
-                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                <div className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
                   <img src={smallCar1.src} className="w-[100%]" />
                 </div>
-                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                <div className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
                   <img src={smallCar2.src} className="w-[100%]" />
                 </div>
-                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                <div className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
                   <img src={smallCar3.src} className="w-[100%]" />
                 </div>
-                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                <div className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
                   <img src={smallCar4.src} className="w-[100%]" />
                 </div>
               </div>
-              <div className="w-fit h-[fit flex justify-between items-start rounded-[10px] border-[1px] border-grey bg-white">
+              <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white">
                 <img src={car.src} className="w-full h-full" />
               </div>
             </div>
