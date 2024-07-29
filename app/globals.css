@@ -79,3 +79,9 @@ box-shadow:
 .placeholder-color{
 color: #9ca3af;
 }
+
+.scroll::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    background-color: transparent
+}

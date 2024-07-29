@@ -1,5 +1,9 @@
 "use client";
 import car from "@/public/carInfoCar.svg";
+import smallCar1 from "@/public/smallcar (1).png";
+import smallCar2 from "@/public/smallcar (2).png";
+import smallCar3 from "@/public/smallcar (3).png";
+import smallCar4 from "@/public/smallcar (4).png";
 import { useState } from "react";
 import General from "./General";
 import Rental from "./Rental";
@@ -29,58 +33,76 @@ export default function CarInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-10">
+      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-6">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] py-10 px-10 rounded-[10px] bg-white border-2 border-grey">
-          {/* <div className="w-full h-fit flex justify-between items-center px-8">
-            <div className="w-[340px] h-[212px] flex justify-between items-start rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey">
-              <img src={car.src} />
+          <div className="w-full h-fit flex justify-start gap-[5%] items-center px-">
+            <div className="w-fit flex justify-start items-center gap-1">
+              <div className="h-[464px] fex justify-start flex-col items-center gap-[8.5px] overflow-y-auto overflow-x-hidden scroll">
+                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                  <img src={smallCar1.src} className="w-[100%]" />
+                </div>
+                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                  <img src={smallCar1.src} className="w-[100%]" />
+                </div>
+                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                  <img src={smallCar2.src} className="w-[100%]" />
+                </div>
+                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                  <img src={smallCar3.src} className="w-[100%]" />
+                </div>
+                <div className="w-[110px] h-[110px] mb-[8.5px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey">
+                  <img src={smallCar4.src} className="w-[100%]" />
+                </div>
+              </div>
+              <div className="w-fit h-[fit flex justify-between items-start rounded-[10px] border-[1px] border-grey bg-white">
+                <img src={car.src} className="w-full h-full" />
+              </div>
             </div>
-            <div className="w-[55%] flex justify-start flex-col items-start gap-1">
-              <h3 className="font-[600] text-[28px] leading-[42px] text-black">
+            <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
+              <h3 className="font-[500] text-[36px] leading-[54px] text-black">
                 Suzuki Swift
               </h3>
-              <div className="w-full flex justify-start items-center">
-                <div className="flex justify-start items-center gap-2 w-[26%] pe-5">
-                  <p className="font-[400] text-[18px] leading-[27px]">Make:</p>
-                  <p className="font-[400] text-[18px] leading-[27px]">Honda</p>
-                </div>
-                <div className="flex justify-start items-center gap-2 w-[50%]">
-                  <p className="font-[400] text-[18px] leading-[27px]">
-                    Model:
+              <p className="font-[400] text-[28px] leading-[42px] text-black">
+                LEM 1234
+              </p>
+              <div className="w-[80%] flex justify-between items-center">
+                <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
+                  <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                    Year:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[27px]">Civic</p>
-                </div>
-              </div>
-              <div className="w-full flex justify-start items-center">
-                <div className="flex justify-start items-center gap-2 w-[26%] pe-5">
-                  <p className="font-[400] text-[18px] leading-[27px]">Year:</p>
-                  <p className="font-[400] text-[18px] leading-[27px]">2024</p>
+                  <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                    2002
+                  </p>
                 </div>
                 <div className="flex justify-start items-center gap-2 w-[50%]">
-                  <p className="font-[400] text-[18px] leading-[27px]">Type:</p>
-                  <p className="font-[400] text-[18px] leading-[27px]">
-                    539485
+                  <p className="font-[400] text-[20px] leading-[30px] w-[35%]">
+                    Type:
+                  </p>
+                  <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                    Sedan
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-start items-center">
-                <div className="flex justify-start items-center gap-2 w-[26%]">
-                  <p className="font-[400] text-[18px] leading-[27px]">
+              <div className="w-[80%] flex justify-between items-center bg-red-5">
+                <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
+                  <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
                     Color:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[27px]">White</p>
+                  <div className="h-full font-[400] text-[20px] leading-[30px] w-[50%]">
+                    <div className="w-[32px] h-[18px] bg-red-500 rounded-[5px]"></div>
+                  </div>
                 </div>
                 <div className="flex justify-start items-center gap-2 w-[50%]">
-                  <p className="font-[400] text-[18px] leading-[27px]">
-                    Fuel Type:
+                  <p className="font-[400] text-[20px] leading-[30px] w-[35%]">
+                    City:
                   </p>
-                  <p className="font-[400] text-[18px] leading-[27px]">
-                    Petrol
+                  <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                    Atlanta
                   </p>
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
           <div className="w-full h-fit flex justify-between items-center mt-3">
             <div
               className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
