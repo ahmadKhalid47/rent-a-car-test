@@ -109,8 +109,8 @@ export default function Sidebar() {
               </div>
               <button
                 onClick={() => {
-                  router.push("/Components/Home");
-                  dispatch(setFieldNameR("Home"));
+                  router.push("/Components/Costumers");
+                  dispatch(setFieldNameR("Costumers"));
                 }}
                 // href={"/Components/Home"}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
