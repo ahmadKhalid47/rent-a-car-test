@@ -118,7 +118,9 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  global.fieldName === "Home" ? "bg-main-blue text-white" : ""
+                  global.fieldName === "Costumers"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Costumers" : null}
@@ -126,8 +128,8 @@ export default function Sidebar() {
             </div>
             <button
               onClick={() => {
-                router.push("/Components/AddVehicles");
-                dispatch(setFieldNameR("AddVehicles"));
+                router.push("/Components/AddCostumer");
+                dispatch(setFieldNameR("AddCostumer"));
               }}
               // href={"/Components/AddVehicles"}
               className="flex justify-start items-center w-full"
@@ -142,7 +144,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  global.fieldName === "AddVehicles"
+                  global.fieldName === "AddCostumer"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -201,7 +203,7 @@ export default function Sidebar() {
               {vehiclesShow ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
-              <GoTriangleDown className="float-right me-5" />
+                <GoTriangleDown className="float-right me-5" />
               )}
             </div>
           ) : null}

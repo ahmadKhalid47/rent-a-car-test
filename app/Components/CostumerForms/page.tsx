@@ -6,12 +6,13 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
-import Info from "./Info";
+
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
 import Damages from "./Damages";
 import Feature from "./Feature";
+import Info from "./Info";
 
 export default function CostumerForms() {
   let [currentPage, setCurrentPage] = useState(0);
