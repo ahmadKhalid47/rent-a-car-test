@@ -87,6 +87,11 @@ export default function Damages() {
     setPopup(true);
     setMarks([...marks, { x, y, exterior }]);
   };
+  const cancelPop = () => {
+    const array = marks;
+    array.pop()
+    setMarks(array);
+  };
 
   return (
     <div className="w-full h-fit">
@@ -318,7 +323,10 @@ export default function Damages() {
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
                 className="w-[140px] h-[44px] rounded-[10px] bg-white border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
-                onClick={() => setPopup(false)}
+                onClick={() => {
+                  setPopup(false)
+                  cancelPop();
+                }}
               >
                 Cancel
               </button>
