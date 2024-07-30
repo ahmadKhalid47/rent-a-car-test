@@ -2,16 +2,13 @@
 import shape from "@/public/Shape2.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
-import ListView from "./ListView";
+import ListViewCostumers from "./ListViewCostumers";
 import { useState } from "react";
-import GridView from "./GridView";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import { GridViewRounded } from "@mui/icons-material";
 
 export default function Costumers() {
   let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
   return (
     <div
@@ -21,34 +18,12 @@ export default function Costumers() {
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
           All Costumers
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            Costumers / All Vehicles
+            Costumers / All Costumers
           </p>
         </h3>
         <div className="flex justify-end gap-3 items-end w-[50%]">
-          <div className="w-fit h-fit flex justify-end items-end gap-3">
-            <button
-              className={`w-[44px] flex justify-center items-center h-[44px] rounded-[10px] ${
-                gridView
-                  ? "bg-main-blue text-white"
-                  : "bg-light-grey border-2 border-grey"
-              }  font-[500] text-[20px] leading-[30px] text-center`}
-              onClick={() => setGridView(true)}
-            >
-              <GridViewRounded />
-            </button>
-            <button
-              className={`w-[44px] flex justify-center items-center h-[44px] rounded-[10px] ${
-                !gridView
-                  ? "bg-main-blue text-white"
-                  : "bg-light-grey border-2 border-grey"
-              } font-[500] text-[20px] leading-[30px] text-center`}
-              onClick={() => setGridView(false)}
-            >
-              {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
-            </button>
-          </div>
           <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Add New Vehicle
+            Add New Costumer
           </button>
         </div>
       </div>
@@ -177,40 +152,7 @@ export default function Costumers() {
         </h3>
       </div>
       <div className="w-full h-fit">
-        {/* <div>
-          <div className="w-full h-fit flex justify-end gap-4 items-center pt-2">
-            <div className="w-fit h-fit flex justify-end items-center gap-3">
-              <button
-                className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
-                  gridView
-                    ? "bg-light-blue text-white"
-                    : "bg-light-grey border-2 border-grey"
-                }  font-[500] text-[20px] leading-[30px] text-center`}
-                onClick={() => setGridView(true)}
-              >
-                <GridViewRounded />
-              </button>
-              <button
-                className={`w-[42px] flex justify-center items-center h-[39px] rounded-[10px] ${
-                  !gridView
-                    ? "bg-light-blue text-white"
-                    : "bg-light-grey border-2 border-grey"
-                } font-[500] text-[20px] leading-[30px] text-center`}
-                onClick={() => setGridView(false)}
-              >
-                {!gridView ? (
-                  <img src={list.src} />
-                ) : (
-                  <img src={listBlack.src} />
-                )}
-              </button>
-            </div>
-            <button className="w-fit px-8 py- h-[39px] rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[21px] text-center">
-              Export
-            </button>
-          </div>
-        </div> */}
-        {gridView ? <GridView /> : <ListView />}
+        <ListViewCostumers />
       </div>
     </div>
   );
