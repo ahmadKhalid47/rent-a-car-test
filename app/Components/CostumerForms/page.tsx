@@ -161,7 +161,7 @@ export default function CostumerForms() {
         >
           {currentPage !== 0 ? (
             <button
-              className="px-6 h-[44px] rounded-[10px] bg-white border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+              className="px-6 h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage - 1)}
             >
               Back

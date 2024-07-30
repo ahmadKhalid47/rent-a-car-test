@@ -14,9 +14,9 @@ import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { useDropzone } from "react-dropzone";
 import Other from "../Other";
 import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
 
 export default function Info() {
   let global = useSelector((state: RootState) => state.Global);
