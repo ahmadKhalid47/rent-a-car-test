@@ -14,7 +14,7 @@ export default function Nav() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } h-[90px] pe-[50px] ps-[20px] flex justify-between items-center border-b-[2px] z-[10] float-end fixed bg-white right-0 transitions`}
+      } h-[90px] pe-[50px] ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed bg-white right-0 transitions`}
     >
       <button
         onClick={() => {

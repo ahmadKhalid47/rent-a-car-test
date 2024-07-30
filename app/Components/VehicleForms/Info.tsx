@@ -30,8 +30,7 @@ export default function Info() {
     { preview: carsGroupCar4, name: "car4" },
     { preview: carsGroupCar5, name: "car5" },
   ]);
-  const [files, setFiles] = useState([
-  ]);
+  const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(
@@ -355,61 +354,6 @@ export default function Info() {
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5">
-          {/* <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
-            <div className="relative w-[64px] h-[64px]">
-              <img src={carsGroupCar1.src} alt="" />
-            </div>
-            <span className="font-[400] text-[10px] leading-[12px] text-grey">
-              image.jpg
-            </span>
-            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
-              <FaTimesCircle />
-            </span>
-          </div>
-          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
-            <div className="relative w-[64px] h-[64px]">
-              <img src={carsGroupCar2.src} alt="" />
-            </div>
-            <span className="font-[400] text-[10px] leading-[12px] text-grey">
-              image1.jpg
-            </span>
-            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
-              <FaTimesCircle />
-            </span>
-          </div>
-          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
-            <div className="relative w-[64px] h-[64px]">
-              <img src={carsGroupCar3.src} alt="" />
-            </div>
-            <span className="font-[400] text-[10px] leading-[12px] text-grey">
-              image2.jpg
-            </span>
-            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
-              <FaTimesCircle />
-            </span>
-          </div>
-          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
-            <div className="relative w-[64px] h-[64px]">
-              <img src={carsGroupCar4.src} alt="" />
-            </div>
-            <span className="font-[400] text-[10px] leading-[12px] text-grey">
-              image3.jpg
-            </span>
-            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
-              <FaTimesCircle />
-            </span>
-          </div>
-          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
-            <div className="relative w-[64px] h-[64px]">
-              <img src={carsGroupCar5.src} alt="" />
-            </div>
-            <span className="font-[400] text-[10px] leading-[12px] text-grey">
-              image4.jpg
-            </span>
-            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
-              <FaTimesCircle />
-            </span>
-          </div> */}
           {thumbsAlready}
           {thumbs}
         </div>
