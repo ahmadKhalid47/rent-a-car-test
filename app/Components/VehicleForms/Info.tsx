@@ -23,7 +23,13 @@ export default function Info() {
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
 
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([
+    {alreadyPresent:true, preview: carsGroupCar1, name: "car1" },
+    {alreadyPresent:true, preview: carsGroupCar2, name: "car2" },
+    {alreadyPresent:true, preview: carsGroupCar3, name: "car3" },
+    {alreadyPresent:true, preview: carsGroupCar4, name: "car4" },
+    {alreadyPresent:true, preview: carsGroupCar5, name: "car5" },
+  ]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(
@@ -34,14 +40,19 @@ export default function Info() {
       )
     );
   }, []);
+  console.log(files);
   const thumbs: any = files.map((file: any) => (
     <div
       key={file.name}
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
     >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
+      <div
+        className={`relative w-[64px] h-[64px] rounded-[10px] ${
+          file.alreadyPresent ? "" : "border-[1px]"
+        } border-grey overflow-hidden`}
+      >
         <img
-          src={file.preview}
+          src={file.alreadyPresent ? file.preview.src : file.preview}
           alt={file.name}
           className=" w-[64px] h-[64px]"
         />
@@ -49,12 +60,22 @@ export default function Info() {
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
         image4.jpg
       </span>
-      <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+      <span
+        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
+        onClick={() => removing(file.name)}
+      >
         <FaTimesCircle />
       </span>
     </div>
   ));
-
+  function removing(name: any) {
+    let array = files;
+    array = array.filter((e: any) => {
+      return e.name !== name;
+    });
+    setFiles(array);
+  }
+  console.log(files);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -305,7 +326,7 @@ export default function Info() {
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5">
-          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+          {/* <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
             <div className="relative w-[64px] h-[64px]">
               <img src={carsGroupCar1.src} alt="" />
             </div>
@@ -359,8 +380,8 @@ export default function Info() {
             <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
               <FaTimesCircle />
             </span>
-          </div>
-          <div>{thumbs}</div>
+          </div> */}
+          {thumbs}
         </div>
       </div>
     </div>
