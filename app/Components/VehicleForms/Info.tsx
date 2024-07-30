@@ -15,11 +15,48 @@ import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
 import Other from "../Other";
+import React, { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 
 export default function Info() {
   let global = useSelector((state: RootState) => state.Global);
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
+
+  const [files, setFiles] = useState([]);
+
+  const onDrop = useCallback((acceptedFiles: any) => {
+    setFiles(
+      acceptedFiles.map((file: any) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
+  }, []);
+  const thumbs: any = files.map((file: any) => (
+    <div
+      key={file.name}
+      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
+    >
+      <div className="relative w-[64px] h-[64px]">
+        <img
+          src={file.preview}
+          alt={file.name}
+          className=" w-[64px] h-[64px]"
+        />
+      </div>
+      <span className="font-[400] text-[10px] leading-[12px] text-grey">
+        image4.jpg
+      </span>
+      <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+        <FaTimesCircle />
+      </span>
+    </div>
+  ));
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
@@ -246,7 +283,12 @@ export default function Info() {
         <h3 className="font-[600] text-[20px] leading-[23px] text-black w-[50%]">
           Add Vehicle Images
         </h3>
-        <div className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px]">
+        <div
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
+          {...getRootProps()}
+        >
+          <input {...getInputProps()} />
+
           <img src={upload.src} />
           <h4 className="font-[600] text-[14px] leading-[17px] text-black mt-[5px]">
             Drag & Drop or
@@ -318,6 +360,7 @@ export default function Info() {
               <FaTimesCircle />
             </span>
           </div>
+          <div>{thumbs}</div>
         </div>
       </div>
     </div>
