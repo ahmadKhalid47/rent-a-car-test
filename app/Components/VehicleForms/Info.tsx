@@ -39,7 +39,7 @@ export default function Info() {
       key={file.name}
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
     >
-      <div className="relative w-[64px] h-[64px]">
+      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
         <img
           src={file.preview}
           alt={file.name}
