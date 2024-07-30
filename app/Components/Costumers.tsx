@@ -6,10 +6,11 @@ import ListViewCostumers from "./ListViewCostumers";
 import { useState } from "react";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
+import { FaAsterisk } from "react-icons/fa";
 
 export default function Costumers() {
   let global = useSelector((state: RootState) => state.Global);
-  const [showLess, setShowLess] = useState(true);
+  const [showLess, setShowLess] = useState(false);
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
@@ -35,7 +36,7 @@ export default function Costumers() {
           <div className="w-full h-fit flex justify-between items-center">
             <input
               className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
-              placeholder="Search By Car Name, Reg No, City.."
+              placeholder="Search By Full Name, Phone.."
             ></input>
             <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
               Search
@@ -44,99 +45,19 @@ export default function Costumers() {
         </div>
         {!showLess ? (
           <div className="w-full flex justify-between items-center">
-            <div className="w-[20%] h-fit ">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Car Name
-              </h3>
+            <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                Customer Type
+              </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color">
-                  <option value="">Select</option>
-                  <option value="">Swift</option>
-                  <option value="">Swift</option>
-                  <option value="">Swift</option>
-                  <option value="">Swift</option>
-                </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>
-            </div>
-            <div className="w-[15%] h-fit">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Registration No
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center ">
-                <input
-                  className=" font-[400] text-[16px] leading-[19px] px-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:placeholder-color"
-                  placeholder="Type"
-                ></input>
-              </div>
-            </div>
-
-            <div className="w-[16%] h-fit ">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Year
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color">
-                  <option value="">Select</option>
-                  <option value="">2024</option>
-                  <option value="">2024</option>
-                  <option value="">2024</option>
-                  <option value="">2024</option>
-                </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>{" "}
-            </div>
-            <div className="w-[15%] h-fit ">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Type
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color">
+                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
                   <option value="">Select</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                 </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>
-            </div>
-            <div className="w-[14%] h-fit ">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                City
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color">
-                  <option value="">Select</option>
-                  <option value="">Suzuki</option>
-                  <option value="">Suzuki</option>
-                  <option value="">Suzuki</option>
-                  <option value="">Suzuki</option>
-                </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>
-            </div>
-            <div className="w-[11%] h-fit ">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
-                Color
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative">
-                <select className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder-color">
-                  <option value="">Red</option>
-                  <option value="">Red</option>
-                  <option value="">Red</option>
-                  <option value="">Red</option>
-                </select>
-                <div className="rounded-full w-[19px] h-[12px] bg-red-500 absolute left-2 top-[15.5px]"></div>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
                 </div>
               </div>
