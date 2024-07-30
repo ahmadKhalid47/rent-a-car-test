@@ -172,13 +172,13 @@ export default function VehicleForms() {
         ) : null}
 
         <div
-          className={`w-full h-[100px] flex ${
+          className={`w-full h-[100px] pt-6 flex ${
             currentPage === 0 ? "justify-end" : "justify-between"
           } items-center`}
         >
           {currentPage !== 0 ? (
             <button
-              className="px-6 h-[44px] rounded-[10px] bg-white border-2 border-grey   font-[400] text-[18px] leading-[21px] text-center"
+              className="px-6 h-[44px] rounded-[10px] bg-white border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage - 1)}
             >
               Back

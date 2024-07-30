@@ -1,12 +1,20 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
+import carsGroup from "@/public/carsGroup.svg";
+import carsGroupCar1 from "@/public/carGroupCar (5).svg";
+import carsGroupCar2 from "@/public/carGroupCar (1).svg";
+import carsGroupCar3 from "@/public/carGroupCar (4).svg";
+import carsGroupCar4 from "@/public/carGroupCar (3).svg";
+import carsGroupCar5 from "@/public/carGroupCar (2).svg";
+import upload from "@/public/Paper Upload.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
-import { FaAsterisk } from "react-icons/fa";
+import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import Other from "../Other";
 
 export default function Info() {
   let global = useSelector((state: RootState) => state.Global);
@@ -231,6 +239,84 @@ export default function Info() {
             <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-10 pb-10 pt-8">
+        <h3 className="font-[600] text-[20px] leading-[23px] text-black w-[50%]">
+          Add Vehicle Images
+        </h3>
+        <div className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px]">
+          <img src={upload.src} />
+          <h4 className="font-[600] text-[14px] leading-[17px] text-black mt-[5px]">
+            Drag & Drop or
+            <span className="text-link-blue cursor-pointer"> choose file </span>
+            to upload
+          </h4>
+          <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
+            Select JPG or PNG{" "}
+          </h4>
+        </div>
+        <div className="w-full h-fit flex justify-center items-center gap-2">
+          <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
+          <span className="font-[400] text-[14px] leading-[17px]">OR</span>
+          <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
+        </div>
+        <div className="w-full h-fit flex justify-start items-center gap-5">
+          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={carsGroupCar1.src} alt="" />
+            </div>
+            <span className="font-[400] text-[10px] leading-[12px] text-grey">
+              image.jpg
+            </span>
+            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+              <FaTimesCircle />
+            </span>
+          </div>
+          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={carsGroupCar2.src} alt="" />
+            </div>
+            <span className="font-[400] text-[10px] leading-[12px] text-grey">
+              image1.jpg
+            </span>
+            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+              <FaTimesCircle />
+            </span>
+          </div>
+          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={carsGroupCar3.src} alt="" />
+            </div>
+            <span className="font-[400] text-[10px] leading-[12px] text-grey">
+              image2.jpg
+            </span>
+            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+              <FaTimesCircle />
+            </span>
+          </div>
+          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={carsGroupCar4.src} alt="" />
+            </div>
+            <span className="font-[400] text-[10px] leading-[12px] text-grey">
+              image3.jpg
+            </span>
+            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+              <FaTimesCircle />
+            </span>
+          </div>
+          <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative">
+            <div className="relative w-[64px] h-[64px]">
+              <img src={carsGroupCar5.src} alt="" />
+            </div>
+            <span className="font-[400] text-[10px] leading-[12px] text-grey">
+              image4.jpg
+            </span>
+            <span className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]">
+              <FaTimesCircle />
+            </span>
           </div>
         </div>
       </div>
