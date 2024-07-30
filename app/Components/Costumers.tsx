@@ -10,7 +10,7 @@ import { FaAsterisk } from "react-icons/fa";
 
 export default function Costumers() {
   let global = useSelector((state: RootState) => state.Global);
-  const [showLess, setShowLess] = useState(false);
+  const [showLess, setShowLess] = useState(true);
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
@@ -50,14 +50,59 @@ export default function Costumers() {
                 Customer Type
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+                <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
                   <option value="">Select</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                   <option value="">Sedan</option>
                 </select>
-                <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <img src={shape.src} className="w-[10.5px]" />
+                </div>
+              </div>
+            </div>
+            <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                Gender
+              </label>
+              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <option value="">Select</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                </select>
+                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <img src={shape.src} className="w-[10.5px]" />
+                </div>
+              </div>
+            </div>
+            <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                Postal/Zip Code
+              </label>
+              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <input
+                  className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                  value={8733458349}
+                />
+              </div>
+            </div>
+            <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                City
+              </label>
+              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <option value="">Select</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                  <option value="">Sedan</option>
+                </select>
+                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
                 </div>
               </div>
