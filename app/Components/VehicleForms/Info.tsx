@@ -1,3 +1,4 @@
+
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import carsGroup from "@/public/carsGroup.svg";
@@ -6,7 +7,6 @@ import carsGroupCar2 from "@/public/carGroupCar (1).svg";
 import carsGroupCar3 from "@/public/carGroupCar (4).svg";
 import carsGroupCar4 from "@/public/carGroupCar (3).svg";
 import carsGroupCar5 from "@/public/carGroupCar (2).svg";
-import vip from "@/public/vip.svg";
 import upload from "@/public/Paper Upload.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
@@ -15,9 +15,9 @@ import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { useDropzone } from "react-dropzone";
 import Other from "../Other";
 import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
 
 export default function Info() {
   let global = useSelector((state: RootState) => state.Global);
@@ -112,130 +112,184 @@ export default function Info() {
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Customer ID
+            Vehicle ID
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
               value={12345}
             />
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Customer Type*
+            Make
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Full Name
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"James"}
-            />
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Gender
+            Model
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
               <option value="">Select</option>
-              <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Date of Birth
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"James"}
-            />
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Nationality
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Male</option>
-              <option value="">FeMale</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Email Address
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"james@gmail.com"}
-            />
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Phone
+            Type
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">Select</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>
+        </div>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Year
+            <FaAsterisk className="text-[6px]" />
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">2024</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>
+        </div>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
+            Registration No
+            <FaAsterisk className="text-[6px]" />
+            <span className="font-[900] absolute right-3">ⓘ</span>
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={5393458349}
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              value={12345}
             />
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Alternative Phone
+            Color
+            <FaAsterisk className="text-[6px]" />
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={8733458349}
-            />
+          <div className="w-full h-fit flex justify-between items-center relative">
+            <select className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey ">
+              <option value="">Red</option>
+              <option value="">Red</option>
+              <option value="">Red</option>
+              <option value="">Red</option>
+            </select>
+            <div className="rounded-full w-[19px] h-[12px] bg-red-500 absolute left-2 top-[15.5px]"></div>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Street Address{" "}
+            Fuel Type
+            <FaAsterisk className="text-[6px]" />
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">Petrol</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>
+        </div>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Transmission
+            <FaAsterisk className="text-[6px]" />
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">Auto</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>
+        </div>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
+            Odometer (KMPH)
+            <FaAsterisk className="text-[6px]" />
+            <span className="font-[900] absolute right-3">ⓘ</span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={53938}
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              value={"KMPH"}
             />
+          </div>
+        </div>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
+            Passengers
+            <FaAsterisk className="text-[6px]" />
+            <span className="font-[900] absolute right-3">ⓘ</span>
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">Select</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
           </div>
         </div>
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -244,80 +298,40 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
               <option value="">Select</option>
-              <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            State/Province
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Male</option>
-              <option value="">FeMale</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             City
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+              <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Postal/Zip Code
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={8733458349}
-            />
-          </div>
-        </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Postal/Zip Code
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center bg-white ">
-              <input
-                type="checkbox"
-                className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
-              />
-              <img src={vip.src} />
-              It’s VIP Client
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-10 pb-10 pt-8">
         <h3 className="font-[600] text-[20px] leading-[23px] text-black w-[50%]">
-          Add Image
+          Add Vehicle Images
         </h3>
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
@@ -335,9 +349,13 @@ export default function Info() {
             Select JPG or PNG{" "}
           </h4>
         </div>
-
+        <div className="w-full h-fit flex justify-center items-center gap-2">
+          <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
+          <span className="font-[400] text-[14px] leading-[17px]">OR</span>
+          <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
+        </div>
         <div className="w-full h-fit flex justify-start items-center gap-5">
-          {/* {thumbsAlready} */}
+          {thumbsAlready}
           {thumbs}
         </div>
       </div>
