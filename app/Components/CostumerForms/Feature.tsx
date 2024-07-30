@@ -14,22 +14,104 @@ export default function Feature() {
   const [showLess, setShowLess] = useState(true);
   return (
     <div className="w-full h-fit  ">
-      <div className="w-full h-fit  ">
-        <div className="flex flex-wrap justify-start items-start gap-x-[6.66%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
-          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            GPS
-          </button>
-          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Air Conditioning
-          </button>
-          <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Bluetooth
-          </button>
-          <button className="w-[20%] h-[44px] rounded-[10px] bg-white border-2 border-grey   font-[400] text-[18px] leading-[21px] text-center">
-            Child Seat{" "}
-          </button>
-        </div>
-      </div>
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
+        <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
+          Reference 1
+        </h3>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Full Name
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              value={"James"}
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Phone
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              value={35989845}
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Address
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              value={"59034"}
+              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Relation
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              value={"Mother"}
+              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+            />
+          </div>
+        </div>{" "}
+      </div>{" "}
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
+        <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
+          Reference 2
+        </h3>
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Full Name
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              value={"James"}
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Phone
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              value={35989845}
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Address
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              value={"59034"}
+              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+            />
+          </div>
+        </div>{" "}
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Relation
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              value={"Mother"}
+              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+            />
+          </div>
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }
