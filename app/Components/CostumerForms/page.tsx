@@ -34,7 +34,7 @@ export default function CostumerForms() {
             <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
               <div
                 className={` h-full flex justify-start items-center bg-main-blue z-[0]`}
-                style={{ width: `${currentPage * 20}%` }}
+                style={{ width: `${currentPage * 34}%` }}
               ></div>
             </div>
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -86,7 +86,7 @@ export default function CostumerForms() {
                 4
               </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+            {/* <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(4)}
                 className={`w-[60px] h-[60px] ${
@@ -109,7 +109,7 @@ export default function CostumerForms() {
               >
                 6
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[16px] leading-[19px]">
             <div
@@ -117,42 +117,28 @@ export default function CostumerForms() {
                 currentPage === 0 ? "text-main-blue" : ""
               }`}
             >
-              Costumer Information
+              General Information
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                 currentPage === 1 ? "text-main-blue" : ""
               }`}
             >
-              Rental Information
+              Identity Information
             </div>
             <div
-              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
                 currentPage === 2 ? "text-main-blue" : ""
               }`}
             >
-              Insurance Info
+              Emergency Information
             </div>
             <div
-              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
                 currentPage === 3 ? "text-main-blue" : ""
               }`}
             >
-              Features
-            </div>
-            <div
-              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 4 ? "text-main-blue" : ""
-              }`}
-            >
-              Damages
-            </div>
-            <div
-              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 5 ? "text-main-blue" : ""
-              }`}
-            >
-              Others
+              Reference Information
             </div>
           </div>
         </div>
@@ -165,10 +151,6 @@ export default function CostumerForms() {
           <Insurances />
         ) : currentPage === 3 ? (
           <Feature />
-        ) : currentPage === 4 ? (
-          <Damages />
-        ) : currentPage === 5 ? (
-          <Others />
         ) : null}
 
         <div
