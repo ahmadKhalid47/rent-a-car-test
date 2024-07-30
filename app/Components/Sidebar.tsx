@@ -93,9 +93,9 @@ export default function Sidebar() {
               className="cursor-pointer"
             >
               {costumerShow ? (
-                <GoTriangleDown className="float-right me-5" />
-              ) : (
                 <GoTriangleUp className="float-right me-5" />
+              ) : (
+                <GoTriangleDown className="float-right me-5" />
               )}
             </div>
           ) : null}
@@ -133,7 +133,7 @@ export default function Sidebar() {
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
-                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
               </div>
               <div
@@ -150,7 +150,7 @@ export default function Sidebar() {
                 {global.sidebarShow ? "Add Costumer" : null}
               </div>{" "}
             </button>
-            <div className="flex justify-start items-center w-full">
+            {/* <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
@@ -164,7 +164,7 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Configuration" : null}
               </div>{" "}
-            </div>
+            </div> */}
           </div>
         ) : null}
         <div
@@ -199,9 +199,9 @@ export default function Sidebar() {
               className="cursor-pointer"
             >
               {vehiclesShow ? (
-                <GoTriangleDown className="float-right me-5" />
-              ) : (
                 <GoTriangleUp className="float-right me-5" />
+              ) : (
+              <GoTriangleDown className="float-right me-5" />
               )}
             </div>
           ) : null}
