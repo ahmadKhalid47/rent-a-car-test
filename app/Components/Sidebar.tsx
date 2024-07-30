@@ -74,7 +74,9 @@ export default function Sidebar() {
         <div
           className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
+          } bg-main-blue-hover hover:text-white  ${
+            costumerShow ? "text-main-blue" : ""
+          } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUsers
@@ -119,7 +121,7 @@ export default function Sidebar() {
                   global.fieldName === "Home" ? "bg-main-blue text-white" : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "All Vehicles" : null}
+                {global.sidebarShow ? "All Costumers" : null}
               </button>{" "}
             </div>
             <button
@@ -145,7 +147,7 @@ export default function Sidebar() {
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "Add New Vehicle" : null}
+                {global.sidebarShow ? "Add Costumer" : null}
               </div>{" "}
             </button>
             <div className="flex justify-start items-center w-full">
@@ -178,7 +180,9 @@ export default function Sidebar() {
         <div
           className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
+          } bg-main-blue-hover hover:text-white  ${
+            vehiclesShow ? "text-main-blue" : ""
+          } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar
