@@ -97,9 +97,9 @@ export default function Damages() {
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wra justify-start items-start gap-x-[4% gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7 bg-red-30 relative">
-          <div className="w-[45%] h-full flex flex-col justify-start items-start pb-10 ">
-            <div className="w-[100%] h-fit flex  justify-center items-center  g-green-200 gap-5">
+        <div className="flex flex-wra justify-start items-start gap-x-[4% gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey pe- pb-5 pt-7 bg-red-30 relative">
+          <div className="w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
+            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-5">
               <button
                 className={`w-[150px] h-[44px] rounded-[10px] bg-white border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
                   exterior ? "text-main-blue" : ""
@@ -179,16 +179,16 @@ export default function Damages() {
               </div>
             </div>
           </div>
-          <div className="w-[55%] h-full flex flex-col justify-start items-center bg-blue-30">
-            <div className="w-[90%] h-fit flex flex-col justify-start items-start  ">
+          <div className="w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+            <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
               <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
                 <p className="w-[50px]  font-[600] text-[18px] leading-[27px] text-start">
                   No
                 </p>
-                <p className="w-[30%  font-[600] text-[18px] leading-[27px] text-start">
+                <p className="w-[30%  font-[600] text-[18px] leading-[27px] text-center">
                   Damage Type
                 </p>
-                <p className="w-[80px]  font-[600] text-[18px] leading-[27px] text-start">
+                <p className="w-[80px]  font-[600] text-[18px] leading-[27px] text-end">
                   Degree
                 </p>
               </div>
@@ -244,7 +244,7 @@ export default function Damages() {
               </div> */}
             </div>
           </div>
-          <div className="absolute left-[45%] border-e-2 top-0 border-grey h-full"></div>
+          <div className="absolute left-[50%] border-e-2 top-0 border-grey h-full"></div>
         </div>
       </div>
       {popup ? (

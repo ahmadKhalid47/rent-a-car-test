@@ -187,10 +187,10 @@ export default function VehicleForms() {
           {currentPage === 5 ? (
             <div className="flex justify-start items-center gap-3">
               <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-                Save and New
+                Save and Close
               </button>
               <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-                Save and Close
+                Save and New
               </button>
               <div />
             </div>
