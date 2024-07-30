@@ -13,7 +13,7 @@ import Others from "./Others";
 import Damages from "./Damages";
 import Feature from "./Feature";
 
-export default function VehicleForms() {
+export default function CostumerForms() {
   let [currentPage, setCurrentPage] = useState(0);
 
   return (
@@ -22,9 +22,9 @@ export default function VehicleForms() {
     >
       <div className="w-[100%] bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
-          Add New Vehicle
+          Add New Costumer
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            Vehicles / Add New Vehicle
+            Costumers / Add New Costumer
           </p>
         </h3>
       </div>
@@ -117,7 +117,7 @@ export default function VehicleForms() {
                 currentPage === 0 ? "text-main-blue" : ""
               }`}
             >
-              Vehicle Information
+              Costumer Information
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
