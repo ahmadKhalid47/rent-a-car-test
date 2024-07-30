@@ -6,11 +6,12 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaPlusCircle } from "react-icons/fa";
 import checkBlue from "@/public/checkBlue.svg";
 import checkBlack from "@/public/checkBlack.png";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
+import UploadButton from "@/public/PlusButton.svg";
 import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
@@ -89,15 +90,15 @@ export default function Damages() {
   };
   const cancelPop = () => {
     const array = marks;
-    array.pop()
+    array.pop();
     setMarks(array);
   };
 
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wra justify-start items-start gap-x-[4% gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7 bg-red-30">
-          <div className="w-[45%] border-r-[1px] border-grey h-full flex flex-col justify-start items-start bg-blue-30">
+        <div className="flex flex-wra justify-start items-start gap-x-[4% gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7 bg-red-30 relative">
+          <div className="w-[45%] h-full flex flex-col justify-start items-start pb-10 ">
             <div className="w-[100%] h-fit flex  justify-center items-center  g-green-200 gap-5">
               <button
                 className={`w-[150px] h-[44px] rounded-[10px] bg-white border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
@@ -243,6 +244,7 @@ export default function Damages() {
               </div> */}
             </div>
           </div>
+          <div className="absolute left-[45%] border-e-2 top-0 border-grey h-full"></div>
         </div>
       </div>
       {popup ? (
@@ -292,7 +294,7 @@ export default function Damages() {
                 </textarea>
               </div>
             </div>
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt- p">
+            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit bg-white mt- p">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black w-[50%]">
                 Add Images
               </h3>
@@ -316,15 +318,20 @@ export default function Damages() {
                 </h4>
               </div>
 
-              <div className="w-full h-fit flex justify-start items-center gap-5">
+              <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300">
                 {thumbs}
+                <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative red-200">
+                  <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden flex justify-center items-center">
+                    <FaPlusCircle className="font-[600] text-[20px] bg-white text-main-blue" />
+                  </div>
+                </div>
               </div>
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
                 className="w-[140px] h-[44px] rounded-[10px] bg-white border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
                 onClick={() => {
-                  setPopup(false)
+                  setPopup(false);
                   cancelPop();
                 }}
               >
