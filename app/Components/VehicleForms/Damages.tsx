@@ -101,7 +101,7 @@ export default function Damages() {
           <div className="w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-5">
               <button
-                className={`w-[150px] h-[44px] rounded-[10px] bg-white border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`w-[150px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
                   exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -114,7 +114,7 @@ export default function Damages() {
                 Exterior
               </button>{" "}
               <button
-                className={`w-[150px] h-[44px] rounded-[10px] bg-white border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`w-[150px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
                   !exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -255,12 +255,12 @@ export default function Damages() {
                 Damage Type
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
                   <option value="">Dent</option>
                   <option value="">Clip</option>
                   <option value="">Scratch</option>
                 </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
                 </div>
               </div>
@@ -270,12 +270,12 @@ export default function Damages() {
                 Damage Type
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
                   <option value="">Dent</option>
                   <option value="">Clip</option>
                   <option value="">Scratch</option>
                 </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
                 </div>
               </div>
@@ -286,7 +286,7 @@ export default function Damages() {
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                 <textarea
-                  className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                  className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
                 >
@@ -329,7 +329,7 @@ export default function Damages() {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="w-[140px] h-[44px] rounded-[10px] bg-white border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                   cancelPop();

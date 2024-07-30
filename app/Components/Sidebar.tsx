@@ -17,7 +17,8 @@ import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let [vehiclesShow, setVehiclesShow] = useState(true);
+  let [vehiclesShow, setVehiclesShow] = useState(false);
+  let [costumerShow, setCostumerShow] = useState(true);
   let dispatch = useDispatch();
   const router = useRouter();
 
@@ -60,7 +61,7 @@ export default function Sidebar() {
           />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
-        <div
+        {/* <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
@@ -69,7 +70,101 @@ export default function Sidebar() {
             className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
           />
           <span className="">{global.sidebarShow ? "Customers" : null}</span>
+        </div> */}
+        <div
+          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+            global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
+          } bg-main-blue-hover hover:text-white  text-main-blue rounded-[10px]`}
+        >
+          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+            <FaUsers
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+            />
+            {global.sidebarShow ? "Customers" : null}
+          </div>
+          {global.sidebarShow ? (
+            <div
+              onClick={() => {
+                setCostumerShow(!costumerShow);
+                setVehiclesShow(false);
+              }}
+              className="cursor-pointer"
+            >
+              {costumerShow ? (
+                <GoTriangleDown className="float-right me-5" />
+              ) : (
+                <GoTriangleUp className="float-right me-5" />
+              )}
+            </div>
+          ) : null}
         </div>
+        {costumerShow && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+              </div>
+              <button
+                onClick={() => {
+                  router.push("/Components/Home");
+                  dispatch(setFieldNameR("Home"));
+                }}
+                // href={"/Components/Home"}
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  global.fieldName === "Home" ? "bg-main-blue text-white" : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "All Vehicles" : null}
+              </button>{" "}
+            </div>
+            <button
+              onClick={() => {
+                router.push("/Components/AddVehicles");
+                dispatch(setFieldNameR("AddVehicles"));
+              }}
+              // href={"/Components/AddVehicles"}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  global.fieldName === "AddVehicles"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add New Vehicle" : null}
+              </div>{" "}
+            </button>
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Configuration" : null}
+              </div>{" "}
+            </div>
+          </div>
+        ) : null}
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
@@ -93,7 +188,10 @@ export default function Sidebar() {
           </div>
           {global.sidebarShow ? (
             <div
-              onClick={() => setVehiclesShow(!vehiclesShow)}
+              onClick={() => {
+                setVehiclesShow(!vehiclesShow);
+                setCostumerShow(false);
+              }}
               className="cursor-pointer"
             >
               {vehiclesShow ? (
