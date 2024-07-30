@@ -31,7 +31,7 @@ export default function VehicleForms() {
       <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-10 px-8 flex flex-col justify-start items-start">
         <div className="w-full h-fit flex flex-col justify-start items-center">
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[24px] leading-[36px]">
-            <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[9%] border-[1px] border-grey bg-white z-[0]">
+            <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
               <div
                 className={` h-full flex justify-start items-center bg-main-blue z-[0]`}
                 style={{ width: `${currentPage * 20}%` }}
