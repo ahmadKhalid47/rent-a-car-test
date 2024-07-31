@@ -35,7 +35,7 @@ export default function Costumers() {
           </button>
         </div>
       </div>
-      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-11 flex flex-col justify-start items-start gap-[15px]">
+      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
         <div className="w-full h-fit">
           <h3 className="font-[400] text-[16px] leading-[19px] text-black pb-">
             Search
