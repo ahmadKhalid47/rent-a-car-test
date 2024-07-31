@@ -9,7 +9,7 @@ import { TbTargetArrow } from "react-icons/tb";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import { RiFileSettingsFill } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setFieldNameR, setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
@@ -27,6 +27,23 @@ export default function Sidebar() {
       ? true
       : false
   );
+  console.log(global.fieldName, costumerShow);
+  useEffect(() => {
+    if (
+      global.fieldName === "Costumers" ||
+      global.fieldName === "AddCostumer"
+    ) {
+      setCostumerShow(true);
+    } else {
+      setCostumerShow(false);
+    }
+    if (global.fieldName === "Home" || global.fieldName === "AddVehicles") {
+      setVehiclesShow(true);
+    } else {
+      setVehiclesShow(false);
+    }
+  }, [global.fieldName]);
+
   let dispatch = useDispatch();
   const router = useRouter();
 
