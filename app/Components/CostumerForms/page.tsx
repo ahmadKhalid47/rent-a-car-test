@@ -53,7 +53,9 @@ export default function CostumerForms() {
                     : "bg-white border-[1px] border-grey"
                 } flex justify-center items-center rounded-full z-[5]`}
               >
-                1
+                <span className="bg-red-30 text-center -translate-x-[2px]">
+                  1
+                </span>
               </button>
             </div>
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
