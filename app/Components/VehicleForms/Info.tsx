@@ -18,6 +18,8 @@ import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import Other from "../Other";
 import React, { useCallback } from "react";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { GrCircleInformation } from "react-icons/gr";
 
 export default function Info() {
   let global = useSelector((state: RootState) => state.Global);
@@ -116,7 +118,7 @@ export default function Info() {
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               value={12345}
             />
           </div>
@@ -127,14 +129,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -145,14 +147,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -163,14 +165,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -181,14 +183,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">2024</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -197,11 +199,15 @@ export default function Info() {
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Registration No
             <FaAsterisk className="text-[6px]" />
-            <span className="font-[900] absolute right-3">ⓘ</span>
+            <span className="text-[16px] font-[900] absolute right-3">
+              <GrCircleInformation />
+
+
+            </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               value={12345}
             />
           </div>
@@ -212,14 +218,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative">
-            <select className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey ">
+            <select className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey ">
               <option value="">Red</option>
               <option value="">Red</option>
               <option value="">Red</option>
               <option value="">Red</option>
             </select>
             <div className="rounded-full w-[19px] h-[12px] bg-red-500 absolute left-2 top-[15.5px]"></div>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -230,14 +236,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Petrol</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -248,14 +254,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Auto</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -264,11 +270,15 @@ export default function Info() {
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Odometer (KMPH)
             <FaAsterisk className="text-[6px]" />
-            <span className="font-[900] absolute right-3">ⓘ</span>
+            <span className="text-[16px] font-[900] absolute right-3">
+              <GrCircleInformation />
+
+
+            </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               value={"KMPH"}
             />
           </div>
@@ -277,17 +287,21 @@ export default function Info() {
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Passengers
             <FaAsterisk className="text-[6px]" />
-            <span className="font-[900] absolute right-3">ⓘ</span>
+            <span className="text-[16px] font-[900] absolute right-3">
+              <GrCircleInformation />
+
+
+            </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -298,14 +312,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -316,14 +330,14 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
               <option value="">Sedan</option>
             </select>
-            <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>

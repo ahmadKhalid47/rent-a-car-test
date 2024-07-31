@@ -20,9 +20,11 @@ export default function Others() {
             Any Additional Notes
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <textarea className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+            <textarea
+              className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
               rows={6}
-            cols={6}>
+              cols={6}
+            >
               Any Additional Notes
             </textarea>
           </div>

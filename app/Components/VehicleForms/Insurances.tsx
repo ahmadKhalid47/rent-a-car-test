@@ -21,7 +21,7 @@ export default function Insurances() {
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               value={8694039675}
             />
           </div>
@@ -32,7 +32,7 @@ export default function Insurances() {
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               value={"Provider Name"}
             />
           </div>
@@ -44,7 +44,7 @@ export default function Insurances() {
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
               type="date"
-              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+              className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
           </div>
         </div>{" "}

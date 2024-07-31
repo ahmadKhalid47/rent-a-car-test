@@ -25,7 +25,7 @@ export default function Feature() {
           <button className="w-[20%] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
             Bluetooth
           </button>
-          <button className="w-[20%] h-[44px] rounded-[10px] bg-white border-2 border-grey   font-[400] text-[18px] leading-[21px] text-center">
+          <button className="w-[20%] h-[44px] rounded-[10px] input-color border-2 border-grey   font-[400] text-[18px] leading-[21px] text-center">
             Child Seat{" "}
           </button>
         </div>
