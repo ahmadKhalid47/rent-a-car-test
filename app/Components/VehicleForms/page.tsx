@@ -113,45 +113,45 @@ export default function VehicleForms() {
               </button>
             </div>
           </div>
-          <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[16px] leading-[19px]">
+          <div className="w-full h-[50px] flex justify-between items-center relative text-[16px] leading-[19px]">
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 0 ? "text-main-blue" : ""
+                currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Vehicle Information
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 1 ? "text-main-blue" : ""
+                currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Rental Information
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 2 ? "text-main-blue" : ""
+                currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Insurance Info
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 3 ? "text-main-blue" : ""
+                currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Features
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 4 ? "text-main-blue" : ""
+                currentPage >= 4 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Damages
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                currentPage === 5 ? "text-main-blue" : ""
+                currentPage >= 5 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Others
