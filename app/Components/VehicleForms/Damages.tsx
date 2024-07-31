@@ -249,7 +249,7 @@ export default function Damages() {
       </div>
       {popup ? (
         <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center items-center z-[10]">
-          <div className="w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white z-[15] p-10">
+          <div className="w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15] p-10">
             <div className="w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Damage Type
