@@ -3,14 +3,21 @@ import shape from "@/public/Shape2.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
 import ListViewCostumers from "./ListViewCostumers";
-import { useState } from "react";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { FaAsterisk } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { setFieldNameR } from "../store/Global";
 
 export default function Costumers() {
   let global = useSelector((state: RootState) => state.Global);
   const [showLess, setShowLess] = useState(true);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setFieldNameR("Costumers"));
+  }, []);
+
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}

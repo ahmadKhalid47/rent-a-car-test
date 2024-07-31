@@ -2,20 +2,26 @@
 import shape from "@/public/Shape2.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
-
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
 import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setFieldNameR } from "@/app/store/Global";
 
 export default function CostumerForms() {
   let [currentPage, setCurrentPage] = useState(0);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setFieldNameR("AddCostumer"));
+  }, []);
+  
 
   return (
     <div

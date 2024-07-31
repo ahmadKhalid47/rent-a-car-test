@@ -3,16 +3,22 @@ import shape from "@/public/Shape2.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
 import ListView from "./ListView";
-import { useState } from "react";
 import GridView from "./GridView";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { setFieldNameR } from "../store/Global";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setFieldNameR("Home"));
+  }, []);
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}

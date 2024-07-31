@@ -5,9 +5,16 @@ import Sidebar from "../Sidebar";
 import Vehicles from "../Vehicles";
 import { useSelector } from "react-redux";
 import VehicleForms from "../VehicleForms/page";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setFieldNameR } from "@/app/store/Global";
 
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setFieldNameR("AddVehicles"));
+  }, []);
   return (
     <div className="w-full">
       <div className="flex justify-start items-start relative flex-wrap">
