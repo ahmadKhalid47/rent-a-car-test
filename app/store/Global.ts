@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sidebarShow: true,
-  fieldName: "Home",
+  fieldName: "Costumers",
   sidebarShowTemp: true,
 };
 
