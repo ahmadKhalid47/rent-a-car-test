@@ -52,7 +52,7 @@ export default function Costumers() {
         </div>
         {!showLess ? (
           <div className="w-full flex justify-between items-center">
-            <div className="w-[24%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Customer Type
               </label>
@@ -69,7 +69,7 @@ export default function Costumers() {
                 </div>
               </div>
             </div>
-            <div className="w-[24%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Gender
               </label>
@@ -86,7 +86,7 @@ export default function Costumers() {
                 </div>
               </div>
             </div>
-            <div className="w-[24%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Postal/Zip Code
               </label>
@@ -97,7 +97,7 @@ export default function Costumers() {
                 />
               </div>
             </div>
-            <div className="w-[24%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 City
               </label>
