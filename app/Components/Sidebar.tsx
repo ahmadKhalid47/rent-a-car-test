@@ -17,8 +17,16 @@ import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let [vehiclesShow, setVehiclesShow] = useState(false);
-  let [costumerShow, setCostumerShow] = useState(true);
+  let [vehiclesShow, setVehiclesShow] = useState(
+    global.fieldName === "AddVehicles" || global.fieldName === "Home"
+      ? true
+      : false
+  );
+  let [costumerShow, setCostumerShow] = useState(
+    global.fieldName === "Costumers" || global.fieldName === "AddCostumer"
+      ? true
+      : false
+  );
   let dispatch = useDispatch();
   const router = useRouter();
 
