@@ -23,17 +23,17 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[14%] ps-7">
+          <div className="text-start pe-3 flex justify-between items-center w-[12%] ps-7">
             ID <img src={arrows.src} />
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[20%]">
+          <div className="text-start pe-3 flex justify-between items-center w-[19%]">
             Full Name <img src={arrows.src} />
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[13%]">
+          <div className="text-start pe-3 flex justify-between items-center w-[14%]">
             Customer Type
             <img src={arrows.src} />
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[11%]">
+          <div className="text-start pe-3 flex justify-between items-center w-[14%]">
             Phone <img src={arrows.src} />
           </div>
           <div className="text-start pe-3 flex justify-between items-center w-[11%]">
@@ -54,13 +54,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Dahlonega</h5>
@@ -77,12 +77,12 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean <img src={vip.src} />
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Fort Valley</h5>
@@ -99,13 +99,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
@@ -122,13 +122,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
@@ -145,12 +145,12 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean <img src={vip.src} />
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
@@ -167,13 +167,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
@@ -190,13 +190,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
@@ -213,13 +213,13 @@ export default function ListViewCostumers() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[14%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[20%]">
+          <h5 className="text-start pe-3 w-[12%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
             Glenn A. Jean
             {/* <img src={vip.src} /> */}
           </div>
-          <h5 className="text-start pe-3 w-[13%]">Individual</h5>
-          <h5 className="text-start pe-3 w-[11%]">757-947-5015</h5>
+          <h5 className="text-start pe-3 w-[14%]">Individual</h5>
+          <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
           <h5 className="text-start pe-3 w-[11%]">Female</h5>
 
           <h5 className="text-start pe-3 w-[12%]">Atlanta</h5>
