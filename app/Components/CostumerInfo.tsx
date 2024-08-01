@@ -1,4 +1,5 @@
 "use client";
+import vip from "@/public/vip.svg";
 import car from "@/public/Costumer.svg";
 import smallCar1 from "@/public/smallcar (1).png";
 import smallCar2 from "@/public/smallcar (2).png";
@@ -25,7 +26,7 @@ export default function CostumerInfo() {
     >
       <div className="w-full h-[200px bg-yellow-30">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-          Glenn A. Jean{" "}
+          Glenn A. Jean
         </h3>
         <div className="flex justify-between items-start">
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
@@ -35,15 +36,16 @@ export default function CostumerInfo() {
       </div>
       <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-          <div className="w-full h-fit flex justify-start gap-[5%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
+          <div className="w-full h-fit flex justify-start gap-[7%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
             <div className="w-fit flex justify-start items-center gap-1">
               <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                 <img src={car.src} className="w-full h-full" />
               </div>
             </div>
             <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
-              <h3 className="font-[600] text-[36px] leading-[54px] text-black">
+              <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
                 Glenn A. Jean{" "}
+                <img src={vip.src} className="w-[44px] h-[32px] -translate-y-1" />
               </h3>
               <p className="font-[400] text-[28px] leading-[42px] text-black">
                 757-947-5015{" "}
