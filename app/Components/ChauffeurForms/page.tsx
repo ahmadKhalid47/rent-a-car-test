@@ -94,7 +94,6 @@ export default function ChauffeurForms() {
                 4
               </button>
             </div> */}
-       
           </div>
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[16px] leading-[19px]">
             <div
@@ -116,14 +115,7 @@ export default function ChauffeurForms() {
                 currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
-              Emergency Information
-            </div>
-            <div
-              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
-                currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
-              }`}
-            >
-              Reference Information
+              Additional Information
             </div>
           </div>
         </div>
@@ -133,9 +125,9 @@ export default function ChauffeurForms() {
         ) : currentPage === 1 ? (
           <Rental />
         ) : currentPage === 2 ? (
-          <Insurances />
-        ) : currentPage === 3 ? (
-          <Feature />
+          <>
+            <Feature />
+          </>
         ) : null}
 
         <div
@@ -151,19 +143,18 @@ export default function ChauffeurForms() {
               Back
             </button>
           ) : null}
-          {currentPage === 5 ? (
+          {currentPage === 2 ? (
             <div className="flex justify-start items-center gap-3">
-              <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+              <button className="w-[206px] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
                 Save and Close
               </button>
-              <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+              <button className="w-[206px] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
                 Save and New
               </button>
-              <div />
             </div>
           ) : (
             <button
-              className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+              className="w-[240px] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               Save and Continue
