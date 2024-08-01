@@ -1,52 +1,28 @@
 export default function EmergencyCustomer() {
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[30%] h-fit flex flex-col justify-start items-start bg-red-30 ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Customer ID:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            539485
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
+      <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
+        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
+          <p className="w-[30%] text-start text-[18px] leading-[27px]">
+            Emergency Contact Name
+          </p>
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
+            Relationship
+          </p>
+          <p className="w-[20%] text-start text-[18px] leading-[27px]">
+            Emergency Phone
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Gender:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            Suzuki
+        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
+          <p className="w-[30%] text-start text-[18px] leading-[27px]">
+            Lina Smith
           </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Nationality:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            American
+          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+            Brother
           </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Phone:</p>
-          <div className="w-[30%] text-start font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
-            846 373 543
-          </div>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Alternative Phone:
-          </p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            846 373 543
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            USA
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">City:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            New York
+          <p className="w-[20%] text-start text-[18px] leading-[27px]">
+            438 397 3075
           </p>
         </div>
       </div>
