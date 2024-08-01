@@ -14,7 +14,7 @@ export default function Feature() {
   const [showLess, setShowLess] = useState(true);
   return (
     <div className="w-full h-fit  ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8">
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Reference 1
         </h3>
@@ -63,7 +63,7 @@ export default function Feature() {
           </div>
         </div>{" "}
       </div>{" "}
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 pb-5 pt-7">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8">
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Reference 2
         </h3>
