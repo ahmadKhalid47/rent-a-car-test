@@ -48,7 +48,7 @@ export default function ListViewCostumers() {
           </div>
         </div>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -71,7 +71,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -93,7 +93,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -116,7 +116,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -139,7 +139,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -161,7 +161,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -184,7 +184,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
@@ -207,7 +207,7 @@ export default function ListViewCostumers() {
           </div>
         </Link>
         <Link
-          href={"/Components/CarInfo"}
+          href={"/Components/CostumerInfo"}
           className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-grey"
         >
           <div className="text-center w-[3%] flex justify-center items-center ">
