@@ -27,7 +27,12 @@ export default function Sidebar() {
       ? true
       : false
   );
-  
+  let [ChauffeurShow, setChauffeurShow] = useState(
+    global.fieldName === "Chauffeurs" || global.fieldName === "AddChauffeur"
+      ? true
+      : false
+  );
+
   useEffect(() => {
     if (
       global.fieldName === "Costumers" ||
@@ -41,6 +46,14 @@ export default function Sidebar() {
       setVehiclesShow(true);
     } else {
       setVehiclesShow(false);
+    }
+    if (
+      global.fieldName === "Chauffeurs" ||
+      global.fieldName === "AddChauffeur"
+    ) {
+      setChauffeurShow(true);
+    } else {
+      setChauffeurShow(false);
     }
   }, [global.fieldName]);
 
@@ -86,16 +99,88 @@ export default function Sidebar() {
           />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
-        {/* <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
+
+        <div
+          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+            global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
+          } bg-main-blue-hover hover:text-white  ${
+            ChauffeurShow ? "text-main-blue" : ""
+          } rounded-[10px]`}
         >
-          <FaUsers
-            className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
-          />
-          <span className="">{global.sidebarShow ? "Customers" : null}</span>
-        </div> */}
+          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+            <FaUsers
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+            />
+            {global.sidebarShow ? "Customers" : null}
+          </div>
+          {global.sidebarShow ? (
+            <div
+              onClick={() => {
+                setChauffeurShow(!ChauffeurShow);
+                setVehiclesShow(false);
+              }}
+              className="cursor-pointer"
+            >
+              {ChauffeurShow ? (
+                <GoTriangleUp className="float-right me-5" />
+              ) : (
+                <GoTriangleDown className="float-right me-5" />
+              )}
+            </div>
+          ) : null}
+        </div>
+        {ChauffeurShow && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+              </div>
+              <button
+                onClick={() => {
+                  router.push("/Components/Chauffeurs");
+                  dispatch(setFieldNameR("Chauffeurs"));
+                }}
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  global.fieldName === "Chauffeurs"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "All Costumers" : null}
+              </button>{" "}
+            </div>
+            <button
+              onClick={() => {
+                router.push("/Components/AddChauffeur");
+                dispatch(setFieldNameR("AddChauffeur"));
+              }}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  global.fieldName === "AddChauffeur"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add Chauffeur" : null}
+              </div>{" "}
+            </button>
+          </div>
+        ) : null}
         <div
           className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
