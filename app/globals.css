@@ -89,3 +89,8 @@
 .calender-width {
   width: calc(100% - 120px);
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 5%;
+}
+
