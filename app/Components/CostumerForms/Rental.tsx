@@ -1,4 +1,5 @@
 "use client";
+import { MdCalendarMonth } from "react-icons/md";
 import shape from "@/public/ShapeBlack.svg";
 import upload from "@/public/Paper Upload.svg";
 import list from "@/public/Group 110 (1).svg";
@@ -27,7 +28,6 @@ export default function Rental() {
       )
     );
   }, []);
-  console.log(files);
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -60,7 +60,7 @@ export default function Rental() {
     });
     setFiles(array);
   }
-  console.log(files);
+  
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -86,6 +86,9 @@ export default function Rental() {
               type="date"
               className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
+            <div className="calender-width h-[35px] input-color absolute right-1 rounded-xl flex justify-end items-center pointer-events-none pe-2">
+              <MdCalendarMonth />
+            </div>
           </div>
         </div>{" "}
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -146,6 +149,9 @@ export default function Rental() {
               type="date"
               className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
+            <div className="calender-width h-[35px] input-color absolute right-1 rounded-xl flex justify-end items-center pointer-events-none pe-2">
+              <MdCalendarMonth />
+            </div>
           </div>
         </div>{" "}
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">

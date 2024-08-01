@@ -27,7 +27,7 @@ export default function Sidebar() {
       ? true
       : false
   );
-  console.log(global.fieldName, costumerShow);
+  
   useEffect(() => {
     if (
       global.fieldName === "Costumers" ||

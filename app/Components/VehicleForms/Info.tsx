@@ -44,7 +44,6 @@ export default function Info() {
       )
     );
   }, []);
-  console.log(files);
 
   const thumbsAlready: any = alreadyFiles.map((file: any) => (
     <div
@@ -106,7 +105,7 @@ export default function Info() {
     });
     setFiles(array);
   }
-  console.log(files);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (

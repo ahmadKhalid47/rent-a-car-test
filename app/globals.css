@@ -62,29 +62,30 @@
 }
 
 .shadow {
-box-shadow:
-   -2px 2px 3px rgba(0, 0, 0, 0.08), 
-    2px 2px 3px rgba(0, 0, 0, 0.08),
+  box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.08), 2px 2px 3px rgba(0, 0, 0, 0.08),
     0 1px 2px rgba(0, 0, 0, 0.08);
 }
-.transitions{
+.transitions {
   transition: all 0.1s;
 }
-.transitions2{
+.transitions2 {
   transition: all 1s;
 }
-.font-weight{
+.font-weight {
   font-weight: 500;
 }
-.placeholder-color{
-color: #9ca3af;
+.placeholder-color {
+  color: #9ca3af;
 }
 
 .scroll::-webkit-scrollbar {
-    height: 0;
-    width: 0;
-    background-color: transparent
+  height: 0;
+  width: 0;
+  background-color: transparent;
 }
-.text-link-blue{
-  color: #156CF7;
+.text-link-blue {
+  color: #156cf7;
+}
+.calender-width {
+  width: calc(100% - 120px);
 }

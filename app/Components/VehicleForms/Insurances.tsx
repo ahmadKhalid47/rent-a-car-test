@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GridViewRounded } from "@mui/icons-material";
 import { RootState } from "@/app/store";
+import { MdCalendarMonth } from "react-icons/md";
 import { FaAsterisk } from "react-icons/fa";
 
 export default function Insurances() {
@@ -46,6 +47,10 @@ export default function Insurances() {
               type="date"
               className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
+            <div className="calender-width h-[35px] input-color absolute right-1 rounded-xl flex justify-end items-center pointer-events-none pe-2">
+              {" "}
+              <MdCalendarMonth />
+            </div>
           </div>
         </div>{" "}
       </div>{" "}

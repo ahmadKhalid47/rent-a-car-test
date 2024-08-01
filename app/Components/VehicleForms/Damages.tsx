@@ -34,7 +34,7 @@ export default function Damages() {
       )
     );
   }, []);
-  console.log(files);
+
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -67,7 +67,7 @@ export default function Damages() {
     });
     setFiles(array);
   }
-  console.log(files);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const [marks, setMarks] = useState<any>([]);
