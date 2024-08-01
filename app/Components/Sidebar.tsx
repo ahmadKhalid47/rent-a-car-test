@@ -80,7 +80,7 @@ export default function Sidebar() {
           />
         </Link>
       </div>
-      <div className="w-full h-[80%] pt-10 px-10 flex flex-col justify-start items-center gap-2 transitions">
+      <div className="w-full h-[80%] pt-8 px-10 flex flex-col justify-start items-center gap-2 transitions">
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
@@ -118,6 +118,7 @@ export default function Sidebar() {
               onClick={() => {
                 setChauffeurShow(!ChauffeurShow);
                 setVehiclesShow(false);
+                setCostumerShow(false);
               }}
               className="cursor-pointer"
             >
@@ -199,6 +200,7 @@ export default function Sidebar() {
               onClick={() => {
                 setCostumerShow(!costumerShow);
                 setVehiclesShow(false);
+                setChauffeurShow(false);
               }}
               className="cursor-pointer"
             >
@@ -307,6 +309,7 @@ export default function Sidebar() {
               onClick={() => {
                 setVehiclesShow(!vehiclesShow);
                 setCostumerShow(false);
+                setChauffeurShow(false);
               }}
               className="cursor-pointer"
             >
