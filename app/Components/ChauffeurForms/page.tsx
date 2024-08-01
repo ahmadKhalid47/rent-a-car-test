@@ -40,7 +40,7 @@ export default function ChauffeurForms() {
             <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
               <div
                 className={` h-full flex justify-start items-center bg-main-blue z-[0]`}
-                style={{ width: `${currentPage * 34}%` }}
+                style={{ width: `${currentPage * 50}%` }}
               ></div>
             </div>
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -82,7 +82,7 @@ export default function ChauffeurForms() {
                 3
               </button>
             </div>
-            <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+            {/* <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(3)}
                 className={`w-[60px] h-[60px] ${
@@ -93,7 +93,7 @@ export default function ChauffeurForms() {
               >
                 4
               </button>
-            </div>
+            </div> */}
        
           </div>
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[16px] leading-[19px]">
