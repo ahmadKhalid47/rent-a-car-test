@@ -5,7 +5,7 @@ import smallCar2 from "@/public/smallcar (2).png";
 import smallCar3 from "@/public/smallcar (3).png";
 import smallCar4 from "@/public/smallcar (4).png";
 import { useState } from "react";
-import General from "./General";
+import GeneralCustomer from "./GeneralCustomer";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
 import Additional from "./Additional";
@@ -136,7 +136,7 @@ export default function CostumerInfo() {
             <div className="w-full h-fit flex justify-center items-start gap-8">
               {activeButton === "General" ? (
                 <>
-                  <General />
+                  <GeneralCustomer />
                 </>
               ) : activeButton === "Rental" ? (
                 <>
