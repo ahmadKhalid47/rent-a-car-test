@@ -69,7 +69,7 @@
   transition: all 0.1s;
 }
 .transitions2 {
-  transition: all 1s;
+  transition: all 0.7s;
 }
 .font-weight {
   font-weight: 500;

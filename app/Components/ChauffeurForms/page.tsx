@@ -39,16 +39,16 @@ export default function ChauffeurForms() {
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[24px] leading-[36px]">
             <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
               <div
-                className={` h-full flex justify-start items-center bg-main-blue z-[0]`}
+                className={` h-full flex justify-start items-center bg-main-blue z-[0] transitions2 rounded-full`}
                 style={{ width: `${currentPage * 50}%` }}
               ></div>
             </div>
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(0)}
-                className={`w-[60px] h-[60px] ${
+                className={` w-[60px] h-[60px] ${
                   currentPage >= 0
-                    ? "bg-main-blue text-white"
+                    ? "transitions2 bg-main-blue text-white"
                     : "bg-white border-[1px] border-grey"
                 } flex justify-center items-center rounded-full z-[5]`}
               >
@@ -60,9 +60,9 @@ export default function ChauffeurForms() {
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(1)}
-                className={`w-[60px] h-[60px] ${
+                className={` w-[60px] h-[60px] ${
                   currentPage >= 1
-                    ? "bg-main-blue text-white"
+                    ? "transitions2 bg-main-blue text-white"
                     : "bg-white border-[1px] border-grey"
                 } flex justify-center items-center rounded-full z-[5]`}
               >
@@ -72,9 +72,9 @@ export default function ChauffeurForms() {
             <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(2)}
-                className={`w-[60px] h-[60px] ${
+                className={` w-[60px] h-[60px] ${
                   currentPage >= 2
-                    ? "bg-main-blue text-white"
+                    ? "transitions2 bg-main-blue text-white"
                     : "bg-white border-[1px] border-grey"
                 }
                      flex justify-center items-center rounded-full z-[5]`}
@@ -85,9 +85,9 @@ export default function ChauffeurForms() {
             {/* <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
               <button
                 onClick={() => setCurrentPage(3)}
-                className={`w-[60px] h-[60px] ${
+                className={` w-[60px] h-[60px] ${
                   currentPage >= 3
-                    ? "bg-main-blue text-white"
+                    ? "transitions2 bg-main-blue text-white"
                     : "bg-white border-[1px] border-grey"
                 } flex justify-center items-center rounded-full z-[5]`}
               >
