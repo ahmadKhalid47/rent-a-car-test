@@ -82,7 +82,7 @@ export default function Sidebar() {
           />
         </Link>
       </div>
-      <div className="w-full h-[80%] pt-8 px-10 flex flex-col justify-start items-center gap-2 transitions">
+      <div className="w-full h-[calc(100vh-90px)] pt-8 px-10 flex flex-col justify-start items-center gap-2 overflow-auto transitions">
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
@@ -111,7 +111,9 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUserTie
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"}`}
+              className={`text-[16px] ${
+                global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"
+              }`}
             />
             {global.sidebarShow ? "Chauffeurs" : null}
           </div>
