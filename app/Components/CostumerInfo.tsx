@@ -6,13 +6,13 @@ import smallCar3 from "@/public/smallcar (3).png";
 import smallCar4 from "@/public/smallcar (4).png";
 import { useState } from "react";
 import GeneralCustomer from "./GeneralCustomer";
-import Rental from "./Rental";
-import Insurance from "./Insurance";
+import IdentityCustomer from "./IdentityCustomer";
+import EmergencyCustomer from "./EmergencyCustomer";
 import Additional from "./Additional";
 import Other from "./Other";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import Damages from "./Damages";
+import ReferenceCustomer from "./ReferenceCustomer";
 
 export default function CostumerInfo() {
   let [activeButton, setActiveButton] = useState("General");
@@ -73,7 +73,7 @@ export default function CostumerInfo() {
           <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
             <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
               <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "General"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
@@ -83,54 +83,34 @@ export default function CostumerInfo() {
                 General Info
               </div>
               <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Rental"
+                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Identity"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Rental")}
+                onClick={() => setActiveButton("Identity")}
               >
-                Rental Info
+                Identity Info
               </div>
               <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Insurance"
+                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Emergency"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Insurance")}
+                onClick={() => setActiveButton("Emergency")}
               >
-                Insurance Info
+                Emergency Info
               </div>
               <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Additional"
+                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                  activeButton === "Reference"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
                 } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Additional")}
+                onClick={() => setActiveButton("Reference")}
               >
-                Features
-              </div>
-              <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Damages"
-                    ? "text-white bg-main-blue font-[500]"
-                    : " text-black "
-                } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Damages")}
-              >
-                Damages
-              </div>
-              <div
-                className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
-                  activeButton === "Others"
-                    ? "text-white bg-main-blue font-[500]"
-                    : " text-black "
-                } font-[400] text-[18px] leading-[22px]`}
-                onClick={() => setActiveButton("Others")}
-              >
-                Others
+                Reference Info
               </div>
             </div>
             <div className="w-full h-fit flex justify-center items-start gap-8">
@@ -138,25 +118,17 @@ export default function CostumerInfo() {
                 <>
                   <GeneralCustomer />
                 </>
-              ) : activeButton === "Rental" ? (
+              ) : activeButton === "Identity" ? (
                 <>
-                  <Rental />
+                  <IdentityCustomer />
                 </>
-              ) : activeButton === "Insurance" ? (
+              ) : activeButton === "Emergency" ? (
                 <>
-                  <Insurance />
+                  <EmergencyCustomer />
                 </>
-              ) : activeButton === "Damages" ? (
+              ) : activeButton === "Reference" ? (
                 <>
-                  <Damages />
-                </>
-              ) : activeButton === "Additional" ? (
-                <>
-                  <Additional />
-                </>
-              ) : activeButton === "Others" ? (
-                <>
-                  <Other />
+                  <ReferenceCustomer />
                 </>
               ) : null}
             </div>
