@@ -73,7 +73,7 @@ export default function CostumerInfo() {
           <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
             <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
               <div
-                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "General"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
@@ -83,7 +83,7 @@ export default function CostumerInfo() {
                 General Info
               </div>
               <div
-                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Identity"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
@@ -93,7 +93,7 @@ export default function CostumerInfo() {
                 Identity Info
               </div>
               <div
-                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Emergency"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
@@ -103,7 +103,7 @@ export default function CostumerInfo() {
                 Emergency Info
               </div>
               <div
-                className={`w-[24%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                   activeButton === "Reference"
                     ? "text-white bg-main-blue font-[500]"
                     : " text-black "
