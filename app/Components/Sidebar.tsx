@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useRouter } from "next/navigation";
 import { FaUserTie } from "react-icons/fa6";
+import { DriveEta, DriveEtaRounded } from "@mui/icons-material";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -110,7 +111,7 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUserTie
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"}`}
             />
             {global.sidebarShow ? "Chauffeurs" : null}
           </div>
