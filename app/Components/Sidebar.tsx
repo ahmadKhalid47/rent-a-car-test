@@ -14,6 +14,7 @@ import { setFieldNameR, setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useRouter } from "next/navigation";
+import { FaUserTie } from "react-icons/fa6";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -108,10 +109,10 @@ export default function Sidebar() {
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
-            <FaUsers
+            <FaUserTie
               className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
             />
-            {global.sidebarShow ? "Customers" : null}
+            {global.sidebarShow ? "Chauffeurs" : null}
           </div>
           {global.sidebarShow ? (
             <div
@@ -152,7 +153,7 @@ export default function Sidebar() {
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "All Costumers" : null}
+                {global.sidebarShow ? "All Chauffeurs" : null}
               </button>{" "}
             </div>
             <button
