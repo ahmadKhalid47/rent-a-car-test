@@ -145,7 +145,7 @@ export default function ReservationsForms() {
         </div>
 
         <div
-          className={`w-full h-[100px] pt-6 flex ${
+          className={`w-full h-[100px] pt-6 flex mt-5 ${
             currentPage === 0 ? "justify-end" : "justify-between"
           } items-center`}
         >
