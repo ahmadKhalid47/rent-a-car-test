@@ -200,8 +200,6 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
             <span className="text-[16px] font-[900] absolute right-3">
               <GrCircleInformation />
-
-
             </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
@@ -271,8 +269,6 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
             <span className="text-[16px] font-[900] absolute right-3">
               <GrCircleInformation />
-
-
             </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
@@ -288,8 +284,6 @@ export default function Info() {
             <FaAsterisk className="text-[6px]" />
             <span className="text-[16px] font-[900] absolute right-3">
               <GrCircleInformation />
-
-
             </span>
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
@@ -339,6 +333,22 @@ export default function Info() {
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
+          </div>
+        </div>
+
+        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
+            Postal/Zip Code
+            <FaAsterisk className="text-[6px]" />
+            <span className="text-[16px] font-[900] absolute right-3">
+              <GrCircleInformation />
+            </span>
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              value={"Text Here"}
+            />
           </div>
         </div>
       </div>
