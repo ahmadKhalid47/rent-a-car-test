@@ -21,7 +21,6 @@ export default function ReservationsForms() {
   useEffect(() => {
     dispatch(setFieldNameR("AddReservations"));
   }, []);
-  
 
   return (
     <div
@@ -102,41 +101,48 @@ export default function ReservationsForms() {
                 currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
-              General Information
+              Select Customer
             </div>
             <div
               className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                 currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
-              Identity Information
+              Select Chauffeur
             </div>
             <div
-              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                 currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
-              Emergency Information
+              Reservation Details
             </div>
             <div
-              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                 currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
-              Reference Information
+              Select Vehicle
             </div>
           </div>
         </div>
 
-        {currentPage === 0 ? (
-          <Info />
-        ) : currentPage === 1 ? (
-          <Rental />
-        ) : currentPage === 2 ? (
-          <Insurances />
-        ) : currentPage === 3 ? (
-          <Feature />
-        ) : null}
+        <div className="w-full bg-red-200 flex justify-between items-start">
+          <div className="w-[54%] bg-yellow-200 ">
+            {currentPage === 0 ? (
+              <Info />
+            ) : currentPage === 1 ? (
+              <Rental />
+            ) : currentPage === 2 ? (
+              <Insurances />
+            ) : currentPage === 3 ? (
+              <Feature />
+            ) : null}
+          </div>
+          <div className="w-[44%] bg-green-500 ">
+            <Others />
+          </div>
+        </div>
 
         <div
           className={`w-full h-[100px] pt-6 flex ${
