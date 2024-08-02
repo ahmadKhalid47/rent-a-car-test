@@ -9,6 +9,7 @@ import { useState } from "react";
 import GeneralChauffeurs from "./GeneralChauffeurs";
 import IdentityChauffeurs from "./IdentityChauffeurs";
 import EmergencyChauffeurs from "./EmergencyChauffeurs";
+import ReferenceChauffeurs from "./ReferenceChauffeurs";
 import Additional from "./Additional";
 import Other from "./Other";
 import { RootState } from "../store";
@@ -117,9 +118,9 @@ export default function ChauffeursInfo() {
                   <IdentityChauffeurs />
                 </>
               ) : activeButton === "Emergency" ? (
-                <>
+                <div className="w-full flex flex-col justify-start items-start gap-2 h-fit">
                   <EmergencyChauffeurs />
-                </>
+                </div>
               ) : null}
             </div>
           </div>

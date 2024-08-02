@@ -28,14 +28,11 @@ export default function GeneralChauffeurs() {
           </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Alternative Phone:
-          </p>
+          <p className="font-[400] text-[18px] leading-[27px]">Rent Per Day:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            846 373 543
+            $10
           </p>
         </div>
-
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
@@ -57,14 +54,7 @@ export default function GeneralChauffeurs() {
             Glenn A. Jean{" "}
           </p>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Chauffeurs Type:
-          </p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            Individual
-          </p>
-        </div>
+
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
             Date Of Birth:
@@ -77,6 +67,15 @@ export default function GeneralChauffeurs() {
           <p className="font-[400] text-[18px] leading-[27px]">Email:</p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
             Sedan@gmail.com
+          </p>
+        </div>
+
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Alternative Phone:
+          </p>
+          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
+            846 373 543
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
