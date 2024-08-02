@@ -41,8 +41,8 @@ export default function Others() {
 
           <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
             <span className="w-full text-start">Any Discount</span>
-            <div className="w-[284px] h-[43px] flex justify-center items-center border-[1px] border-grey rounded-[10px] input-color">
-              $0.00
+            <div className="w-[284px] h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px]">
+              0.00
             </div>
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>

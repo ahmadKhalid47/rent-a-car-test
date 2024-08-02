@@ -4,7 +4,6 @@ import car3 from "@/public/car (3).svg";
 import car4 from "@/public/car (4).svg";
 import Link from "next/link";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-
 import { FaEllipsis } from "react-icons/fa6";
 export default function GridView() {
   return (
