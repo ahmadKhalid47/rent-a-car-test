@@ -5,7 +5,6 @@ import smallCar1 from "@/public/smallcar (1).png";
 import smallCar2 from "@/public/smallcar (2).png";
 import smallCar3 from "@/public/smallcar (3).png";
 import smallCar4 from "@/public/smallcar (4).png";
-import { useState } from "react";
 import GeneralCustomer from "./GeneralCustomer";
 import IdentityCustomer from "./IdentityCustomer";
 import EmergencyCustomer from "./EmergencyCustomer";
@@ -14,10 +13,18 @@ import Other from "./Other";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import ReferenceCustomer from "./ReferenceCustomer";
+import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { setFieldNameR } from "../store/Global";
 
 export default function CostumerInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
+    let dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(setFieldNameR("Costumers"));
+    }, []);
+
   return (
     <div
       className={`${
