@@ -128,7 +128,7 @@ export default function ReservationsForms() {
         </div>
 
         <div className="w-full flex h-fit justify-between items-start">
-          <div className="w-[58%] h-[570px]">
+          <div className={`w-[58%] ${currentPage===2?"h-[650px]":"h-[570px]"}`}>
             {currentPage === 0 ? (
               <Info />
             ) : currentPage === 1 ? (
@@ -139,7 +139,7 @@ export default function ReservationsForms() {
               <Feature />
             ) : null}
           </div>
-          <div className="w-[40%] h-[570px]">
+          <div className={`w-[40%] ${currentPage===2?"h-[650px]":"h-[570px]"}`}>
             <Others />
           </div>
         </div>
