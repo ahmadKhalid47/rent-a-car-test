@@ -19,6 +19,9 @@ import { DriveEta, DriveEtaRounded } from "@mui/icons-material";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
+  // let [pathName, setPathName] = useState(window.location.pathname);
+  // console.log(pathName);
+
   let [vehiclesShow, setVehiclesShow] = useState(
     global.fieldName === "AddVehicles" || global.fieldName === "Home"
       ? true
@@ -385,7 +388,7 @@ export default function Sidebar() {
             </button>
           </div>
         ) : null}
-{/* 
+        {/* 
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
