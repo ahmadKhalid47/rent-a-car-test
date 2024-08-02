@@ -51,7 +51,7 @@ export default function CostumerInfo() {
                 757-947-5015{" "}
               </p>
               <div className="w-[80%] flex justify-between items-center">
-                <div className="flex justify-start items-center gap-2 w-[70%] pe-5">
+                <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
                   <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
                     City:
                   </p>
@@ -61,7 +61,7 @@ export default function CostumerInfo() {
                 </div>
               </div>
               <div className="w-[80%] flex justify-between items-center bg-red-5">
-                <div className="flex justify-start items-center gap-2 w-[70%] pe-5">
+                <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
                   <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
                     Country:{" "}
                   </p>
