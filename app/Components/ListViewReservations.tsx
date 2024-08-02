@@ -4,6 +4,8 @@ import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
+import doc1 from "@/public/doc (1).svg";
+import doc2 from "@/public/doc (2).svg";
 import Link from "next/link";
 import vip from "@/public/vip.svg";
 
@@ -76,8 +78,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -107,8 +109,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -139,8 +141,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -171,8 +173,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -202,8 +204,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -234,8 +236,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -266,8 +268,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
@@ -298,8 +300,8 @@ export default function ListViewReservations() {
             </div>
           </div>
           <div className="flex justify-center items-end w-[7%]">
-            <img src={edit.src} className="me-[5.8px]" />
-            <img src={deleteIcon.src} />
+            <img src={doc2.src} className="me-[5.8px]" />
+            <img src={doc1.src} />
           </div>
           <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
