@@ -90,7 +90,22 @@
   width: calc(100% - 120px);
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 5%;
+  position: absolute;
+  right: 5%;
 }
 
+.complete-status {
+  border-color: #b8dbca;
+  color: #087443;
+  background-color: #ecfcf2;
+}
+.progress-status {
+  border-color: #EEB4B0;
+  color: #F67971;
+  background-color: #FFF4F2;
+}
+.cancel-status {
+  border-color: #79747E;
+  color: #79747E;
+  background-color:#78788029;
+}

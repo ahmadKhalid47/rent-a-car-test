@@ -71,11 +71,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+              Completed
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -103,11 +102,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[76px] ms-[4.5px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] cancel-status">
+              Canceled
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -136,11 +134,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+              Completed
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -169,11 +166,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+              Completed
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -201,11 +197,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+              Completed
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -234,11 +229,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] progress-status">
+              In Progress
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -267,11 +261,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+              Completed
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
@@ -300,11 +293,10 @@ export default function ListViewReservations() {
           <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
           <h5 className="text-start pe-3 w-[9%]">$100</h5>
           <div className="text-start pe-3 w-[10%]">
-            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
-
-            Completed
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] progress-status">
+              In Progress
             </div>
-            </div>
+          </div>
           <div className="flex justify-center items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
