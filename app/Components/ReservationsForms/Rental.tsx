@@ -11,7 +11,7 @@ export default function Rental() {
   const [exterior, setExterior] = useState(true);
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8 overflow-auto">
+      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8 overflow-auto scroll">
         <div className="w-[100%] h-fit flex justify-center items-center bg-green-20 gap-5 font-[500] text-[16px] leading-[19px] ">
           <button
             className={`w-[190px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-2 ps-3 items-center text-center ${
@@ -171,7 +171,6 @@ export default function Rental() {
           </button>
         </div>
       </div>
-
     </div>
   );
 }
