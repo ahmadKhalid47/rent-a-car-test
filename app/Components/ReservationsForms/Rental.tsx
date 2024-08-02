@@ -1,13 +1,45 @@
 "use client";
+import checkBlue from "@/public/checkBlue.svg";
+import checkBlack from "@/public/checkBlack.png";
 import car from "@/public/ChauffeursPic.svg";
 import Link from "next/link";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { FaEllipsis } from "react-icons/fa6";
+import { useState } from "react";
 
 export default function Rental() {
+  const [exterior, setExterior] = useState(true);
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8 overflow-auto">
+        <div className="w-[100%] h-fit flex justify-center items-center bg-green-20 gap-5 font-[500] text-[16px] leading-[19px] ">
+          <button
+            className={`w-[190px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-2 ps-3 items-center text-center ${
+              exterior ? "text-main-blue" : ""
+            }`}
+            onClick={() => setExterior(!exterior)}
+          >
+            {exterior ? (
+              <img src={checkBlue.src} />
+            ) : (
+              <img src={checkBlack.src} />
+            )}
+            With Chauffeur
+          </button>{" "}
+          <button
+            className={`w-[190px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-2 ps-3 items-center text-center ${
+              !exterior ? "text-main-blue" : ""
+            }`}
+            onClick={() => setExterior(!exterior)}
+          >
+            {!exterior ? (
+              <img src={checkBlue.src} />
+            ) : (
+              <img src={checkBlack.src} />
+            )}
+            Without Chauffeur
+          </button>
+        </div>
         <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
           <span className="w-full text-start font-[400] text-[14px] leading-[17px]">
             Search Chauffeur
