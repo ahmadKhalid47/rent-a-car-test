@@ -1,20 +1,47 @@
 "use client";
+import shape from "@/public/Shape.svg";
 import car from "@/public/carInfoCar.svg";
 
 export default function Feature() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8 overflow-auto">
-        <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
-          <span className="w-full text-start font-[400] text-[14px] leading-[17px]">
-            Search Customer
-          </span>
-          <input
-            className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px] placeholder:text-black"
-            placeholder="Search"
-          />
-        </div>
-
+        <div className="flex justify-between items-center w-full h-fit">
+          <div className="w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+              Make
+            </label>
+            <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+              <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+                <option value="">Suzuki</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+              </select>
+              <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <img src={shape.src} className="w-[10.5px]" />
+              </div>
+            </div>
+          </div>{" "}
+          <div className="w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+              Model
+            </label>
+            <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+              <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+                <option value="">Swift</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+                <option value="">Sedan</option>
+              </select>
+              <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                <img src={shape.src} className="w-[10.5px]" />
+              </div>
+            </div>
+          </div>
+        </div>{" "}
         <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
