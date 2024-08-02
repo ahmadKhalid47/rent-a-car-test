@@ -138,6 +138,7 @@ export default function Sidebar() {
                 setCostumerShow(!costumerShow);
                 setVehiclesShow(false);
                 setChauffeurShow(false);
+                setReservationsShow(false);
               }}
               className="cursor-pointer"
             >
@@ -240,6 +241,7 @@ export default function Sidebar() {
                 setChauffeurShow(!ChauffeurShow);
                 setVehiclesShow(false);
                 setCostumerShow(false);
+                setReservationsShow(false);
               }}
               className="cursor-pointer"
             >
@@ -325,6 +327,7 @@ export default function Sidebar() {
                 setReservationsShow(!ReservationsShow);
                 setVehiclesShow(false);
                 setCostumerShow(false);
+                setChauffeurShow(false);
               }}
               className="cursor-pointer"
             >
@@ -418,6 +421,7 @@ export default function Sidebar() {
                 setVehiclesShow(!vehiclesShow);
                 setCostumerShow(false);
                 setChauffeurShow(false);
+                setReservationsShow(false);
               }}
               className="cursor-pointer"
             >
