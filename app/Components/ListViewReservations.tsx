@@ -23,24 +23,33 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[11%] ps-7">
+          <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-7">
             ID <img src={arrows.src} />
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[21%]">
-            Full Name <img src={arrows.src} />
-          </div>
-   
-          <div className="text-start pe-3 flex justify-between items-center w-[19%]">
-            Phone <img src={arrows.src} />
-          </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[16%]">
-            Gender <img src={arrows.src} />
+          <div className="text-start pe-3 flex justify-between items-center w-[14%]">
+            Vehicle <img src={arrows.src} />
           </div>
 
-          <div className="text-start pe-3 flex justify-between items-center w-[16%]">
+          <div className="text-start pe-3 flex justify-between items-center w-[14%]">
+            Customer <img src={arrows.src} />
+          </div>
+          <div className="text-start pe-3 flex justify-between items-center w-[10%]">
             City <img src={arrows.src} />
           </div>
-          <div className="text-start pe-3 flex justify-between items-center w-[8%]">
+
+          <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            Duration <img src={arrows.src} />
+          </div>
+          <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            Amount <img src={arrows.src} />
+          </div>
+          <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            Status <img src={arrows.src} />
+          </div>
+          <div className="text-start pe-3 flex justify-between items-center w-[7%]">
+            Documents{" "}
+          </div>
+          <div className="text-start pe-3 flex justify-between items-center w-[7%]">
             Actions{" "}
           </div>
         </div>
@@ -51,18 +60,27 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
-            {/*  */}
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Dahlonega</h5>
-          <div className="flex justify-start gap items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -74,17 +92,27 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean 
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Fort Valley</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -96,18 +124,28 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
             {/*  */}
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -119,18 +157,28 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
             {/*  */}
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -142,17 +190,27 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean 
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -164,18 +222,28 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
             {/*  */}
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap- items-center w-[8%]">
-            <img src={unCheck.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -187,18 +255,28 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
             {/*  */}
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
@@ -210,18 +288,28 @@ export default function ListViewReservations() {
           <div className="text-center w-[3%] flex justify-center items-center ">
             <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
           </div>
-          <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[21%]">
-            Glenn A. Jean
+          <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
+          <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+            Suzuki Swift
             {/*  */}
           </div>
 
-          <h5 className="text-start pe-3 w-[19%]">757-947-5015</h5>
-          <h5 className="text-start pe-3 w-[16%]">Female</h5>
+          <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+          <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-          <h5 className="text-start pe-3 w-[16%]">Atlanta</h5>
-          <div className="flex justify-start gap2 items-end w-[8%]">
-            <img src={check.src} className="me-[8px] translate-y-[1px]" />
+          <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+          <h5 className="text-start pe-3 w-[9%]">$100</h5>
+          <div className="text-start pe-3 w-[10%]">
+            <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] border-green-500 bg-green-200 text-green-800">
+
+            Completed
+            </div>
+            </div>
+          <div className="flex justify-center items-end w-[7%]">
+            <img src={edit.src} className="me-[5.8px]" />
+            <img src={deleteIcon.src} />
+          </div>
+          <div className="flex justify-start ps-2 items-end w-[7%]">
             <img src={edit.src} className="me-[5.8px]" />
             <img src={deleteIcon.src} />
           </div>
