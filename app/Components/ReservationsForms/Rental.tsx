@@ -171,6 +171,7 @@ export default function Rental() {
           </button>
         </div>
       </div>
+
     </div>
   );
 }
