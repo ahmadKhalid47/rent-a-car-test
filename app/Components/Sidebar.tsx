@@ -314,11 +314,14 @@ export default function Sidebar() {
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
-            <FaUserTie
+            <FaListCheck
               className={`text-[16px] ${
                 global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"
               }`}
             />
+            {/* <FaListCheck
+              className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
+            /> */}
             {global.sidebarShow ? "Reservations" : null}
           </div>
           {global.sidebarShow ? (
