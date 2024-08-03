@@ -15,11 +15,11 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setFieldNameR } from "@/app/store/Global";
 
-export default function CostumerForms() {
+export default function CustomerForms() {
   let [currentPage, setCurrentPage] = useState(0);
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setFieldNameR("AddCostumer"));
+    dispatch(setFieldNameR("AddCustomer"));
   }, []);
   
 
@@ -29,9 +29,9 @@ export default function CostumerForms() {
     >
       <div className="w-[100%] bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
-          Add New Costumer
+          Add New Customer
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            Costumers / Add New Costumer
+            Customers / Add New Customer
           </p>
         </h3>
       </div>

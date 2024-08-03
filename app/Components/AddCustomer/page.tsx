@@ -4,7 +4,7 @@ import Nav from "../Nav";
 import Sidebar from "../Sidebar";
 import Vehicles from "../Vehicles";
 import { useSelector } from "react-redux";
-import CostumerForms from "../CostumerForms/page";
+import CustomerForms from "../CustomerForms/page";
 
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
@@ -18,7 +18,7 @@ export default function Home() {
             global.sidebarShow ? "nav-width" : "nav-closed-width"
           } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
         >
-          <CostumerForms />
+          <CustomerForms />
         </div>
       </div>
     </div>

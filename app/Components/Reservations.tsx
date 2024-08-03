@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
 import ListViewReservations from "./ListViewReservations";
+import { useRouter } from "next/navigation";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
@@ -17,6 +18,7 @@ export default function Reservations() {
   useEffect(() => {
     dispatch(setFieldNameR("Reservations"));
   }, []);
+  const router = useRouter();
 
   return (
     <div
@@ -30,8 +32,14 @@ export default function Reservations() {
           </p>
         </h3>
         <div className="flex justify-end gap-3 items-end w-[50%]">
-          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Add New Costumer
+          <button
+            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            onClick={() => {
+              router.push("/Components/AddReservations");
+              dispatch(setFieldNameR("AddReservations"));
+            }}
+          >
+            Add New Reservation
           </button>
         </div>
       </div>

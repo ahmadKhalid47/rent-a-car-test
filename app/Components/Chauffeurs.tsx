@@ -6,18 +6,19 @@ import ListViewChauffeur from "./ListViewChauffeur";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { FaAsterisk } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function Chauffeur() {
   let global = useSelector((state: RootState) => state.Global);
   const [showLess, setShowLess] = useState(true);
-  let dispatch = useDispatch();
   useEffect(() => {
     dispatch(setFieldNameR("Chauffeurs"));
   }, []);
-
+  let dispatch = useDispatch();
+  const router = useRouter();
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
@@ -30,8 +31,14 @@ export default function Chauffeur() {
           </p>
         </h3>
         <div className="flex justify-end gap-3 items-end w-[50%]">
-          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Add New Costumer
+          <button
+            onClick={() => {
+              router.push("/Components/AddChauffeur");
+              dispatch(setFieldNameR("AddChauffeur"));
+            }}
+            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+          >
+            Add New Chauffeur
           </button>
         </div>
       </div>

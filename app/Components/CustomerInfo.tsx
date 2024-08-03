@@ -1,6 +1,6 @@
 "use client";
 import vip from "@/public/vip.svg";
-import car from "@/public/Costumer.svg";
+import car from "@/public/Customer.svg";
 import smallCar1 from "@/public/smallcar (1).png";
 import smallCar2 from "@/public/smallcar (2).png";
 import smallCar3 from "@/public/smallcar (3).png";
@@ -17,12 +17,12 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
 
-export default function CostumerInfo() {
+export default function CustomerInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
     let dispatch = useDispatch();
     useEffect(() => {
-      dispatch(setFieldNameR("Costumers"));
+      dispatch(setFieldNameR("Customers"));
     }, []);
 
   return (

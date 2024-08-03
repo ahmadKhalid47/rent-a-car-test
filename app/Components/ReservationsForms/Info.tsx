@@ -1,5 +1,5 @@
 "use client";
-import car from "@/public/Costumer.svg";
+import car from "@/public/Customer.svg";
 import Link from "next/link";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { FaEllipsis } from "react-icons/fa6";

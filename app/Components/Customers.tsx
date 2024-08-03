@@ -2,21 +2,23 @@
 import shape from "@/public/Shape2.svg";
 import list from "@/public/Group 110 (1).svg";
 import listBlack from "@/public/Group 110.svg";
-import ListViewCostumers from "./ListViewCostumers";
+import ListViewCustomers from "./ListViewCustomers";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { FaAsterisk } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
+import { useRouter } from "next/navigation";
 
-export default function Costumers() {
+export default function Customers() {
   let global = useSelector((state: RootState) => state.Global);
   const [showLess, setShowLess] = useState(true);
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setFieldNameR("Costumers"));
+    dispatch(setFieldNameR("Customers"));
   }, []);
+  const router = useRouter();
 
   return (
     <div
@@ -24,14 +26,20 @@ export default function Costumers() {
     >
       <div className="w-[100%] h-[200px bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
-          All Costumers
+          All Customers
           <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
-            Costumers / All Costumers
+            Customers / All Customers
           </p>
         </h3>
         <div className="flex justify-end gap-3 items-end w-[50%]">
-          <button className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
-            Add New Costumer
+          <button
+            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            onClick={() => {
+              router.push("/Components/AddCustomer");
+              dispatch(setFieldNameR("AddCustomer"));
+            }}
+          >
+            Add New Customer
           </button>
         </div>
       </div>
@@ -125,7 +133,7 @@ export default function Costumers() {
         </h3>
       </div>
       <div className="w-full h-fit">
-        <ListViewCostumers />
+        <ListViewCustomers />
       </div>
     </div>
   );

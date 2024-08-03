@@ -12,8 +12,8 @@ import { RiFileSettingsFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { setFieldNameR, setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
-import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useRouter } from "next/navigation";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { DriveEta, DriveEtaRounded } from "@mui/icons-material";
 
@@ -27,8 +27,8 @@ export default function Sidebar() {
       ? true
       : false
   );
-  let [costumerShow, setCostumerShow] = useState(
-    global.fieldName === "Costumers" || global.fieldName === "AddCostumer"
+  let [CustomerShow, setCustomerShow] = useState(
+    global.fieldName === "Customers" || global.fieldName === "AddCustomer"
       ? true
       : false
   );
@@ -46,12 +46,12 @@ export default function Sidebar() {
 
   useEffect(() => {
     if (
-      global.fieldName === "Costumers" ||
-      global.fieldName === "AddCostumer"
+      global.fieldName === "Customers" ||
+      global.fieldName === "AddCustomer"
     ) {
-      setCostumerShow(true);
+      setCustomerShow(true);
     } else {
-      setCostumerShow(false);
+      setCustomerShow(false);
     }
     if (global.fieldName === "Home" || global.fieldName === "AddVehicles") {
       setVehiclesShow(true);
@@ -127,7 +127,7 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            costumerShow ? "text-main-blue" : ""
+            CustomerShow ? "text-main-blue" : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -141,14 +141,14 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div
               onClick={() => {
-                setCostumerShow(!costumerShow);
+                setCustomerShow(!CustomerShow);
                 setVehiclesShow(false);
                 setChauffeurShow(false);
                 setReservationsShow(false);
               }}
               className="cursor-pointer"
             >
-              {costumerShow ? (
+              {CustomerShow ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
                 <GoTriangleDown className="float-right me-5" />
@@ -156,7 +156,7 @@ export default function Sidebar() {
             </div>
           ) : null}
         </div>
-        {costumerShow && global.sidebarShow ? (
+        {CustomerShow && global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
@@ -165,8 +165,8 @@ export default function Sidebar() {
               </div>
               <button
                 onClick={() => {
-                  router.push("/Components/Costumers");
-                  dispatch(setFieldNameR("Costumers"));
+                  router.push("/Components/Customers");
+                  dispatch(setFieldNameR("Customers"));
                 }}
                 // href={"/Components/Home"}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -174,18 +174,18 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  global.fieldName === "Costumers"
+                  global.fieldName === "Customers"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "All Costumers" : null}
+                {global.sidebarShow ? "All Customers" : null}
               </button>{" "}
             </div>
             <button
               onClick={() => {
-                router.push("/Components/AddCostumer");
-                dispatch(setFieldNameR("AddCostumer"));
+                router.push("/Components/AddCustomer");
+                dispatch(setFieldNameR("AddCustomer"));
               }}
               // href={"/Components/AddVehicles"}
               className="flex justify-start items-center w-full"
@@ -200,12 +200,12 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  global.fieldName === "AddCostumer"
+                  global.fieldName === "AddCustomer"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "Add Costumer" : null}
+                {global.sidebarShow ? "Add Customer" : null}
               </div>{" "}
             </button>
             {/* <div className="flex justify-start items-center w-full">
@@ -246,7 +246,7 @@ export default function Sidebar() {
               onClick={() => {
                 setChauffeurShow(!ChauffeurShow);
                 setVehiclesShow(false);
-                setCostumerShow(false);
+                setCustomerShow(false);
                 setReservationsShow(false);
               }}
               className="cursor-pointer"
@@ -335,7 +335,7 @@ export default function Sidebar() {
               onClick={() => {
                 setReservationsShow(!ReservationsShow);
                 setVehiclesShow(false);
-                setCostumerShow(false);
+                setCustomerShow(false);
                 setChauffeurShow(false);
               }}
               className="cursor-pointer"
@@ -430,7 +430,7 @@ export default function Sidebar() {
             <div
               onClick={() => {
                 setVehiclesShow(!vehiclesShow);
-                setCostumerShow(false);
+                setCustomerShow(false);
                 setChauffeurShow(false);
                 setReservationsShow(false);
               }}

@@ -2,7 +2,7 @@
 import { RootState } from "@/app/store";
 import Nav from "../Nav";
 import Sidebar from "../Sidebar";
-import Costumers from "../Costumers";
+import Customers from "../Customers";
 import { useSelector } from "react-redux";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
             global.sidebarShow ? "nav-width" : "nav-closed-width"
           } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
         >
-          <Costumers />
+          <Customers />
         </div>
       </div>
     </div>
