@@ -38,7 +38,7 @@ export default function Nav() {
         <img
           src={bar.src}
           className={`${
-            global.sidebarShow ? "w-[90px] sm:w-full" : "w-full"
+            global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
           } h-full`}
         />
       </button>

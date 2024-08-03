@@ -23,7 +23,9 @@ const config: Config = {
         "3xl": "1920px", // Custom breakpoint for 3x large screens
         "1400":"1400px",
         "1200":"1200px",
-        "900":"900px"
+        "900":"900px",
+        "400":"400px",
+        "500":"500px"
       },
     },
   },
