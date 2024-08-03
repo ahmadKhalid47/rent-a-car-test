@@ -100,7 +100,9 @@ export default function Sidebar() {
         </Link>
       </div>
       <div
-        className={`w-full h-[calc(100vh-90px)] pt-8 ${global.sidebarShow?"px-10":"px-8"} flex flex-col justify-start items-center gap-2 overflow-auto transitions`}
+        className={`w-full h-[calc(100vh-90px)] overflow-auto pt-8 ${
+          global.sidebarShow ? "px-6" : "px-8"
+        } flex flex-col justify-start items-center gap-2 overflow-auto transitions`}
       >
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -134,7 +136,7 @@ export default function Sidebar() {
             <FaUsers
               className={`${
                 global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
-              }`}
+              } text-[16px]`}
             />
             {global.sidebarShow ? "Customers" : null}
           </div>
@@ -161,7 +163,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -192,7 +194,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -205,24 +207,9 @@ export default function Sidebar() {
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "Add Customer" : null}
+                {global.sidebarShow ? "Add New Customer" : null}
               </div>{" "}
             </button>
-            {/* <div className="flex justify-start items-center w-full">
-              <div className="relative w-[20%] h-full">
-                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
-              </div>
-              <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
-                  global.sidebarShow
-                    ? "justify-start ps-5"
-                    : "justify-center px-0"
-                } bg-main-blue-hover hover:text-white rounded-[10px]`}
-              >
-                {global.sidebarShow ? "Configuration" : null}
-              </div>{" "}
-            </div> */}
           </div>
         ) : null}
 
@@ -264,7 +251,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -293,7 +280,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -306,7 +293,7 @@ export default function Sidebar() {
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "Add Chauffeur" : null}
+                {global.sidebarShow ? "Add New Chauffeur" : null}
               </div>{" "}
             </button>
           </div>
@@ -325,9 +312,7 @@ export default function Sidebar() {
                 global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
               }`}
             />
-            {/* <FaListCheck
-              className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
-            /> */}
+       
             {global.sidebarShow ? "Reservations" : null}
           </div>
           {global.sidebarShow ? (
@@ -353,7 +338,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -382,7 +367,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -400,17 +385,7 @@ export default function Sidebar() {
             </button>
           </div>
         ) : null}
-        {/* 
-        <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
-        >
-          <FaListCheck
-            className={`${global.sidebarShow ? "ml-[2px]" : "ml-[4px]"}`}
-          />
-          <span className="">{global.sidebarShow ? "Reservations" : null}</span>
-        </div> */}
+  
         <div
           className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -450,7 +425,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -479,7 +454,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -498,7 +473,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[57.66%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
