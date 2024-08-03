@@ -110,8 +110,8 @@ export default function Info() {
 
   return (
     <div className="w-full h-fit  ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8">
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Vehicle ID
           </label>
@@ -122,7 +122,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Make
             <FaAsterisk className="text-[6px]" />
@@ -140,7 +140,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Model
             <FaAsterisk className="text-[6px]" />
@@ -158,7 +158,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Type
             <FaAsterisk className="text-[6px]" />
@@ -176,7 +176,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Year
             <FaAsterisk className="text-[6px]" />
@@ -194,7 +194,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Registration No
             <FaAsterisk className="text-[6px]" />
@@ -209,7 +209,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
             <FaAsterisk className="text-[6px]" />
@@ -227,7 +227,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Fuel Type
             <FaAsterisk className="text-[6px]" />
@@ -245,7 +245,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Transmission
             <FaAsterisk className="text-[6px]" />
@@ -263,7 +263,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Odometer (KMPH)
             <FaAsterisk className="text-[6px]" />
@@ -278,7 +278,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Passengers
             <FaAsterisk className="text-[6px]" />
@@ -299,7 +299,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Country
             <FaAsterisk className="text-[6px]" />
@@ -317,7 +317,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             City
             <FaAsterisk className="text-[6px]" />
@@ -336,7 +336,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Postal/Zip Code
             <FaAsterisk className="text-[6px]" />
@@ -352,8 +352,8 @@ export default function Info() {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-10 pb-10 pt-8">
-        <h3 className="font-[600] text-[20px] leading-[23px] text-black w-[50%]">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
           Add Vehicle Images
         </h3>
         <div
@@ -363,12 +363,12 @@ export default function Info() {
           <input {...getInputProps()} />
 
           <img src={upload.src} />
-          <h4 className="font-[600] text-[14px] leading-[17px] text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </h4>
-          <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
+          <h4 className="font-[400] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-[#515978]">
             Select JPG or PNG{" "}
           </h4>
         </div>
@@ -377,7 +377,7 @@ export default function Info() {
           <span className="font-[400] text-[14px] leading-[17px]">OR</span>
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
-        <div className="w-full h-fit flex justify-start items-center gap-5">
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto">
           {thumbsAlready}
           {thumbs}
         </div>

@@ -21,7 +21,7 @@ export default function Chauffeur() {
   const router = useRouter();
   return (
     <div
-      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
+      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-10`}
     >
       <div className="w-[100%] h-[200px bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
@@ -36,7 +36,7 @@ export default function Chauffeur() {
               router.push("/Components/AddChauffeur");
               dispatch(setFieldNameR("AddChauffeur"));
             }}
-            className="px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            className="px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
           >
             Add New Chauffeur
           </button>

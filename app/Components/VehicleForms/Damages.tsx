@@ -101,7 +101,7 @@ export default function Damages() {
           <div className="w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-5">
               <button
-                className={`w-[150px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
                   exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -114,7 +114,7 @@ export default function Damages() {
                 Exterior
               </button>{" "}
               <button
-                className={`w-[150px] h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
                   !exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -329,7 +329,7 @@ export default function Damages() {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="w-[140px] h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                   cancelPop();
@@ -338,7 +338,7 @@ export default function Damages() {
                 Cancel
               </button>
               <button
-                className="w-[140px] h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
                 onClick={() => setPopup(false)}
               >
                 Save

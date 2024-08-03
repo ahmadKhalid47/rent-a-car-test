@@ -33,7 +33,7 @@ export default function Vehicles() {
         <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
           <div className="w-fit h-fit flex justify-end items-end gap-3">
             <button
-              className={`w-[44px] flex justify-center items-center h-[44px] rounded-[10px] ${
+              className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
                 gridView
                   ? "bg-main-blue text-white"
                   : "bg-light-grey border-2 border-grey"
@@ -43,7 +43,7 @@ export default function Vehicles() {
               <GridViewRounded />
             </button>
             <button
-              className={`w-[44px] flex justify-center items-center h-[44px] rounded-[10px] ${
+              className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
                 !gridView
                   ? "bg-main-blue text-white"
                   : "bg-light-grey border-2 border-grey"
@@ -53,7 +53,7 @@ export default function Vehicles() {
               {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
             </button>
           </div>
-          <button className="w-fit px-3 md:px-6 h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[14px] md:text-[18px] leading-[21px] text-center">
+          <button className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
             Add New Vehicle
           </button>
         </div>
@@ -68,7 +68,7 @@ export default function Vehicles() {
               className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
               placeholder="Search By Car Name, Reg No, City.."
             ></input>
-            <button className=" w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[14px] md:text-[18px] leading-[21px] text-center">
+            <button className=" w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
               Search
             </button>
           </div>

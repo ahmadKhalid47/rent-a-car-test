@@ -111,7 +111,7 @@ export default function Info() {
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8">
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Customer ID
           </label>
@@ -122,7 +122,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Customer Type
             <FaAsterisk className="text-[6px]" />
@@ -140,7 +140,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Full Name
             <FaAsterisk className="text-[6px]" />
@@ -152,7 +152,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Gender
             <FaAsterisk className="text-[6px]" />
@@ -168,7 +168,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Date of Birth
           </label>
@@ -184,7 +184,7 @@ export default function Info() {
             </div> */}
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Nationality
           </label>
@@ -199,7 +199,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Email Address
           </label>
@@ -210,7 +210,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Phone
             <FaAsterisk className="text-[6px]" />
@@ -222,7 +222,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Alternative Phone
           </label>
@@ -233,7 +233,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Street Address{" "}
           </label>
@@ -244,7 +244,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Country
             <FaAsterisk className="text-[6px]" />
@@ -260,7 +260,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             State/Province
             <FaAsterisk className="text-[6px]" />
@@ -277,7 +277,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             City
             <FaAsterisk className="text-[6px]" />
@@ -294,7 +294,7 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Postal/Zip Code
           </label>
@@ -305,7 +305,7 @@ export default function Info() {
             />
           </div>
         </div>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
             Postal/Zip Code
           </label>

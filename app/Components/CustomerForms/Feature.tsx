@@ -18,7 +18,7 @@ export default function Feature() {
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Reference 1
         </h3>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Full Name
           </label>
@@ -29,7 +29,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Phone
           </label>
@@ -40,7 +40,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Address
           </label>
@@ -51,7 +51,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Relation
           </label>
@@ -67,7 +67,7 @@ export default function Feature() {
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Reference 2
         </h3>
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Full Name
           </label>
@@ -78,7 +78,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Phone
           </label>
@@ -89,7 +89,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Address
           </label>
@@ -100,7 +100,7 @@ export default function Feature() {
             />
           </div>
         </div>{" "}
-        <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Relation
           </label>
