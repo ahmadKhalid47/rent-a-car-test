@@ -16,15 +16,24 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
+import { setSidebarShowR } from "../store/Global";
+import { useMediaQuery } from "react-responsive";
 
 export default function ChauffeursInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(setFieldNameR("Chauffeurs"));
-    }, []);
-
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false));
+    } else {
+      dispatch(setSidebarShowR(true));
+    }
+  }, [isMobile]);
+  useEffect(() => {
+    dispatch(setFieldNameR("Chauffeurs"));
+  }, []);
 
   return (
     <div

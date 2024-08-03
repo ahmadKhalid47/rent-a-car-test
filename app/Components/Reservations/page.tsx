@@ -4,10 +4,23 @@ import Nav from "../Nav";
 import Sidebar from "../Sidebar";
 import { useSelector } from "react-redux";
 import Reservations from "../Reservations";
+import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSidebarShowR } from "@/app/store/Global";
 
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
-  return (
+    let dispatch = useDispatch();
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+    useEffect(() => {
+      if (isMobile) {
+        dispatch(setSidebarShowR(false));
+      } else {
+        dispatch(setSidebarShowR(true));
+      }
+    }, [isMobile]);
+return (
     <div className="w-full">
       <div className="flex justify-start items-start relative flex-wrap">
         <Sidebar />

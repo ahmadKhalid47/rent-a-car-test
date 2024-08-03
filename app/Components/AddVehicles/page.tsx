@@ -8,6 +8,8 @@ import VehicleForms from "../VehicleForms/page";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setFieldNameR } from "@/app/store/Global";
+import { useMediaQuery } from "react-responsive";
+import { setSidebarShowR } from "@/app/store/Global";
 
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
@@ -15,6 +17,15 @@ export default function Home() {
   useEffect(() => {
     dispatch(setFieldNameR("AddVehicles"));
   }, []);
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+    useEffect(() => {
+      if (isMobile) {
+        dispatch(setSidebarShowR(false));
+      } else {
+        dispatch(setSidebarShowR(true));
+      }
+    }, [isMobile]);
+
   return (
     <div className="w-full">
       <div className="flex justify-start items-start relative flex-wrap">

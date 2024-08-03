@@ -16,6 +16,8 @@ import ReferenceCustomer from "./ReferenceCustomer";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
+import { setSidebarShowR } from "../store/Global";
+import { useMediaQuery } from "react-responsive";
 
 export default function CustomerInfo() {
   let [activeButton, setActiveButton] = useState("General");
@@ -24,7 +26,14 @@ export default function CustomerInfo() {
     useEffect(() => {
       dispatch(setFieldNameR("Customers"));
     }, []);
-
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false));
+    } else {
+      dispatch(setSidebarShowR(true));
+    }
+  }, [isMobile]);
   return (
     <div
       className={`${

@@ -4,12 +4,25 @@ import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
 import { RootState } from "../store";
+
+import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
+import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
+
 export default function Nav() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  let dispatch = useDispatch();
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false))
+    } else {
+      dispatch(setSidebarShowR(true))
+    }
+  },[isMobile])
+
   let global = useSelector((state: RootState) => state.Global);
 
-  let dispatch = useDispatch();
   return (
     <div
       className={`${

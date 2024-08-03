@@ -16,11 +16,20 @@ import { useRouter } from "next/navigation";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { DriveEta, DriveEtaRounded } from "@mui/icons-material";
+import { useMediaQuery } from "react-responsive";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
   // let [pathName, setPathName] = useState(window.location.pathname);
   // console.log(pathName);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false));
+    } else {
+      dispatch(setSidebarShowR(true));
+    }
+  }, [isMobile]);
 
   let [vehiclesShow, setVehiclesShow] = useState(
     global.fieldName === "AddVehicles" || global.fieldName === "Home"

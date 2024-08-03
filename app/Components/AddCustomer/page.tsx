@@ -5,9 +5,23 @@ import Sidebar from "../Sidebar";
 import Vehicles from "../Vehicles";
 import { useSelector } from "react-redux";
 import CustomerForms from "../CustomerForms/page";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSidebarShowR } from "@/app/store/Global";
+import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  let dispatch = useDispatch();
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false));
+    } else {
+      dispatch(setSidebarShowR(true));
+    }
+  }, [isMobile]);
+
   return (
     <div className="w-full">
       <div className="flex justify-start items-start relative flex-wrap">
