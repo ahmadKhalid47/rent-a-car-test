@@ -23,7 +23,7 @@ export default function Nav() {
 
   let global = useSelector((state: RootState) => state.Global);
 
-  return (
+  return ( 
     <div
       className={`${
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
