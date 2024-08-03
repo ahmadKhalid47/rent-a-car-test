@@ -12,7 +12,7 @@ export default function GridView() {
         <span className="underline cursor-pointer">Export</span>
       </h3>
 
-      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] p-1 xs-p-3 md:p-11 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
+      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] p-1 xs:p-3 md:p-11 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
         <Link
           href={"/Components/CarInfo"}
           className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
