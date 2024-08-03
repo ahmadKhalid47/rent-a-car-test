@@ -8,7 +8,7 @@ import { FaEllipsis } from "react-icons/fa6";
 export default function GridView() {
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sx:text-[18px] leading-[21px] text-grey">
+      <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
         <span className="underline cursor-pointer">Export</span>
       </h3>
 
@@ -734,12 +734,12 @@ export default function GridView() {
           </div>
         </Link>
       </div>
-      <div className="w-full h-[32px] mt-10 flex justify-between items-center">
-        <div className="font-[400] text-[10px] sx:text-[14px] leading-[17px] text-[#878787]">
+      <div className="w-full h-[32px] mt-5 md:mt-10 flex justify-between items-center">
+        <div className="font-[400] text-[10px] sm:text-[14px] leading-[17px] text-[#878787]">
           Showing 12 from 100 data
         </div>
-        <div className="font-[600] text-[10px] sx:text-[14px] leading-[17px]">
-          <div className="w-fit h-full flex justify-end items-center gap-1 sx:gap-4">
+        <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
+          <div className="w-fit h-full flex justify-end items-center gap-1 sm:gap-4">
             <FaAngleDoubleLeft />
             <div className="flex justify-center items-center">
               <div className="ms-4 bg-main-blue text-white rounded-[5px] w-[32px] h-[32px] flex justify-center items-center">

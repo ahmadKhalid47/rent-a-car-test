@@ -82,7 +82,7 @@ export default function Sidebar() {
   return (
     <div
       className={`${
-        global.sidebarShow ? "w-[300px]" : "w-[70px]"
+        global.sidebarShow ? "w-[250px] sm:w-[300px]" : "w-[70px]"
       } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] bg-white xl:z-0 transitions`}
       onMouseEnter={() => dispatch(setSidebarShowR(true))}
       onMouseLeave={() =>
@@ -101,11 +101,11 @@ export default function Sidebar() {
       </div>
       <div
         className={`w-full h-[calc(100vh-90px)] overflow-auto pt-8 ${
-          global.sidebarShow ? "px-6" : "px-8"
+          global.sidebarShow ? "px-3 sm:px-6" : "px-8"
         } flex flex-col justify-start items-center gap-2 overflow-auto transitions`}
       >
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
@@ -115,7 +115,7 @@ export default function Sidebar() {
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
@@ -126,7 +126,7 @@ export default function Sidebar() {
         </div>
 
         <div
-          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             CustomerShow ? "text-main-blue" : ""
@@ -171,7 +171,7 @@ export default function Sidebar() {
                   dispatch(setFieldNameR("Customers"));
                 }}
                 // href={"/Components/Home"}
-                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -197,7 +197,7 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -214,7 +214,7 @@ export default function Sidebar() {
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             ChauffeurShow ? "text-main-blue" : ""
@@ -258,7 +258,7 @@ export default function Sidebar() {
                   router.push("/Components/Chauffeurs");
                   dispatch(setFieldNameR("Chauffeurs"));
                 }}
-                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -283,7 +283,7 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -300,7 +300,7 @@ export default function Sidebar() {
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             ReservationsShow ? "text-main-blue" : ""
@@ -345,7 +345,7 @@ export default function Sidebar() {
                   router.push("/Components/Reservations");
                   dispatch(setFieldNameR("Reservations"));
                 }}
-                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -370,7 +370,7 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -387,7 +387,7 @@ export default function Sidebar() {
         ) : null}
   
         <div
-          className={`w-full h-[49px] font-[500] text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             vehiclesShow ? "text-main-blue" : ""
@@ -433,7 +433,7 @@ export default function Sidebar() {
                   dispatch(setFieldNameR("Home"));
                 }}
                 // href={"/Components/Home"}
-                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -457,7 +457,7 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -476,7 +476,7 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
@@ -489,7 +489,7 @@ export default function Sidebar() {
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
@@ -497,7 +497,7 @@ export default function Sidebar() {
           <span className="">{global.sidebarShow ? "Tracking" : null}</span>
         </div>
         <div
-          className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >

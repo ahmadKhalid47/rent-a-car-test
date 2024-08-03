@@ -22,14 +22,19 @@ export default function Nav() {
           dispatch(setSidebarShowTempR(!global.sidebarShowTemp));
         }}
       >
-        <img src={bar.src} className="w-[20px] md:w-full h-full"/>
+        <img
+          src={bar.src}
+          className={`${
+            global.sidebarShow ? "w-[90px] sm:w-full" : "w-full"
+          } h-full`}
+        />
       </button>
 
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4">
-        <div className="w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
+        <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={bell.src} className="w-[24px] h-[24px]" />
         </div>
-        <div className="w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
+        <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={account.src} className="w-[26px] h-[26px]" />
         </div>
       </div>

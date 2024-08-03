@@ -16,7 +16,7 @@ import Link from "next/link";
 export default function ListView() {
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sx:text-[18px] leading-[21px] text-grey">
+      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey">
         <span>
           <span className="cursor-pointer">Delete Multiple</span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
@@ -26,7 +26,7 @@ export default function ListView() {
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-2 leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sx:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
             </div>
@@ -57,7 +57,7 @@ export default function ListView() {
           </div>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -81,7 +81,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center  border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center  border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -105,7 +105,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -127,7 +127,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -151,7 +151,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -175,7 +175,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -199,7 +199,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -223,7 +223,7 @@ export default function ListView() {
           </Link>
           <Link
             href={"/Components/CarInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sx:text-[14px] leading-[17px text-center  border-grey"
+            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center  border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
@@ -248,11 +248,11 @@ export default function ListView() {
         </div>
       </div>
       <div className="w-full h-[32px] mt-10 flex justify-between items-center">
-        <div className="font-[400] text-[12px] sx:text-[14px] leading-[17px] text-[#878787]">
+        <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
           Showing 12 from 100 data
         </div>
-        <div className="font-[600] text-[10px] sx:text-[14px] leading-[17px]">
-          <div className="w-fit h-full flex justify-end items-center gap-1 sx:gap-4">
+        <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
+          <div className="w-fit h-full flex justify-end items-center gap-1 sm:gap-4">
             <FaAngleDoubleLeft />
             <div className="flex justify-center items-center">
               <div className="ms-4 bg-main-blue text-white rounded-[5px] w-[32px] h-[32px] flex justify-center items-center">
