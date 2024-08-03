@@ -82,7 +82,7 @@ export default function Sidebar() {
   return (
     <div
       className={`${
-        global.sidebarShow ? "w-[300px]" : "w-[120px]"
+        global.sidebarShow ? "w-[300px]" : "w-[80px]"
       } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] bg-white xl:z-0 transitions`}
       onMouseEnter={() => dispatch(setSidebarShowR(true))}
       onMouseLeave={() =>
@@ -94,7 +94,7 @@ export default function Sidebar() {
           <img
             src={bar.src}
             className={`${
-              global.sidebarShow ? "w-[124px] h-[37px]" : "w-[87px] h-[25px]"
+              global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
             } mt-[30px]`}
           />
         </Link>
@@ -105,7 +105,7 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <TbLayoutDashboardFilled />
+          <TbLayoutDashboardFilled className={`${global.sidebarShow ?"":"fixed"}`}/>
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
         <div
@@ -114,7 +114,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <MdCalendarMonth
-            className={`${global.sidebarShow ? "ml-[0px]" : "ml-[-1px]"}`}
+            className={`${global.sidebarShow ? "ml-[0px]" : "ml-[-1px fixed"}`}
           />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
@@ -128,7 +128,7 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUsers
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"}`}
             />
             {global.sidebarShow ? "Customers" : null}
           </div>
@@ -230,7 +230,7 @@ export default function Sidebar() {
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUserTie
               className={`text-[16px] ${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"
+                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
               }`}
             />
             {global.sidebarShow ? "Chauffeurs" : null}
@@ -316,7 +316,7 @@ export default function Sidebar() {
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaListCheck
               className={`text-[16px] ${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-7px]"
+                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
               }`}
             />
             {/* <FaListCheck
@@ -414,7 +414,7 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-6px]"}`}
+              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"}`}
             />
             {global.sidebarShow ? "Vehicles" : null}
           </div>
