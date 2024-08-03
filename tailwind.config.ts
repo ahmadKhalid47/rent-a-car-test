@@ -21,7 +21,8 @@ const config: Config = {
         xl: "1280px", // Default Tailwind extra large breakpoint
         "2xl": "1536px", // Default Tailwind 2x large breakpoint
         "3xl": "1920px", // Custom breakpoint for 3x large screens
-        "1400":"1400px"
+        "1400":"1400px",
+        "1200":"1200px"
       },
     },
   },

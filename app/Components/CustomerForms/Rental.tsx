@@ -79,7 +79,7 @@ export default function Rental() {
         </div>{" "}
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Valid until
+            Valid Until
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
@@ -139,7 +139,7 @@ export default function Rental() {
         </div>{" "}
         <div className="w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Valid until
+            Valid Until
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input

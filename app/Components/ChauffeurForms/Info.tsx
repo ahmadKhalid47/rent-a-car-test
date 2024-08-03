@@ -143,7 +143,7 @@ export default function Info() {
             <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Female</option>
             </select>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
@@ -174,7 +174,7 @@ export default function Info() {
             <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Female</option>
             </select>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
@@ -246,7 +246,7 @@ export default function Info() {
             <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Female</option>
             </select>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
@@ -261,7 +261,7 @@ export default function Info() {
             <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
               <option value="">Select</option>
               <option value="">Male</option>
-              <option value="">FeMale</option>
+              <option value="">Female</option>
             </select>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
