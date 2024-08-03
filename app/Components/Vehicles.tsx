@@ -21,7 +21,7 @@ export default function Vehicles() {
   }, []);
   return (
     <div
-      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[50px] ps-[40px] pb-10`}
+      className={`w-full h-fit flex flex-col justify-start items-start gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10 bg-red-400`}
     >
       <div className="w-[100%] h-[200px bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
@@ -74,7 +74,7 @@ export default function Vehicles() {
           </div>
         </div>
         {!showLess ? (
-          <div className="w-full flex flex-wrap 1400:flex-nowrap h-fit justify-between items-center">
+          <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
             <div className="w-[48%] lg:w-[30%] 1400:w-[20%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Car Name

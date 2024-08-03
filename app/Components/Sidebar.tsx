@@ -82,7 +82,7 @@ export default function Sidebar() {
   return (
     <div
       className={`${
-        global.sidebarShow ? "w-[300px]" : "w-[80px]"
+        global.sidebarShow ? "w-[300px]" : "w-[70px]"
       } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] bg-white xl:z-0 transitions`}
       onMouseEnter={() => dispatch(setSidebarShowR(true))}
       onMouseLeave={() =>
@@ -99,13 +99,17 @@ export default function Sidebar() {
           />
         </Link>
       </div>
-      <div className="w-full h-[calc(100vh-90px)] pt-8 px-10 flex flex-col justify-start items-center gap-2 overflow-auto transitions">
+      <div
+        className={`w-full h-[calc(100vh-90px)] pt-8 ${global.sidebarShow?"px-10":"px-8"} flex flex-col justify-start items-center gap-2 overflow-auto transitions`}
+      >
         <div
           className={`w-full h-[49px] font-[400] text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <TbLayoutDashboardFilled className={`${global.sidebarShow ?"":"fixed"}`}/>
+          <TbLayoutDashboardFilled
+            className={`${global.sidebarShow ? "" : "fixed"}`}
+          />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
         <div
@@ -128,7 +132,9 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUsers
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"}`}
+              className={`${
+                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
+              }`}
             />
             {global.sidebarShow ? "Customers" : null}
           </div>
@@ -414,7 +420,9 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar
-              className={`${global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"}`}
+              className={`${
+                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
+              }`}
             />
             {global.sidebarShow ? "Vehicles" : null}
           </div>

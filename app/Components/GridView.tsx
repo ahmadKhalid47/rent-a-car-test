@@ -12,40 +12,40 @@ export default function GridView() {
         <span className="underline cursor-pointer">Export</span>
       </h3>
 
-      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] p-11 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
+      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] p-1 xs-p-3 md:p-11 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -53,16 +53,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta 
                 </p>
               </div>
@@ -71,37 +71,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -109,16 +109,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -127,37 +127,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -165,16 +165,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -183,37 +183,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -221,16 +221,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -239,37 +239,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -277,16 +277,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -295,37 +295,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -333,16 +333,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -351,37 +351,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -389,16 +389,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -407,37 +407,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -445,16 +445,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -463,37 +463,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -501,16 +501,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -519,37 +519,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -557,16 +557,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -575,37 +575,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -613,16 +613,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
@@ -631,37 +631,37 @@ export default function GridView() {
         </Link>
         <Link
           href={"/Components/CarInfo"}
-          className="w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-2 1400:px-5 py-6 flex justify-between items-center relative"
+          className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
         >
           <div className="absolute top-5 right-5 rotate-90 hover:cursor-pointer">
             <FaEllipsis />
           </div>
-          <div className="w-[170px] h-[139px] overflow-hidden rounded-[15px]">
+          <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
             <img src={car2.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
+          <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[500] text-[24px] leading-[36px]">
+              <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                 Honda City
               </p>
             </div>
             <div className="w-full flex justify-start items-center">
-              <p className="font-[400] text-[14px] leading-[21px]">LEM 1234</p>
+              <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">LEM 1234</p>
             </div>
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[42%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[42%]">
                   Year:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[40%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[40%]">
                   2024
                 </p>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Type:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Sedan
                 </p>
               </div>
@@ -669,16 +669,16 @@ export default function GridView() {
 
             <div className="w-full flex justify-start 1400:justify-between items-center">
               <div className="flex justify-start items-center gap-2 w-[40%]">
-                <p className="font-[400] text-[12px] leading-[18px]">Color:</p>
-                <div className="font-[400] text-[12px] leading-[18px]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">Color:</p>
+                <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px]">
                   <div className="w-[23px] h-[12px] bg-black rounded-full"></div>
                 </div>
               </div>
               <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   City:
                 </p>
-                <p className="font-[400] text-[12px] leading-[18px] w-fit 1400:w-[30%]">
+                <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
                   Atlanta
                 </p>
               </div>
