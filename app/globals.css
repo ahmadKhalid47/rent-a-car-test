@@ -51,9 +51,21 @@
   /* height: calc(100vh - 90px); */
   height: 100vh;
 }
+
 .nav-width {
   width: calc(100% - 300px);
 }
+
+.nav-width-resp {
+  width: calc(100% - 300px);
+}
+
+@media (max-width: 1280px) {
+  .nav-width {
+    width: calc(100% - 120px);
+  }
+}
+
 .nav-closed-width {
   width: calc(100% - 120px);
 }
@@ -100,12 +112,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #ecfcf2;
 }
 .progress-status {
-  border-color: #EEB4B0;
-  color: #F67971;
-  background-color: #FFF4F2;
+  border-color: #eeb4b0;
+  color: #f67971;
+  background-color: #fff4f2;
 }
 .cancel-status {
-  border-color: #79747E;
-  color: #79747E;
-  background-color:#78788029;
+  border-color: #79747e;
+  color: #79747e;
+  background-color: #78788029;
 }

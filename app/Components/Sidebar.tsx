@@ -83,7 +83,7 @@ export default function Sidebar() {
     <div
       className={`${
         global.sidebarShow ? "w-[300px]" : "w-[120px]"
-      } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-0 transitions`}
+      } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] bg-white xl:z-0 transitions`}
       onMouseEnter={() => dispatch(setSidebarShowR(true))}
       onMouseLeave={() =>
         dispatch(setSidebarShowR(global.sidebarShowTemp ? true : false))

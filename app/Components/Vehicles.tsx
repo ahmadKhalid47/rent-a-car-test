@@ -58,7 +58,7 @@ export default function Vehicles() {
           </button>
         </div>
       </div>
-      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+      <div className=" w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
         <div className="w-full h-fit">
           <h3 className="font-[400] text-[16px] leading-[19px] text-black pb-">
             Search
@@ -74,8 +74,8 @@ export default function Vehicles() {
           </div>
         </div>
         {!showLess ? (
-          <div className="w-full flex justify-between items-center">
-            <div className="w-[20%] h-fit ">
+          <div className="w-full flex flex-wrap 1400:flex-nowrap h-fit justify-between items-center">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[20%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Car Name
               </h3>
@@ -92,7 +92,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[15%] h-fit">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[15%] h-fit">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Registration No
               </h3>
@@ -104,7 +104,7 @@ export default function Vehicles() {
               </div>
             </div>
 
-            <div className="w-[16%] h-fit ">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[16%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Year
               </h3>
@@ -121,7 +121,7 @@ export default function Vehicles() {
                 </div>
               </div>{" "}
             </div>
-            <div className="w-[15%] h-fit ">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[15%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Type
               </h3>
@@ -138,7 +138,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[14%] h-fit ">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[14%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 City
               </h3>
@@ -155,7 +155,7 @@ export default function Vehicles() {
                 </div>
               </div>
             </div>
-            <div className="w-[11%] h-fit ">
+            <div className="w-[48%] lg:w-[30%] 1400:w-[11%] h-fit ">
               <h3 className="font-[400] text-[14px] leading-[17px] text-black pb-[2px] ">
                 Color
               </h3>
