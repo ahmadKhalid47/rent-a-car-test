@@ -97,11 +97,11 @@ export default function Damages() {
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wra justify-start items-start gap-x-[4% gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 bg-red-30 relative">
-          <div className="w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
-            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-5">
+        <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 bg-red-30 relative">
+          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
+            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
-                className={`w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -114,7 +114,7 @@ export default function Damages() {
                 Exterior
               </button>{" "}
               <button
-                className={`w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-5 items-center font-[400] text-[16px] leading-[19px] text-center ${
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   !exterior ? "text-main-blue" : ""
                 }`}
                 onClick={() => setExterior(!exterior)}
@@ -128,7 +128,7 @@ export default function Damages() {
               </button>
             </div>
             <div className="w-fit mx-auto mt-10 h-full flex  justify-center items-center p-0">
-              <div className="w-[326px] h-[408px]  relative">
+              <div className="w-[326px] h-fit sm:h-[408px]  relative Damage-Zooming">
                 {exterior ? (
                   <div className="w-[326px] h-[408px] relative">
                     <img
@@ -179,78 +179,78 @@ export default function Damages() {
               </div>
             </div>
           </div>
-          <div className="w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
             <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
               <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                <p className="w-[50px]  font-[600] text-[18px] leading-[27px] text-start">
+                <p className="w-[30%] md:w-[50px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                   No
                 </p>
-                <p className="w-[30%  font-[600] text-[18px] leading-[27px] text-center">
+                <p className="w-[40%] md:w-[30%  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
                   Damage Type
                 </p>
-                <p className="w-[80px]  font-[600] text-[18px] leading-[27px] text-end">
+                <p className="w-[30%] md:w-[80px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-end">
                   Degree
                 </p>
               </div>
-              <p className="mx-auto mt-[45%] font-[400] text-[20px] leading-[24px] text-start">
+              <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                 Tap on the vehicle's part to add damage
               </p>
 
               {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start  ">
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     1
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Dent
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Low
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     2
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Scratch
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     High
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     3
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Crack
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     High
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     4
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Clip
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Low
                   </p>
                 </div>
               </div> */}
             </div>
           </div>
-          <div className="absolute left-[50%] border-e-2 top-0 border-grey h-full"></div>
+          <div className="absolute left-[50%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
         </div>
       </div>
       {popup ? (
-        <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center items-center z-[10]">
-          <div className="w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15] p-10">
-            <div className="w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+            <div className="w-full sm:w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Damage Type
               </label>
@@ -265,7 +265,7 @@ export default function Damages() {
                 </div>
               </div>
             </div>
-            <div className="w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-full sm:w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Degree
               </label>
@@ -295,7 +295,7 @@ export default function Damages() {
               </div>
             </div>
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit bg-white mt- p">
-              <h3 className="font-[400] text-[14px] leading-[17px] text-black w-[50%]">
+              <h3 className="font-[400] text-[14px] leading-[17px] text-black w-[100%]">
                 Add Images
               </h3>
               <div
@@ -305,7 +305,7 @@ export default function Damages() {
                 <input {...getInputProps()} />
 
                 <img src={upload.src} />
-                <h4 className="font-[600] text-[14px] leading-[17px] text-black mt-[5px]">
+                <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
                   Drag & Drop or
                   <span className="text-link-blue cursor-pointer">
                     {" "}
@@ -318,7 +318,7 @@ export default function Damages() {
                 </h4>
               </div>
 
-              <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300">
+              <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto">
                 {thumbs}
                 <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative red-200">
                   <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden flex justify-center items-center">
@@ -329,7 +329,7 @@ export default function Damages() {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                   cancelPop();
@@ -338,7 +338,7 @@ export default function Damages() {
                 Cancel
               </button>
               <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => setPopup(false)}
               >
                 Save

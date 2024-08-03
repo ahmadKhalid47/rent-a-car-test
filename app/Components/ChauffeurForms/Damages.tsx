@@ -197,46 +197,46 @@ export default function Damages() {
 
               {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start  ">
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     1
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Dent
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Low
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     2
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Scratch
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     High
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     3
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Crack
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     High
                   </p>
                 </div>
                 <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     4
                   </p>
-                  <p className="w-[30%  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Clip
                   </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[18px] leading-[27px] text-start">
+                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     Low
                   </p>
                 </div>
@@ -304,7 +304,7 @@ export default function Damages() {
                 <input {...getInputProps()} />
 
                 <img src={upload.src} />
-                <h4 className="font-[600] text-[14px] leading-[17px] text-black mt-[5px]">
+                <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
                   Drag & Drop or
                   <span className="text-link-blue cursor-pointer">
                     {" "}
@@ -328,7 +328,7 @@ export default function Damages() {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                   cancelPop();
@@ -337,7 +337,7 @@ export default function Damages() {
                 Cancel
               </button>
               <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => setPopup(false)}
               >
                 Save

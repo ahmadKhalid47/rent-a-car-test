@@ -11,7 +11,7 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 
 export default function Nav() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let dispatch = useDispatch();
   useEffect(() => {
     if (isMobile) {

@@ -22,7 +22,7 @@ export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
   // let [pathName, setPathName] = useState(window.location.pathname);
   // console.log(pathName);
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));

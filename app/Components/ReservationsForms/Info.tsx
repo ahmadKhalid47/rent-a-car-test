@@ -7,7 +7,7 @@ import { FaEllipsis } from "react-icons/fa6";
 export default function Info() {
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-10 py-8 overflow-auto scroll">
+      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
         <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
           <span className="w-full text-start font-[400] text-[14px] leading-[17px]">
             Search Customer
@@ -44,7 +44,7 @@ export default function Info() {
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
             Select
           </button>
         </div>
@@ -74,7 +74,7 @@ export default function Info() {
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
             Select
           </button>
         </div>
@@ -104,7 +104,7 @@ export default function Info() {
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
             Select
           </button>
         </div>
@@ -134,7 +134,7 @@ export default function Info() {
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
             Select
           </button>
         </div>

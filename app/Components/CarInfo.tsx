@@ -22,7 +22,7 @@ export default function CarInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));

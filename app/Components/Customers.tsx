@@ -33,7 +33,7 @@ export default function Customers() {
         </h3>
         <div className="flex justify-end gap-3 items-end w-[50%]">
           <button
-            className="px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            className="px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
             onClick={() => {
               router.push("/Components/AddCustomer");
               dispatch(setFieldNameR("AddCustomer"));
@@ -53,7 +53,7 @@ export default function Customers() {
               className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
               placeholder="Search By Full Name, Phone.."
             ></input>
-            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
+            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
               Search
             </button>
           </div>

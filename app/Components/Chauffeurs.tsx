@@ -36,7 +36,7 @@ export default function Chauffeur() {
               router.push("/Components/AddChauffeur");
               dispatch(setFieldNameR("AddChauffeur"));
             }}
-            className="px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+            className="px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
           >
             Add New Chauffeur
           </button>
@@ -52,7 +52,7 @@ export default function Chauffeur() {
               className="px-2 w-[82%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
               placeholder="Search By Full Name, Phone.."
             ></input>
-            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[18px] leading-[21px] text-center">
+            <button className="w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
               Search
             </button>
           </div>

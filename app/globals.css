@@ -127,6 +127,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #79747e;
   background-color: #78788029;
 }
-.heading-class{
-  @apply bg-red-300
+.heading-class {
+  @apply bg-red-300;
+}
+
+@media (max-width: 500px) {
+  .Damage-Zooming {
+    zoom: 0.9;
+  }
+}
+@media (max-width: 400px) {
+  .Damage-Zooming {
+    zoom: 0.8;
+  }
 }

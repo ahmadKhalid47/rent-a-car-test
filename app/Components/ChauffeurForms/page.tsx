@@ -29,7 +29,7 @@ export default function ChauffeurForms() {
       <div className="w-[100%] bg-yellow-30 flex justify-start items-end">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-[50%]">
           Add New Chauffeur
-          <p className="text-grey font-[400] text-[18px] leading-[21px] text-black">
+          <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-black">
             Chauffeurs / Add New Chauffeur
           </p>
         </h3>
@@ -137,7 +137,7 @@ export default function ChauffeurForms() {
         >
           {currentPage !== 0 ? (
             <button
-              className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[18px] leading-[21px] text-center"
+              className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage - 1)}
             >
               Back
@@ -145,16 +145,16 @@ export default function ChauffeurForms() {
           ) : null}
           {currentPage === 2 ? (
             <div className="flex justify-start items-center gap-3">
-              <button className="w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+              <button className="w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
                 Save and Close
               </button>
-              <button className="w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center">
+              <button className="w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
                 Save and New
               </button>
             </div>
           ) : (
             <button
-              className="w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[18px] leading-[21px] text-center"
+              className="w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
               Save and Continue

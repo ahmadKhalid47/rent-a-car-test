@@ -12,7 +12,7 @@ import { setSidebarShowR } from "@/app/store/Global";
 
 export default function AddChauffeur() {
   let global = useSelector((state: RootState) => state.Global);
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
     let dispatch = useDispatch();
   useEffect(() => {
     if (isMobile) {
