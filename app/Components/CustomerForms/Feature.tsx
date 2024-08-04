@@ -15,7 +15,7 @@ export default function Feature() {
   return (
     <div className="w-full h-fit  ">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[18px] xs:text-[24px] leading-[36px] text-black ">
+        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Reference 1
         </h3>
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -64,7 +64,7 @@ export default function Feature() {
         </div>{" "}
       </div>{" "}
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[18px] xs:text-[24px] leading-[36px] text-black ">
+        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Reference 2
         </h3>
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
