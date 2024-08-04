@@ -1,11 +1,6 @@
 import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
-  FaBars,
-  FaBeer,
-  FaChevronDown,
-  FaHamburger,
-  FaSquare,
 } from "react-icons/fa";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
@@ -13,6 +8,7 @@ import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
+
 export default function ListView() {
   return (
     <div className="w-full h-fit mt-4">
