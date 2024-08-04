@@ -138,6 +138,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 @media (max-width: 400px) {
   .Damage-Zooming {
-    zoom: 0.8;
+    zoom: 0.77;
   }
 }
