@@ -4,7 +4,7 @@ import car from "@/public/PaymentCar.svg";
 export default function Others() {
   return (
     <div className="w-full h-full  ">
-      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
+      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-0 xs:gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
         <img src={car.src} className="mt-2" />
         <h3 className="font-[600]text-[15px] xs:text-[24px] leading-[36px] text-black text-center w-full">
           Payment Calculation{" "}
