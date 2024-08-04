@@ -14,7 +14,7 @@ export default function Feature() {
   const [showLess, setShowLess] = useState(true);
   return (
     <div className="w-full h-fit  ">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Reference Info
         </h3>
@@ -63,7 +63,7 @@ export default function Feature() {
           </div>
         </div>{" "}
       </div>{" "}
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Emergency Info
         </h3>
@@ -101,7 +101,7 @@ export default function Feature() {
           </div>
         </div>{" "}
       </div>{" "}
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[24px] leading-[36px] text-black ">
           Additional Notes
         </h3>
