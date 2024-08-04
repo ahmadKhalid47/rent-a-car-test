@@ -130,7 +130,7 @@ export default function ReservationsForms() {
         <div className="w-full flex flex-col-reverse 1200:flex-row h-fit justify-between items-start gap-4 1200:gap-0">
           <div
             className={`w-full 1200:w-[58%] ${
-              currentPage === 2 ? "h-[650px]" : "h-[570px]"
+              currentPage === 2 ? "1200:h-[650px]" : "1200:h-[570px]"
             }`}
           >
             {currentPage === 0 ? (
@@ -145,7 +145,7 @@ export default function ReservationsForms() {
           </div>
           <div
             className={`w-full 1200:w-[40%] ${
-              currentPage === 2 ? "h-[650px]" : "h-[570px]"
+              currentPage === 2 ? "1200:h-[650px]" : "1200:h-[570px]"
             }`}
           >
             <Others />

@@ -6,7 +6,7 @@ export default function Insurances() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Reservation ID
           </label>
@@ -17,7 +17,7 @@ export default function Insurances() {
             />
           </div>
         </div>
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Reservation Date
           </label>
@@ -30,7 +30,7 @@ export default function Insurances() {
           </div>
         </div>
 
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Odometer (KMPH)
           </label>
@@ -42,7 +42,7 @@ export default function Insurances() {
           </div>
         </div>
 
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Fuel Status
           </label>
@@ -60,7 +60,7 @@ export default function Insurances() {
           </div>
         </div>
 
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Security Deposit
           </label>
@@ -72,7 +72,7 @@ export default function Insurances() {
           </div>
         </div>
 
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             City
           </label>
@@ -100,7 +100,7 @@ export default function Insurances() {
             />
           </div>
         </div>
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Pick Up Date
           </label>
@@ -112,7 +112,7 @@ export default function Insurances() {
             />
           </div>
         </div>
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Pick Up Time
           </label>
@@ -140,7 +140,7 @@ export default function Insurances() {
             />
           </div>
         </div>
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Drop Off Date
           </label>
@@ -152,7 +152,7 @@ export default function Insurances() {
             />
           </div>
         </div>
-        <div className="w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Drop Off Time
           </label>

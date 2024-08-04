@@ -6,11 +6,11 @@ export default function Feature() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
-        <div className="flex justify-between items-center w-full h-fit">
-          <div className="w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="flex justify-between flex-wrap gap-y-3 items-center w-full h-fit">
+          <div className="w-full md:w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
             <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
               Make
-            </label> 
+            </label>
             <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
               <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
                 <option value="">Suzuki</option>
@@ -24,7 +24,7 @@ export default function Feature() {
               </div>
             </div>
           </div>{" "}
-          <div className="w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <div className="w-full md:w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
             <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
               Model
             </label>
