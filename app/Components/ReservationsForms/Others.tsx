@@ -4,9 +4,9 @@ import car from "@/public/PaymentCar.svg";
 export default function Others() {
   return (
     <div className="w-full h-full  ">
-      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-8 py-8">
+      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
         <img src={car.src} className="mt-2" />
-        <h3 className="font-[600] text-[24px] leading-[36px] text-black text-center w-full">
+        <h3 className="font-[600]text-[15px] xs:text-[24px] leading-[36px] text-black text-center w-full">
           Payment Calculation{" "}
         </h3>
         <div className="w-full h-fit mt-1 rounded-[10px] border-[1px] border-grey font-[400] text-[14px] leading-[17px] pt-5 pb-3 px-4 flex flex-col justify-start items-center gap-y-3 ">
@@ -39,7 +39,7 @@ export default function Others() {
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
 
-          <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
+          <div className="w-full flex flex-wrap justify-start 1200:justify-center items-center h-fit gap-1">
             <span className="w-full text-start">Any Discount</span>
             <div className="w-[284px] h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px]">
               0.00

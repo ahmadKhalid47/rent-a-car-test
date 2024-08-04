@@ -48,7 +48,7 @@ export default function Feature() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-col bg-red-20 items-start">
             <div className="w-full flex justify-start items-center pe-5 h-fit py-[-10px] -mt-2">
-              <span className="font-[600] text-[24px] leading-[36px]">
+              <span className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Suzuki Swift{" "}
               </span>
             </div>
@@ -95,7 +95,7 @@ export default function Feature() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-col bg-red-20 items-start">
             <div className="w-full flex justify-start items-center pe-5 h-fit py-[-10px] -mt-2">
-              <span className="font-[600] text-[24px] leading-[36px]">
+              <span className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Suzuki Swift{" "}
               </span>
             </div>

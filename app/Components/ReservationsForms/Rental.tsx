@@ -56,7 +56,7 @@ export default function Rental() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600] text-[24px] leading-[36px]">
+              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function Rental() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600] text-[24px] leading-[36px]">
+              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function Rental() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600] text-[24px] leading-[36px]">
+              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function Rental() {
           </div>
           <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
             <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600] text-[24px] leading-[36px]">
+              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
