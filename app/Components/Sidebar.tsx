@@ -172,7 +172,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -203,7 +203,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -260,7 +260,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -289,7 +289,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -347,7 +347,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -376,7 +376,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -434,7 +434,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
               <button
                 onClick={() => {
@@ -463,7 +463,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -482,7 +482,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${

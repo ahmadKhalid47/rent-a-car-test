@@ -33,11 +33,11 @@ export default function Vehicles() {
         <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
           <div className="w-fit h-fit flex justify-end items-end gap-3">
             <button
-              className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
+              className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-[35px] md:h-[44px] rounded-[10px] ${
                 gridView
                   ? "bg-main-blue text-white"
                   : "bg-light-grey border-2 border-grey"
-              }  font-[500] xs:text-[12px] md:text-[12px] text-[20px] leading-[30px] text-center`}
+              }  font-[500] xs:text-[0px] md:text-[2px] text-[20px] leading-[30px] text-center`}
               onClick={() => setGridView(true)}
             >
               <GridViewRounded />
