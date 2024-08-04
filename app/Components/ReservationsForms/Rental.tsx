@@ -50,123 +50,123 @@ export default function Rental() {
           />
         </div>
 
-        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex justify-start gap-4 items-center relative">
+        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
-            <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
+          <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
+            <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">
+              <p className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
-            <div className="w-full flex justify-start items-center">
-              <p className="font-[500] text-[20px] leading-[30px]">
+            <div className="w-full flex justify-center sm:justify-start items-center">
+              <p className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
                 757-947-5015
               </p>
             </div>
-            <div className="w-full flex justify-between items-start flex-col font-[400] text-[14px] leading-[21px]">
-              <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
+            <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-5 sm:leading-[21px]">
+              <div className="flex justify-start items-center gap-2 w-fit sm:w-[40%] pe-0 sm:pe-5">
                 <p className="w-fit">City:</p>
                 <p className="w-fit">Brentwood</p>
               </div>
-              <div className="flex justify-start items-center gap-2 w-[50%]">
+              <div className="flex justify-start items-center gap-2 w-fit sm:w-[50%]">
                 <p className="w-fit">Country:</p>
                 <p className="w-fit">Australia</p>
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
+          <button className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center">
             Select
           </button>
         </div>
-        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex justify-start gap-4 items-center relative">
+        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
-            <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
+          <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
+            <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">
+              <p className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
-            <div className="w-full flex justify-start items-center">
-              <p className="font-[500] text-[20px] leading-[30px]">
+            <div className="w-full flex justify-center sm:justify-start items-center">
+              <p className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
                 757-947-5015
               </p>
             </div>
-            <div className="w-full flex justify-between items-start flex-col font-[400] text-[14px] leading-[21px]">
+            <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-5 sm:leading-[21px]">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
                 <p className="w-fit">City:</p>
                 <p className="w-fit">Brentwood</p>
               </div>
-              <div className="flex justify-start items-center gap-2 w-[50%]">
+              <div className="flex justify-start items-center gap-2 w-fit sm:w-[50%]">
                 <p className="w-fit">Country:</p>
                 <p className="w-fit">Australia</p>
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
+          <button className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center">
             Select
           </button>
         </div>
-        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex justify-start gap-4 items-center relative">
+        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
-            <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
+          <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
+            <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">
+              <p className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
-            <div className="w-full flex justify-start items-center">
-              <p className="font-[500] text-[20px] leading-[30px]">
+            <div className="w-full flex justify-center sm:justify-start items-center">
+              <p className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
                 757-947-5015
               </p>
             </div>
-            <div className="w-full flex justify-between items-start flex-col font-[400] text-[14px] leading-[21px]">
+            <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-5 sm:leading-[21px]">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
                 <p className="w-fit">City:</p>
                 <p className="w-fit">Brentwood</p>
               </div>
-              <div className="flex justify-start items-center gap-2 w-[50%]">
+              <div className="flex justify-start items-center gap-2 w-fit sm:w-[50%]">
                 <p className="w-fit">Country:</p>
                 <p className="w-fit">Australia</p>
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
+          <button className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center">
             Select
           </button>
         </div>
-        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex justify-start gap-4 items-center relative">
+        <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
           </div>
-          <div className="w-[55%] h-fit flex justify-start flex-wrap items-center gap-1">
-            <div className="w-full flex justify-start items-center pe-5 -mb-1">
-              <p className="font-[600]text-[15px] xs:text-[24px] leading-[36px]">
+          <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
+            <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">
+              <p className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
                 Glenn A. Jean
               </p>
             </div>
-            <div className="w-full flex justify-start items-center">
-              <p className="font-[500] text-[20px] leading-[30px]">
+            <div className="w-full flex justify-center sm:justify-start items-center">
+              <p className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
                 757-947-5015
               </p>
             </div>
-            <div className="w-full flex justify-between items-start flex-col font-[400] text-[14px] leading-[21px]">
+            <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-5 sm:leading-[21px]">
               <div className="flex justify-start items-center gap-2 w-[40%] pe-5">
                 <p className="w-fit">City:</p>
                 <p className="w-fit">Brentwood</p>
               </div>
-              <div className="flex justify-start items-center gap-2 w-[50%]">
+              <div className="flex justify-start items-center gap-2 w-fit sm:w-[50%]">
                 <p className="w-fit">Country:</p>
                 <p className="w-fit">Australia</p>
               </div>
             </div>
           </div>
-          <button className="w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center">
+          <button className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center">
             Select
           </button>
         </div>
