@@ -26,7 +26,7 @@ export default function ChauffeurForms() {
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
     >
-      <div className="w-[100%] bg-yellow-30 flex justify-start items-end">
+      <div className="w-[100%]  flex justify-start items-end">
         <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
           Add New Chauffeur
           <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">

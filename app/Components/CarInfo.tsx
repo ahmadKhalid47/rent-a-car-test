@@ -40,7 +40,7 @@ export default function CarInfo() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
     >
-      <div className="w-full h-[200px bg-yellow-30">
+      <div className="w-full h-[200px ">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black">
           Suzuki Swift
         </h3>
