@@ -37,7 +37,7 @@ export default function CustomerForms() {
       </div>
       <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5">
         <div className="w-full h-fit flex flex-col justify-start items-center">
-          <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[24px] leading-[36px]">
+          <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px]">
             <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
               <div
                 className={` h-full flex justify-start items-center bg-main-blue z-[0] transitions2 rounded-full`}
@@ -112,14 +112,14 @@ export default function CustomerForms() {
               Identity Information
             </div>
             <div
-              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15%] xl:w-fit h-[50px]  flex justify-center text-center items-center ${
                 currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
               Emergency Information
             </div>
             <div
-              className={`w-[15% h-[50px]  flex justify-center text-center items-center ${
+              className={`w-[15%] xl:w-fit h-[50px]  flex justify-center text-center items-center ${
                 currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
               }`}
             >
