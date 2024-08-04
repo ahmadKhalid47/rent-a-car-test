@@ -1,15 +1,9 @@
 "use client";
 import vip from "@/public/vip.svg";
 import car from "@/public/Customer.svg";
-import smallCar1 from "@/public/smallcar (1).png";
-import smallCar2 from "@/public/smallcar (2).png";
-import smallCar3 from "@/public/smallcar (3).png";
-import smallCar4 from "@/public/smallcar (4).png";
 import GeneralCustomer from "./GeneralCustomer";
 import IdentityCustomer from "./IdentityCustomer";
 import EmergencyCustomer from "./EmergencyCustomer";
-import Additional from "./Additional";
-import Other from "./Other";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import ReferenceCustomer from "./ReferenceCustomer";

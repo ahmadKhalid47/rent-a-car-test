@@ -2,7 +2,6 @@
 import CustomerInfo from "../CustomerInfo";
 import Nav from "../Nav";
 import Sidebar from "../Sidebar";
-import Vehicles from "../Vehicles";
 
 export default function CustomerInfoMainPage() {
   return (
