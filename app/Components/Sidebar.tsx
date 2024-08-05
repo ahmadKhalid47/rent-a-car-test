@@ -500,7 +500,7 @@ export default function Sidebar() {
             chevronState === "Settings" && global.sidebarShow
               ? "bg-main-blue text-white font-[500]"
               : ""
-          }`}
+          }`}   
         >
           <RiSettings4Fill
             className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
