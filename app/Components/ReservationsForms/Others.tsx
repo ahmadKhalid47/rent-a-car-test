@@ -27,10 +27,10 @@ export default function Others() {
             <span>Chauffeur</span>
             <span>$0.00</span>
           </div>
-          <div className="w-full flex justify-between items-center h-fit">
+          {/* <div className="w-full flex justify-between items-center h-fit">
             <span>VAT 24%</span>
             <span>$0.00</span>
-          </div>
+          </div> */}
           <div className="border-b-[1px] border-grey w-full "></div>
 
           <div className="w-full flex justify-between items-center h-fit">
