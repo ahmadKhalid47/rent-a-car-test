@@ -21,13 +21,7 @@ import { RiSettings4Fill } from "react-icons/ri";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let [pathName, setPathName] = useState(
-    window.location.pathname.split("/")[2]
-  );
-
-  useEffect(() => {
-    setPathName(pathName);
-  }, [pathName]);
+  let pathName = window.location.pathname;
 
   console.log(pathName);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -38,60 +32,6 @@ export default function Sidebar() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-
-  // let [vehiclesShow, setVehiclesShow] = useState(
-  //   pathName === "AddVehicles" || pathName === "Home"
-  //     ? true
-  //     : false
-  // );
-  // let [CustomerShow, setCustomerShow] = useState(
-  //   pathName === "Customers" || pathName === "AddCustomer"
-  //     ? true
-  //     : false
-  // );
-  // let [ChauffeurShow, setChauffeurShow] = useState(
-  //   pathName === "Chauffeurs" || pathName === "AddChauffeur"
-  //     ? true
-  //     : false
-  // );
-  // let [ReservationsShow, setReservationsShow] = useState(
-  //   pathName === "Reservations" ||
-  //     pathName === "AddReservations"
-  //     ? true
-  //     : false
-  // );
-
-  // useEffect(() => {
-  //   if (
-  //     pathName === "Customers" ||
-  //     pathName === "AddCustomer"
-  //   ) {
-  //     setCustomerShow(true);
-  //   } else {
-  //     setCustomerShow(false);
-  //   }
-  //   if (pathName === "Home" || pathName === "AddVehicles") {
-  //     setVehiclesShow(true);
-  //   } else {
-  //     setVehiclesShow(false);
-  //   }
-  //   if (
-  //     pathName === "Chauffeurs" ||
-  //     pathName === "AddChauffeur"
-  //   ) {
-  //     setChauffeurShow(true);
-  //   } else {
-  //     setChauffeurShow(false);
-  //   }
-  //   if (
-  //     pathName === "Reservations" ||
-  //     pathName === "AddReservations"
-  //   ) {
-  //     setReservationsShow(true);
-  //   } else {
-  //     setReservationsShow(false);
-  //   }
-  // }, [pathName]);
 
   let dispatch = useDispatch();
   const router = useRouter();
@@ -146,7 +86,9 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            pathName === "Customers" || pathName === "AddCustomer"
+            pathName === "/Components/Customers" ||
+            pathName === "/Components/CustomerInfo" ||
+            pathName === "/Components/AddCustomer"
               ? "text-main-blue"
               : ""
           } rounded-[10px]`}
@@ -160,16 +102,10 @@ export default function Sidebar() {
             {global.sidebarShow ? "Customers" : null}
           </div>
           {global.sidebarShow ? (
-            <div
-              // onClick={() => {
-              //   setCustomerShow(!CustomerShow);
-              //   setVehiclesShow(false);
-              //   setChauffeurShow(false);
-              //   setReservationsShow(false);
-              // }}
-              className="cursor-pointer"
-            >
-              {pathName === "Customers" || pathName === "AddCustomer" ? (
+            <div className="cursor-pointer">
+              {pathName === "/Components/Customers" ||
+              pathName === "/Components/CustomerInfo" ||
+              pathName === "/Components/AddCustomer" ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
                 <GoTriangleDown className="float-right me-5" />
@@ -177,7 +113,9 @@ export default function Sidebar() {
             </div>
           ) : null}
         </div>
-        {(pathName === "Customers" || pathName === "AddCustomer") &&
+        {(pathName === "/Components/Customers" ||
+          pathName === "/Components/CustomerInfo" ||
+          pathName === "/Components/AddCustomer") &&
         global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
@@ -188,15 +126,16 @@ export default function Sidebar() {
               <button
                 onClick={() => {
                   router.push("/Components/Customers");
-                  // setPathName("Customers");
                 }}
-                // href={"/Components/Home"}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "Customers" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/Customers" ||
+                  pathName === "/Components/CustomerInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Customers" : null}
@@ -205,9 +144,7 @@ export default function Sidebar() {
             <button
               onClick={() => {
                 router.push("/Components/AddCustomer");
-                // setPathName("AddCustomer");
               }}
-              // href={"/Components/AddVehicles"}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -220,7 +157,9 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "AddCustomer" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/AddCustomer"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "Add New Customer" : null}
@@ -233,7 +172,9 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            pathName === "Chauffeurs" || pathName === "AddChauffeur"
+            pathName === "/Components/Chauffeurs" ||
+            pathName === "/Components/ChauffeursInfo" ||
+            pathName === "/Components/AddChauffeur"
               ? "text-main-blue"
               : ""
           } rounded-[10px]`}
@@ -247,16 +188,10 @@ export default function Sidebar() {
             {global.sidebarShow ? "Chauffeurs" : null}
           </div>
           {global.sidebarShow ? (
-            <div
-              // onClick={() => {
-              //   setChauffeurShow(!ChauffeurShow);
-              //   setVehiclesShow(false);
-              //   setCustomerShow(false);
-              //   setReservationsShow(false);
-              // }}
-              className="cursor-pointer"
-            >
-              {pathName === "Chauffeurs" || pathName === "AddChauffeur" ? (
+            <div className="cursor-pointer">
+              {pathName === "/Components/Chauffeurs" ||
+              pathName === "/Components/ChauffeursInfo" ||
+              pathName === "/Components/AddChauffeur" ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
                 <GoTriangleDown className="float-right me-5" />
@@ -264,7 +199,9 @@ export default function Sidebar() {
             </div>
           ) : null}
         </div>
-        {(pathName === "Chauffeurs" || pathName === "AddChauffeur") &&
+        {(pathName === "/Components/Chauffeurs" ||
+          pathName === "/Components/ChauffeursInfo" ||
+          pathName === "/Components/AddChauffeur") &&
         global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
@@ -275,14 +212,16 @@ export default function Sidebar() {
               <button
                 onClick={() => {
                   router.push("/Components/Chauffeurs");
-                  // setPathName("Chauffeurs");
                 }}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "Chauffeurs" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/Chauffeurs" ||
+                  pathName === "/Components/ChauffeursInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Chauffeurs" : null}
@@ -291,7 +230,6 @@ export default function Sidebar() {
             <button
               onClick={() => {
                 router.push("/Components/AddChauffeur");
-                // setPathName("AddChauffeur");
               }}
               className="flex justify-start items-center w-full"
             >
@@ -305,7 +243,9 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "AddChauffeur" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/AddChauffeur"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "Add New Chauffeur" : null}
@@ -318,7 +258,8 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            pathName === "Reservations" || pathName === "AddReservations"
+            pathName === "/Components/Reservations" ||
+            pathName === "/Components/AddReservations"
               ? "text-main-blue"
               : ""
           } rounded-[10px]`}
@@ -333,16 +274,9 @@ export default function Sidebar() {
             {global.sidebarShow ? "Reservations" : null}
           </div>
           {global.sidebarShow ? (
-            <div
-              // onClick={() => {
-              //   setReservationsShow(!ReservationsShow);
-              //   setVehiclesShow(false);
-              //   setCustomerShow(false);
-              //   setChauffeurShow(false);
-              // }}
-              className="cursor-pointer"
-            >
-              {pathName === "Reservations" || pathName === "AddReservations" ? (
+            <div className="cursor-pointer">
+              {pathName === "/Components/Reservations" ||
+              pathName === "/Components/AddReservations" ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
                 <GoTriangleDown className="float-right me-5" />
@@ -350,7 +284,8 @@ export default function Sidebar() {
             </div>
           ) : null}
         </div>
-        {(pathName === "Reservations" || pathName === "AddReservations") &&
+        {(pathName === "/Components/Reservations" ||
+          pathName === "/Components/AddReservations") &&
         global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
@@ -361,14 +296,15 @@ export default function Sidebar() {
               <button
                 onClick={() => {
                   router.push("/Components/Reservations");
-                  // setPathName("Reservations");
                 }}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "Reservations" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/Reservations"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Reservations" : null}
@@ -377,7 +313,6 @@ export default function Sidebar() {
             <button
               onClick={() => {
                 router.push("/Components/AddReservations");
-                // setPathName("AddReservations");
               }}
               className="flex justify-start items-center w-full"
             >
@@ -391,7 +326,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "AddReservations"
+                  pathName === "/Components/AddReservations"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -406,7 +341,9 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            pathName === "Home" || pathName === "AddVehicles"
+            pathName === "/Components/Home" ||
+            pathName === "/Components/CarInfo" ||
+            pathName === "/Components/AddVehicles"
               ? "text-main-blue"
               : ""
           } rounded-[10px]`}
@@ -420,16 +357,10 @@ export default function Sidebar() {
             {global.sidebarShow ? "Vehicles" : null}
           </div>
           {global.sidebarShow ? (
-            <div
-              // onClick={() => {
-              //   setVehiclesShow(!vehiclesShow);
-              //   setCustomerShow(false);
-              //   setChauffeurShow(false);
-              //   setReservationsShow(false);
-              // }}
-              className="cursor-pointer"
-            >
-              {pathName === "Home" || pathName === "AddVehicles" ? (
+            <div className="cursor-pointer">
+              {pathName === "/Components/Home" ||
+              pathName === "/Components/CarInfo" ||
+              pathName === "/Components/AddVehicles" ? (
                 <GoTriangleUp className="float-right me-5" />
               ) : (
                 <GoTriangleDown className="float-right me-5" />
@@ -438,7 +369,9 @@ export default function Sidebar() {
           ) : null}
         </div>
 
-        {(pathName === "Home" || pathName === "AddVehicles") &&
+        {(pathName === "/Components/Home" ||
+          pathName === "/Components/CarInfo" ||
+          pathName === "/Components/AddVehicles") &&
         global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
@@ -449,15 +382,16 @@ export default function Sidebar() {
               <button
                 onClick={() => {
                   router.push("/Components/Home");
-                  // setPathName("Home");
                 }}
-                // href={"/Components/Home"}
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "Home" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/Home" ||
+                  pathName === "/Components/CarInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Vehicles" : null}
@@ -466,9 +400,7 @@ export default function Sidebar() {
             <button
               onClick={() => {
                 router.push("/Components/AddVehicles");
-                // setPathName("AddVehicles");
               }}
-              // href={"/Components/AddVehicles"}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -481,7 +413,9 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "AddVehicles" ? "bg-main-blue text-white" : ""
+                  pathName === "/Components/AddVehicles"
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "Add New Vehicle" : null}
