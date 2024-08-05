@@ -57,6 +57,8 @@ export default function Sidebar() {
       pathName === "/Components/AddReservations"
     ) {
       setChevronState("Reservations");
+    } else if (pathName === "/Components/Settings") {
+      setChevronState("Settings");
     }
   }, [pathName]);
 
@@ -517,14 +519,15 @@ export default function Sidebar() {
             {global.sidebarShow ? "Offer Generator" : null}
           </span>
         </div>
-        <div
+        <Link
+          href="/Components/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <RiSettings4Fill />
           <span className="">{global.sidebarShow ? "Settings" : null}</span>
-        </div>
+        </Link>
       </div>
     </div>
   );
