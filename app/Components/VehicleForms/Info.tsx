@@ -61,7 +61,7 @@ export default function Info() {
         image4.jpg
       </span>
       <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
+        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px] z-[100]"
         onClick={() => removingAlready(file.name)}
       >
         <FaTimesCircle />
@@ -378,7 +378,7 @@ export default function Info() {
           <span className="font-[400] text-[14px] leading-[17px]">OR</span>
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
-        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto">
+        <div  className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbsAlready}
           {thumbs}
         </div>
