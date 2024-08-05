@@ -97,7 +97,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbLayoutDashboardFilled
-            className={`${global.sidebarShow ? "" : "fixed"}`}
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
           />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
@@ -119,7 +119,7 @@ export default function Sidebar() {
             // pathName === "/Components/Customers" ||
             // pathName === "/Components/CustomerInfo" ||
             // pathName === "/Components/AddCustomer"
-            chevronState === "Customers" ? "text-main-blue" : ""
+            chevronState === "Customers" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -213,7 +213,7 @@ export default function Sidebar() {
             // pathName === "/Components/Chauffeurs" ||
             // pathName === "/Components/ChauffeursInfo" ||
             // pathName === "/Components/AddChauffeur"
-            chevronState === "Chauffeurs" ? "text-main-blue" : ""
+            chevronState === "Chauffeurs" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -306,7 +306,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white  ${
             // pathName === "/Components/Reservations" ||
             // pathName === "/Components/AddReservations"
-            chevronState === "Reservations" ? "text-main-blue" : ""
+            chevronState === "Reservations" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -398,7 +398,7 @@ export default function Sidebar() {
             // pathName === "/Components/Home" ||
             // pathName === "/Components/CarInfo" ||
             // pathName === "/Components/AddVehicles"
-            chevronState === "Vehicles" ? "text-main-blue" : ""
+            chevronState === "Vehicles" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -506,7 +506,11 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <TbTargetArrow className="ml-[1px]" />
+          <TbTargetArrow
+            className={`${
+              global.sidebarShow ? "" : "fixed"
+            } text-[24px ml-[1px]`}
+          />
           <span className="">{global.sidebarShow ? "Tracking" : null}</span>
         </div>
         <div
@@ -514,7 +518,9 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
-          <RiFileSettingsFill />
+          <RiFileSettingsFill
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
+          />
           <span className="">
             {global.sidebarShow ? "Offer Generator" : null}
           </span>
@@ -523,9 +529,15 @@ export default function Sidebar() {
           href="/Components/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
+          } bg-main-blue-hover hover:text-white rounded-[10px] ${
+            chevronState === "Settings" && global.sidebarShow
+              ? "bg-main-blue text-white font-[500]"
+              : ""
+          }`}
         >
-          <RiSettings4Fill />
+          <RiSettings4Fill
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
+          />
           <span className="">{global.sidebarShow ? "Settings" : null}</span>
         </Link>
       </div>
