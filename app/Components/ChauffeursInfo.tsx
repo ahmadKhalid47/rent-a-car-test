@@ -62,10 +62,10 @@ export default function ChauffeursInfo() {
             <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
               <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
                 Glenn A. Jean{" "}
-                <img
+                {/* <img
                   src={vip.src}
                   className="w-[44px] h-[32px] -translate-y-1"
-                />
+                /> */}
               </h3>
               <p className="font-[400] text-[28px] leading-[42px] text-black">
                 757-947-5015{" "}
