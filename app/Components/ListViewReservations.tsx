@@ -12,7 +12,7 @@ import vip from "@/public/vip.svg";
 export default function ListViewReservations() {
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey">
+      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
         <span>
           <span className="cursor-pointer">Delete Multiple</span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
@@ -20,7 +20,8 @@ export default function ListViewReservations() {
         </span>
         <span className="underline cursor-pointer">Export</span>
       </h3>
-      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey">
+      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
+
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-2 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
