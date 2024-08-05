@@ -107,6 +107,7 @@
 .calender-width {
   width: calc(100% - 120px);
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 5%;
@@ -134,6 +135,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width: 500px) {
   .Damage-Zooming {
     zoom: 0.9;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    position: relative;
   }
 }
 @media (max-width: 400px) {
