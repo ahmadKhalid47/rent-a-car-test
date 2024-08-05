@@ -116,9 +116,6 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            // pathName === "/Components/Customers" ||
-            // pathName === "/Components/CustomerInfo" ||
-            // pathName === "/Components/AddCustomer"
             chevronState === "Customers" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
@@ -133,9 +130,6 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div className="cursor-pointer">
               {
-                // pathName === "/Components/Customers" ||
-                // pathName === "/Components/CustomerInfo" ||
-                // pathName === "/Components/AddCustomer" ||
                 chevronState === "Customers" ? (
                   <GoTriangleUp
                     className="float-right me-5"
@@ -152,9 +146,6 @@ export default function Sidebar() {
           ) : null}
         </div>
         {
-          // (pathName === "/Components/Customers" ||
-          // pathName === "/Components/CustomerInfo" ||
-          //   pathName === "/Components/AddCustomer")
           chevronState === "Customers" && global.sidebarShow ? (
             <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
               <div className="flex justify-start items-center w-full">
@@ -210,9 +201,6 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            // pathName === "/Components/Chauffeurs" ||
-            // pathName === "/Components/ChauffeursInfo" ||
-            // pathName === "/Components/AddChauffeur"
             chevronState === "Chauffeurs" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
@@ -227,9 +215,6 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div className="cursor-pointer">
               {
-                //   pathName === "/Components/Chauffeurs" ||
-                // pathName === "/Components/ChauffeursInfo" ||
-                //   pathName === "/Components/AddChauffeur"
                 chevronState === "Chauffeurs" ? (
                   <GoTriangleUp
                     className="float-right me-5"
@@ -246,9 +231,6 @@ export default function Sidebar() {
           ) : null}
         </div>
         {
-          // (pathName === "/Components/Chauffeurs" ||
-          // pathName === "/Components/ChauffeursInfo" ||
-          // pathName === "/Components/AddChauffeur")
           chevronState === "Chauffeurs" && global.sidebarShow ? (
             <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
               <div className="flex justify-start items-center w-full">
@@ -304,8 +286,6 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            // pathName === "/Components/Reservations" ||
-            // pathName === "/Components/AddReservations"
             chevronState === "Reservations" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
@@ -321,8 +301,6 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div className="cursor-pointer">
               {
-                // pathName === "/Components/Reservations" ||
-                //   pathName === "/Components/AddReservations"
                 chevronState === "Reservations" ? (
                   <GoTriangleUp
                     className="float-right me-5"
@@ -339,8 +317,6 @@ export default function Sidebar() {
           ) : null}
         </div>
         {
-          // (pathName === "/Components/Reservations" ||
-          //   pathName === "/Components/AddReservations")
           chevronState === "Reservations" && global.sidebarShow ? (
             <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
               <div className="flex justify-start items-center w-full">
@@ -395,9 +371,6 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            // pathName === "/Components/Home" ||
-            // pathName === "/Components/CarInfo" ||
-            // pathName === "/Components/AddVehicles"
             chevronState === "Vehicles" ? "text-main-blue font-[600] hover:font-[500]" : ""
           } rounded-[10px]`}
         >
@@ -412,9 +385,6 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div className="cursor-pointer">
               {
-                //   pathName === "/Components/Home" ||
-                // pathName === "/Components/CarInfo" ||
-                //     pathName === "/Components/AddVehicles"
                 chevronState === "Vehicles" ? (
                   <GoTriangleUp
                     className="float-right me-5"
@@ -432,9 +402,6 @@ export default function Sidebar() {
         </div>
 
         {
-          // (pathName === "/Components/Home" ||
-          // pathName === "/Components/CarInfo" ||
-          //   pathName === "/Components/AddVehicles")
           chevronState === "Vehicles" && global.sidebarShow ? (
             <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
               <div className="flex justify-start items-center w-full">
