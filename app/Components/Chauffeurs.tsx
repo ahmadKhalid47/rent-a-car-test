@@ -25,9 +25,9 @@ export default function Chauffeur() {
     >
       <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
         <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
-          All Chauffeur
+          All Chauffeurs
           <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-            Chauffeur / All Chauffeur
+            Chauffeurs / All Chauffeurs
           </p>
         </h3>
         <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
