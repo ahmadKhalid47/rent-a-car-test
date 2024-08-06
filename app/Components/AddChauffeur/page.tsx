@@ -22,10 +22,10 @@ export default function AddChauffeur() {
     }
   }, [isMobile]);
   return (
-    <div className="w-full">
-      <div className="flex justify-start items-start relative flex-wrap">
-        <Sidebar />
-        <Nav />
+    // <div className="w-full">
+    //   <div className="flex justify-start items-start relative flex-wrap">
+    //     <Sidebar />
+    //     <Nav />
         <div
           className={`${
             global.sidebarShow ? "nav-width" : "nav-closed-width"
@@ -33,7 +33,7 @@ export default function AddChauffeur() {
         >
           <ChauffeurForms />
         </div>
-      </div>
-    </div>
+    //   {/* </div>
+    // </div> */}
   );
 }

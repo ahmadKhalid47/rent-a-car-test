@@ -10,12 +10,14 @@ import { GridViewRounded } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
+import { useRouter } from "next/navigation";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
   let dispatch = useDispatch();
+  const router = useRouter();
   useEffect(() => {
     dispatch(setFieldNameR("Home"));
   }, []);
@@ -53,7 +55,13 @@ export default function Vehicles() {
               {!gridView ? <img src={list.src} /> : <img src={listBlack.src} />}
             </button>
           </div>
-          <button className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
+          <button
+            className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            onClick={() => {
+              router.push("/Components/AddVehicles");
+              dispatch(setFieldNameR("AddReservations"));
+            }}
+          >
             Add New Vehicle
           </button>
         </div>

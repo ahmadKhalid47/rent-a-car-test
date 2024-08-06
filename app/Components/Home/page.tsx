@@ -21,10 +21,10 @@ export default function Home() {
     }
   }, [isMobile]);
   return (
-    <div className="w-full">
-      <div className="flex justify-start items-start relative flex-wrap">
-        <Sidebar />
-        <Nav />
+    // <div className="w-full">
+    //   <div className="flex justify-start items-start relative flex-wrap">
+    //     <Sidebar />
+    //     <Nav />
         <div
           className={`${
             global.sidebarShow ? "nav-width" : "nav-closed-width"
@@ -32,7 +32,7 @@ export default function Home() {
         >
           <Vehicles />
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   );
 }

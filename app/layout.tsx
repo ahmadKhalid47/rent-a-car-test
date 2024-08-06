@@ -6,7 +6,9 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-// import { RootState } from "../store";
+import { RootState } from "./store";
+import Sidebar from "./Components/Sidebar";
+import Nav from "./Components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,24 +18,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  // const [verified, setVerified] = useState("false");
-  // let verified = useSelector((state: RootState) => state.Global.sidebarShow);
-  let verified = true;
+  let [verified, setVerified] = useState(true);
   console.log(verified);
   useEffect(() => {
     if (!verified) {
-      router.push("/login");
+      router.push("/");
     }
   }, [verified, router]);
+  let pathName =
+    typeof window !== "undefined" ? window.location.pathname : null;
+  console.log(pathName)
   return (
     <StoreProvider>
-      <Head>
-        <title>Dashboard</title>
-        <meta name="Rent A Car" content="Rent A Car" />
-      </Head>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
+      <>
+        <Head>
+          <title>Dashboard</title>
+          <meta name="Rent A Car" content="Rent A Car" />
+        </Head>
+        <html lang="en">
+          <body className="w-full">
+            <main
+              className={`${
+                pathName !== "/"
+                  ? "flex justify-start items-start relative flex-wrap"
+                  : ""
+              }`}
+            >
+              {pathName !== "/" ? (
+                <>
+                  <Sidebar />
+                  <Nav />
+                </>
+              ) : null}
+
+              <main className={inter.className}>{children}</main>
+            </main>
+          </body>
+        </html>
+      </>
     </StoreProvider>
   );
 }
