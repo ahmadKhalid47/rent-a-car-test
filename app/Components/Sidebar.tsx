@@ -114,13 +114,16 @@ export default function Sidebar() {
         </div>
 
         <div
-          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Customers"
               ? "text-main-blue font-[600] hover:font-[500]"
               : ""
           } rounded-[10px]`}
+          onClick={() =>
+            setChevronState(chevronState === "Customers" ? "" : "Customers")
+          }
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUsers
@@ -135,12 +138,12 @@ export default function Sidebar() {
               {chevronState === "Customers" ? (
                 <GoTriangleUp
                   className="float-right me-5"
-                  onClick={() => setChevronState("")}
+                  // onClick={() => setChevronState("")}
                 />
               ) : (
                 <GoTriangleDown
                   className="float-right me-5"
-                  onClick={() => setChevronState("Customers")}
+                  // onClick={() => setChevronState("Customers")}
                 />
               )}
             </div>
@@ -169,10 +172,12 @@ export default function Sidebar() {
                 {global.sidebarShow ? "All Customers" : null}
               </Link>{" "}
             </div>
-            <button
-              onClick={() => {
-                router.push("/Components/AddCustomer");
-              }}
+            <Link
+              // onClick={() => {
+              //   router.push(
+              href="/Components/AddCustomer"
+              //   );
+              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -192,18 +197,21 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Add New Customer" : null}
               </div>{" "}
-            </button>
+            </Link>
           </div>
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Chauffeurs"
               ? "text-main-blue font-[600] hover:font-[500]"
               : ""
           } rounded-[10px]`}
+          onClick={() =>
+            setChevronState(chevronState === "Chauffeurs" ? "" : "Chauffeurs")
+          }
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUserTie
@@ -252,10 +260,12 @@ export default function Sidebar() {
                 {global.sidebarShow ? "All Chauffeurs" : null}
               </Link>{" "}
             </div>
-            <button
-              onClick={() => {
-                router.push("/Components/AddChauffeur");
-              }}
+            <Link
+              // onClick={() => {
+              // router.push(
+              href="/Components/AddChauffeur"
+              // );
+              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -275,18 +285,23 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Add New Chauffeur" : null}
               </div>{" "}
-            </button>
+            </Link>
           </div>
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Reservations"
               ? "text-main-blue font-[600] hover:font-[500]"
               : ""
           } rounded-[10px]`}
+          onClick={() =>
+            setChevronState(
+              chevronState === "Reservations" ? "" : "Reservations"
+            )
+          }
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaListCheck
@@ -335,10 +350,12 @@ export default function Sidebar() {
                 {global.sidebarShow ? "All Reservations" : null}
               </Link>{" "}
             </div>
-            <button
-              onClick={() => {
-                router.push("/Components/AddReservations");
-              }}
+            <Link
+              // onClick={() => {
+              // router.push(
+              href="/Components/AddReservations"
+              // );
+              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -358,18 +375,21 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Add Reservations" : null}
               </div>{" "}
-            </button>
+            </Link>
           </div>
         ) : null}
 
         <div
-          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
+          className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Vehicles"
               ? "text-main-blue font-[600] hover:font-[500]"
               : ""
           } rounded-[10px]`}
+          onClick={() =>
+            setChevronState(chevronState === "Vehicles" ? "" : "Vehicles")
+          }
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar
@@ -419,10 +439,12 @@ export default function Sidebar() {
                 {global.sidebarShow ? "All Vehicles" : null}
               </Link>{" "}
             </div>
-            <button
-              onClick={() => {
-                router.push("/Components/AddVehicles");
-              }}
+            <Link
+              // onClick={() => {
+              //   router.push(
+              href="/Components/AddVehicles"
+              //   );
+              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -442,7 +464,7 @@ export default function Sidebar() {
               >
                 {global.sidebarShow ? "Add New Vehicle" : null}
               </div>{" "}
-            </button>
+            </Link>
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
