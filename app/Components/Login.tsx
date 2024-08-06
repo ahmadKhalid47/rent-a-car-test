@@ -2,54 +2,28 @@
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import car from "@/public/Layer_1 (1).svg";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { formValidation } from "@/app/registration/formValidation";
 import axios from "axios";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
-  const [username, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [loginError, setLoginError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formDataObj: { [key: string]: string } = {};
+    formData.forEach((value, key) => {
+      formDataObj[key] = value.toString();
+    });
 
-  const loginSubmit = async () => {
-    // const formData = {
-    //   username,
-    //   password,
-    // };
     try {
-      // setLoading(true);
-      // await formValidation.validate(formData, { abortEarly: false });
-      let result = await axios.post(`/api/login`, {
-        username,
-        password,
-      });
-      console.log(result)
-      // setPasswordError(""), setUsernameError("");
+      let result = await axios.post(`/api/login`, formDataObj);
+      console.log(result);
     } catch (error: any) {
-      console.log(error)
-      // error.inner
-      //   ? error.inner[0].path === "username"
-      //     ? (setUsernameError(error.inner[0].message), setPasswordError(""))
-      //     : (setPasswordError(error.inner[0].message), setUsernameError(""))
-      //   : (setPasswordError(""), setUsernameError(""));
-    } finally {
-      // setLoading(false);
+      console.log(error);
     }
   };
-
-  function clickOnEnterPress(e: any) {
-    e.key === "Enter" ? loginSubmit() : null;
-  }
-
 
   return (
     <>
@@ -81,14 +55,20 @@ export default function Login() {
 
         <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full bg-white flex justify-center items-center">
           <div className="w-full flex justify-center items-center">
-            <div className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]">
+            <form
+              onSubmit={loginSubmit}
+              className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
+            >
               <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
                 <h3 className="font-[400]">Email or Username</h3>
                 <input
                   className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
                   type="text"
+                  name="username"
                   placeholder="Email or Username"
-                  onKeyUp={clickOnEnterPress}
+                  minLength={6}
+                  maxLength={30}
+                  required
                 />
               </div>
               <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
@@ -98,7 +78,10 @@ export default function Login() {
                     className="w-full h-[59px] ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
                     placeholder="Password"
                     type={!showPassword ? "Password" : "text"}
-                    onKeyUp={clickOnEnterPress}
+                    name="password"
+                    minLength={6}
+                    maxLength={30}
+                    required
                   />
                   {!showPassword ? (
                     <FaEyeSlash
@@ -117,13 +100,12 @@ export default function Login() {
                 </p>
               </div>
               <button
+                type="submit"
                 className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
-                // href={"Components/Home"}
-                onClick={loginSubmit}
               >
                 Login
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

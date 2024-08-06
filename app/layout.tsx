@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(true);
   const [pathName, setPathName] = useState("");
 
   useEffect(() => {
