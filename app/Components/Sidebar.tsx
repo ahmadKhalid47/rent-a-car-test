@@ -21,7 +21,8 @@ import { RiSettings4Fill } from "react-icons/ri";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let pathName = window.location.pathname;
+  let pathName =
+    typeof window !== "undefined" ? window.location.pathname : null;
   let [chevronState, setChevronState] = useState("");
   // console.log(pathName);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -116,7 +117,9 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Customers" ? "text-main-blue font-[600] hover:font-[500]" : ""
+            chevronState === "Customers"
+              ? "text-main-blue font-[600] hover:font-[500]"
+              : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -129,79 +132,77 @@ export default function Sidebar() {
           </div>
           {global.sidebarShow ? (
             <div className="cursor-pointer">
-              {
-                chevronState === "Customers" ? (
-                  <GoTriangleUp
-                    className="float-right me-5"
-                    onClick={() => setChevronState("")}
-                  />
-                ) : (
-                  <GoTriangleDown
-                    className="float-right me-5"
-                    onClick={() => setChevronState("Customers")}
-                  />
-                )
-              }
+              {chevronState === "Customers" ? (
+                <GoTriangleUp
+                  className="float-right me-5"
+                  onClick={() => setChevronState("")}
+                />
+              ) : (
+                <GoTriangleDown
+                  className="float-right me-5"
+                  onClick={() => setChevronState("Customers")}
+                />
+              )}
             </div>
           ) : null}
         </div>
-        {
-          chevronState === "Customers" && global.sidebarShow ? (
-            <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
-              <div className="flex justify-start items-center w-full">
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
-                </div>
-                <Link
-                  href="/Components/Customers"
-                  className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover ${
-                    pathName === "/Components/Customers" ||
-                    pathName === "/Components/CustomerInfo"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "All Customers" : null}
-                </Link>{" "}
+        {chevronState === "Customers" && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
-              <button
-                onClick={() => {
-                  router.push("/Components/AddCustomer");
-                }}
-                className="flex justify-start items-center w-full"
+              <Link
+                href="/Components/Customers"
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  pathName === "/Components/Customers" ||
+                  pathName === "/Components/CustomerInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
               >
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
-                </div>
-                <div
-                  className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover  ${
-                    pathName === "/Components/AddCustomer"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "Add New Customer" : null}
-                </div>{" "}
-              </button>
+                {global.sidebarShow ? "All Customers" : null}
+              </Link>{" "}
             </div>
-          ) : null
-        }
+            <button
+              onClick={() => {
+                router.push("/Components/AddCustomer");
+              }}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  pathName === "/Components/AddCustomer"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add New Customer" : null}
+              </div>{" "}
+            </button>
+          </div>
+        ) : null}
 
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Chauffeurs" ? "text-main-blue font-[600] hover:font-[500]" : ""
+            chevronState === "Chauffeurs"
+              ? "text-main-blue font-[600] hover:font-[500]"
+              : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -214,79 +215,77 @@ export default function Sidebar() {
           </div>
           {global.sidebarShow ? (
             <div className="cursor-pointer">
-              {
-                chevronState === "Chauffeurs" ? (
-                  <GoTriangleUp
-                    className="float-right me-5"
-                    onClick={() => setChevronState("")}
-                  />
-                ) : (
-                  <GoTriangleDown
-                    className="float-right me-5"
-                    onClick={() => setChevronState("Chauffeurs")}
-                  />
-                )
-              }
+              {chevronState === "Chauffeurs" ? (
+                <GoTriangleUp
+                  className="float-right me-5"
+                  onClick={() => setChevronState("")}
+                />
+              ) : (
+                <GoTriangleDown
+                  className="float-right me-5"
+                  onClick={() => setChevronState("Chauffeurs")}
+                />
+              )}
             </div>
           ) : null}
         </div>
-        {
-          chevronState === "Chauffeurs" && global.sidebarShow ? (
-            <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
-              <div className="flex justify-start items-center w-full">
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
-                </div>
-                <Link
-                  href="/Components/Chauffeurs"
-                  className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover ${
-                    pathName === "/Components/Chauffeurs" ||
-                    pathName === "/Components/ChauffeursInfo"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "All Chauffeurs" : null}
-                </Link>{" "}
+        {chevronState === "Chauffeurs" && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
-              <button
-                onClick={() => {
-                  router.push("/Components/AddChauffeur");
-                }}
-                className="flex justify-start items-center w-full"
+              <Link
+                href="/Components/Chauffeurs"
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  pathName === "/Components/Chauffeurs" ||
+                  pathName === "/Components/ChauffeursInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
               >
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
-                </div>
-                <div
-                  className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover  ${
-                    pathName === "/Components/AddChauffeur"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "Add New Chauffeur" : null}
-                </div>{" "}
-              </button>
+                {global.sidebarShow ? "All Chauffeurs" : null}
+              </Link>{" "}
             </div>
-          ) : null
-        }
+            <button
+              onClick={() => {
+                router.push("/Components/AddChauffeur");
+              }}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  pathName === "/Components/AddChauffeur"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add New Chauffeur" : null}
+              </div>{" "}
+            </button>
+          </div>
+        ) : null}
 
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Reservations" ? "text-main-blue font-[600] hover:font-[500]" : ""
+            chevronState === "Reservations"
+              ? "text-main-blue font-[600] hover:font-[500]"
+              : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -300,78 +299,76 @@ export default function Sidebar() {
           </div>
           {global.sidebarShow ? (
             <div className="cursor-pointer">
-              {
-                chevronState === "Reservations" ? (
-                  <GoTriangleUp
-                    className="float-right me-5"
-                    onClick={() => setChevronState("")}
-                  />
-                ) : (
-                  <GoTriangleDown
-                    className="float-right me-5"
-                    onClick={() => setChevronState("Reservations")}
-                  />
-                )
-              }
+              {chevronState === "Reservations" ? (
+                <GoTriangleUp
+                  className="float-right me-5"
+                  onClick={() => setChevronState("")}
+                />
+              ) : (
+                <GoTriangleDown
+                  className="float-right me-5"
+                  onClick={() => setChevronState("Reservations")}
+                />
+              )}
             </div>
           ) : null}
         </div>
-        {
-          chevronState === "Reservations" && global.sidebarShow ? (
-            <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
-              <div className="flex justify-start items-center w-full">
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
-                </div>
-                <Link
-                  href="/Components/Reservations"
-                  className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover ${
-                    pathName === "/Components/Reservations"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "All Reservations" : null}
-                </Link>{" "}
+        {chevronState === "Reservations" && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
-              <button
-                onClick={() => {
-                  router.push("/Components/AddReservations");
-                }}
-                className="flex justify-start items-center w-full"
+              <Link
+                href="/Components/Reservations"
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  pathName === "/Components/Reservations"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
               >
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
-                </div>
-                <div
-                  className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover  ${
-                    pathName === "/Components/AddReservations"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "Add Reservations" : null}
-                </div>{" "}
-              </button>
+                {global.sidebarShow ? "All Reservations" : null}
+              </Link>{" "}
             </div>
-          ) : null
-        }
+            <button
+              onClick={() => {
+                router.push("/Components/AddReservations");
+              }}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  pathName === "/Components/AddReservations"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add Reservations" : null}
+              </div>{" "}
+            </button>
+          </div>
+        ) : null}
 
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Vehicles" ? "text-main-blue font-[600] hover:font-[500]" : ""
+            chevronState === "Vehicles"
+              ? "text-main-blue font-[600] hover:font-[500]"
+              : ""
           } rounded-[10px]`}
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
@@ -384,89 +381,85 @@ export default function Sidebar() {
           </div>
           {global.sidebarShow ? (
             <div className="cursor-pointer">
-              {
-                chevronState === "Vehicles" ? (
-                  <GoTriangleUp
-                    className="float-right me-5"
-                    onClick={() => setChevronState("")}
-                  />
-                ) : (
-                  <GoTriangleDown
-                    className="float-right me-5"
-                    onClick={() => setChevronState("Vehicles")}
-                  />
-                )
-              }
+              {chevronState === "Vehicles" ? (
+                <GoTriangleUp
+                  className="float-right me-5"
+                  onClick={() => setChevronState("")}
+                />
+              ) : (
+                <GoTriangleDown
+                  className="float-right me-5"
+                  onClick={() => setChevronState("Vehicles")}
+                />
+              )}
             </div>
           ) : null}
         </div>
 
-        {
-          chevronState === "Vehicles" && global.sidebarShow ? (
-            <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
-              <div className="flex justify-start items-center w-full">
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
-                </div>
-                <Link
-                  href="/Components/Home"
-                  className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover ${
-                    pathName === "/Components/Home" ||
-                    pathName === "/Components/CarInfo"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "All Vehicles" : null}
-                </Link>{" "}
+        {chevronState === "Vehicles" && global.sidebarShow ? (
+          <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
               </div>
-              <button
-                onClick={() => {
-                  router.push("/Components/AddVehicles");
-                }}
-                className="flex justify-start items-center w-full"
+              <Link
+                href="/Components/Home"
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover ${
+                  pathName === "/Components/Home" ||
+                  pathName === "/Components/CarInfo"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
               >
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
-                </div>
-                <div
-                  className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover  ${
-                    pathName === "/Components/AddVehicles"
-                      ? "bg-main-blue text-white"
-                      : ""
-                  } hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "Add New Vehicle" : null}
-                </div>{" "}
-              </button>
-              <div className="flex justify-start items-center w-full">
-                <div className="relative w-[20%] h-full">
-                  <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                  <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
-                </div>
-                <div
-                  className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                    global.sidebarShow
-                      ? "justify-start ps-5"
-                      : "justify-center px-0"
-                  } bg-main-blue-hover hover:text-white rounded-[10px]`}
-                >
-                  {global.sidebarShow ? "Configuration" : null}
-                </div>{" "}
-              </div>
+                {global.sidebarShow ? "All Vehicles" : null}
+              </Link>{" "}
             </div>
-          ) : null
-        }
+            <button
+              onClick={() => {
+                router.push("/Components/AddVehicles");
+              }}
+              className="flex justify-start items-center w-full"
+            >
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover  ${
+                  pathName === "/Components/AddVehicles"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Add New Vehicle" : null}
+              </div>{" "}
+            </button>
+            <div className="flex justify-start items-center w-full">
+              <div className="relative w-[20%] h-full">
+                <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+              </div>
+              <div
+                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                  global.sidebarShow
+                    ? "justify-start ps-5"
+                    : "justify-center px-0"
+                } bg-main-blue-hover hover:text-white rounded-[10px]`}
+              >
+                {global.sidebarShow ? "Configuration" : null}
+              </div>{" "}
+            </div>
+          </div>
+        ) : null}
 
         <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -500,7 +493,7 @@ export default function Sidebar() {
             chevronState === "Settings" && global.sidebarShow
               ? "bg-main-blue text-white font-[500]"
               : ""
-          }`}   
+          }`}
         >
           <RiSettings4Fill
             className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
