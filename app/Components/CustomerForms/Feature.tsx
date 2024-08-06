@@ -14,7 +14,7 @@ export default function Feature() {
   const [showLess, setShowLess] = useState(true);
   return (
     <div className="w-full h-fit  ">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Reference 1
         </h3>
@@ -55,15 +55,27 @@ export default function Feature() {
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Relation
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+          {/* <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
               value={"Mother"}
               className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
-          </div>
+          </div> */}
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+              <option value="">Select</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>{" "}
         </div>{" "}
       </div>{" "}
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Reference 2
         </h3>
@@ -105,11 +117,23 @@ export default function Feature() {
             Relation
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+              <option value="">Select</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+              <option value="">Sedan</option>
+            </select>
+            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+              <img src={shape.src} className="w-[10.5px]" />
+            </div>
+          </div>{" "}
+          {/* <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <input
               value={"Mother"}
               className="pe- font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
             />
-          </div>
+          </div> */}
         </div>{" "}
       </div>{" "}
     </div>
