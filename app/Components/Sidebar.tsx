@@ -89,8 +89,8 @@ export default function Sidebar() {
       </div>
       <div
         className={`w-full h-[calc(100vh-90px)] overflow-auto pt-7 ${
-          global.sidebarShow ? "px-3 sm:px-6" : "px-8"
-        } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions`}
+          global.sidebarShow ? "px-3 sm:px-3" : "px-8"
+        } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions bg-red-40`}
       >
         <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -98,7 +98,7 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <TbLayoutDashboardFilled
-            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
           />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
@@ -108,7 +108,9 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <MdCalendarMonth
-            className={`${global.sidebarShow ? "ml-[0px]" : "ml-[-1px fixed"}`}
+            className={`${
+              global.sidebarShow ? "ml-[0px]" : "ml-[-1px fixed"
+            } text-[24px]`}
           />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
         </div>
@@ -128,8 +130,8 @@ export default function Sidebar() {
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUsers
               className={`${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
-              } text-[16px]`}
+                global.sidebarShow ? "ml-[1px]" : "ml-[-11px] fixed"
+              } text-[22px]`}
             />
             {global.sidebarShow ? "Customers" : null}
           </div>
@@ -154,7 +156,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
                 href="/Components/Customers"
@@ -182,7 +184,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -216,8 +218,8 @@ export default function Sidebar() {
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaUserTie
               className={`text-[16px] ${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
-              }`}
+                global.sidebarShow ? "ml-[2px]" : "ml-[-11px] fixed"
+              } text-[20px]`}
             />
             {global.sidebarShow ? "Chauffeurs" : null}
           </div>
@@ -242,7 +244,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
                 href="/Components/Chauffeurs"
@@ -270,7 +272,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -305,8 +307,8 @@ export default function Sidebar() {
         >
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaListCheck
-              className={`text-[16px] ${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
+              className={`text-[20px] ${
+                global.sidebarShow ? "ml-[1.7px]" : "ml-[-11px] fixed"
               }`}
             />
 
@@ -333,7 +335,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
                 href="/Components/Reservations"
@@ -360,7 +362,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -373,7 +375,7 @@ export default function Sidebar() {
                     : ""
                 } hover:text-white rounded-[10px]`}
               >
-                {global.sidebarShow ? "Add Reservations" : null}
+                {global.sidebarShow ? "Add New Reservations" : null}
               </div>{" "}
             </Link>
           </div>
@@ -394,8 +396,8 @@ export default function Sidebar() {
           <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
             <FaCar
               className={`${
-                global.sidebarShow ? "ml-[1px]" : "ml-[-9px] fixed"
-              }`}
+                global.sidebarShow ? "ml-[1px]" : "ml-[-12px] fixed"
+              } text-[22px]`}
             />
             {global.sidebarShow ? "Vehicles" : null}
           </div>
@@ -421,7 +423,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[27px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
                 href="/Components/Home"
@@ -449,7 +451,7 @@ export default function Sidebar() {
             >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -468,7 +470,7 @@ export default function Sidebar() {
             <div className="flex justify-start items-center w-full">
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[50.2%] rounded-full top-[22.5px]"></div>
+                <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <div
                 className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -482,26 +484,13 @@ export default function Sidebar() {
             </div>
           </div>
         ) : null}
-
-        <div
-          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
-        >
-          <TbTargetArrow
-            className={`${
-              global.sidebarShow ? "" : "fixed"
-            } text-[24px ml-[1px]`}
-          />
-          <span className="">{global.sidebarShow ? "Tracking" : null}</span>
-        </div>
         <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
         >
           <RiFileSettingsFill
-            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
           />
           <span className="">
             {global.sidebarShow ? "Offer Generator" : null}
@@ -518,7 +507,7 @@ export default function Sidebar() {
           }`}
         >
           <RiSettings4Fill
-            className={`${global.sidebarShow ? "" : "fixed"} text-[24px`}
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
           />
           <span className="">{global.sidebarShow ? "Settings" : null}</span>
         </Link>
