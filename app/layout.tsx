@@ -4,9 +4,7 @@ import "./globals.css";
 import StoreProvider from "@/app/store/StoreProvider";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { RootState } from "./store";
 import Sidebar from "./Components/Sidebar";
 import Nav from "./Components/Nav";
 
@@ -18,16 +16,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  let [verified, setVerified] = useState(true);
-  console.log(verified);
+  const [verified, setVerified] = useState(false);
+  const [pathName, setPathName] = useState("");
+
   useEffect(() => {
     if (!verified) {
       router.push("/");
     }
   }, [verified, router]);
-  let pathName =
-    typeof window !== "undefined" ? window.location.pathname : null;
-  console.log(pathName)
+  // let pathName =
+  //   typeof window !== "undefined" ? window.location.pathname : null;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setPathName(window.location.pathname);
+    }
+  }, [pathName]);
+
   return (
     <StoreProvider>
       <>
@@ -39,19 +43,18 @@ export default function RootLayout({
           <body className="w-full">
             <main
               className={`${
-                pathName !== "/"
+                pathName && pathName !== "/" && verified
                   ? "flex justify-start items-start relative flex-wrap"
                   : ""
               }`}
             >
-              {pathName !== "/" ? (
+              {pathName && pathName !== "/" && verified ? (
                 <>
                   <Sidebar />
                   <Nav />
                 </>
               ) : null}
-
-              <main className={inter.className}>{children}</main>
+              <section className={inter.className}>{children}</section>
             </main>
           </body>
         </html>
