@@ -4,18 +4,29 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    // let { username, password } = await req.json();
-    // let userData = { username, password };
-    let userData = await req.json();
-    console.log(userData);
+    let { username, password } = await req.json();
     connectDb();
-    let loginData = await RegistrationModel.find();
+    let loginData = await RegistrationModel.findOne({
+      $or: [{ username: username }, { email: username }],
+    });
     console.log(loginData);
-    return NextResponse.json({ error: "User not found" });
+    if (!loginData) {
+      return NextResponse.json({
+        error: "User Not Found",
+      });
+    } else {
+      if (loginData.password !== password) {
+        return NextResponse.json({
+          error: "Incorrect Password",
+        });
+      } else {
+        return NextResponse.json({ error: null });
+      }
+    }
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
-      error: "can't process your request at the moment",
+      error: "Can't Process Your Request At The Moment",
     });
   }
 }

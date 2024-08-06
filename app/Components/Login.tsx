@@ -5,9 +5,11 @@ import car from "@/public/Layer_1 (1).svg";
 import { FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { Alert, Snackbar, SnackbarContent } from "@mui/material";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showError, setShowError] = useState(null);
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,10 +18,10 @@ export default function Login() {
     formData.forEach((value, key) => {
       formDataObj[key] = value.toString();
     });
-
     try {
-      let result = await axios.post(`/api/login`, formDataObj);
-      console.log(result);
+      let result: any = await axios.post(`/api/login`, formDataObj);
+      console.log(result?.data?.error);
+      setShowError(result?.data?.error);
     } catch (error: any) {
       console.log(error);
     }
@@ -27,6 +29,15 @@ export default function Login() {
 
   return (
     <>
+      {showError ? (
+        <Alert
+          variant="filled"
+          severity="error"
+          className="absolute w-[200px] z-[100] top-2 right-2 fade-ou"
+        >
+          {showError}
+        </Alert>
+      ) : null}
       <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">
         <div className="w-full lg:w-[50%] h-[40%] sm:h-[50%] lg:h-full flex justify-center items-center bg-main-blue relative">
           <img

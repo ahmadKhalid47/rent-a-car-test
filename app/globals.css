@@ -146,3 +146,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     zoom: 0.77;
   }
 }
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 5s forwards; /* Fades out over 5 seconds */
+}

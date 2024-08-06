@@ -5,7 +5,7 @@ const RegistrationSchema = mongoose.Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
   admin: { type: Boolean, required: false },
-  others: { type: Boolean, required: false },
+  others: { type: Object, required: false },
 });
 const RegistrationModel =
   mongoose.models.Registration ||
