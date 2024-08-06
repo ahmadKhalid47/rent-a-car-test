@@ -119,9 +119,9 @@ export default function Rental() {
           </h4>
         </div>
         <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
-          Here you can Upload driving license scans
+          Here you can Upload Passport / ID scans
         </span>
-        <div  className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbs}
         </div>
       </div>
@@ -181,7 +181,7 @@ export default function Rental() {
         <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
           Here you can Upload driving license scans
         </span>
-        <div  className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbs}
         </div>
       </div>
