@@ -6,8 +6,8 @@ export function setTokenToCookies(userData) {
   const token = jwt.sign(userData, securityKey, { expiresIn: "1h" });
 
   const cookie = serialize("authToken", token, {
-    maxAge: 3600,
-    expires: new Date(Date.now() + 3600 * 1000),
+    maxAge: 7200,
+    expires: new Date(Date.now() + 7200 * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",

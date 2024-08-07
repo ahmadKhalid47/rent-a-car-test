@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "./Components/Sidebar";
 import Nav from "./Components/Nav";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,22 +17,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const [verified, setVerified] = useState(true);
+  const [isVerified, setIsVerified] = useState<any>(undefined);
   const [pathName, setPathName] = useState("");
 
   useEffect(() => {
-    if (!verified) {
+    if (isVerified===false) {
       router.push("/");
     }
-  }, [verified, router]);
-  // let pathName =
-  //   typeof window !== "undefined" ? window.location.pathname : null;
+  }, [isVerified, router]);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setPathName(window.location.pathname);
     }
   }, [pathName]);
-
+  useEffect(() => {
+    async function verifyTokenApi() {
+      try {
+        await axios.get("/api/verifyToken");
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      }
+    }
+    verifyTokenApi();
+  }, []);
+  console.log(isVerified);
   return (
     <StoreProvider>
       <>
@@ -43,12 +53,12 @@ export default function RootLayout({
           <body className="w-full">
             <main
               className={`${
-                pathName && pathName !== "/" && verified
+                pathName && pathName !== "/" && isVerified
                   ? "flex justify-start items-start relative flex-wrap"
                   : ""
               }`}
             >
-              {pathName && pathName !== "/" && verified ? (
+              {pathName && pathName !== "/" && isVerified ? (
                 <>
                   <Sidebar />
                   <Nav />

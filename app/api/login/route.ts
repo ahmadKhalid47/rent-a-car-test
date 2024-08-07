@@ -1,6 +1,8 @@
 import connectDb from "@/app/models/connectDb";
 import RegistrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+import { setTokenToCookies } from "@/app/registration/auth";
 
 export async function POST(req: Request) {
   try {
@@ -20,7 +22,11 @@ export async function POST(req: Request) {
           error: "Incorrect Password",
         });
       } else {
-        return NextResponse.json({ error: null });
+        return new Response(JSON.stringify({ error: null }), {
+          headers: {
+            "Set-Cookie": setTokenToCookies({ username, password }),
+          },
+        });
       }
     }
   } catch (err) {

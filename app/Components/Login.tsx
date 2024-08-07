@@ -6,10 +6,12 @@ import { FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { Alert, Snackbar, SnackbarContent } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(null);
+  const router = useRouter();
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,8 +22,12 @@ export default function Login() {
     });
     try {
       let result: any = await axios.post(`/api/login`, formDataObj);
-      console.log(result?.data?.error);
-      setShowError(result?.data?.error);
+      console.log(result);
+      if (result?.data?.error === null) {
+        router.push("/Components/Home");
+      } else { 
+        setShowError(result?.data?.error);
+      }
     } catch (error: any) {
       console.log(error);
     }
