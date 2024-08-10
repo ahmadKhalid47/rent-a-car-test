@@ -23,6 +23,7 @@ export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
   let pathName =
     typeof window !== "undefined" ? window.location.pathname : null;
+ console.log(pathName);
   let [chevronState, setChevronState] = useState("");
   // console.log(pathName);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });

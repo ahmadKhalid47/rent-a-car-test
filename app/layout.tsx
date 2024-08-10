@@ -18,21 +18,27 @@ export default function RootLayout({
 }>) {
   const router = useRouter();
   const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [pathName, setPathName] = useState("");
+  // const [pathName, setPathName] = useState("");
+  let pathName =
+    typeof window !== "undefined" ? window.location.pathname : null;
 
   useEffect(() => {
-    if (isVerified===false) {
+    if (isVerified === false) {
       router.push("/");
     }
   }, [isVerified, router]);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setPathName(window.location.pathname);
-    }
-  }, [pathName]);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setPathName(window.location.pathname);
+  //   }
+  //   console.log("hello");
+  // }, [pathName]);
+
   useEffect(() => {
     async function verifyTokenApi() {
       try {
+        setIsVerified(undefined);
         await axios.get("/api/verifyToken");
         setIsVerified(true);
       } catch (err) {
@@ -40,8 +46,10 @@ export default function RootLayout({
       }
     }
     verifyTokenApi();
-  }, []);
-  console.log(isVerified);
+  }, [pathName]);
+
+  console.log(pathName);
+
   return (
     <StoreProvider>
       <>
@@ -51,21 +59,23 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            <main
-              className={`${
-                pathName && pathName !== "/" && isVerified
-                  ? "flex justify-start items-start relative flex-wrap"
-                  : ""
-              }`}
-            >
-              {pathName && pathName !== "/" && isVerified ? (
-                <>
-                  <Sidebar />
-                  <Nav />
-                </>
-              ) : null}
-              <section className={inter.className}>{children}</section>
-            </main>
+            {isVerified === undefined ? null : (
+              <main
+                className={`${
+                  pathName && pathName !== "/" && isVerified
+                    ? "flex justify-start items-start relative flex-wrap"
+                    : ""
+                }`}
+              >
+                {pathName && pathName !== "/" && isVerified ? (
+                  <>
+                    <Sidebar />
+                    <Nav />
+                  </>
+                ) : null}
+                <section className={inter.className}>{children}</section>
+              </main>
+            )}
           </body>
         </html>
       </>
