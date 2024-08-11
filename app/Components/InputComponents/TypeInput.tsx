@@ -83,7 +83,7 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
   required,
   type,
 }) => {
-  const content = <div>Some content for the popover. </div>;
+  const content = <div>Some content for the popover. {label} </div>;
 
   return (
     <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -92,7 +92,7 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
         {required && <FaAsterisk className="text-[6px]" />}
         <Popover
           content={content}
-          // title="Popover Title"
+          //title="Popover Title"
           trigger={"click"}
           className="text-[16px] font-[900] absolute right-3"
         >
