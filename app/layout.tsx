@@ -17,7 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const [isVerified, setIsVerified] = useState<any>(undefined);
+  // const [isVerified, setIsVerified] = useState<any>(undefined);
+  const [isVerified, setIsVerified] = useState<any>(true);
   // const [pathName, setPathName] = useState("");
   let pathName =
     typeof window !== "undefined" ? window.location.pathname : null;
@@ -35,20 +36,18 @@ export default function RootLayout({
   //   console.log("hello");
   // }, [pathName]);
 
-  useEffect(() => {
-    async function verifyTokenApi() {
-      try {
-        setIsVerified(undefined);
-        await axios.get("/api/verifyToken");
-        setIsVerified(true);
-      } catch (err) {
-        setIsVerified(false);
-      }
-    }
-    verifyTokenApi();
-  }, [pathName]);
-
-  console.log(pathName);
+  // useEffect(() => {
+  //   async function verifyTokenApi() {
+  //     try {
+  //       setIsVerified(undefined);
+  //       await axios.get("/api/verifyToken");
+  //       setIsVerified(true);
+  //     } catch (err) {
+  //       setIsVerified(false);
+  //     }
+  //   }
+  //   verifyTokenApi();
+  // }, [pathName]);
 
   return (
     <StoreProvider>
