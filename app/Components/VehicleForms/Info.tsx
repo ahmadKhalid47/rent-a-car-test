@@ -11,8 +11,8 @@ import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
 import { GrCircleInformation } from "react-icons/gr";
-import { TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput } from "../InputComponents/SelectInput";
+import { TypeInput, TypeInputInfo } from "../InputComponents/TypeInput";
+import { SelectInput, SelectInputInfo } from "../InputComponents/SelectInput";
 
 export default function Info() {
   const [alreadyFiles, setAlreadyFiles] = useState([
@@ -133,22 +133,12 @@ export default function Info() {
           required={true}
           options={["Select", "Year1", "Year2"]}
         />
-
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
-            Registration No
-            <FaAsterisk className="text-[6px]" />
-            <span className="text-[16px] font-[900] absolute right-3">
-              <GrCircleInformation />
-            </span>
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={12345}
-            />
-          </div>
-        </div>
+        <TypeInput
+          label={"Registration No"}
+          value={""}
+          required={true}
+          type={"text"}
+        />
 
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
@@ -182,44 +172,19 @@ export default function Info() {
           required={true}
           options={["Select", "Transmission1", "Transmission2"]}
         />
+        <TypeInputInfo
+          label={"Odometer (KMPH)"}
+          value={""}
+          required={true}
+          type={"text"}
+        />
 
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
-            Odometer (KMPH)
-            <FaAsterisk className="text-[6px]" />
-            <span className="text-[16px] font-[900] absolute right-3">
-              <GrCircleInformation />
-            </span>
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"KMPH"}
-            />
-          </div>
-        </div>
-
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
-            Passengers
-            <FaAsterisk className="text-[6px]" />
-            <span className="text-[16px] font-[900] absolute right-3">
-              <GrCircleInformation />
-            </span>
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+        <SelectInputInfo
+          label={"Passengers"}
+          value={""}
+          required={true}
+          options={["Select", "Passengers1", "Passengers2"]}
+        />
 
         <SelectInput
           label={"Country"}
@@ -234,22 +199,12 @@ export default function Info() {
           options={["Select", "City1", "City2"]}
         />
 
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
-            Postal/Zip Code
-            <FaAsterisk className="text-[6px]" />
-            <span className="text-[16px] font-[900] absolute right-3">
-              <GrCircleInformation />
-            </span>
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"Text Here"}
-            />
-          </div>
-        </div>
-        
+        <TypeInputInfo
+          label={"Postal/Zip Code"}
+          value={""}
+          required={true}
+          type={"text"}
+        />
       </div>
 
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
