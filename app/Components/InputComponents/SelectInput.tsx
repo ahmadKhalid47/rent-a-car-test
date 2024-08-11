@@ -1,18 +1,19 @@
 import React from "react";
+import shape from "@/public/ShapeBlack.svg";
 import { FaAsterisk } from "react-icons/fa";
 
 interface MyComponentProps {
   label: string;
   value: any;
   required: boolean;
-  type: string;
+  options: any;
 }
 
-export const TypeInput: React.FC<MyComponentProps> = ({
+export const SelectInput: React.FC<MyComponentProps> = ({
   label,
   value,
   required,
-  type,
+  options,
 }) => {
   return (
     <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -21,13 +22,14 @@ export const TypeInput: React.FC<MyComponentProps> = ({
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-        <input
-          required={required}
-          type={type}
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-          // value={value}
-          placeholder={`Enter ${label}`}
-        />
+        <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
+          {options?.map((item: any) => (
+            <option value="">{item}</option>
+          ))}
+        </select>
+        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+          <img src={shape.src} className="w-[10.5px]" />
+        </div>
       </div>
     </div>
   );
