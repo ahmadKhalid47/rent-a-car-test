@@ -1,47 +1,29 @@
 "use client";
 import shape from "@/public/Shape.svg";
 import car from "@/public/carInfoCar.svg";
+import { SelectInputWidth } from "../InputComponents/SelectInput";
 
 export default function Feature() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
         <div className="flex justify-between flex-wrap gap-y-3 items-center w-full h-fit">
-          <div className="w-full md:w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-            <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-              Make
-            </label>
-            <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-              <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-                <option value="">Suzuki</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-              </select>
-              <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                <img src={shape.src} className="w-[10.5px]" />
-              </div>
-            </div>
-          </div>{" "}
-          <div className="w-full md:w-[48.5%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-            <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-              Model
-            </label>
-            <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-              <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-                <option value="">Swift</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-                <option value="">Sedan</option>
-              </select>
-              <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                <img src={shape.src} className="w-[10.5px]" />
-              </div>
-            </div>
-          </div>
-        </div>{" "}
+          <SelectInputWidth
+            label={"Make"}
+            value={""}
+            required={false}
+            options={["Select", "Make1", "Make2"]}
+            widthProp="sm:w-[48.5%]"
+          />
+          <SelectInputWidth
+            label={"Model"}
+            value={""}
+            required={false}
+            options={["Select", "Model1", "Model2"]}
+            widthProp="sm:w-[48.5%]"
+          />
+
+        </div>
         <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
           <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
             <img src={car.src} className="w-full h-full" />
@@ -49,12 +31,12 @@ export default function Feature() {
           <div className="w-full sm:w-[55%] h-fit flex justify-start flex-col bg-red-20 items-center sm:items-start">
             <div className="w-full flex justify-center sm:justify-start items-center pe-0 sm:pe-5 h-fit py-[-10px] -mt-2">
               <span className="font-[600] text-[15px] xs:text-[24px] leading-7 sm:leading-[36px]">
-                Suzuki Swift{" "}
+                Suzuki Swift
               </span>
             </div>
             <div className="w-full flex justify-center sm:justify-start items-center py-[-10px] -mt-1">
               <span className="font-[500] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
-                LEM 1234{" "}
+                LEM 1234
               </span>
             </div>
 
@@ -96,12 +78,12 @@ export default function Feature() {
           <div className="w-full sm:w-[55%] h-fit flex justify-start flex-col bg-red-20 items-center sm:items-start">
             <div className="w-full flex justify-center sm:justify-start items-center pe-0 sm:pe-5 h-fit py-[-10px] -mt-2">
               <span className="font-[600] text-[15px] xs:text-[24px] leading-7 sm:leading-[36px]">
-                Suzuki Swift{" "}
+                Suzuki Swift
               </span>
             </div>
             <div className="w-full flex justify-center sm:justify-start items-center py-[-10px] -mt-1">
               <span className="font-[500] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
-                LEM 1234{" "}
+                LEM 1234
               </span>
             </div>
 

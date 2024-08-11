@@ -1,14 +1,7 @@
 "use client";
-import shape from "@/public/Shape2.svg";
-import list from "@/public/Group 110 (1).svg";
-import listBlack from "@/public/Group 110.svg";
-import { useSelector } from "react-redux";
-import { GridViewRounded } from "@mui/icons-material";
-import { RootState } from "@/app/store";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
-import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
 import { useState, useEffect } from "react";

@@ -1,170 +1,99 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { TypeInputWidth } from "../InputComponents/TypeInput";
+import { SelectInputWidth } from "../InputComponents/SelectInput";
 
 export default function Insurances() {
   return (
     <div className="w-full h-full">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Reservation ID
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={12345}
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Reservation Date
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-            />
-          </div>
-        </div>
+        <TypeInputWidth
+          label={"Reservation ID"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <TypeInputWidth
+          label={"Reservation Date"}
+          value={""}
+          required={false}
+          type={"date"}
+          widthProp="sm:w-[48%]"
+        />
+        <TypeInputWidth
+          label={"Odometer (KMPH)"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <SelectInputWidth
+          label={"Fuel Status"}
+          value={""}
+          required={true}
+          options={["Select", "Fuel1", "Fuel2"]}
+          widthProp="sm:w-[48%]"
+        />
 
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Odometer (KMPH)
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"234343"}
-            />
-          </div>
-        </div>
+        <TypeInputWidth
+          label={"Security Deposit"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <SelectInputWidth
+          label={"City"}
+          value={""}
+          required={true}
+          options={["Select", "City1", "City2"]}
+          widthProp="sm:w-[48%]"
+        />
 
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Fuel Status
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">50%</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+        <TypeInputWidth
+          label={"Pick Up Address"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <TypeInputWidth
+          label={"Pick Up Date"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <SelectInputWidth
+          label={"Pick Up Time"}
+          value={""}
+          required={true}
+          options={["Select", "Time1", "Time2"]}
+          widthProp="sm:w-[48%]"
+        />
 
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Security Deposit
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"$100"}
-            />
-          </div>
-        </div>
-
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            City
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-
-        <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Pick Up Address{" "}
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"Pick Up Address"}
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Pick Up Date
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Pick Up Time
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">11:00</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-
-        <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Drop Off Address{" "}
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"Drop Off Address"}
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Drop Off Date
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Drop Off Time
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">11:00</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+        <TypeInputWidth
+          label={"Drop Off Address"}
+          value={""}
+          required={false}
+          type={"text"}
+          widthProp="sm:w-[48%]"
+        />
+        <TypeInputWidth
+          label={"Drop Off Date"}
+          value={""}
+          required={false}
+          type={"date"}
+          widthProp="sm:w-[48%]"
+        />
+        <SelectInputWidth
+          label={"Drop Off Time"}
+          value={""}
+          required={true}
+          options={["Select", "Time1", "Time2"]}
+          widthProp="sm:w-[48%]"
+        />
       </div>
     </div>
   );

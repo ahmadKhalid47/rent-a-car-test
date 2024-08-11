@@ -2,9 +2,6 @@
 import checkBlue from "@/public/checkBlue.svg";
 import checkBlack from "@/public/checkBlack.png";
 import car from "@/public/ChauffeursPic.svg";
-import Link from "next/link";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import { FaEllipsis } from "react-icons/fa6";
 import { useState } from "react";
 
 export default function Rental() {
