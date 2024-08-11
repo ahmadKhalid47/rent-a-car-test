@@ -121,7 +121,7 @@ export default function Info() {
         <SelectInput
           label={"State/Province"}
           value={""}
-          required={false}
+          required={true}
           options={["Select", "State1", "State2"]}
         />
         <SelectInput

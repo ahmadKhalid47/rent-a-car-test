@@ -12,7 +12,7 @@ export default function Feature() {
         <TypeInput
           label={"Full Name"}
           value={""}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TypeInput label={"Phone"} value={""} required={true} type={"text"} />
@@ -36,7 +36,7 @@ export default function Feature() {
         <TypeInput
           label={"Full Name"}
           value={""}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TypeInput label={"Phone"} value={""} required={true} type={"text"} />

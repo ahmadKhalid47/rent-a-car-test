@@ -1,22 +1,13 @@
 "use client";
-import { MdCalendarMonth } from "react-icons/md";
-import shape from "@/public/ShapeBlack.svg";
 import upload from "@/public/Paper Upload.svg";
-import list from "@/public/Group 110 (1).svg";
-import listBlack from "@/public/Group 110.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { GridViewRounded } from "@mui/icons-material";
-import { RootState } from "@/app/store";
 import React, { useCallback } from "react";
-import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
+import { TypeInput } from "../InputComponents/TypeInput";
+import { SelectInput } from "../InputComponents/SelectInput";
 
 export default function Rental() {
-  let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
-  const [showLess, setShowLess] = useState(true);
-
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
@@ -66,45 +57,27 @@ export default function Rental() {
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Passport / ID Number{" "}
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"554353490"}
-            />
-          </div>
-        </div>{" "}
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Valid Until
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-            />
-          </div>
-        </div>{" "}
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Issuing Country/State
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>{" "}
-        </div>{" "}
+        <TypeInput
+          label={"Passport / ID Number"}
+          value={""}
+          required={false}
+          type={"text"}
+        />
+
+        <TypeInput
+          label={"Valid Until"}
+          value={""}
+          required={false}
+          type={"date"}
+        />
+
+        <SelectInput
+          label={"Issuing Country/State"}
+          value={""}
+          required={false}
+          options={["Select", "Country1", "Country2"]}
+        />
+
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
           {...getRootProps()}
@@ -126,45 +99,27 @@ export default function Rental() {
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Driver's License Number
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={"554353490"}
-            />
-          </div>
-        </div>{" "}
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Valid Until
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              type="date"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-            />
-          </div>
-        </div>{" "}
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Issuing Country/State
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>{" "}
-        </div>{" "}
+        <TypeInput
+          label={"Driver's License Number"}
+          value={""}
+          required={false}
+          type={"text"}
+        />
+
+        <TypeInput
+          label={"Valid Until"}
+          value={""}
+          required={false}
+          type={"date"}
+        />
+
+        <SelectInput
+          label={"Issuing Country/State"}
+          value={""}
+          required={false}
+          options={["Select", "Country1", "Country2"]}
+        />
+
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
           {...getRootProps()}
