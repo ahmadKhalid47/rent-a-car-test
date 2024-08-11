@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.16.4",
     "@mui/material": "^5.16.4",
     "@reduxjs/toolkit": "^2.2.4",
+    "antd": "^5.20.0",
     "axios": "^1.7.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^8.5.2",
