@@ -1,31 +1,20 @@
-
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import carsGroup from "@/public/carsGroup.svg";
 import carsGroupCar1 from "@/public/carGroupCar (5).svg";
 import carsGroupCar2 from "@/public/carGroupCar (1).svg";
 import carsGroupCar3 from "@/public/carGroupCar (4).svg";
 import carsGroupCar4 from "@/public/carGroupCar (3).svg";
 import carsGroupCar5 from "@/public/carGroupCar (2).svg";
 import upload from "@/public/Paper Upload.svg";
-import list from "@/public/Group 110 (1).svg";
-import listBlack from "@/public/Group 110.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { GridViewRounded } from "@mui/icons-material";
-import { RootState } from "@/app/store";
-import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
-import Other from "../Other";
 import React, { useCallback } from "react";
-import { IoMdInformationCircleOutline } from "react-icons/io";
 import { GrCircleInformation } from "react-icons/gr";
+import { TypeInput } from "../InputComponents/TypeInput";
+import { SelectInput } from "../InputComponents/SelectInput";
 
 export default function Info() {
-  let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
-  const [showLess, setShowLess] = useState(true);
-
   const [alreadyFiles, setAlreadyFiles] = useState([
     { preview: carsGroupCar1, name: "car1" },
     { preview: carsGroupCar2, name: "car2" },
@@ -111,89 +100,40 @@ export default function Info() {
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Vehicle ID
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <input
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              value={12345}
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Make
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Model
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Type
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Year
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">2024</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+        <TypeInput
+          label={"Vehicle ID"}
+          value={""}
+          required={false}
+          type={"text"}
+        />
+        <SelectInput
+          label={"Make"}
+          value={""}
+          required={true}
+          options={["Select", "Make1", "Make2"]}
+        />
+
+        <SelectInput
+          label={"Model"}
+          value={""}
+          required={true}
+          options={["Select", "Model1", "Model2"]}
+        />
+
+        <SelectInput
+          label={"Type"}
+          value={""}
+          required={true}
+          options={["Select", "Type1", "Type2"]}
+        />
+
+        <SelectInput
+          label={"Year"}
+          value={""}
+          required={true}
+          options={["Select", "Year1", "Year2"]}
+        />
+
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Registration No
@@ -209,6 +149,7 @@ export default function Info() {
             />
           </div>
         </div>
+
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
@@ -227,42 +168,21 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Fuel Type
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Petrol</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Transmission
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Auto</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+
+        <SelectInput
+          label={"Fuel Type"}
+          value={""}
+          required={true}
+          options={["Select", "Type1", "Type2"]}
+        />
+
+        <SelectInput
+          label={"Transmission"}
+          value={""}
+          required={true}
+          options={["Select", "Transmission1", "Transmission2"]}
+        />
+
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Odometer (KMPH)
@@ -278,6 +198,7 @@ export default function Info() {
             />
           </div>
         </div>
+
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
             Passengers
@@ -299,42 +220,19 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Country
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            City
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-            <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-              <option value="">Select</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-              <option value="">Sedan</option>
-            </select>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img src={shape.src} className="w-[10.5px]" />
-            </div>
-          </div>
-        </div>
+
+        <SelectInput
+          label={"Country"}
+          value={""}
+          required={true}
+          options={["Select", "Country1", "Country2"]}
+        />
+        <SelectInput
+          label={"City"}
+          value={""}
+          required={true}
+          options={["Select", "City1", "City2"]}
+        />
 
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
@@ -351,6 +249,7 @@ export default function Info() {
             />
           </div>
         </div>
+        
       </div>
 
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
@@ -370,7 +269,7 @@ export default function Info() {
             to upload
           </h4>
           <h4 className="font-[400] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-[#515978]">
-            Select JPG or PNG{" "}
+            Select JPG or PNG
           </h4>
         </div>
         <div className="w-full h-fit flex justify-center items-center gap-2">
@@ -378,7 +277,7 @@ export default function Info() {
           <span className="font-[400] text-[14px] leading-[17px]">OR</span>
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
-        <div  className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbsAlready}
           {thumbs}
         </div>

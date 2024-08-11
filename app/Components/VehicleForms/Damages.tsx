@@ -1,25 +1,17 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import list from "@/public/Group 110 (1).svg";
-import listBlack from "@/public/Group 110.svg";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { GridViewRounded } from "@mui/icons-material";
-import { RootState } from "@/app/store";
-import { FaEye, FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 import checkBlue from "@/public/checkBlue.svg";
 import checkBlack from "@/public/checkBlack.png";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
-import UploadButton from "@/public/PlusButton.svg";
-import { FaAsterisk, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
 
 export default function Damages() {
-  let global = useSelector((state: RootState) => state.Global);
-  const [gridView, setGridView] = useState(true);
   const [exterior, setExterior] = useState(true);
   const [popup, setPopup] = useState(false);
 
@@ -34,7 +26,6 @@ export default function Damages() {
       )
     );
   }, []);
-
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -112,7 +103,7 @@ export default function Damages() {
                   <img src={checkBlack.src} />
                 )}
                 Exterior
-              </button>{" "}
+              </button>
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   !exterior ? "text-main-blue" : ""
@@ -135,7 +126,6 @@ export default function Damages() {
                       src={CarExterior.src}
                       className="w-[326px] h-[408px] cursor-pointer"
                       onClick={handleClick1}
-                      // onClick={() => setPopup(true)}
                     />
                   </div>
                 ) : (
@@ -195,53 +185,6 @@ export default function Damages() {
               <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                 Tap on the vehicle's part to add damage
               </p>
-
-              {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start  ">
-                <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    1
-                  </p>
-                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Dent
-                  </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Low
-                  </p>
-                </div>
-                <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    2
-                  </p>
-                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Scratch
-                  </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    High
-                  </p>
-                </div>
-                <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    3
-                  </p>
-                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Crack
-                  </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    High
-                  </p>
-                </div>
-                <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                  <p className="w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    4
-                  </p>
-                  <p className="w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Clip
-                  </p>
-                  <p className="flex justify-between items-center w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
-                    Low
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
           <div className="absolute left-[50%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
@@ -308,13 +251,12 @@ export default function Damages() {
                 <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
                   Drag & Drop or
                   <span className="text-link-blue cursor-pointer">
-                    {" "}
-                    choose file{" "}
+                    choose file
                   </span>
                   to upload
                 </h4>
                 <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
-                  Select JPG or PNG{" "}
+                  Select JPG or PNG
                 </h4>
               </div>
 
