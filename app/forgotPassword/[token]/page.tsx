@@ -56,7 +56,8 @@ export default function ResetPassword() {
                       className="w-[120px] sm:w-[175px] z-10"
                     />
                     <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
-                      welcome <br /> back!
+                      Reset <br />
+                      Your back!
                     </h1>
                     <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
                       Are you ready to efficiently manage your fleet and
@@ -86,8 +87,7 @@ export default function ResetPassword() {
                           required
                         />
                       </div>
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
-                      </div>
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2"></div>
                       <button
                         type="submit"
                         className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
