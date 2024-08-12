@@ -22,6 +22,7 @@
     "antd": "^5.20.0",
     "axios": "^1.7.3",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.6.0",
     "jsonwebtoken": "^8.5.1",
     "ldrs": "^1.0.2",
     "mongoose": "^8.5.2",
