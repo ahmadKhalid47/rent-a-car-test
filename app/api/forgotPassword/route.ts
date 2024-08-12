@@ -41,7 +41,7 @@ export async function POST(req: Request) {
         { $set: { fptoken: token } }
       );
       return NextResponse.json({
-        error: "Check your email for instructions to reset your password.",
+        success: "Check your email for instructions to reset your password.",
       });
     }
   } catch (err) {

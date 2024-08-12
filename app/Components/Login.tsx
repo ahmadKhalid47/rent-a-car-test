@@ -6,6 +6,7 @@ import { Alert } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setLoginPageR } from "../store/Global";
+import { SmallLoader } from "./Loader";
 
 export default function Login() {
   let dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function Login() {
   const router = useRouter();
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
-            if (typeof window === "undefined") {
+    if (typeof window === "undefined") {
       return;
     }
     event.preventDefault();
@@ -101,9 +102,10 @@ export default function Login() {
         </div>
         <button
           type="submit"
+          disabled={loading}
           className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
         >
-          Login
+          {loading ? <SmallLoader /> : "Login"}
         </button>
       </form>
     </>
