@@ -155,3 +155,108 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .fade-out {
   animation: fadeOut 5s forwards; /* Fades out over 5 seconds */
 }
+
+/* Loader */
+/* 1 */
+.loader {
+  --uib-size: 80px;
+  --uib-color: #242e69;
+  --uib-speed: 1.75s;
+  --uib-stroke: 5px;
+  --uib-bg-opacity: 0.1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-stroke);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-stroke) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uib-color);
+  opacity: var(--uib-bg-opacity);
+  transition: background-color 0.3s ease;
+}
+
+.loader::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-stroke) / 2);
+  animation: wobble var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-95%);
+  background-color: var(--uib-color);
+  transition: background-color 0.3s ease;
+}
+
+@keyframes wobble {
+  0%,
+  100% {
+    transform: translateX(-95%);
+  }
+  50% {
+    transform: translateX(95%);
+  }
+}
+
+/* 2 */
+.loader2 {
+  --uib-size: 43px;
+  --uib-color: white;
+  --uib-speed: 1.3s;
+  --uib-dot-size: calc(var(--uib-size) * 0.24);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--uib-dot-size);
+  width: var(--uib-size);
+}
+
+.dot,
+.loader2::before,
+.loader2::after {
+  content: "";
+  display: block;
+  height: var(--uib-dot-size);
+  width: var(--uib-dot-size);
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  transform: scale(0);
+  transition: background-color 0.3s ease;
+}
+
+.loader2::before {
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.375)
+    infinite;
+}
+
+.dot {
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.25)
+    infinite both;
+}
+
+.loader2::after {
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.125)
+    infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}

@@ -9,7 +9,7 @@ import { FormEvent } from "react";
 import { Alert } from "@mui/material";
 import Link from "next/link";
 import Loader, { SmallLoader } from "@/app/Components/Loader";
-
+import expire404 from "@/public/404.svg";
 export default function ResetPassword() {
   const params = useParams();
   const token = params?.token;
@@ -80,7 +80,7 @@ export default function ResetPassword() {
       ) : (
         <>
           {isVerified === false ? (
-            <h1>Sorry This Link has been Expired!</h1>
+            <img src={expire404.src} className="w-[40vw] mx-auto mt-10" />
           ) : (
             <div className="w-full h-fit">
               <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">

@@ -4,13 +4,7 @@
 export default function Loader() {
   return (
     <div className="w-[100vw] h-[100vh] flex justify-center items-center absolute top-0">
-      {/* <l-line-wobble
-        size="80"
-        stroke="5"
-        bg-opacity="0.1"
-        speed="1.75"
-        color="#242e69"
-      ></l-line-wobble> */}
+      <div className="loader"></div>
     </div>
   );
 }
@@ -18,13 +12,9 @@ export default function Loader() {
 export function SmallLoader() {
   return (
     <div className="w-full h-full flex justify-center items-center">
-      {/* <l-line-wobble
-        size="80"
-        stroke="5"
-        bg-opacity="0.1"
-        speed="1.75"
-        color="white"
-      ></l-line-wobble> */}
+      <div className="loader2">
+        <div className="dot" />
+      </div>
     </div>
   );
 }

@@ -105,7 +105,12 @@ export default function Login() {
           disabled={loading}
           className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
         >
-          {loading ? <SmallLoader /> : "Login"}
+          {loading ?
+            
+            <SmallLoader/>
+              :
+              "Login"
+               }
         </button>
       </form>
     </>
