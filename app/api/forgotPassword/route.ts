@@ -14,13 +14,7 @@ export async function POST(req: Request) {
       pass: process.env.EMAIL_PASS,
     },
   });
-  let siteUrl = "http://localhost:3000/";
-  let mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.ADMIN_EMAIL,
-    subject: "Forget Password Request",
-    text: `Click on this link to reset your password ${siteUrl}/forgotPassword`,
-  };
+  let siteUrl = process.env.URL;
 
   try {
     let { email } = await req.json();
@@ -34,6 +28,13 @@ export async function POST(req: Request) {
       });
     } else {
       let { token } = generateTokenForDb({ email });
+      let mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: "Forget Password Request",
+        text: `Click on this link to reset your password ${siteUrl}/forgotPassword/${token}`,
+      };
+
       await transporter.sendMail(mailOptions);
       await RegistrationModel.updateOne(
         { email: "ahmadrazakhalid9.0@gmail.com" },

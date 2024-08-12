@@ -25,7 +25,9 @@ export default function RootLayout({
 
   useEffect(() => {
     if (isVerified === false) {
-      router.push("/");
+      if (!pathName.includes("forgotPassword")) {
+        router.push("/");
+      }
     }
   }, [isVerified, router]);
 
@@ -55,7 +57,7 @@ export default function RootLayout({
         <html lang="en">
           <body className="w-full">
             {isVerified === undefined || loading ? (
-              <Loader /> 
+              <Loader />
             ) : (
               <main
                 className={`${
