@@ -18,12 +18,12 @@ export async function POST(req: Request) {
 
     if (!loginData) {
       return NextResponse.json({
-        error: "User Not Found",
+        error: "User not found",
       });
     } else {
       if (!(await verifyPassword(password, loginData.password))) {
         return NextResponse.json({
-          error: "Incorrect Password",
+          error: "Incorrect password",
         });
       } else {
         return new Response(JSON.stringify({ error: null }), {
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
-      error: "Can't Process Your Request At The Moment",
+      error: "Can't process your request at the moment",
     });
   }
 }
