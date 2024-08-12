@@ -1,22 +1,28 @@
 import connectDb from "@/app/models/connectDb";
 import RegistrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import { setTokenToCookies } from "@/app/registration/auth";
 
 export async function POST(req: Request) {
+  async function verifyPassword(inputPassword: any, hashedPassword: any) {
+    const isMatch = await bcrypt.compare(inputPassword, hashedPassword);
+    return isMatch;
+  }
+  
   try {
     let { username, password } = await req.json();
     connectDb();
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: username }],
     });
+
     if (!loginData) {
       return NextResponse.json({
         error: "User Not Found",
       });
     } else {
-      if (loginData.password !== password) {
+      if (!await verifyPassword(password, loginData.password)) {
         return NextResponse.json({
           error: "Incorrect Password",
         });
