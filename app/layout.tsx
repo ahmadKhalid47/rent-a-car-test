@@ -56,25 +56,27 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            {/* {isVerified === undefined || loading ? (
-              <Loader />
-            ) : ( */}
-              <main
-                className={`${
-                  pathName && pathName !== "/" && isVerified
-                    ? "flex justify-start items-start relative flex-wrap"
-                    : ""
-                }`}
-              >
-                {pathName && pathName !== "/" && isVerified ? (
-                  <>
-                    <Sidebar />
-                    <Nav />
-                  </>
-                ) : null}
-                <section className={inter.className}>{children}</section>
-              </main>
-            {/* )} */}
+            <main
+              className={`${
+                pathName && pathName !== "/" && isVerified
+                  ? "flex justify-start items-start relative flex-wrap"
+                  : ""
+              }`}
+            >
+              {isVerified === undefined || loading ? (
+                <Loader />
+              ) : (
+                <>
+                  {pathName && pathName !== "/" && isVerified ? (
+                    <>
+                      <Sidebar />
+                      <Nav />
+                    </>
+                  ) : null}
+                  <section className={inter.className}>{children}</section>
+                </>
+              )}
+            </main>
           </body>
         </html>
       </>
