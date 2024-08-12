@@ -17,35 +17,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const router = useRouter();
+  const router = useRouter();
+  const pathName = usePathname();
+  const [isVerified, setIsVerified] = useState<boolean | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState<boolean>(false);
 
-  // const pathName = usePathname();
-  // const [isVerified, setIsVerified] = useState<any>(undefined);
-  // const [loading, setLoading] = useState<any>(false);
+  useEffect(() => {
+    // Check if the code is running on the client side
+    setIsClient(true);
+  }, []);
 
-  // useEffect(() => {
-  //   if (isVerified === false) {
-  //     if (!pathName.includes("forgotPassword")) {
-  //       router.push("/");
-  //     }
-  //   }
-  // }, [isVerified, router]);
+  useEffect(() => {
+    if (isVerified === false) {
+      if (!pathName.includes("forgotPassword")) {
+        router.push("/");
+      }
+    }
+  }, [isVerified, router, pathName]);
 
-  // useEffect(() => {
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setLoading(true);
-  //       setIsVerified(undefined);
-  //       await axios.get("/api/verifyToken");
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   verifyTokenApi();
-  // }, [pathName]);
+  useEffect(() => {
+    async function verifyTokenApi() {
+      try {
+        setLoading(true);
+        setIsVerified(undefined);
+        await axios.get("/api/verifyToken");
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    verifyTokenApi();
+  }, [pathName]);
+
+  if (!isClient) {
+    return null; // Return null to prevent rendering on the server
+  }
 
   return (
     <StoreProvider>
@@ -56,7 +65,7 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            {/* {isVerified === undefined || loading ? (
+            {isVerified === undefined || loading ? (
               <Loader />
             ) : (
               <main
@@ -71,13 +80,14 @@ export default function RootLayout({
                     <Sidebar />
                     <Nav />
                   </>
-                ) : null} */}
+                ) : null}
                 <section className={inter.className}>{children}</section>
-              {/* </main>
-            )} */}
+              </main>
+            )}
           </body>
         </html>
       </>
     </StoreProvider>
   );
 }
+
