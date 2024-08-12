@@ -4,7 +4,7 @@ const initialState = {
   sidebarShow: false,
   fieldName: "",
   sidebarShowTemp: true,
-  loginPage: false,
+  loginPage: true,
 };
 
 export const GlobalSlice = createSlice({

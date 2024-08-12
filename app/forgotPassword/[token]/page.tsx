@@ -34,34 +34,34 @@ export default function ResetPassword() {
     verifyTokenApi();
   }, []);
 
-  const ResetPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    event.preventDefault();
+  // const ResetPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  //   if (typeof window === "undefined") {
+  //     return;
+  //   }
+  //   event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    const formDataObj: { [key: string]: string } = {};
-    formData.forEach((value, key) => {
-      formDataObj[key] = value.toString();
-    });
-    try {
-      setLoading(true);
-      let result: any = await axios.post(`/api/resetPassword`, {
-        token,
-        ...formDataObj,
-      });
-      if (result?.data?.error === null) {
-        setShowError(result?.data?.error);
-      } else {
-        setShowError(result?.data?.error);
-      }
-    } catch (error: any) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   const formData = new FormData(event.currentTarget);
+  //   const formDataObj: { [key: string]: string } = {};
+  //   formData.forEach((value, key) => {
+  //     formDataObj[key] = value.toString();
+  //   });
+  //   try {
+  //     setLoading(true);
+  //     let result: any = await axios.post(`/api/resetPassword`, {
+  //       token,
+  //       ...formDataObj,
+  //     });
+  //     if (result?.data?.error === null) {
+  //       setShowError(result?.data?.error);
+  //     } else {
+  //       setShowError(result?.data?.error);
+  //     }
+  //   } catch (error: any) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <>
@@ -114,7 +114,7 @@ export default function ResetPassword() {
                     ) : null}
 
                     <form
-                      onSubmit={ResetPasswordSubmit}
+                      // onSubmit={ResetPasswordSubmit}
                       className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
                     >
                       <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
