@@ -18,15 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const pathName = usePathname();
-  const [isVerified, setIsVerified] = useState<boolean | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [isClient, setIsClient] = useState<boolean>(false);
 
-  useEffect(() => {
-    // Check if the code is running on the client side
-    setIsClient(true);
-  }, []);
+  const [pathName, setPathName] = useState<any>(usePathname());
+  const [isVerified, setIsVerified] = useState<any>(undefined);
+  const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
     if (isVerified === false) {
@@ -34,7 +29,11 @@ export default function RootLayout({
         router.push("/");
       }
     }
-  }, [isVerified, router, pathName]);
+  }, [isVerified, router]);
+
+  useEffect(() => {
+    setPathName(pathName);
+  }, [pathName]);
 
   useEffect(() => {
     async function verifyTokenApi() {
@@ -51,10 +50,6 @@ export default function RootLayout({
     }
     verifyTokenApi();
   }, [pathName]);
-
-  if (!isClient) {
-    return null; // Return null to prevent rendering on the server
-  }
 
   return (
     <StoreProvider>
@@ -90,4 +85,3 @@ export default function RootLayout({
     </StoreProvider>
   );
 }
-
