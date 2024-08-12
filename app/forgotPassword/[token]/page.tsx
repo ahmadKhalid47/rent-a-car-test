@@ -5,10 +5,14 @@ import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import car from "@/public/Layer_1 (1).svg";
 import axios from "axios";
+import { FormEvent } from "react";
+import { Alert } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 export default function ResetPassword() {
   const params = useParams();
   const token = params?.token;
+  const [showError, setShowError] = useState(null);
 
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(false);
@@ -30,6 +34,31 @@ export default function ResetPassword() {
     }
     verifyTokenApi();
   }, []);
+
+  const ResetPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formDataObj: { [key: string]: string } = {};
+    formData.forEach((value, key) => {
+      formDataObj[key] = value.toString();
+    });
+    try {
+      setLoading(true);
+      let result: any = await axios.post(`/api/resetPassword`, {
+        token,
+        ...formDataObj,
+      });
+      if (result?.data?.error === null) {
+        setShowError(result?.data?.error);
+      } else {
+        setShowError(result?.data?.error);
+      }
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -71,8 +100,18 @@ export default function ResetPassword() {
 
                 <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full bg-white flex justify-center items-center">
                   <div className="w-full flex justify-center items-center">
+                    {showError ? (
+                      <Alert
+                        variant="filled"
+                        severity="error"
+                        className="absolute w-fit z-[100] top-2 right-2 fade-ou capitalize"
+                      >
+                        {showError}
+                      </Alert>
+                    ) : null}
+
                     <form
-                      //   onSubmit={ForgotPasswordSubmit}
+                      onSubmit={ResetPasswordSubmit}
                       className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
                     >
                       <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
