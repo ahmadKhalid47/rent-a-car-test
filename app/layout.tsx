@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   const router = useRouter();
 
-  const [pathName, setPathName] = useState<any>(usePathname());
+  const pathName = usePathname();
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(false);
 
@@ -30,10 +30,6 @@ export default function RootLayout({
       }
     }
   }, [isVerified, router]);
-
-  useEffect(() => {
-    setPathName(pathName);
-  }, [pathName]);
 
   useEffect(() => {
     async function verifyTokenApi() {
@@ -60,9 +56,9 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            {isVerified === undefined || loading ? (
+            {/* {isVerified === undefined || loading ? (
               <Loader />
-            ) : (
+            ) : ( */}
               <main
                 className={`${
                   pathName && pathName !== "/" && isVerified
@@ -78,7 +74,7 @@ export default function RootLayout({
                 ) : null}
                 <section className={inter.className}>{children}</section>
               </main>
-            )}
+            {/* )} */}
           </body>
         </html>
       </>
