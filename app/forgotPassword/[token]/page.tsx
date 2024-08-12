@@ -35,7 +35,9 @@ export default function ResetPassword() {
   }, []);
 
   const ResetPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        if (typeof window === "undefined") return;
     event.preventDefault();
+
     const formData = new FormData(event.currentTarget);
     const formDataObj: { [key: string]: string } = {};
     formData.forEach((value, key) => {
