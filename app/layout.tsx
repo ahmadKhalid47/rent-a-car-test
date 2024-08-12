@@ -56,6 +56,9 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
+            {/* {isVerified === undefined || loading ? (
+              <Loader />
+            ) : ( */}
             <main
               className={`${
                 pathName && pathName !== "/" && isVerified
@@ -63,20 +66,15 @@ export default function RootLayout({
                   : ""
               }`}
             >
-              {isVerified === undefined || loading ? (
-                <Loader />
-              ) : (
+              {pathName && pathName !== "/" && isVerified ? (
                 <>
-                  {pathName && pathName !== "/" && isVerified ? (
-                    <>
-                      <Sidebar />
-                      <Nav />
-                    </>
-                  ) : null}
-                  <section className={inter.className}>{children}</section>
+                  <Sidebar />
+                  <Nav />
                 </>
-              )}
+              ) : null}
+              <section className={inter.className}>{children}</section>
             </main>
+            {/* )} */}
           </body>
         </html>
       </>
