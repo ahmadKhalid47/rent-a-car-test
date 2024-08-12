@@ -7,7 +7,6 @@ import car from "@/public/Layer_1 (1).svg";
 import axios from "axios";
 import { FormEvent } from "react";
 import { Alert } from "@mui/material";
-import { useDispatch } from "react-redux";
 
 export default function ResetPassword() {
   const params = useParams();
