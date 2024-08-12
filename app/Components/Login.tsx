@@ -22,7 +22,6 @@ export default function Login() {
     });
     try {
       let result: any = await axios.post(`/api/login`, formDataObj);
-      console.log(result);
       if (result?.data?.error === null) {
         router.push("/Components/Home");
       } else { 

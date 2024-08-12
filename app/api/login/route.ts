@@ -11,7 +11,6 @@ export async function POST(req: Request) {
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: username }],
     });
-    console.log(loginData);
     if (!loginData) {
       return NextResponse.json({
         error: "User Not Found",
