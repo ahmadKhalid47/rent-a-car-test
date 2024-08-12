@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     
     console.log(loginData, password);
     return NextResponse.json({
-      error: "Your password has been updated successfully.",
+      success: "Your password has been updated successfully.",
     });
   } catch (err) {
     console.log("err: ", err);

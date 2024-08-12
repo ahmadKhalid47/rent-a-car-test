@@ -7,14 +7,18 @@ import car from "@/public/Layer_1 (1).svg";
 import axios from "axios";
 import { FormEvent } from "react";
 import { Alert } from "@mui/material";
+import Link from "next/link";
+import Loader, { SmallLoader } from "@/app/Components/Loader";
 
 export default function ResetPassword() {
   const params = useParams();
   const token = params?.token;
-  const [showError, setShowError] = useState(null);
+  const [showError, setShowError] = useState<any>(null);
+  const [showSuccess, setShowSuccess] = useState<any>(null);
 
   const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [loading, setLoading] = useState<any>(false);
+  const [loading, setLoading] = useState<any>(true);
+  const [buttonLoading, setButtonLoading] = useState<any>(false);
 
   useEffect(() => {
     async function verifyTokenApi() {
@@ -45,30 +49,38 @@ export default function ResetPassword() {
     formData.forEach((value, key) => {
       formDataObj[key] = value.toString();
     });
+
+    if (formDataObj?.password !== formDataObj?.confirmPassword) {
+      setShowError("Passwords did not matched");
+      return;
+    }
+
     try {
-      setLoading(true);
+      setButtonLoading(true);
       let result: any = await axios.post(`/api/resetPassword`, {
         token,
         ...formDataObj,
       });
-      if (result?.data?.error === null) {
-        setShowError(result?.data?.error);
+      if (result?.data?.success) {
+        setShowSuccess(result?.data?.success);
       } else {
         setShowError(result?.data?.error);
       }
     } catch (error: any) {
       console.log(error);
     } finally {
-      setLoading(false);
+      setButtonLoading(false);
     }
   };
 
   return (
     <>
-      {!loading || isVerified === undefined ? (
+      {loading || isVerified === undefined ? (
+        <Loader />
+      ) : (
         <>
           {isVerified === false ? (
-            <h1>Sorry This has been Expired!</h1>
+            <h1>Sorry This Link has been Expired!</h1>
           ) : (
             <div className="w-full h-fit">
               <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">
@@ -111,8 +123,15 @@ export default function ResetPassword() {
                       >
                         {showError}
                       </Alert>
+                    ) : showSuccess ? (
+                      <Alert
+                        variant="filled"
+                        severity="success"
+                        className="absolute w-fit z-[100] top-2 right-2 fade-ou capitalize"
+                      >
+                        {showSuccess}
+                      </Alert>
                     ) : null}
-
                     <form
                       onSubmit={ResetPasswordSubmit}
                       className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
@@ -123,18 +142,40 @@ export default function ResetPassword() {
                           className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
                           type="password"
                           name="password"
-                          placeholder="password"
+                          placeholder="New Password"
                           minLength={6}
                           maxLength={30}
                           required
                         />
                       </div>
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2"></div>
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+                        <h3 className="font-[400]">Confirm Password</h3>
+                        <input
+                          className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+                          type="password"
+                          name="confirmPassword"
+                          placeholder="Confirm Password"
+                          minLength={6}
+                          maxLength={30}
+                          required
+                        />
+                      </div>
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+                        {showSuccess ? (
+                          <Link
+                            href={"/"}
+                            className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
+                          >
+                            Go Back To Login Page?
+                          </Link>
+                        ) : null}
+                      </div>
+
                       <button
                         type="submit"
                         className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
                       >
-                        Submit
+                        {buttonLoading ? <SmallLoader /> : "Submit"}
                       </button>
                     </form>
                   </div>
@@ -143,8 +184,6 @@ export default function ResetPassword() {
             </div>
           )}
         </>
-      ) : (
-        "Loading..."
       )}
     </>
   );

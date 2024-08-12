@@ -4,7 +4,7 @@ lineWobble.register();
 
 export default function Loader() {
   return (
-    <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center absolute top-0">
       <l-line-wobble
         size="80"
         stroke="5"
