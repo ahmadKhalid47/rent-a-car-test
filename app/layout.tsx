@@ -4,7 +4,7 @@ import "./globals.css";
 import StoreProvider from "@/app/store/StoreProvider";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Sidebar from "./Components/Sidebar";
 import Nav from "./Components/Nav";
 import axios from "axios";
@@ -17,11 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  // const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [isVerified, setIsVerified] = useState<any>(true);
-  // const [pathName, setPathName] = useState("");
-  let pathName =
-    typeof window !== "undefined" ? window.location.pathname : null;
+
+  const pathName = usePathname();
+  console.log(pathName);
+  const [isVerified, setIsVerified] = useState<any>(undefined);
 
   useEffect(() => {
     if (isVerified === false) {
@@ -29,25 +28,18 @@ export default function RootLayout({
     }
   }, [isVerified, router]);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     setPathName(window.location.pathname);
-  //   }
-  //   console.log("hello");
-  // }, [pathName]);
-
-  // useEffect(() => {
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setIsVerified(undefined);
-  //       await axios.get("/api/verifyToken");
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     }
-  //   }
-  //   verifyTokenApi();
-  // }, [pathName]);
+  useEffect(() => {
+    async function verifyTokenApi() {
+      try {
+        setIsVerified(undefined);
+        await axios.get("/api/verifyToken");
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      }
+    }
+    verifyTokenApi();
+  }, [pathName]);
 
   return (
     <StoreProvider>
