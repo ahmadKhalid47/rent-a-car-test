@@ -5,7 +5,6 @@ import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-
 import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
@@ -23,7 +22,7 @@ export default function Nav() {
 
   let global = useSelector((state: RootState) => state.Global);
 
-  return ( 
+  return (
     <div
       className={`${
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
@@ -42,7 +41,6 @@ export default function Nav() {
           } h-full`}
         />
       </button>
-
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4">
         <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={bell.src} className="w-[24px] h-[24px]" />

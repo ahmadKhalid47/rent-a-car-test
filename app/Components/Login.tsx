@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(null);
+  const [loading, setLoading] = useState<any>(false);
   const router = useRouter();
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -21,14 +22,17 @@ export default function Login() {
       formDataObj[key] = value.toString();
     });
     try {
+      setLoading(true);
       let result: any = await axios.post(`/api/login`, formDataObj);
       if (result?.data?.error === null) {
         router.push("/Components/Home");
-      } else { 
+      } else {
         setShowError(result?.data?.error);
       }
     } catch (error: any) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 

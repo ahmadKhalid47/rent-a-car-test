@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Sidebar from "./Components/Sidebar";
 import Nav from "./Components/Nav";
 import axios from "axios";
+import Loader from "./Components/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 
   const pathName = usePathname();
   const [isVerified, setIsVerified] = useState<any>(undefined);
+  const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
     if (isVerified === false) {
@@ -30,11 +32,14 @@ export default function RootLayout({
   useEffect(() => {
     async function verifyTokenApi() {
       try {
+        setLoading(true);
         setIsVerified(undefined);
         await axios.get("/api/verifyToken");
         setIsVerified(true);
       } catch (err) {
         setIsVerified(false);
+      } finally {
+        setLoading(false);
       }
     }
     verifyTokenApi();
@@ -49,7 +54,9 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            {isVerified === undefined ? null : (
+            {isVerified === undefined || loading ? (
+              <Loader /> 
+            ) : (
               <main
                 className={`${
                   pathName && pathName !== "/" && isVerified
