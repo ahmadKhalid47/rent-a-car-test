@@ -17,35 +17,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const pathName = usePathname();
-  const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [loading, setLoading] = useState<any>(false);
+  // const pathName = usePathname();
+  // const [isVerified, setIsVerified] = useState<any>(undefined);
+  // const [loading, setLoading] = useState<any>(false);
 
-  useEffect(() => {
-    if (isVerified === false) {
-      if (!pathName.includes("forgotPassword")) {
-        router.push("/");
-      }
-    }
-  }, [isVerified, router]);
+  // useEffect(() => {
+  //   if (isVerified === false) {
+  //     if (!pathName.includes("forgotPassword")) {
+  //       router.push("/");
+  //     }
+  //   }
+  // }, [isVerified, router]);
 
-  useEffect(() => {
-    async function verifyTokenApi() {
-      try {
-        setLoading(true);
-        setIsVerified(undefined);
-        await axios.get("/api/verifyToken");
-        setIsVerified(true);
-      } catch (err) {
-        setIsVerified(false);
-      } finally {
-        setLoading(false);
-      }
-    }
-    verifyTokenApi();
-  }, [pathName]);
+  // useEffect(() => {
+  //   async function verifyTokenApi() {
+  //     try {
+  //       setLoading(true);
+  //       setIsVerified(undefined);
+  //       await axios.get("/api/verifyToken");
+  //       setIsVerified(true);
+  //     } catch (err) {
+  //       setIsVerified(false);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   verifyTokenApi();
+  // }, [pathName]);
 
   return (
     <StoreProvider>
@@ -56,7 +56,7 @@ export default function RootLayout({
         </Head>
         <html lang="en">
           <body className="w-full">
-            {isVerified === undefined || loading ? (
+            {/* {isVerified === undefined || loading ? (
               <Loader />
             ) : (
               <main
@@ -71,10 +71,10 @@ export default function RootLayout({
                     <Sidebar />
                     <Nav />
                   </>
-                ) : null}
+                ) : null} */}
                 <section className={inter.className}>{children}</section>
-              </main>
-            )}
+              {/* </main>
+            )} */}
           </body>
         </html>
       </>
