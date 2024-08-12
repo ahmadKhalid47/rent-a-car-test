@@ -11,8 +11,9 @@ export default function ForgotPassword() {
   const [loading, setLoading] = useState<any>(false);
 
   const ForgotPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    if (typeof window === "undefined") return;
-        if (typeof window === "undefined") return;
+        if (typeof window === "undefined") {
+      return;
+    }
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);

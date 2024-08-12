@@ -15,7 +15,9 @@ export default function Login() {
   const router = useRouter();
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        if (typeof window === "undefined") return;
+            if (typeof window === "undefined") {
+      return;
+    }
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
