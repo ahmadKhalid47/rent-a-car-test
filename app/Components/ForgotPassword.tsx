@@ -1,9 +1,7 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setLoginPageR } from "../store/Global";
 
@@ -40,7 +38,7 @@ export default function ForgotPassword() {
         <Alert
           variant="filled"
           severity="error"
-          className="absolute w-[200px] z-[100] top-2 right-2 fade-ou capitalize"
+          className="absolute w-fit z-[100] top-2 right-2 fade-ou capitalize"
         >
           {showError}
         </Alert>

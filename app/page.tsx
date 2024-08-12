@@ -6,10 +6,10 @@ import ForgotPassword from "./Components/ForgotPassword";
 import car from "@/public/Layer_1 (1).svg";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
-
+import { generateTokenForDb } from "@/app/registration/auth";
+import { useEffect } from "react";
 export default function Home() {
   let global = useSelector((state: RootState) => state.Global);
-
   return (
     <div className="w-full h-fit">
       <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">

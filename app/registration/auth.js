@@ -12,8 +12,16 @@ export function setTokenToCookies(userData) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
   });
-
   return cookie;
+}
+
+export function generateTokenForDb(userData) {
+  const securityKey = process.env.SECURITY_KEY;
+  const token = jwt.sign(userData, securityKey, { expiresIn: "1h" });
+  const decoded = jwt.decode(token);
+  const expiryDate = new Date(decoded.exp * 1000);
+
+  return { token, expiryDate };
 }
 
 export function removeTokenFromCookies() {
