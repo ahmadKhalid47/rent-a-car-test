@@ -108,7 +108,7 @@ export default function ResetPassword() {
                     />
                     <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
                       Reset <br />
-                      Your back!
+                      Your Password!
                     </h1>
                     <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
                       Are you ready to efficiently manage your fleet and

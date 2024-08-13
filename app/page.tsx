@@ -24,7 +24,15 @@ export default function Home() {
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
             <img src={car.src} className="w-[120px] sm:w-[175px] z-10" />
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
-              welcome <br /> back!
+              {global.loginPage ? (
+                <>
+                  welcome <br /> back!
+                </>
+              ) : (
+                <>
+                  Forgot <br /> Password?
+                </>
+              )}
             </h1>
             <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
               Are you ready to efficiently manage your fleet and
