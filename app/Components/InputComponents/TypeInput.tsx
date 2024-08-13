@@ -3,10 +3,11 @@ import { FaAsterisk } from "react-icons/fa";
 import { GrCircleInformation } from "react-icons/gr";
 import { Popover, Button } from "antd";
 import "antd/dist/reset.css";
+import { useDispatch } from "react-redux";
 
 interface TypeInput {
   label: string;
-
+  setState: any;
   value: any;
   required: boolean;
   type: string;
@@ -14,10 +15,13 @@ interface TypeInput {
 
 export const TypeInput: React.FC<TypeInput> = ({
   label,
+  setState,
   value,
   required,
   type,
 }) => {
+  let dispatch = useDispatch();
+
   return (
     <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
@@ -30,6 +34,9 @@ export const TypeInput: React.FC<TypeInput> = ({
           type={type}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
+          onChange={(e) => {
+            dispatch(setState(e.target.value));
+          }}
         />
       </div>
     </div>
@@ -38,7 +45,7 @@ export const TypeInput: React.FC<TypeInput> = ({
 
 interface TypeInputWidth {
   label: string;
-
+  setState: any;
   value: any;
   required: boolean;
   type: string;
@@ -47,12 +54,13 @@ interface TypeInputWidth {
 
 export const TypeInputWidth: React.FC<TypeInputWidth> = ({
   label,
-
+  setState,
   value,
   required,
   type,
   widthProp,
 }) => {
+  let dispatch = useDispatch();
   return (
     <div
       className={`w-[100%] ${widthProp} h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
@@ -67,6 +75,9 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
           type={type}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
+          onChange={(e) => {
+            dispatch(setState(e.target.value));
+          }}
         />
       </div>
     </div>
@@ -75,7 +86,7 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
 
 interface TypeInputInfo {
   label: string;
-
+  setState: any;
   value: any;
   required: boolean;
   type: string;
@@ -83,11 +94,12 @@ interface TypeInputInfo {
 
 export const TypeInputInfo: React.FC<TypeInputInfo> = ({
   label,
-
+  setState,
   value,
   required,
   type,
 }) => {
+  let dispatch = useDispatch();
   const content = <div>Some content for the popover. {label} </div>;
 
   return (
@@ -110,6 +122,9 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
           type={type}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
+          onChange={(e) => {
+            dispatch(setState(e.target.value));
+          }}
         />
       </div>
     </div>

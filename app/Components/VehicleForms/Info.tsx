@@ -12,13 +12,28 @@ import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
 import { TypeInput, TypeInputInfo } from "../InputComponents/TypeInput";
 import { SelectInput, SelectInputInfo } from "../InputComponents/SelectInput";
-import { setCheck } from "@/app/store/Global";
+import {
+  setvehicleIdR,
+  setmakeR,
+  setmodelR,
+  settypeR,
+  setyearR,
+  setregistrationR,
+  setcolorR,
+  setfuelTypeR,
+  settransmissionR,
+  setodometerR,
+  setpassengersR,
+  setcountryR,
+  setcityR,
+  setpostalCodeR,
+} from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 export default function Info() {
-  let global = useSelector((state: RootState) => state.Global);
+  let Vehicle = useSelector((state: RootState) => state.Vehicle);
   let dispatch = useDispatch();
 
   const [alreadyFiles, setAlreadyFiles] = useState([
@@ -102,12 +117,13 @@ export default function Info() {
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  console.log(global.check);
-  
+  console.log(Vehicle);
+
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TypeInput
+          setState={setvehicleIdR}
           label={"Vehicle ID"}
           value={""}
           required={false}
@@ -138,6 +154,7 @@ export default function Info() {
           options={["Select", "Year1", "Year2"]}
         />
         <TypeInput
+          setState={setregistrationR}
           label={"Registration No"}
           value={""}
           required={true}
@@ -177,6 +194,7 @@ export default function Info() {
           options={["Select", "Transmission1", "Transmission2"]}
         />
         <TypeInputInfo
+          setState={setodometerR}
           label={"Odometer (KMPH)"}
           value={""}
           required={true}
@@ -201,6 +219,7 @@ export default function Info() {
           options={["Select", "City1", "City2"]}
         />
         <TypeInputInfo
+          setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={""}
           required={true}
