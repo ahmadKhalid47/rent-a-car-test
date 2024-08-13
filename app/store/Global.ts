@@ -5,6 +5,7 @@ const initialState = {
   fieldName: "",
   sidebarShowTemp: true,
   loginPage: true,
+  check: "",
 };
 
 export const GlobalSlice = createSlice({
@@ -23,10 +24,18 @@ export const GlobalSlice = createSlice({
     setLoginPageR: (state, action) => {
       state.loginPage = action.payload;
     },
+    setCheck: (state, action) => {
+      state.check = action.payload;
+    },
   },
 });
 
-export const { setSidebarShowR, setSidebarShowTempR, setFieldNameR ,setLoginPageR} =
-  GlobalSlice.actions;
+export const {
+  setSidebarShowR,
+  setSidebarShowTempR,
+  setFieldNameR,
+  setLoginPageR,
+  setCheck
+} = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;

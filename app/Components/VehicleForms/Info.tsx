@@ -10,11 +10,17 @@ import { useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
-import { GrCircleInformation } from "react-icons/gr";
 import { TypeInput, TypeInputInfo } from "../InputComponents/TypeInput";
 import { SelectInput, SelectInputInfo } from "../InputComponents/SelectInput";
+import { setCheck } from "@/app/store/Global";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Info() {
+  let global = useSelector((state: RootState) => state.Global);
+  let dispatch = useDispatch();
+
   const [alreadyFiles, setAlreadyFiles] = useState([
     { preview: carsGroupCar1, name: "car1" },
     { preview: carsGroupCar2, name: "car2" },
@@ -96,56 +102,47 @@ export default function Info() {
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
+  console.log(global.check);
+  
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TypeInput
           label={"Vehicle ID"}
           value={""}
-          // name={"vehicleID"}
           required={false}
           type={"text"}
         />
         <SelectInput
           label={"Make"}
           value={""}
-          // name={"make"}
           required={true}
           options={["Select", "Make1", "Make2"]}
         />
-
         <SelectInput
           label={"Model"}
           value={""}
-          // name={"model"}
           required={true}
           options={["Select", "Model1", "Model2"]}
         />
-
         <SelectInput
           label={"Type"}
           value={""}
-          // name={"type"}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
-
         <SelectInput
           label={"Year"}
           value={""}
-          // name={"year"}
           required={true}
           options={["Select", "Year1", "Year2"]}
         />
         <TypeInput
           label={"Registration No"}
           value={""}
-          // name={"registrationNo"}
           required={true}
           type={"text"}
         />
-
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
@@ -154,7 +151,6 @@ export default function Info() {
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              // name={"color"}
               required={true}
             >
               <option value="">Select</option>
@@ -168,57 +164,45 @@ export default function Info() {
             </div>
           </div>
         </div>
-
         <SelectInput
           label={"Fuel Type"}
           value={""}
-          // name={"fuelType"}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
-
         <SelectInput
           label={"Transmission"}
           value={""}
-          // name={"transmission"}
           required={true}
           options={["Select", "Transmission1", "Transmission2"]}
         />
         <TypeInputInfo
           label={"Odometer (KMPH)"}
           value={""}
-          // name={"odometer"}
           required={true}
           type={"text"}
         />
-
         <SelectInputInfo
           label={"Passengers"}
           value={""}
-          // name={"passengers"}
           required={true}
           options={["Select", "Passengers1", "Passengers2"]}
         />
-
         <SelectInput
           label={"Country"}
           value={""}
-          // name={"country"}
           required={true}
           options={["Select", "Country1", "Country2"]}
         />
         <SelectInput
           label={"City"}
           value={""}
-          // name={"city"}
           required={true}
           options={["Select", "City1", "City2"]}
         />
-
         <TypeInputInfo
           label={"Postal/Zip Code"}
           value={""}
-          // name={"postalCode"}
           required={true}
           type={"text"}
         />
@@ -233,7 +217,6 @@ export default function Info() {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-
           <img src={upload.src} />
           <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-black mt-[5px]">
             Drag & Drop or
