@@ -12,6 +12,7 @@ import axios from "axios";
 import { Alert } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
+import { FaAsterisk } from "react-icons/fa";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -99,27 +100,61 @@ export default function AddUser() {
         >
           <div className="w-full h-fit  ">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              <TypeInputWidth
-                label={"User Name"}
-                value={""}
-                required={true}
-                type={"text"}
-                widthProp="sm:w-[48%]"
-              />
-              <TypeInputWidth
-                label={"Password"}
-                value={""}
-                required={true}
-                type={"text"}
-                widthProp="sm:w-[48%]"
-              />
-              <TypeInputWidth
-                label={"Email"}
-                value={""}
-                required={true}
-                type={"email"}
-                widthProp="sm:w-[48%]"
-              />
+              <div
+                className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+              >
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                  Username
+                  <FaAsterisk className="text-[6px]" />
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <input
+                    required={true}
+                    type={"text"}
+                    name="username"
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                    placeholder={`Enter Username`}
+                    minLength={6}
+                    maxLength={30}
+                  />
+                </div>
+              </div>
+              <div
+                className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+              >
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                  Password
+                  <FaAsterisk className="text-[6px]" />
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <input
+                    required={true}
+                    type={"text"}
+                    name="password"
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                    placeholder={`Enter Password`}
+                    minLength={6}
+                    maxLength={30}
+                  />
+                </div>
+              </div>
+              <div
+                className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+              >
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                  Email
+                  <FaAsterisk className="text-[6px]" />
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <input
+                    required={true}
+                    type={"email"}
+                    name="email"
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                    placeholder={`Enter Email`}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
