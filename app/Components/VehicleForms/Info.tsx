@@ -103,14 +103,14 @@ export default function Info() {
         <TypeInput
           label={"Vehicle ID"}
           value={""}
-          name={"vehicleID"}
+          // name={"vehicleID"}
           required={false}
           type={"text"}
         />
         <SelectInput
           label={"Make"}
           value={""}
-          name={"make"}
+          // name={"make"}
           required={true}
           options={["Select", "Make1", "Make2"]}
         />
@@ -118,7 +118,7 @@ export default function Info() {
         <SelectInput
           label={"Model"}
           value={""}
-          name={"model"}
+          // name={"model"}
           required={true}
           options={["Select", "Model1", "Model2"]}
         />
@@ -126,7 +126,7 @@ export default function Info() {
         <SelectInput
           label={"Type"}
           value={""}
-          name={"type"}
+          // name={"type"}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
@@ -134,14 +134,14 @@ export default function Info() {
         <SelectInput
           label={"Year"}
           value={""}
-          name={"year"}
+          // name={"year"}
           required={true}
           options={["Select", "Year1", "Year2"]}
         />
         <TypeInput
           label={"Registration No"}
           value={""}
-          name={"registrationNo"}
+          // name={"registrationNo"}
           required={true}
           type={"text"}
         />
@@ -154,7 +154,7 @@ export default function Info() {
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              name={"color"}
+              // name={"color"}
               required={true}
             >
               <option value="">Select</option>
@@ -172,7 +172,7 @@ export default function Info() {
         <SelectInput
           label={"Fuel Type"}
           value={""}
-          name={"fuelType"}
+          // name={"fuelType"}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
@@ -180,14 +180,14 @@ export default function Info() {
         <SelectInput
           label={"Transmission"}
           value={""}
-          name={"transmission"}
+          // name={"transmission"}
           required={true}
           options={["Select", "Transmission1", "Transmission2"]}
         />
         <TypeInputInfo
           label={"Odometer (KMPH)"}
           value={""}
-          name={"odometer"}
+          // name={"odometer"}
           required={true}
           type={"text"}
         />
@@ -195,7 +195,7 @@ export default function Info() {
         <SelectInputInfo
           label={"Passengers"}
           value={""}
-          name={"passengers"}
+          // name={"passengers"}
           required={true}
           options={["Select", "Passengers1", "Passengers2"]}
         />
@@ -203,14 +203,14 @@ export default function Info() {
         <SelectInput
           label={"Country"}
           value={""}
-          name={"country"}
+          // name={"country"}
           required={true}
           options={["Select", "Country1", "Country2"]}
         />
         <SelectInput
           label={"City"}
           value={""}
-          name={"city"}
+          // name={"city"}
           required={true}
           options={["Select", "City1", "City2"]}
         />
@@ -218,7 +218,7 @@ export default function Info() {
         <TypeInputInfo
           label={"Postal/Zip Code"}
           value={""}
-          name={"postalCode"}
+          // name={"postalCode"}
           required={true}
           type={"text"}
         />

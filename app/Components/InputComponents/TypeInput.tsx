@@ -6,7 +6,7 @@ import "antd/dist/reset.css";
 
 interface TypeInput {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   type: string;
@@ -14,7 +14,6 @@ interface TypeInput {
 
 export const TypeInput: React.FC<TypeInput> = ({
   label,
-  name,
   value,
   required,
   type,
@@ -29,7 +28,6 @@ export const TypeInput: React.FC<TypeInput> = ({
         <input
           required={required}
           type={type}
-          name={name}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
         />
@@ -40,7 +38,7 @@ export const TypeInput: React.FC<TypeInput> = ({
 
 interface TypeInputWidth {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   type: string;
@@ -49,7 +47,7 @@ interface TypeInputWidth {
 
 export const TypeInputWidth: React.FC<TypeInputWidth> = ({
   label,
-  name,
+
   value,
   required,
   type,
@@ -67,7 +65,6 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
         <input
           required={required}
           type={type}
-          name={name}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
         />
@@ -78,7 +75,7 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
 
 interface TypeInputInfo {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   type: string;
@@ -86,7 +83,7 @@ interface TypeInputInfo {
 
 export const TypeInputInfo: React.FC<TypeInputInfo> = ({
   label,
-  name,
+
   value,
   required,
   type,
@@ -111,7 +108,6 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
         <input
           required={required}
           type={type}
-          name={name}
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
         />

@@ -7,7 +7,7 @@ import "antd/dist/reset.css";
 
 interface SelectInput {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   options: any;
@@ -15,7 +15,7 @@ interface SelectInput {
 
 export const SelectInput: React.FC<SelectInput> = ({
   label,
-  name,
+
   value,
   required,
   options,
@@ -30,7 +30,7 @@ export const SelectInput: React.FC<SelectInput> = ({
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
           required={required}
-          name={name}
+          
         >
           {options?.map((item: any, key: number) => (
             <option value="" key={key}>
@@ -48,7 +48,7 @@ export const SelectInput: React.FC<SelectInput> = ({
 
 interface SelectInputWidth {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   options: any;
@@ -57,7 +57,7 @@ interface SelectInputWidth {
 
 export const SelectInputWidth: React.FC<SelectInputWidth> = ({
   label,
-  name,
+
   value,
   required,
   options,
@@ -75,7 +75,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
           required={required}
-          name={name}
+          
         >
           {options?.map((item: any, key: number) => (
             <option value="" key={key}>
@@ -93,7 +93,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
 
 interface SelectInputInfo {
   label: string;
-  name: string;
+
   value: any;
   required: boolean;
   options: any;
@@ -101,7 +101,7 @@ interface SelectInputInfo {
 
 export const SelectInputInfo: React.FC<SelectInputInfo> = ({
   label,
-  name,
+
   value,
   required,
   options,
@@ -126,7 +126,7 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
           required={required}
-          name={name}
+          
         >
           {options?.map((item: any, key: number) => (
             <option value="" key={key}>

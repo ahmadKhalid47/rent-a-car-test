@@ -24,7 +24,22 @@ export default function Customers() {
       window.location.href = "/";
     }
   }
-
+// useEffect(() => {
+//   async function verifyTokenApi() {
+//     try {
+//       setLoading(true);
+//       setIsVerified(undefined);
+//       let userData = await axios.get("/api/verifyToken");
+//       // console.log(userData?.data?.msg);
+//       setIsVerified(true);
+//     } catch (err) {
+//       setIsVerified(false);
+//     } finally {
+//       setLoading(false);
+//     }
+//   }
+//   verifyTokenApi();
+// }, [pathName]);
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
