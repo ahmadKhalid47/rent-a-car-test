@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       } else {
         return new Response(JSON.stringify({ error: null }), {
           headers: {
-            "Set-Cookie": setTokenToCookies({ username, password }),
+            "Set-Cookie": setTokenToCookies({ username, admin: loginData?.admin }),
           },
         });
       }
