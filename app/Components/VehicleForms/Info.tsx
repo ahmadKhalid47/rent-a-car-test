@@ -10,7 +10,7 @@ import { useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
-import { TypeInput, TypeInputInfo } from "../InputComponents/TypeInput";
+import { TempTypeInput, TempTypeInputInfo } from "../InputComponents/TypeInput";
 import { SelectInput, SelectInputInfo } from "../InputComponents/SelectInput";
 import {
   setvehicleIdR,
@@ -122,7 +122,7 @@ export default function Info() {
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <TypeInput
+        <TempTypeInput
           setState={setvehicleIdR}
           label={"Vehicle ID"}
           value={""}
@@ -153,7 +153,7 @@ export default function Info() {
           required={true}
           options={["Select", "Year1", "Year2"]}
         />
-        <TypeInput
+        <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={""}
@@ -193,7 +193,7 @@ export default function Info() {
           required={true}
           options={["Select", "Transmission1", "Transmission2"]}
         />
-        <TypeInputInfo
+        <TempTypeInputInfo
           setState={setodometerR}
           label={"Odometer (KMPH)"}
           value={""}
@@ -218,7 +218,7 @@ export default function Info() {
           required={true}
           options={["Select", "City1", "City2"]}
         />
-        <TypeInputInfo
+        <TempTypeInputInfo
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={""}
