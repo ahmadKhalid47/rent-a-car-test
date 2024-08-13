@@ -169,7 +169,7 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
         >
           {options?.map((item: any, key: number) => (
             <option value={item} key={key}>
-              {item}
+              {item ? item : "Select"}
             </option>
           ))}
         </select>
@@ -219,7 +219,7 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
         >
           {options?.map((item: any, key: number) => (
             <option value={item} key={key}>
-              {item}
+              {item ? item : "Select"}
             </option>
           ))}
         </select>
@@ -273,7 +273,7 @@ export const TempSelectInputInfo: React.FC<TempSelectInputInfo> = ({
         >
           {options?.map((item: any, key: number) => (
             <option value={item} key={key}>
-              {item}
+              {item ? item : "Select"}
             </option>
           ))}
         </select>
