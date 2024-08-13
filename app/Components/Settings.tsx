@@ -11,6 +11,7 @@ import settings9 from "@/public/settings (1).svg";
 import settings10 from "@/public/settings (4).svg";
 import settings11 from "@/public/settings (8).svg";
 import settings12 from "@/public/settings (9).svg";
+import Link from "next/link";
 
 export default function Customers() {
   return (
@@ -38,6 +39,22 @@ export default function Customers() {
           </div>
         </div>
         <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
+          <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
+              <img src={settings1.src} />
+            </div>
+            <Link
+              href={"/Components/Settings/AddUser"}
+              className="h-fit w-[80%]"
+            >
+              <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                Add New User
+              </h3>
+              <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                Add New User.
+              </p>
+            </Link>
+          </div>
           <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
             <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
               <img src={settings1.src} />

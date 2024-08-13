@@ -30,7 +30,5 @@ export default function Home() {
         >
           <CustomerForms />
         </div>
-    //   </div>
-    // </div>
   );
 }
