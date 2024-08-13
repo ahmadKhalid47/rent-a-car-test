@@ -12,8 +12,19 @@ import settings10 from "@/public/settings (4).svg";
 import settings11 from "@/public/settings (8).svg";
 import settings12 from "@/public/settings (9).svg";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Customers() {
+  async function logout() {
+    try {
+      await axios.post("/api/logOut");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    } finally {
+      window.location.href = "/";
+    }
+  }
+
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
@@ -212,6 +223,23 @@ export default function Customers() {
               </p>
             </div>
           </div>
+          <button
+            onClick={() => {
+              logout()
+          }}
+            className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            {/* <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
+              <img src={settings12.src} />
+            </div> */}
+            <div className="h-fit w-[80%]">
+              <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                Logout
+              </h3>
+              {/* <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                Contact customer support or IT helpdesk.{" "}
+              </p> */}
+            </div>
+          </button>
         </div>
       </div>
     </div>
