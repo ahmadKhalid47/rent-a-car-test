@@ -37,7 +37,7 @@ export default function RootLayout({
         setLoading(true);
         setIsVerified(undefined);
         let userData = await axios.get("/api/verifyToken");
-        console.log(userData?.data?.msg);
+        // console.log(userData?.data?.msg);
         setIsVerified(true);
       } catch (err) {
         setIsVerified(false);
