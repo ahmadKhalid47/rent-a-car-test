@@ -11,6 +11,7 @@ export default function ForgotPassword() {
   const [showError, setShowError] = useState(null);
   const [showSuccess, setShowSuccess] = useState(null);
   const [loading, setLoading] = useState<any>(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const ForgotPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
     if (typeof window === "undefined") {
@@ -66,6 +67,7 @@ export default function ForgotPassword() {
       >
         <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
           <h3 className="font-[400]">Forgot Password</h3>
+          
           <input
             className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
             type="email"

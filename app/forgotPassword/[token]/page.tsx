@@ -1,6 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import car from "@/public/Layer_1 (1).svg";
@@ -15,7 +16,8 @@ export default function ResetPassword() {
   const token = params?.token;
   const [showError, setShowError] = useState<any>(null);
   const [showSuccess, setShowSuccess] = useState<any>(null);
-
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(true);
   const [buttonLoading, setButtonLoading] = useState<any>(false);
@@ -145,28 +147,55 @@ export default function ResetPassword() {
                     >
                       <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
                         <h3 className="font-[400]">New Password</h3>
-                        <input
-                          className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
-                          type="password"
-                          name="password"
-                          placeholder="New Password"
-                          minLength={6}
-                          maxLength={30}
-                          required
-                        />
+                        <div className="w-full h-fit relative">
+                          <input
+                            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+                            type={!showPassword1 ? "Password" : "text"}
+                            name="password"
+                            placeholder="New Password"
+                            minLength={6}
+                            maxLength={30}
+                            required
+                          />
+                          {!showPassword1 ? (
+                            <FaEyeSlash
+                              className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
+                              onClick={(e) => setShowPassword1(!showPassword1)}
+                            />
+                          ) : (
+                            <FaEye
+                              className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
+                              onClick={(e) => setShowPassword1(!showPassword1)}
+                            />
+                          )}
+                        </div>
                       </div>
                       <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
                         <h3 className="font-[400]">Confirm Password</h3>
-                        <input
-                          className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
-                          type="password"
-                          name="confirmPassword"
-                          placeholder="Confirm Password"
-                          minLength={6}
-                          maxLength={30}
-                          required
-                        />
+                        <div className="w-full h-fit relative">
+                          <input
+                            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+                            type={!showPassword2 ? "Password" : "text"}
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            minLength={6}
+                            maxLength={30}
+                            required
+                          />
+                          {!showPassword2 ? (
+                            <FaEyeSlash
+                              className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
+                              onClick={(e) => setShowPassword2(!showPassword2)}
+                            />
+                          ) : (
+                            <FaEye
+                              className="absolute right-5 top-[20px] text-[20px] cursor-pointer"
+                              onClick={(e) => setShowPassword2(!showPassword2)}
+                            />
+                          )}
+                        </div>
                       </div>
+
                       <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
                         {showSuccess ? (
                           <Link
