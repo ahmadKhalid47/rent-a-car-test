@@ -7,6 +7,7 @@ import "antd/dist/reset.css";
 
 interface SelectInput {
   label: string;
+  name: string;
   value: any;
   required: boolean;
   options: any;
@@ -14,6 +15,7 @@ interface SelectInput {
 
 export const SelectInput: React.FC<SelectInput> = ({
   label,
+  name,
   value,
   required,
   options,
@@ -25,9 +27,15 @@ export const SelectInput: React.FC<SelectInput> = ({
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-        <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-          {options?.map((item: any) => (
-            <option value="">{item}</option>
+        <select
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          required={required}
+          name={name}
+        >
+          {options?.map((item: any, key: number) => (
+            <option value="" key={key}>
+              {item}
+            </option>
           ))}
         </select>
         <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
@@ -40,6 +48,7 @@ export const SelectInput: React.FC<SelectInput> = ({
 
 interface SelectInputWidth {
   label: string;
+  name: string;
   value: any;
   required: boolean;
   options: any;
@@ -48,6 +57,7 @@ interface SelectInputWidth {
 
 export const SelectInputWidth: React.FC<SelectInputWidth> = ({
   label,
+  name,
   value,
   required,
   options,
@@ -62,9 +72,15 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-        <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-          {options?.map((item: any) => (
-            <option value="">{item}</option>
+        <select
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          required={required}
+          name={name}
+        >
+          {options?.map((item: any, key: number) => (
+            <option value="" key={key}>
+              {item}
+            </option>
           ))}
         </select>
         <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
@@ -77,6 +93,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
 
 interface SelectInputInfo {
   label: string;
+  name: string;
   value: any;
   required: boolean;
   options: any;
@@ -84,6 +101,7 @@ interface SelectInputInfo {
 
 export const SelectInputInfo: React.FC<SelectInputInfo> = ({
   label,
+  name,
   value,
   required,
   options,
@@ -95,7 +113,6 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
       <label className="w-full flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] relative">
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
-
         <Popover
           content={content}
           //title="Popover Title"
@@ -106,9 +123,15 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
         </Popover>
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-        <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-          {options?.map((item: any) => (
-            <option value="">{item}</option>
+        <select
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          required={required}
+          name={name}
+        >
+          {options?.map((item: any, key: number) => (
+            <option value="" key={key}>
+              {item}
+            </option>
           ))}
         </select>
         <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
