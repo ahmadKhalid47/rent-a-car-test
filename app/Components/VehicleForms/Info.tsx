@@ -134,28 +134,28 @@ export default function Info() {
           label={"Make"}
           value={vehicle.make}
           required={true}
-          options={["Select", "Make1", "Make2"]}
+          options={["", "Make1", "Make2"]}
         />
         <TempSelectInput
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
           required={true}
-          options={["Select", "Model1", "Model2"]}
+          options={["", "Model1", "Model2"]}
         />
         <TempSelectInput
           setState={settypeR}
           label={"Type"}
           value={vehicle.type}
           required={true}
-          options={["Select", "Type1", "Type2"]}
+          options={["", "Type1", "Type2"]}
         />
         <TempSelectInput
           setState={setyearR}
           label={"Year"}
           value={vehicle.year}
           required={true}
-          options={["Select", "Year1", "Year2"]}
+          options={["", "Year1", "Year2"]}
         />
         <TempTypeInput
           setState={setregistrationR}
@@ -173,11 +173,15 @@ export default function Info() {
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               required={true}
+              onChange={(e) => {
+                dispatch(setcolorR(e.target.value));
+              }}
+              value={vehicle.color}
             >
               <option value="">Select</option>
-              <option value="">Red</option>
-              <option value="">Red</option>
-              <option value="">Red</option>
+              <option value="Red">Red</option>
+              <option value="Red">Red</option>
+              <option value="Red">Red</option>
             </select>
             <div className="rounded-full w-[19px] h-[12px] bg-red-500 absolute left-2 top-[15.5px]"></div>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
@@ -190,14 +194,14 @@ export default function Info() {
           label={"Fuel Type"}
           value={vehicle.fuelType}
           required={true}
-          options={["Select", "Type1", "Type2"]}
+          options={["", "Type1", "Type2"]}
         />
         <TempSelectInput
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
           required={true}
-          options={["Select", "Transmission1", "Transmission2"]}
+          options={["", "Transmission1", "Transmission2"]}
         />
         <TempTypeInputInfo
           setState={setodometerR}
@@ -211,21 +215,21 @@ export default function Info() {
           label={"Passengers"}
           value={vehicle.passengers}
           required={true}
-          options={["Select", "Passengers1", "Passengers2"]}
+          options={["", "Passengers1", "Passengers2"]}
         />
         <TempSelectInput
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
           required={true}
-          options={["Select", "Country1", "Country2"]}
+          options={["", "Country1", "Country2"]}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
           required={true}
-          options={["Select", "City1", "City2"]}
+          options={["", "City1", "City2"]}
         />
         <TempTypeInputInfo
           setState={setpostalCodeR}
