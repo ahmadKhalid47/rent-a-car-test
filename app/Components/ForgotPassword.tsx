@@ -28,8 +28,10 @@ export default function ForgotPassword() {
       let result: any = await axios.post(`/api/forgotPassword`, formDataObj);
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
+        setShowError(null);
       } else {
         setShowError(result?.data?.error);
+        setShowSuccess(null);
       }
     } catch (error: any) {
       console.log(error);
