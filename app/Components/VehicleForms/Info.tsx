@@ -11,7 +11,7 @@ import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
 import { TempTypeInput, TempTypeInputInfo } from "../InputComponents/TypeInput";
-import { SelectInput, SelectInputInfo } from "../InputComponents/SelectInput";
+import { TempSelectInput, TempSelectInputInfo } from "../InputComponents/SelectInput";
 import {
   setvehicleIdR,
   setmakeR,
@@ -33,7 +33,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 export default function Info() {
-  let Vehicle = useSelector((state: RootState) => state.Vehicle);
+  let vehicle = useSelector((state: RootState) => state.Vehicle);
   let dispatch = useDispatch();
 
   const [alreadyFiles, setAlreadyFiles] = useState([
@@ -117,7 +117,7 @@ export default function Info() {
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  console.log(Vehicle);
+  console.log(vehicle);
 
   return (
     <div className="w-full h-fit ">
@@ -125,38 +125,42 @@ export default function Info() {
         <TempTypeInput
           setState={setvehicleIdR}
           label={"Vehicle ID"}
-          value={""}
+          value={vehicle.vehicleId}
           required={false}
           type={"text"}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setmakeR}
           label={"Make"}
-          value={""}
+          value={vehicle.make}
           required={true}
           options={["Select", "Make1", "Make2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setmodelR}
           label={"Model"}
-          value={""}
+          value={vehicle.model}
           required={true}
           options={["Select", "Model1", "Model2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={settypeR}
           label={"Type"}
-          value={""}
+          value={vehicle.type}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setyearR}
           label={"Year"}
-          value={""}
+          value={vehicle.year}
           required={true}
           options={["Select", "Year1", "Year2"]}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
-          value={""}
+          value={vehicle.registration}
           required={true}
           type={"text"}
         />
@@ -181,47 +185,52 @@ export default function Info() {
             </div>
           </div>
         </div>
-        <SelectInput
+        <TempSelectInput
+          setState={setfuelTypeR}
           label={"Fuel Type"}
-          value={""}
+          value={vehicle.fuelType}
           required={true}
           options={["Select", "Type1", "Type2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={settransmissionR}
           label={"Transmission"}
-          value={""}
+          value={vehicle.transmission}
           required={true}
           options={["Select", "Transmission1", "Transmission2"]}
         />
         <TempTypeInputInfo
           setState={setodometerR}
           label={"Odometer (KMPH)"}
-          value={""}
+          value={vehicle.odometer}
           required={true}
           type={"text"}
         />
-        <SelectInputInfo
+        <TempSelectInputInfo
+          setState={setpassengersR}
           label={"Passengers"}
-          value={""}
+          value={vehicle.passengers}
           required={true}
           options={["Select", "Passengers1", "Passengers2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setcountryR}
           label={"Country"}
-          value={""}
+          value={vehicle.country}
           required={true}
           options={["Select", "Country1", "Country2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setcityR}
           label={"City"}
-          value={""}
+          value={vehicle.city}
           required={true}
           options={["Select", "City1", "City2"]}
         />
         <TempTypeInputInfo
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
-          value={""}
+          value={vehicle.postalCode}
           required={true}
           type={"text"}
         />

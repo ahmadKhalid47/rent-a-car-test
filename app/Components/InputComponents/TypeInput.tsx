@@ -174,6 +174,7 @@ export const TempTypeInput: React.FC<TempTypeInput> = ({
           onChange={(e) => {
             dispatch(setState(e.target.value));
           }}
+          value={value}
         />
       </div>
     </div>
@@ -215,6 +216,7 @@ export const TempTypeInputWidth: React.FC<TempTypeInputWidth> = ({
           onChange={(e) => {
             dispatch(setState(e.target.value));
           }}
+          value={value}
         />
       </div>
     </div>
@@ -262,6 +264,7 @@ export const TempTypeInputInfo: React.FC<TempTypeInputInfo> = ({
           onChange={(e) => {
             dispatch(setState(e.target.value));
           }}
+          value={value}
         />
       </div>
     </div>
