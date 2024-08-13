@@ -61,12 +61,18 @@ export default function RootLayout({
             ) : (
               <main
                 className={`${
-                  pathName && pathName !== "/" && isVerified
+                  pathName &&
+                  pathName !== "/" &&
+                  !pathName.includes("forgotPassword") &&
+                  isVerified
                     ? "flex justify-start items-start relative flex-wrap"
                     : ""
                 }`}
               >
-                {pathName && pathName !== "/" && isVerified ? (
+                {pathName &&
+                pathName !== "/" &&
+                !pathName.includes("forgotPassword") &&
+                isVerified ? (
                   <>
                     <Sidebar />
                     <Nav />
