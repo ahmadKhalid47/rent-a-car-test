@@ -16,7 +16,7 @@ export default function VehicleForms() {
     event.preventDefault();
     setFormVerified(true);
   };
-  
+
   function handleSetCurrentPage(page: any) {
     setCurrentPage(formVerified ? page : currentPage);
   }
@@ -24,7 +24,6 @@ export default function VehicleForms() {
   useEffect(() => {
     setFormVerified(false);
   }, [currentPage]);
-    console.log(formVerified);
 
   return (
     <div
