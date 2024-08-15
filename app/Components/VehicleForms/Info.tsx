@@ -133,35 +133,40 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Make1", "Make2"]}
         />
         <TempSelectInput
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Model1", "Model2"]}
         />
         <TempSelectInput
           setState={settypeR}
           label={"Type"}
           value={vehicle.type}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Type1", "Type2"]}
         />
         <TempSelectInput
           setState={setyearR}
           label={"Year"}
           value={vehicle.year}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Year1", "Year2"]}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -172,7 +177,8 @@ export default function Info() {
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              required={true}
+              // required={true}
+              required={false}
               onChange={(e) => {
                 dispatch(setcolorR(e.target.value));
               }}
@@ -193,49 +199,56 @@ export default function Info() {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Type1", "Type2"]}
         />
         <TempSelectInput
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Transmission1", "Transmission2"]}
         />
         <TempTypeInputInfo
           setState={setodometerR}
           label={"Odometer (KMPH)"}
           value={vehicle.odometer}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <TempSelectInputInfo
           setState={setpassengersR}
           label={"Passengers"}
           value={vehicle.passengers}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Passengers1", "Passengers2"]}
         />
         <TempSelectInput
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "Country1", "Country2"]}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          required={true}
+          // required={true}
+          required={false}
           options={["", "City1", "City2"]}
         />
         <TempTypeInputInfo
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={vehicle.postalCode}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
       </div>
