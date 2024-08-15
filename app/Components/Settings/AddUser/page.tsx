@@ -69,7 +69,7 @@ export default function AddUser() {
         <Alert
           variant="filled"
           severity="error"
-          className="absolute w-fit z-[100] top-2 right-2 fade-ou capitalize"
+          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
         >
           {showError}
         </Alert>
@@ -77,7 +77,7 @@ export default function AddUser() {
         <Alert
           variant="filled"
           severity="success"
-          className="absolute w-fit z-[100] top-2 right-2 fade-ou capitalize"
+          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
         >
           {showSuccess}
         </Alert>

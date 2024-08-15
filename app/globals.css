@@ -249,7 +249,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.125)
     infinite;
 }
-
+.alert-animation{
+  transition: all 1s;
+}
 @keyframes pulse {
   0%,
   100% {

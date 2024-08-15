@@ -47,7 +47,7 @@ export default function Login() {
         <Alert
           variant="filled"
           severity="error"
-          className="absolute w-[200px] z-[100] top-2 right-2 fade-ou capitalize"
+          className="absolute w-[200px] z-[100] top-2 right-2 alert-animation capitalize"
         >
           {showError}
         </Alert>
@@ -105,12 +105,7 @@ export default function Login() {
           disabled={loading}
           className="w-full h-[59px] flex justify-center items-center rounded-[10px] bg-main-blue text-white font-[500] text-[20px] leading-[20px] text-center"
         >
-          {loading ?
-            
-            <SmallLoader/>
-              :
-              "Login"
-               }
+          {loading ? <SmallLoader /> : "Login"}
         </button>
       </form>
     </>
