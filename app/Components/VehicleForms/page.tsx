@@ -16,6 +16,7 @@ export default function VehicleForms() {
     event.preventDefault();
     setFormVerified(true);
   };
+  
   function handleSetCurrentPage(page: any) {
     setCurrentPage(formVerified ? page : currentPage);
   }
