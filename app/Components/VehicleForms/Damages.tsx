@@ -232,9 +232,8 @@ export default function Damages() {
                   className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
-                >
-                  Enter Description
-                </textarea>
+                  value={"Enter Description"}
+                ></textarea>
               </div>
             </div>
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit bg-white mt- p">
