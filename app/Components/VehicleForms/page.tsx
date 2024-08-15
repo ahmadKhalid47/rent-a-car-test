@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
@@ -9,6 +9,11 @@ import Info from "./Info";
 
 export default function VehicleForms() {
   let [currentPage, setCurrentPage] = useState(0);
+
+  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("Submitted");
+  };
 
   return (
     <div
@@ -23,7 +28,10 @@ export default function VehicleForms() {
           </p>
         </h3>
       </div>
-      <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
+      >
         <div className="w-full h-fit flex flex-col justify-start items-center">
           <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px]">
             <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
@@ -195,12 +203,13 @@ export default function VehicleForms() {
             <button
               className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => setCurrentPage(currentPage + 1)}
+              type="submit"
             >
               Save and Continue
             </button>
           )}
         </div>
-      </div>
+      </form>
     </div>
   );
 }
