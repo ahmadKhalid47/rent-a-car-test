@@ -23,17 +23,16 @@ export async function POST(req: Request) {
       { fptoken: token },
       { $set: { password: hashedPassword } }
     );
+    console.log(loginData.acknowledged);
     if (loginData.acknowledged) {
       await RegistrationModel.updateOne(
         { fptoken: token },
         { $set: { fptoken: "" } }
       );
+      return NextResponse.json({
+        success: "Your password has been updated successfully.",
+      });
     }
-    
-    console.log(loginData, password);
-    return NextResponse.json({
-      success: "Your password has been updated successfully.",
-    });
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({

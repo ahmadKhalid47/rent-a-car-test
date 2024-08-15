@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 
       await transporter.sendMail(mailOptions);
       await RegistrationModel.updateOne(
-        { email: "ahmadrazakhalid9.0@gmail.com" },
+        { email: email },
         { $set: { fptoken: token } }
       );
       return NextResponse.json({
