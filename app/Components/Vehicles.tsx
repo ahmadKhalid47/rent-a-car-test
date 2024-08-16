@@ -11,16 +11,41 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setFieldNameR } from "../store/Global";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import { MediumLoader } from "./Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   const [gridView, setGridView] = useState(true);
   const [showLess, setShowLess] = useState(true);
+  const [loading, setLoading] = useState<any>(true);
+  const [showSuccess, setShowSuccess] = useState(null);
+  const [showError, setShowError] = useState(null);
+  const [vehiclesData, setVehiclesData] = useState<any>(null);
+
   let dispatch = useDispatch();
   const router = useRouter();
   useEffect(() => {
-    dispatch(setFieldNameR("Home"));
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getVehicle`);
+        if (result?.data?.data) {
+          setVehiclesData(result?.data?.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
   }, []);
+
+  console.log(vehiclesData);
+
   return (
     <div
       className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
@@ -191,7 +216,13 @@ export default function Vehicles() {
         </h3>
       </div>
       <div className="w-full h-fit">
-        {gridView ? <GridView /> : <ListView />}
+        {loading ? (
+          <MediumLoader />
+        ) : gridView ? (
+          <GridView data={vehiclesData} />
+        ) : (
+          <ListView />
+        )}
       </div>
     </div>
   );

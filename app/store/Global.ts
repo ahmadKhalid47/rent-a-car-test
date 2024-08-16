@@ -35,7 +35,7 @@ export const {
   setSidebarShowTempR,
   setFieldNameR,
   setLoginPageR,
-  setCheck
+  setCheck,
 } = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;

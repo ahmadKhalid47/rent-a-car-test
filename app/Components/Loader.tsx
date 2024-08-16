@@ -9,6 +9,14 @@ export default function Loader() {
   );
 }
 
+export function MediumLoader() {
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="loader"></div>
+    </div>
+  );
+}
+
 export function SmallLoader() {
   return (
     <div className="w-full h-full flex justify-center items-center">
