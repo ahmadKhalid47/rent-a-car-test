@@ -8,11 +8,15 @@ import Feature from "./Feature";
 import Info from "./Info";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
+import axios from "axios";
 
 export default function VehicleForms() {
   let [currentPage, setCurrentPage] = useState(0);
   let [formVerified, setFormVerified] = useState(false);
   let vehicle = useSelector((state: RootState) => state.Vehicle);
+  const [loading, setLoading] = useState<any>(false);
+  const [showSuccess, setShowSuccess] = useState(null);
+  const [showError, setShowError] = useState(null);
 
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setFormVerified(false);
@@ -27,7 +31,25 @@ export default function VehicleForms() {
   useEffect(() => {
     setFormVerified(false);
   }, [currentPage]);
-  console.log(vehicle);
+
+  async function save() {
+    console.log(vehicle);
+    try {
+      setLoading(true);
+      let result: any = await axios.post(`/api/saveVehicle`, vehicle);
+      if (result?.data?.success) {
+        setShowSuccess(result?.data?.success);
+        setShowError(null);
+      } else {
+        setShowError(result?.data?.error);
+        setShowSuccess(null);
+      }
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div
@@ -214,7 +236,10 @@ export default function VehicleForms() {
               <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
                 Save and Close
               </button>
-              <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
+              <button
+                className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => save()}
+              >
                 Save and New
               </button>
               <div />
