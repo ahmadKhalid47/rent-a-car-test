@@ -11,7 +11,6 @@ import {
 
 export default function Rental() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
-  console.log(vehicle);
 
   return (
     <div className="w-full h-fit  ">

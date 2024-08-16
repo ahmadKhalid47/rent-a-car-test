@@ -10,7 +10,6 @@ import {
 
 export default function Insurances() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
-  console.log(vehicle);
 
   return (
     <div className="w-full h-fit  ">

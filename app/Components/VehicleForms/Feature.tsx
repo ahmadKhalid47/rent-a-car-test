@@ -30,7 +30,6 @@ export default function Feature() {
       return newArray;
     });
   }
-  console.log(vehicle.features);
 
   return (
     <div className="w-full h-fit  ">

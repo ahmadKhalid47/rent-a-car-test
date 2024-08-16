@@ -102,10 +102,6 @@ export default function Damages() {
     dispatch(setdamages(damages));
   }, [damages]);
 
-  // console.log(marks[marks.length - 1]);
-  console.log(vehicle.damages);
-  console.log(vehicle);
-
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">

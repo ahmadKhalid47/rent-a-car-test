@@ -117,7 +117,6 @@ export default function Info() {
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  console.log(vehicle);
 
   return (
     <div className="w-full h-fit ">

@@ -6,10 +6,13 @@ import Others from "./Others";
 import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
 
 export default function VehicleForms() {
   let [currentPage, setCurrentPage] = useState(0);
   let [formVerified, setFormVerified] = useState(false);
+  let vehicle = useSelector((state: RootState) => state.Vehicle);
 
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setFormVerified(false);
@@ -24,6 +27,7 @@ export default function VehicleForms() {
   useEffect(() => {
     setFormVerified(false);
   }, [currentPage]);
+  console.log(vehicle);
 
   return (
     <div

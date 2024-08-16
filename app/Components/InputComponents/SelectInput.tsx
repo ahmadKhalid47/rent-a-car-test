@@ -163,7 +163,6 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
           required={required}
           onChange={(e) => {
             dispatch(setState(e.target.value));
-            console.log(e.target.value);
           }}
           value={value}
         >

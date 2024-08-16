@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       { fptoken: token },
       { $set: { password: hashedPassword } }
     );
-    console.log(loginData.acknowledged);
+    
     if (loginData.acknowledged) {
       await RegistrationModel.updateOne(
         { fptoken: token },
