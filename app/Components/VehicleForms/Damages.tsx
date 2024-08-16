@@ -1,6 +1,6 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import checkBlue from "@/public/checkBlue.svg";
 import checkBlack from "@/public/checkBlack.png";
@@ -10,12 +10,22 @@ import { FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store";
+import { setdamages } from "@/app/store/Vehicle";
+import { useDispatch } from "react-redux";
 
 export default function Damages() {
+  let vehicle = useSelector((state: RootState) => state.Vehicle);
   const [exterior, setExterior] = useState(true);
   const [popup, setPopup] = useState(false);
-
+  const [damageType, setDamageType] = useState("");
+  const [degree, setDegree] = useState("");
+  const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
+  let [damages, setDamages] = useState<any>(vehicle.damages);
+  const [marks, setMarks] = useState<any>(vehicle.damages);
+  let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(
@@ -61,29 +71,40 @@ export default function Damages() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const [marks, setMarks] = useState<any>([]);
+  const handleClick = (e: any, isExterior: any) => {
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const exterior = isExterior;
+    setPopup(true);
+    setMarks([...marks, { x, y, exterior }]);
+  };
 
-  const handleClick1 = (e: any) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const exterior = true;
-    setPopup(true);
-    setMarks([...marks, { x, y, exterior }]);
-  };
-  const handleClick2 = (e: any) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const exterior = false;
-    setPopup(true);
-    setMarks([...marks, { x, y, exterior }]);
-  };
   const cancelPop = () => {
     const array = marks;
     array.pop();
     setMarks(array);
+    7;
   };
+
+  function save() {
+    let tempObj = {
+      ...marks[marks.length - 1],
+      damageType,
+      degree,
+      description,
+    };
+    setDamages([...damages, tempObj]);
+    setPopup(false);
+  }
+
+  useEffect(() => {
+    dispatch(setdamages(damages));
+  }, [damages]);
+
+  // console.log(marks[marks.length - 1]);
+  console.log(vehicle.damages);
+  console.log(vehicle);
 
   return (
     <div className="w-full h-fit">
@@ -125,14 +146,18 @@ export default function Damages() {
                     <img
                       src={CarExterior.src}
                       className="w-[326px] h-[408px] cursor-pointer"
-                      onClick={handleClick1}
+                      onClick={(e) => {
+                        handleClick(e, true);
+                      }}
                     />
                   </div>
                 ) : (
                   <img
                     src={CarInterior.src}
                     className="w-[326px] h-[408px]"
-                    onClick={handleClick2}
+                    onClick={(e) => {
+                      handleClick(e, false);
+                    }}
                   />
                 )}
                 {marks.map((mark: any, index: any) => (
@@ -182,9 +207,24 @@ export default function Damages() {
                   Degree
                 </p>
               </div>
-              <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
-                Tap on the vehicle's part to add damage
-              </p>
+              {vehicle?.damages?.map((item: any, key: number) => (
+                <div className="w-full h-fit flex justify-between items-start border-b-[2px">
+                  <p className="w-[30%] md:w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
+                    {key + 1}
+                  </p>
+                  <p className="w-[40%] md:w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                    {item?.damageType}
+                  </p>
+                  <p className="w-[30%] md:w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                    {item?.degree}
+                  </p>
+                </div>
+              ))}
+              {vehicle.damages.length === 0 ? (
+                <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
+                  Tap on the vehicle's part to add damage
+                </p>
+              ) : null}
             </div>
           </div>
           <div className="absolute left-[50%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
@@ -198,10 +238,16 @@ export default function Damages() {
                 Damage Type
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-                  <option value="">Dent</option>
-                  <option value="">Clip</option>
-                  <option value="">Scratch</option>
+                <select
+                  className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                  onChange={(e) => {
+                    setDamageType(e.target.value);
+                  }}
+                >
+                  <option value="">Select</option>
+                  <option value="Dent">Dent</option>
+                  <option value="Clip">Clip</option>
+                  <option value="Scratch">Scratch</option>
                 </select>
                 <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
@@ -213,10 +259,16 @@ export default function Damages() {
                 Degree
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey">
-                  <option value="">low</option>
-                  <option value="">low</option>
-                  <option value="">low</option>
+                <select
+                  className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                  onChange={(e) => {
+                    setDegree(e.target.value);
+                  }}
+                >
+                  <option value="">Select</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
                 </select>
                 <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img src={shape.src} className="w-[10.5px]" />
@@ -232,7 +284,10 @@ export default function Damages() {
                   className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
-                  value={"Enter Description"}
+                  value={description ? description : "Enter Description"}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
                 ></textarea>
               </div>
             </div>
@@ -280,7 +335,7 @@ export default function Damages() {
               </button>
               <button
                 className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => setPopup(false)}
+                onClick={() => save()}
               >
                 Save
               </button>
