@@ -60,7 +60,7 @@ export default function Damages() {
       </span>
     </div>
   ));
-
+  console.log(files);
   function removing(name: any) {
     let array = files;
     array = array.filter((e: any) => {
