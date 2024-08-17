@@ -42,13 +42,13 @@ export async function POST(req) {
     const uploadedFiles = await Promise.all(uploadPromises);
     return NextResponse.json({ message: uploadedFiles });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { message: "Error", error: error.message },
       { status: 500 }
     );
   }
 }
-
 
 // import { NextResponse } from "next/server";
 // import { v2 as cloudinary } from "cloudinary";
