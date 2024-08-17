@@ -11,32 +11,36 @@ cloudinary.config({
 export async function POST(req) {
   try {
     const form = await req.formData();
-    const image = form.get("file");
-    if (!image) {
+    const files = form.getAll("files");
+    if (!files || files.length === 0) {
       return NextResponse.json(
-        { message: "No image provided" },
+        { message: "No files provided" },
         { status: 400 }
       );
     }
-    const chunks = [];
-    const imageStream = image.stream();
-    for await (const chunk of imageStream) {
-      chunks.push(chunk);
-    }
-    const imageBuffer = Buffer.concat(chunks);
 
-    const uploadPromise = new Promise((resolve, reject) => {
-      cloudinary.v2.uploader
-        .upload_stream({ format: "png" }, (error, result) => {
-          if (error) return reject(error);
-          resolve(result);
-        })
-        .end(imageBuffer);
+    const uploadPromises = files.map(async (file) => {
+      const chunks = [];
+      const fileStream = file.stream();
+      for await (const chunk of fileStream) {
+        chunks.push(chunk);
+      }
+      const fileBuffer = Buffer.concat(chunks);
+
+      const uploadPromise = new Promise((resolve, reject) => {
+        cloudinary.v2.uploader
+          .upload_stream({ format: "png" }, (error, result) => {
+            if (error) return reject(error);
+            resolve(result.secure_url);
+          })
+          .end(fileBuffer);
+      });
+
+      return await uploadPromise;
     });
 
-    const { secure_url: imageSecureUrl } = await uploadPromise;
-    console.log(imageSecureUrl);
-    return NextResponse.json({ message: "Post received" });
+    const uploadedFiles = await Promise.all(uploadPromises);
+    return NextResponse.json({ message: uploadedFiles });
   } catch (error) {
     return NextResponse.json(
       { message: "Error", error: error.message },
@@ -44,8 +48,6 @@ export async function POST(req) {
     );
   }
 }
-
-
 
 
 // import { NextResponse } from "next/server";

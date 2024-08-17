@@ -3,75 +3,20 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function UploadForm() {
-  const [selectedFiles, setSelectedFiles] = useState(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const handleSubmit = async () => {
+  const handleInputChange = async () => {
     const formData = new FormData();
-    formData.append("files" + 1, selectedFiles);
-    for (var key of formData.entries()) {
-      console.log(key[0] + ", " + key[1]);
+    for (let i = 0; i < selectedFiles.length; i++) {
+      formData.append("files", selectedFiles[i]);
     }
-    // const response = await axios.post("/api/upload", formData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // });
-
-    console.log(response);
-  };
-
-  const handleInputChange = async (event) => {
-    const imgData = selectedFiles;
-    const formData = new FormData();
-    formData.append("file", imgData);
-    console.log({formData});
-    console.log(imgData);
     const res = await axios.post("/api/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log(res?.data?.message);
   };
-
-  // const handleInputChange = async (event) => {
-  //   const imgData = event.target.files;
-  //   const formData = new FormData();
-  //   formData.append("file", imgData[0]);
-  //   console.log(formData);
-
-  //   formData.append("upload_preset", "kpgnv3dh");
-  //   try {
-  //     const res = await axios.post(
-  //       "https://api.cloudinary.com/v1_1/dcdynkm5d/image/upload",
-  //       formData
-  //     );
-  //   } catch (error) {}
-  // };
-
-  // const handleInputChange = async (event) => {
-  //   const files = event.target.files;
-  //   const uploadPromises = [];
-
-  //   for (let i = 0; i < files.length; i++) {
-  //     const formData = new FormData();
-  //     formData.append("file", files[i]);
-  //     formData.append("upload_preset", "kpgnv3dh");
-
-  //     const uploadPromise = axios.post(
-  //       "https://api.cloudinary.com/v1_1/dcdynkm5d/image/upload",
-  //       formData
-  //     );
-
-  //     uploadPromises.push(uploadPromise);
-  //   }
-
-  //   try {
-  //     const res = await Promise.all(uploadPromises);
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <div
@@ -82,9 +27,8 @@ export default function UploadForm() {
       <div className="flex flex-col ">
         <input
           type="file"
-          // multiple
-          // onChange={handleInputChange}
-          onChange={(e) => setSelectedFiles(e.target.files[0])}
+          multiple
+          onChange={(e) => setSelectedFiles(Array.from(e.target.files))}
         />
         <button onClick={handleInputChange}>Upload Images</button>
       </div>
