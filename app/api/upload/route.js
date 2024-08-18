@@ -21,13 +21,11 @@ export async function POST(req) {
     }
 
     const uploadPromises = files.map(async (file) => {
-      // Convert file to buffer
       const buffer = Buffer.from(await file.arrayBuffer());
 
-      // Upload file to Cloudinary
       const result = await cloudinary.v2.uploader.upload(
         `data:${file.type};base64,${buffer.toString("base64")}`,
-        { folder: "uploads" } // Optional: specify folder or other options
+        { folder: "uploads" }
       );
       return result.secure_url;
     });
