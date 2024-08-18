@@ -12,6 +12,7 @@ export async function POST(req) {
   try {
     const form = await req.formData();
     const files = form.getAll("files");
+
     if (!files || files.length === 0) {
       return NextResponse.json(
         { message: "No files provided" },
@@ -20,60 +21,25 @@ export async function POST(req) {
     }
 
     const uploadPromises = files.map(async (file) => {
-      const chunks = [];
-      const fileStream = file.stream();
-      for await (const chunk of fileStream) {
-        chunks.push(chunk);
-      }
-      const fileBuffer = Buffer.concat(chunks);
+      // Convert file to buffer
+      const buffer = Buffer.from(await file.arrayBuffer());
 
-      const uploadPromise = new Promise((resolve, reject) => {
-        cloudinary.v2.uploader
-          .upload_stream({ format: "png" }, (error, result) => {
-            if (error) return reject(error);
-            resolve(result.secure_url);
-          })
-          .end(fileBuffer);
-      });
-
-      return await uploadPromise;
+      // Upload file to Cloudinary
+      const result = await cloudinary.v2.uploader.upload(
+        `data:${file.type};base64,${buffer.toString("base64")}`,
+        { folder: "uploads" } // Optional: specify folder or other options
+      );
+      return result.secure_url;
     });
 
     const uploadedFiles = await Promise.all(uploadPromises);
+
     return NextResponse.json({ message: uploadedFiles });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ message: "Error", error: error.message });
+    return NextResponse.json(
+      { message: "Error", error: error.message },
+      { status: 500 }
+    );
   }
 }
-
-// import { NextResponse } from "next/server";
-// import { v2 as cloudinary } from "cloudinary";
-
-// cloudinary.config({
-//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-
-// export async function POST(req) {
-//   try {
-//     const formData = await req.formData();
-//     const selectedImage = formData.get("file");
-//     console.log(selectedImage);
-//     await cloudinary.uploader.upload(selectedImage);
-//     return NextResponse.json({ success: "success" }, { status: 500 });
-//   } catch (error) {
-//     console.error("Failed to upload file:", error);
-//     return NextResponse.json(
-//       { error: "Failed to upload file" },
-//       { status: 500 }
-//     );
-//   }
-// }
