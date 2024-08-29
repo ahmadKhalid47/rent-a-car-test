@@ -99,7 +99,7 @@ export default function Sidebar() {
           />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
-        <div
+        {/* <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
@@ -110,7 +110,7 @@ export default function Sidebar() {
             } text-[24px]`}
           />
           <span className="">{global.sidebarShow ? "Calendar" : null}</span>
-        </div>
+        </div> */}
 
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
@@ -482,7 +482,7 @@ export default function Sidebar() {
             </div>
           </div>
         ) : null}
-        <div
+        {/* <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px]`}
@@ -493,7 +493,7 @@ export default function Sidebar() {
           <span className="">
             {global.sidebarShow ? "Offer Generator" : null}
           </span>
-        </div>
+        </div> */}
         <Link
           href="/Components/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${

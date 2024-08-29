@@ -62,7 +62,7 @@ export default function Vehicles() {
                 </p>
               </Link>
               <Link
-                href={`/Components/Configuration/Make`}
+                href={`/Components/Configuration/Model`}
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
@@ -73,7 +73,7 @@ export default function Vehicles() {
                 </p>
               </Link>
               <Link
-                href={`/Components/Configuration/Make`}
+                href={`/Components/Configuration/Type`}
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
@@ -84,7 +84,7 @@ export default function Vehicles() {
                 </p>
               </Link>
               <Link
-                href={`/Components/Configuration/Make`}
+                href={`/Components/Configuration/Color`}
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
@@ -95,7 +95,7 @@ export default function Vehicles() {
                 </p>
               </Link>
               <Link
-                href={`/Components/Configuration/Make`}
+                href={`/Components/Configuration/Features`}
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
