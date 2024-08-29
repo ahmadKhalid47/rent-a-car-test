@@ -53,7 +53,7 @@ export default function Vehicles() {
     } else {
       dispatch(setSidebarShowR(true));
     }
-  }, [isMobile]);
+  }, [isMobile]); 
 
   useEffect(() => {
     async function getData() {
