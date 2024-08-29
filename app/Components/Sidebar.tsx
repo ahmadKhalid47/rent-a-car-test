@@ -439,11 +439,7 @@ export default function Sidebar() {
               </Link>{" "}
             </div>
             <Link
-              // onClick={() => {
-              //   router.push(
               href="/Components/AddVehicles"
-              //   );
-              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -469,15 +465,20 @@ export default function Sidebar() {
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
-              <div
-                className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              <Link
+                href="/Components/Configuration"
+                className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
-                } bg-main-blue-hover hover:text-white rounded-[10px]`}
+                } bg-main-blue-hover ${
+                  pathName === "/Components/Configuration"
+                    ? "bg-main-blue text-white"
+                    : ""
+                } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "Configuration" : null}
-              </div>{" "}
+              </Link>
             </div>
           </div>
         ) : null}
