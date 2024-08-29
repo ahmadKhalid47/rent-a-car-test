@@ -6,16 +6,9 @@ export async function GET(req: Request) {
   try {
     await connectDb();
     const data = await VehicleModel.find();
-    return NextResponse.json(
-      {
-        data,
-      },
-      {
-        headers: {
-          "Cache-Control": "no-store", // Prevents caching of the response
-        },
-      }
-    );
+    return NextResponse.json({
+      data,
+    });
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
