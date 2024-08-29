@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    await connectDb();
+    connectDb();
     const data = await RegistrationModel.find();
     const data2 = await VehicleModel.find();
     return NextResponse.json({
