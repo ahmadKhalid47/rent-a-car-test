@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   sidebarShow: false,
-  fieldName: "",
   sidebarShowTemp: true,
   loginPage: true,
   check: "",
+  vehicleDataReloader: 0,
 };
 
 export const GlobalSlice = createSlice({
@@ -14,9 +14,6 @@ export const GlobalSlice = createSlice({
   reducers: {
     setSidebarShowR: (state, action) => {
       state.sidebarShow = action.payload;
-    },
-    setFieldNameR: (state, action) => {
-      state.fieldName = action.payload;
     },
     setSidebarShowTempR: (state, action) => {
       state.sidebarShowTemp = action.payload;
@@ -27,15 +24,18 @@ export const GlobalSlice = createSlice({
     setCheck: (state, action) => {
       state.check = action.payload;
     },
+    setVehicleDataReloader: (state, action) => {
+      state.vehicleDataReloader = action.payload;
+    },
   },
 });
 
 export const {
   setSidebarShowR,
   setSidebarShowTempR,
-  setFieldNameR,
   setLoginPageR,
   setCheck,
+  setVehicleDataReloader,
 } = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;

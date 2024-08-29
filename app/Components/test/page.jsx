@@ -15,9 +15,8 @@ export default function UploadForm() {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(res?.data?.message);
   };
-
+  
   return (
     <div
       className={`${

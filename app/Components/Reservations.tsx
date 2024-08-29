@@ -1,23 +1,11 @@
 "use client";
 import shape from "@/public/Shape2.svg";
-import list from "@/public/Group 110 (1).svg";
-import listBlack from "@/public/Group 110.svg";
-import { RootState } from "../store";
-import { useSelector } from "react-redux";
-import { FaAsterisk } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { setFieldNameR } from "../store/Global";
+import { useState } from "react";
 import ListViewReservations from "./ListViewReservations";
 import { useRouter } from "next/navigation";
 
 export default function Reservations() {
-  let global = useSelector((state: RootState) => state.Global);
   const [showLess, setShowLess] = useState(true);
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setFieldNameR("Reservations"));
-  }, []);
   const router = useRouter();
 
   return (
@@ -36,7 +24,6 @@ export default function Reservations() {
             className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
             onClick={() => {
               router.push("/Components/AddReservations");
-              dispatch(setFieldNameR("AddReservations"));
             }}
           >
             Add New Reservation

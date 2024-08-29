@@ -13,13 +13,6 @@ export async function POST(req) {
     const form = await req.formData();
     const files = form.getAll("files");
 
-    if (!files || files.length === 0) {
-      return NextResponse.json(
-        { message: "No files provided" },
-        { status: 400 }
-      );
-    }
-
     const uploadPromises = files.map(async (file) => {
       const buffer = Buffer.from(await file.arrayBuffer());
 

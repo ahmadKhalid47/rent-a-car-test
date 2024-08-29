@@ -1,19 +1,13 @@
 "use client";
-import Rental from "./Rental";
-import Insurances from "./Insurances";
-import Others from "./Others";
-import Feature from "./Feature";
-import Info from "./Info";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setFieldNameR } from "@/app/store/Global";
+import Rental from "../AddReservations/Rental";
+import Insurances from "../AddReservations/Insurances";
+import Others from "../AddReservations/Others";
+import Feature from "../AddReservations/Feature";
+import Info from "../AddReservations/Info";
+import { useState } from "react";
 
 export default function ReservationsForms() {
   let [currentPage, setCurrentPage] = useState(0);
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setFieldNameR("AddReservations"));
-  }, []);
 
   return (
     <div

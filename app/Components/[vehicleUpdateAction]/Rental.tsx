@@ -43,25 +43,6 @@ export default function Rental() {
           required={false}
           type={"text"}
         />
-        {/* <TypeInput label={} value={""} required={false} type={"text"} /> */}
-        {/* <TypeInput
-          label={"Rental Price Per Day"}
-          value={""}
-          required={false}
-          type={"text"}
-        />
-        <TypeInput
-          label={"Rental Price Per Week"}
-          value={""}
-          required={false}
-          type={"text"}
-        />
-        <TypeInput
-          label={"Rental Price Per Month"}
-          value={""}
-          required={false}
-          type={"text"}
-        /> */}
       </div>
     </div>
   );

@@ -1,19 +1,12 @@
 "use client";
-import Rental from "./Rental";
-import Insurances from "./Insurances";
-import Feature from "./Feature";
-import Info from "./Info";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setFieldNameR } from "@/app/store/Global";
+import Rental from "../AddCustomer/Rental";
+import Insurances from "../AddCustomer/Insurances";
+import Feature from "../AddCustomer/Feature";
+import Info from "../AddCustomer/Info";
+import { useState } from "react";
 
 export default function CustomerForms() {
   let [currentPage, setCurrentPage] = useState(0);
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setFieldNameR("AddCustomer"));
-  }, []);
-  
 
   return (
     <div

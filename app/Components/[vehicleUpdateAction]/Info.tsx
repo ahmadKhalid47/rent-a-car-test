@@ -1,17 +1,15 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import carsGroupCar1 from "@/public/carGroupCar (5).svg";
-import carsGroupCar2 from "@/public/carGroupCar (1).svg";
-import carsGroupCar3 from "@/public/carGroupCar (4).svg";
-import carsGroupCar4 from "@/public/carGroupCar (3).svg";
-import carsGroupCar5 from "@/public/carGroupCar (2).svg";
 import upload from "@/public/Paper Upload.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
 import { TempTypeInput, TempTypeInputInfo } from "../InputComponents/TypeInput";
-import { TempSelectInput, TempSelectInputInfo } from "../InputComponents/SelectInput";
+import {
+  TempSelectInput,
+  TempSelectInputInfo,
+} from "../InputComponents/SelectInput";
 import {
   setvehicleIdR,
   setmakeR,
@@ -27,6 +25,7 @@ import {
   setcountryR,
   setcityR,
   setpostalCodeR,
+  setCarImages,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -36,15 +35,10 @@ export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let dispatch = useDispatch();
 
-  const [alreadyFiles, setAlreadyFiles] = useState([
-    { preview: carsGroupCar1, name: "car1" },
-    { preview: carsGroupCar2, name: "car2" },
-    { preview: carsGroupCar3, name: "car3" },
-    { preview: carsGroupCar4, name: "car4" },
-    { preview: carsGroupCar5, name: "car5" },
-  ]);
-  const [files, setFiles] = useState([]);
-
+  const [files, setFiles] = useState(vehicle.carImages);
+  useEffect(() => {
+    setFiles(vehicle.carImages);
+  }, [vehicle.carImages]);
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(
       acceptedFiles.map((file: any) =>
@@ -55,29 +49,6 @@ export default function Info() {
     );
   }, []);
 
-  const thumbsAlready: any = alreadyFiles.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-grey overflow-hidden">
-        <img
-          src={file.preview.src}
-          alt={file.name}
-          className=" w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        image4.jpg
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px] z-[100]"
-        onClick={() => removingAlready(file.name)}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
   const thumbs: any = files.map((file: any) => (
     <div
       key={file.name}
@@ -85,13 +56,13 @@ export default function Info() {
     >
       <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
         <img
-          src={file.preview}
+          src={file.preview ? file.preview : file}
           alt={file.name}
           className=" w-[64px] h-[64px]"
         />
       </div>
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        image4.jpg
+        {file?.name}
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
@@ -101,13 +72,7 @@ export default function Info() {
       </span>
     </div>
   ));
-  function removingAlready(name: any) {
-    let array = alreadyFiles;
-    array = array.filter((e: any) => {
-      return e.name !== name;
-    });
-    setAlreadyFiles(array);
-  }
+
   function removing(name: any) {
     let array = files;
     array = array.filter((e: any) => {
@@ -117,6 +82,9 @@ export default function Info() {
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  useEffect(() => {
+    dispatch(setCarImages(files));
+  }, [files]);
 
   return (
     <div className="w-full h-fit ">
@@ -134,7 +102,19 @@ export default function Info() {
           value={vehicle.make}
           // required={true}
           required={false}
-          options={["", "Make1", "Make2"]}
+          options={[
+            "",
+            "Toyota",
+            "Honda",
+            "Ford",
+            "Chevrolet",
+            "BMW",
+            "Mercedes-Benz",
+            "Audi",
+            "Hyundai",
+            "Nissan",
+            "Volkswagen",
+          ]}
         />
         <TempSelectInput
           setState={setmodelR}
@@ -142,7 +122,49 @@ export default function Info() {
           value={vehicle.model}
           // required={true}
           required={false}
-          options={["", "Model1", "Model2"]}
+          options={[
+            "",
+            "Corolla",
+            "Camry",
+            "RAV4",
+            "Highlander",
+            "Civic",
+            "Accord",
+            "CR-V",
+            "Pilot",
+            "Focus",
+            "Mustang",
+            "Explorer",
+            "F-150",
+            "Malibu",
+            "Impala",
+            "Equinox",
+            "Silverado",
+            "3 Series",
+            "5 Series",
+            "X3",
+            "X5",
+            "C-Class",
+            "E-Class",
+            "GLE",
+            "S-Class",
+            "A3",
+            "A4",
+            "Q5",
+            "Q7",
+            "Elantra",
+            "Sonata",
+            "Tucson",
+            "Santa Fe",
+            "Altima",
+            "Sentra",
+            "Rogue",
+            "Murano",
+            "Golf",
+            "Jetta",
+            "Tiguan",
+            "Passat",
+          ]}
         />
         <TempSelectInput
           setState={settypeR}
@@ -150,7 +172,19 @@ export default function Info() {
           value={vehicle.type}
           // required={true}
           required={false}
-          options={["", "Type1", "Type2"]}
+          options={[
+            "",
+            "Sedan",
+            "SUV",
+            "Truck",
+            "Coupe",
+            "Convertible",
+            "Hatchback",
+            "Wagon",
+            "Minivan",
+            "Luxury",
+            "Sports",
+          ]}
         />
         <TempSelectInput
           setState={setyearR}
@@ -158,7 +192,19 @@ export default function Info() {
           value={vehicle.year}
           // required={true}
           required={false}
-          options={["", "Year1", "Year2"]}
+          options={[
+            "",
+            2024,
+            2023,
+            2022,
+            2021,
+            2020,
+            2019,
+            2018,
+            2017,
+            2016,
+            2015,
+          ]}
         />
         <TempTypeInput
           setState={setregistrationR}
@@ -185,10 +231,20 @@ export default function Info() {
             >
               <option value="">Select</option>
               <option value="Red">Red</option>
-              <option value="Red">Red</option>
-              <option value="Red">Red</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Gray">Gray</option>
+              <option value="Purple">Purple</option>
             </select>
-            <div className="rounded-full w-[19px] h-[12px] bg-red-500 absolute left-2 top-[15.5px]"></div>
+            <div
+              className="rounded-full w-[19px] h-[12px] bg-red-5 absolute left-2 top-[15.5px]"
+              style={{
+                backgroundColor: vehicle.color,
+              }}
+            ></div>
             <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
@@ -200,7 +256,17 @@ export default function Info() {
           value={vehicle.fuelType}
           // required={true}
           required={false}
-          options={["", "Type1", "Type2"]}
+          options={[
+            "",
+            "Gasoline",
+            "Diesel",
+            "Electric",
+            "Hybrid",
+            "Plug-in Hybrid",
+            "Ethanol",
+            "Natural Gas",
+            "Hydrogen",
+          ]}
         />
         <TempSelectInput
           setState={settransmissionR}
@@ -208,7 +274,15 @@ export default function Info() {
           value={vehicle.transmission}
           // required={true}
           required={false}
-          options={["", "Transmission1", "Transmission2"]}
+          options={[
+            "",
+            "Automatic",
+            "Manual",
+            "CVT (Continuously Variable Transmission)",
+            "DSG (Direct-Shift Gearbox)",
+            "Dual-Clutch",
+            "Semi-Automatic",
+          ]}
         />
         <TempTypeInputInfo
           setState={setodometerR}
@@ -277,7 +351,6 @@ export default function Info() {
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          {thumbsAlready}
           {thumbs}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  vehicleId: "",
+  vehicleId: "update",
   make: "",
   model: "",
   type: "",
@@ -26,11 +26,10 @@ const initialState: any = {
   otherNote: "",
   damages: [],
   carImages: [],
-  damageImagesToDelete: [],
 };
 
-export const VehicleSlice = createSlice({
-  name: "Vehicle",
+export const VehicleUpdateSlice = createSlice({
+  name: "VehicleUpdate",
   initialState,
   reducers: {
     setvehicleIdR: (state, action) => {
@@ -108,9 +107,6 @@ export const VehicleSlice = createSlice({
     setCarImages: (state, action) => {
       state.carImages = action.payload;
     },
-    setdamageImagesToDelete: (state, action) => {
-      state.damageImagesToDelete.push(...action.payload);
-    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -144,7 +140,6 @@ export const {
   setdamages,
   setCarImages,
   setAllValues,
-  setdamageImagesToDelete,
-} = VehicleSlice.actions;
+} = VehicleUpdateSlice.actions;
 
-export default VehicleSlice.reducer;
+export default VehicleUpdateSlice.reducer;

@@ -6,7 +6,7 @@ import ForgotPassword from "./Components/ForgotPassword";
 import car from "@/public/Layer_1 (1).svg";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
-export default function Home() {
+export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   return (
     <div className="w-full h-fit">

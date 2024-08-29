@@ -1,4 +1,3 @@
-import { FaEye } from "react-icons/fa";
 export default function ReferenceCustomer() {
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
@@ -23,7 +22,7 @@ export default function ReferenceCustomer() {
             438 397 3075
           </p>
           <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456 
+            Abc 23456
           </p>
           <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
             Father
@@ -37,7 +36,7 @@ export default function ReferenceCustomer() {
             438 397 3075
           </p>
           <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456 
+            Abc 23456
           </p>
           <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
             Mother

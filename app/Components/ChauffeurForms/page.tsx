@@ -1,17 +1,11 @@
 "use client";
-import Rental from "./Rental";
-import Feature from "./Feature";
-import Info from "./Info";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setFieldNameR } from "@/app/store/Global";
+import Rental from "../AddChauffeur/Rental";
+import Feature from "../AddChauffeur/Feature";
+import Info from "../AddChauffeur/Info";
+import { useState } from "react";
 
 export default function ChauffeurForms() {
   let [currentPage, setCurrentPage] = useState(0);
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setFieldNameR("AddChauffeur"));
-  }, []);
 
   return (
     <div

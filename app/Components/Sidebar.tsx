@@ -5,17 +5,15 @@ import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { FaCar, FaUsers } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
-import { TbTargetArrow } from "react-icons/tb";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import { RiFileSettingsFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
-import { setFieldNameR, setSidebarShowR } from "../store/Global";
+import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
-import { DriveEta, DriveEtaRounded } from "@mui/icons-material";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
 
@@ -48,7 +46,7 @@ export default function Sidebar() {
     ) {
       setChevronState("Chauffeurs");
     } else if (
-      pathName === "/Components/Home" ||
+      pathName === "/Components/Vehicles" ||
       pathName === "/Components/CarInfo" ||
       pathName === "/Components/AddVehicles"
     ) {
@@ -77,7 +75,7 @@ export default function Sidebar() {
       }
     >
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
-        <Link href={"/Components/Home"} className="w-fit h-fit">
+        <Link href={"/Components/Vehicles"} className="w-fit h-fit">
           <img
             src={bar.src}
             className={`${
@@ -425,13 +423,13 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
-                href="/Components/Home"
+                href="/Components/Vehicles"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Home" ||
+                  pathName === "/Components/Vehicles" ||
                   pathName === "/Components/CarInfo"
                     ? "bg-main-blue text-white"
                     : ""

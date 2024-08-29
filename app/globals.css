@@ -27,6 +27,10 @@
   background-color: #f9f9f9;
 }
 
+.bg-hover-light-grey:hover {
+  background-color: #f9f9f9;
+}
+
 .border-light-grey {
   border-color: #d9d9d9;
 }
@@ -74,9 +78,13 @@
 
 .nav-closed-width {
   width: calc(100% - 70px);
+  /* background-color:slategray */
 }
 .text-grey {
   color: #808080;
+}
+.bg-grey-of-text {
+  background-color: #808080;
 }
 
 .shadow {
@@ -249,7 +257,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.125)
     infinite;
 }
-.alert-animation{
+.alert-animation {
   transition: all 1s;
 }
 @keyframes pulse {

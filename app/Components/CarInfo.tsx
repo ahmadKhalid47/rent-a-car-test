@@ -4,17 +4,16 @@ import smallCar1 from "@/public/smallcar (1).png";
 import smallCar2 from "@/public/smallcar (2).png";
 import smallCar3 from "@/public/smallcar (3).png";
 import smallCar4 from "@/public/smallcar (4).png";
-import General from "./General";
-import Rental from "./Rental";
-import Insurance from "./Insurance";
-import Additional from "./Additional";
-import Other from "./Other";
+import General from "./CarInfo/[_id]/General";
+import Rental from "./CarInfo/[_id]/Rental";
+import Insurance from "./CarInfo/[_id]/Insurance";
+import Additional from "./CarInfo/[_id]/Additional";
+import Other from "./CarInfo/[_id]/Other";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import Damages from "./Damages";
+import Damages from "./CarInfo/[_id]/Damages";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { setFieldNameR } from "../store/Global";
 import { setSidebarShowR } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
 
@@ -30,10 +29,6 @@ export default function CarInfo() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    dispatch(setFieldNameR("Home"));
-  }, []);
-
   return (
     <div
       className={`${

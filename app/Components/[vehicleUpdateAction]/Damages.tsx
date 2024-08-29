@@ -1,18 +1,17 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
-import { FaPlusCircle } from "react-icons/fa";
 import checkBlue from "@/public/checkBlue.svg";
 import checkBlack from "@/public/checkBlack.png";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
-import { FaTimesCircle } from "react-icons/fa";
+import { FaTimesCircle, FaTrash } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
-import { setdamages } from "@/app/store/Vehicle";
+import { setdamages, setdamageImagesToDelete } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 
 export default function Damages() {
@@ -60,7 +59,6 @@ export default function Damages() {
       </span>
     </div>
   ));
-  console.log(files);
   function removing(name: any) {
     let array = files;
     array = array.filter((e: any) => {
@@ -73,8 +71,8 @@ export default function Damages() {
 
   const handleClick = (e: any, isExterior: any) => {
     const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
     const exterior = isExterior;
     setPopup(true);
     setMarks([...marks, { x, y, exterior }]);
@@ -93,6 +91,7 @@ export default function Damages() {
       damageType,
       degree,
       description,
+      files,
     };
     setDamages([...damages, tempObj]);
     setPopup(false);
@@ -101,6 +100,34 @@ export default function Damages() {
   useEffect(() => {
     dispatch(setdamages(damages));
   }, [damages]);
+
+  const handleDelete = (index: number) => {
+    const selectedDamage = damages[index];
+
+    // Extract files from the selected damage
+    const filesToDelete = selectedDamage.files;
+
+    // Dispatch the entire array of files to be deleted
+    dispatch(setdamageImagesToDelete(filesToDelete));
+
+    // Create a new array without the deleted damage
+    const updatedDamages = damages.filter((_: any, i: any) => i !== index);
+
+    // Update the state with the new damages array
+    setDamages(updatedDamages);
+
+    // Log the deleted damage
+    console.log("damages", selectedDamage);
+
+    // Dispatch the updated damages array
+    dispatch(setdamages(updatedDamages));
+  };
+  console.log("damageImagesToDelete", vehicle.damageImagesToDelete);
+  useEffect(() => {
+    setDamageType("");
+    setDegree("");
+    setFiles([]);
+  }, [popup]);
 
   return (
     <div className="w-full h-fit">
@@ -156,7 +183,7 @@ export default function Damages() {
                     }}
                   />
                 )}
-                {marks.map((mark: any, index: any) => (
+                {vehicle?.damages?.map((mark: any, index: any) => (
                   <>
                     {exterior ? (
                       mark.exterior ? (
@@ -164,8 +191,8 @@ export default function Damages() {
                           className={`absolute w-[15px] h-[15px] rounded-full bg-red-600 text-white text-[8px] flex justify-center items-center font-[600]`}
                           key={index}
                           style={{
-                            top: mark.y,
-                            left: mark.x,
+                            top: `${mark.y}%`,
+                            left: `${mark.x}%`,
                           }}
                         >
                           {index + 1}
@@ -177,8 +204,8 @@ export default function Damages() {
                           className={`absolute w-[15px] h-[15px] rounded-full bg-red-600 text-white text-[8px] flex justify-center items-center font-[600]`}
                           key={index}
                           style={{
-                            top: mark.y,
-                            left: mark.x,
+                            top: `${mark.y}%`,
+                            left: `${mark.x}%`,
                           }}
                         >
                           {index + 1}
@@ -196,23 +223,32 @@ export default function Damages() {
                 <p className="w-[30%] md:w-[50px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                   No
                 </p>
-                <p className="w-[40%] md:w-[30%  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                <p className="w-[40%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
                   Damage Type
                 </p>
                 <p className="w-[30%] md:w-[80px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-end">
                   Degree
                 </p>
+                <p className="text-transparent font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                  <FaTrash />
+                </p>
               </div>
               {vehicle?.damages?.map((item: any, key: number) => (
                 <div className="w-full h-fit flex justify-between items-start border-b-[2px">
-                  <p className="w-[30%] md:w-[50px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
+                  <p className="w-[30%] md:w-[50px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
                     {key + 1}
                   </p>
-                  <p className="w-[40%] md:w-[30%  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                  <p className="w-[40%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
                     {item?.damageType}
                   </p>
-                  <p className="w-[30%] md:w-[80px]  font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                  <p className="w-[30%] md:w-[80px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
                     {item?.degree}
+                  </p>
+                  <p
+                    className="font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end cursor-pointer"
+                    onClick={() => handleDelete(key)}
+                  >
+                    <FaTrash />
                   </p>
                 </div>
               ))}
@@ -299,10 +335,10 @@ export default function Damages() {
 
                 <img src={upload.src} />
                 <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
-                  Drag & Drop or
+                  Drag & Drop or{" "}
                   <span className="text-link-blue cursor-pointer">
                     choose file
-                  </span>
+                  </span>{" "}
                   to upload
                 </h4>
                 <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
@@ -312,11 +348,6 @@ export default function Damages() {
 
               <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto">
                 {thumbs}
-                <div className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative red-200">
-                  <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden flex justify-center items-center">
-                    <FaPlusCircle className="font-[600] text-[20px] bg-white text-main-blue" />
-                  </div>
-                </div>
               </div>
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>

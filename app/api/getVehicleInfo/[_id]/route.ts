@@ -2,13 +2,13 @@ import connectDb from "@/app/models/connectDb";
 import VehicleModel from "@/app/models/vehicle";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function GET(req: Request, params: any) {
   try {
-    let vehicle = await req.json();
-    connectDb();
-    await new VehicleModel({data:vehicle}).save();
+    let { _id } = await params.params;
+    await connectDb();
+    const data = await VehicleModel.findOne({ _id: _id });
     return NextResponse.json({
-      success: "User Created",
+      data,
     });
   } catch (err) {
     console.log("err: ", err);

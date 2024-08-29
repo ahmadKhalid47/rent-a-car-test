@@ -2,11 +2,17 @@ import connectDb from "@/app/models/connectDb";
 import VehicleModel from "@/app/models/vehicle";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: Request, params: any) {
   try {
     let vehicle = await req.json();
+    let {_id}  = await params.params;
+    console.log(vehicle)
+    console.log(_id)
     connectDb();
-    await new VehicleModel({data:vehicle}).save();
+    await VehicleModel.updateOne(
+      { _id: _id },
+      { $set: { data: vehicle } }
+    );
     return NextResponse.json({
       success: "User Created",
     });
