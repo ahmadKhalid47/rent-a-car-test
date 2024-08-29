@@ -23,13 +23,13 @@ export default function Vehicles() {
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
   const [showSuccess, setShowSuccess] = useState(null);
-  const [showError, setShowError] = useState(null); 
+  const [showError, setShowError] = useState(null);
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
-      key: "year", 
+      key: "year",
       keyValue: "",
     },
     {
@@ -53,13 +53,13 @@ export default function Vehicles() {
     } else {
       dispatch(setSidebarShowR(true));
     }
-  }, [isMobile]); 
+  }, [isMobile]);
 
   useEffect(() => {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.get("/api/getVehicle", { 
+        const result = await axios.get("/api/getVehicle", {
           headers: { "Cache-Control": "no-store" },
         });
 
@@ -77,6 +77,23 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.get("/api/getReg", {
+          headers: { "Cache-Control": "no-store" },
+        });
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
   useEffect(() => {
     filterVehicles();
@@ -122,7 +139,7 @@ export default function Vehicles() {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
-  console.log(vehiclesData);
+  // console.log(vehiclesData);
 
   return (
     <div
