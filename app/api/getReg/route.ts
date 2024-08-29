@@ -8,10 +8,16 @@ export async function GET(req: Request) {
     connectDb();
     const data = await RegistrationModel.find();
     const data2 = await VehicleModel.find();
-    return NextResponse.json({
-      data,
-      data2,
-    });
+    const headers = new Headers();
+    headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate"
+    );
+    headers.set("Expires", "0");
+    headers.set("Pragma", "no-cache");
+    headers.set("Surrogate-Control", "no-store");
+
+    return new NextResponse(JSON.stringify(data2), { headers, status: 200 });
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
