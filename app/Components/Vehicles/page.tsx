@@ -78,23 +78,6 @@ export default function Vehicles() {
     getData();
   }, [global.vehicleDataReloader]);
 
-  useEffect(() => { 
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.get("/api/getReg", {
-          headers: { "Cache-Control": "no-store" },
-        });
-        console.log(result);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, []);
-
   useEffect(() => {
     filterVehicles();
   }, [searchQuery, vehiclesData]);
