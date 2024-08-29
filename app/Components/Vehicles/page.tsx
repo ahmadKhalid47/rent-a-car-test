@@ -78,7 +78,7 @@ export default function Vehicles() {
     getData();
   }, [global.vehicleDataReloader]);
 
-  useEffect(() => {
+  useEffect(() => { 
     async function getData() {
       try {
         setLoading(true);
