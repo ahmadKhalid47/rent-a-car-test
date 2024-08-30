@@ -120,7 +120,11 @@ export default function Vehicles() {
         </div>
 
         <div className="w-full h-[73vh] relative">
-          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
+          {dataLoading ? (
+            <MediumLoader />
+          ) : (
+            <ListView data={vehiclesData} makeData={makeData} />
+          )}
 
           {popup ? (
             <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
