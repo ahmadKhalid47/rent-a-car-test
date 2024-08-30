@@ -33,7 +33,7 @@ export default function Insurances() {
           label={"Insurance Expiry Date"}
           value={vehicle.insuranceExpiry}
           required={false}
-          type={"text"}
+          type={"date"}
         />
 
         {/* <TypeInput

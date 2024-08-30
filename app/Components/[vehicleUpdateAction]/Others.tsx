@@ -21,9 +21,8 @@ export default function Others() {
               rows={6}
               cols={6}
               onChange={(e) => dispatch(setotherNote(e.target.value))}
-              value={
-                vehicle.otherNote ? vehicle.otherNote : "Any Additional Notes"
-              }
+              value={vehicle.otherNote}
+              placeholder="Any Additional Notes"
             ></textarea>
           </div>
         </div>
