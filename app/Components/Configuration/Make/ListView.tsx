@@ -14,6 +14,7 @@ import { setVehicleDataReloader } from "@/app/store/Global";
 import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { FaAsterisk, FaTimes } from "react-icons/fa";
 
 interface dataType {
   data: Array<Object>;
@@ -22,10 +23,14 @@ interface dataType {
 export default function ListView({ data }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
+  const [editPopup, setEditPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const [itemToEdit, setItemToEdit] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
+  const [make, setMake] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -45,7 +50,6 @@ export default function ListView({ data }: dataType) {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
-
 
   function PaginationRounded() {
     return (
@@ -86,6 +90,23 @@ export default function ListView({ data }: dataType) {
     }
   }
 
+  async function editItem(_id: any) {
+    try {
+      setEditLoading(true);
+      let result: any = await axios.post(`/api/updateMake/${_id}`, {
+        make,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEditLoading(false);
+      setEditPopup(false);
+      setItemToEdit(null);
+    }
+  }
+
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
@@ -112,8 +133,8 @@ export default function ListView({ data }: dataType) {
           </div>
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
-              <Link
-                href={`/Components/CarInfo/${item?._id}`}
+              <div
+                // href={`/Components/CarInfo/${item?._id}`}
                 className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
                   index % 2 !== 0 ? "bg-light-grey" : "bg-white"
                 } border-b-2 border-grey`}
@@ -134,21 +155,24 @@ export default function ListView({ data }: dataType) {
                 >
                   <img
                     src={edit.src}
-                    className=""
+                    className="cursor-pointer"
                     onClick={() => {
-                      router.push(`/Components/${item?._id}`);
+                      setEditPopup(true);
+                      setItemToEdit(item?._id);
+                      setMake(item?.make);
                     }}
                   />
 
                   <img
                     src={deleteIcon.src}
+                    className="cursor-pointer"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);
                     }}
                   />
                 </div>
-              </Link>
+              </div>
               {popup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                   <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
@@ -176,6 +200,53 @@ export default function ListView({ data }: dataType) {
                         disabled={deleteLoading}
                       >
                         {deleteLoading ? <SmallLoader /> : "Yes"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+              {editPopup ? (
+                <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
+                    <div
+                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        {"Add New"}
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                        <input
+                          required={true}
+                          type={"text"}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e) => {
+                            setMake(e.target.value);
+                          }}
+                          value={make}
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      className={`w-full flex justify-end gap-4 items-center pt-4`}
+                    >
+                      <button
+                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
+                        onClick={() => {
+                          setEditPopup(false);
+                          setMake("");
+                        }}
+                      >
+                        <FaTimes />
+                      </button>
+                      <button
+                        className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => editItem(itemToEdit)}
+                        disabled={editLoading}
+                      >
+                        {editLoading ? <SmallLoader /> : "Update and Close"}
                       </button>
                     </div>
                   </div>
