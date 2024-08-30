@@ -6,8 +6,6 @@ export async function POST(req: Request, params: any) {
   try {
     let vehicle = await req.json();
     let {_id}  = await params.params;
-    console.log(vehicle)
-    console.log(_id)
     connectDb();
     await VehicleModel.updateOne(
       { _id: _id },

@@ -117,12 +117,9 @@ export default function Damages() {
     setDamages(updatedDamages);
 
     // Log the deleted damage
-    console.log("damages", selectedDamage);
-
     // Dispatch the updated damages array
     dispatch(setdamages(updatedDamages));
   };
-  console.log("damageImagesToDelete", vehicle.damageImagesToDelete);
   useEffect(() => {
     setDamageType("");
     setDegree("");

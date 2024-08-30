@@ -28,6 +28,7 @@ export default function Vehicles() {
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
+  const [make, setMake] = useState("");
 
   useEffect(() => {
     if (isMobile) {
@@ -44,7 +45,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.get("/api/getVehicle", {
+        const result = await axios.get("/api/getMake", {
           headers: { "Cache-Control": "no-store" },
         });
 
@@ -65,6 +66,7 @@ export default function Vehicles() {
   function save() {
     setPopup(false);
   }
+  console.log(make);
 
   return (
     <div
@@ -97,12 +99,12 @@ export default function Vehicles() {
           <ListView data={vehiclesData} />
 
           {popup ? (
-            <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+            <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10]">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
                 <div
                   className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                 >
-                  <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     {"Add New"}
                     <FaAsterisk className="text-[6px] text-red-600" />
                   </label>
@@ -113,7 +115,7 @@ export default function Vehicles() {
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
                       placeholder={`Enter Text Here`}
                       onChange={(e) => {
-                        // dispatch(setState(e.target.value));
+                        setMake(e.target.value);
                       }}
                       // value={value}
                     />
@@ -129,7 +131,7 @@ export default function Vehicles() {
                       setPopup(false);
                     }}
                   >
-                    <FaTimes/>
+                    <FaTimes />
                   </button>
                   <button
                     className="w-fit px-8 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"

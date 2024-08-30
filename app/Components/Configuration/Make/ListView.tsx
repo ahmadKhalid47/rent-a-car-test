@@ -120,8 +120,6 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-  console.log(paginatedData);
-  console.log(data);
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
