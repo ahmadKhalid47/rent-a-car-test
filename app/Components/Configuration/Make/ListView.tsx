@@ -155,7 +155,7 @@ export default function ListView({ data }: dataType) {
             onClick={() => {
               setDeleteManyPopup(true);
             }}
-            // disabled={itemToDeleteMany.length < 1 ? true : false}
+            disabled={itemToDeleteMany.length < 1 ? true : false}
           >
             Delete Multiple
           </button>
