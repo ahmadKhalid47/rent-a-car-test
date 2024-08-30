@@ -144,19 +144,7 @@ export default function Info() {
           value={vehicle.year}
           // required={true}
           required={false}
-          options={[
-            "",
-            2024,
-            2023,
-            2022,
-            2021,
-            2020,
-            2019,
-            2018,
-            2017,
-            2016,
-            2015,
-          ]}
+          options={[2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]}
         />
         <TempTypeInput
           setState={setregistrationR}
@@ -208,7 +196,6 @@ export default function Info() {
           // required={true}
           required={false}
           options={[
-            "",
             "Gasoline",
             "Diesel",
             "Electric",
@@ -226,7 +213,6 @@ export default function Info() {
           // required={true}
           required={false}
           options={[
-            "",
             "Automatic",
             "Manual",
             "CVT (Continuously Variable Transmission)",
@@ -249,7 +235,7 @@ export default function Info() {
           value={vehicle.passengers}
           // required={true}
           required={false}
-          options={["", "Passengers1", "Passengers2"]}
+          options={["Passengers1", "Passengers2"]}
         />
         <TempSelectInput
           setState={setcountryR}
@@ -257,7 +243,7 @@ export default function Info() {
           value={vehicle.country}
           // required={true}
           required={false}
-          options={["", "Country1", "Country2"]}
+          options={["Country1", "Country2"]}
         />
         <TempSelectInput
           setState={setcityR}
@@ -265,7 +251,7 @@ export default function Info() {
           value={vehicle.city}
           // required={true}
           required={false}
-          options={["", "City1", "City2"]}
+          options={["City1", "City2"]}
         />
         <TempTypeInputInfo
           setState={setpostalCodeR}
