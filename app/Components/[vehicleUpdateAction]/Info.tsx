@@ -112,8 +112,7 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          // required={true}
-          required={false}
+          required={true}
           options={Configurations?.Configurations?.make?.map(
             (item: any) => item.make
           )}
@@ -122,8 +121,7 @@ export default function Info() {
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          // required={true}
-          required={false}
+          required={true}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make === makeSelected)
             .map((item: any) => item.model)}
@@ -132,8 +130,8 @@ export default function Info() {
           setState={settypeR}
           label={"Type"}
           value={vehicle.type}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
@@ -142,16 +140,16 @@ export default function Info() {
           setState={setyearR}
           label={"Year"}
           value={vehicle.year}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -162,8 +160,8 @@ export default function Info() {
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              // required={true}
-              required={false}
+              required={true}
+              // required={false}
               onChange={(e) => {
                 dispatch(setcolorR(e.target.value));
               }}
@@ -193,8 +191,8 @@ export default function Info() {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[
             "Gasoline",
             "Diesel",
@@ -204,14 +202,27 @@ export default function Info() {
             "Ethanol",
             "Natural Gas",
             "Hydrogen",
+            "Biodiesel",
+            "Propane (LPG)",
+            "Methanol",
+            "Coal",
+            "Wood",
+            "Solar",
+            "Compressed Air",
+            "Steam",
+            "Nuclear",
+            "Biogas",
+            "Algae-based fuels",
+            "Ammonia",
+            "Jet Fuel",
           ]}
         />
         <TempSelectInput
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[
             "Automatic",
             "Manual",
@@ -219,46 +230,57 @@ export default function Info() {
             "DSG (Direct-Shift Gearbox)",
             "Dual-Clutch",
             "Semi-Automatic",
+            "AMT (Automated Manual Transmission)", // Similar to Semi-Automatic but more distinct
+            "Torque Converter Automatic",
+            "Tiptronic", // A type of automatic transmission with manual override
+            "Sequential Manual", // Often used in racing vehicles
+            "Hydraulic Automatic",
+            "Hydrostatic Transmission",
+            "Electric Drive", // Common in electric vehicles, where the transmission is often simplified or non-existent
+            "Infinitely Variable Transmission (IVT)", // Similar to CVT but with different mechanical principles
+            "Preselector Gearbox", // An older type of manual transmission
+            "Synchromesh Manual", // A type of manual transmission that makes shifting smoother
+            "Single-Speed Transmission",
           ]}
         />
-        <TempTypeInputInfo
+        <TempTypeInput
           setState={setodometerR}
           label={"Odometer (KMPH)"}
           value={vehicle.odometer}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"text"}
         />
-        <TempSelectInputInfo
+        <TempSelectInput
           setState={setpassengersR}
           label={"Passengers"}
           value={vehicle.passengers}
-          // required={true}
-          required={false}
-          options={["Passengers1", "Passengers2"]}
+          required={true}
+          // required={false}
+          options={["1", "2", "3", "4", "5", "6", "7", "8", "9+"]}
         />
         <TempSelectInput
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={["Country1", "Country2"]}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={["City1", "City2"]}
         />
-        <TempTypeInputInfo
+        <TempTypeInput
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={vehicle.postalCode}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"text"}
         />
       </div>
