@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import axios from "axios";
 import ListView from "./ListView";
-import { truncate } from "fs";
 import { SmallLoader, MediumLoader } from "../../Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
 
