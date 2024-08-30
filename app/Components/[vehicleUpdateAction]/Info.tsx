@@ -33,6 +33,7 @@ import { useDispatch } from "react-redux";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
 
   const [files, setFiles] = useState(vehicle.carImages);
@@ -48,7 +49,7 @@ export default function Info() {
       )
     );
   }, []);
-
+  console.log();
   const thumbs: any = files.map((file: any) => (
     <div
       key={file.name}
@@ -85,7 +86,9 @@ export default function Info() {
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
-
+  if (Configurations?.Configurations) {
+    console.log(Configurations?.Configurations?.type);
+  }
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -102,19 +105,9 @@ export default function Info() {
           value={vehicle.make}
           // required={true}
           required={false}
-          options={[
-            "",
-            "Toyota",
-            "Honda",
-            "Ford",
-            "Chevrolet",
-            "BMW",
-            "Mercedes-Benz",
-            "Audi",
-            "Hyundai",
-            "Nissan",
-            "Volkswagen",
-          ]}
+          options={Configurations?.Configurations?.make?.map(
+            (item: any) => item.make
+          )}
         />
         <TempSelectInput
           setState={setmodelR}
@@ -122,49 +115,9 @@ export default function Info() {
           value={vehicle.model}
           // required={true}
           required={false}
-          options={[
-            "",
-            "Corolla",
-            "Camry",
-            "RAV4",
-            "Highlander",
-            "Civic",
-            "Accord",
-            "CR-V",
-            "Pilot",
-            "Focus",
-            "Mustang",
-            "Explorer",
-            "F-150",
-            "Malibu",
-            "Impala",
-            "Equinox",
-            "Silverado",
-            "3 Series",
-            "5 Series",
-            "X3",
-            "X5",
-            "C-Class",
-            "E-Class",
-            "GLE",
-            "S-Class",
-            "A3",
-            "A4",
-            "Q5",
-            "Q7",
-            "Elantra",
-            "Sonata",
-            "Tucson",
-            "Santa Fe",
-            "Altima",
-            "Sentra",
-            "Rogue",
-            "Murano",
-            "Golf",
-            "Jetta",
-            "Tiguan",
-            "Passat",
-          ]}
+          options={Configurations?.Configurations?.model?.map(
+            (item: any) => item.model
+          )}
         />
         <TempSelectInput
           setState={settypeR}
@@ -172,19 +125,9 @@ export default function Info() {
           value={vehicle.type}
           // required={true}
           required={false}
-          options={[
-            "",
-            "Sedan",
-            "SUV",
-            "Truck",
-            "Coupe",
-            "Convertible",
-            "Hatchback",
-            "Wagon",
-            "Minivan",
-            "Luxury",
-            "Sports",
-          ]}
+          options={Configurations?.Configurations?.type?.map(
+            (item: any) => item.Type
+          )}
         />
         <TempSelectInput
           setState={setyearR}
@@ -230,14 +173,13 @@ export default function Info() {
               value={vehicle.color}
             >
               <option value="">Select</option>
-              <option value="Red">Red</option>
-              <option value="Blue">Blue</option>
-              <option value="Green">Green</option>
-              <option value="Yellow">Yellow</option>
-              <option value="Black">Black</option>
-              <option value="White">White</option>
-              <option value="Gray">Gray</option>
-              <option value="Purple">Purple</option>
+              {Configurations?.Configurations?.color?.map(
+                (item: any, key: number) => (
+                  <option value={item.Color} key={key}>
+                    {item.Color}
+                  </option>
+                )
+              )}
             </select>
             <div
               className="rounded-full w-[19px] h-[12px] bg-red-5 absolute left-2 top-[15.5px]"

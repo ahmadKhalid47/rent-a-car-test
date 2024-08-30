@@ -1,15 +1,20 @@
 import connectDb from "@/app/models/connectDb";
 import ColorModel from "@/app/models/Color";
+import MakeModel from "@/app/models/Make";
+import ModelModel from "@/app/models/Model";
+import FeatureModel from "@/app/models/Feature";
+import TypeModel from "@/app/models/Type";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
     await connectDb();
     const color = await ColorModel.find().sort({ _id: -1 });
-    const make = await ColorModel.find().sort({ _id: -1 });
-    const model = await ColorModel.find().sort({ _id: -1 });
-    const feature = await ColorModel.find().sort({ _id: -1 });
-    const type = await ColorModel.find().sort({ _id: -1 });
+    const make = await MakeModel.find().sort({ _id: -1 });
+    const model = await ModelModel.find().sort({ _id: -1 });
+    const feature = await FeatureModel.find().sort({ _id: -1 });
+    const type = await TypeModel.find().sort({ _id: -1 });
+
     let wholeData = {
       color,
       make,
@@ -17,7 +22,7 @@ export async function GET(req: Request) {
       feature,
       type,
     };
-    console.log(wholeData);
+    console.log(model);
     return NextResponse.json({
       wholeData,
     });
