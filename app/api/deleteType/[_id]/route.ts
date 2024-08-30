@@ -1,15 +1,14 @@
 import connectDb from "@/app/models/connectDb";
-import MakeModel from "@/app/models/Make";
+import TypeModel from "@/app/models/Type";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function DELETE(req: Request, params: any) {
   try {
-    let { _ids } = await req.json();
+    let { _id } = await params.params;
     await connectDb();
-    console.log(_ids);
-      const data = await MakeModel.deleteMany({ _id: { $in: _ids } });
+    const data = await TypeModel.deleteOne({ _id: _id });
     return NextResponse.json({
-      acknowledged: "data.acknowledged",
+      acknowledged: data.acknowledged,
     });
   } catch (err) {
     console.log("err: ", err);

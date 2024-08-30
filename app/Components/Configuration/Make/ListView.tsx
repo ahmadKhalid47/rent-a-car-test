@@ -140,8 +140,8 @@ export default function ListView({ data }: dataType) {
       }
     });
   }
+  const allIds = data.map((item: any) => item?._id);
 
-  console.log(itemToDeleteMany);
   return (
     <div className="w-full h-fit mt-4 relative">
       <h3
@@ -168,10 +168,12 @@ export default function ListView({ data }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] ${
-                  itemToDeleteMany?.includes("all") ? "bg-main-blue" : ""
+                  itemToDeleteMany.length === 0 ? "" : "bg-main-blue"
                 } border-2 border-dark-grey`}
                 onClick={() => {
-                  setItemToDeleteMany(itemToDeleteMany === "all" ? [] : "all");
+                  setItemToDeleteMany(
+                    itemToDeleteMany.length === 0 ? allIds : []
+                  );
                 }}
               ></div>
             </div>
@@ -195,8 +197,7 @@ export default function ListView({ data }: dataType) {
                 <div className="text-center w-[6%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id) ||
-                      itemToDeleteMany?.includes("all")
+                      itemToDeleteMany?.includes(item?._id)
                         ? "bg-main-blue"
                         : ""
                     } border-2 border-dark-grey`}
