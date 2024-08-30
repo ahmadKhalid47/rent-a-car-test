@@ -7,28 +7,22 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import axios from "axios";
-import Link from "next/link";
-import configImg1 from "@/public/configImg (2).svg";
-import configImg2 from "@/public/configImg (3).svg";
-import configImg3 from "@/public/configImg (4).svg";
-import configImg4 from "@/public/configImg (5).svg";
-import configImg5 from "@/public/configImg (1).svg";
 import ListView from "./ListView";
-import {
-  TempTypeInput,
-  TempTypeInputWidth,
-} from "../../InputComponents/TypeInput";
-import { setvehicleIdR } from "@/app/store/VehicleUpdate";
+import { truncate } from "fs";
+import { SmallLoader, MediumLoader } from "../../Loader";
+import { setVehicleDataReloader } from "@/app/store/Global";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
-  const [loading, setLoading] = useState<any>(true);
+  const [loading, setLoading] = useState<any>("");
+  const [dataLoading, setDataLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [make, setMake] = useState("");
+  // const [makeReloader, setMakeReloader] = useState(0);
 
   useEffect(() => {
     if (isMobile) {
@@ -44,7 +38,7 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        setLoading(true);
+        setDataLoading(true);
         const result = await axios.get("/api/getMake", {
           headers: { "Cache-Control": "no-store" },
         });
@@ -57,16 +51,36 @@ export default function Vehicles() {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        setDataLoading(false);
       }
     }
     getData();
   }, [global.vehicleDataReloader]);
 
-  function save() {
-    setPopup(false);
+  async function save(action: string) {
+    if (make.trim() === "") {
+      alert("Please fill the input");
+      return;
+    }
+
+    try {
+      setLoading(action);
+      let result: any = await axios.post(`/api/saveMake`, {
+        make,
+      });
+      console.log(result);
+      // setMakeReloader(makeReloader + 1);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      if (action === "close") {
+        setPopup(false);
+      }
+      setMake("");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading("");
+    }
   }
-  console.log(make);
 
   return (
     <div
@@ -90,16 +104,18 @@ export default function Vehicles() {
               onClick={() => {
                 handleClick();
               }}
+              disabled={dataLoading}
             >
-              Add New
+              {dataLoading ? <SmallLoader /> : "Add New"}
             </button>
           </div>
         </div>
-        <div className="w-full h-fit">
-          <ListView data={vehiclesData} />
+
+        <div className="w-full h-[73vh] relative">
+          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
 
           {popup ? (
-            <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10]">
+            <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
                 <div
                   className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
@@ -117,7 +133,7 @@ export default function Vehicles() {
                       onChange={(e) => {
                         setMake(e.target.value);
                       }}
-                      // value={value}
+                      value={make}
                     />
                   </div>
                 </div>
@@ -129,21 +145,24 @@ export default function Vehicles() {
                     className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
                     onClick={() => {
                       setPopup(false);
+                      setMake("");
                     }}
                   >
                     <FaTimes />
                   </button>
                   <button
-                    className="w-fit px-8 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => save()}
+                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                    onClick={() => save("close")}
+                    disabled={loading === "" ? false : true}
                   >
-                    Save and Close
+                    {loading === "close" ? <SmallLoader /> : "Save and Close"}
                   </button>
                   <button
-                    className="w-fit px-8 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => save()}
+                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                    onClick={() => save("new")}
+                    disabled={loading === "" ? false : true}
                   >
-                    Save and New
+                    {loading === "new" ? <SmallLoader /> : "Save and New"}
                   </button>
                 </div>
               </div>

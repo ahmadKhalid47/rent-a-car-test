@@ -26,16 +26,12 @@ export default function ListView({ data }: dataType) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
-  const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
-    {}
-  );
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
     setSortedData(data);
   }, [data]);
-  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -50,38 +46,6 @@ export default function ListView({ data }: dataType) {
     page * itemsPerPage
   );
 
-  // General sorting function
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
 
   function PaginationRounded() {
     return (
@@ -106,10 +70,11 @@ export default function ListView({ data }: dataType) {
       </Stack>
     );
   }
+
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
+      let result: any = await axios.delete(`/api/deleteMake/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
@@ -120,6 +85,7 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
+
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
@@ -134,16 +100,10 @@ export default function ListView({ data }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
             </div>
-            <div
-              className="text-start pe-5 flex justify-between items-center w-[7%] ps-7 cursor-pointer"
-              onClick={() => sort("vehicleId")}
-            >
+            <div className="text-start pe-5 flex justify-between items-center w-[7%] ps-7">
               #
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[70%] cursor-pointer"
-              onClick={() => sort("make")}
-            >
+            <div className="text-start pe-3 flex justify-between items-center w-[70%]">
               Make
             </div>
             <div className="text-center pe-3 flex justify-start items-center w-[13%]">
@@ -162,9 +122,9 @@ export default function ListView({ data }: dataType) {
                   <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
                 </div>
                 <h5 className="text-center pe-5 w-[7%] ps-[10px">
-                  {item?.data?.vehicleId.padStart(2, "0")}
+                  {JSON.stringify(index + 1).padStart(2, "0")}
                 </h5>
-                <h5 className="text-start pe-3 w-[70%]">{item?.data?.make}</h5>
+                <h5 className="text-start pe-3 w-[70%]">{item?.make}</h5>
                 <div
                   className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
                   onClick={(event) => {
