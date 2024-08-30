@@ -8,12 +8,12 @@ import { useState } from "react";
 
 export default function Feature() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
-  let featuresDisplayArray: any = [
-    "GPS",
-    "Air Conditioning",
-    "Bluetooth",
-    "Child Seat",
-  ];
+  let Configurations = useSelector((state: RootState) => state.Configurations);
+  console.log();
+
+  let featuresDisplayArray: any = Configurations?.Configurations?.feature?.map(
+    (item: any) => item.Feature
+  );
   let dispatch = useDispatch();
 
   let [featuresSubmitArray, setFeaturesSubmitArray] = useState<any>(
