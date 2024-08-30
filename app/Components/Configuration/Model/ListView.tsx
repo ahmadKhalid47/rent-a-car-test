@@ -180,7 +180,10 @@ export default function ListView({ data }: dataType) {
             <div className="text-start pe-5 flex justify-between items-center w-[7%] ps-7">
               #
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[70%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+              Make
+            </div>
+            <div className="text-start pe-3 flex justify-between items-center w-[60%]">
               Model
             </div>
             <div className="text-center pe-3 flex justify-start items-center w-[13%]">
@@ -209,7 +212,8 @@ export default function ListView({ data }: dataType) {
                 <h5 className="text-center pe-5 w-[7%] ps-[10px">
                   {JSON.stringify(index + 1).padStart(2, "0")}
                 </h5>
-                <h5 className="text-start pe-3 w-[70%]">{item?.model}</h5>
+                <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
+                <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
                 <div
                   className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
                   onClick={(event) => {

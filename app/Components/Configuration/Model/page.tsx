@@ -1,5 +1,6 @@
 "use client";
 import { RootState } from "@/app/store";
+import shape from "@/public/ShapeBlack.svg";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -18,10 +19,11 @@ export default function Vehicles() {
   const [dataLoading, setDataLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [makeData, setMakeData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Model, setModel] = useState("");
-  const [Make, setMake] = useState("temp");
+  const [Make, setMake] = useState("");
   // const [ModelReloader, setModelReloader] = useState(0);
 
   useEffect(() => {
@@ -42,6 +44,10 @@ export default function Vehicles() {
         const result = await axios.get("/api/getModel", {
           headers: { "Cache-Control": "no-store" },
         });
+        const result2 = await axios.get("/api/getMake", {
+          headers: { "Cache-Control": "no-store" },
+        });
+        setMakeData(result2?.data?.data);
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -76,13 +82,14 @@ export default function Vehicles() {
         setPopup(false);
       }
       setModel("");
+      setMake("");
     } catch (err) {
       console.log(err);
     } finally {
       setLoading("");
     }
   }
-
+  console.log(vehiclesData);
   return (
     <div
       className={`${
@@ -118,6 +125,33 @@ export default function Vehicles() {
           {popup ? (
             <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
+                <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                  <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                    Select Make
+                    <FaAsterisk className="text-[6px]" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                    <select
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                      required={true}
+                      onChange={(e) => {
+                        setMake(e.target.value);
+                      }}
+                      value={Make}
+                    >
+                      <option value={""}>Select</option>
+                      {makeData?.map((item: any, key: number) => (
+                        <option value={item?.make} key={key}>
+                          {item?.make}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                      <img src={shape.src} className="w-[10.5px]" />
+                    </div>
+                  </div>
+                </div>
+
                 <div
                   className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                 >
@@ -147,6 +181,7 @@ export default function Vehicles() {
                     onClick={() => {
                       setPopup(false);
                       setModel("");
+                      setMake("");
                     }}
                   >
                     <FaTimes />
