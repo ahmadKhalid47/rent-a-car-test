@@ -192,7 +192,7 @@ export default function ListView({ data }: dataType) {
                   <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
                 </div>
                 <h5 className="text-center pe-5 w-[9%] ps-[10px">
-                  {item?.data?.vehicleId.padStart(2, "0")}
+                  {JSON.stringify(index + 1).padStart(2, "0")}
                 </h5>
                 <h5 className="text-start pe-3 w-[20%]">
                   {item?.data?.make} {item?.data?.model}
