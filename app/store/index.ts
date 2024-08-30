@@ -3,6 +3,7 @@ import Global from "./Global";
 import Vehicle from "./Vehicle";
 import VehicleUpdate from "./VehicleUpdate";
 import VehicleInfo from "./vehicleInfo";
+import Configurations from "./Configurations";
 
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   Vehicle: Vehicle,
   VehicleUpdate: VehicleUpdate,
   VehicleInfo: VehicleInfo,
+  Configurations: Configurations,
 });
 
 const store = configureStore({

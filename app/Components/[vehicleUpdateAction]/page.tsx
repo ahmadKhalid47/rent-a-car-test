@@ -17,11 +17,13 @@ import axios from "axios";
 import { SmallLoader } from "../Loader";
 import { useRouter } from "next/navigation";
 import { setAllValues } from "@/app/store/Vehicle";
+import { setConfigurations } from "@/app/store/Configurations";
 
 export default function Vehicles() {
   const params = useParams();
   const { vehicleUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -62,6 +64,24 @@ export default function Vehicles() {
     if (vehicleUpdateAction !== "AddVehicles") {
       getData();
     }
+  }, []);
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getConfigurations`);
+        if (result) {
+          dispatch(setConfigurations(result?.data?.wholeData));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData2();
   }, []);
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setFormVerified(false);
@@ -180,7 +200,8 @@ export default function Vehicles() {
       await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
     }
   }
-  console.log("damageImagesToDelete", vehicle.damageImagesToDelete);
+
+  console.log("Configurations", Configurations?.Configurations);
 
   return (
     <div
