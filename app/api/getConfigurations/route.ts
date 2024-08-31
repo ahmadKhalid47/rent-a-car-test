@@ -4,6 +4,8 @@ import MakeModel from "@/app/models/Make";
 import ModelModel from "@/app/models/Model";
 import FeatureModel from "@/app/models/Feature";
 import TypeModel from "@/app/models/Type";
+import CountryModel from "@/app/models/Country";
+import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -14,6 +16,8 @@ export async function GET(req: Request) {
     const model = await ModelModel.find().sort({ _id: -1 });
     const feature = await FeatureModel.find().sort({ _id: -1 });
     const type = await TypeModel.find().sort({ _id: -1 });
+    const country = await CountryModel.find().sort({ _id: -1 });
+    const city = await CityModel.find().sort({ _id: -1 });
 
     let wholeData = {
       color,
@@ -21,8 +25,9 @@ export async function GET(req: Request) {
       model,
       feature,
       type,
+      country,
+      city
     };
-    console.log(model);
     return NextResponse.json({
       wholeData,
     });

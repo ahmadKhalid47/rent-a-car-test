@@ -37,6 +37,7 @@ export default function Info() {
   let dispatch = useDispatch();
 
   const [files, setFiles] = useState(vehicle.carImages);
+  const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
   const [colorOnHover, setColorOnHover] = useState("");
   useEffect(() => {
@@ -45,6 +46,9 @@ export default function Info() {
   useEffect(() => {
     setMakeSelected(vehicle.make);
   }, [vehicle.make]);
+  useEffect(() => {
+    setCountrySelected(vehicle.country);
+  }, [vehicle.country]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(
@@ -92,7 +96,7 @@ export default function Info() {
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
-  console.log(colorOnHover);
+  // console.log(Configurations?.Configurations?.country);
 
   return (
     <div className="w-full h-fit ">
@@ -284,7 +288,9 @@ export default function Info() {
           required={false}
           // required={true}
           // required={false}
-          options={["Country1", "Country2"]}
+          options={Configurations?.Configurations?.country?.map(
+            (item: any) => item.country
+          )}
         />
         <TempSelectInput
           setState={setcityR}
@@ -293,7 +299,9 @@ export default function Info() {
           required={false}
           // required={true}
           // required={false}
-          options={["City1", "City2"]}
+          options={Configurations?.Configurations?.city
+            ?.filter((item: any) => item.country === countrySelected)
+            .map((item: any) => item.city)}
         />
         <TempTypeInput
           setState={setpostalCodeR}
