@@ -226,7 +226,7 @@ export default function ListView({ data }: dataType) {
             Inactive Multiple
           </span>
         </span>
-        <span className="underline cursor-pointer">Export</span>
+        <span className="underline cursor-pointer text-main-blue">Export</span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
