@@ -181,12 +181,15 @@ export default function Info() {
                     key={key}
                     // onMouseOver={() => {
                     //   setColorOnHover(item.Color);
+                    //   console.log("item");
                     // }}
                     // onMouseEnter={() => {
                     //   setColorOnHover(item.Color);
+                    //   console.log("item");
                     // }}
                     // onClick={() => {
                     //   setColorOnHover(item.Color);
+                    //   console.log("item");
                     // }}
                   >
                     {item.Color}
