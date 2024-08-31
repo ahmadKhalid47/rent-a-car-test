@@ -48,7 +48,7 @@ export default function Sidebar() {
       setChevronState("Chauffeurs");
     } else if (
       pathName === "/Components/Vehicles" ||
-      pathName === "/Components/CarInfo" ||
+      pathName?.includes("/Components/CarInfo") ||
       pathName === "/Components/AddVehicles" ||
       pathName?.includes("/Components/Configuration")
     ) {
@@ -431,7 +431,7 @@ export default function Sidebar() {
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
                   pathName === "/Components/Vehicles" ||
-                  pathName === "/Components/CarInfo"
+                  pathName?.includes("/Components/CarInfo")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
