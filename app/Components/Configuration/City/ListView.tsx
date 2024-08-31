@@ -172,11 +172,11 @@ export default function ListView({ data, makeData }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] ${
-                  itemToDeleteMany.length === 0 ? "" : "bg-main-blue"
+                  itemToDeleteMany.length !== data.length ? "" : "bg-main-blue"
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length === 0 ? allIds : []
+                    itemToDeleteMany.length !== data.length ? allIds : []
                   );
                 }}
               ></div>
