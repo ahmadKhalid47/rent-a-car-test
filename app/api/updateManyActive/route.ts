@@ -4,12 +4,17 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    let { active } = await req.json();
-    let { _id } = await params.params;
+    let { active, _ids } = await req.json(); // Expecting `_ids` to be an array of `_id`
     connectDb();
-    await VehicleModel.updateOne({ _id: _id }, { $set: { active: active } });
+console.log(active, _ids);
+    // Update all documents where the `_id` is in the array of `_ids`
+    await VehicleModel.updateMany(
+      { _id: { $in: _ids } },
+      { $set: { active: active } }
+    );
+
     return NextResponse.json({
-      success: "User Created",
+      success: "Vehicles updated successfully",
     });
   } catch (err) {
     console.log("err: ", err);

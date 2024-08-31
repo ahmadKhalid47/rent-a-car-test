@@ -31,6 +31,7 @@ export default function ListView({ data }: dataType) {
     {}
   );
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -170,6 +171,23 @@ export default function ListView({ data }: dataType) {
       setEditLoading(false);
     }
   }
+  async function UpdateActiveManyItem(active: boolean) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/updateManyActive`, {
+        _ids: itemToDeleteMany,
+        active: active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
 
   return (
     <div className="w-full h-fit mt-4">
@@ -191,7 +209,22 @@ export default function ListView({ data }: dataType) {
             </button>
           </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span className=" cursor-pointer">Active/Inactive Multiple</span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(true);
+            }}
+          >
+            Active /
+          </span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(false);
+            }}
+          >
+            Inactive Multiple
+          </span>
         </span>
         <span className="underline cursor-pointer">Export</span>
       </h3>
