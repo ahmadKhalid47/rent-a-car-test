@@ -24,7 +24,7 @@ export default function Damages() {
       <div className="w-[23%] h-fit flex flex-col justify-start items-start relative">
         <img
           src={
-            vehicleInfo.damages[damageIndex].exterior
+            vehicleInfo.damages[damageIndex]?.exterior
               ? CarExterior.src
               : CarInterior.src
           }
@@ -32,7 +32,7 @@ export default function Damages() {
         />
         {vehicleInfo.damages.map((item: any, index: any) => (
           <>
-            {vehicleInfo.damages[damageIndex].exterior ? (
+            {vehicleInfo.damages[damageIndex]?.exterior ? (
               item.exterior ? (
                 <div
                   className={`absolute w-[15px] h-[15px] rounded-full ${
@@ -47,7 +47,7 @@ export default function Damages() {
                   {index + 1}
                 </div>
               ) : null
-            ) : !vehicleInfo.damages[damageIndex].exterior ? (
+            ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
               !item.exterior ? (
                 <div
                   className={`absolute w-[15px] h-[15px] rounded-full ${
@@ -105,7 +105,7 @@ export default function Damages() {
       <div className="w-[25%] h-[100%] flex flex-col justify-start items-start ">
         <div className="w-[250px] h-[300px] flex justify-center items-center mx-auto">
           <img
-            src={vehicleInfo.damages[damageIndex].files[imageIndex]}
+            src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
             className="w-[100%] h-[100%]"
           />
         </div>
