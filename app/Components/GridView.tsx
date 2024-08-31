@@ -90,6 +90,20 @@ export default function GridView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
+  async function updateActive(_id: any, active: boolean) {
+    try {
+      // setEditLoading(true);
+      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+        active: !active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // setEditLoading(false);
+    }
+  }
 
   return (
     <div className="w-full h-fit mt-4">
@@ -135,8 +149,13 @@ export default function GridView({ data }: dataType) {
                     >
                       Delete
                     </button>
-                    <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
-                      Active
+                    <button
+                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      onClick={() => {
+                        updateActive(item?._id, item?.active);
+                      }}
+                    >
+                      {item.active ? "Inactive" : "Active"}
                     </button>
                   </div>
                 )}
