@@ -1,11 +1,11 @@
 import connectDb from "@/app/models/connectDb";
-import ModelModel from "@/app/models/Model";
+import CountryModel from "@/app/models/Country";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
     await connectDb();
-    const data = await ModelModel.find().sort({ _id: -1 });
+    const data = await CountryModel.find().sort({ _id: -1 });
     return NextResponse.json({
       data,
     });

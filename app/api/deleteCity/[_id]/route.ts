@@ -1,12 +1,12 @@
 import connectDb from "@/app/models/connectDb";
-import ModelModel from "@/app/models/Model";
+import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
 export async function DELETE(req: Request, params: any) {
   try {
     let { _id } = await params.params;
     await connectDb();
-    const data = await ModelModel.deleteOne({ _id: _id });
+    const data = await CityModel.deleteOne({ _id: _id });
     return NextResponse.json({
       acknowledged: data.acknowledged,
     });

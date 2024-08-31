@@ -1,5 +1,5 @@
 import connectDb from "@/app/models/connectDb";
-import ModelModel from "@/app/models/Model";
+import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     let { _ids } = await req.json();
     await connectDb();
     console.log(_ids);
-      const data = await ModelModel.deleteMany({ _id: { $in: _ids } });
+      const data = await CityModel.deleteMany({ _id: { $in: _ids } });
     return NextResponse.json({
       acknowledged: "data.acknowledged",
     });
