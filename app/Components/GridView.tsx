@@ -6,6 +6,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Popover, Button } from "antd";
 import check from "@/public/check.svg";
+import { useRouter } from "next/navigation";
 
 interface dataType {
   data: Array<Object>;
@@ -26,6 +27,7 @@ export default function GridView({ data }: dataType) {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
+  const router = useRouter();
 
   function PaginationRounded() {
     return (
@@ -93,7 +95,12 @@ export default function GridView({ data }: dataType) {
               <div className="relative">
                 {isOpen === item._id && (
                   <div className="z-10 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md text-black flex flex-col justify-start items-start">
-                    <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
+                    <button
+                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      onClick={() => {
+                        router.push(`/Components/${item?._id}`);
+                      }}
+                    >
                       Edit
                     </button>
                     <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
