@@ -1,16 +1,16 @@
 import connectDb from "@/app/models/connectDb";
-import ModelModel from "@/app/models/Model";
+import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    let { Model, Make } = await req.json();
+    let { country, city } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    console.log(Model, _id, Make);
-    await ModelModel.updateOne(
+    console.log(country, _id, city);
+    await CityModel.updateOne(
       { _id: _id },
-      { $set: { model: Model, make: Make } }
+      { $set: { country: country, city: city } }
     );
     return NextResponse.json({
       success: "User Created",

@@ -32,7 +32,7 @@ export default function ListView({ data }: dataType) {
   const [editLoading, setEditLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
-  const [Country, setCountry] = useState("");
+  const [country, setCountry] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -113,7 +113,7 @@ export default function ListView({ data }: dataType) {
     try {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateCountry/${_id}`, {
-        Country,
+        country,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -320,7 +320,7 @@ export default function ListView({ data }: dataType) {
                           onChange={(e) => {
                             setCountry(e.target.value);
                           }}
-                          value={Country}
+                          value={country}
                         />
                       </div>
                     </div>

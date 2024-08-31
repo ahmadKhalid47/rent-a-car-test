@@ -34,7 +34,7 @@ export default function ListView({ data, makeData }: dataType) {
   const [editLoading, setEditLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
-  const [City, setCity] = useState("");
+  const [city, setCity] = useState("");
   const [Make, setMake] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
@@ -116,8 +116,8 @@ export default function ListView({ data, makeData }: dataType) {
     try {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateCity/${_id}`, {
-        City,
-        Make
+        country:Make,
+        city
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -357,7 +357,7 @@ export default function ListView({ data, makeData }: dataType) {
                           onChange={(e) => {
                             setCity(e.target.value);
                           }}
-                          value={City}
+                          value={city}
                         />
                       </div>
                     </div>
