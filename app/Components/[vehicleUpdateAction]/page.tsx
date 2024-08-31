@@ -201,8 +201,6 @@ export default function Vehicles() {
     }
   }
 
-  console.log("Configurations", Configurations?.Configurations);
-
   return (
     <div
       className={`${
