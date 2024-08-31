@@ -12,6 +12,7 @@ import { setVehicleDataReloader } from "../store/Global";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallLoader } from "./Loader";
+import { handleExport } from "./functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -105,10 +106,26 @@ export default function GridView({ data }: dataType) {
     }
   }
 
+  // let data2 = data?.map((item: any) => {
+  //   return {
+  //     data: {
+  //       ...item.data,
+  //       active: item.active,
+  //     },
+  //   };
+  // });
+  // console.log(data2);
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
-        <span className="underline cursor-pointer text-main-blue">Export</span>
+        <span
+          className="underline cursor-pointer text-main-blue"
+          onClick={() => {
+            handleExport(data?.map((item: any) => item.data));
+          }}
+        >
+          Export
+        </span>
       </h3>
       <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
         {paginatedData.map((item: any, index: number) => (

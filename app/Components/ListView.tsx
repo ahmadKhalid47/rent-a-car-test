@@ -15,6 +15,7 @@ import { setVehicleDataReloader } from "../store/Global";
 import { setAllValues } from "../store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { handleExport } from "./functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -226,7 +227,14 @@ export default function ListView({ data }: dataType) {
             Inactive Multiple
           </span>
         </span>
-        <span className="underline cursor-pointer text-main-blue">Export</span>
+        <span
+          className="underline cursor-pointer text-main-blue"
+          onClick={() => {
+            handleExport(data?.map((item: any) => item.data));
+          }}
+        >
+          Export
+        </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
