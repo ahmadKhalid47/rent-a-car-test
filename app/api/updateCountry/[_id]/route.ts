@@ -7,7 +7,6 @@ export async function POST(req: Request, params: any) {
     let { country } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    console.log(country, _id);
     await CountryModel.updateOne(
       { _id: _id },
       { $set: { country: country } }

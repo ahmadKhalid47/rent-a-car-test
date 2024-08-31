@@ -7,7 +7,6 @@ export async function POST(req: Request, params: any) {
     let { Color } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    console.log(Color, _id);
     await ColorModel.updateOne({ _id: _id }, { $set: { Color: Color } });
     return NextResponse.json({
       success: "User Created",

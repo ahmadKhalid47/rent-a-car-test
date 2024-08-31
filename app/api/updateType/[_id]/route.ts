@@ -7,7 +7,6 @@ export async function POST(req: Request, params: any) {
     let { Type } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    console.log(Type, _id);
     await TypeModel.updateOne({ _id: _id }, { $set: { Type: Type } });
     return NextResponse.json({
       success: "User Created",

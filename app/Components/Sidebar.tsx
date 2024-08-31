@@ -65,7 +65,6 @@ export default function Sidebar() {
 
   let dispatch = useDispatch();
   const router = useRouter();
-  console.log(global.sidebarShow);
   return (
     <div
       className={`${

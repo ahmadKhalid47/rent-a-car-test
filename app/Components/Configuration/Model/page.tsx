@@ -89,7 +89,6 @@ export default function Vehicles() {
       setLoading("");
     }
   }
-  console.log(vehiclesData);
   return (
     <div
       className={`${
