@@ -1,4 +1,5 @@
 import check from "@/public/check.svg";
+import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -38,6 +39,7 @@ export default function ListView({ data }: dataType) {
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -153,6 +155,21 @@ export default function ListView({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
+
+  async function updateActive(_id: any, active: boolean) {
+    try {
+      setEditLoading(true);
+      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+        active: !active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEditLoading(false);
+    }
+  }
 
   return (
     <div className="w-full h-fit mt-4">
@@ -288,7 +305,13 @@ export default function ListView({ data }: dataType) {
                     event.stopPropagation();
                   }}
                 >
-                  <img src={check.src} className="me-[8px] translate-y-[1px]" />
+                  <img
+                    src={item.active ? check.src : unCheck.src}
+                    className="me-[8px] translate-y-[1px]"
+                    onClick={() => {
+                      updateActive(item?._id, item?.active);
+                    }}
+                  />
                   <img
                     src={edit.src}
                     className="me-[5.8px]"
