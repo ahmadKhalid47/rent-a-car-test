@@ -16,6 +16,7 @@ import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
+import { useParams } from "next/navigation";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -48,7 +49,8 @@ export default function Sidebar() {
     } else if (
       pathName === "/Components/Vehicles" ||
       pathName === "/Components/CarInfo" ||
-      pathName === "/Components/AddVehicles"
+      pathName === "/Components/AddVehicles" ||
+      pathName?.includes("/Components/Configuration")
     ) {
       setChevronState("Vehicles");
     } else if (
@@ -63,7 +65,7 @@ export default function Sidebar() {
 
   let dispatch = useDispatch();
   const router = useRouter();
-
+  console.log(global.sidebarShow);
   return (
     <div
       className={`${
@@ -472,7 +474,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Configuration"
+                  pathName?.includes("/Components/Configuration")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
