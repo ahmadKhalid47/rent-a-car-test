@@ -118,8 +118,8 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          required={false}
-          // required={true}
+          // required={false}
+          required={true}
           options={Configurations?.Configurations?.make?.map(
             (item: any) => item.make
           )}

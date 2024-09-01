@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useParams } from "next/navigation";
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
@@ -34,13 +34,14 @@ export default function Vehicles() {
     }
   }, [isMobile]);
   let [currentPage, setCurrentPage] = useState(0);
-  let [formVerified, setFormVerified] = useState(false);
+  let [goToPage, setGoToPage] = useState(0);
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   const [loading, setLoading] = useState<any>(false);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
+  const formRef = useRef<any>(null);
 
   useEffect(() => {
     async function getData() {
@@ -84,18 +85,9 @@ export default function Vehicles() {
     getData2();
   }, []);
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setFormVerified(false);
     event.preventDefault();
-    setFormVerified(true);
+    setCurrentPage(goToPage);
   };
-
-  function handleSetCurrentPage(page: any) {
-    setCurrentPage(formVerified ? page : currentPage);
-  }
-
-  useEffect(() => {
-    setFormVerified(false);
-  }, [currentPage]);
 
   async function saveData(action: string) {
     try {
@@ -201,6 +193,12 @@ export default function Vehicles() {
     }
   }
 
+  const submitButton = () => {
+    if (formRef.current) {
+      formRef.current?.click();
+    }
+  };
+
   return (
     <div
       className={`${
@@ -238,8 +236,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(0)}
+                  onClick={() => {
+                    setGoToPage(0);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
@@ -253,8 +254,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(1)}
+                  onClick={() => {
+                    setGoToPage(1);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
@@ -266,8 +270,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(2)}
+                  onClick={() => {
+                    setGoToPage(2);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
@@ -280,8 +287,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(3)}
+                  onClick={() => {
+                    setGoToPage(3);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
@@ -293,8 +303,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(4)}
+                  onClick={() => {
+                    setGoToPage(4);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 4
                       ? "transitions2 bg-main-blue text-white"
@@ -306,8 +319,11 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(5)}
+                  onClick={() => {
+                    setGoToPage(5);
+                    submitButton();
+                  }}
+
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 5
                       ? "transitions2 bg-main-blue text-white"
@@ -448,15 +464,19 @@ export default function Vehicles() {
                 )}
               </>
             ) : (
-              <button
-                className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() =>
-                  setCurrentPage(formVerified ? currentPage + 1 : currentPage)
-                }
-                type="submit"
-              >
-                Save and Continue
-              </button>
+              <>
+                <button
+                  className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                  onClick={() => {
+                    setGoToPage(currentPage + 1);
+                    submitButton();
+                  }}
+
+                >
+                  Save and Continue
+                </button>
+                <button ref={formRef} className="" type="submit"></button>
+              </>
             )}
           </div>
         </form>
