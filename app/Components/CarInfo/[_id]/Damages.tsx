@@ -112,10 +112,10 @@ export default function Damages() {
               setImagePopup(false);
             }}
           >
-            <div className="w-[700px] h-[700px] relative bg-green-300 overflow-auto scroll">
+            <div className="w-[700px] h-[700px] relative overflow-auto scroll">
               <img
                 src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
-                className={"w-[100%] h-[100%] scroll2"}
+                className={"w-[100%] h-[100%]"}
                 style={{
                   transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
                   cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
