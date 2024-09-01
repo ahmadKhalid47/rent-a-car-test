@@ -54,16 +54,24 @@ export default function Damages() {
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing(file.name)}
+        onClick={() => removing(file)}
       >
         <FaTimesCircle />
       </span>
     </div>
   ));
-  function removing(name: any) {
+  function removing(file: any) {
     let array = files;
     array = array.filter((e: any) => {
-      return e.name !== name;
+      // If the element is a string, it will be compared to the URL in the `file` object
+      if (typeof e === "string") {
+        return e !== file;
+      }
+      // If the element is an object, compare the `path` or `preview` properties
+      else if (typeof e === "object" && e !== null) {
+        return e.path !== file.path && e.preview !== file.preview;
+      }
+      return true;
     });
     setFiles(array);
   }
