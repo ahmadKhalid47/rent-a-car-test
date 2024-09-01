@@ -1,7 +1,7 @@
 "use client";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaTimes, FaTimesCircle } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -11,6 +11,7 @@ export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   const [damageIndex, setdamageIndex] = useState<any>(0);
   const [imageIndex, setImageIndex] = useState<any>(0);
+  const [imagePopup, setImagePopup] = useState<boolean>(false);
   const [imageLength, setImageLength] = useState<any>(
     vehicleInfo.damages[damageIndex]?.files?.length
   );
@@ -103,10 +104,37 @@ export default function Damages() {
         ))}
       </div>
       <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
+        {imagePopup ? (
+          <div
+            className="w-[100%] h-[100%] flex justify-center items-center absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
+            onClick={() => {
+              setImagePopup(false);
+            }}
+          >
+            <div className="relative bg-green-300">
+              <img
+                src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
+                className={"w-[700px] h-[700px]"}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              />
+              <span
+                className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full"
+                onClick={() => setImagePopup(false)}
+              >
+                <FaTimes />
+              </span>
+            </div>
+          </div>
+        ) : null}
         <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
           <img
             src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
-            className="w-[100%] h-[100%]"
+            className={"w-[100%] h-[100%]"}
+            onClick={() => {
+              setImagePopup(true);
+            }}
           />
         </div>
 
