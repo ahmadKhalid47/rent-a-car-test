@@ -126,6 +126,7 @@ export default function Damages() {
     setDegree("");
     setFiles([]);
   }, [popup]);
+console.log(vehicle?.damages);
 
   return (
     <div className="w-full h-fit">
@@ -218,11 +219,14 @@ export default function Damages() {
           <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
             <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
               <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                <p className="w-[30%] md:w-[50px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
+                <p className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                   No
                 </p>
-                <p className="w-[40%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                <p className="w-[30%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
                   Damage Type
+                </p>
+                <p className="w-[20%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                  Position
                 </p>
                 <p className="w-[30%] md:w-[80px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-end">
                   Degree
@@ -233,11 +237,14 @@ export default function Damages() {
               </div>
               {vehicle?.damages?.map((item: any, key: number) => (
                 <div className="w-full h-fit flex justify-between items-start border-b-[2px">
-                  <p className="w-[30%] md:w-[50px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
-                    {key + 1}
+                  <p className="w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
+                    {JSON.stringify(key + 1).padStart(2, "0")}{" "}
                   </p>
-                  <p className="w-[40%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                  <p className="w-[30%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
                     {item?.damageType}
+                  </p>
+                  <p className="w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                    {item?.exterior ? "Exterior" : "Interior"}
                   </p>
                   <p className="w-[30%] md:w-[80px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
                     {item?.degree}
