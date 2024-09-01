@@ -51,15 +51,15 @@ export default function Info() {
   }, [vehicle.country]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(
-      acceptedFiles.map((file: any) =>
+    setFiles((prevFiles: any) => [
+      ...prevFiles,
+      ...acceptedFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
-      )
-    );
+      ),
+    ]);
   }, []);
-  console.log();
   const thumbs: any = files.map((file: any) => (
     <div
       key={file.name}
@@ -96,8 +96,7 @@ export default function Info() {
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
-  // console.log(Configurations?.Configurations?.country);
-
+  console.log(files);
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">

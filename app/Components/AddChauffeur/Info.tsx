@@ -8,16 +8,17 @@ import { TypeInput } from "../InputComponents/TypeInput";
 import { SelectInput } from "../InputComponents/SelectInput";
 
 export default function Info() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(
-      acceptedFiles.map((file: any) =>
+    setFiles((prevFiles: any) => [
+      ...prevFiles,
+      ...acceptedFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
-      )
-    );
+      ),
+    ]);
   }, []);
 
   const thumbs: any = files.map((file: any) => (

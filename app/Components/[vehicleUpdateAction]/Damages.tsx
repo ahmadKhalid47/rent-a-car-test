@@ -21,19 +21,20 @@ export default function Damages() {
   const [damageType, setDamageType] = useState("");
   const [degree, setDegree] = useState("");
   const [description, setDescription] = useState("");
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>([]);
   let [damages, setDamages] = useState<any>(vehicle.damages);
   const [marks, setMarks] = useState<any>(vehicle.damages);
   let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(
-      acceptedFiles.map((file: any) =>
+    setFiles((prevFiles: any) => [
+      ...prevFiles,
+      ...acceptedFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
-      )
-    );
+      ),
+    ]);
   }, []);
 
   const thumbs: any = files.map((file: any) => (
