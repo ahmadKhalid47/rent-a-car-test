@@ -102,8 +102,8 @@ export default function Damages() {
           </div>
         ))}
       </div>
-      <div className="w-[25%] h-[100%] flex flex-col justify-start items-start ">
-        <div className="w-[250px] h-[300px] flex justify-center items-center mx-auto">
+      <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
+        <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
           <img
             src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
             className="w-[100%] h-[100%]"
