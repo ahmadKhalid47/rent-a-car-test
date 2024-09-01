@@ -110,6 +110,12 @@
   width: 0;
   background-color: transparent;
 }
+
+.scroll2::-webkit-scrollbar {
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+}
 .text-link-blue {
   color: #156cf7;
 }

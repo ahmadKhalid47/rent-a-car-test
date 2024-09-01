@@ -12,6 +12,7 @@ export default function Damages() {
   const [damageIndex, setdamageIndex] = useState<any>(0);
   const [imageIndex, setImageIndex] = useState<any>(0);
   const [imagePopup, setImagePopup] = useState<boolean>(false);
+  const [zoomed, setZoomed] = useState<boolean>(false);
   const [imageLength, setImageLength] = useState<any>(
     vehicleInfo.damages[damageIndex]?.files?.length
   );
@@ -111,21 +112,28 @@ export default function Damages() {
               setImagePopup(false);
             }}
           >
-            <div className="relative bg-green-300">
+            <div className="w-[700px] h-[700px] relative bg-green-300 overflow-auto scroll">
               <img
                 src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
-                className={"w-[700px] h-[700px]"}
+                className={"w-[100%] h-[100%] scroll2"}
+                style={{
+                  transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                  cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
+                  setZoomed(!zoomed);
                 }}
               />
-              <span
-                className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full"
-                onClick={() => setImagePopup(false)}
-              >
-                <FaTimes />
-              </span>
             </div>
+            <span
+              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-36 right-36 ${
+                zoomed ? "right-3" : ""
+              } w-fit shadow bg-white rounded-full`}
+              onClick={() => setImagePopup(false)}
+            >
+              <FaTimes />
+            </span>
           </div>
         ) : null}
         <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
