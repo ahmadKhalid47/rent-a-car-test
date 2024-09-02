@@ -120,14 +120,14 @@ export default function Vehicles() {
                 Identity Information
               </div>
               <div
-                className={`w-[15%] xl:w-fit h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Emergency Information
               </div>
               <div
-                className={`w-[15%] xl:w-fit h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >

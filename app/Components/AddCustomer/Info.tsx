@@ -101,7 +101,12 @@ export default function Info() {
     setFiles(array);
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    maxFiles: 1, // Restrict to one file
+    // accept: "image/*", // Accept only image files
+    maxSize: 5 * 1024 * 1024, // Maximum file size: 5 MB (5 * 1024 * 1024 bytes)
+  });
 
   return (
     <div className="w-full h-fit  ">
@@ -200,7 +205,6 @@ export default function Info() {
           required={true}
           type={"text"}
         />
-
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-0 sm:gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[0px] sm:text-[14px] leading-[0px] sm:leading-[17px] text-transparent">
             VIP Client
