@@ -319,8 +319,10 @@ export default function ListView({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[9%] ps-[10px">
-                  {JSON.stringify(index + 1).padStart(2, "0")}
+                <h5 className="text-center pe-5 w-[9%]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}
                 </h5>
                 <h5 className="text-start pe-3 w-[20%]">
                   {item?.data?.make} {item?.data?.model}

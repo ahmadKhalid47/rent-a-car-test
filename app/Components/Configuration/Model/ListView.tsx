@@ -165,7 +165,6 @@ export default function ListView({ data, makeData }: dataType) {
             Delete Multiple
           </button>
         </span>
-
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
@@ -182,9 +181,9 @@ export default function ListView({ data, makeData }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-5 flex justify-between items-center w-[7%] ps-7">
-              #
-            </div>
+            <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
+              ID
+            </div>{" "}
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               Make
             </div>
@@ -214,8 +213,10 @@ export default function ListView({ data, makeData }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[7%] ps-[10px">
-                  {JSON.stringify(index + 1).padStart(2, "0")}
+                <h5 className="text-start pe-5 w-[7%]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}{" "}
                 </h5>
                 <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
                 <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
