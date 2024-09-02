@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import CustomerForms from "../CustomerForms/page";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
@@ -14,6 +13,7 @@ import { useState } from "react";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let customer = useSelector((state: RootState) => state.Customer);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
   let dispatch = useDispatch();
@@ -24,6 +24,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  console.log(customer);
 
   return (
     <div

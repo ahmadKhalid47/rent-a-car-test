@@ -5,10 +5,32 @@ import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../InputComponents/TypeInput";
+import { SelectInput, TempSelectInput } from "../InputComponents/SelectInput";
+import {
+  setalternativePhoneR,
+  setcityR,
+  setcountryR,
+  setcustomerTypeR,
+  setdateOfBirthR,
+  setemailAddressR,
+  setgenderR,
+  setisVipR,
+  setnameR,
+  setnationalityR,
+  setphoneR,
+  setpostalCodeR,
+  setstreetAddressR,
+} from "@/app/store/Customer";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Info() {
+  let dispatch = useDispatch();
+
+  let customer = useSelector((state: RootState) => state.Customer);
   const [files, setFiles] = useState<any>([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
@@ -38,7 +60,6 @@ export default function Info() {
       ),
     ]);
   }, []);
-
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -85,81 +106,97 @@ export default function Info() {
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <SelectInput
+        <TempSelectInput
+          setState={setcustomerTypeR}
           label={"Customer Type"}
-          value={""}
+          value={customer.customerType}
           required={true}
-          options={["Select", "Type1", "Type2"]}
+          options={["Customer Type1", "Customer Type2"]}
         />
-
-        <TypeInput
+        <TempTypeInput
+          setState={setnameR}
           label={"Full Name"}
-          value={""}
+          value={customer.name}
           required={true}
           type={"text"}
         />
-
-        <SelectInput
+        <TempSelectInput
+          setState={setgenderR}
           label={"Gender"}
-          value={""}
+          value={customer.gender}
           required={true}
           options={["Select", "Male", "Female"]}
         />
 
-        <TypeInput
+        <TempTypeInput
+          setState={setdateOfBirthR}
           label={"Date of Birth"}
-          value={""}
+          value={customer.dateOfBirth}
           required={false}
           type={"date"}
         />
 
-        <SelectInput
+        <TempSelectInput
+          setState={setnationalityR}
           label={"Nationality"}
-          value={""}
+          value={customer.nationality}
           required={false}
           options={["Select", "Nationality1", "Nationality2"]}
         />
-        <TypeInput
+        <TempTypeInput
+          setState={setemailAddressR}
           label={"Email Address"}
-          value={""}
+          value={customer.emailAddress}
           required={false}
           type={"email"}
         />
-        <TypeInput label={"Phone"} value={""} required={true} type={"text"} />
-        <TypeInput
+        <TempTypeInput
+          setState={setphoneR}
+          label={"Phone"}
+          value={customer.phone}
+          required={true}
+          type={"text"}
+        />
+        <TempTypeInput
+          setState={setalternativePhoneR}
           label={"Alternative Phone"}
-          value={""}
+          value={customer.alternativePhone}
           required={false}
           type={"text"}
         />
 
-        <TypeInput
+        <TempTypeInput
+          setState={setstreetAddressR}
           label={"Street Address"}
-          value={""}
+          value={customer.streetAddress}
           required={false}
           type={"text"}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setcountryR}
           label={"Country"}
-          value={""}
+          value={customer.country}
           required={true}
           options={["Select", "Country1", "Country2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setphoneR}
           label={"State/Province"}
-          value={""}
+          value={customer.phone}
           required={true}
           options={["Select", "State1", "State2"]}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setcityR}
           label={"City"}
-          value={""}
+          value={customer.city}
           required={true}
           options={["Select", "City1", "City2"]}
         />
-        <TypeInput
+        <TempTypeInput
+          setState={setpostalCodeR}
           label={"Postal/Zip Code"}
-          value={""}
+          value={customer.postalCode}
           required={true}
           type={"text"}
         />
@@ -173,6 +210,7 @@ export default function Info() {
               <input
                 type="checkbox"
                 className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                onChange={(e) => dispatch(setisVipR(e.target.checked))}
               />
               <img src={vip.src} />
               It’s VIP Client
