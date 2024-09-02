@@ -118,6 +118,7 @@ export const VehicleSlice = createSlice({
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
+    resetState: () => initialState,
   },
 });
 
@@ -150,6 +151,7 @@ export const {
   setAllValues,
   setdamageImagesToDelete,
   setthumbnailImage,
+  resetState,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;

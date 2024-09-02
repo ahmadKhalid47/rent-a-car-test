@@ -16,7 +16,7 @@ import Info from "./Info";
 import axios from "axios";
 import { SmallLoader } from "../Loader";
 import { useRouter } from "next/navigation";
-import { setAllValues } from "@/app/store/Vehicle";
+import { resetState, setAllValues } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
 
 export default function Vehicles() {
@@ -62,10 +62,15 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    if (vehicleUpdateAction !== "AddVehicles") {
+    if (vehicleUpdateAction === "AddVehicles") {
+      dispatch(resetState());
+    } else {
       getData();
     }
   }, []);
+
+  console.log(vehicle);
+
   useEffect(() => {
     async function getData2() {
       try {
