@@ -146,7 +146,7 @@ export default function Damages() {
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   exterior
                     ? "bg-main-blue text-white"
-                    : "bg-white text-main-blue"
+                    : "bg-white text-black"
                 }`}
                 onClick={() => setExterior(true)}
               >
@@ -166,7 +166,7 @@ export default function Damages() {
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   !exterior
                     ? "bg-main-blue text-white"
-                    : "bg-white text-main-blue"
+                    : "bg-white text-black"
                 }`}
                 onClick={() => setExterior(false)}
               >
