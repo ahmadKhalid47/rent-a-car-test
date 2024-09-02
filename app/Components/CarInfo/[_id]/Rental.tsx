@@ -12,7 +12,7 @@ export default function Rental() {
             Rental Price Per Hour:
           </p>
           <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentHour}
+            {vehicleInfo.rentHour ? vehicleInfo.rentHour : "---"}
           </p>
         </div>
 
@@ -21,7 +21,7 @@ export default function Rental() {
             Rental Price Per Week:
           </p>
           <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentWeek}
+            {vehicleInfo.rentWeek ? vehicleInfo.rentWeek : "---"}
           </p>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function Rental() {
             Rental Price Per Day:
           </p>
           <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentDay}
+            {vehicleInfo.rentDay ? vehicleInfo.rentDay : "---"}
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function Rental() {
             Rental Price Per Month:
           </p>
           <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentMonth}
+            {vehicleInfo.rentMonth ? vehicleInfo.rentMonth : "---"}
           </p>
         </div>
       </div>
