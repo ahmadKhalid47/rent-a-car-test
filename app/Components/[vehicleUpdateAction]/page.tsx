@@ -69,8 +69,6 @@ export default function Vehicles() {
     }
   }, []);
 
-  console.log(vehicle);
-
   useEffect(() => {
     async function getData2() {
       try {
@@ -195,7 +193,6 @@ export default function Vehicles() {
           },
         });
         let imageArray = [...res?.data?.message, ...alreadyUploadedFiles];
-        console.log(imageArray);
 
         await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
           ...vehicle,
