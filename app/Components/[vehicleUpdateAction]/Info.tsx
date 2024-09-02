@@ -51,17 +51,35 @@ export default function Info() {
   useEffect(() => {
     setCountrySelected(vehicle.country);
   }, [vehicle.country]);
-
+  
   const onDrop = useCallback((acceptedFiles: any) => {
+    const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+
+    const filteredFiles = acceptedFiles.filter((file: any) => {
+      if (!allowedTypes.includes(file.type)) {
+        alert(
+          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        );
+        return false;
+      }
+      if (file.size > maxFileSize) {
+        alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+        return false;
+      }
+      return true;
+    });
+
     setFiles((prevFiles: any) => [
       ...prevFiles,
-      ...acceptedFiles.map((file: any) =>
+      ...filteredFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
       ),
     ]);
   }, []);
+
   const thumbs: any = files.map((file: any) => (
     <div
       key={file.name}
@@ -108,6 +126,8 @@ export default function Info() {
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
+
+  console.log(files);
 
   return (
     <div className="w-full h-fit ">
@@ -294,7 +314,6 @@ export default function Info() {
           type={"text"}
         />
       </div>
-
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
         <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
           Add Vehicle Images
@@ -323,35 +342,36 @@ export default function Info() {
           {thumbs}
         </div>
       </div>
-
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
-        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
-          Select Thumbnail Image
-        </h3>
-        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          {files.map((file: any, index: number) => (
-            <div
-              key={file.name}
-              className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-            >
+      {files.length > 1 ? (
+        <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+          <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+            Select Thumbnail Image
+          </h3>
+          <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+            {files.map((file: any, index: number) => (
               <div
-                className={`relative rounded-[10px] overflow-hidden cursor-pointer border-black ${
-                  vehicle.thumbnailImage === index
-                    ? "border-[6px] border-main-blue w-[80px] h-[80px]"
-                    : "border-[1px] border-grey w-[64px] h-[64px]"
-                }`}
-                onClick={() => dispatch(setthumbnailImage(index))}
+                key={file.name}
+                className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
               >
-                <img
-                  src={file.preview ? file.preview : file}
-                  alt={file.name}
-                  className="w-[100%] h-[100%]"
-                />
+                <div
+                  className={`relative rounded-[10px] overflow-hidden cursor-pointer border-black ${
+                    vehicle.thumbnailImage === index
+                      ? "border-[6px] border-main-blue w-[80px] h-[80px]"
+                      : "border-[1px] border-grey w-[64px] h-[64px]"
+                  }`}
+                  onClick={() => dispatch(setthumbnailImage(index))}
+                >
+                  <img
+                    src={file.preview ? file.preview : file}
+                    alt={file.name}
+                    className="w-[100%] h-[100%]"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}{" "}
     </div>
   );
 }
