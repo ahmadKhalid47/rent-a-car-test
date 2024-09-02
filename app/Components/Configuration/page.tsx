@@ -46,9 +46,6 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
-              <span className="underline cursor-pointer">Export</span>
-            </h3>
             <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
               <Link
                 href={`/Components/Configuration/Make`}
