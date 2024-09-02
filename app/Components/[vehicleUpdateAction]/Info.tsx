@@ -31,6 +31,7 @@ import {
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { log } from "util";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -98,13 +99,16 @@ export default function Info() {
       return true;
     });
     setFiles(array);
+    if (vehicle.thumbnailImage + 1 >= files.length) {
+      dispatch(setthumbnailImage(files.length - 2));
+    }
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
-  console.log(vehicle.thumbnailImage);
+
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -366,7 +370,7 @@ export default function Info() {
               <div
                 className={`relative rounded-[10px] overflow-hidden cursor-pointer border-black ${
                   vehicle.thumbnailImage === index
-                    ? "border-[6px] border-main-red w-[80px] h-[80px]"
+                    ? "border-[6px] border-main-blue w-[80px] h-[80px]"
                     : "border-[1px] border-grey w-[64px] h-[64px]"
                 }`}
                 onClick={() => dispatch(setthumbnailImage(index))}
