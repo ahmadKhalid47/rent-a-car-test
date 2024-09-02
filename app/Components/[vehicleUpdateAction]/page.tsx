@@ -475,7 +475,7 @@ export default function Vehicles() {
                 >
                   Save and Continue
                 </button>
-                <button ref={formRef} className="" type="submit"></button>
+                <button ref={formRef} className="absolute hidden" type="submit"></button>
               </>
             )}
           </div>

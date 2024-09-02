@@ -1,8 +1,6 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
-import checkBlue from "@/public/checkBlue.svg";
-import checkBlack from "@/public/checkBlack.png";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
@@ -25,7 +23,7 @@ export default function Damages() {
   let [damages, setDamages] = useState<any>(vehicle.damages);
   const [marks, setMarks] = useState<any>(vehicle.damages);
   let dispatch = useDispatch();
-
+ 
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles((prevFiles: any) => [
       ...prevFiles,
