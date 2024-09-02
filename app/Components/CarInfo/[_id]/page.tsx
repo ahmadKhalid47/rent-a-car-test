@@ -134,12 +134,12 @@ export default function CarInfoMainPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="w-[80%] flex justify-between items-center bg-red-5">
-                      <div className="flex justify-start items-center h-fit gap-2 w-[50%] pe-5">
+                    <div className="w-[80%] flex justify-between items-center">
+                      <div className="flex justify-start items-start h-fit gap-2 w-[50%] pe-5">
                         <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
                           Color:
                         </p>
-                        <div className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <div className="font-[400] text-[20px] leading-[30px] w-[50%] mt-2">
                           <div
                             className="w-[32px] h-[18px] rounded-[5px]"
                             style={{
