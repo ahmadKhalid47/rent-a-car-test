@@ -11,9 +11,26 @@ export default function Rental() {
   const [files, setFiles] = useState<any>([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
+    const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+
+    const filteredFiles = acceptedFiles.filter((file: any) => {
+      if (!allowedTypes.includes(file.type)) {
+        alert(
+          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        );
+        return false;
+      }
+      if (file.size > maxFileSize) {
+        alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+        return false;
+      }
+      return true;
+    });
+
     setFiles((prevFiles: any) => [
       ...prevFiles,
-      ...acceptedFiles.map((file: any) =>
+      ...filteredFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
