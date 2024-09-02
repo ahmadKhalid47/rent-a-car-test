@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 
 export default function Damages() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   const [exterior, setExterior] = useState(true);
   const [popup, setPopup] = useState(false);
   const [damageType, setDamageType] = useState("");
@@ -23,7 +24,7 @@ export default function Damages() {
   let [damages, setDamages] = useState<any>(vehicle.damages);
   const [marks, setMarks] = useState<any>(vehicle.damages);
   let dispatch = useDispatch();
- 
+
   const onDrop = useCallback((acceptedFiles: any) => {
     setFiles((prevFiles: any) => [
       ...prevFiles,
@@ -132,7 +133,13 @@ export default function Damages() {
     setDegree("");
     setFiles([]);
   }, [popup]);
-  console.log(vehicle?.damages);
+  let exteriorImg = Configurations?.Configurations?.type.find(
+    (item: any) => item.Type === vehicle.type
+  )?.exterior;
+  let interiorImg = Configurations?.Configurations?.type.find(
+    (item: any) => item.Type === vehicle.type
+  )?.interior;
+  console.log(exteriorImg);
 
   return (
     <div className="w-full h-fit">
@@ -142,9 +149,7 @@ export default function Damages() {
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  exterior
-                    ? "bg-main-blue text-white"
-                    : "bg-white text-black"
+                  exterior ? "bg-main-blue text-white" : "bg-white text-black"
                 }`}
                 onClick={() => setExterior(true)}
               >
@@ -162,9 +167,7 @@ export default function Damages() {
               </button>
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  !exterior
-                    ? "bg-main-blue text-white"
-                    : "bg-white text-black"
+                  !exterior ? "bg-main-blue text-white" : "bg-white text-black"
                 }`}
                 onClick={() => setExterior(false)}
               >
@@ -185,7 +188,7 @@ export default function Damages() {
                 {exterior ? (
                   <div className="w-[326px] h-[408px] relative">
                     <img
-                      src={CarExterior.src}
+                      src={exteriorImg}
                       className="w-[326px] h-[408px] cursor-pointer"
                       onClick={(e) => {
                         handleClick(e, true);
@@ -194,7 +197,7 @@ export default function Damages() {
                   </div>
                 ) : (
                   <img
-                    src={CarInterior.src}
+                    src={interiorImg}
                     className="w-[326px] h-[408px]"
                     onClick={(e) => {
                       handleClick(e, false);

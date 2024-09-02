@@ -21,6 +21,8 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Type, setType] = useState("");
+  const [interior, setInterior] = useState<any>("");
+  const [exterior, setExterior] = useState<any>("");
   // const [TypeReloader, setTypeReloader] = useState(0);
 
   useEffect(() => {
@@ -57,15 +59,37 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader]);
 
   async function save(action: string) {
-    if (Type.trim() === "") {
+    if (Type.trim() === "" || interior === "" || exterior === "") {
       alert("Please fill the input");
       return;
     }
 
     try {
       setLoading(action);
+      const formData = new FormData();
+      for (let i = 0; i < exterior.length; i++) {
+        formData.append("files", exterior[i]);
+      }
+      const res = await axios.post("/api/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const formData2 = new FormData();
+      for (let i = 0; i < interior.length; i++) {
+        formData2.append("files", interior[i]);
+      }
+      const res2 = await axios.post("/api/upload", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       let result: any = await axios.post(`/api/saveType`, {
         Type,
+        exterior: res?.data?.message,
+        interior: res2?.data?.message,
       });
       console.log(result);
       // setTypeReloader(TypeReloader + 1);
@@ -81,6 +105,7 @@ export default function Vehicles() {
     }
   }
 
+  console.log(exterior);
   return (
     <div
       className={`${
@@ -133,6 +158,46 @@ export default function Vehicles() {
                         setType(e.target.value);
                       }}
                       value={Type}
+                    />
+                  </div>
+                </div>
+                <div
+                  className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                >
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                    {"Add Exterior Image"}
+                    <FaAsterisk className="text-[6px] text-red-600" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                    <input
+                      required={true}
+                      type={"file"}
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                      placeholder={`Enter Text Here`}
+                      onChange={(e: any) => {
+                        setExterior(e.target?.files);
+                      }}
+                      // value={Type}
+                    />
+                  </div>
+                </div>
+                <div
+                  className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                >
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                    {"Add Interior Image"}
+                    <FaAsterisk className="text-[6px] text-red-600" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                    <input
+                      required={true}
+                      type={"file"}
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                      placeholder={`Enter Text Here`}
+                      onChange={(e: any) => {
+                        setInterior(e.target?.files);
+                      }}
+                      // value={Type}
                     />
                   </div>
                 </div>
