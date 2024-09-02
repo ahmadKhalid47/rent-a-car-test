@@ -164,31 +164,37 @@ export default function Vehicles() {
       const damageImages = vehicle.damages.map((damage: any) => damage.files);
       const allFilesToDelete = [...carImages, ...damageImages.flat()];
       if (vehicle.damageImagesToDelete.length > 0) {
-        let result = await axios.delete("/api/deleteFromCloudinary", {
-          data: vehicle.damageImagesToDelete,
-        });
+        // let result = await axios.delete("/api/deleteFromCloudinary", {
+        //   data: vehicle.damageImagesToDelete,
+        // });
       }
       if (
         Array.isArray(carImages) &&
-        carImages.every((item) => item instanceof File)
+        carImages.some((item) => item instanceof File)
       ) {
-        let result = await axios.delete("/api/deleteFromCloudinary", {
-          data: imageToDelete,
-        });
-
+        // let result = await axios.delete("/api/deleteFromCloudinary", {
+        //   data: imageToDelete,
+        // });
+        let alreadyUploadedFiles = [];
         const formData = new FormData();
         for (let i = 0; i < vehicle.carImages.length; i++) {
-          formData.append("files", vehicle.carImages[i]);
+          if (vehicle.carImages[i] instanceof File) {
+            formData.append("files", vehicle.carImages[i]);
+          } else {
+            alreadyUploadedFiles.push(vehicle.carImages[i]);
+          }
         }
         const res = await axios.post("/api/upload", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
+        let imageArray = [...res?.data?.message, ...alreadyUploadedFiles];
+        console.log(imageArray);
 
         await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
           ...vehicle,
-          carImages: res?.data?.message,
+          carImages: imageArray,
         });
       } else {
         await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
@@ -208,6 +214,7 @@ export default function Vehicles() {
       formRef.current?.click();
     }
   };
+  console.log(vehicle.carImages);
 
   return (
     <div
@@ -471,8 +478,6 @@ export default function Vehicles() {
           </div>
         </form>
       </div>
-
-      {/* <VehicleForms vehicleUpdateAction={vehicleUpdateAction} /> */}
     </div>
   );
 }

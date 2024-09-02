@@ -12,6 +12,7 @@ export async function POST(req) {
   try {
     const form = await req.formData();
     const files = form.getAll("files");
+    console.log(files);
 
     const uploadPromises = files.map(async (file) => {
       const buffer = Buffer.from(await file.arrayBuffer());
