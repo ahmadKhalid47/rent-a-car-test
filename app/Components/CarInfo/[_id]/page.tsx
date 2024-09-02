@@ -19,11 +19,13 @@ export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  const [imageIndex, setImageIndex] = useState<any>(0);
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   const [showError, setShowError] = useState(null);
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  const [imageIndex, setImageIndex] = useState<any>(
+    vehicleInfo?.thumbnailImage
+  );
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -33,6 +35,11 @@ export default function CarInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    setImageIndex(vehicleInfo?.thumbnailImage);
+  }, [vehicleInfo?.thumbnailImage, vehicleInfo]);
+
   useEffect(() => {
     async function getData() {
       try {

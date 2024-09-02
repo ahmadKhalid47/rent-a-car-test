@@ -181,7 +181,10 @@ export default function GridView({ data }: dataType) {
 
             <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
               {item?.data?.carImages ? (
-                <img src={item?.data?.carImages[0]} className="w-full h-full" />
+                <img
+                  src={item?.data?.carImages[item?.data?.thumbnailImage]}
+                  className="w-full h-full"
+                />
               ) : null}
             </div>
             <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">

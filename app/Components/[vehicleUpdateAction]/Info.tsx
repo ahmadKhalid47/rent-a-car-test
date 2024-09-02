@@ -26,6 +26,7 @@ import {
   setcityR,
   setpostalCodeR,
   setCarImages,
+  setthumbnailImage,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -72,7 +73,7 @@ export default function Info() {
           className=" w-[64px] h-[64px]"
         />
       </div>
-      <span className="font-[400] text-[10px] leading-[12px] text-grey">
+      <span className="font-[400] text-[10px] leading-[12px] text-grey truncate w-[64px]">
         {file?.name}
       </span>
       <span
@@ -103,7 +104,7 @@ export default function Info() {
   useEffect(() => {
     dispatch(setCarImages(files));
   }, [files]);
-  console.log(vehicle.carImages);
+  console.log(vehicle.thumbnailImage);
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -349,6 +350,35 @@ export default function Info() {
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbs}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+          Select Thumbnail Image
+        </h3>
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+          {files.map((file: any, index: number) => (
+            <div
+              key={file.name}
+              className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
+            >
+              <div
+                className={`relative rounded-[10px] overflow-hidden cursor-pointer border-black ${
+                  vehicle.thumbnailImage === index
+                    ? "border-[6px] border-main-red w-[80px] h-[80px]"
+                    : "border-[1px] border-grey w-[64px] h-[64px]"
+                }`}
+                onClick={() => dispatch(setthumbnailImage(index))}
+              >
+                <img
+                  src={file.preview ? file.preview : file}
+                  alt={file.name}
+                  className="w-[100%] h-[100%]"
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
