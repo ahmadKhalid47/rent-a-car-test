@@ -134,7 +134,7 @@ export default function Damages() {
     setDegree("");
     setFiles([]);
   }, [popup]);
-console.log(vehicle?.damages);
+  console.log(vehicle?.damages);
 
   return (
     <div className="w-full h-fit">
@@ -143,28 +143,41 @@ console.log(vehicle?.damages);
           <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  exterior ? "text-main-blue" : ""
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  exterior
+                    ? "bg-main-blue text-white"
+                    : "bg-white text-main-blue"
                 }`}
-                onClick={() => setExterior(!exterior)}
+                onClick={() => setExterior(true)}
               >
                 {exterior ? (
-                  <img src={checkBlue.src} />
+                  // <img src={checkBlue.src} />
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                  </div>
                 ) : (
-                  <img src={checkBlack.src} />
+                  <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
                 )}
                 Exterior
               </button>
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  !exterior ? "text-main-blue" : ""
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  !exterior
+                    ? "bg-main-blue text-white"
+                    : "bg-white text-main-blue"
                 }`}
-                onClick={() => setExterior(!exterior)}
+                onClick={() => setExterior(false)}
               >
                 {!exterior ? (
-                  <img src={checkBlue.src} />
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                  </div>
                 ) : (
-                  <img src={checkBlack.src} />
+                  <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
                 )}
                 Interior
               </button>
