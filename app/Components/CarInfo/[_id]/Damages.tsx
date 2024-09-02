@@ -3,12 +3,15 @@ import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
 import { FaEye, FaTimes, FaTimesCircle } from "react-icons/fa";
 import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { setConfigurations } from "@/app/store/Configurations";
+import axios from "axios";
 
 export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   const [damageIndex, setdamageIndex] = useState<any>(0);
   const [imageIndex, setImageIndex] = useState<any>(0);
   const [imagePopup, setImagePopup] = useState<boolean>(false);
@@ -16,10 +19,35 @@ export default function Damages() {
   const [imageLength, setImageLength] = useState<any>(
     vehicleInfo.damages[damageIndex]?.files?.length
   );
+  const [loading, setLoading] = useState<any>(false);
+
+  let dispatch = useDispatch();
+
   useEffect(() => {
     setImageLength(vehicleInfo.damages[damageIndex]?.files?.length);
     setImageIndex(0);
   }, [damageIndex]);
+
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getConfigurations`);
+        dispatch(setConfigurations(result?.data?.wholeData));
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData2();
+  }, []);
+  let exteriorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === vehicleInfo.type
+  )?.exterior;
+  let interiorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === vehicleInfo.type
+  )?.interior;
 
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
@@ -27,8 +55,8 @@ export default function Damages() {
         <img
           src={
             vehicleInfo.damages[damageIndex]?.exterior
-              ? CarExterior.src
-              : CarInterior.src
+              ? exteriorImg
+              : interiorImg
           }
           className="w-[250px] h-[300px]"
         />

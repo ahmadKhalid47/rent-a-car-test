@@ -133,6 +133,7 @@ export default function Damages() {
     setDegree("");
     setFiles([]);
   }, [popup]);
+  
   let exteriorImg = Configurations?.Configurations?.type.find(
     (item: any) => item.Type === vehicle.type
   )?.exterior;
