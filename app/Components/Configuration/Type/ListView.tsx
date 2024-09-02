@@ -33,6 +33,8 @@ export default function ListView({ data }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [Type, setType] = useState("");
+  const [interior, setInterior] = useState<any>("");
+  const [exterior, setExterior] = useState<any>("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -112,8 +114,29 @@ export default function ListView({ data }: dataType) {
   async function editItem(_id: any) {
     try {
       setEditLoading(true);
+      const formData = new FormData();
+      for (let i = 0; i < exterior.length; i++) {
+        formData.append("files", exterior[i]);
+      }
+      const res = await axios.post("/api/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const formData2 = new FormData();
+      for (let i = 0; i < interior.length; i++) {
+        formData2.append("files", interior[i]);
+      }
+      const res2 = await axios.post("/api/upload", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       let result: any = await axios.post(`/api/updateType/${_id}`, {
         Type,
+        exterior: res?.data?.message,
+        interior: res2?.data?.message,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -322,6 +345,44 @@ export default function ListView({ data }: dataType) {
                             setType(e.target.value);
                           }}
                           value={Type}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        {"Add Exterior Image"}
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                        <input
+                          required={true}
+                          type={"file"}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e: any) => {
+                            setExterior(e.target?.files);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        {"Add Interior Image"}
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                        <input
+                          required={true}
+                          type={"file"}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e: any) => {
+                            setInterior(e.target?.files);
+                          }}
                         />
                       </div>
                     </div>

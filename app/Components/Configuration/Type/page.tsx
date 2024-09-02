@@ -177,7 +177,6 @@ export default function Vehicles() {
                       onChange={(e: any) => {
                         setExterior(e.target?.files);
                       }}
-                      // value={Type}
                     />
                   </div>
                 </div>
@@ -197,7 +196,6 @@ export default function Vehicles() {
                       onChange={(e: any) => {
                         setInterior(e.target?.files);
                       }}
-                      // value={Type}
                     />
                   </div>
                 </div>
