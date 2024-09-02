@@ -116,8 +116,8 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           options={Configurations?.Configurations?.make?.map(
             (item: any) => item.make
           )}
@@ -126,8 +126,8 @@ export default function Info() {
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make === makeSelected)
             .map((item: any) => item.model)}
@@ -136,8 +136,8 @@ export default function Info() {
           setState={settypeR}
           label={"Type"}
           value={vehicle.type}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
@@ -147,8 +147,8 @@ export default function Info() {
           setState={setyearR}
           label={"Year"}
           value={vehicle.year}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={[2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]}
         />
@@ -156,8 +156,8 @@ export default function Info() {
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           type={"text"}
         />
@@ -169,8 +169,8 @@ export default function Info() {
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-              // required={false}
-              required={true}
+              required={false}
+              // required={true}
               // required={false}
               onChange={(e) => {
                 dispatch(setcolorR(e.target.value));
@@ -201,8 +201,8 @@ export default function Info() {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={[
             "Gasoline",
@@ -232,8 +232,8 @@ export default function Info() {
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={[
             "Automatic",
@@ -259,8 +259,8 @@ export default function Info() {
           setState={setodometerR}
           label={"Odometer (KMPH)"}
           value={vehicle.odometer}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           type={"text"}
         />
@@ -268,8 +268,8 @@ export default function Info() {
           setState={setpassengersR}
           label={"Passengers"}
           value={vehicle.passengers}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={["1", "2", "3", "4", "5", "6", "7", "8", "9+"]}
         />
@@ -277,8 +277,8 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={Configurations?.Configurations?.country?.map(
             (item: any) => item.country
@@ -288,8 +288,8 @@ export default function Info() {
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
@@ -299,8 +299,8 @@ export default function Info() {
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={vehicle.postalCode}
-          // required={false}
-          required={true}
+          required={false}
+          // required={true}
           // required={false}
           type={"text"}
         />
