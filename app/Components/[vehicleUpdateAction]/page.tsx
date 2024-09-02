@@ -158,38 +158,48 @@ export default function Vehicles() {
   // console.log(vehicle.carImages);
   const carImages = vehicle.carImages;
   async function updateData(action: string) {
-    const carImages = vehicle.carImages;
-    const damageImages = vehicle.damages.map((damage: any) => damage.files);
-    const allFilesToDelete = [...carImages, ...damageImages.flat()];
-    if (vehicle.damageImagesToDelete.length > 0) {
-      let result = await axios.delete("/api/deleteFromCloudinary", {
-        data: vehicle.damageImagesToDelete,
-      });
-    }
-    if (
-      Array.isArray(carImages) &&
-      carImages.every((item) => item instanceof File)
-    ) {
-      let result = await axios.delete("/api/deleteFromCloudinary", {
-        data: imageToDelete,
-      });
-
-      const formData = new FormData();
-      for (let i = 0; i < vehicle.carImages.length; i++) {
-        formData.append("files", vehicle.carImages[i]);
+    try {
+      setLoading(true);
+      const carImages = vehicle.carImages;
+      const damageImages = vehicle.damages.map((damage: any) => damage.files);
+      const allFilesToDelete = [...carImages, ...damageImages.flat()];
+      if (vehicle.damageImagesToDelete.length > 0) {
+        let result = await axios.delete("/api/deleteFromCloudinary", {
+          data: vehicle.damageImagesToDelete,
+        });
       }
-      const res = await axios.post("/api/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      if (
+        Array.isArray(carImages) &&
+        carImages.every((item) => item instanceof File)
+      ) {
+        let result = await axios.delete("/api/deleteFromCloudinary", {
+          data: imageToDelete,
+        });
 
-      await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
-        ...vehicle,
-        carImages: res?.data?.message,
-      });
-    } else {
-      await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
+        const formData = new FormData();
+        for (let i = 0; i < vehicle.carImages.length; i++) {
+          formData.append("files", vehicle.carImages[i]);
+        }
+        const res = await axios.post("/api/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
+          ...vehicle,
+          carImages: res?.data?.message,
+        });
+      } else {
+        await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
+      }
+      if (action === "close") {
+        router.push("/Components/Vehicles");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -240,7 +250,6 @@ export default function Vehicles() {
                     setGoToPage(0);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
@@ -258,7 +267,6 @@ export default function Vehicles() {
                     setGoToPage(1);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
@@ -274,7 +282,6 @@ export default function Vehicles() {
                     setGoToPage(2);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
@@ -291,7 +298,6 @@ export default function Vehicles() {
                     setGoToPage(3);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
@@ -307,7 +313,6 @@ export default function Vehicles() {
                     setGoToPage(4);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 4
                       ? "transitions2 bg-main-blue text-white"
@@ -323,7 +328,6 @@ export default function Vehicles() {
                     setGoToPage(5);
                     submitButton();
                   }}
-
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 5
                       ? "transitions2 bg-main-blue text-white"
@@ -412,52 +416,35 @@ export default function Vehicles() {
                 {vehicleUpdateAction !== "AddVehicles" ? (
                   <div className="flex justify-start items-center gap-1 md:gap-3">
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         updateData("close");
                       }}
                     >
-                      Update and Close
-                    </button>
-                    <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                      disabled={loading}
-                      onClick={() => {
-                        // saveData("new");
-                      }}
-                    >
-                      Update and New
+                      {loading ? <SmallLoader /> : "Update and Close"}
                     </button>
                     <div />
                   </div>
                 ) : (
                   <div className="flex justify-start items-center gap-1 md:gap-3">
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         saveData("close");
                       }}
                     >
-                      Save and Close
+                      {loading ? <SmallLoader /> : "Save and Close"}
                     </button>
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         saveData("new");
                       }}
                     >
-                      Save and New
+                      {loading ? <SmallLoader /> : "Save and New"}
                     </button>
                     <div />
                   </div>
@@ -471,11 +458,14 @@ export default function Vehicles() {
                     setGoToPage(currentPage + 1);
                     submitButton();
                   }}
-
                 >
                   Save and Continue
                 </button>
-                <button ref={formRef} className="absolute hidden" type="submit"></button>
+                <button
+                  ref={formRef}
+                  className="absolute hidden"
+                  type="submit"
+                ></button>
               </>
             )}
           </div>
