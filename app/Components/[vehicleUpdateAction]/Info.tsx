@@ -333,11 +333,11 @@ export default function Info() {
             Select JPG or PNG
           </h4>
         </div>
-        <div className="w-full h-fit flex justify-center items-center gap-2">
+        {/* <div className="w-full h-fit flex justify-center items-center gap-2">
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
           <span className="font-[400] text-[14px] leading-[17px]">OR</span>
           <div className="w-[300px] border- h-[1px] bg-grey flex justify-center items-center"></div>
-        </div>
+        </div> */}
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbs}
         </div>
