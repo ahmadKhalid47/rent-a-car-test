@@ -1,4 +1,9 @@
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+
 export default function ReferenceCustomer() {
+  let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
+
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
@@ -16,30 +21,30 @@ export default function ReferenceCustomer() {
         </div>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            John Smith
+            {CustomerInfo?.ref1Name}
           </p>
           <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
+            {CustomerInfo?.ref1Phone}
           </p>
           <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
+            {CustomerInfo?.ref1Address}
           </p>
           <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Father
+            {CustomerInfo?.ref1Relation}
           </p>
         </div>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Lina Smith
+            {CustomerInfo?.ref2Name}
           </p>
           <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
+            {CustomerInfo?.ref2Phone}
           </p>
           <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
+            {CustomerInfo?.ref2Address}
           </p>
           <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Mother
+            {CustomerInfo?.ref2Relation}
           </p>
         </div>
       </div>

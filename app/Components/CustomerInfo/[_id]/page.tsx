@@ -160,7 +160,7 @@ export default function CustomerInfoMainPage() {
                   Reference Info
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-center items-start gap-8">
+              <div className="w-full h-[350px] flex justify-center items-start gap-8">
                 {activeButton === "General" ? (
                   <>
                     <GeneralCustomer />

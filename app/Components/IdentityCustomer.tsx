@@ -19,8 +19,6 @@ export default function GeneralCustomer() {
       ? CustomerInfo.passportImages?.length
       : CustomerInfo.licenseImages?.length;
 
-  console.log(ImageArray);
-
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x cursor-pointer-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[70%] h-fit flex flex-col justify-between items-center">
