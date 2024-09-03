@@ -70,7 +70,6 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
-  console.log(customersData);
 
   useEffect(() => {
     filterCustomer();

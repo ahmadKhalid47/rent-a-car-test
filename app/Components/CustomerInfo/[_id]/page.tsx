@@ -32,13 +32,6 @@ export default function CustomerInfoMainPage() {
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
-  const [imageIndex, setImageIndex] = useState<any>(
-    CustomerInfo?.thumbnailImage
-  );
-
-  useEffect(() => {
-    setImageIndex(CustomerInfo?.thumbnailImage);
-  }, [CustomerInfo?.thumbnailImage, CustomerInfo]);
 
   useEffect(() => {
     async function getData() {
@@ -68,11 +61,12 @@ export default function CustomerInfoMainPage() {
       >
         <div className="w-full h-[200px ">
           <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-            Glenn A. Jean
+            {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Customers / All Customers / Glenn A. Jean
+              Customers / All Customers /{" "}
+              {CustomerInfo?.name ? CustomerInfo?.name : "---"}
             </p>
           </div>
         </div>
@@ -81,19 +75,24 @@ export default function CustomerInfoMainPage() {
             <div className="w-full h-fit flex flex-col lg:flex-row justify-start gap-5 lg:gap-[7%] items-center px- g-white rounded-[10px] border-2 border-grey py-7 px-6 ">
               <div className="w-fit flex justify-start items-center gap-1">
                 <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
-                  <img src={car.src} className="w-full h-full" />
+                  <img
+                    src={CustomerInfo?.customerImage}
+                    className="w-full h-full"
+                  />
                 </div>
               </div>
               <div className="w-full lg:w-[60%] 1400:w-[35%] flex justify-start flex-col items-center lg:items-start gap-1 bg-green-">
                 <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
-                  Glenn A. Jean{" "}
-                  <img
-                    src={vip.src}
-                    className="w-[44px] h-[32px] -translate-y-1"
-                  />
+                  {CustomerInfo?.name ? CustomerInfo?.name : "---"}
+                  {CustomerInfo?.isVip ? (
+                    <img
+                      src={vip.src}
+                      className="w-[44px] h-[32px] -translate-y-1"
+                    />
+                  ) : null}
                 </h3>
                 <p className="font-[400] text-[28px] leading-[42px] text-black">
-                  757-947-5015{" "}
+                  {CustomerInfo?.phone ? CustomerInfo?.phone : "---"}
                 </p>
                 <div className="w-full lg:w-[80%] flex justify-center lg:justify-start items-center">
                   <div className="flex justify-start items-center gap-3 lg:gap-0 w-fit lg:w-[70%] pe-5">
@@ -101,7 +100,7 @@ export default function CustomerInfoMainPage() {
                       City:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
-                      Brentwood
+                      {CustomerInfo?.city ? CustomerInfo?.city : "---"}
                     </p>
                   </div>
                 </div>
@@ -111,7 +110,7 @@ export default function CustomerInfoMainPage() {
                       Country:{" "}
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
-                      Atlanta
+                      {CustomerInfo?.country ? CustomerInfo?.country : "---"}
                     </p>
                   </div>
                 </div>
