@@ -1,6 +1,6 @@
 "use client";
 import upload from "@/public/Paper Upload.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React, { useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
@@ -17,14 +17,44 @@ import {
   setlicenseImagesR,
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removing } from "../functions/removingFileFromDrag";
+import { Thumbs } from "../functions/thumbsFromDrag";
+import { useFileDrop } from "../functions/onDragFromDrag";
 
 export default function Rental() {
   const [passfiles, setPassFiles] = useState<any>([]);
   const [licfiles, setLicFiles] = useState<any>([]);
-  
   let customer = useSelector((state: RootState) => state.Customer);
-  
+  let dispatch = useDispatch();
+
+  const onDropPass = useFileDrop(
+    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+  );
+  const {
+    getRootProps: getRootPropsPass,
+    getInputProps: getInputPropsPass,
+    // isDragActive,
+  } = useDropzone({
+    onDrop: onDropPass,
+  });
+  useEffect(() => {
+    dispatch(setpassportImagesR(passfiles));
+  }, [passfiles]);
+
+  const onDropLic = useFileDrop(
+    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+  );
+  const {
+    getRootProps: getRootPropsLic,
+    getInputProps: getInputPropsLic,
+    // isDragActive,
+  } = useDropzone({
+    onDrop: onDropLic,
+  });
+  useEffect(() => {
+    dispatch(setlicenseImagesR(licfiles));
+  }, [licfiles]);
 
   return (
     <div className="w-full h-fit  ">
@@ -55,9 +85,9 @@ export default function Rental() {
 
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
-          // {...getRootProps()}
+          {...getRootPropsPass()}
         >
-          {/* <input {...getInputProps()} /> */}
+          <input {...getInputPropsPass()} />
 
           <img src={upload.src} />
           <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
@@ -70,7 +100,7 @@ export default function Rental() {
           Here you can Upload Passport / ID scans
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          {/* {thumbs} */}
+          <Thumbs files={passfiles} setFiles={setPassFiles} />
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -100,10 +130,9 @@ export default function Rental() {
 
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
-          // {...getRootProps()}
+          {...getRootPropsLic()}
         >
-          {/* <input {...getInputProps()} /> */}
-
+          <input {...getInputPropsLic()} />
           <img src={upload.src} />
           <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
             Drag & Drop or
@@ -115,7 +144,7 @@ export default function Rental() {
           Here you can Upload driving license scans
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          {/* {thumbs} */}
+          <Thumbs files={licfiles} setFiles={setLicFiles} />
         </div>
       </div>
     </div>
