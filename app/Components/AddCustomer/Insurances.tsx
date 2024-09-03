@@ -1,26 +1,38 @@
 "use client";
-import { TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../InputComponents/TypeInput";
+import { SelectInput, TempSelectInput } from "../InputComponents/SelectInput";
+import {
+  setemergencyContactNameR,
+  setemergencyContactPhoneR,
+  setemergencyContactRelationR,
+} from "@/app/store/Customer";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
 
 export default function Insurances() {
+  let customer = useSelector((state: RootState) => state.Customer);
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <TypeInput
+        <TempTypeInput
+          setState={setemergencyContactNameR}
           label={"Emergency Contact Name"}
-          value={""}
+          value={customer.emergencyContactName}
           required={false}
           type={"text"}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setemergencyContactRelationR}
           label={"Relation"}
-          value={""}
+          value={customer.emergencyContactRelation}
           required={false}
-          options={["Select", "Father", "Mother", "Brother", "Other"]}
+          options={[ "Father", "Mother", "Brother", "Other"]}
         />
-        <TypeInput
+        <TempTypeInput
+          setState={setemergencyContactPhoneR}
           label={"Emergency Phone"}
-          value={""}
+          value={customer.emergencyContactPhone}
           required={false}
           type={"text"}
         />

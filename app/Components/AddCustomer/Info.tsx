@@ -51,14 +51,14 @@ export default function Info() {
       return true;
     });
 
-    setFiles((prevFiles: any) => [
-      ...prevFiles,
-      ...filteredFiles.map((file: any) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      ),
-    ]);
+    if (filteredFiles.length > 0) {
+      // Replace the current file with the new one
+      setFiles([
+        Object.assign(filteredFiles[0], {
+          preview: URL.createObjectURL(filteredFiles[0]),
+        }),
+      ]);
+    }
   }, []);
 
   const thumbs: any = files.map((file: any) => (
@@ -78,34 +78,20 @@ export default function Info() {
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing(file)}
+        onClick={() => removing()}
       >
         <FaTimesCircle />
       </span>
     </div>
   ));
 
-  function removing(file: any) {
-    let array = files;
-    array = array.filter((e: any) => {
-      // If the element is a string, it will be compared to the URL in the `file` object
-      if (typeof e === "string") {
-        return e !== file;
-      }
-      // If the element is an object, compare the `path` or `preview` properties
-      else if (typeof e === "object" && e !== null) {
-        return e.path !== file.path && e.preview !== file.preview;
-      }
-      return true;
-    });
-    setFiles(array);
+  function removing() {
+    setFiles([]);
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    maxFiles: 1, // Restrict to one file
-    // accept: "image/*", // Accept only image files
-    maxSize: 5 * 1024 * 1024, // Maximum file size: 5 MB (5 * 1024 * 1024 bytes)
+    multiple: false,
   });
 
   return (

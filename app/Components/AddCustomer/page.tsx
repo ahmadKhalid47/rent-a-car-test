@@ -24,7 +24,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  console.log(customer);
 
   return (
     <div
