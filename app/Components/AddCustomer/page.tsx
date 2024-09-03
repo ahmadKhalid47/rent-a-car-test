@@ -19,7 +19,6 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
   let [goToPage, setGoToPage] = useState(0);
-  let vehicle = useSelector((state: RootState) => state.Vehicle);
   const [loading, setLoading] = useState<any>(false);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
@@ -49,10 +48,9 @@ export default function Vehicles() {
   async function saveData(action: string) {
     try {
       setLoading(true);
+
       const formData = new FormData();
-      for (let i = 0; i < vehicle.carImages.length; i++) {
-        formData.append("files", vehicle.carImages[i]);
-      }
+      formData.append("files", customer.customerImage[0]);
       const res = await axios.post("/api/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -60,33 +58,38 @@ export default function Vehicles() {
       });
 
       const formData2 = new FormData();
-      formData2.append("length1", vehicle.damages.length);
-
-      for (let i = 0; i < vehicle.damages.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
-
-        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
-          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
+      for (let i = 0; i < customer.passportImages.length; i++) {
+        if (customer.passportImages[i] instanceof File) {
+          formData2.append("files", customer.passportImages[i]);
+        } else {
+          // alreadyUploadedFiles.push(customer.passportImages[i]);
         }
       }
-
-      const res2 = await axios.post("/api/uploadNested", formData2, {
+      const res2 = await axios.post("/api/upload", formData2, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      let tempArray = vehicle.damages;
-      for (let i = 0; i < vehicle.damages.length; i++) {}
 
-      const updatedObjects = tempArray.map((obj: any, index: any) => ({
-        ...obj,
-        files: res2?.data?.message[index].map((url: any) => url),
-      }));
+      const formData3 = new FormData();
+      for (let i = 0; i < customer.licenseImages.length; i++) {
+        if (customer.licenseImages[i] instanceof File) {
+          formData3.append("files", customer.licenseImages[i]);
+        } else {
+          // alreadyUploadedFiles.push(customer.licenseImages[i]);
+        }
+      }
+      const res3 = await axios.post("/api/upload", formData3, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      let result: any = await axios.post(`/api/saveVehicle`, {
-        ...vehicle,
-        carImages: res?.data?.message,
-        damages: updatedObjects,
+      let result: any = await axios.post(`/api/saveCustomer`, {
+        ...customer,
+        customerImage: res?.data?.message,
+        passportImages: res2?.data?.message,
+        licenseImages: res3?.data?.message,
       });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
@@ -106,7 +109,7 @@ export default function Vehicles() {
       }
     }
   }
-  console.log(customer);
+  console.log(customer.customerImage[0]);
 
   return (
     <div

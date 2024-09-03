@@ -97,8 +97,6 @@ export default function Info() {
     onDrop,
     multiple: false,
   });
-  console.log(files);
-  console.log(customer.customerImage);
   useEffect(() => {
     dispatch(setcustomerImageR(files));
   }, [files]);
