@@ -8,13 +8,20 @@ import { setSidebarShowR } from "@/app/store/Global";
 import shape from "@/public/Shape2.svg";
 import ListViewCustomers from "../ListViewCustomers";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [showLess, setShowLess] = useState(true);
   const router = useRouter();
+  const [showLess, setShowLess] = useState(true);
+  const [loading, setLoading] = useState<any>(true);
+  const [showSuccess, setShowSuccess] = useState(null);
+  const [showError, setShowError] = useState(null);
+  const [customersData, setCustomersData] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredCustomer, setFilteredCustomer] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -23,6 +30,29 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.get("/api/getCustomer", {
+          headers: { "Cache-Control": "no-store" },
+        });
+
+        if (result?.data?.data) {
+          setCustomersData(result.data.data);
+          setFilteredCustomer(result.data.data); // Initialize with full data
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, [global.vehicleDataReloader]);
+
   return (
     <div
       className={`${
@@ -57,7 +87,7 @@ export default function Vehicles() {
             </h3>
             <div className="w-full h-fit flex justify-between items-center">
               <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
+                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
                 placeholder="Search By Full Name, Phone..."
               ></input>
               <button className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
@@ -72,7 +102,7 @@ export default function Vehicles() {
                   Customer Type
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
                     <option value="">Select</option>
                     <option value="">Sedan</option>
                     <option value="">Sedan</option>
@@ -89,7 +119,7 @@ export default function Vehicles() {
                   Gender
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
                     <option value="">Select</option>
                     <option value="">Sedan</option>
                     <option value="">Sedan</option>
@@ -107,7 +137,7 @@ export default function Vehicles() {
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <input
-                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
                     value={8733458349}
                   />
                 </div>
@@ -117,7 +147,7 @@ export default function Vehicles() {
                   City
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
                     <option value="">Select</option>
                     <option value="">Sedan</option>
                     <option value="">Sedan</option>
