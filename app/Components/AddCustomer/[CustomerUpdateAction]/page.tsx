@@ -13,10 +13,11 @@ import { useParams } from "next/navigation";
 import { FormEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { SmallLoader } from "../../Loader";
+import { resetState, setAllValues } from "@/app/store/Customer";
 
 export default function Vehicles() {
   const params = useParams();
-  const CustomerUpdateAction = params;
+  const { CustomerUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
   let customer = useSelector((state: RootState) => state.Customer);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -107,10 +108,74 @@ export default function Vehicles() {
     } finally {
       setLoading(false);
       if (action === "close") {
-        router.push("/Components/Vehicles");
+        router.push("/Components/Customers");
       } else {
         setCurrentPage(0);
       }
+    }
+  }
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(
+          `/api/getCustomerInfo/${CustomerUpdateAction}`
+        );
+        if (result?.data?.data) {
+          dispatch(setAllValues(result?.data?.data?.data));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+        setDeleteTrigger(deleteTrigger + 1);
+      }
+    }
+    if (CustomerUpdateAction === "AddNew") {
+      dispatch(resetState());
+    } else {
+      getData();
+    }
+  }, []);
+
+  console.log(customer.customerImage[0]);
+
+  async function updateData(action: string) {
+    try {
+      setLoading(true);
+      const carImages = customer.customerImage;
+      if (
+        Array.isArray(carImages) &&
+        carImages.some((item) => item instanceof File)
+      ) {
+        const formData = new FormData();
+        formData.append("files", customer.customerImage[0]);
+        const res = await axios.post("/api/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
+          ...customer,
+          customerImage: res?.data?.message,
+        });
+      } else {
+        await axios.post(
+          `/api/updateCustomer/${CustomerUpdateAction}`,
+          customer
+        );
+      }
+      if (action === "close") {
+        router.push("/Components/Vehicles");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -263,27 +328,44 @@ export default function Vehicles() {
               </button>
             ) : null}
             {currentPage === 3 ? (
-              <div className="flex justify-start items-center gap-1 md:gap-3">
-                <button
-                  className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                  disabled={loading}
-                  onClick={() => {
-                    saveData("close");
-                  }}
-                >
-                  {loading ? <SmallLoader /> : "Save and Close"}
-                </button>
-                <button
-                  className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                  disabled={loading}
-                  onClick={() => {
-                    saveData("new");
-                  }}
-                >
-                  {loading ? <SmallLoader /> : "Save and New"}
-                </button>
-                <div />
-              </div>
+              <>
+                {CustomerUpdateAction !== "AddNew" ? (
+                  <div className="flex justify-start items-center gap-1 md:gap-3">
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        updateData("close");
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Update and Close"}
+                    </button>
+                    <div />
+                  </div>
+                ) : (
+                  <div className="flex justify-start items-center gap-1 md:gap-3">
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        saveData("close");
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Save and Close"}
+                    </button>
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        saveData("new");
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Save and New"}
+                    </button>
+                    <div />
+                  </div>
+                )}
+              </>
             ) : (
               <button
                 className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"

@@ -6,7 +6,10 @@ import { FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
+import {
+  SelectInput,
+  TempSelectInput,
+} from "../../InputComponents/SelectInput";
 import {
   setalternativePhoneR,
   setcityR,
@@ -73,7 +76,7 @@ export default function Info() {
     >
       <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
         <img
-          src={file.preview}
+          src={file.preview ? file.preview : file}
           alt={file.name}
           className=" w-[64px] h-[64px]"
         />
@@ -215,6 +218,7 @@ export default function Info() {
             <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center bg-white ">
               <input
                 type="checkbox"
+                checked={customer.isVip}
                 className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
                 onChange={(e) => dispatch(setisVipR(e.target.checked))}
               />
