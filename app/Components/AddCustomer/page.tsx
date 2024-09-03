@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
@@ -9,13 +8,25 @@ import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Feature from "./Feature";
 import Info from "./Info";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FormEvent, useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { SmallLoader } from "../Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let customer = useSelector((state: RootState) => state.Customer);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
+  let [goToPage, setGoToPage] = useState(0);
+  let vehicle = useSelector((state: RootState) => state.Vehicle);
+  const [loading, setLoading] = useState<any>(false);
+  const [showSuccess, setShowSuccess] = useState(null);
+  const [showError, setShowError] = useState(null);
+  const [deleteTrigger, setDeleteTrigger] = useState(0);
+  const router = useRouter();
+  const formRef = useRef<any>(null);
+
   let dispatch = useDispatch();
   useEffect(() => {
     if (isMobile) {
@@ -24,6 +35,78 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
+  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCurrentPage(goToPage);
+  };
+
+  const submitButton = () => {
+    if (formRef.current) {
+      formRef.current?.click();
+    }
+  };
+  async function saveData(action: string) {
+    try {
+      setLoading(true);
+      const formData = new FormData();
+      for (let i = 0; i < vehicle.carImages.length; i++) {
+        formData.append("files", vehicle.carImages[i]);
+      }
+      const res = await axios.post("/api/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const formData2 = new FormData();
+      formData2.append("length1", vehicle.damages.length);
+
+      for (let i = 0; i < vehicle.damages.length; i++) {
+        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+
+        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
+        }
+      }
+
+      const res2 = await axios.post("/api/uploadNested", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = vehicle.damages;
+      for (let i = 0; i < vehicle.damages.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        files: res2?.data?.message[index].map((url: any) => url),
+      }));
+
+      let result: any = await axios.post(`/api/saveVehicle`, {
+        ...vehicle,
+        carImages: res?.data?.message,
+        damages: updatedObjects,
+      });
+      if (result?.data?.success) {
+        setShowSuccess(result?.data?.success);
+        setShowError(null);
+      } else {
+        setShowError(result?.data?.error);
+        setShowSuccess(null);
+      }
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      if (action === "close") {
+        router.push("/Components/Vehicles");
+      } else {
+        setCurrentPage(0);
+      }
+    }
+  }
+  console.log(customer);
 
   return (
     <div
@@ -42,7 +125,10 @@ export default function Vehicles() {
             </p>
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
+        >
           <div className="w-full h-fit flex flex-col justify-start items-center">
             <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px]">
               <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
@@ -53,7 +139,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(0)}
+                  onClick={() => {
+                    setGoToPage(0);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
@@ -67,7 +156,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(1)}
+                  onClick={() => {
+                    setGoToPage(1);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
@@ -79,7 +171,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(2)}
+                  onClick={() => {
+                    setGoToPage(2);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
@@ -92,7 +187,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(3)}
+                  onClick={() => {
+                    setGoToPage(3);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
@@ -160,12 +258,25 @@ export default function Vehicles() {
             ) : null}
             {currentPage === 3 ? (
               <div className="flex justify-start items-center gap-1 md:gap-3">
-                <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                  Save and Close
+                <button
+                  className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                  disabled={loading}
+                  onClick={() => {
+                    saveData("close");
+                  }}
+                >
+                  {loading ? <SmallLoader /> : "Save and Close"}
                 </button>
-                <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                  Save and New
+                <button
+                  className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                  disabled={loading}
+                  onClick={() => {
+                    saveData("new");
+                  }}
+                >
+                  {loading ? <SmallLoader /> : "Save and New"}
                 </button>
+                <div />
               </div>
             ) : (
               <button
@@ -176,7 +287,7 @@ export default function Vehicles() {
               </button>
             )}
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

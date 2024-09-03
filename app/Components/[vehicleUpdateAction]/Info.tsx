@@ -31,7 +31,6 @@ import {
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { log } from "util";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);

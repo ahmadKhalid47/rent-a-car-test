@@ -11,6 +11,7 @@ import {
   setalternativePhoneR,
   setcityR,
   setcountryR,
+  setcustomerImageR,
   setcustomerTypeR,
   setdateOfBirthR,
   setemailAddressR,
@@ -31,7 +32,10 @@ export default function Info() {
   let dispatch = useDispatch();
 
   let customer = useSelector((state: RootState) => state.Customer);
-  const [files, setFiles] = useState<any>([]);
+  const [files, setFiles] = useState<any>(customer?.customerImage);
+  useEffect(() => {
+    setFiles(customer.customerImage);
+  }, [customer.customerImage]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
@@ -93,6 +97,11 @@ export default function Info() {
     onDrop,
     multiple: false,
   });
+  console.log(files);
+  console.log(customer.customerImage);
+  useEffect(() => {
+    dispatch(setcustomerImageR(files));
+  }, [files]);
 
   return (
     <div className="w-full h-fit  ">
@@ -101,21 +110,24 @@ export default function Info() {
           setState={setcustomerTypeR}
           label={"Customer Type"}
           value={customer.customerType}
-          required={true}
+          // required={true}
+          required={false}
           options={["Customer Type1", "Customer Type2"]}
         />
         <TempTypeInput
           setState={setnameR}
           label={"Full Name"}
           value={customer.name}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <TempSelectInput
           setState={setgenderR}
           label={"Gender"}
           value={customer.gender}
-          required={true}
+          // required={true}
+          required={false}
           options={["Select", "Male", "Female"]}
         />
 
@@ -145,7 +157,8 @@ export default function Info() {
           setState={setphoneR}
           label={"Phone"}
           value={customer.phone}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <TempTypeInput
@@ -167,28 +180,32 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={customer.country}
-          required={true}
+          // required={true}
+          required={false}
           options={["Select", "Country1", "Country2"]}
         />
         <TempSelectInput
           setState={setphoneR}
           label={"State/Province"}
           value={customer.phone}
-          required={true}
+          // required={true}
+          required={false}
           options={["Select", "State1", "State2"]}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={customer.city}
-          required={true}
+          // required={true}
+          required={false}
           options={["Select", "City1", "City2"]}
         />
         <TempTypeInput
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={customer.postalCode}
-          required={true}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-0 sm:gap-1">

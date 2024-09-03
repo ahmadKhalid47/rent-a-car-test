@@ -16,7 +16,7 @@ const initialState: any = {
   city: "",
   postalCode: "",
   isVip: "",
-  carImages: [],
+  customerImage: [],
   emergencyContactName: "",
   emergencyContactPhone: "",
   emergencyContactRelation: "",
@@ -87,8 +87,8 @@ export const CustomerSlice = createSlice({
     setisVipR: (state, action) => {
       state.isVip = action.payload;
     },
-    setcarImagesR: (state, action) => {
-      state.carImages = action.payload;
+    setcustomerImageR: (state, action) => {
+      state.customerImage = action.payload;
     },
     setemergencyContactNameR: (state, action) => {
       state.emergencyContactName = action.payload;
@@ -170,7 +170,7 @@ export const {
   setcityR,
   setpostalCodeR,
   setisVipR,
-  setcarImagesR,
+  setcustomerImageR,
   setAllValues,
   resetState,
   setemergencyContactNameR,

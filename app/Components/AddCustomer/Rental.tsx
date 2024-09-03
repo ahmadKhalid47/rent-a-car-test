@@ -23,10 +23,20 @@ import { Thumbs } from "../functions/thumbsFromDrag";
 import { useFileDrop } from "../functions/onDragFromDrag";
 
 export default function Rental() {
-  const [passfiles, setPassFiles] = useState<any>([]);
-  const [licfiles, setLicFiles] = useState<any>([]);
   let customer = useSelector((state: RootState) => state.Customer);
+  const [passfiles, setPassFiles] = useState<any>(customer?.passportImages);
+  const [licfiles, setLicFiles] = useState<any>(customer?.licenseImages);
   let dispatch = useDispatch();
+  useEffect(() => {
+    setPassFiles(customer.passportImages);
+  }, [customer.passportImages]);
+
+  useEffect(() => {
+    setLicFiles(customer.licenseImages);
+  }, [customer.licenseImages]);
+
+  console.log(customer.passportImages);
+  console.log(customer.licenseImages);
 
   const onDropPass = useFileDrop(
     (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
