@@ -1,8 +1,8 @@
 "use client";
-import Rental from "../AddCustomer/Rental";
-import Insurances from "../AddCustomer/Insurances";
-import Feature from "../AddCustomer/Feature";
-import Info from "../AddCustomer/Info";
+import Rental from "../AddCustomer/[CustomerUpdateAction]/Rental";
+import Insurances from "../AddCustomer/[CustomerUpdateAction]/Insurances";
+import Feature from "../AddCustomer/[CustomerUpdateAction]/Feature";
+import Info from "../AddCustomer/[CustomerUpdateAction]/Info";
 import { useState } from "react";
 
 export default function CustomerForms() {

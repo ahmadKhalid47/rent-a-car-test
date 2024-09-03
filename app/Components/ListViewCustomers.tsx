@@ -345,7 +345,7 @@ export default function ListViewCustomers({ data }: dataType) {
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/${item?._id}`);
+                      router.push(`/Components/AddCustomer/${item?._id}`);
                     }}
                   />
 

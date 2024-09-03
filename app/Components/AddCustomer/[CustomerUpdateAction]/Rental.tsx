@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import React, { useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput, TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
+import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
 import {
   setpassportNumberR,
   setpassportValidR,
@@ -18,9 +18,9 @@ import {
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { removing } from "../functions/removingFileFromDrag";
-import { Thumbs } from "../functions/thumbsFromDrag";
-import { useFileDrop } from "../functions/onDragFromDrag";
+import { removing } from "../../functions/removingFileFromDrag";
+import { Thumbs } from "../../functions/thumbsFromDrag";
+import { useFileDrop } from "../../functions/onDragFromDrag";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);

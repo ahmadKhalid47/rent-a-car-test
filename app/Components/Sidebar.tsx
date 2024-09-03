@@ -37,7 +37,7 @@ export default function Sidebar() {
     if (
       pathName === "/Components/Customers" ||
       pathName === "/Components/CustomerInfo" ||
-      pathName === "/Components/AddCustomer"
+      pathName === "/Components/AddCustomer/AddNew"
     ) {
       setChevronState("Customers");
     } else if (
@@ -175,7 +175,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               //   router.push(
-              href="/Components/AddCustomer"
+              href="/Components/AddCustomer/AddNew"
               //   );
               // }}
               className="flex justify-start items-center w-full"
@@ -190,7 +190,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddCustomer"
+                  pathName === "/Components/AddCustomer/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

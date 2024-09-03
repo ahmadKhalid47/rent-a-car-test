@@ -5,8 +5,8 @@ import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput, TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
+import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
 import {
   setalternativePhoneR,
   setcityR,

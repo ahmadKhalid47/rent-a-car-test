@@ -9,11 +9,14 @@ import Insurances from "./Insurances";
 import Feature from "./Feature";
 import Info from "./Info";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { FormEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { SmallLoader } from "../Loader";
+import { SmallLoader } from "../../Loader";
 
 export default function Vehicles() {
+  const params = useParams();
+  const CustomerUpdateAction = params;
   let global = useSelector((state: RootState) => state.Global);
   let customer = useSelector((state: RootState) => state.Customer);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -25,6 +28,7 @@ export default function Vehicles() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
+  console.log(CustomerUpdateAction);
 
   let dispatch = useDispatch();
   useEffect(() => {

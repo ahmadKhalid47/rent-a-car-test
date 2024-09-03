@@ -1,6 +1,6 @@
 "use client";
-import { TempTypeInput, TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
+import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
 import {
   setref1NameR,
   setref1PhoneR,
