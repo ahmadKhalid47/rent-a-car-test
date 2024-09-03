@@ -1,16 +1,19 @@
 "use client";
 import vip from "@/public/vip.svg";
 import car from "@/public/Customer.svg";
-import GeneralCustomer from "../GeneralCustomer";
-import IdentityCustomer from "../IdentityCustomer";
-import EmergencyCustomer from "../EmergencyCustomer";
+import GeneralCustomer from "../../GeneralCustomer";
+import IdentityCustomer from "../../IdentityCustomer";
+import EmergencyCustomer from "../../EmergencyCustomer";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import ReferenceCustomer from "../ReferenceCustomer";
+import ReferenceCustomer from "../../ReferenceCustomer";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
+import axios from "axios";
+import { setCustomerInfo } from "@/app/store/Customerinfo";
+import { useParams } from "next/navigation";
 
 export default function CustomerInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -24,6 +27,37 @@ export default function CustomerInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const params = useParams(); // Get all route parameters
+  const { _id } = params;
+  const [loading, setLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
+  let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
+  const [imageIndex, setImageIndex] = useState<any>(
+    CustomerInfo?.thumbnailImage
+  );
+
+  useEffect(() => {
+    setImageIndex(CustomerInfo?.thumbnailImage);
+  }, [CustomerInfo?.thumbnailImage, CustomerInfo]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getCustomerInfo/${_id}`);
+        if (result?.data?.data) {
+          dispatch(setCustomerInfo(result?.data?.data?.data));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -42,7 +76,7 @@ export default function CustomerInfoMainPage() {
             </p>
           </div>
         </div>
-        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5">
+        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] rounded-[10px] bg-">
             <div className="w-full h-fit flex flex-col lg:flex-row justify-start gap-5 lg:gap-[7%] items-center px- g-white rounded-[10px] border-2 border-grey py-7 px-6 ">
               <div className="w-fit flex justify-start items-center gap-1">

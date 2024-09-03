@@ -21,6 +21,7 @@ import {
   setnationalityR,
   setphoneR,
   setpostalCodeR,
+  setstateR,
   setstreetAddressR,
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
@@ -183,9 +184,9 @@ export default function Info() {
           options={["Select", "Country1", "Country2"]}
         />
         <TempSelectInput
-          setState={setphoneR}
+          setState={setstateR}
           label={"State/Province"}
-          value={customer.phone}
+          value={customer.state}
           // required={true}
           required={false}
           options={["Select", "State1", "State2"]}
