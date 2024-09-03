@@ -199,55 +199,6 @@ export default function Vehicles() {
           </div>
           {!showLess ? (
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              {/* <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[20%] h-fit ">
-              <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                Car Name
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select
-                  className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                  onChange={(e) => {
-                    setAdvanceFilters((prevFilters: any) =>
-                      prevFilters.map((filter: any) =>
-                        filter.key === "carName"
-                          ? { ...filter, keyValue: e.target.value }
-                          : filter
-                      )
-                    );
-                  }}
-                >
-                  <option value="">Select</option>
-                  <option value="suzuki">suzuki</option>
-                  <option value="ford">ford</option>
-                  <option value="Swift">Swift</option>
-                  <option value="vfdsvsd">vfdsvsd</option>
-                </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>
-            </div> */}
-              {/* <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[15%] h-fit">
-              <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                Registration No
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center ">
-                <input
-                  className=" font-[400] text-[14px] xs:text-[16px] leading-[19px] px-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:"
-                  placeholder="Type"
-                  onChange={(e) => {
-                    setAdvanceFilters((prevFilters: any) =>
-                      prevFilters.map((filter: any) =>
-                        filter.key === "registration"
-                          ? { ...filter, keyValue: e.target.value }
-                          : filter
-                      )
-                    );
-                  }}
-                ></input>
-              </div>
-            </div> */}
-
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
                 <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
                   Year
@@ -266,9 +217,6 @@ export default function Vehicles() {
                     }}
                   >
                     <option value="">Select</option>
-                    {/* {filteredVehicles.map((item) => (
-                    <option value={item.data.year}>{item.data.year}</option>
-                  ))} */}
                     {Array.from(
                       new Set(vehiclesData.map((item) => item.data.year))
                     ).map((year) => (

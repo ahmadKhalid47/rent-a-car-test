@@ -22,6 +22,24 @@ export default function Vehicles() {
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredCustomer, setFilteredCustomer] = useState<any[]>([]);
+  const [advanceFilters, setAdvanceFilters] = useState<any>([
+    {
+      key: "customerType",
+      keyValue: "",
+    },
+    {
+      key: "gender",
+      keyValue: "",
+    },
+    {
+      key: "city",
+      keyValue: "",
+    },
+    {
+      key: "postalCode",
+      keyValue: "",
+    },
+  ]);
 
   useEffect(() => {
     if (isMobile) {
@@ -52,6 +70,50 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
+  console.log(customersData);
+
+  useEffect(() => {
+    filterCustomer();
+  }, [searchQuery, customersData]);
+
+  function filterCustomer() {
+    if (!searchQuery) {
+      setFilteredCustomer(customersData);
+      return;
+    }
+
+    const lowercasedQuery = searchQuery.toLowerCase();
+    const filtered = customersData.filter((vehicle) => {
+      const { data } = vehicle;
+      const { name, phone } = data;
+
+      return (
+        name.toLowerCase().includes(lowercasedQuery) ||
+        phone.toLowerCase().includes(lowercasedQuery)
+      );
+    });
+    setFilteredCustomer(filtered);
+  }
+
+  function advanceFilterVehicles() {
+    let filtered: any = customersData;
+
+    advanceFilters.forEach(({ key, keyValue }: any) => {
+      if (keyValue) {
+        const lowercasedQuery = keyValue.toLowerCase();
+        filtered = filtered.filter((vehicle: any) => {
+          const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
+          return keyValueInVehicle?.includes(lowercasedQuery);
+        });
+      }
+    });
+
+    setFilteredCustomer(filtered);
+  }
+
+  function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(event.target.value.trim());
+  }
 
   return (
     <div
@@ -89,8 +151,14 @@ export default function Vehicles() {
               <input
                 className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
                 placeholder="Search By Full Name, Phone..."
+                onChange={handleSearchQueryChange}
               ></input>
-              <button className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
+              <button
+                className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => {
+                  advanceFilterVehicles();
+                }}
+              >
                 Search
               </button>
             </div>
@@ -102,12 +170,28 @@ export default function Vehicles() {
                   Customer Type
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "customerType"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
                     <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
+                    {Array.from(
+                      new Set(
+                        customersData.map((item) => item.data.customerType)
+                      )
+                    ).map((customerType) => (
+                      <option key={customerType} value={customerType}>
+                        {customerType}
+                      </option>
+                    ))}
                   </select>
                   <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
@@ -119,12 +203,26 @@ export default function Vehicles() {
                   Gender
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "gender"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
                     <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
+                    {Array.from(
+                      new Set(customersData.map((item) => item.data.gender))
+                    ).map((gender) => (
+                      <option key={gender} value={gender}>
+                        {gender}
+                      </option>
+                    ))}
                   </select>
                   <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
@@ -136,10 +234,27 @@ export default function Vehicles() {
                   Postal/Zip Code
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <input
-                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
-                    value={8733458349}
-                  />
+                  <select
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "postalCode"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
+                    <option value="">Select</option>
+                    {Array.from(
+                      new Set(customersData.map((item) => item.data.postalCode))
+                    ).map((postalCode) => (
+                      <option key={postalCode} value={postalCode}>
+                        {postalCode}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
@@ -147,12 +262,26 @@ export default function Vehicles() {
                   City
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "city"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
                     <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
+                    {Array.from(
+                      new Set(customersData.map((item) => item.data.city))
+                    ).map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
                   </select>
                   <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
@@ -170,7 +299,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          <ListViewCustomers />
+          <ListViewCustomers data={filteredCustomer} />
         </div>
       </div>
     </div>

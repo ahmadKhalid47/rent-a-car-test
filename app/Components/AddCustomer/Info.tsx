@@ -110,7 +110,7 @@ export default function Info() {
           value={customer.customerType}
           // required={true}
           required={false}
-          options={["Customer Type1", "Customer Type2"]}
+          options={["Type1", "Type2"]}
         />
         <TempTypeInput
           setState={setnameR}
