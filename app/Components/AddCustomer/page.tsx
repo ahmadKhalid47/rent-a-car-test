@@ -109,7 +109,6 @@ export default function Vehicles() {
       }
     }
   }
-  console.log(customer.customerImage[0]);
 
   return (
     <div

@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let {Color} = await req.json();
-    console.log(Color);
 
     connectDb();
     await new ColorModel({ Color }).save();

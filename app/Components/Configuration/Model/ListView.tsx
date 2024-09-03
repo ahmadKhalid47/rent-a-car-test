@@ -145,7 +145,6 @@ export default function ListView({ data, makeData }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-  console.log(Make);
 
   return (
     <div className="w-full h-fit mt-4 relative">

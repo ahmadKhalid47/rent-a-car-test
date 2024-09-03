@@ -158,7 +158,6 @@ export default function Vehicles() {
     const carImages = vehicle.carImages;
     setImageToDelete(carImages);
   }, [deleteTrigger]);
-  // console.log(vehicle.carImages);
   const carImages = vehicle.carImages;
   async function updateData(action: string) {
     try {
@@ -216,7 +215,6 @@ export default function Vehicles() {
       formRef.current?.click();
     }
   };
-  console.log(vehicle.carImages);
 
   return (
     <div

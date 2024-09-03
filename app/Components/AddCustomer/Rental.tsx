@@ -35,9 +35,6 @@ export default function Rental() {
     setLicFiles(customer.licenseImages);
   }, [customer.licenseImages]);
 
-  console.log(customer.passportImages);
-  console.log(customer.licenseImages);
-
   const onDropPass = useFileDrop(
     (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
   );

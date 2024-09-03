@@ -6,7 +6,6 @@ export async function GET(req: Request) {
   try {
     await connectDb();
     const data = await CityModel.find().sort({ _id: -1 });
-    console.log(data);
     return NextResponse.json({
       data,
     });

@@ -122,7 +122,6 @@ export default function Vehicles() {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
-  // console.log(vehiclesData);
 
   return (
     <div

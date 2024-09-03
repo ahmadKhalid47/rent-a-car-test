@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { country } = await req.json();
-    console.log(country);
 
     connectDb();
     await new CountryModel({ country }).save();
