@@ -1,30 +1,58 @@
 "use client";
-import { TypeInput } from "../InputComponents/TypeInput";
-import { SelectInput } from "../InputComponents/SelectInput";
+import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
+import {
+  SelectInput,
+  TempSelectInput,
+} from "../../InputComponents/SelectInput";
+import {
+  setrefNameR,
+  setrefPhoneR,
+  setrefAddressR,
+  setrefRelationR,
+  setemergencyNameR,
+  setemergencyPhoneR,
+  setemergencyAddressR,
+  setemergencyRelationR,
+  setadditionalR,
+} from "@/app/store/chauffeur";
+import { RootState } from "@/app/store";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Feature() {
+  let chauffeur = useSelector((state: RootState) => state.chauffeur);
+  let dispatch = useDispatch();
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Reference Info
         </h3>
-        <TypeInput
+        <TempTypeInput
+          setState={setrefNameR}
           label={"Full Name"}
-          value={""}
+          value={chauffeur.ref1Name}
           required={false}
           type={"text"}
         />
-        <TypeInput label={"Phone"} value={""} required={false} type={"text"} />
-        <TypeInput
+        <TempTypeInput
+          setState={setrefPhoneR}
+          label={"Phone"}
+          value={chauffeur.ref1Phone}
+          required={false}
+          type={"text"}
+        />
+        <TempTypeInput
+          setState={setrefAddressR}
           label={"Address"}
-          value={""}
+          value={chauffeur.ref1Address}
           required={false}
           type={"text"}
         />
-        <SelectInput
+        <TempSelectInput
+          setState={setrefRelationR}
           label={"Relation"}
-          value={""}
+          value={chauffeur.ref1Relation}
           required={false}
           options={["Select", "Father", "Mother", "Brother", "Other"]}
         />
@@ -33,18 +61,26 @@ export default function Feature() {
         <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
           Emergency Info
         </h3>
-        <TypeInput
-          label={"Full Name"}
-          value={""}
+        <TempTypeInput
+          setState={setemergencyNameR}
+          label={"Emergency Contact Name"}
+          value={chauffeur.emergencyContactName}
           required={false}
           type={"text"}
         />
-        <TypeInput label={"Phone"} value={""} required={false} type={"text"} />
-        <SelectInput
+        <TempSelectInput
+          setState={setemergencyRelationR}
           label={"Relation"}
-          value={""}
+          value={chauffeur.emergencyContactRelation}
           required={false}
-          options={["Select", "Father", "Mother", "Brother", "Other"]}
+          options={["Father", "Mother", "Brother", "Other"]}
+        />
+        <TempTypeInput
+          setState={setemergencyPhoneR}
+          label={"Emergency Phone"}
+          value={chauffeur.emergencyContactPhone}
+          required={false}
+          type={"text"}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -57,6 +93,9 @@ export default function Feature() {
               className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
               rows={6}
               cols={6}
+              onChange={(e) => dispatch(setadditionalR(e.target.value))}
+              value={chauffeur.additional}
+              placeholder="Any Additional Notes"
             >
               Any Additional Notes
             </textarea>

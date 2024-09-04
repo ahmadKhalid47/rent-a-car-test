@@ -1,7 +1,7 @@
 "use client";
-import Rental from "../AddChauffeur/Rental";
-import Feature from "../AddChauffeur/Feature";
-import Info from "../AddChauffeur/Info";
+import Rental from "../AddChauffeur/[chauffeurUpdateAction]/Rental";
+import Feature from "../AddChauffeur/[chauffeurUpdateAction]/Feature";
+import Info from "../AddChauffeur/[chauffeurUpdateAction]/Info";
 import { useState } from "react";
 
 export default function ChauffeurForms() {

@@ -6,6 +6,7 @@ import VehicleInfo from "./vehicleInfo";
 import Configurations from "./Configurations";
 import Customer from "./Customer";
 import CustomerInfo from "./Customerinfo";
+import chauffeur from "./chauffeur";
 
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   Configurations: Configurations,
   Customer: Customer,
   CustomerInfo: CustomerInfo,
+  chauffeur: chauffeur,
 });
 
 const store = configureStore({

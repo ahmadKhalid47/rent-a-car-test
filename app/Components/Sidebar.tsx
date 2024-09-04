@@ -43,7 +43,7 @@ export default function Sidebar() {
     } else if (
       pathName === "/Components/Chauffeurs" ||
       pathName === "/Components/ChauffeursInfo" ||
-      pathName === "/Components/AddChauffeur"
+      pathName === "/Components/AddChauffeur/AddNew"
     ) {
       setChevronState("Chauffeurs");
     } else if (
@@ -263,7 +263,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddChauffeur"
+              href="/Components/AddChauffeur/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -278,7 +278,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddChauffeur"
+                  pathName === "/Components/AddChauffeur/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
