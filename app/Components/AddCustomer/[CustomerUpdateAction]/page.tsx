@@ -10,7 +10,7 @@ import Feature from "./Feature";
 import Info from "./Info";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import { FormEvent, useState, useEffect, useRef } from "react";
+import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
 import axios from "axios";
 import { SmallLoader } from "../../Loader";
 import { resetState, setAllValues } from "@/app/store/Customer";
@@ -50,6 +50,11 @@ export default function Vehicles() {
   const submitButton = () => {
     if (formRef.current) {
       formRef.current?.click();
+    }
+  };
+  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission on Enter key
     }
   };
   async function saveData(action: string) {
@@ -220,6 +225,7 @@ export default function Vehicles() {
         </div>
         <form
           onSubmit={handleSubmit}
+          onKeyDown={handleKeyDown} // Add the event handler here
           className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >
           <div className="w-full h-fit flex flex-col justify-start items-center">
