@@ -11,7 +11,7 @@ import Info from "./Info";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { SmallLoader } from "../../Loader";
 import { resetState, setAllValues } from "@/app/store/Customer";
 import { Country, State, City } from "country-state-city";
@@ -31,7 +31,7 @@ export default function Vehicles() {
   const router = useRouter();
   const formRef = useRef<any>(null);
   // console.log(customer?.passportImages);
-  // console.log(customer?.licenseImages);
+  console.log(customer?.customerImage);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -61,13 +61,17 @@ export default function Vehicles() {
     try {
       setLoading(true);
 
-      const formData = new FormData();
-      formData.append("files", customer.customerImage[0]);
-      const res = await axios.post("/api/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      let res: AxiosResponse<any, any> | null = null;
+      if (customer?.customerImage[0] instanceof File) {
+        const formData = new FormData();
+        formData.append("files", customer.customerImage[0]);
+
+        res = await axios.post("/api/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
 
       const formData2 = new FormData();
       for (let i = 0; i < customer.passportImages.length; i++) {

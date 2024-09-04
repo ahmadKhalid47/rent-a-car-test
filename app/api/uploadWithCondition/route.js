@@ -13,27 +13,30 @@ export async function POST(req) {
     const form = await req.formData();
     const files = form.getAll("files");
     console.log(files);
+    if (files.length > 0) {
+      const uploadPromises = files.map(async (item) => {
+        if (typeof item === "string" && item.startsWith("http")) {
+          // If it's a URL, just return it
+          return item;
+        } else if (item instanceof File) {
+          // If it's a file, upload to Cloudinary
+          const buffer = Buffer.from(await item.arrayBuffer());
+          const result = await cloudinary.v2.uploader.upload(
+            `data:${item.type};base64,${buffer.toString("base64")}`,
+            { folder: "uploads" }
+          );
+          return result.secure_url;
+        } else {
+          throw new Error("Unsupported data type");
+        }
+      });
 
-    const uploadPromises = files.map(async (item) => {
-      if (typeof item === "string" && item.startsWith("http")) {
-        // If it's a URL, just return it
-        return item;
-      } else if (item instanceof File) {
-        // If it's a file, upload to Cloudinary
-        const buffer = Buffer.from(await item.arrayBuffer());
-        const result = await cloudinary.v2.uploader.upload(
-          `data:${item.type};base64,${buffer.toString("base64")}`,
-          { folder: "uploads" }
-        );
-        return result.secure_url;
-      } else {
-        throw new Error("Unsupported data type");
-      }
-    });
+      const uploadedFiles = await Promise.all(uploadPromises);
 
-    const uploadedFiles = await Promise.all(uploadPromises);
-
-    return NextResponse.json({ message: uploadedFiles });
+      return NextResponse.json({ message: uploadedFiles });
+    } else {
+      return NextResponse.json({ message: [] });
+    }
   } catch (error) {
     console.log(error);
     return NextResponse.json(
