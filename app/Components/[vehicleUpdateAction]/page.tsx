@@ -157,56 +157,55 @@ export default function Vehicles() {
       }
     }
   }
-  let [imageToDelete, setImageToDelete] = useState<any>(undefined);
-
-  useEffect(() => {
-    const carImages = vehicle.carImages;
-    setImageToDelete(carImages);
-  }, [deleteTrigger]);
-  const carImages = vehicle.carImages;
   async function updateData(action: string) {
     try {
       setLoading(true);
-      const carImages = vehicle.carImages;
       const damageImages = vehicle.damages.map((damage: any) => damage.files);
-      const allFilesToDelete = [...carImages, ...damageImages.flat()];
-      if (vehicle.damageImagesToDelete.length > 0) {
-        // let result = await axios.delete("/api/deleteFromCloudinary", {
-        //   data: vehicle.damageImagesToDelete,
-        // });
+      console.log(damageImages);
+
+      const formData = new FormData();
+      for (let i = 0; i < vehicle.carImages.length; i++) {
+        formData.append("files", vehicle.carImages[i]);
       }
-      if (
-        Array.isArray(carImages) &&
-        carImages.some((item) => item instanceof File)
-      ) {
-        // let result = await axios.delete("/api/deleteFromCloudinary", {
-        //   data: imageToDelete,
-        // });
-        let alreadyUploadedFiles = [];
-        const formData = new FormData();
-        for (let i = 0; i < vehicle.carImages.length; i++) {
-          if (vehicle.carImages[i] instanceof File) {
-            formData.append("files", vehicle.carImages[i]);
-          } else {
-            alreadyUploadedFiles.push(vehicle.carImages[i]);
+      const res = await axios.post("/api/uploadWithCondition", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+        const formData2 = new FormData();
+        formData2.append("length1", vehicle.damages.length);
+
+        for (let i = 0; i < vehicle.damages.length; i++) {
+          formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+
+          for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+            formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
           }
         }
-        const res = await axios.post("/api/upload", formData, {
+
+        const res2 = await axios.post("/api/uploadNested", formData2, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        let imageArray = [...res?.data?.message, ...alreadyUploadedFiles];
+        let tempArray = vehicle.damages;
+        for (let i = 0; i < vehicle.damages.length; i++) {}
+
+        const updatedObjects = tempArray.map((obj: any, index: any) => ({
+          ...obj,
+          files: res2?.data?.message[index].map((url: any) => url),
+        }));
+        console.log("updatedObjects", updatedObjects);
 
         await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
           ...vehicle,
-          carImages: imageArray,
+          carImages: res?.data?.message,
+          damages: updatedObjects,
         });
-      } else {
-        await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
-      }
+
       if (action === "close") {
-        router.push("/Components/Vehicles");
+        // router.push("/Components/Vehicles");
       }
     } catch (err) {
       console.log(err);

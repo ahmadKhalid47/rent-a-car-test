@@ -12,14 +12,11 @@ export async function POST(req) {
   try {
     const form = await req.formData();
     const files = form.getAll("files");
-    console.log(files);
     if (files.length > 0) {
       const uploadPromises = files.map(async (item) => {
         if (typeof item === "string" && item.startsWith("http")) {
-          // If it's a URL, just return it
           return item;
         } else if (item instanceof File) {
-          // If it's a file, upload to Cloudinary
           const buffer = Buffer.from(await item.arrayBuffer());
           const result = await cloudinary.v2.uploader.upload(
             `data:${item.type};base64,${buffer.toString("base64")}`,
