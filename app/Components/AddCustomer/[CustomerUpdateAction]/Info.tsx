@@ -31,6 +31,7 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { CountryStateCity } from "../../functions/CountryStateCity";
 
 export default function Info() {
   let dispatch = useDispatch();
@@ -105,6 +106,11 @@ export default function Info() {
     dispatch(setcustomerImageR(files));
   }, [files]);
 
+  let { countries, states, cities } = CountryStateCity(
+    customer.country,
+    customer.state
+  );
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -141,12 +147,12 @@ export default function Info() {
           type={"date"}
         />
 
-        <TempSelectInput
+        <TempTypeInput
           setState={setnationalityR}
           label={"Nationality"}
           value={customer.nationality}
           required={false}
-          options={["Select", "Nationality1", "Nationality2"]}
+          type={"text"}
         />
         <TempTypeInput
           setState={setemailAddressR}
@@ -184,7 +190,7 @@ export default function Info() {
           value={customer.country}
           // required={true}
           required={false}
-          options={["Select", "Country1", "Country2"]}
+          options={countries.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setstateR}
@@ -192,7 +198,7 @@ export default function Info() {
           value={customer.state}
           // required={true}
           required={false}
-          options={["Select", "State1", "State2"]}
+          options={states.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setcityR}
@@ -200,7 +206,7 @@ export default function Info() {
           value={customer.city}
           // required={true}
           required={false}
-          options={["Select", "City1", "City2"]}
+          options={cities.map((item: any) => item.label)}
         />
         <TempTypeInput
           setState={setpostalCodeR}

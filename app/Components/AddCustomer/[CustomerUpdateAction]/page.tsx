@@ -14,6 +14,7 @@ import { FormEvent, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { SmallLoader } from "../../Loader";
 import { resetState, setAllValues } from "@/app/store/Customer";
+import { Country, State, City } from "country-state-city";
 
 export default function Vehicles() {
   const params = useParams();
@@ -29,7 +30,7 @@ export default function Vehicles() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
-  console.log(customer?.passportImages);
+  // console.log(customer?.passportImages);
   // console.log(customer?.licenseImages);
 
   let dispatch = useDispatch();

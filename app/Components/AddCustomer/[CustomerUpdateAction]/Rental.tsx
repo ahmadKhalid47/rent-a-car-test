@@ -25,7 +25,6 @@ import { removing } from "../../functions/removingFileFromDrag";
 import { Thumbs } from "../../functions/thumbsFromDrag";
 import { useFileDrop } from "../../functions/onDragFromDrag";
 import { Country, State, City } from "country-state-city";
-import Select from "react-select";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);
@@ -68,27 +67,10 @@ export default function Rental() {
     dispatch(setlicenseImagesR(licfiles));
   }, [licfiles]);
 
-  // let selectedCountry = customer?.passportCountry;
-  // const [selectedCity, setSelectedCity] = useState<any>(null);
-
   const countries: any = Country.getAllCountries().map((country: any) => ({
     value: country.isoCode,
     label: country.name,
   }));
-
-  // let selectedCountryISOCode = countries.find(
-  //   (country: any) => country.name === selectedCountry
-  // )?.isoCode;
-
-  // const cities: any = selectedCountry
-  //   ? City.getCitiesOfCountry(selectedCountryISOCode)?.map((city: any) => ({
-  //       value: city.name,
-  //       label: city.name,
-  //     }))
-  //   : [];
-
-  // console.log(selectedCountryISOCode);
-  // console.log(countries);
 
   return (
     <div className="w-full h-fit  ">
