@@ -1,4 +1,14 @@
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+
 export default function EmergencyChauffeurs() {
+  let { chauffeurInfo } = useSelector(
+    (state: RootState) => state.chauffeurInfo
+  );
+  console.clear();
+  console.log(chauffeurInfo);
+  
+
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
@@ -19,13 +29,19 @@ export default function EmergencyChauffeurs() {
 
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
           <p className="w-[30%] text-start text-[18px] leading-[27px]">
-            Lina Smith
+            {chauffeurInfo?.emergencyContactName
+              ? chauffeurInfo?.emergencyContactName
+              : "---"}
           </p>
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            438 397 3075
+            {chauffeurInfo?.emergencyContactPhone
+              ? chauffeurInfo?.emergencyContactPhone
+              : "---"}
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Brother
+            {chauffeurInfo?.emergencyContactRelation
+              ? chauffeurInfo?.emergencyContactRelation
+              : "---"}
           </p>
         </div>
       </div>
@@ -48,30 +64,16 @@ export default function EmergencyChauffeurs() {
         </div>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            John Smith
+            {chauffeurInfo?.refName ? chauffeurInfo?.refName : "---"}
           </p>
           <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
+            {chauffeurInfo?.refPhone ? chauffeurInfo?.refPhone : "---"}
           </p>
           <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
+            {chauffeurInfo?.refAddress ? chauffeurInfo?.refAddress : "---"}
           </p>
           <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Father
-          </p>
-        </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Lina Smith
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Mother
+            {chauffeurInfo?.refRelation ? chauffeurInfo?.refRelation : "---"}
           </p>
         </div>
       </div>
@@ -80,13 +82,9 @@ export default function EmergencyChauffeurs() {
           Additional Notes
         </h3>
         <div className="w-[100%] h-fit font-[400] text-[18px] leading-[27px]">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary,
+          {chauffeurInfo?.additional
+            ? chauffeurInfo?.additional
+            : "No Additional Note Added"}
         </div>
       </div>
     </div>

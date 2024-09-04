@@ -64,11 +64,12 @@ export default function chauffeurInfoMainPage() {
       >
         <div className="w-full h-[200px ">
           <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-            Glenn A. Jean
+            {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Chauffeurs / All Chauffeurs / Glenn A. Jean
+              Chauffeurs / All Chauffeurs /
+              {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
             </p>
           </div>
         </div>
@@ -85,10 +86,10 @@ export default function chauffeurInfoMainPage() {
               </div>
               <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
                 <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
-                  Glenn A. Jean{" "}
+                  {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}{" "}
                 </h3>
                 <p className="font-[400] text-[28px] leading-[42px] text-black">
-                  757-947-5015{" "}
+                  {chauffeurInfo?.phone ? chauffeurInfo?.phone : "---"}
                 </p>
                 <div className="w-[80%] flex justify-between items-center">
                   <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
@@ -96,7 +97,7 @@ export default function chauffeurInfoMainPage() {
                       City:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      Brentwood
+                      {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
                     </p>
                   </div>
                 </div>
@@ -106,7 +107,7 @@ export default function chauffeurInfoMainPage() {
                       Country:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      Atlanta
+                      {chauffeurInfo?.country ? chauffeurInfo?.country : "---"}
                     </p>
                   </div>
                 </div>
@@ -145,7 +146,7 @@ export default function chauffeurInfoMainPage() {
                   Additional Info
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-center items-start gap-8">
+              <div className="w-full h-[350px] flex justify-center items-start gap-8">
                 {activeButton === "General" ? (
                   <>
                     <GeneralChauffeurs />
