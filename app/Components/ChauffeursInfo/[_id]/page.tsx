@@ -1,16 +1,22 @@
 "use client";
-import car from "@/public/ChauffeursPic.svg";
-import GeneralChauffeurs from "../GeneralChauffeurs";
-import IdentityChauffeurs from "../IdentityChauffeurs";
-import EmergencyChauffeurs from "../EmergencyChauffeurs";
+import vip from "@/public/vip.svg";
+import Generalchauffeur from "../../GeneralChauffeurs";
+import Identitychauffeur from "../../IdentityChauffeurs";
+import Emergencychauffeur from "../../EmergencyChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
+import Referencechauffeur from "../../ReferenceChauffeurs";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
+import axios from "axios";
+import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
+import { useParams } from "next/navigation";
+import GeneralChauffeurs from "../../GeneralChauffeurs";
+import EmergencyChauffeurs from "../../EmergencyChauffeurs";
 
-export default function ChauffeursInfoMainPage() {
+export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
@@ -22,6 +28,32 @@ export default function ChauffeursInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const params = useParams(); // Get all route parameters
+  const { _id } = params;
+  const [loading, setLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
+  let { chauffeurInfo } = useSelector(
+    (state: RootState) => state.chauffeurInfo
+  );
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getchauffeurInfo/${_id}`);
+        if (result?.data?.data) {
+          dispatch(setchauffeurInfo(result?.data?.data?.data));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -44,8 +76,11 @@ export default function ChauffeursInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
             <div className="w-full h-fit flex justify-start gap-[7%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
               <div className="w-fit flex justify-start items-center gap-1">
-                <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
-                  <img src={car.src} className="w-full h-full" />
+                <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
+                  <img
+                    src={chauffeurInfo?.chauffeurImage}
+                    className="w-full h-full"
+                  />
                 </div>
               </div>
               <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
@@ -117,7 +152,7 @@ export default function ChauffeursInfoMainPage() {
                   </>
                 ) : activeButton === "Identity" ? (
                   <>
-                    <IdentityChauffeurs />
+                    <Identitychauffeur />
                   </>
                 ) : activeButton === "Emergency" ? (
                   <div className="w-full flex flex-col justify-start items-start gap-2 h-fit">

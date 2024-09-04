@@ -1,6 +1,5 @@
 "use client";
 import vip from "@/public/vip.svg";
-import car from "@/public/Customer.svg";
 import GeneralCustomer from "../../GeneralCustomer";
 import IdentityCustomer from "../../IdentityCustomer";
 import EmergencyCustomer from "../../EmergencyCustomer";
@@ -74,7 +73,7 @@ export default function CustomerInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] rounded-[10px] bg-">
             <div className="w-full h-fit flex flex-col lg:flex-row justify-start gap-5 lg:gap-[7%] items-center px- g-white rounded-[10px] border-2 border-grey py-7 px-6 ">
               <div className="w-fit flex justify-start items-center gap-1">
-                <div className="w-[464] h-[464] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
+                <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                   <img
                     src={CustomerInfo?.customerImage}
                     className="w-full h-full"

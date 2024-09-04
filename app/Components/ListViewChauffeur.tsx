@@ -265,7 +265,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
               <Link
-                href={`/Components/ChauffeurInfo/${item?._id}`}
+                href={`/Components/ChauffeursInfo/${item?._id}`}
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
