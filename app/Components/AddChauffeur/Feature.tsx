@@ -15,7 +15,7 @@ export default function Feature() {
           required={false}
           type={"text"}
         />
-        <TypeInput label={"Phone"} value={""} required={true} type={"text"} />
+        <TypeInput label={"Phone"} value={""} required={false} type={"text"} />
         <TypeInput
           label={"Address"}
           value={""}
@@ -39,7 +39,7 @@ export default function Feature() {
           required={false}
           type={"text"}
         />
-        <TypeInput label={"Phone"} value={""} required={true} type={"text"} />
+        <TypeInput label={"Phone"} value={""} required={false} type={"text"} />
         <SelectInput
           label={"Relation"}
           value={""}
