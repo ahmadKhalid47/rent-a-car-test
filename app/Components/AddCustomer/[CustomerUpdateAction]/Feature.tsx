@@ -1,6 +1,9 @@
 "use client";
 import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
+import {
+  SelectInput,
+  TempSelectInput,
+} from "../../InputComponents/SelectInput";
 import {
   setref1NameR,
   setref1PhoneR,
@@ -35,7 +38,7 @@ export default function Feature() {
           setState={setref1PhoneR}
           label={"Phone"}
           value={customer.ref1Phone}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TempTypeInput
@@ -69,7 +72,7 @@ export default function Feature() {
           setState={setref2PhoneR}
           label={"Phone"}
           value={customer.ref2Phone}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TempTypeInput
