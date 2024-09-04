@@ -5,7 +5,10 @@ import React, { useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput, TypeInput } from "../../InputComponents/TypeInput";
-import { SelectInput, TempSelectInput } from "../../InputComponents/SelectInput";
+import {
+  SelectInput,
+  TempSelectInput,
+} from "../../InputComponents/SelectInput";
 import {
   setpassportNumberR,
   setpassportValidR,
@@ -21,6 +24,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { removing } from "../../functions/removingFileFromDrag";
 import { Thumbs } from "../../functions/thumbsFromDrag";
 import { useFileDrop } from "../../functions/onDragFromDrag";
+import { Country, State, City } from "country-state-city";
+import Select from "react-select";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);
@@ -63,6 +68,28 @@ export default function Rental() {
     dispatch(setlicenseImagesR(licfiles));
   }, [licfiles]);
 
+  // let selectedCountry = customer?.passportCountry;
+  // const [selectedCity, setSelectedCity] = useState<any>(null);
+
+  const countries: any = Country.getAllCountries().map((country: any) => ({
+    value: country.isoCode,
+    label: country.name,
+  }));
+
+  // let selectedCountryISOCode = countries.find(
+  //   (country: any) => country.name === selectedCountry
+  // )?.isoCode;
+
+  // const cities: any = selectedCountry
+  //   ? City.getCitiesOfCountry(selectedCountryISOCode)?.map((city: any) => ({
+  //       value: city.name,
+  //       label: city.name,
+  //     }))
+  //   : [];
+
+  // console.log(selectedCountryISOCode);
+  // console.log(countries);
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -87,7 +114,7 @@ export default function Rental() {
           label={"Issuing Country/State"}
           value={customer.passportCountry}
           required={false}
-          options={["Select", "Country1", "Country2"]}
+          options={countries.map((item: any) => item.label)}
         />
 
         <div
@@ -132,7 +159,7 @@ export default function Rental() {
           label={"Issuing Country/State"}
           value={customer.licenseCountry}
           required={false}
-          options={["Select", "Country1", "Country2"]}
+          options={countries.map((item: any) => item.label)}
         />
 
         <div

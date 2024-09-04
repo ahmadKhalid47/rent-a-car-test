@@ -29,7 +29,6 @@ export default function Vehicles() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
-  console.log(CustomerUpdateAction);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -141,8 +140,6 @@ export default function Vehicles() {
     }
   }, []);
 
-  console.log(customer.customerImage[0]);
-
   async function updateData(action: string) {
     try {
       setLoading(true);
@@ -170,7 +167,7 @@ export default function Vehicles() {
         );
       }
       if (action === "close") {
-        router.push("/Components/Vehicles");
+        router.push("/Components/Customers");
       }
     } catch (err) {
       console.log(err);
