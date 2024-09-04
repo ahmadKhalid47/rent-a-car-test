@@ -119,7 +119,7 @@ export default function AddChauffeur() {
     } finally {
       setLoading(false);
       if (action === "close") {
-        router.push("/Components/chauffeurs");
+        router.push("/Components/Chauffeurs");
       } else {
         setCurrentPage(0);
       }
@@ -201,7 +201,7 @@ export default function AddChauffeur() {
         );
       }
       if (action === "close") {
-        router.push("/Components/chauffeurs");
+        router.push("/Components/Chauffeurs");
       }
     } catch (err) {
       console.log(err);
