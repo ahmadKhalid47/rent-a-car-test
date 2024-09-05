@@ -29,7 +29,6 @@ export default function Insurances() {
   let reservation = useSelector((state: RootState) => state.reservation);
   let { countries, cities } = CountryCity(reservation.country);
 
-  console.log(reservation);
 
   return (
     <div className="w-full h-full">

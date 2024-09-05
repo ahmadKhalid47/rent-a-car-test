@@ -101,6 +101,21 @@ export default function Reservations() {
     getData();
   }, []);
 
+  console.clear();
+
+  const customerDataById = customersData.find(
+    (customer: any) => customer._id === reservation?.customer_id
+  );
+  const chauffeurDataById = chauffeursData.find(
+    (customer: any) => customer._id === reservation?.chauffeur_id
+  );
+  const vehicleDataById = VehiclesData.find(
+    (customer: any) => customer._id === reservation?.vehicle_id
+  );
+
+  console.log(reservation?.vehicle_id);
+  console.log(vehicleDataById);
+
   return (
     <div
       className={`${
