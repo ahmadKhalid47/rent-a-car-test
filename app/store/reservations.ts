@@ -15,7 +15,7 @@ const initialState: any = {
   PickUpTime: "",
   dropOffAddress: "",
   dropOffDate: "",
-  dropOfTime: "",
+  dropOffTime: "",
 };
 
 export const reservationSlice = createSlice({
@@ -64,8 +64,8 @@ export const reservationSlice = createSlice({
     setdropOffDate: (state, action) => {
       state.dropOffDate = action.payload;
     },
-    setdropOfTime: (state, action) => {
-      state.dropOfTime = action.payload;
+    setdropOffTime: (state, action) => {
+      state.dropOffTime = action.payload;
     },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
@@ -88,7 +88,7 @@ export const {
   setPickUpTime,
   setdropOffAddress,
   setdropOffDate,
-  setdropOfTime,
+  setdropOffTime,
   setcustomer_idR,
   setvehicle_idR,
   setchauffeur_idR,
