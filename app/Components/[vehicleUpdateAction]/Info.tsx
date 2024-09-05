@@ -31,6 +31,8 @@ import {
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -50,7 +52,7 @@ export default function Info() {
   useEffect(() => {
     setCountrySelected(vehicle.country);
   }, [vehicle.country]);
-  
+
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
@@ -159,14 +161,30 @@ export default function Info() {
             (item: any) => item.Type
           )}
         />
-        <TempSelectInput
-          setState={setyearR}
-          label={"Year"}
-          value={vehicle.year}
-          // required={false}
-          required={true}
-          options={[2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]}
-        />
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            Year
+            <FaAsterisk className="text-[6px]" />
+          </label>
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+            <input
+              required
+              type="number"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+              placeholder="Enter Year"
+              onChange={(e) => {
+                const value = e.target.value;
+                if (/^\d{0,4}$/.test(value)) {
+                  dispatch(setyearR(value));
+                }
+              }}
+              value={vehicle.year}
+              min={1900}
+              max={2200}
+            />
+          </div>
+        </div>
+
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}

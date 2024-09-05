@@ -98,6 +98,8 @@ export default function Vehicles() {
         setPopup(false);
       }
       setType("");
+      setExterior("");
+      setInterior("");
     } catch (err) {
       console.log(err);
     } finally {
@@ -172,7 +174,6 @@ export default function Vehicles() {
                       required={true}
                       type={"file"}
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Enter Text Here`}
                       onChange={(e: any) => {
                         setExterior(e.target?.files);
                       }}
@@ -191,7 +192,6 @@ export default function Vehicles() {
                       required={true}
                       type={"file"}
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Enter Text Here`}
                       onChange={(e: any) => {
                         setInterior(e.target?.files);
                       }}
@@ -207,6 +207,8 @@ export default function Vehicles() {
                     onClick={() => {
                       setPopup(false);
                       setType("");
+                      setExterior("");
+                      setInterior("");
                     }}
                   >
                     <FaTimes />
