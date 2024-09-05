@@ -44,6 +44,7 @@ export default function Vehicles() {
   const formRef = useRef<any>(null);
 
   useEffect(() => {
+    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
@@ -62,11 +63,7 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    if (vehicleUpdateAction === "AddVehicles") {
-      dispatch(resetState());
-    } else {
-      getData();
-    }
+    getData();
   }, []);
 
   useEffect(() => {
@@ -173,35 +170,35 @@ export default function Vehicles() {
         },
       });
 
-        const formData2 = new FormData();
-        formData2.append("length1", vehicle.damages.length);
+      const formData2 = new FormData();
+      formData2.append("length1", vehicle.damages.length);
 
-        for (let i = 0; i < vehicle.damages.length; i++) {
-          formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+      for (let i = 0; i < vehicle.damages.length; i++) {
+        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
 
-          for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
-            formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
-          }
+        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
         }
+      }
 
-        const res2 = await axios.post("/api/uploadNested", formData2, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        let tempArray = vehicle.damages;
-        for (let i = 0; i < vehicle.damages.length; i++) {}
+      const res2 = await axios.post("/api/uploadNested", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = vehicle.damages;
+      for (let i = 0; i < vehicle.damages.length; i++) {}
 
-        const updatedObjects = tempArray.map((obj: any, index: any) => ({
-          ...obj,
-          files: res2?.data?.message[index].map((url: any) => url),
-        }));
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        files: res2?.data?.message[index].map((url: any) => url),
+      }));
 
-        await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
-          ...vehicle,
-          carImages: res?.data?.message,
-          damages: updatedObjects,
-        });
+      await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
+        ...vehicle,
+        carImages: res?.data?.message,
+        damages: updatedObjects,
+      });
 
       if (action === "close") {
         router.push("/Components/Vehicles");

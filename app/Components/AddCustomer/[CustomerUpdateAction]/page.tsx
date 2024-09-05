@@ -126,6 +126,7 @@ export default function Vehicles() {
   }
 
   useEffect(() => {
+    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
@@ -144,11 +145,7 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    if (CustomerUpdateAction === "AddNew") {
-      dispatch(resetState());
-    } else {
-      getData();
-    }
+    getData();
   }, []);
 
   async function updateData(action: string) {
@@ -185,7 +182,7 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
-      
+
       console.log(res2?.data?.message);
       await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
         ...customer,

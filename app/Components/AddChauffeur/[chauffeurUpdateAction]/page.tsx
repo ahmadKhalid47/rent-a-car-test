@@ -127,6 +127,7 @@ export default function AddChauffeur() {
   }
 
   useEffect(() => {
+    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
@@ -145,11 +146,7 @@ export default function AddChauffeur() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    if (chauffeurUpdateAction === "AddNew") {
-      dispatch(resetState());
-    } else {
-      getData();
-    }
+    getData();
   }, []);
 
   async function updateData(action: string) {
