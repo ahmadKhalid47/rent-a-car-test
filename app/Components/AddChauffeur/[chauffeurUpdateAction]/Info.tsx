@@ -165,14 +165,14 @@ export default function Info() {
           label={"Alternative Phone"}
           value={chauffeur.alternativePhone}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setrentPerDayR}
           label={"Rent Per Day"}
           value={chauffeur.rentPerDay}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setstreetAddressR}

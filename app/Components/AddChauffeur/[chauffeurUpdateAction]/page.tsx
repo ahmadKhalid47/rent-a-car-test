@@ -122,6 +122,7 @@ export default function AddChauffeur() {
         router.push("/Components/Chauffeurs");
       } else {
         setCurrentPage(0);
+        dispatch(resetState());
       }
     }
   }
@@ -178,7 +179,7 @@ export default function AddChauffeur() {
         for (let i = 0; i < chauffeur.licenseImages.length; i++) {
           formData3.append("files", chauffeur.licenseImages[i]);
         }
-        const res3 = await axios.post("/api/uploadWithCondition", formData2, {
+        const res3 = await axios.post("/api/uploadWithCondition", formData3, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
