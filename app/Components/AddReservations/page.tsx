@@ -242,7 +242,11 @@ export default function Reservations() {
                 currentPage === 2 ? "1200:h-[650px]" : "1200:h-[570px]"
               }`}
             >
-              <Others />
+              <Others
+                customerData={customerDataById?.data}
+                chauffeurData={chauffeurDataById?.data}
+                vehicleData={vehicleDataById?.data}
+              />
             </div>
           </div>
 

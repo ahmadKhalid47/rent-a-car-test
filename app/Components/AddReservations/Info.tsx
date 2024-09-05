@@ -13,6 +13,7 @@ interface dataType {
 }
 
 export default function Info({ data, loading }: dataType) {
+  let reservation = useSelector((state: RootState) => state.reservation);
   let customersData: any = data;
   const [filteredCustomer, setFilteredCustomer] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -42,6 +43,8 @@ export default function Info({ data, loading }: dataType) {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
+
+  console.log(reservation.customer_id);
 
   return (
     <div className="w-full h-full">
@@ -88,12 +91,20 @@ export default function Info({ data, loading }: dataType) {
                 </div>
               </div>
               <button
-                className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center"
+                className={`w-full sm:w-[120px] h-[30px] rounded-[10px] ${
+                  reservation.customer_id === item._id
+                    ? "bg-dark-grey"
+                    : "bg-main-blue"
+                } text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center`}
                 onClick={() => {
-                  dispatch(setcustomer_idR(item._id));
+                  dispatch(
+                    setcustomer_idR(
+                      reservation.customer_id === item._id ? "" : item._id
+                    )
+                  );
                 }}
               >
-                Select
+                {reservation.customer_id === item._id ? "Selected" : "Select"}
               </button>
             </div>
           ))

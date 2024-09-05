@@ -36,9 +36,9 @@ export default function Info() {
   let dispatch = useDispatch();
 
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
-  const [files, setFiles] = useState<any>(chauffeur?.chauffeurImage);
+  const [files, setFiles] = useState<any>(chauffeur.chauffeurImage);
   useEffect(() => {
-    setFiles(chauffeur.chauffeurImage);
+    setFiles(chauffeur?.chauffeurImage); 
   }, [chauffeur.chauffeurImage]);
 
   const onDrop = useCallback((acceptedFiles: any) => {

@@ -18,6 +18,7 @@ interface dataType {
 }
 
 export default function Feature({ data, loading }: dataType) {
+  let reservation = useSelector((state: RootState) => state.reservation);
   let VehiclesData: any = data;
   const [filteredVehicle, setFilteredVehicle] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -145,12 +146,20 @@ export default function Feature({ data, loading }: dataType) {
                 </div>
               </div>
               <button
-                className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center"
+                className={`w-full sm:w-[120px] h-[30px] rounded-[10px] ${
+                  reservation.vehicle_id === item._id
+                    ? "bg-dark-grey"
+                    : "bg-main-blue"
+                } text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center`}
                 onClick={() => {
-                  dispatch(setvehicle_idR(item._id));
+                  dispatch(
+                    setvehicle_idR(
+                      reservation.vehicle_id === item._id ? "" : item._id
+                    )
+                  );
                 }}
               >
-                Select
+                {reservation.vehicle_id === item._id ? "Selected" : "Select"}
               </button>
             </div>
           ))

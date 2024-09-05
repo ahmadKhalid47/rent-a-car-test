@@ -15,6 +15,7 @@ interface dataType {
 }
 
 export default function Rental({ data, loading }: dataType) {
+  let reservation = useSelector((state: RootState) => state.reservation);
   const [exterior, setExterior] = useState(true);
   const chauffeursData: any = data;
   const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>(data);
@@ -122,12 +123,20 @@ export default function Rental({ data, loading }: dataType) {
                 </div>
               </div>
               <button
-                className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center"
+                className={`w-full sm:w-[120px] h-[30px] rounded-[10px] ${
+                  reservation.chauffeur_id === item._id
+                    ? "bg-dark-grey"
+                    : "bg-main-blue"
+                } text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center`}
                 onClick={() => {
-                  dispatch(setchauffeur_idR(item._id));
+                  dispatch(
+                    setchauffeur_idR(
+                      reservation.chauffeur_id === item._id ? "" : item._id
+                    )
+                  );
                 }}
               >
-                Select
+                {reservation.chauffeur_id === item._id ? "Selected" : "Select"}
               </button>
             </div>
           ))

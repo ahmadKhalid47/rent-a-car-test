@@ -5,8 +5,19 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setdiscount } from "@/app/store/reservations";
 
-export default function Others() {
+interface dataType {
+  customerData: any;
+  chauffeurData: any;
+  vehicleData: any;
+}
+
+export default function Others({
+  customerData,
+  chauffeurData,
+  vehicleData,
+}: dataType) {
   let reservation = useSelector((state: RootState) => state.reservation);
+  console.log(customerData, chauffeurData, vehicleData);
 
   return (
     <div className="w-full h-full  ">
@@ -30,12 +41,16 @@ export default function Others() {
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
 
-          <div className="w-full flex justify-between items-center h-fit">
-            <span>Chauffeur</span>
-            <span>$0.00</span>
-          </div>
+          {chauffeurData ? (
+            <>
+              <div className="w-full flex justify-between items-center h-fit">
+                <span>Chauffeur</span>
+                <span>${chauffeurData?.rentPerDay}</span>
+              </div>
+              <div className="border-b-[1px] border-grey w-full "></div>
+            </>
+          ) : null}
 
-          <div className="border-b-[1px] border-grey w-full "></div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>Taxes</span>
             <span>$0.00</span>

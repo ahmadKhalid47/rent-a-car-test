@@ -207,8 +207,6 @@ export default function AddChauffeur() {
       setLoading(false);
     }
   }
-  console.clear();
-  console.log(chauffeur);
 
   return (
     <div
