@@ -18,7 +18,6 @@ interface dataType {
 }
 
 export default function Feature({ data, loading }: dataType) {
-  const [showError, setShowError] = useState(null);
   let VehiclesData: any = data;
   const [filteredVehicle, setFilteredVehicle] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");

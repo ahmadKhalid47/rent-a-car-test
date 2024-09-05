@@ -217,6 +217,7 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
           }}
           value={value}
         >
+          <option value={""}>Select</option>
           {options?.map((item: any, key: number) => (
             <option value={item} key={key}>
               {item ? item : "Select"}

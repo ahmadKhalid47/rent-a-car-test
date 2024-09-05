@@ -1,7 +1,7 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import { TempTypeInputWidth } from "../InputComponents/TypeInput";
-import { SelectInputWidth } from "../InputComponents/SelectInput";
+import { TempSelectInputWidth } from "../InputComponents/SelectInput";
 import {
   setAllValues,
   resetState,
@@ -23,9 +23,13 @@ import {
 } from "@/app/store/reservations";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
+import { CountryCity } from "../functions/CountryStateCity";
 
 export default function Insurances() {
   let reservation = useSelector((state: RootState) => state.reservation);
+  let { countries, cities } = CountryCity(reservation.country);
+
+  console.log(reservation);
 
   return (
     <div className="w-full h-full">
@@ -54,7 +58,6 @@ export default function Insurances() {
           type={"number"}
           widthProp="sm:w-[48%]"
         />
-
         <TempTypeInputWidth
           setState={setsecurityDeposit}
           label={"Security Deposit"}
@@ -63,21 +66,22 @@ export default function Insurances() {
           type={"text"}
           widthProp="sm:w-[48%]"
         />
-        <SelectInputWidth
-          label={"City"}
-          value={""}
-          required={true}
-          options={["City1", "City2"]}
-          widthProp="sm:w-[48%]"
-        />
-        <SelectInputWidth
+        <TempSelectInputWidth
+          setState={setcountry}
           label={"Country"}
-          value={""}
+          value={reservation.country}
           required={true}
-          options={["City1", "City2"]}
+          options={countries.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
-
+        <TempSelectInputWidth
+          setState={setcity}
+          label={"City"}
+          value={reservation.city}
+          required={true}
+          options={cities.map((item: any) => item.label)}
+          widthProp="sm:w-[48%]"
+        />
         <TempTypeInputWidth
           setState={setPickUpAddress}
           label={"Pick Up Address"}
@@ -102,7 +106,6 @@ export default function Insurances() {
           required={true}
           widthProp="sm:w-[48%]"
         />
-
         <TempTypeInputWidth
           setState={setdropOffAddress}
           label={"Drop Off Address"}

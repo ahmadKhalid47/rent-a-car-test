@@ -32,3 +32,23 @@ export function CountryStateCity(selectedCountry: any, selectedState: any) {
 
   return { countries, states, cities };
 }
+
+export function CountryCity(selectedCountry: any) {
+  const countries: any = Country.getAllCountries().map((country: any) => ({
+    value: country.isoCode,
+    label: country.name,
+  }));
+
+  let selectedCountryISOCode = countries.find(
+    (country: any) => country.label === selectedCountry
+  )?.value;
+
+  const cities: any = selectedCountry
+    ? City.getCitiesOfCountry(selectedCountryISOCode)?.map((city: any) => ({
+        value: city.name,
+        label: city.name,
+      }))
+    : [];
+
+  return { countries, cities };
+}
