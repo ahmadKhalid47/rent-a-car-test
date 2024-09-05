@@ -204,7 +204,7 @@ export default function Vehicles() {
         });
 
       if (action === "close") {
-        // router.push("/Components/Vehicles");
+        router.push("/Components/Vehicles");
       }
     } catch (err) {
       console.log(err);

@@ -156,49 +156,49 @@ export default function Vehicles() {
       setLoading(true);
       const carImages = customer.customerImage;
 
-      if (
-        Array.isArray(carImages) &&
-        carImages.some((item) => item instanceof File)
-      ) {
-        const formData = new FormData();
-        formData.append("files", customer.customerImage[0]);
-        const res = await axios.post("/api/uploadWithCondition", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const formData2 = new FormData();
-        for (let i = 0; i < customer.passportImages.length; i++) {
-          formData2.append("files", customer.passportImages[i]);
-        }
-        const res2 = await axios.post("/api/uploadWithCondition", formData2, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const formData3 = new FormData();
-        for (let i = 0; i < customer.licenseImages.length; i++) {
-          formData3.append("files", customer.licenseImages[i]);
-        }
-        const res3 = await axios.post("/api/uploadWithCondition", formData2, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log(res2?.data?.message);
-
-        await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
-          ...customer,
-          customerImage: res?.data?.message,
-          passportImages: res2?.data?.message,
-          licenseImages: res3?.data?.message,
-        });
-      } else {
-        await axios.post(
-          `/api/updateCustomer/${CustomerUpdateAction}`,
-          customer
-        );
+      // if (
+      //   Array.isArray(carImages) &&
+      //   carImages.some((item) => item instanceof File)
+      // ) {
+      const formData = new FormData();
+      formData.append("files", customer.customerImage[0]);
+      const res = await axios.post("/api/uploadWithCondition", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const formData2 = new FormData();
+      for (let i = 0; i < customer.passportImages.length; i++) {
+        formData2.append("files", customer.passportImages[i]);
       }
+      const res2 = await axios.post("/api/uploadWithCondition", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const formData3 = new FormData();
+      for (let i = 0; i < customer.licenseImages.length; i++) {
+        formData3.append("files", customer.licenseImages[i]);
+      }
+      const res3 = await axios.post("/api/uploadWithCondition", formData3, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      
+      console.log(res2?.data?.message);
+      await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
+        ...customer,
+        customerImage: res?.data?.message,
+        passportImages: res2?.data?.message,
+        licenseImages: res3?.data?.message,
+      });
+      // } else {
+      // await axios.post(
+      //   `/api/updateCustomer/${CustomerUpdateAction}`,
+      //   customer
+      // );
+      // }
       if (action === "close") {
         router.push("/Components/Customers");
       }
@@ -208,6 +208,7 @@ export default function Vehicles() {
       setLoading(false);
     }
   }
+  console.log(customer.passportImages);
 
   return (
     <div
