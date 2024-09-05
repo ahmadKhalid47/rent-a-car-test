@@ -120,7 +120,7 @@ export default function Info() {
           value={customer.customerType}
           required={true}
           // required={false}
-          options={["Type1", "Type2"]}
+          options={["Individual", "Corporate"]}
         />
         <TempTypeInput
           setState={setnameR}
@@ -136,7 +136,7 @@ export default function Info() {
           value={customer.gender}
           required={true}
           // required={false}
-          options={["Select", "Male", "Female"]}
+          options={["Male", "Female", "Custom"]}
         />
 
         <TempTypeInput
@@ -167,14 +167,14 @@ export default function Info() {
           value={customer.phone}
           required={true}
           // required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setalternativePhoneR}
           label={"Alternative Phone"}
           value={customer.alternativePhone}
           required={false}
-          type={"text"}
+          type={"number"}
         />
 
         <TempTypeInput

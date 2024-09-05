@@ -127,7 +127,7 @@ export default function Info() {
           value={chauffeur.gender}
           required={true}
           // required={false}
-          options={["Select", "Male", "Female"]}
+          options={["Male", "Female", "Custom"]}
         />
 
         <TempTypeInput
@@ -158,7 +158,7 @@ export default function Info() {
           value={chauffeur.phone}
           required={true}
           // required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setalternativePhoneR}

@@ -12,14 +12,14 @@ export default function Feature() {
             label={"Make"}
             value={""}
             required={false}
-            options={["Select", "Make1", "Make2"]}
+            options={[ "Make1", "Make2"]}
             widthProp="sm:w-[48.5%]"
           />
           <SelectInputWidth
             label={"Model"}
             value={""}
             required={false}
-            options={["Select", "Model1", "Model2"]}
+            options={[ "Model1", "Model2"]}
             widthProp="sm:w-[48.5%]"
           />
 

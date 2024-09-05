@@ -27,14 +27,14 @@ export default function Insurances() {
           label={"Relation"}
           value={customer.emergencyContactRelation}
           required={false}
-          options={[ "Father", "Mother", "Brother", "Other"]}
+          options={["Father", "Mother", "Brother", "Other"]}
         />
         <TempTypeInput
           setState={setemergencyContactPhoneR}
           label={"Emergency Phone"}
           value={customer.emergencyContactPhone}
           required={false}
-          type={"text"}
+          type={"number"}
         />
       </div>
     </div>

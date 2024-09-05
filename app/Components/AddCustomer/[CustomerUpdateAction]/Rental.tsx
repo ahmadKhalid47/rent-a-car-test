@@ -80,7 +80,7 @@ export default function Rental() {
           label={"Passport / ID Number"}
           value={customer.passportNumber}
           required={false}
-          type={"text"}
+          type={"number"}
         />
 
         <TempTypeInput
@@ -125,7 +125,7 @@ export default function Rental() {
           label={"Driver's License Number"}
           value={customer.licenseNumber}
           required={false}
-          type={"text"}
+          type={"number"}
         />
 
         <TempTypeInput

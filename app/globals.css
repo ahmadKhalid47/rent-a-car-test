@@ -135,6 +135,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 5%;
 }
 
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
 .complete-status {
   border-color: #b8dbca;
   color: #087443;

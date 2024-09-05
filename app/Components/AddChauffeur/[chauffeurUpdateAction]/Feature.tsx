@@ -39,7 +39,7 @@ export default function Feature() {
           label={"Phone"}
           value={chauffeur.ref1Phone}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setrefAddressR}
@@ -53,7 +53,7 @@ export default function Feature() {
           label={"Relation"}
           value={chauffeur.ref1Relation}
           required={false}
-          options={["Select", "Father", "Mother", "Brother", "Other"]}
+          options={["Father", "Mother", "Brother", "Other"]}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -79,7 +79,7 @@ export default function Feature() {
           label={"Emergency Phone"}
           value={chauffeur.emergencyContactPhone}
           required={false}
-          type={"text"}
+          type={"number"}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">

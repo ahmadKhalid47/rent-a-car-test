@@ -32,7 +32,7 @@ export default function Insurances() {
           label={"Fuel Status"}
           value={""}
           required={true}
-          options={["Select", "Fuel1", "Fuel2"]}
+          options={[ "Fuel1", "Fuel2"]}
           widthProp="sm:w-[48%]"
         />
 
@@ -47,7 +47,7 @@ export default function Insurances() {
           label={"City"}
           value={""}
           required={true}
-          options={["Select", "City1", "City2"]}
+          options={[ "City1", "City2"]}
           widthProp="sm:w-[48%]"
         />
 
@@ -69,7 +69,7 @@ export default function Insurances() {
           label={"Pick Up Time"}
           value={""}
           required={true}
-          options={["Select", "Time1", "Time2"]}
+          options={[ "Time1", "Time2"]}
           widthProp="sm:w-[48%]"
         />
 
@@ -91,7 +91,7 @@ export default function Insurances() {
           label={"Drop Off Time"}
           value={""}
           required={true}
-          options={["Select", "Time1", "Time2"]}
+          options={[ "Time1", "Time2"]}
           widthProp="sm:w-[48%]"
         />
       </div>

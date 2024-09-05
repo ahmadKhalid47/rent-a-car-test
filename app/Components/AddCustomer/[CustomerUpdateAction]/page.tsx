@@ -120,6 +120,7 @@ export default function Vehicles() {
         router.push("/Components/Customers");
       } else {
         setCurrentPage(0);
+        dispatch(resetState());
       }
     }
   }
