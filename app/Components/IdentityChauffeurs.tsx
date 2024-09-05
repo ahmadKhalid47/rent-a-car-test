@@ -109,7 +109,7 @@ export default function Generalchauffeur() {
             />
           </div>
           <span
-            className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-28 right-28 ${
+            className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-[13%] right-[13%] ${
               zoomed ? "right-3" : ""
             } w-fit shadow bg-white rounded-full`}
             onClick={() => setImagePopup(false)}
