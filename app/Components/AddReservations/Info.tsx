@@ -3,13 +3,20 @@ import car from "@/public/Customer.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MediumLoader } from "../Loader";
+import { RootState } from "@/app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setcustomer_idR } from "@/app/store/reservations";
 
 export default function Info() {
+  let reservation = useSelector((state: RootState) => state.reservation);
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [filteredCustomer, setFilteredCustomer] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  let dispatch = useDispatch();
+
 
   useEffect(() => {
     async function getData() {
@@ -105,7 +112,7 @@ export default function Info() {
               <button
                 className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center"
                 onClick={() => {
-                  console.log(item._id);
+                  dispatch(setcustomer_idR(item._id));
                 }}
               >
                 Select

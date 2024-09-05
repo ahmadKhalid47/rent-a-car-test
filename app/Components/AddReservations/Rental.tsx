@@ -4,64 +4,67 @@ import checkBlack from "@/public/checkBlack.png";
 import car from "@/public/chauffeursPic.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { RootState } from "@/app/store";
+import { useDispatch, useSelector } from "react-redux";
 import { MediumLoader } from "../Loader";
+import { setchauffeur_idR } from "@/app/store/reservations";
 
 export default function Rental() {
+  let reservation = useSelector((state: RootState) => state.reservation);
   const [exterior, setExterior] = useState(true);
-    const [loading, setLoading] = useState<any>(true);
-    const [showError, setShowError] = useState(null);
-    const [chauffeursData, setchauffeursData] = useState<any[]>([]);
-    const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
-    const [searchQuery, setSearchQuery] = useState<string>("");
+  const [loading, setLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
+  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
+  const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  let dispatch = useDispatch();
 
-    useEffect(() => {
-      async function getData() {
-        try {
-          setLoading(true);
-          const result = await axios.get("/api/getchauffeur", {
-            headers: { "Cache-Control": "no-store" },
-          });
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.get("/api/getchauffeur", {
+          headers: { "Cache-Control": "no-store" },
+        });
 
-          if (result?.data?.data) {
-            setchauffeursData(result.data.data);
-            setFilteredchauffeur(result.data.data); // Initialize with full data
-          } else {
-            setShowError(result?.data?.error);
-          }
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setLoading(false);
+        if (result?.data?.data) {
+          setchauffeursData(result.data.data);
+          setFilteredchauffeur(result.data.data); // Initialize with full data
+        } else {
+          setShowError(result?.data?.error);
         }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
-      getData();
-    }, []);
+    }
+    getData();
+  }, []);
 
-    function filterchauffeur() {
-      if (!searchQuery) {
-        setFilteredchauffeur(chauffeursData);
-        return;
-      }
-
-      const lowercasedQuery = searchQuery.toLowerCase();
-      const filtered = chauffeursData.filter((vehicle) => {
-        const { data } = vehicle;
-        const { name } = data;
-
-        return name.toLowerCase().includes(lowercasedQuery);
-      });
-      setFilteredchauffeur(filtered);
+  function filterchauffeur() {
+    if (!searchQuery) {
+      setFilteredchauffeur(chauffeursData);
+      return;
     }
 
-    useEffect(() => {
-      filterchauffeur();
-    }, [searchQuery, chauffeursData]);
+    const lowercasedQuery = searchQuery.toLowerCase();
+    const filtered = chauffeursData.filter((vehicle) => {
+      const { data } = vehicle;
+      const { name } = data;
 
-    function handleSearchQueryChange(
-      event: React.ChangeEvent<HTMLInputElement>
-    ) {
-      setSearchQuery(event.target.value.trim());
-    }
+      return name.toLowerCase().includes(lowercasedQuery);
+    });
+    setFilteredchauffeur(filtered);
+  }
+
+  useEffect(() => {
+    filterchauffeur();
+  }, [searchQuery, chauffeursData]);
+
+  function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(event.target.value.trim());
+  }
 
   return (
     <div className="w-full h-full">
@@ -142,7 +145,7 @@ export default function Rental() {
               <button
                 className="w-full sm:w-[103px] h-[30px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center"
                 onClick={() => {
-                  console.log(item._id);
+                  dispatch(setchauffeur_idR(item._id));
                 }}
               >
                 Select

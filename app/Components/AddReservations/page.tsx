@@ -13,6 +13,7 @@ import Info from "./Info";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
+  let reservation = useSelector((state: RootState) => state.reservation);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
   let dispatch = useDispatch();
@@ -23,6 +24,9 @@ export default function Reservations() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
+  console.clear();
+  console.log(reservation);
 
   return (
     <div
