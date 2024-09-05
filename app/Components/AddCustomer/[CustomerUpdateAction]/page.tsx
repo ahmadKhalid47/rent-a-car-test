@@ -30,8 +30,6 @@ export default function Vehicles() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
-  // console.log(customer?.passportImages);
-  console.log(customer?.customerImage);
 
   let dispatch = useDispatch();
   useEffect(() => {

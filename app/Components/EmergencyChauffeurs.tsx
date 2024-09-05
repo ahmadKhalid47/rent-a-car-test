@@ -5,9 +5,6 @@ export default function EmergencyChauffeurs() {
   let { chauffeurInfo } = useSelector(
     (state: RootState) => state.chauffeurInfo
   );
-  console.clear();
-  console.log(chauffeurInfo);
-  
 
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt-">

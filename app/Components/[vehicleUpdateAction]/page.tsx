@@ -196,7 +196,6 @@ export default function Vehicles() {
           ...obj,
           files: res2?.data?.message[index].map((url: any) => url),
         }));
-        console.log("updatedObjects", updatedObjects);
 
         await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
           ...vehicle,
