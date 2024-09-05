@@ -94,7 +94,7 @@ export default function Insurances() {
           label={"Pick Up Date"}
           value={reservation.PickUpDate}
           required={false}
-          type={"text"}
+          type={"date"}
           widthProp="sm:w-[48%]"
         />
         <TempTypeInputWidth
