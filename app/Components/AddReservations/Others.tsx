@@ -29,10 +29,12 @@ export default function Others() {
             <span>$0.00</span>
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
+
           <div className="w-full flex justify-between items-center h-fit">
             <span>Chauffeur</span>
             <span>$0.00</span>
           </div>
+
           <div className="border-b-[1px] border-grey w-full "></div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>Taxes</span>
@@ -50,10 +52,12 @@ export default function Others() {
           />
           <div className="border-b-[1px] border-grey w-full "></div>
 
-          <div className="w-full flex justify-between items-center h-fit">
-            <span>Discount</span>
-            <span>$0.00</span>
-          </div>
+          {reservation?.discount ? (
+            <div className="w-full flex justify-between items-center h-fit">
+              <span>Discount</span>
+              <span>${reservation?.discount}</span>
+            </div>
+          ) : null}
           <div className="w-full flex justify-between items-center h-fit">
             <span>Total</span>
             <span>$0.00</span>

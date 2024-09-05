@@ -101,8 +101,6 @@ export default function Reservations() {
     getData();
   }, []);
 
-  console.clear();
-
   const customerDataById = customersData.find(
     (customer: any) => customer._id === reservation?.customer_id
   );
@@ -112,9 +110,6 @@ export default function Reservations() {
   const vehicleDataById = VehiclesData.find(
     (customer: any) => customer._id === reservation?.vehicle_id
   );
-
-  console.log(reservation?.vehicle_id);
-  console.log(vehicleDataById);
 
   return (
     <div
