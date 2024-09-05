@@ -9,38 +9,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { MediumLoader } from "../Loader";
 import { setchauffeur_idR } from "@/app/store/reservations";
 
-export default function Rental() {
-  let reservation = useSelector((state: RootState) => state.reservation);
+interface dataType {
+  data: Array<Object>;
+  loading: boolean;
+}
+
+export default function Rental({ data, loading }: dataType) {
   const [exterior, setExterior] = useState(true);
-  const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
-  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
-  const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
+  const chauffeursData: any = data;
+  const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
   let dispatch = useDispatch();
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.get("/api/getchauffeur", {
-          headers: { "Cache-Control": "no-store" },
-        });
-
-        if (result?.data?.data) {
-          setchauffeursData(result.data.data);
-          setFilteredchauffeur(result.data.data); // Initialize with full data
-        } else {
-          setShowError(result?.data?.error);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, []);
 
   function filterchauffeur() {
     if (!searchQuery) {
@@ -49,7 +28,7 @@ export default function Rental() {
     }
 
     const lowercasedQuery = searchQuery.toLowerCase();
-    const filtered = chauffeursData.filter((vehicle) => {
+    const filtered = chauffeursData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { name } = data;
 

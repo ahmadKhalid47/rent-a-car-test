@@ -7,39 +7,17 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setcustomer_idR } from "@/app/store/reservations";
 
-export default function Info() {
-  let reservation = useSelector((state: RootState) => state.reservation);
-  const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
-  const [customersData, setCustomersData] = useState<any[]>([]);
-  const [filteredCustomer, setFilteredCustomer] = useState<any[]>([]);
+interface dataType {
+  data: Array<Object>;
+  loading: boolean;
+}
+
+export default function Info({ data, loading }: dataType) {
+  let customersData: any = data;
+  const [filteredCustomer, setFilteredCustomer] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   let dispatch = useDispatch();
-
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.get("/api/getCustomer", {
-          headers: { "Cache-Control": "no-store" },
-        });
-
-        if (result?.data?.data) {
-          setCustomersData(result.data.data);
-          setFilteredCustomer(result.data.data); // Initialize with full data
-        } else {
-          setShowError(result?.data?.error);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, []);
 
   function filterCustomer() {
     if (!searchQuery) {
@@ -48,7 +26,7 @@ export default function Info() {
     }
 
     const lowercasedQuery = searchQuery.toLowerCase();
-    const filtered = customersData.filter((vehicle) => {
+    const filtered = customersData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { name } = data;
 

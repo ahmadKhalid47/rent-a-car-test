@@ -10,13 +10,22 @@ import Insurances from "./Insurances";
 import Others from "./Others";
 import Feature from "./Feature";
 import Info from "./Info";
+import axios from "axios";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
   let reservation = useSelector((state: RootState) => state.reservation);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
+  const [customerloading, setcustomerLoading] = useState<any>(true);
+  const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
   let dispatch = useDispatch();
+  const [customersData, setCustomersData] = useState<any[]>([]);
+  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
+
+  console.log(chauffeursData);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -25,8 +34,50 @@ export default function Reservations() {
     }
   }, [isMobile]);
 
-  console.clear();
-  console.log(reservation);
+  // Customer Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setcustomerLoading(true);
+        const result = await axios.get("/api/getCustomer", {
+          headers: { "Cache-Control": "no-store" },
+        });
+
+        if (result?.data?.data) {
+          setCustomersData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setcustomerLoading(false);
+      }
+    }
+    getData();
+  }, []);
+  // Chauffeur Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setchauffeursLoading(true);
+        const result = await axios.get("/api/getchauffeur", {
+          headers: { "Cache-Control": "no-store" },
+        });
+
+        if (result?.data?.data) {
+          setchauffeursData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setchauffeursLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
   return (
     <div
@@ -145,9 +196,9 @@ export default function Reservations() {
               }`}
             >
               {currentPage === 0 ? (
-                <Info />
+                <Info data={customersData} loading={customerloading} />
               ) : currentPage === 1 ? (
-                <Rental />
+                <Rental data={chauffeursData} loading={chauffeursloading} />
               ) : currentPage === 2 ? (
                 <Insurances />
               ) : currentPage === 3 ? (
