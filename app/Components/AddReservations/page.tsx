@@ -23,6 +23,7 @@ export default function Reservations() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
   return (
     <div
       className={`${
