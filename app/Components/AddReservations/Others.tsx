@@ -1,7 +1,13 @@
 "use client";
 import car from "@/public/PaymentCar.svg";
+import { TempTypeInputWidth } from "../InputComponents/TypeInput";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+import { setdiscount } from "@/app/store/reservations";
 
 export default function Others() {
+  let reservation = useSelector((state: RootState) => state.reservation);
+
   return (
     <div className="w-full h-full  ">
       <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-0 xs:gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
@@ -34,13 +40,14 @@ export default function Others() {
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
 
-          <div className="w-full flex flex-wrap justify-start 1200:justify-center items-center h-fit gap-1">
-            <span className="w-full text-start">Any Discount</span>
-            <input
-              className="w-[284px] h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px]"
-              placeholder="0.00"
-            />
-          </div>
+          <TempTypeInputWidth
+            setState={setdiscount}
+            label={"Any Discount"}
+            value={reservation.discount}
+            required={false}
+            type={"number"}
+            widthProp="sm:w-[284px]"
+          />
           <div className="border-b-[1px] border-grey w-full "></div>
 
           <div className="w-full flex justify-between items-center h-fit">
