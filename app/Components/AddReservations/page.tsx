@@ -19,12 +19,12 @@ export default function Reservations() {
   let [currentPage, setCurrentPage] = useState(0);
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
+  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   let dispatch = useDispatch();
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
-
-  console.log(chauffeursData);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -74,6 +74,28 @@ export default function Reservations() {
         console.log(error);
       } finally {
         setchauffeursLoading(false);
+      }
+    }
+    getData();
+  }, []);
+  // vehicle Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setvehicleLoading(true);
+        const result = await axios.get("/api/getVehicle", {
+          headers: { "Cache-Control": "no-store" },
+        });
+
+        if (result?.data?.data) {
+          setVehiclesData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setvehicleLoading(false);
       }
     }
     getData();
@@ -202,7 +224,7 @@ export default function Reservations() {
               ) : currentPage === 2 ? (
                 <Insurances />
               ) : currentPage === 3 ? (
-                <Feature />
+                <Feature data={VehiclesData} loading={vehicleLoading} />
               ) : null}
             </div>
             <div

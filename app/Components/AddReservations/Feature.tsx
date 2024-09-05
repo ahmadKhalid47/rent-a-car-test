@@ -12,36 +12,17 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setvehicle_idR } from "@/app/store/reservations";
 
-export default function Feature() {
-  const [loading, setLoading] = useState<any>(true);
+interface dataType {
+  data: Array<Object>;
+  loading: boolean;
+}
+
+export default function Feature({ data, loading }: dataType) {
   const [showError, setShowError] = useState(null);
-  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
-  const [filteredVehicle, setFilteredVehicle] = useState<any[]>([]);
+  let VehiclesData: any = data;
+  const [filteredVehicle, setFilteredVehicle] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
   let dispatch = useDispatch();
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.get("/api/getVehicle", {
-          headers: { "Cache-Control": "no-store" },
-        });
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicle(result.data.data); // Initialize with full data
-        } else {
-          setShowError(result?.data?.error);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getData();
-  }, []);
 
   function filterVehicle() {
     if (!searchQuery) {
@@ -50,7 +31,7 @@ export default function Feature() {
     }
 
     const lowercasedQuery = searchQuery.toLowerCase().trim();
-    const filtered = VehiclesData.filter((vehicle) => {
+    const filtered = VehiclesData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { make, model } = data;
       console.log(make, model);
