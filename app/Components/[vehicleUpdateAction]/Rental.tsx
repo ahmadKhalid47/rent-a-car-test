@@ -20,28 +20,28 @@ export default function Rental() {
           label={"Rental Price Per Hour"}
           value={vehicle.rentHour}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setrentDay}
           label={"Rental Price Per Day"}
           value={vehicle.rentDay}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setrentWeek}
           label={"Rental Price Per Week"}
           value={vehicle.rentWeek}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setrentMonth}
           label={"Rental Price Per Month"}
           value={vehicle.rentMonth}
           required={false}
-          type={"text"}
+          type={"number"}
         />
       </div>
     </div>

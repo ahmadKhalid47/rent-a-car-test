@@ -63,7 +63,9 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    getData();
+    if (vehicleUpdateAction !== "AddVehicles") {
+      getData();
+    }
   }, []);
 
   useEffect(() => {
@@ -151,6 +153,7 @@ export default function Vehicles() {
         router.push("/Components/Vehicles");
       } else {
         setCurrentPage(0);
+        dispatch(resetState());
       }
     }
   }

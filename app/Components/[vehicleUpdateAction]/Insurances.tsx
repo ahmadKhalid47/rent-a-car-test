@@ -19,7 +19,7 @@ export default function Insurances() {
           label={"Insurance Policy No"}
           value={vehicle.insuranceNo}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setinsuranceProvider}

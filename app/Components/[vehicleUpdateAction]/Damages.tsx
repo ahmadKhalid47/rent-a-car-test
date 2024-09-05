@@ -150,14 +150,13 @@ export default function Damages() {
     setDegree("");
     setFiles([]);
   }, [popup]);
-  
+
   let exteriorImg = Configurations?.Configurations?.type.find(
     (item: any) => item.Type === vehicle.type
   )?.exterior;
   let interiorImg = Configurations?.Configurations?.type.find(
     (item: any) => item.Type === vehicle.type
   )?.interior;
-  
 
   return (
     <div className="w-full h-fit">
@@ -361,10 +360,11 @@ export default function Damages() {
                   className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
-                  value={description ? description : "Enter Description"}
+                  value={description}
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
+                  placeholder="Enter Description"
                 ></textarea>
               </div>
             </div>

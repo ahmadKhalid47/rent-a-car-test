@@ -290,7 +290,7 @@ export default function Info() {
           value={vehicle.odometer}
           // required={false}
           required={true}
-          type={"text"}
+          type={"number"}
         />
         <TempSelectInput
           setState={setpassengersR}
