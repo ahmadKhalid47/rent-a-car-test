@@ -23,7 +23,7 @@ export default function Vehicles() {
   const [filteredreservations, setFilteredreservations] = useState<any[]>([]);
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
-      key: "gender",
+      key: "status",
       keyValue: "",
     },
     {
@@ -31,7 +31,7 @@ export default function Vehicles() {
       keyValue: "",
     },
     {
-      key: "postalCode",
+      key: "duration",
       keyValue: "",
     },
   ]);
@@ -76,14 +76,33 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = reservationsData.filter((vehicle) => {
       const { data } = vehicle;
-      const { name, phone } = data;
+      const {
+        chauffeurName,
+        vehicleName,
+        customerName,
+        city,
+        amount,
+        duration,
+      } = data;
+      console.log(
+        chauffeurName,
+        vehicleName,
+        customerName,
+        city,
+        amount,
+        duration
+      );
 
       return (
-        name.toLowerCase().includes(lowercasedQuery) ||
-        phone.toLowerCase().includes(lowercasedQuery)
+        chauffeurName?.toLowerCase().includes(lowercasedQuery) ||
+        vehicleName?.toLowerCase().includes(lowercasedQuery) ||
+        city?.toLowerCase().includes(lowercasedQuery) ||
+        amount?.toLowerCase().includes(lowercasedQuery) ||
+        duration?.toLowerCase().includes(lowercasedQuery) ||
+        customerName?.toLowerCase().includes(lowercasedQuery)
       );
     });
     setFilteredreservations(filtered);
@@ -94,7 +113,7 @@ export default function Vehicles() {
 
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
-        const lowercasedQuery = keyValue.toLowerCase();
+        const lowercasedQuery = keyValue?.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
           return keyValueInVehicle?.includes(lowercasedQuery);
@@ -164,29 +183,26 @@ export default function Vehicles() {
                   Status
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select
+                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "status"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
                     <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                  </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]" />
-                  </div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[32%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Duration
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
-                    <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
+                    {Array.from(
+                      new Set(reservationsData.map((item) => item.data.status))
+                    ).map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
                   </select>
                   <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
@@ -198,12 +214,59 @@ export default function Vehicles() {
                   City
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey">
+                  <select
+                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "city"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
                     <option value="">Select</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
-                    <option value="">Sedan</option>
+                    {Array.from(
+                      new Set(reservationsData.map((item) => item.data.city))
+                    ).map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                    <img src={shape.src} className="w-[10.5px]" />
+                  </div>
+                </div>
+              </div>
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[32%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                  Duration
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <select
+                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => {
+                      setAdvanceFilters((prevFilters: any) =>
+                        prevFilters.map((filter: any) =>
+                          filter.key === "duration"
+                            ? { ...filter, keyValue: e.target.value }
+                            : filter
+                        )
+                      );
+                    }}
+                  >
+                    <option value="">Select</option>
+                    {Array.from(
+                      new Set(
+                        reservationsData.map((item) => item.data.duration)
+                      )
+                    ).map((duration) => (
+                      <option key={duration} value={duration}>
+                        {duration}
+                      </option>
+                    ))}
                   </select>
                   <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />

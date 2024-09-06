@@ -93,7 +93,7 @@ export default function Insurances() {
           setState={setPickUpDate}
           label={"Pick Up Date"}
           value={reservation.PickUpDate}
-          required={false}
+          required={true}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -117,7 +117,7 @@ export default function Insurances() {
           setState={setdropOffDate}
           label={"Drop Off Date"}
           value={reservation.dropOffDate}
-          required={false}
+          required={true}
           type={"date"}
           widthProp="sm:w-[48%]"
         />

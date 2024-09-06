@@ -138,10 +138,12 @@ export default function Rental({ data, loading }: dataType) {
               </div>
               <button
                 className={`w-full sm:w-[120px] h-[30px] rounded-[10px] ${
-                  reservation.chauffeur_id === item._id
+                  reservation.chauffeur_id === item._id ||
+                  !reservation.withChauffeur
                     ? "bg-dark-grey"
                     : "bg-main-blue"
                 } text-white font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-5 sm:leading-[21px] text-center`}
+                disabled={!reservation.withChauffeur}
                 onClick={() => {
                   dispatch(
                     setchauffeur_idR(

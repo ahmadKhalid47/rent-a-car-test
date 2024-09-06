@@ -134,42 +134,6 @@ export default function ListViewreservation({ data }: dataType) {
   }
   const allIds = data.map((item: any) => item?._id);
 
-  async function updateActive(_id: any, active: boolean) {
-    try {
-      setEditLoading(true);
-      let result: any = await axios.post(
-        `/api/updateActivereservation/${_id}`,
-        {
-          active: !active,
-        }
-      );
-      console.log(result);
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setEditLoading(false);
-    }
-  }
-
-  async function UpdateActiveManyItem(active: boolean) {
-    try {
-      setDeleteLoading(true);
-      let result: any = await axios.post(`/api/updateManyActivereservation`, {
-        _ids: itemToDeleteMany,
-        active: active,
-      });
-      console.log(result);
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
-
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
@@ -185,23 +149,6 @@ export default function ListViewreservation({ data }: dataType) {
               Delete Multiple
             </button>
           </span>
-          <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span
-            className=" cursor-pointer"
-            onClick={() => {
-              UpdateActiveManyItem(true);
-            }}
-          >
-            Active /
-          </span>
-          <span
-            className=" cursor-pointer"
-            onClick={() => {
-              UpdateActiveManyItem(false);
-            }}
-          >
-            Inactive Multiple
-          </span>
         </span>
         <span
           className="underline cursor-pointer"
@@ -216,24 +163,48 @@ export default function ListViewreservation({ data }: dataType) {
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+              <div
+                className={`w-[15px] h-[15px] rounded-[1px] ${
+                  itemToDeleteMany.length !== data.length ? "" : "bg-main-blue"
+                } border-2 border-dark-grey`}
+                onClick={() => {
+                  setItemToDeleteMany(
+                    itemToDeleteMany.length !== data.length ? allIds : []
+                  );
+                }}
+              ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-7">
+            <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-2">
               ID <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[14%]">
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              onClick={() => sort("phone")}
+            >
               Vehicle <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[14%]">
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              onClick={() => sort("phone")}
+            >
               Customer <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[10%]"
+              onClick={() => sort("phone")}
+            >
               City <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              onClick={() => sort("phone")}
+            >
               Duration <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              onClick={() => sort("phone")}
+            >
               Amount <img src={arrows.src} />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
@@ -253,9 +224,20 @@ export default function ListViewreservation({ data }: dataType) {
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
-                  <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+                  <div
+                    className={`w-[15px] h-[15px] rounded-[1px] ${
+                      itemToDeleteMany?.includes(item?._id)
+                        ? "bg-main-blue"
+                        : ""
+                    } border-2 border-dark-grey`}
+                    onClick={(event) => {
+                      handlePushItem(item?._id);
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }}
+                  ></div>
                 </div>
-                <h5 className="text-start pe-3 w-[9%] ps-[10px]">
+                <h5 className="text-start pe-3 w-[9%] ps-2">
                   {JSON.stringify(
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}
@@ -378,21 +360,15 @@ export default function ListViewreservation({ data }: dataType) {
       </div>
       <div className="w-full h-[32px] mt-10 flex justify-between items-center">
         <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
-          Showing 12 from 100 data
+          Showing {(page - 1) * itemsPerPage + 1} -{" "}
+          {Math.min(page * itemsPerPage, data.length)} of {data.length} data{" "}
         </div>
         <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <div className="w-fit h-full flex justify-end items-center gap-1 sm:gap-4">
-            <FaAngleDoubleLeft />
-            <div className="flex justify-center items-center">
-              <div className="ms-4 bg-main-blue text-white rounded-[5px] w-[32px] h-[32px] flex justify-center items-center">
-                1
-              </div>
-              <div className="w-[32px] h-[32px] flex justify-center items-center bg- text-[#878787]">
-                2
-              </div>
-            </div>
-            <FaAngleDoubleRight />
-          </div>
+          <PaginationComponent
+            totalPages={totalPages}
+            page={page}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>
