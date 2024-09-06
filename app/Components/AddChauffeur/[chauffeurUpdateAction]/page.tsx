@@ -30,8 +30,6 @@ export default function AddChauffeur() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
-  // console.log(chauffeur?.passportImages);
-  console.log(chauffeur?.chauffeurImage);
 
   let dispatch = useDispatch();
   useEffect(() => {

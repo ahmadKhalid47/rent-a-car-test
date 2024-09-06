@@ -39,7 +39,9 @@ export default function Info() {
   const [files, setFiles] = useState<any>(chauffeur.chauffeurImage);
   useEffect(() => {
     setFiles(chauffeur?.chauffeurImage); 
-  }, [chauffeur.chauffeurImage]);
+  }, [chauffeur.chauffeurImage[0]]);
+  console.log(chauffeur?.chauffeurImage);
+  console.log(files);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
