@@ -1,10 +1,10 @@
 "use client";
 import car from "@/public/PaymentCar.svg";
-import { TempTypeInputWidth } from "../InputComponents/TypeInput";
+import { TempTypeInputWidth } from "../../InputComponents/TypeInput";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setdiscount } from "@/app/store/reservations";
-import chauffeurInfoSlice from "../../store/chauffeurInfo";
+import chauffeurInfoSlice from "../../../store/chauffeurInfo";
 
 interface dataType {
   customerData: any;

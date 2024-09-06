@@ -4,10 +4,10 @@ import car from "@/public/carInfoCar.svg";
 import {
   SelectInputWidth,
   TempSelectInputWidth,
-} from "../InputComponents/SelectInput";
+} from "../../InputComponents/SelectInput";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { MediumLoader } from "../Loader";
+import { MediumLoader } from "../../Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setvehicle_idR } from "@/app/store/reservations";

@@ -1,7 +1,7 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
-import { TempTypeInputWidth } from "../InputComponents/TypeInput";
-import { TempSelectInputWidth } from "../InputComponents/SelectInput";
+import { TempTypeInputWidth } from "../../InputComponents/TypeInput";
+import { TempSelectInputWidth } from "../../InputComponents/SelectInput";
 import {
   setAllValues,
   resetState,
@@ -23,7 +23,7 @@ import {
 } from "@/app/store/reservations";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { CountryCity } from "../functions/CountryStateCity";
+import { CountryCity } from "../../functions/CountryStateCity";
 
 export default function Insurances() {
   let reservation = useSelector((state: RootState) => state.reservation);

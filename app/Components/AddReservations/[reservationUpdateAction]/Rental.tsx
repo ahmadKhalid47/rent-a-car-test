@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { MediumLoader } from "../Loader";
+import { MediumLoader } from "../../Loader";
 import { setchauffeur_idR, setwithChauffeur } from "@/app/store/reservations";
 
 interface dataType {

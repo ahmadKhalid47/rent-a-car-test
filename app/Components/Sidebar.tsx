@@ -55,7 +55,7 @@ export default function Sidebar() {
       setChevronState("Vehicles");
     } else if (
       pathName === "/Components/Reservations" ||
-      pathName === "/Components/AddReservations"
+      pathName === "/Components/AddReservations/AddNew"
     ) {
       setChevronState("Reservations");
     } else if (pathName === "/Components/Settings") {
@@ -353,7 +353,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddReservations"
+              href="/Components/AddReservations/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -368,7 +368,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddReservations"
+                  pathName === "/Components/AddReservations/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

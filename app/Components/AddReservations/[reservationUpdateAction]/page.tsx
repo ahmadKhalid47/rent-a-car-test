@@ -2,7 +2,7 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import Rental from "./Rental";
@@ -11,6 +11,9 @@ import Others from "./Others";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios from "axios";
+import { SmallLoader } from "../../Loader";
+import { useParams, useRouter } from "next/navigation";
+import { resetState } from "@/app/store/reservations";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
@@ -25,7 +28,14 @@ export default function Reservations() {
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
-
+  let [goToPage, setGoToPage] = useState(0);
+  const [loading, setLoading] = useState<any>(false);
+  const [showSuccess, setShowSuccess] = useState(null);
+  const formRef = useRef<any>(null);
+  const params = useParams();
+  const router = useRouter();
+  const { reservationUpdateAction } = params;
+  console.log(reservationUpdateAction);
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -111,6 +121,63 @@ export default function Reservations() {
     (customer: any) => customer._id === reservation?.vehicle_id
   );
 
+  async function saveData(action: string) {
+    try {
+      setLoading(true);
+      let result: any = await axios.post(`/api/savereservation`, reservation);
+      if (result?.data?.success) {
+        setShowSuccess(result?.data?.success);
+        setShowError(null);
+      } else {
+        setShowError(result?.data?.error);
+        setShowSuccess(null);
+      }
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      if (action === "close") {
+        router.push("/Components/Reservations");
+      } else {
+        setCurrentPage(0);
+        dispatch(resetState());
+      }
+    }
+  }
+
+  async function updateData(action: string) {
+    try {
+      setLoading(true);
+      await axios.post(
+        `/api/updatereservation/${reservationUpdateAction}`,
+        reservation
+      );
+      if (action === "close") {
+        router.push("/Components/Reservations");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCurrentPage(goToPage);
+  };
+
+  const submitButton = () => {
+    if (formRef.current) {
+      formRef.current?.click();
+    }
+  };
+  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission on Enter key
+    }
+  };
+
   return (
     <div
       className={`${
@@ -128,7 +195,11 @@ export default function Reservations() {
             </p>
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5">
+        <form
+          onSubmit={handleSubmit}
+          onKeyDown={handleKeyDown}
+          className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
+        >
           <div className="w-full h-fit flex flex-col justify-start items-center">
             <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px]">
               <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey bg-white z-[0]">
@@ -139,7 +210,10 @@ export default function Reservations() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(0)}
+                  onClick={() => {
+                    setGoToPage(0);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
@@ -153,7 +227,10 @@ export default function Reservations() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(1)}
+                  onClick={() => {
+                    setGoToPage(1);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
@@ -165,7 +242,10 @@ export default function Reservations() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(2)}
+                  onClick={() => {
+                    setGoToPage(2);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
@@ -178,7 +258,10 @@ export default function Reservations() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  onClick={() => setCurrentPage(3)}
+                  onClick={() => {
+                    setGoToPage(3);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
@@ -249,7 +332,6 @@ export default function Reservations() {
               />
             </div>
           </div>
-
           <div
             className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${
               currentPage === 0 ? "justify-end" : "justify-between"
@@ -264,24 +346,67 @@ export default function Reservations() {
               </button>
             ) : null}
             {currentPage === 3 ? (
-              <div className="flex justify-start items-center gap-1 md:gap-3">
-                <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                  Save and Close
-                </button>
-                <button className="px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                  Save and New
-                </button>
-              </div>
+              <>
+                {reservationUpdateAction !== "AddNew" ? (
+                  <div className="flex justify-start items-center gap-1 md:gap-3">
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        updateData("close");
+                        console.log(reservation);
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Update and Close"}
+                    </button>
+                    <div />
+                  </div>
+                ) : (
+                  <div className="flex justify-start items-center gap-1 md:gap-3">
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        saveData("close");
+                        console.log(reservation);
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Save and Close"}
+                    </button>
+                    <button
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      disabled={loading}
+                      onClick={() => {
+                        saveData("new");
+                        console.log(reservation);
+                      }}
+                    >
+                      {loading ? <SmallLoader /> : "Save and New"}
+                    </button>
+                    <div />
+                  </div>
+                )}
+              </>
             ) : (
-              <button
-                className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => setCurrentPage(currentPage + 1)}
-              >
-                Save and Continue
-              </button>
+              <>
+                <button
+                  className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                  onClick={() => {
+                    setGoToPage(currentPage + 1);
+                    submitButton();
+                  }}
+                >
+                  Save and Continue
+                </button>
+                <button
+                  ref={formRef}
+                  className="absolute hidden"
+                  type="submit"
+                ></button>
+              </>
             )}
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

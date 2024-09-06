@@ -2,7 +2,7 @@
 import car from "@/public/Customer.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { MediumLoader } from "../Loader";
+import { MediumLoader } from "../../Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setcustomer_idR } from "@/app/store/reservations";
