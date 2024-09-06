@@ -55,8 +55,13 @@ export default function Others({
     let rent = rentWithDays + chauffeurWithDays - discount;
     return rent;
   }
- 
-  let totalRent = calculateRentPerDays(daysBetween, carRent, chauffeurRent, discount);
+
+  let totalRent = calculateRentPerDays(
+    daysBetween,
+    carRent,
+    chauffeurRent,
+    discount
+  );
 
   return (
     <div className="w-full h-full  ">
@@ -82,7 +87,7 @@ export default function Others({
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
 
-          {chauffeurData ? (
+          {reservation?.withChauffeur ? (
             <>
               <div className="w-full flex justify-between items-center h-fit">
                 <span>

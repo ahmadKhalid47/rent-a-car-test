@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { MediumLoader } from "../Loader";
-import { setchauffeur_idR } from "@/app/store/reservations";
+import { setchauffeur_idR, setwithChauffeur } from "@/app/store/reservations";
 
 interface dataType {
   data: Array<Object>;
@@ -51,28 +51,42 @@ export default function Rental({ data, loading }: dataType) {
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
         <div className="w-[100%] h-fit flex flex-wrap justify-center items-center bg-green-20 gap-y-2 gap-x-5 font-[500] text-[14px] md:text-[16px] leading-[19px] ">
           <button
-            className={`pe-3 md:pe-0 w-full md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-2 ps-3 items-center text-center ${
-              exterior ? "text-main-blue" : ""
+            className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+              exterior ? "bg-main-blue text-white" : "bg-white text-black"
             }`}
-            onClick={() => setExterior(!exterior)}
+            onClick={() => {
+              setExterior(true);
+              dispatch(setwithChauffeur(true));
+            }}
           >
             {exterior ? (
-              <img src={checkBlue.src} />
+              <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+              </div>
             ) : (
-              <img src={checkBlack.src} />
+              <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+              </div>
             )}
             With chauffeur
-          </button>{" "}
+          </button>
           <button
-            className={`pe-3 md:pe-0 w-full md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-2 ps-3 items-center text-center ${
-              !exterior ? "text-main-blue" : ""
+            className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+              !exterior ? "bg-main-blue text-white" : "bg-white text-black"
             }`}
-            onClick={() => setExterior(!exterior)}
+            onClick={() => {
+              setExterior(false);
+              dispatch(setwithChauffeur(false));
+            }}
           >
             {!exterior ? (
-              <img src={checkBlue.src} />
+              <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+              </div>
             ) : (
-              <img src={checkBlack.src} />
+              <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+              </div>
             )}
             Without chauffeur
           </button>

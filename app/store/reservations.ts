@@ -17,6 +17,7 @@ const initialState: any = {
   dropOffDate: "",
   dropOffTime: "",
   discount: "",
+  withChauffeur: "",
 };
 
 export const reservationSlice = createSlice({
@@ -71,6 +72,9 @@ export const reservationSlice = createSlice({
     setdiscount: (state, action) => {
       state.discount = action.payload;
     },
+    setwithChauffeur: (state, action) => {
+      state.withChauffeur = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -97,6 +101,7 @@ export const {
   setvehicle_idR,
   setchauffeur_idR,
   setdiscount,
+  setwithChauffeur
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;
