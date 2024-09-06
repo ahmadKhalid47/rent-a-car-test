@@ -2,8 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
   customer_id: "",
+  customerName: "",
   chauffeur_id: "",
+  chauffeurName: "",
   vehicle_id: "",
+  vehicleName: "",
   reservationDate: "",
   odometer: "",
   fuelStatus: "",
@@ -17,7 +20,7 @@ const initialState: any = {
   dropOffDate: "",
   dropOffTime: "",
   discount: "",
-  withChauffeur: "",
+  withChauffeur: true,
 };
 
 export const reservationSlice = createSlice({
@@ -32,6 +35,15 @@ export const reservationSlice = createSlice({
     },
     setvehicle_idR: (state, action) => {
       state.vehicle_id = action.payload;
+    },
+    setcustomerNameR: (state, action) => {
+      state.customerName = action.payload;
+    },
+    setchauffeurNameR: (state, action) => {
+      state.chauffeurName = action.payload;
+    },
+    setvehicleNameR: (state, action) => {
+      state.vehicleName = action.payload;
     },
     setreservationDate: (state, action) => {
       state.reservationDate = action.payload;
@@ -101,7 +113,10 @@ export const {
   setvehicle_idR,
   setchauffeur_idR,
   setdiscount,
-  setwithChauffeur
+  setwithChauffeur,
+  setcustomerNameR,
+  setchauffeurNameR,
+  setvehicleNameR,
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;

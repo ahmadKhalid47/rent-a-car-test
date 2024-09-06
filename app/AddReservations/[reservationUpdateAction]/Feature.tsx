@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setvehicle_idR } from "@/app/store/reservations";
+import { setvehicle_idR, setvehicleNameR } from "@/app/store/reservations";
 
 interface dataType {
   data: Array<Object>;
@@ -148,6 +148,14 @@ export default function Feature({ data, loading }: dataType) {
                   dispatch(
                     setvehicle_idR(
                       reservation.vehicle_id === item._id ? "" : item._id
+                    )
+                  );
+                  dispatch(
+                    setvehicleNameR(
+                      reservation.vehicleName ===
+                        item?.data?.make + " " + item?.data?.model
+                        ? ""
+                        : item?.data?.make + " " + item?.data?.model
                     )
                   );
                 }}

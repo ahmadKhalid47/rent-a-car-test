@@ -248,260 +248,122 @@ export default function ListViewreservation({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-            </div>
+          {paginatedData.map((item: any, index: number) => (
+            <div key={index} className="w-full">
+              <Link
+                href={`/reservationInfo/${item?._id}`}
+                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+              >
+                <div className="text-center w-[3%] flex justify-center items-center ">
+                  <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+                </div>
+                <h5 className="text-start pe-3 w-[9%] ps-[10px]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}
+                </h5>
+                <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+                  Suzuki Swift
+                </div>
 
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
+                <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
+                <h5 className="text-start pe-3 w-[10%]">New York</h5>
 
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                Completed
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
+                <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
+                <h5 className="text-start pe-3 w-[9%]">$100</h5>
+                <div className="text-start pe-3 w-[10%]">
+                  <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
+                    Completed
+                  </div>
+                </div>
+                <div className="flex justify-start items-end w-[7%]">
+                  <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
+                  <img src={doc1.src} />
+                </div>
+                <div className="flex justify-start ps-2 items-end w-[7%]">
+                  <img
+                    src={edit.src}
+                    className="me-[5.8px]"
+                    onClick={() => {
+                      router.push(`/Components/AddChauffeur/${item?._id}`);
+                    }}
+                  />
 
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+                  <img
+                    src={deleteIcon.src}
+                    onClick={() => {
+                      setPopup(true);
+                      setItemToDelete(item?._id);
+                    }}
+                  />
+                </div>
+              </Link>
+              {popup ? (
+                <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                    <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                        Are you sure you want to delete this item
+                      </label>
+                    </div>
+                    <div
+                      className={`w-full flex justify-end gap-4 items-center pt-4`}
+                    >
+                      <button
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          setPopup(false);
+                        }}
+                      >
+                        No
+                      </button>
+                      <button
+                        className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          deleteItem(itemToDelete);
+                        }}
+                        disabled={deleteLoading}
+                      >
+                        {deleteLoading ? <SmallLoader /> : "Yes"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+              {deleteManyPopup ? (
+                <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                    <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                        Are you sure you want to delete this item
+                      </label>
+                    </div>
+                    <div
+                      className={`w-full flex justify-end gap-4 items-center pt-4`}
+                    >
+                      <button
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          setDeleteManyPopup(false);
+                        }}
+                      >
+                        No
+                      </button>
+                      <button
+                        className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          deleteManyItem();
+                        }}
+                        disabled={deleteLoading}
+                      >
+                        {deleteLoading ? <SmallLoader /> : "Yes"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
             </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[76px] ms-[4.5px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] cancel-status">
-                Canceled
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-              {/*  */}
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                Completed
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-              {/*  */}
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                Completed
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                Completed
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-              {/*  */}
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] progress-status">
-                In Progress
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-              {/*  */}
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                Completed
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
-          <Link
-            href={"/reservationInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[9%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-              Suzuki Swift
-              {/*  */}
-            </div>
-
-            <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-            <h5 className="text-start pe-3 w-[10%]">New York</h5>
-            <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-            <h5 className="text-start pe-3 w-[9%]">$100</h5>
-            <div className="text-start pe-3 w-[10%]">
-              <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] progress-status">
-                In Progress
-              </div>
-            </div>
-            <div className="flex justify-start items-end w-[7%]">
-              <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-              <img src={doc1.src} />
-            </div>
-            <div className="flex justify-start ps-2 items-end w-[7%]">
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link>
+          ))}
         </div>
       </div>
       <div className="w-full h-[32px] mt-10 flex justify-between items-center">

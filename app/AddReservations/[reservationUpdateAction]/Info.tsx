@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setcustomer_idR } from "@/app/store/reservations";
+import { setcustomer_idR, setcustomerNameR } from "@/app/store/reservations";
 
 interface dataType {
   data: Array<Object>;
@@ -98,6 +98,13 @@ export default function Info({ data, loading }: dataType) {
                   dispatch(
                     setcustomer_idR(
                       reservation.customer_id === item._id ? "" : item._id
+                    )
+                  );
+                  dispatch(
+                    setcustomerNameR(
+                      reservation.customerName === item?.data.name
+                        ? ""
+                        : item?.data.name
                     )
                   );
                 }}

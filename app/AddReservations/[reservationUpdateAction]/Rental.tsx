@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { MediumLoader } from "../../Components/Loader";
-import { setchauffeur_idR, setwithChauffeur } from "@/app/store/reservations";
+import {
+  setchauffeur_idR,
+  setchauffeurNameR,
+  setwithChauffeur,
+} from "@/app/store/reservations";
 
 interface dataType {
   data: Array<Object>;
@@ -142,6 +146,13 @@ export default function Rental({ data, loading }: dataType) {
                   dispatch(
                     setchauffeur_idR(
                       reservation.chauffeur_id === item._id ? "" : item._id
+                    )
+                  );
+                  dispatch(
+                    setchauffeurNameR(
+                      reservation.chauffeurName === item?.data.name
+                        ? ""
+                        : item?.data.name
                     )
                   );
                 }}
