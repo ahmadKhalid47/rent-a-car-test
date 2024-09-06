@@ -30,7 +30,7 @@ export default function Login() {
       setLoading(true);
       let result: any = await axios.post(`/api/login`, formDataObj);
       if (result?.data?.error === null) {
-        router.push("/Components/Vehicles");
+        router.push("/Vehicles");
       } else {
         setShowError(result?.data?.error);
       }

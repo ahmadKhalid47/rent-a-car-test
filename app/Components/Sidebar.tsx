@@ -35,30 +35,30 @@ export default function Sidebar() {
 
   useEffect(() => {
     if (
-      pathName === "/Components/Customers" ||
-      pathName === "/Components/CustomerInfo" ||
-      pathName === "/Components/AddCustomer/AddNew"
+      pathName === "/Customers" ||
+      pathName === "/CustomerInfo" ||
+      pathName === "/AddCustomer/AddNew"
     ) {
       setChevronState("Customers");
     } else if (
-      pathName === "/Components/Chauffeurs" ||
-      pathName === "/Components/ChauffeursInfo" ||
-      pathName === "/Components/AddChauffeur/AddNew"
+      pathName === "/Chauffeurs" ||
+      pathName === "/ChauffeursInfo" ||
+      pathName === "/AddChauffeur/AddNew"
     ) {
       setChevronState("Chauffeurs");
     } else if (
-      pathName === "/Components/Vehicles" ||
-      pathName?.includes("/Components/CarInfo") ||
-      pathName === "/Components/AddNew" ||
-      pathName?.includes("/Components/Configuration")
+      pathName === "/Vehicles" ||
+      pathName?.includes("/CarInfo") ||
+      pathName === "/AddVehicle/AddNew" ||
+      pathName?.includes("/Configuration")
     ) {
       setChevronState("Vehicles");
     } else if (
-      pathName === "/Components/Reservations" ||
-      pathName === "/Components/AddReservations/AddNew"
+      pathName === "/Reservations" ||
+      pathName === "/AddReservations/AddNew"
     ) {
       setChevronState("Reservations");
-    } else if (pathName === "/Components/Settings") {
+    } else if (pathName === "/Settings") {
       setChevronState("Settings");
     }
   }, [pathName]);
@@ -76,7 +76,7 @@ export default function Sidebar() {
       }
     >
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
-        <Link href={"/Components/Vehicles"} className="w-fit h-fit">
+        <Link href={"/Vehicles"} className="w-fit h-fit">
           <img
             src={bar.src}
             className={`${
@@ -157,14 +157,14 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
-                href="/Components/Customers"
+                href="/Customers"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Customers" ||
-                  pathName === "/Components/CustomerInfo"
+                  pathName === "/Customers" ||
+                  pathName === "/CustomerInfo"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -175,7 +175,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               //   router.push(
-              href="/Components/AddCustomer/AddNew"
+              href="/AddCustomer/AddNew"
               //   );
               // }}
               className="flex justify-start items-center w-full"
@@ -190,7 +190,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddCustomer/AddNew"
+                  pathName === "/AddCustomer/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -245,14 +245,14 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
-                href="/Components/Chauffeurs"
+                href="/Chauffeurs"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Chauffeurs" ||
-                  pathName === "/Components/ChauffeursInfo"
+                  pathName === "/Chauffeurs" ||
+                  pathName === "/ChauffeursInfo"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -263,7 +263,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddChauffeur/AddNew"
+              href="/AddChauffeur/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -278,7 +278,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddChauffeur/AddNew"
+                  pathName === "/AddChauffeur/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -336,13 +336,13 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
-                href="/Components/Reservations"
+                href="/Reservations"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Reservations"
+                  pathName === "/Reservations"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -353,7 +353,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddReservations/AddNew"
+              href="/AddReservations/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -368,7 +368,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddReservations/AddNew"
+                  pathName === "/AddReservations/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -424,14 +424,14 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
               </div>
               <Link
-                href="/Components/Vehicles"
+                href="/Vehicles"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Vehicles" ||
-                  pathName?.includes("/Components/CarInfo")
+                  pathName === "/Vehicles" ||
+                  pathName?.includes("/CarInfo")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -440,7 +440,7 @@ export default function Sidebar() {
               </Link>{" "}
             </div>
             <Link
-              href="/Components/AddNew"
+              href="/AddVehicle/AddNew"
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -453,7 +453,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddNew"
+                  pathName === "/AddVehicle/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -467,13 +467,13 @@ export default function Sidebar() {
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
               </div>
               <Link
-                href="/Components/Configuration"
+                href="/Configuration"
                 className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
                   global.sidebarShow
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName?.includes("/Components/Configuration")
+                  pathName?.includes("/Configuration")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -496,7 +496,7 @@ export default function Sidebar() {
           </span>
         </div> */}
         <Link
-          href="/Components/Settings"
+          href="/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white rounded-[10px] ${

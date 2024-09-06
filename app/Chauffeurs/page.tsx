@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import shape from "@/public/Shape2.svg";
-import ListViewCustomers from "./ListViewCustomers";
+import ListViewChauffeur from "./ListViewChauffeur";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
@@ -19,14 +19,10 @@ export default function Vehicles() {
   const [loading, setLoading] = useState<any>(true);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
-  const [customersData, setCustomersData] = useState<any[]>([]);
+  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredCustomer, setFilteredCustomer] = useState<any[]>([]);
+  const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
   const [advanceFilters, setAdvanceFilters] = useState<any>([
-    {
-      key: "customerType",
-      keyValue: "",
-    },
     {
       key: "gender",
       keyValue: "",
@@ -52,13 +48,13 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.get("/api/getCustomer", {
+        const result = await axios.get("/api/getchauffeur", {
           headers: { "Cache-Control": "no-store" },
         });
 
         if (result?.data?.data) {
-          setCustomersData(result.data.data);
-          setFilteredCustomer(result.data.data); // Initialize with full data
+          setchauffeursData(result.data.data);
+          setFilteredchauffeur(result.data.data); // Initialize with full data
         } else {
           setShowError(result?.data?.error);
         }
@@ -72,17 +68,17 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader]);
 
   useEffect(() => {
-    filterCustomer();
-  }, [searchQuery, customersData]);
+    filterchauffeur();
+  }, [searchQuery, chauffeursData]);
 
-  function filterCustomer() {
+  function filterchauffeur() {
     if (!searchQuery) {
-      setFilteredCustomer(customersData);
+      setFilteredchauffeur(chauffeursData);
       return;
     }
 
     const lowercasedQuery = searchQuery.toLowerCase();
-    const filtered = customersData.filter((vehicle) => {
+    const filtered = chauffeursData.filter((vehicle) => {
       const { data } = vehicle;
       const { name, phone } = data;
 
@@ -91,11 +87,11 @@ export default function Vehicles() {
         phone.toLowerCase().includes(lowercasedQuery)
       );
     });
-    setFilteredCustomer(filtered);
+    setFilteredchauffeur(filtered);
   }
 
   function advanceFilterVehicles() {
-    let filtered: any = customersData;
+    let filtered: any = chauffeursData;
 
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
@@ -107,7 +103,7 @@ export default function Vehicles() {
       }
     });
 
-    setFilteredCustomer(filtered);
+    setFilteredchauffeur(filtered);
   }
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -125,19 +121,19 @@ export default function Vehicles() {
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
-            All Customers
+            All chauffeurs
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Customers / All Customers
+              chauffeurs / All chauffeurs
             </p>
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
               className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
-                router.push("/AddCustomer/AddNew");
+                router.push("/AddChauffeur/AddNew");
               }}
             >
-              Add New Customer
+              Add New chauffeur
             </button>
           </div>
         </div>
@@ -166,39 +162,6 @@ export default function Vehicles() {
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Customer Type
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select
-                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "customerType"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(
-                        customersData.map((item) => item.data.customerType)
-                      )
-                    ).map((customerType) => (
-                      <option key={customerType} value={customerType}>
-                        {customerType}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]" />
-                  </div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Gender
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
@@ -216,7 +179,7 @@ export default function Vehicles() {
                   >
                     <option value="">Select</option>
                     {Array.from(
-                      new Set(customersData.map((item) => item.data.gender))
+                      new Set(chauffeursData.map((item) => item.data.gender))
                     ).map((gender) => (
                       <option key={gender} value={gender}>
                         {gender}
@@ -247,7 +210,9 @@ export default function Vehicles() {
                   >
                     <option value="">Select</option>
                     {Array.from(
-                      new Set(customersData.map((item) => item.data.postalCode))
+                      new Set(
+                        chauffeursData.map((item) => item.data.postalCode)
+                      )
                     ).map((postalCode) => (
                       <option key={postalCode} value={postalCode}>
                         {postalCode}
@@ -275,7 +240,7 @@ export default function Vehicles() {
                   >
                     <option value="">Select</option>
                     {Array.from(
-                      new Set(customersData.map((item) => item.data.city))
+                      new Set(chauffeursData.map((item) => item.data.city))
                     ).map((city) => (
                       <option key={city} value={city}>
                         {city}
@@ -298,7 +263,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          <ListViewCustomers data={filteredCustomer} />
+          <ListViewChauffeur data={filteredchauffeur} />
         </div>
       </div>
     </div>
