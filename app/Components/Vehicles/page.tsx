@@ -19,7 +19,7 @@ export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [gridView, setGridView] = useState(true);
+  const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
   const [showSuccess, setShowSuccess] = useState(null);
@@ -122,7 +122,6 @@ export default function Vehicles() {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
-  // console.log(vehiclesData);
 
   return (
     <div
@@ -143,16 +142,6 @@ export default function Vehicles() {
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <div className="w-fit h-fit flex justify-end items-end gap-3">
               <button
-                className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-[35px] md:h-[44px] rounded-[10px] ${
-                  gridView
-                    ? "bg-main-blue text-white"
-                    : "bg-light-grey border-2 border-grey"
-                }  font-[500] xs:text-[0px] md:text-[2px] text-[20px] leading-[30px] text-center`}
-                onClick={() => setGridView(true)}
-              >
-                <GridViewRounded />
-              </button>
-              <button
                 className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
                   !gridView
                     ? "bg-main-blue text-white"
@@ -165,6 +154,16 @@ export default function Vehicles() {
                 ) : (
                   <img src={listBlack.src} />
                 )}
+              </button>
+              <button
+                className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-[35px] md:h-[44px] rounded-[10px] ${
+                  gridView
+                    ? "bg-main-blue text-white"
+                    : "bg-light-grey border-2 border-grey"
+                }  font-[500] xs:text-[0px] md:text-[2px] text-[20px] leading-[30px] text-center`}
+                onClick={() => setGridView(true)}
+              >
+                <GridViewRounded />
               </button>
             </div>
             <button
@@ -200,55 +199,6 @@ export default function Vehicles() {
           </div>
           {!showLess ? (
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              {/* <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[20%] h-fit ">
-              <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                Car Name
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                <select
-                  className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                  onChange={(e) => {
-                    setAdvanceFilters((prevFilters: any) =>
-                      prevFilters.map((filter: any) =>
-                        filter.key === "carName"
-                          ? { ...filter, keyValue: e.target.value }
-                          : filter
-                      )
-                    );
-                  }}
-                >
-                  <option value="">Select</option>
-                  <option value="suzuki">suzuki</option>
-                  <option value="ford">ford</option>
-                  <option value="Swift">Swift</option>
-                  <option value="vfdsvsd">vfdsvsd</option>
-                </select>
-                <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]" />
-                </div>
-              </div>
-            </div> */}
-              {/* <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[15%] h-fit">
-              <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                Registration No
-              </h3>
-              <div className="w-full h-fit flex justify-between items-center ">
-                <input
-                  className=" font-[400] text-[14px] xs:text-[16px] leading-[19px] px-2 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey placeholder:"
-                  placeholder="Type"
-                  onChange={(e) => {
-                    setAdvanceFilters((prevFilters: any) =>
-                      prevFilters.map((filter: any) =>
-                        filter.key === "registration"
-                          ? { ...filter, keyValue: e.target.value }
-                          : filter
-                      )
-                    );
-                  }}
-                ></input>
-              </div>
-            </div> */}
-
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
                 <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
                   Year
@@ -267,9 +217,6 @@ export default function Vehicles() {
                     }}
                   >
                     <option value="">Select</option>
-                    {/* {filteredVehicles.map((item) => (
-                    <option value={item.data.year}>{item.data.year}</option>
-                  ))} */}
                     {Array.from(
                       new Set(vehiclesData.map((item) => item.data.year))
                     ).map((year) => (

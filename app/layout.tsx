@@ -20,7 +20,8 @@ export default function RootLayout({
   const router = useRouter();
 
   const pathName = usePathname();
-  const [isVerified, setIsVerified] = useState<any>(undefined);
+  // const [isVerified, setIsVerified] = useState<any>(undefined);
+  const [isVerified, setIsVerified] = useState<any>(true);
   const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
@@ -31,22 +32,22 @@ export default function RootLayout({
     }
   }, [isVerified, router]);
 
-  useEffect(() => {
-    async function verifyTokenApi() {
-      try {
-        setLoading(true);
-        setIsVerified(undefined);
-        let userData = await axios.get("/api/verifyToken");
-        // console.log(userData?.data?.msg);
-        setIsVerified(true);
-      } catch (err) {
-        setIsVerified(false);
-      } finally {
-        setLoading(false);
-      }
-    }
-    verifyTokenApi();
-  }, [pathName]);
+  // useEffect(() => {
+  //   async function verifyTokenApi() {
+  //     try {
+  //       setLoading(true);
+  //       setIsVerified(undefined);
+  //       let userData = await axios.get("/api/verifyToken");
+  //       // console.log(userData?.data?.msg);
+  //       setIsVerified(true);
+  //     } catch (err) {
+  //       setIsVerified(false);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   verifyTokenApi();
+  // }, [pathName]);
 
   return (
     <StoreProvider>

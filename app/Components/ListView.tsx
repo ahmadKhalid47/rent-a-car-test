@@ -1,4 +1,5 @@
 import check from "@/public/check.svg";
+import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -14,6 +15,7 @@ import { setVehicleDataReloader } from "../store/Global";
 import { setAllValues } from "../store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { handleExport } from "./functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -29,6 +31,8 @@ export default function ListView({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
     {}
   );
+  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -36,6 +40,8 @@ export default function ListView({ data }: dataType) {
     setSortedData(data);
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [deleteManyPopup, setDeleteManyPopup] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -119,22 +125,133 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
+  async function deleteManyItem() {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/deleteManyVehicle`, {
+        _ids: itemToDeleteMany,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+  function handlePushItem(_id: any) {
+    setItemToDeleteMany((prevArray: any) => {
+      // Check if the item is already present in the array
+      const isPresent = prevArray.includes(_id);
+
+      // Return a new array with the item either added or removed
+      if (isPresent) {
+        // Remove the item
+        return prevArray.filter((item: any) => item !== _id);
+      } else {
+        // Add the item
+        return [...prevArray, _id];
+      }
+    });
+  }
+  const allIds = data.map((item: any) => item?._id);
+
+  async function updateActive(_id: any, active: boolean) {
+    try {
+      setEditLoading(true);
+      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+        active: !active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEditLoading(false);
+    }
+  }
+  async function UpdateActiveManyItem(active: boolean) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/updateManyActive`, {
+        _ids: itemToDeleteMany,
+        active: active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
+      <h3
+        className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
+          itemToDeleteMany.length < 1 ? "text-grey" : "text-main-blue"
+        }  `}
+      >
         <span>
-          <span className="cursor-pointer">Delete Multiple</span>
+          <span>
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                setDeleteManyPopup(true);
+              }}
+              disabled={itemToDeleteMany.length < 1 ? true : false}
+            >
+              Delete Multiple
+            </button>
+          </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span className=" cursor-pointer">Active/Inactive Multiple</span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(true);
+            }}
+          >
+            Active /
+          </span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(false);
+            }}
+          >
+            Inactive Multiple
+          </span>
         </span>
-        <span className="underline cursor-pointer">Export</span>
+        <span
+          className="underline cursor-pointer text-main-blue"
+          onClick={() => {
+            handleExport(data?.map((item: any) => item.data));
+          }}
+        >
+          Export
+        </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+              <div
+                className={`w-[15px] h-[15px] rounded-[1px] ${
+                  itemToDeleteMany.length !== data.length ? "" : "bg-main-blue"
+                } border-2 border-dark-grey`}
+                onClick={() => {
+                  setItemToDeleteMany(
+                    itemToDeleteMany.length !== data.length ? allIds : []
+                  );
+                }}
+              ></div>
             </div>
+
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%] ps-7 cursor-pointer"
               onClick={() => sort("vehicleId")}
@@ -189,10 +306,23 @@ export default function ListView({ data }: dataType) {
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
-                  <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
+                  <div
+                    className={`w-[15px] h-[15px] rounded-[1px] ${
+                      itemToDeleteMany?.includes(item?._id)
+                        ? "bg-main-blue"
+                        : ""
+                    } border-2 border-dark-grey`}
+                    onClick={(event) => {
+                      handlePushItem(item?._id);
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }}
+                  ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[9%] ps-[10px">
-                  {item?.data?.vehicleId.padStart(2, "0")}
+                <h5 className="text-center pe-5 w-[9%]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}
                 </h5>
                 <h5 className="text-start pe-3 w-[20%]">
                   {item?.data?.make} {item?.data?.model}
@@ -218,7 +348,13 @@ export default function ListView({ data }: dataType) {
                     event.stopPropagation();
                   }}
                 >
-                  <img src={check.src} className="me-[8px] translate-y-[1px]" />
+                  <img
+                    src={item.active ? check.src : unCheck.src}
+                    className="me-[8px] translate-y-[1px]"
+                    onClick={() => {
+                      updateActive(item?._id, item?.active);
+                    }}
+                  />
                   <img
                     src={edit.src}
                     className="me-[5.8px]"
@@ -259,6 +395,38 @@ export default function ListView({ data }: dataType) {
                         className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           deleteItem(itemToDelete);
+                        }}
+                        disabled={deleteLoading}
+                      >
+                        {deleteLoading ? <SmallLoader /> : "Yes"}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+              {deleteManyPopup ? (
+                <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                    <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                        Are you sure you want to delete this item
+                      </label>
+                    </div>
+                    <div
+                      className={`w-full flex justify-end gap-4 items-center pt-4`}
+                    >
+                      <button
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          setDeleteManyPopup(false);
+                        }}
+                      >
+                        No
+                      </button>
+                      <button
+                        className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                        onClick={() => {
+                          deleteManyItem();
                         }}
                         disabled={deleteLoading}
                       >

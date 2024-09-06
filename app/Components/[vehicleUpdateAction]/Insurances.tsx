@@ -19,7 +19,7 @@ export default function Insurances() {
           label={"Insurance Policy No"}
           value={vehicle.insuranceNo}
           required={false}
-          type={"text"}
+          type={"number"}
         />
         <TempTypeInput
           setState={setinsuranceProvider}
@@ -33,7 +33,7 @@ export default function Insurances() {
           label={"Insurance Expiry Date"}
           value={vehicle.insuranceExpiry}
           required={false}
-          type={"text"}
+          type={"date"}
         />
 
         {/* <TypeInput

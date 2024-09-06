@@ -11,11 +11,24 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
+import smallCar1 from "@/public/smallcar (1).png";
+import smallCar2 from "@/public/smallcar (2).png";
+import smallCar3 from "@/public/smallcar (3).png";
+import smallCar4 from "@/public/smallcar (4).png";
+import General from "./CarInfo/[_id]/General";
+import Rental from "./CarInfo/[_id]/Rental";
+import Insurance from "./CarInfo/[_id]/Insurance";
+import Additional from "./CarInfo/[_id]/Additional";
+import Other from "./CarInfo/[_id]/Other";
+import Damages from "./CarInfo/[_id]/Damages";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { setCustomerInfo } from "../store/Customerinfo";
 
 export default function CustomerInfo() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
-    let dispatch = useDispatch();
+  let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
@@ -24,6 +37,38 @@ export default function CustomerInfo() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const params = useParams(); // Get all route parameters
+  const { _id } = params;
+  const [loading, setLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
+  let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
+  const [imageIndex, setImageIndex] = useState<any>(
+    CustomerInfo?.thumbnailImage
+  );
+
+  useEffect(() => {
+    setImageIndex(CustomerInfo?.thumbnailImage);
+  }, [CustomerInfo?.thumbnailImage, CustomerInfo]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getCustomerInfo/${_id}`);
+        if (result?.data?.data) {
+          dispatch(setCustomerInfo(result?.data?.data?.data));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, []);
+
   return (
     <div
       className={`${
@@ -40,7 +85,7 @@ export default function CustomerInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5">
+      <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
         <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] rounded-[10px] bg-">
           <div className="w-full h-fit flex flex-col lg:flex-row justify-start gap-5 lg:gap-[7%] items-center px- g-white rounded-[10px] border-2 border-grey py-7 px-6 ">
             <div className="w-fit flex justify-start items-center gap-1">
@@ -81,7 +126,7 @@ export default function CustomerInfo() {
               </div>
             </div>
           </div>
-          <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
+          <div className="w-full h-fit bg-whit  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
             <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
               <div
                 className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${

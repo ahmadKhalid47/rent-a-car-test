@@ -1,38 +1,68 @@
 "use client";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaTimes, FaTimesCircle } from "react-icons/fa";
 import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { setConfigurations } from "@/app/store/Configurations";
+import axios from "axios";
 
 export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   const [damageIndex, setdamageIndex] = useState<any>(0);
   const [imageIndex, setImageIndex] = useState<any>(0);
+  const [imagePopup, setImagePopup] = useState<boolean>(false);
+  const [zoomed, setZoomed] = useState<boolean>(false);
   const [imageLength, setImageLength] = useState<any>(
     vehicleInfo.damages[damageIndex]?.files?.length
   );
+  const [loading, setLoading] = useState<any>(false);
+
+  let dispatch = useDispatch();
+
   useEffect(() => {
     setImageLength(vehicleInfo.damages[damageIndex]?.files?.length);
     setImageIndex(0);
   }, [damageIndex]);
 
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getConfigurations`);
+        dispatch(setConfigurations(result?.data?.wholeData));
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData2();
+  }, []);
+  let exteriorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === vehicleInfo.type
+  )?.exterior;
+  let interiorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === vehicleInfo.type
+  )?.interior;
+
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[23%] h-fit flex flex-col justify-start items-start relative">
         <img
           src={
-            vehicleInfo.damages[damageIndex].exterior
-              ? CarExterior.src
-              : CarInterior.src
+            vehicleInfo.damages[damageIndex]?.exterior
+              ? exteriorImg
+              : interiorImg
           }
           className="w-[250px] h-[300px]"
         />
         {vehicleInfo.damages.map((item: any, index: any) => (
           <>
-            {vehicleInfo.damages[damageIndex].exterior ? (
+            {vehicleInfo.damages[damageIndex]?.exterior ? (
               item.exterior ? (
                 <div
                   className={`absolute w-[15px] h-[15px] rounded-full ${
@@ -47,7 +77,7 @@ export default function Damages() {
                   {index + 1}
                 </div>
               ) : null
-            ) : !vehicleInfo.damages[damageIndex].exterior ? (
+            ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
               !item.exterior ? (
                 <div
                   className={`absolute w-[15px] h-[15px] rounded-full ${
@@ -102,11 +132,45 @@ export default function Damages() {
           </div>
         ))}
       </div>
-      <div className="w-[25%] h-[100%] flex flex-col justify-start items-start ">
-        <div className="w-[250px] h-[300px] flex justify-center items-center mx-auto">
+      <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
+        {imagePopup ? (
+          <div
+            className="w-[100%] h-[100%] flex justify-center items-center absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
+            onClick={() => {
+              setImagePopup(false);
+            }}
+          >
+            <div className="w-[700px] h-[700px] relative overflow-auto scroll">
+              <img
+                src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
+                className={"w-[100%] h-[100%]"}
+                style={{
+                  transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                  cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setZoomed(!zoomed);
+                }}
+              />
+            </div>
+            <span
+              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-36 right-36 ${
+                zoomed ? "right-3" : ""
+              } w-fit shadow bg-white rounded-full`}
+              onClick={() => setImagePopup(false)}
+            >
+              <FaTimes />
+            </span>
+          </div>
+        ) : null}
+        <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
           <img
-            src={vehicleInfo.damages[damageIndex].files[imageIndex]}
-            className="w-[100%] h-[100%]"
+            src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
+            className={"w-[100%] h-[100%]"}
+            onClick={() => {
+              setImagePopup(true);
+            }}
           />
         </div>
 

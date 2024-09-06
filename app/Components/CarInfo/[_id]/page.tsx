@@ -19,11 +19,13 @@ export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  const [imageIndex, setImageIndex] = useState<any>(0);
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   const [showError, setShowError] = useState(null);
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  const [imageIndex, setImageIndex] = useState<any>(
+    vehicleInfo?.thumbnailImage
+  );
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -33,6 +35,11 @@ export default function CarInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    setImageIndex(vehicleInfo?.thumbnailImage);
+  }, [vehicleInfo?.thumbnailImage, vehicleInfo]);
+
   useEffect(() => {
     async function getData() {
       try {
@@ -72,7 +79,7 @@ export default function CarInfoMainPage() {
                 </p>
               </div>
             </div>
-            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5">
+            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative overflow-hidden">
               <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
                 <div className="w-full h-fit flex justify-start gap-[5%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
                   <div className="w-fit flex justify-start items-center gap-1">
@@ -127,12 +134,12 @@ export default function CarInfoMainPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="w-[80%] flex justify-between items-center bg-red-5">
-                      <div className="flex justify-start items-center h-fit gap-2 w-[50%] pe-5">
+                    <div className="w-[80%] flex justify-between items-center">
+                      <div className="flex justify-start items-start h-fit gap-2 w-[50%] pe-5">
                         <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
                           Color:
                         </p>
-                        <div className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <div className="font-[400] text-[20px] leading-[30px] w-[50%] mt-2">
                           <div
                             className="w-[32px] h-[18px] rounded-[5px]"
                             style={{
@@ -215,7 +222,7 @@ export default function CarInfoMainPage() {
                       Others
                     </div>
                   </div>
-                  <div className="w-full h-fit flex justify-center items-start gap-8">
+                  <div className="w-full h-[380px] flex justify-center items-start gap-8">
                     {activeButton === "General" ? (
                       <>
                         <General />

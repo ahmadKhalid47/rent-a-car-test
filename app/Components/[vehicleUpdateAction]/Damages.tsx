@@ -1,8 +1,6 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
-import checkBlue from "@/public/checkBlue.svg";
-import checkBlack from "@/public/checkBlack.png";
 import CarExterior from "@/public/car-sedan-exterior.png";
 import CarInterior from "@/public/car-sedan-interior (1).png";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
@@ -16,24 +14,43 @@ import { useDispatch } from "react-redux";
 
 export default function Damages() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   const [exterior, setExterior] = useState(true);
   const [popup, setPopup] = useState(false);
   const [damageType, setDamageType] = useState("");
   const [degree, setDegree] = useState("");
   const [description, setDescription] = useState("");
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>([]);
   let [damages, setDamages] = useState<any>(vehicle.damages);
   const [marks, setMarks] = useState<any>(vehicle.damages);
   let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    setFiles(
-      acceptedFiles.map((file: any) =>
+    const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+
+    const filteredFiles = acceptedFiles.filter((file: any) => {
+      if (!allowedTypes.includes(file.type)) {
+        alert(
+          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        );
+        return false;
+      }
+      if (file.size > maxFileSize) {
+        alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+        return false;
+      }
+      return true;
+    });
+
+    setFiles((prevFiles: any) => [
+      ...prevFiles,
+      ...filteredFiles.map((file: any) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
         })
-      )
-    );
+      ),
+    ]);
   }, []);
 
   const thumbs: any = files.map((file: any) => (
@@ -53,16 +70,24 @@ export default function Damages() {
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing(file.name)}
+        onClick={() => removing(file)}
       >
         <FaTimesCircle />
       </span>
     </div>
   ));
-  function removing(name: any) {
+  function removing(file: any) {
     let array = files;
     array = array.filter((e: any) => {
-      return e.name !== name;
+      // If the element is a string, it will be compared to the URL in the `file` object
+      if (typeof e === "string") {
+        return e !== file;
+      }
+      // If the element is an object, compare the `path` or `preview` properties
+      else if (typeof e === "object" && e !== null) {
+        return e.path !== file.path && e.preview !== file.preview;
+      }
+      return true;
     });
     setFiles(array);
   }
@@ -126,6 +151,13 @@ export default function Damages() {
     setFiles([]);
   }, [popup]);
 
+  let exteriorImg = Configurations?.Configurations?.type.find(
+    (item: any) => item.Type === vehicle.type
+  )?.exterior;
+  let interiorImg = Configurations?.Configurations?.type.find(
+    (item: any) => item.Type === vehicle.type
+  )?.interior;
+
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
@@ -133,28 +165,37 @@ export default function Damages() {
           <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  exterior ? "text-main-blue" : ""
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  exterior ? "bg-main-blue text-white" : "bg-white text-black"
                 }`}
-                onClick={() => setExterior(!exterior)}
+                onClick={() => setExterior(true)}
               >
                 {exterior ? (
-                  <img src={checkBlue.src} />
+                  // <img src={checkBlue.src} />
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                  </div>
                 ) : (
-                  <img src={checkBlack.src} />
+                  <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
                 )}
                 Exterior
               </button>
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey flex justify-start gap-5 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  !exterior ? "text-main-blue" : ""
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  !exterior ? "bg-main-blue text-white" : "bg-white text-black"
                 }`}
-                onClick={() => setExterior(!exterior)}
+                onClick={() => setExterior(false)}
               >
                 {!exterior ? (
-                  <img src={checkBlue.src} />
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                  </div>
                 ) : (
-                  <img src={checkBlack.src} />
+                  <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
                 )}
                 Interior
               </button>
@@ -164,7 +205,7 @@ export default function Damages() {
                 {exterior ? (
                   <div className="w-[326px] h-[408px] relative">
                     <img
-                      src={CarExterior.src}
+                      src={exteriorImg}
                       className="w-[326px] h-[408px] cursor-pointer"
                       onClick={(e) => {
                         handleClick(e, true);
@@ -173,7 +214,7 @@ export default function Damages() {
                   </div>
                 ) : (
                   <img
-                    src={CarInterior.src}
+                    src={interiorImg}
                     className="w-[326px] h-[408px]"
                     onClick={(e) => {
                       handleClick(e, false);
@@ -217,11 +258,14 @@ export default function Damages() {
           <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
             <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
               <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                <p className="w-[30%] md:w-[50px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
+                <p className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                   No
                 </p>
-                <p className="w-[40%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                <p className="w-[30%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
                   Damage Type
+                </p>
+                <p className="w-[20%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                  Position
                 </p>
                 <p className="w-[30%] md:w-[80px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-end">
                   Degree
@@ -232,11 +276,14 @@ export default function Damages() {
               </div>
               {vehicle?.damages?.map((item: any, key: number) => (
                 <div className="w-full h-fit flex justify-between items-start border-b-[2px">
-                  <p className="w-[30%] md:w-[50px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
-                    {key + 1}
+                  <p className="w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
+                    {JSON.stringify(key + 1).padStart(2, "0")}{" "}
                   </p>
-                  <p className="w-[40%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                  <p className="w-[30%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
                     {item?.damageType}
+                  </p>
+                  <p className="w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                    {item?.exterior ? "Exterior" : "Interior"}
                   </p>
                   <p className="w-[30%] md:w-[80px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
                     {item?.degree}
@@ -313,10 +360,11 @@ export default function Damages() {
                   className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
-                  value={description ? description : "Enter Description"}
+                  value={description}
                   onChange={(e) => {
                     setDescription(e.target.value);
                   }}
+                  placeholder="Enter Description"
                 ></textarea>
               </div>
             </div>

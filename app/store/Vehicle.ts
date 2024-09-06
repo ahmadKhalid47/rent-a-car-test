@@ -27,6 +27,7 @@ const initialState: any = {
   damages: [],
   carImages: [],
   damageImagesToDelete: [],
+  thumbnailImage: 0,
 };
 
 export const VehicleSlice = createSlice({
@@ -111,9 +112,13 @@ export const VehicleSlice = createSlice({
     setdamageImagesToDelete: (state, action) => {
       state.damageImagesToDelete.push(...action.payload);
     },
+    setthumbnailImage: (state, action) => {
+      state.thumbnailImage = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
+    resetState: () => initialState,
   },
 });
 
@@ -145,6 +150,8 @@ export const {
   setCarImages,
   setAllValues,
   setdamageImagesToDelete,
+  setthumbnailImage,
+  resetState,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;

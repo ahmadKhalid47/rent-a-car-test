@@ -46,9 +46,6 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
-              <span className="underline cursor-pointer">Export</span>
-            </h3>
             <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
               <Link
                 href={`/Components/Configuration/Make`}
@@ -103,6 +100,28 @@ export default function Vehicles() {
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Add. Features
+                </p>
+              </Link>
+              <Link
+                href={`/Components/Configuration/Country`}
+                className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+              >
+                <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg5.src} />
+                </div>
+                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                  Country
+                </p>
+              </Link>
+              <Link
+                href={`/Components/Configuration/City`}
+                className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+              >
+                <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg5.src} />
+                </div>
+                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                  City
                 </p>
               </Link>
             </div>

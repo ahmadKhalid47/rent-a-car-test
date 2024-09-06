@@ -160,7 +160,6 @@ export default function ListView({ data }: dataType) {
             Delete Multiple
           </button>
         </span>
-        <span className="underline cursor-pointer">Export</span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
@@ -168,18 +167,18 @@ export default function ListView({ data }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] ${
-                  itemToDeleteMany.length === 0 ? "" : "bg-main-blue"
+                  itemToDeleteMany.length !== data.length ? "" : "bg-main-blue"
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length === 0 ? allIds : []
+                    itemToDeleteMany.length !== data.length ? allIds : []
                   );
                 }}
               ></div>
             </div>
-            <div className="text-start pe-5 flex justify-between items-center w-[7%] ps-7">
-              #
-            </div>
+            <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
+              ID
+            </div>{" "}
             <div className="text-start pe-3 flex justify-between items-center w-[70%]">
               Feature
             </div>
@@ -206,8 +205,10 @@ export default function ListView({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[7%] ps-[10px">
-                  {JSON.stringify(index + 1).padStart(2, "0")}
+                <h5 className="text-start pe-5 w-[7%]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}{" "}
                 </h5>
                 <h5 className="text-start pe-3 w-[70%]">{item?.Feature}</h5>
                 <div
@@ -308,7 +309,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                     >
                       <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                        {"Add New"}
+                        {"Update Feature"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">

@@ -6,18 +6,30 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Popover, Button } from "antd";
 import check from "@/public/check.svg";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { setVehicleDataReloader } from "../store/Global";
+import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { SmallLoader } from "./Loader";
+import { handleExport } from "./functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;
 }
 
 export default function GridView({ data }: dataType) {
+  let global = useSelector((state: RootState) => state.Global);
   const [page, setPage] = useState(1);
   const itemsPerPage = 12;
+  const [popup, setPopup] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
   };
+  const dispatch = useDispatch();
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -26,6 +38,7 @@ export default function GridView({ data }: dataType) {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
+  const router = useRouter();
 
   function PaginationRounded() {
     return (
@@ -65,11 +78,54 @@ export default function GridView({ data }: dataType) {
       setIsOpen(e);
     }
   };
+  async function deleteItem(_id: any) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+  async function updateActive(_id: any, active: boolean) {
+    try {
+      // setEditLoading(true);
+      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+        active: !active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // setEditLoading(false);
+    }
+  }
 
+  // let data2 = data?.map((item: any) => {
+  //   return {
+  //     data: {
+  //       ...item.data,
+  //       active: item.active,
+  //     },
+  //   };
+  // });
+  // console.log(data2);
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
-        <span className="underline cursor-pointer">Export</span>
+        <span
+          className="underline cursor-pointer text-main-blue"
+          onClick={() => {
+            handleExport(data?.map((item: any) => item.data));
+          }}
+        >
+          Export
+        </span>
       </h3>
       <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
         {paginatedData.map((item: any, index: number) => (
@@ -93,22 +149,42 @@ export default function GridView({ data }: dataType) {
               <div className="relative">
                 {isOpen === item._id && (
                   <div className="z-10 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md text-black flex flex-col justify-start items-start">
-                    <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
+                    <button
+                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      onClick={() => {
+                        router.push(`/Components/${item?._id}`);
+                      }}
+                    >
                       Edit
                     </button>
-                    <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
+                    <button
+                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      onClick={() => {
+                        setPopup(true);
+                        setItemToDelete(item?._id);
+                      }}
+                    >
                       Delete
                     </button>
-                    <button className="px-4 py-2 hover:bg-gray-200 w-full text-start">
-                      Active
+                    <button
+                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      onClick={() => {
+                        updateActive(item?._id, item?.active);
+                      }}
+                    >
+                      {item.active ? "Inactive" : "Active"}
                     </button>
                   </div>
                 )}
               </div>
             </div>
+
             <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
               {item?.data?.carImages ? (
-                <img src={item?.data?.carImages[0]} className="w-full h-full" />
+                <img
+                  src={item?.data?.carImages[item?.data?.thumbnailImage]}
+                  className="w-full h-full"
+                />
               ) : null}
             </div>
             <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
@@ -167,6 +243,37 @@ export default function GridView({ data }: dataType) {
           </Link>
         ))}
       </div>
+      {popup ? (
+        <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+            <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                Are you sure you want to delete this item
+              </label>
+            </div>
+            <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
+              <button
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => {
+                  setPopup(false);
+                }}
+              >
+                No
+              </button>
+              <button
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => {
+                  deleteItem(itemToDelete);
+                }}
+                disabled={deleteLoading}
+              >
+                {deleteLoading ? <SmallLoader /> : "Yes"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="w-full h-[32px] mt-5 md:mt-10 flex justify-between items-center">
         <div className="font-[400] text-[10px] sm:text-[14px] leading-[17px] text-[#878787]">
           Showing {(page - 1) * itemsPerPage + 1} -{" "}

@@ -7,6 +7,13 @@
   background-color: #242e69;
 }
 
+.border-main-blue {
+  border-color: #242e69;
+}
+.border-main-red {
+  border-color: rgb(235,70,67);
+}
+
 .text-main-blue {
   color: #242e69;
 }
@@ -36,6 +43,9 @@
 }
 .border-dark-grey {
   border-color: #808080;
+}
+.bg-dark-grey {
+  background-color: #808080;
 }
 .border-grey {
   border-color: #d9d9d9;
@@ -91,6 +101,7 @@
   box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.08), 2px 2px 3px rgba(0, 0, 0, 0.08),
     0 1px 2px rgba(0, 0, 0, 0.08);
 }
+
 .transitions {
   transition: all 0.1s;
 }
@@ -109,6 +120,12 @@
   width: 0;
   background-color: transparent;
 }
+
+.scroll2::-webkit-scrollbar {
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+}
 .text-link-blue {
   color: #156cf7;
 }
@@ -119,6 +136,14 @@
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 5%;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 5%;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
 }
 
 .complete-status {

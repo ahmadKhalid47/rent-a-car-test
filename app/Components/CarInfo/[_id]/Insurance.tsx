@@ -12,7 +12,7 @@ export default function Insurance() {
             Insurance Policy No:
           </p>
           <p className="w-[33%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.insuranceNo}
+            {vehicleInfo.insuranceNo ? vehicleInfo.insuranceNo : "---"}
           </p>
         </div>
 
@@ -21,7 +21,7 @@ export default function Insurance() {
             Insurance Expiry Date:
           </p>
           <p className="w-[33%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.insuranceExpiry}
+            {vehicleInfo.insuranceExpiry ? vehicleInfo.insuranceExpiry : "---"}
           </p>
         </div>
       </div>
@@ -31,7 +31,9 @@ export default function Insurance() {
             Insurance Provider:
           </p>
           <p className="w-[43%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.insuranceProvider}
+            {vehicleInfo.insuranceProvider
+              ? vehicleInfo.insuranceProvider
+              : "---"}
           </p>
         </div>
       </div>

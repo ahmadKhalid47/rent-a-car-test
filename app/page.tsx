@@ -8,6 +8,7 @@ import { RootState } from "./store";
 import { useSelector } from "react-redux";
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+
   return (
     <div className="w-full h-fit">
       <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">

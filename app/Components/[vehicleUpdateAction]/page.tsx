@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useParams } from "next/navigation";
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
@@ -16,12 +16,14 @@ import Info from "./Info";
 import axios from "axios";
 import { SmallLoader } from "../Loader";
 import { useRouter } from "next/navigation";
-import { setAllValues } from "@/app/store/Vehicle";
+import { resetState, setAllValues } from "@/app/store/Vehicle";
+import { setConfigurations } from "@/app/store/Configurations";
 
 export default function Vehicles() {
   const params = useParams();
   const { vehicleUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -32,15 +34,17 @@ export default function Vehicles() {
     }
   }, [isMobile]);
   let [currentPage, setCurrentPage] = useState(0);
-  let [formVerified, setFormVerified] = useState(false);
+  let [goToPage, setGoToPage] = useState(0);
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   const [loading, setLoading] = useState<any>(false);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
+  const formRef = useRef<any>(null);
 
   useEffect(() => {
+    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
@@ -63,19 +67,34 @@ export default function Vehicles() {
       getData();
     }
   }, []);
-  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    setFormVerified(false);
-    event.preventDefault();
-    setFormVerified(true);
-  };
-
-  function handleSetCurrentPage(page: any) {
-    setCurrentPage(formVerified ? page : currentPage);
-  }
 
   useEffect(() => {
-    setFormVerified(false);
-  }, [currentPage]);
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(`/api/getConfigurations`);
+        if (result) {
+          dispatch(setConfigurations(result?.data?.wholeData));
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData2();
+  }, []);
+  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setCurrentPage(goToPage);
+  };
+  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission on Enter key
+    }
+  };
 
   async function saveData(action: string) {
     try {
@@ -134,53 +153,71 @@ export default function Vehicles() {
         router.push("/Components/Vehicles");
       } else {
         setCurrentPage(0);
+        dispatch(resetState());
       }
     }
   }
-  let [imageToDelete, setImageToDelete] = useState<any>(undefined);
-
-  useEffect(() => {
-    const carImages = vehicle.carImages;
-    setImageToDelete(carImages);
-  }, [deleteTrigger]);
-  // console.log(vehicle.carImages);
-  const carImages = vehicle.carImages;
   async function updateData(action: string) {
-    const carImages = vehicle.carImages;
-    const damageImages = vehicle.damages.map((damage: any) => damage.files);
-    const allFilesToDelete = [...carImages, ...damageImages.flat()];
-    if (vehicle.damageImagesToDelete.length > 0) {
-      let result = await axios.delete("/api/deleteFromCloudinary", {
-        data: vehicle.damageImagesToDelete,
-      });
-    }
-    if (
-      Array.isArray(carImages) &&
-      carImages.every((item) => item instanceof File)
-    ) {
-      let result = await axios.delete("/api/deleteFromCloudinary", {
-        data: imageToDelete,
-      });
+    try {
+      setLoading(true);
+      const damageImages = vehicle.damages.map((damage: any) => damage.files);
+      console.log(damageImages);
 
       const formData = new FormData();
       for (let i = 0; i < vehicle.carImages.length; i++) {
         formData.append("files", vehicle.carImages[i]);
       }
-      const res = await axios.post("/api/upload", formData, {
+      const res = await axios.post("/api/uploadWithCondition", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
+      const formData2 = new FormData();
+      formData2.append("length1", vehicle.damages.length);
+
+      for (let i = 0; i < vehicle.damages.length; i++) {
+        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+
+        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
+        }
+      }
+
+      const res2 = await axios.post("/api/uploadNested", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = vehicle.damages;
+      for (let i = 0; i < vehicle.damages.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        files: res2?.data?.message[index].map((url: any) => url),
+      }));
+
       await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
         ...vehicle,
         carImages: res?.data?.message,
+        damages: updatedObjects,
       });
-    } else {
-      await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, vehicle);
+
+      if (action === "close") {
+        router.push("/Components/Vehicles");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
-  console.log("damageImagesToDelete", vehicle.damageImagesToDelete);
+
+  const submitButton = () => {
+    if (formRef.current) {
+      formRef.current?.click();
+    }
+  };
 
   return (
     <div
@@ -207,6 +244,7 @@ export default function Vehicles() {
         </div>
         <form
           onSubmit={handleSubmit}
+          onKeyDown={handleKeyDown} // Add the event handler here
           className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >
           <div className="w-full h-fit flex flex-col justify-start items-center">
@@ -219,8 +257,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(0)}
+                  onClick={() => {
+                    setGoToPage(0);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
@@ -234,8 +274,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(1)}
+                  onClick={() => {
+                    setGoToPage(1);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
@@ -247,8 +289,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(2)}
+                  onClick={() => {
+                    setGoToPage(2);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
@@ -261,8 +305,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(3)}
+                  onClick={() => {
+                    setGoToPage(3);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
@@ -274,8 +320,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(4)}
+                  onClick={() => {
+                    setGoToPage(4);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 4
                       ? "transitions2 bg-main-blue text-white"
@@ -287,8 +335,10 @@ export default function Vehicles() {
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
-                  type="submit"
-                  onClick={() => handleSetCurrentPage(5)}
+                  onClick={() => {
+                    setGoToPage(5);
+                    submitButton();
+                  }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 5
                       ? "transitions2 bg-main-blue text-white"
@@ -377,73 +427,61 @@ export default function Vehicles() {
                 {vehicleUpdateAction !== "AddVehicles" ? (
                   <div className="flex justify-start items-center gap-1 md:gap-3">
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         updateData("close");
                       }}
                     >
-                      Update and Close
-                    </button>
-                    <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                      disabled={loading}
-                      onClick={() => {
-                        // saveData("new");
-                      }}
-                    >
-                      Update and New
+                      {loading ? <SmallLoader /> : "Update and Close"}
                     </button>
                     <div />
                   </div>
                 ) : (
                   <div className="flex justify-start items-center gap-1 md:gap-3">
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         saveData("close");
                       }}
                     >
-                      Save and Close
+                      {loading ? <SmallLoader /> : "Save and Close"}
                     </button>
                     <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                        loading ? "bg-grey-of-text" : "bg-main-blue"
-                      } text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                       disabled={loading}
                       onClick={() => {
                         saveData("new");
                       }}
                     >
-                      Save and New
+                      {loading ? <SmallLoader /> : "Save and New"}
                     </button>
                     <div />
                   </div>
                 )}
               </>
             ) : (
-              <button
-                className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() =>
-                  setCurrentPage(formVerified ? currentPage + 1 : currentPage)
-                }
-                type="submit"
-              >
-                Save and Continue
-              </button>
+              <>
+                <button
+                  className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                  onClick={() => {
+                    setGoToPage(currentPage + 1);
+                    submitButton();
+                  }}
+                >
+                  Save and Continue
+                </button>
+                <button
+                  ref={formRef}
+                  className="absolute hidden"
+                  type="submit"
+                ></button>
+              </>
             )}
           </div>
         </form>
       </div>
-
-      {/* <VehicleForms vehicleUpdateAction={vehicleUpdateAction} /> */}
     </div>
   );
 }

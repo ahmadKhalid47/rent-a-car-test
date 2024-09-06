@@ -1,9 +1,9 @@
 "use client";
-import Rental from "../AddReservations/Rental";
-import Insurances from "../AddReservations/Insurances";
-import Others from "../AddReservations/Others";
-import Feature from "../AddReservations/Feature";
-import Info from "../AddReservations/Info";
+import Rental from "../AddReservations/[reservationUpdateAction]/Rental";
+import Insurances from "../AddReservations/[reservationUpdateAction]/Insurances";
+import Others from "../AddReservations/[reservationUpdateAction]/Others";
+import Feature from "../AddReservations/[reservationUpdateAction]/Feature";
+import Info from "../AddReservations/[reservationUpdateAction]/Info";
 import { useState } from "react";
 
 export default function ReservationsForms() {

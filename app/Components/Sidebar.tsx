@@ -16,6 +16,7 @@ import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
+import { useParams } from "next/navigation";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -36,24 +37,25 @@ export default function Sidebar() {
     if (
       pathName === "/Components/Customers" ||
       pathName === "/Components/CustomerInfo" ||
-      pathName === "/Components/AddCustomer"
+      pathName === "/Components/AddCustomer/AddNew"
     ) {
       setChevronState("Customers");
     } else if (
       pathName === "/Components/Chauffeurs" ||
       pathName === "/Components/ChauffeursInfo" ||
-      pathName === "/Components/AddChauffeur"
+      pathName === "/Components/AddChauffeur/AddNew"
     ) {
       setChevronState("Chauffeurs");
     } else if (
       pathName === "/Components/Vehicles" ||
-      pathName === "/Components/CarInfo" ||
-      pathName === "/Components/AddVehicles"
+      pathName?.includes("/Components/CarInfo") ||
+      pathName === "/Components/AddVehicles" ||
+      pathName?.includes("/Components/Configuration")
     ) {
       setChevronState("Vehicles");
     } else if (
       pathName === "/Components/Reservations" ||
-      pathName === "/Components/AddReservations"
+      pathName === "/Components/AddReservations/AddNew"
     ) {
       setChevronState("Reservations");
     } else if (pathName === "/Components/Settings") {
@@ -63,7 +65,6 @@ export default function Sidebar() {
 
   let dispatch = useDispatch();
   const router = useRouter();
-
   return (
     <div
       className={`${
@@ -174,7 +175,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               //   router.push(
-              href="/Components/AddCustomer"
+              href="/Components/AddCustomer/AddNew"
               //   );
               // }}
               className="flex justify-start items-center w-full"
@@ -189,7 +190,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddCustomer"
+                  pathName === "/Components/AddCustomer/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -262,7 +263,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddChauffeur"
+              href="/Components/AddChauffeur/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -277,7 +278,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddChauffeur"
+                  pathName === "/Components/AddChauffeur/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -352,7 +353,7 @@ export default function Sidebar() {
             <Link
               // onClick={() => {
               // router.push(
-              href="/Components/AddReservations"
+              href="/Components/AddReservations/AddNew"
               // );
               // }}
               className="flex justify-start items-center w-full"
@@ -367,7 +368,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddReservations"
+                  pathName === "/Components/AddReservations/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -430,7 +431,7 @@ export default function Sidebar() {
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
                   pathName === "/Components/Vehicles" ||
-                  pathName === "/Components/CarInfo"
+                  pathName?.includes("/Components/CarInfo")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -472,7 +473,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Components/Configuration"
+                  pathName?.includes("/Components/Configuration")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

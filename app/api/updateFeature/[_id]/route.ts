@@ -7,7 +7,6 @@ export async function POST(req: Request, params: any) {
     let { Feature } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    console.log(Feature, _id);
     await FeatureModel.updateOne({ _id: _id }, { $set: { Feature: Feature } });
     return NextResponse.json({
       success: "User Created",

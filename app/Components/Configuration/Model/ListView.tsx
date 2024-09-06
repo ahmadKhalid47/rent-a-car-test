@@ -1,4 +1,5 @@
 import check from "@/public/check.svg";
+import shape from "@/public/ShapeBlack.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -18,9 +19,10 @@ import { FaAsterisk, FaTimes } from "react-icons/fa";
 
 interface dataType {
   data: Array<Object>;
+  makeData: Array<Object>;
 }
 
-export default function ListView({ data }: dataType) {
+export default function ListView({ data, makeData }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
@@ -33,6 +35,7 @@ export default function ListView({ data }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [Model, setModel] = useState("");
+  const [Make, setMake] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -114,6 +117,7 @@ export default function ListView({ data }: dataType) {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateModel/${_id}`, {
         Model,
+        Make
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -160,7 +164,6 @@ export default function ListView({ data }: dataType) {
             Delete Multiple
           </button>
         </span>
-        <span className="underline cursor-pointer">Export</span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
@@ -168,18 +171,18 @@ export default function ListView({ data }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] ${
-                  itemToDeleteMany.length === 0 ? "" : "bg-main-blue"
+                  itemToDeleteMany.length !== data.length ? "" : "bg-main-blue"
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length === 0 ? allIds : []
+                    itemToDeleteMany.length !== data.length ? allIds : []
                   );
                 }}
               ></div>
             </div>
-            <div className="text-start pe-5 flex justify-between items-center w-[7%] ps-7">
-              #
-            </div>
+            <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
+              ID
+            </div>{" "}
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               Make
             </div>
@@ -209,8 +212,10 @@ export default function ListView({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[7%] ps-[10px">
-                  {JSON.stringify(index + 1).padStart(2, "0")}
+                <h5 className="text-start pe-5 w-[7%]">
+                  {JSON.stringify(
+                    index + (page - 1) * itemsPerPage + 1
+                  ).padStart(2, "0")}{" "}
                 </h5>
                 <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
                 <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
@@ -227,7 +232,8 @@ export default function ListView({ data }: dataType) {
                     onClick={() => {
                       setEditPopup(true);
                       setItemToEdit(item?._id);
-                      setModel(item?.Model);
+                      setMake(item?.make);
+                      setModel(item?.model);
                     }}
                   />
 
@@ -308,11 +314,38 @@ export default function ListView({ data }: dataType) {
               {editPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
                   <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
+                    <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        Select Make
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                        <select
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                          required={true}
+                          onChange={(e) => {
+                            setMake(e.target.value);
+                          }}
+                          value={Make}
+                        >
+                          <option value={""}>Select</option>
+                          {makeData?.map((item: any, key: number) => (
+                            <option value={item?.make} key={key}>
+                              {item?.make}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                          <img src={shape.src} className="w-[10.5px]" />
+                        </div>
+                      </div>
+                    </div>
+
                     <div
                       className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                     >
                       <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                        {"Add New"}
+                        {"Update Model"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
