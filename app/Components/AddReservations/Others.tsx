@@ -44,7 +44,7 @@ export default function Others({
     reservation?.dropOffDate
   );
 
-  function calculateRent(
+  function calculateRentPerDays(
     daysBetween: any,
     carRentPerDay: any,
     chauffeurRentPerDay: any,
@@ -55,8 +55,8 @@ export default function Others({
     let rent = rentWithDays + chauffeurWithDays - discount;
     return rent;
   }
-
-  let totalRent = calculateRent(daysBetween, carRent, chauffeurRent, discount);
+ 
+  let totalRent = calculateRentPerDays(daysBetween, carRent, chauffeurRent, discount);
 
   return (
     <div className="w-full h-full  ">
