@@ -13,7 +13,7 @@ import Info from "./Info";
 import axios from "axios";
 import { SmallLoader } from "../../Loader";
 import { useParams, useRouter } from "next/navigation";
-import { resetState } from "@/app/store/reservations";
+import { resetState, setAllValues } from "@/app/store/reservations";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
@@ -120,6 +120,29 @@ export default function Reservations() {
   const vehicleDataById = VehiclesData.find(
     (customer: any) => customer._id === reservation?.vehicle_id
   );
+
+    useEffect(() => {
+      dispatch(resetState());
+      async function getData() {
+        try {
+          setLoading(true);
+          let result: any = await axios.get(
+            `/api/getreservationInfo/${reservationUpdateAction}`
+          );
+          if (result?.data?.data) {
+            dispatch(setAllValues(result?.data?.data?.data));
+          } else {
+            setShowError(result?.data?.error);
+          }
+        } catch (error: any) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      }
+      getData();
+    }, []);
+
 
   async function saveData(action: string) {
     try {
