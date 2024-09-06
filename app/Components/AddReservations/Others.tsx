@@ -4,6 +4,7 @@ import { TempTypeInputWidth } from "../InputComponents/TypeInput";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setdiscount } from "@/app/store/reservations";
+import chauffeurInfoSlice from "../../store/chauffeurInfo";
 
 interface dataType {
   customerData: any;
@@ -17,7 +18,45 @@ export default function Others({
   vehicleData,
 }: dataType) {
   let reservation = useSelector((state: RootState) => state.reservation);
-  console.log(customerData, chauffeurData, vehicleData);
+  let carRent = isNaN(Number(vehicleData?.rentDay))
+    ? 0
+    : Number(vehicleData?.rentDay);
+  let chauffeurRent = isNaN(Number(chauffeurData?.rentPerDay))
+    ? 0
+    : Number(chauffeurData?.rentPerDay);
+  let discount = isNaN(Number(reservation.discount))
+    ? 0
+    : Number(reservation.discount);
+
+  function calculateDaysBetween(pickUpDate: any, dropOffDate: any) {
+    if (!pickUpDate || !dropOffDate) {
+      return 0;
+    }
+    const pickUp = new Date(pickUpDate);
+    const dropOff = new Date(dropOffDate);
+    const differenceInTime = dropOff.getTime() - pickUp.getTime();
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    return Math.ceil(differenceInDays);
+  }
+
+  const daysBetween = calculateDaysBetween(
+    reservation?.PickUpDate,
+    reservation?.dropOffDate
+  );
+
+  function calculateRent(
+    daysBetween: any,
+    carRentPerDay: any,
+    chauffeurRentPerDay: any,
+    discount: any
+  ) {
+    let rentWithDays = daysBetween * carRentPerDay;
+    let chauffeurWithDays = daysBetween * chauffeurRentPerDay;
+    let rent = rentWithDays + chauffeurWithDays - discount;
+    return rent;
+  }
+
+  let totalRent = calculateRent(daysBetween, carRent, chauffeurRent, discount);
 
   return (
     <div className="w-full h-full  ">
@@ -29,11 +68,13 @@ export default function Others({
         <div className="w-full h-fit mt-1 rounded-[10px] border-[1px] border-grey font-[400] text-[14px] leading-[17px] pt-5 pb-3 px-4 flex flex-col justify-start items-center gap-y-3 ">
           <div className="w-full flex justify-between items-center h-fit">
             <span>Rental Period</span>
-            <span>0 Days</span>
+            <span>{daysBetween} Days</span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
-            <span>Per Day $0×0</span>
-            <span>$0.00</span>
+            <span>
+              Car Rent ${carRent} × {daysBetween}
+            </span>
+            <span>${carRent * daysBetween}</span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>VAT 24%</span>
@@ -44,8 +85,10 @@ export default function Others({
           {chauffeurData ? (
             <>
               <div className="w-full flex justify-between items-center h-fit">
-                <span>Chauffeur</span>
-                <span>${chauffeurData?.rentPerDay}</span>
+                <span>
+                  Chauffeur ${chauffeurRent} × {daysBetween}
+                </span>
+                <span>${chauffeurRent * daysBetween}</span>
               </div>
               <div className="border-b-[1px] border-grey w-full "></div>
             </>
@@ -63,7 +106,7 @@ export default function Others({
             value={reservation.discount}
             required={false}
             type={"number"}
-            widthProp="sm:w-[284px]"
+            widthProp="sm:w-full"
           />
           <div className="border-b-[1px] border-grey w-full "></div>
 
@@ -75,7 +118,7 @@ export default function Others({
           ) : null}
           <div className="w-full flex justify-between items-center h-fit">
             <span>Total</span>
-            <span>$0.00</span>
+            <span>${isNaN(totalRent) ? 0 : totalRent}</span>
           </div>
         </div>
       </div>
