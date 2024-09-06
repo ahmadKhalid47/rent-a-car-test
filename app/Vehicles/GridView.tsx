@@ -130,7 +130,7 @@ export default function GridView({ data }: dataType) {
         {paginatedData.map((item: any, index: number) => (
           <Link
             key={index} // Added unique key prop
-            href={`/CarInfo/${item?._id}`}
+            href={`/VehicleInfo/${item?._id}`}
             className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
           >
             <div

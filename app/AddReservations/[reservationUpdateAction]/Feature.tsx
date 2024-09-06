@@ -1,11 +1,4 @@
 "use client";
-import shape from "@/public/Shape.svg";
-import car from "@/public/carInfoCar.svg";
-import {
-  SelectInputWidth,
-  TempSelectInputWidth,
-} from "../../Components/InputComponents/SelectInput";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
