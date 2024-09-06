@@ -5,14 +5,12 @@ import { useMediaQuery } from "react-responsive";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import shape from "@/public/Shape2.svg";
 import { useRouter } from "next/navigation";
-import ReservationDetails from "../ReservationDetails";
-import ReservationInfo from "../ReservationCustomerInfo";
-import ReservationCustomerInfo from "../ReservationCustomerInfo";
-import ReservationVehicleInfo from "../ReservationVehicleInfo";
-import ReservationChauffeurInfo from "../ReservationChauffeurInfo";
-const ReservationPreview = () => {
+import ReservationDetails from "./ReservationDetails";
+import ReservationCustomerInfo from "./ReservationCustomerInfo";
+import ReservationVehicleInfo from "./ReservationVehicleInfo";
+import ReservationChauffeurInfo from "./ReservationChauffeurInfo";
+const ReservationInfo = () => {
   let [activeButton, setActiveButton] = useState("Reservation Details");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
@@ -188,4 +186,4 @@ const ReservationPreview = () => {
   );
 };
 
-export default ReservationPreview;
+export default ReservationInfo;
