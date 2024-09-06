@@ -46,7 +46,7 @@ export default function Others({
     reservation?.dropOffDate
   );
   useEffect(() => {
-    dispatch(setduration(daysBetween));
+    dispatch(setduration(JSON.stringify(daysBetween)));
   }, [daysBetween]);
 
   function calculateRentPerDays(
@@ -69,7 +69,7 @@ export default function Others({
   );
 
   useEffect(() => {
-    dispatch(setamount(totalRent));
+    dispatch(setamount(JSON.stringify(totalRent)));
   }, [totalRent]);
 
   return (
