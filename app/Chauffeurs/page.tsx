@@ -17,7 +17,6 @@ export default function Vehicles() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");

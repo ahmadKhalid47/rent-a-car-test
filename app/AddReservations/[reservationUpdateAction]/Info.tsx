@@ -1,6 +1,4 @@
 "use client";
-import car from "@/public/Customer.svg";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";

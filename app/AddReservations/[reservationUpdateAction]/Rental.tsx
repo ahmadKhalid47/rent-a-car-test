@@ -1,8 +1,4 @@
 "use client";
-import checkBlue from "@/public/checkBlue.svg";
-import checkBlack from "@/public/checkBlack.png";
-import car from "@/public/chauffeursPic.svg";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";

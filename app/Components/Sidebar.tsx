@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { FaCar, FaUsers } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
-import { MdCalendarMonth } from "react-icons/md";
-import { RiFileSettingsFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
@@ -16,7 +14,6 @@ import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
-import { useParams } from "next/navigation";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -163,8 +160,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Customers" ||
-                  pathName === "/CustomerInfo"
+                  pathName === "/Customers" || pathName === "/CustomerInfo"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -251,8 +247,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Chauffeurs" ||
-                  pathName === "/ChauffeursInfo"
+                  pathName === "/Chauffeurs" || pathName === "/ChauffeursInfo"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -342,9 +337,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Reservations"
-                    ? "bg-main-blue text-white"
-                    : ""
+                  pathName === "/Reservations" ? "bg-main-blue text-white" : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Reservations" : null}
@@ -430,8 +423,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Vehicles" ||
-                  pathName?.includes("/VehicleInfo")
+                  pathName === "/Vehicles" || pathName?.includes("/VehicleInfo")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

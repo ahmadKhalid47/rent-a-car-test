@@ -1,7 +1,5 @@
 "use client";
-import CarExterior from "@/public/car-sedan-exterior.png";
-import CarInterior from "@/public/car-sedan-interior (1).png";
-import { FaEye, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { FaEye, FaTimes } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";

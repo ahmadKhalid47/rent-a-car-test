@@ -1,8 +1,6 @@
 "use client";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
-import CarExterior from "@/public/car-sedan-exterior.png";
-import CarInterior from "@/public/car-sedan-interior (1).png";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
