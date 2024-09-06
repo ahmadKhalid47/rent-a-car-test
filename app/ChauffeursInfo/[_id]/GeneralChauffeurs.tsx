@@ -10,13 +10,6 @@ export default function GeneralChauffeurs() {
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[40%] h-fit flex flex-col justify-start items-start bg-red-30 ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Chauffeur ID:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            539485
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Gender:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
             {chauffeurInfo?.gender ? chauffeurInfo?.gender : "---"}
@@ -47,7 +40,7 @@ export default function GeneralChauffeurs() {
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
+        <div className="w-full h-fit flex justify-between items-start py-[3px]">
           <p className="font-[400] text-[18px] leading-[27px]">City:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
             {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
@@ -106,7 +99,7 @@ export default function GeneralChauffeurs() {
             {chauffeurInfo?.state ? chauffeurInfo?.state : "---"}
           </p>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
+        <div className="w-full h-fit flex justify-between items-start py-[3px]">
           <p className="font-[400] text-[18px] leading-[27px]">
             Postal/Zip Code:
           </p>

@@ -1,106 +1,99 @@
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
+
 export default function Generalreservations() {
+  let { reservationInfo } = useSelector(
+    (state: RootState) => state.reservationInfo
+  );
+
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[40%] h-fit flex flex-col justify-start items-start bg-red-30 ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">reservation ID:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            539485
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Pick Up Address:
           </p>
-        </div> 
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Gender:</p>
+          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px] truncate">
+            {reservationInfo?.PickUpAddress
+              ? reservationInfo?.PickUpAddress
+              : "---"}
+          </p>
+        </div>
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px] truncate">
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Drop Off Address:
+          </p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            Male
+            {reservationInfo?.dropOffAddress
+              ? reservationInfo?.dropOffAddress
+              : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Nationality:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            American
+          <p className="font-[400] text-[18px] leading-[27px]">
+            reservationDate:
           </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Phone:</p>
           <div className="w-[30%] text-start font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
-            846 373 543
+            {reservationInfo?.reservationDate
+              ? reservationInfo?.reservationDate
+              : "---"}
           </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Rent Per Day:</p>
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Security Deposit:
+          </p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            $10
+            $
+            {reservationInfo?.securityDeposit
+              ? reservationInfo?.securityDeposit
+              : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
-          <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            USA
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Current Fuel Status:
           </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">City:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            New York
+            {reservationInfo?.fuelStatus ? reservationInfo?.fuelStatus : "---"}%
           </p>
         </div>
       </div>
       <div className="w-[40%] h-fit flex flex-col justify-start items-start bg-red-30 ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Full Name: </p>
+          <p className="font-[400] text-[18px] leading-[27px]">Date & Time: </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            Glenn A. Jean{" "}
+            {reservationInfo?.PickUpDate ? reservationInfo?.PickUpDate : "---"}{" "}
+            {reservationInfo?.PickUpTime ? reservationInfo?.PickUpTime : "---"}
+          </p>
+        </div>
+
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+          <p className="font-[400] text-[18px] leading-[27px]">Date & Time: </p>
+          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
+            {reservationInfo?.dropOffDate
+              ? reservationInfo?.dropOffDate
+              : "---"}{" "}
+            {reservationInfo?.dropOffTime
+              ? reservationInfo?.dropOffTime
+              : "---"}
+          </p>
+        </div>
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+          <p className="font-[400] text-[18px] leading-[27px]">Amount:</p>
+          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
+            ${reservationInfo?.amount ? reservationInfo?.amount : "---"}
           </p>
         </div>
 
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
-            Date Of Birth:
+            Current Odometer (KMPH):
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            23-01-1990
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Email:</p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            Sedan@gmail.com
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Alternative Phone:
-          </p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            846 373 543
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Street Address:
-          </p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            846 373 543
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            State/Provinces:
-          </p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            New York
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Postal/Zip Code:
-          </p>
-          <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            45545
+            {reservationInfo?.odometer
+              ? reservationInfo?.odometer
+              : "---"}
           </p>
         </div>
       </div>

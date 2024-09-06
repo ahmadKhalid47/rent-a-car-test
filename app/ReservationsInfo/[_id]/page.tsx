@@ -106,7 +106,9 @@ export default function reservationInfoMainPage() {
                       Country:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      {reservationInfo?.country ? reservationInfo?.country : "---"}
+                      {reservationInfo?.country
+                        ? reservationInfo?.country
+                        : "---"}
                     </p>
                   </div>
                 </div>
@@ -122,7 +124,7 @@ export default function reservationInfoMainPage() {
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("General")}
                 >
-                  General Info
+                  Reservation Details
                 </div>
                 <div
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
@@ -132,7 +134,7 @@ export default function reservationInfoMainPage() {
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Identity")}
                 >
-                  Identity Info
+                  Customer Info
                 </div>
                 <div
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
@@ -142,7 +144,7 @@ export default function reservationInfoMainPage() {
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Emergency")}
                 >
-                  Additional Info
+                  Vehicle Info
                 </div>
               </div>
               <div className="w-full h-[350px] flex justify-center items-start gap-8">
