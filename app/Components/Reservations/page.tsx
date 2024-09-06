@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import shape from "@/public/Shape2.svg";
-import ListViewReservations from "../ListViewReservations";
+import ListViewReservations from "./ListViewReservations";
 import { useRouter } from "next/navigation";
 
 export default function Vehicles() {

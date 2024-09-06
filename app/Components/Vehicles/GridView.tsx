@@ -8,11 +8,11 @@ import { Popover, Button } from "antd";
 import check from "@/public/check.svg";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { setVehicleDataReloader } from "../store/Global";
-import { RootState } from "../store";
+import { setVehicleDataReloader } from "../../store/Global";
+import { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
-import { SmallLoader } from "./Loader";
-import { handleExport } from "./functions/exportFunction";
+import { SmallLoader } from "../Loader";
+import { handleExport } from "../functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;

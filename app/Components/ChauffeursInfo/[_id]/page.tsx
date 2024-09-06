@@ -1,11 +1,11 @@
 "use client";
 import vip from "@/public/vip.svg";
-import Generalchauffeur from "../../GeneralChauffeurs";
-import Identitychauffeur from "../../IdentityChauffeurs";
-import Emergencychauffeur from "../../EmergencyChauffeurs";
+import Generalchauffeur from "./GeneralChauffeurs";
+import Identitychauffeur from "./IdentityChauffeurs";
+import Emergencychauffeur from "./EmergencyChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import Referencechauffeur from "../../ReferenceChauffeurs";
+import Referencechauffeur from "./ReferenceChauffeurs";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
@@ -13,8 +13,8 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
 import { useParams } from "next/navigation";
-import GeneralChauffeurs from "../../GeneralChauffeurs";
-import EmergencyChauffeurs from "../../EmergencyChauffeurs";
+import GeneralChauffeurs from "./GeneralChauffeurs";
+import EmergencyChauffeurs from "./EmergencyChauffeurs";
 
 export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");

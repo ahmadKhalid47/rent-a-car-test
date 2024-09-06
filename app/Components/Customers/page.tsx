@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import shape from "@/public/Shape2.svg";
-import ListViewCustomers from "../ListViewCustomers";
+import ListViewCustomers from "./ListViewCustomers";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 

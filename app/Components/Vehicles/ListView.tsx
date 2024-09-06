@@ -1,37 +1,36 @@
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
-import vip from "@/public/vip.svg";
+import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SmallLoader } from "./Loader";
-import { RootState } from "../store";
+import { SmallLoader } from "../Loader";
+import { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "../store/Global";
+import { setVehicleDataReloader } from "../../store/Global";
+import { setAllValues } from "../../store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { handleExport } from "./functions/exportFunction";
-import { PaginationComponent } from "./functions/Pagination";
+import { handleExport } from "../functions/exportFunction";
 
 interface dataType {
   data: Array<Object>;
 }
 
-export default function ListViewchauffeurs({ data }: dataType) {
+export default function ListView({ data }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
-  const [sortOrder, setSortOrder] = useState<{
-    [key: string]: "asc" | "desc";
-  }>({});
+  const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
+    {}
+  );
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
@@ -90,10 +89,33 @@ export default function ListViewchauffeurs({ data }: dataType) {
     setCurrentSortKey(key);
   };
 
+  function PaginationRounded() {
+    return (
+      <Stack spacing={2}>
+        <Pagination
+          count={totalPages}
+          shape="rounded"
+          page={page}
+          onChange={handleChange}
+          sx={{
+            "& .MuiPaginationItem-root": {
+              "&.Mui-selected": {
+                backgroundColor: "#242e69",
+                color: "white",
+                "&:hover": {
+                  opacity: 0.8,
+                },
+              },
+            },
+          }}
+        />
+      </Stack>
+    );
+  }
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deletechauffeur/${_id}`);
+      let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
       console.log(err);
@@ -106,7 +128,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManychauffeur`, {
+      let result: any = await axios.post(`/api/deleteManyVehicle`, {
         _ids: itemToDeleteMany,
       });
       console.log(result);
@@ -139,7 +161,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   async function updateActive(_id: any, active: boolean) {
     try {
       setEditLoading(true);
-      let result: any = await axios.post(`/api/updateActivechauffeur/${_id}`, {
+      let result: any = await axios.post(`/api/updateActive/${_id}`, {
         active: !active,
       });
       console.log(result);
@@ -150,11 +172,10 @@ export default function ListViewchauffeurs({ data }: dataType) {
       setEditLoading(false);
     }
   }
-
   async function UpdateActiveManyItem(active: boolean) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/updateManyActivechauffeur`, {
+      let result: any = await axios.post(`/api/updateManyActive`, {
         _ids: itemToDeleteMany,
         active: active,
       });
@@ -177,7 +198,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         }  `}
       >
         <span>
-          <span className="cursor-pointer">
+          <span>
             <button
               className="cursor-pointer"
               onClick={() => {
@@ -207,7 +228,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer"
+          className="underline cursor-pointer text-main-blue"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}
@@ -215,8 +236,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
           Export
         </span>
       </h3>
-      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden leading-[17px]">
+      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
+        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div
@@ -230,29 +251,46 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[11%] ps-7">
-              ID <img src={arrows.src} />
-            </div>
+
             <div
-              className="text-start pe-3 flex justify-between items-center w-[19%]"
-              onClick={() => sort("name")}
+              className="text-start pe-3 flex justify-between items-center w-[9%] ps-7 cursor-pointer"
+              onClick={() => sort("vehicleId")}
             >
-              Full Name <img src={arrows.src} />
+              ID
+              <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("phone")}
+              className="text-start pe-3 flex justify-between items-center w-[20%] cursor-pointer"
+              onClick={() => sort("make")}
             >
-              Phone <img src={arrows.src} />
+              Car Name <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() => sort("gender")}
+              className="text-start pe-3 flex justify-between items-center w-[13%] cursor-pointer"
+              onClick={() => sort("registration")}
             >
-              Gender <img src={arrows.src} />
+              Registration No <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
+              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
+              onClick={() => sort("year")}
+            >
+              Year <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
+              onClick={() => sort("type")}
+            >
+              Type <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
+              onClick={() => sort("color")}
+            >
+              Color <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[12%] cursor-pointer"
               onClick={() => sort("city")}
             >
               City <img src={arrows.src} />
@@ -261,11 +299,10 @@ export default function ListViewchauffeurs({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
               <Link
-                href={`/Components/ChauffeursInfo/${item?._id}`}
+                href={`/Components/CarInfo/${item?._id}`}
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
@@ -282,15 +319,26 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-start pe-5 w-[11%] ps-7">
+                <h5 className="text-center pe-5 w-[9%]">
                   {JSON.stringify(
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}
                 </h5>
-                <h5 className="text-start pe-3 w-[19%]">{item?.data?.name}</h5>
-                <h5 className="text-start pe-3 w-[14%]">{item?.data?.phone}</h5>
-                <h5 className="text-start pe-3 w-[12%]">
-                  {item?.data?.gender}
+                <h5 className="text-start pe-3 w-[20%]">
+                  {item?.data?.make} {item?.data?.model}
+                </h5>
+                <h5 className="text-start pe-3 w-[13%]">
+                  {item?.data?.registration}
+                </h5>
+                <h5 className="text-start pe-3 w-[9%]">{item?.data?.year}</h5>
+                <h5 className="text-start pe-3 w-[9%]">{item?.data?.type}</h5>
+                <h5 className="text-start pe-3 w-[9%]">
+                  <div
+                    className={`w-[23px] h-[12px] rounded-full`}
+                    style={{
+                      backgroundColor: item?.data?.color,
+                    }}
+                  ></div>
                 </h5>
                 <h5 className="text-start pe-3 w-[12%]">{item?.data?.city}</h5>
                 <div
@@ -311,7 +359,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/AddChauffeur/${item?._id}`);
+                      router.push(`/Components/${item?._id}`);
                     }}
                   />
 
@@ -398,11 +446,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           {Math.min(page * itemsPerPage, data.length)} of {data.length} data{" "}
         </div>
         <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <PaginationComponent
-            totalPages={totalPages}
-            page={page}
-            handleChange={handleChange}
-          />
+          <PaginationRounded />
         </div>
       </div>
     </div>

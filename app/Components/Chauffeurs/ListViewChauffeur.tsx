@@ -9,20 +9,20 @@ import vip from "@/public/vip.svg";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SmallLoader } from "./Loader";
-import { RootState } from "../store";
+import { SmallLoader } from "../Loader";
+import { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "../store/Global";
+import { setVehicleDataReloader } from "../../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { handleExport } from "./functions/exportFunction";
-import { PaginationComponent } from "./functions/Pagination";
+import { handleExport } from "../functions/exportFunction";
+import { PaginationComponent } from "../functions/Pagination";
 
 interface dataType {
   data: Array<Object>;
 }
 
-export default function ListViewCustomers({ data }: dataType) {
+export default function ListViewchauffeurs({ data }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
@@ -93,7 +93,7 @@ export default function ListViewCustomers({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteCustomer/${_id}`);
+      let result: any = await axios.delete(`/api/deletechauffeur/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
       console.log(err);
@@ -106,7 +106,7 @@ export default function ListViewCustomers({ data }: dataType) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyCustomer`, {
+      let result: any = await axios.post(`/api/deleteManychauffeur`, {
         _ids: itemToDeleteMany,
       });
       console.log(result);
@@ -139,7 +139,7 @@ export default function ListViewCustomers({ data }: dataType) {
   async function updateActive(_id: any, active: boolean) {
     try {
       setEditLoading(true);
-      let result: any = await axios.post(`/api/updateActiveCustomer/${_id}`, {
+      let result: any = await axios.post(`/api/updateActivechauffeur/${_id}`, {
         active: !active,
       });
       console.log(result);
@@ -154,7 +154,7 @@ export default function ListViewCustomers({ data }: dataType) {
   async function UpdateActiveManyItem(active: boolean) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/updateManyActiveCustomer`, {
+      let result: any = await axios.post(`/api/updateManyActivechauffeur`, {
         _ids: itemToDeleteMany,
         active: active,
       });
@@ -168,7 +168,6 @@ export default function ListViewCustomers({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-
 
   return (
     <div className="w-full h-fit mt-4">
@@ -242,13 +241,6 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("customerType")}
-            >
-              Customer Type
-              <img src={arrows.src} />
-            </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("phone")}
             >
               Phone <img src={arrows.src} />
@@ -270,33 +262,10 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
           </div>
 
-          {/* <Link
-            href={"/Components/CustomerInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
-              Glenn A. Jean
-            </div>
-            <h5 className="text-start pe-3 w-[14%]">Individual</h5>
-            <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
-            <h5 className="text-start pe-3 w-[12%]">Female</h5>
-
-            <h5 className="text-start pe-3 w-[12%]">Dahlonega</h5>
-            <div className="flex justify-start gap items-end w-[8%]">
-              <img src={check.src} className="me-[8px] translate-y-[1px]" />
-              <img src={edit.src} className="me-[5.8px]" />
-              <img src={deleteIcon.src} />
-            </div>
-          </Link> */}
-
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
               <Link
-                href={`/Components/CustomerInfo/${item?._id}`}
+                href={`/Components/ChauffeursInfo/${item?._id}`}
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
@@ -319,9 +288,6 @@ export default function ListViewCustomers({ data }: dataType) {
                   ).padStart(2, "0")}
                 </h5>
                 <h5 className="text-start pe-3 w-[19%]">{item?.data?.name}</h5>
-                <h5 className="text-start pe-3 w-[14%]">
-                  {item?.data?.customerType}
-                </h5>
                 <h5 className="text-start pe-3 w-[14%]">{item?.data?.phone}</h5>
                 <h5 className="text-start pe-3 w-[12%]">
                   {item?.data?.gender}
@@ -345,7 +311,7 @@ export default function ListViewCustomers({ data }: dataType) {
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/AddCustomer/${item?._id}`);
+                      router.push(`/Components/AddChauffeur/${item?._id}`);
                     }}
                   />
 

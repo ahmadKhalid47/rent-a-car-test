@@ -1,11 +1,11 @@
 "use client";
 import vip from "@/public/vip.svg";
-import GeneralCustomer from "../../GeneralCustomer";
-import IdentityCustomer from "../../IdentityCustomer";
-import EmergencyCustomer from "../../EmergencyCustomer";
+import GeneralCustomer from "./GeneralCustomer";
+import IdentityCustomer from "./IdentityCustomer";
+import EmergencyCustomer from "./EmergencyCustomer";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import ReferenceCustomer from "../../ReferenceCustomer";
+import ReferenceCustomer from "./ReferenceCustomer";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
