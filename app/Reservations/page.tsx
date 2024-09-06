@@ -88,7 +88,6 @@ export default function Vehicles() {
         duration,
       } = data;
       console.log(
-        chauffeurName,
         vehicleName,
         customerName,
         city,
@@ -97,7 +96,6 @@ export default function Vehicles() {
       );
 
       return (
-        chauffeurName?.toLowerCase().includes(lowercasedQuery) ||
         vehicleName?.toLowerCase().includes(lowercasedQuery) ||
         city?.toLowerCase().includes(lowercasedQuery) ||
         amount?.toLowerCase().includes(lowercasedQuery) ||
