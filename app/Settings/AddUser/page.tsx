@@ -5,7 +5,6 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import { TypeInputWidth } from "../../InputComponents/TypeInput";
 import { FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
