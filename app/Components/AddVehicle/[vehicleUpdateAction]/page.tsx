@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-// import VehicleForms from "../VehicleForms/page";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { setSidebarShowR } from "@/app/store/Global";
@@ -14,7 +13,7 @@ import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios from "axios";
-import { SmallLoader } from "../Loader";
+import { SmallLoader } from "../../Loader";
 import { useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
@@ -63,7 +62,7 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    if (vehicleUpdateAction !== "AddVehicles") {
+    if (vehicleUpdateAction !== "AddNew") {
       getData();
     }
   }, []);
@@ -230,13 +229,13 @@ export default function Vehicles() {
       >
         <div className="w-[100%]  flex justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
-            {vehicleUpdateAction !== "AddVehicles"
+            {vehicleUpdateAction !== "AddNew"
               ? "Update Vehicle " + vehicle.vehicleId
               : "Add New Vehicle"}
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
               {" "}
               Vehicles /
-              {vehicleUpdateAction !== "AddVehicles"
+              {vehicleUpdateAction !== "AddNew"
                 ? "Update Vehicle"
                 : "Add New Vehicle"}
             </p>
@@ -424,7 +423,7 @@ export default function Vehicles() {
             ) : null}
             {currentPage === 5 ? (
               <>
-                {vehicleUpdateAction !== "AddVehicles" ? (
+                {vehicleUpdateAction !== "AddNew" ? (
                   <div className="flex justify-start items-center gap-1 md:gap-3">
                     <button
                       className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}

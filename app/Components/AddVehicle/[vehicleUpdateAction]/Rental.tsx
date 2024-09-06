@@ -1,5 +1,5 @@
 "use client";
-import { TypeInput, TempTypeInput } from "../InputComponents/TypeInput";
+import { TypeInput, TempTypeInput } from "../../InputComponents/TypeInput";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import {

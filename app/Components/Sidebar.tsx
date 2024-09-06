@@ -49,7 +49,7 @@ export default function Sidebar() {
     } else if (
       pathName === "/Components/Vehicles" ||
       pathName?.includes("/Components/CarInfo") ||
-      pathName === "/Components/AddVehicles" ||
+      pathName === "/Components/AddNew" ||
       pathName?.includes("/Components/Configuration")
     ) {
       setChevronState("Vehicles");
@@ -440,7 +440,7 @@ export default function Sidebar() {
               </Link>{" "}
             </div>
             <Link
-              href="/Components/AddVehicles"
+              href="/Components/AddNew"
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -453,7 +453,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/Components/AddVehicles"
+                  pathName === "/Components/AddNew"
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

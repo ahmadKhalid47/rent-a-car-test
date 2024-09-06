@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import React, { useCallback } from "react";
-import { TempTypeInput, TempTypeInputInfo } from "../InputComponents/TypeInput";
+import { TempTypeInput, TempTypeInputInfo } from "../../InputComponents/TypeInput";
 import {
   TempSelectInput,
   TempSelectInputInfo,
-} from "../InputComponents/SelectInput";
+} from "../../InputComponents/SelectInput";
 import {
   setvehicleIdR,
   setmakeR,
