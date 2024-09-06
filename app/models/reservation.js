@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const reservationSchema = mongoose.Schema(
   {
     data: { type: Object },
-    active: { type: Boolean, default: true },
+    status: { type: String, default: "completed" },
   },
   {
     timestamps: true,
