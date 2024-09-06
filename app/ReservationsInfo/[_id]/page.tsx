@@ -1,21 +1,21 @@
 "use client";
 import vip from "@/public/vip.svg";
-import Identitychauffeur from "./IdentityChauffeurs";
-import Emergencychauffeur from "./EmergencyChauffeurs";
+import Generalreservation from "./Generalreservation";
+import Identityreservation from "./Identityreservation";
+import Emergencyreservation from "./Emergencyreservation";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import Referencechauffeur from "./ReferenceChauffeurs";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
+import { setreservationInfo } from "@/app/store/reservationInfo";
 import { useParams } from "next/navigation";
-import GeneralChauffeurs from "./GeneralChauffeurs";
-import EmergencyChauffeurs from "./EmergencyChauffeurs";
+import Generalreservations from "./Generalreservation";
+import Emergencyreservations from "./Emergencyreservation";
 
-export default function chauffeurInfoMainPage() {
+export default function reservationInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
@@ -31,17 +31,17 @@ export default function chauffeurInfoMainPage() {
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
-  let { chauffeurInfo } = useSelector(
-    (state: RootState) => state.chauffeurInfo
+  let { reservationInfo } = useSelector(
+    (state: RootState) => state.reservationInfo
   );
 
   useEffect(() => {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getchauffeurInfo/${_id}`);
+        let result: any = await axios.get(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
-          dispatch(setchauffeurInfo(result?.data?.data?.data));
+          dispatch(setreservationInfo(result?.data?.data?.data));
         } else {
           setShowError(result?.data?.error);
         }
@@ -63,12 +63,12 @@ export default function chauffeurInfoMainPage() {
       >
         <div className="w-full h-[200px ">
           <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-            {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
+            {reservationInfo?.name ? reservationInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Chauffeurs / All Chauffeurs /
-              {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
+              reservations / All reservations /
+              {reservationInfo?.name ? reservationInfo?.name : "---"}
             </p>
           </div>
         </div>
@@ -78,17 +78,17 @@ export default function chauffeurInfoMainPage() {
               <div className="w-fit flex justify-start items-center gap-1">
                 <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                   <img
-                    src={chauffeurInfo?.chauffeurImage}
+                    src={reservationInfo?.reservationImage}
                     className="w-full h-full"
                   />
                 </div>
               </div>
               <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
                 <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
-                  {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}{" "}
+                  {reservationInfo?.name ? reservationInfo?.name : "---"}{" "}
                 </h3>
                 <p className="font-[400] text-[28px] leading-[42px] text-black">
-                  {chauffeurInfo?.phone ? chauffeurInfo?.phone : "---"}
+                  {reservationInfo?.phone ? reservationInfo?.phone : "---"}
                 </p>
                 <div className="w-[80%] flex justify-between items-center">
                   <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
@@ -96,7 +96,7 @@ export default function chauffeurInfoMainPage() {
                       City:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
+                      {reservationInfo?.city ? reservationInfo?.city : "---"}
                     </p>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export default function chauffeurInfoMainPage() {
                       Country:
                     </p>
                     <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      {chauffeurInfo?.country ? chauffeurInfo?.country : "---"}
+                      {reservationInfo?.country ? reservationInfo?.country : "---"}
                     </p>
                   </div>
                 </div>
@@ -148,15 +148,15 @@ export default function chauffeurInfoMainPage() {
               <div className="w-full h-[350px] flex justify-center items-start gap-8">
                 {activeButton === "General" ? (
                   <>
-                    <GeneralChauffeurs />
+                    <Generalreservations />
                   </>
                 ) : activeButton === "Identity" ? (
                   <>
-                    <Identitychauffeur />
+                    <Identityreservation />
                   </>
                 ) : activeButton === "Emergency" ? (
                   <div className="w-full flex flex-col justify-start items-start gap-2 h-fit">
-                    <EmergencyChauffeurs />
+                    <Emergencyreservations />
                   </div>
                 ) : null}
               </div>

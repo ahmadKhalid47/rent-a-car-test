@@ -1,56 +1,49 @@
-import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
-
-export default function GeneralChauffeurs() {
-  let { chauffeurInfo } = useSelector(
-    (state: RootState) => state.chauffeurInfo
-  );
-
+export default function Generalreservations() {
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[40%] h-fit flex flex-col justify-start items-start bg-red-30 ">
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Chauffeur ID:</p>
+          <p className="font-[400] text-[18px] leading-[27px]">reservation ID:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
             539485
           </p>
-        </div>
+        </div> 
 
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Gender:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.gender ? chauffeurInfo?.gender : "---"}
+            Male
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Nationality:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.nationality ? chauffeurInfo?.nationality : "---"}
+            American
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Phone:</p>
           <div className="w-[30%] text-start font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
-            {chauffeurInfo?.phone ? chauffeurInfo?.phone : "---"}
+            846 373 543
           </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Rent Per Day:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            ${chauffeurInfo?.rentPerDay ? chauffeurInfo?.rentPerDay : "---"}
+            $10
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.country ? chauffeurInfo?.country : "---"}
+            USA
           </p>
         </div>
 
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">City:</p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
+            New York
           </p>
         </div>
       </div>
@@ -58,7 +51,7 @@ export default function GeneralChauffeurs() {
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Full Name: </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
+            Glenn A. Jean{" "}
           </p>
         </div>
 
@@ -67,13 +60,13 @@ export default function GeneralChauffeurs() {
             Date Of Birth:
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.dateOfBirth ? chauffeurInfo?.dateOfBirth : "---"}
+            23-01-1990
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Email:</p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.emailAddress ? chauffeurInfo?.emailAddress : "---"}
+            Sedan@gmail.com
           </p>
         </div>
 
@@ -82,9 +75,7 @@ export default function GeneralChauffeurs() {
             Alternative Phone:
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.alternativePhone
-              ? chauffeurInfo?.alternativePhone
-              : "---"}
+            846 373 543
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
@@ -92,9 +83,7 @@ export default function GeneralChauffeurs() {
             Street Address:
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.streetAddress
-              ? chauffeurInfo?.streetAddress
-              : "---"}
+            846 373 543
           </p>
         </div>
 
@@ -103,7 +92,7 @@ export default function GeneralChauffeurs() {
             State/Provinces:
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.state ? chauffeurInfo?.state : "---"}
+            New York
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
@@ -111,7 +100,7 @@ export default function GeneralChauffeurs() {
             Postal/Zip Code:
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.postalCode ? chauffeurInfo?.postalCode : "---"}
+            45545
           </p>
         </div>
       </div>
