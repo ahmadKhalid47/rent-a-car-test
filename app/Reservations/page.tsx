@@ -47,7 +47,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.get("/api/getreservations", {
+        const result = await axios.get("/api/getreservation", {
           headers: { "Cache-Control": "no-store" },
         });
 

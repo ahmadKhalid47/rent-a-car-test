@@ -1,14 +1,15 @@
 import connectDb from "@/app/models/connectDb";
-import chauffeurModel from "@/app/models/chauffeur";
+import reservationModel from "@/app/models/reservation";
 import { NextResponse } from "next/server";
 
-export async function DELETE(req: Request, params: any) {
+export async function POST(req: Request, params: any) {
   try {
+    let { active } = await req.json();
     let { _id } = await params.params;
-    await connectDb();
-    const data = await chauffeurModel.deleteOne({ _id: _id });
+    connectDb();
+    await reservationModel.updateOne({ _id: _id }, { $set: { active: active } });
     return NextResponse.json({
-      acknowledged: data.acknowledged,
+      success: "User Created",
     });
   } catch (err) {
     console.log("err: ", err);
