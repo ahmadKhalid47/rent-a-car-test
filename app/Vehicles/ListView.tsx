@@ -358,7 +358,7 @@ export default function ListView({ data }: dataType) {
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/${item?._id}`);
+                      router.push(`/AddVehicle/${item?._id}`);
                     }}
                   />
 

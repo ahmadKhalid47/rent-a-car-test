@@ -224,14 +224,12 @@ export default function ListViewreservation({ data }: dataType) {
             <div className="text-start pe-3 flex justify-between items-center w-[14%]">
               Vehicle <img src={arrows.src} />
             </div>
-
             <div className="text-start pe-3 flex justify-between items-center w-[14%]">
               Customer <img src={arrows.src} />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               City <img src={arrows.src} />
             </div>
-
             <div className="text-start pe-3 flex justify-between items-center w-[9%]">
               Duration <img src={arrows.src} />
             </div>
@@ -251,7 +249,7 @@ export default function ListViewreservation({ data }: dataType) {
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
               <Link
-                href={`/reservationInfo/${item?._id}`}
+                href={`/ReservationInfo/${item?._id}`}
                 className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
@@ -263,14 +261,20 @@ export default function ListViewreservation({ data }: dataType) {
                   ).padStart(2, "0")}
                 </h5>
                 <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
-                  Suzuki Swift
+                  {item.data.vehicleName}
                 </div>
 
-                <h5 className="text-start pe-3 w-[14%]">Sharon Henry</h5>
-                <h5 className="text-start pe-3 w-[10%]">New York</h5>
+                <h5 className="text-start pe-3 w-[14%]">
+                  {item.data.customerName}
+                </h5>
+                <h5 className="text-start pe-3 w-[10%]">
+                  {item.data.vehicleName}
+                </h5>
 
-                <h5 className="text-start pe-3 w-[9%]">20 Day</h5>
-                <h5 className="text-start pe-3 w-[9%]">$100</h5>
+                <h5 className="text-start pe-3 w-[9%]">
+                  {item.data.duration} Day
+                </h5>
+                <h5 className="text-start pe-3 w-[9%]">${item.data.amount}</h5>
                 <div className="text-start pe-3 w-[10%]">
                   <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
                     Completed
@@ -280,12 +284,18 @@ export default function ListViewreservation({ data }: dataType) {
                   <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
                   <img src={doc1.src} />
                 </div>
-                <div className="flex justify-start ps-2 items-end w-[7%]">
+                <div
+                  className="flex justify-start ps-2 items-end w-[7%]"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }}
+                >
                   <img
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/AddChauffeur/${item?._id}`);
+                      router.push(`/AddReservations/${item?._id}`);
                     }}
                   />
 

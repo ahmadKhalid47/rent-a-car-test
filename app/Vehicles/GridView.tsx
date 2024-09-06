@@ -151,7 +151,7 @@ export default function GridView({ data }: dataType) {
                     <button
                       className="px-4 py-2 hover:bg-gray-200 w-full text-start"
                       onClick={() => {
-                        router.push(`/Components/${item?._id}`);
+                        router.push(`/AddVehicle/${item?._id}`);
                       }}
                     >
                       Edit

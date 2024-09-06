@@ -308,7 +308,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     src={edit.src}
                     className="me-[5.8px]"
                     onClick={() => {
-                      router.push(`/Components/AddChauffeur/${item?._id}`);
+                      router.push(`/AddChauffeur/${item?._id}`);
                     }}
                   />
 

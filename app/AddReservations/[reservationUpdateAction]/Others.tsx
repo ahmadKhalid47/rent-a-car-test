@@ -2,9 +2,10 @@
 import car from "@/public/PaymentCar.svg";
 import { TempTypeInputWidth } from "../../Components/InputComponents/TypeInput";
 import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
-import { setdiscount } from "@/app/store/reservations";
+import { useDispatch, useSelector } from "react-redux";
+import { setdiscount, setduration, setamount } from "@/app/store/reservations";
 import chauffeurInfoSlice from "../../store/chauffeurInfo";
+import { useEffect } from "react";
 
 interface dataType {
   customerData: any;
@@ -17,6 +18,7 @@ export default function Others({
   chauffeurData,
   vehicleData,
 }: dataType) {
+  let dispatch = useDispatch();
   let reservation = useSelector((state: RootState) => state.reservation);
   let carRent = isNaN(Number(vehicleData?.rentDay))
     ? 0
@@ -43,6 +45,9 @@ export default function Others({
     reservation?.PickUpDate,
     reservation?.dropOffDate
   );
+  useEffect(() => {
+    dispatch(setduration(daysBetween));
+  }, [daysBetween]);
 
   function calculateRentPerDays(
     daysBetween: any,
@@ -62,6 +67,10 @@ export default function Others({
     chauffeurRent,
     discount
   );
+
+  useEffect(() => {
+    dispatch(setamount(totalRent));
+  }, [totalRent]);
 
   return (
     <div className="w-full h-full  ">
