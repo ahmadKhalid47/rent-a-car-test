@@ -1,27 +1,218 @@
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import check from "@/public/check.svg";
-import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import doc1 from "@/public/doc (1).svg";
 import doc2 from "@/public/doc (2).svg";
 import Link from "next/link";
-import vip from "@/public/vip.svg";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { SmallLoader } from "../Components/Loader";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
+import { setVehicleDataReloader } from "../store/Global";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { handleExport } from "../Components/functions/exportFunction";
+import { PaginationComponent } from "../Components/functions/Pagination";
 
-export default function ListViewReservations() {
+interface dataType {
+  data: Array<Object>;
+}
+
+export default function ListViewreservation({ data }: dataType) {
+  let global = useSelector((state: RootState) => state.Global);
+  const [popup, setPopup] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [sortedData, setSortedData] = useState(data);
+  const [sortOrder, setSortOrder] = useState<{
+    [key: string]: "asc" | "desc";
+  }>({});
+  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    setSortedData(data);
+  }, [data]);
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [deleteManyPopup, setDeleteManyPopup] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
+  const itemsPerPage = 12;
+
+  const handleChange = (event: any, value: any) => {
+    setPage(value);
+  };
+
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+
+  // Slice the data for the current page
+  const paginatedData = sortedData.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+
+  // General sorting function
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
+
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
+
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
+
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
+    });
+
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+  };
+
+  async function deleteItem(_id: any) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.delete(`/api/deletereservation/${_id}`);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+  async function deleteManyItem() {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/deleteManyreservation`, {
+        _ids: itemToDeleteMany,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+  function handlePushItem(_id: any) {
+    setItemToDeleteMany((prevArray: any) => {
+      // Check if the item is already present in the array
+      const isPresent = prevArray.includes(_id);
+
+      // Return a new array with the item either added or removed
+      if (isPresent) {
+        // Remove the item
+        return prevArray.filter((item: any) => item !== _id);
+      } else {
+        // Add the item
+        return [...prevArray, _id];
+      }
+    });
+  }
+  const allIds = data.map((item: any) => item?._id);
+
+  async function updateActive(_id: any, active: boolean) {
+    try {
+      setEditLoading(true);
+      let result: any = await axios.post(
+        `/api/updateActivereservation/${_id}`,
+        {
+          active: !active,
+        }
+      );
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEditLoading(false);
+    }
+  }
+
+  async function UpdateActiveManyItem(active: boolean) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/updateManyActivereservation`, {
+        _ids: itemToDeleteMany,
+        active: active,
+      });
+      console.log(result);
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
         <span>
-          <span className="cursor-pointer">Delete Multiple</span>
+          <span className="cursor-pointer">
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                setDeleteManyPopup(true);
+              }}
+              disabled={itemToDeleteMany.length < 1 ? true : false}
+            >
+              Delete Multiple
+            </button>
+          </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span className=" cursor-pointer">Active/Inactive Multiple</span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(true);
+            }}
+          >
+            Active /
+          </span>
+          <span
+            className=" cursor-pointer"
+            onClick={() => {
+              UpdateActiveManyItem(false);
+            }}
+          >
+            Inactive Multiple
+          </span>
         </span>
-        <span className="underline cursor-pointer">Export</span>
+        <span
+          className="underline cursor-pointer"
+          onClick={() => {
+            handleExport(data?.map((item: any) => item.data));
+          }}
+        >
+          Export
+        </span>{" "}
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
-
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -58,7 +249,7 @@ export default function ListViewReservations() {
             </div>
           </div>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -90,7 +281,7 @@ export default function ListViewReservations() {
           </Link>
 
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -122,7 +313,7 @@ export default function ListViewReservations() {
           </Link>
 
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -154,7 +345,7 @@ export default function ListViewReservations() {
             </div>
           </Link>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -186,7 +377,7 @@ export default function ListViewReservations() {
             </div>
           </Link>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -217,7 +408,7 @@ export default function ListViewReservations() {
             </div>
           </Link>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -249,7 +440,7 @@ export default function ListViewReservations() {
             </div>
           </Link>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">
@@ -281,7 +472,7 @@ export default function ListViewReservations() {
             </div>
           </Link>
           <Link
-            href={"/ReservationsInfo"}
+            href={"/reservationInfo"}
             className="w-full h-[43px] flex justify-between items-center font-[400] text-[14px] leading-[17px text-center  border-grey"
           >
             <div className="text-center w-[3%] flex justify-center items-center ">

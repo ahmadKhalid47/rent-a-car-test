@@ -1,12 +1,9 @@
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
-import vip from "@/public/vip.svg";
-import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
