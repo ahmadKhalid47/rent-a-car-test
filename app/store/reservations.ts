@@ -27,6 +27,9 @@ const initialState: any = {
   fuelImagesCompletion: [],
   odometerCompletion: "",
   odometerImagesCompletion: [],
+  damages: [],
+  damageImagesToDelete: [],
+  status: "",
 };
 
 export const reservationSlice = createSlice({
@@ -111,6 +114,16 @@ export const reservationSlice = createSlice({
     setodometerImagesCompletion: (state, action) => {
       state.odometerImagesCompletion = action.payload;
     },
+    setdamages: (state, action) => {
+      state.damages = action.payload;
+    },
+    setdamageImagesToDelete: (state, action) => {
+      state.damageImagesToDelete.push(...action.payload);
+    },
+    setstatus: (state, action) => {
+      state.status = action.payload;
+    },
+
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -147,6 +160,9 @@ export const {
   setfuelImagesCompletion,
   setodometerCompletion,
   setodometerImagesCompletion,
+  setdamages,
+  setdamageImagesToDelete,
+  setstatus,
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;

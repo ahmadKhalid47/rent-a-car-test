@@ -81,7 +81,7 @@ export default function FirstPage() {
           setState={setfuelCompletion}
           label={"Fuel Status %"}
           value={reservation?.fuelCompletion}
-          required={true}
+          required={false}
           type={"number"}
         />
         <div
@@ -108,7 +108,7 @@ export default function FirstPage() {
           setState={setodometerCompletion}
           label={"Odometer"}
           value={reservation?.odometerCompletion}
-          required={true}
+          required={false}
           type={"number"}
         />
         <div
