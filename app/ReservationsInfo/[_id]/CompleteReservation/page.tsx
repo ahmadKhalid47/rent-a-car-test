@@ -75,11 +75,10 @@ export default function reservationInfoMainPage() {
       const damageImages = reservation.damages.map(
         (damage: any) => damage.files
       );
-      console.log(damageImages);
 
       const formData = new FormData();
-      for (let i = 0; i < reservation.carImages.length; i++) {
-        formData.append("files", reservation.carImages[i]);
+      for (let i = 0; i < reservation.fuelImagesCompletion.length; i++) {
+        formData.append("files", reservation.fuelImagesCompletion[i]);
       }
       const res = await axios.post("/api/uploadWithCondition", formData, {
         headers: {
@@ -88,17 +87,27 @@ export default function reservationInfoMainPage() {
       });
 
       const formData2 = new FormData();
-      formData2.append("length1", reservation.damages.length);
+      for (let i = 0; i < reservation.odometerImagesCompletion.length; i++) {
+        formData2.append("files", reservation.odometerImagesCompletion[i]);
+      }
+      const res2 = await axios.post("/api/uploadWithCondition", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const formData3 = new FormData();
+      formData3.append("length1", reservation.damages.length);
 
       for (let i = 0; i < reservation.damages.length; i++) {
-        formData2.append("length2", reservation.damages[i]?.files.length); // append length2 outside inner loop
+        formData3.append("length2", reservation.damages[i]?.files.length); // append length2 outside inner loop
 
         for (let j = 0; j < reservation.damages[i]?.files.length; j++) {
-          formData2.append("files", reservation.damages[i]?.files[j]); // correct file reference
+          formData3.append("files", reservation.damages[i]?.files[j]); // correct file reference
         }
       }
 
-      const res2 = await axios.post("/api/uploadNested", formData2, {
+      const res3 = await axios.post("/api/uploadNested", formData3, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -108,13 +117,15 @@ export default function reservationInfoMainPage() {
 
       const updatedObjects = tempArray.map((obj: any, index: any) => ({
         ...obj,
-        files: res2?.data?.message[index].map((url: any) => url),
+        files: res3?.data?.message[index].map((url: any) => url),
       }));
 
       await axios.post(`/api/updatereservation/${_id}`, {
         ...reservation,
-        carImages: res?.data?.message,
+        fuelImagesCompletion: res?.data?.message,
+        odometerImagesCompletion: res2?.data?.message,
         damages: updatedObjects,
+        status: "complete",
       });
 
       if (action === "close") {
@@ -173,7 +184,7 @@ export default function reservationInfoMainPage() {
                   className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
                   disabled={loading}
                   onClick={() => {
-                    //   saveData("close");
+                      updateData("close");
                     console.log(reservation);
                   }}
                 >

@@ -29,7 +29,7 @@ const initialState: any = {
   odometerImagesCompletion: [],
   damages: [],
   damageImagesToDelete: [],
-  status: "",
+  status: "inComplete",
 };
 
 export const reservationSlice = createSlice({
