@@ -1,3 +1,4 @@
+import { formatDate, formatTime } from "@/app/Components/functions/formats";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
@@ -31,7 +32,7 @@ export default function Generalreservations() {
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
-            reservationDate:
+            Reservation Date:
           </p>
           <div className="w-[30%] text-start font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
             {reservationInfo?.reservationDate
@@ -44,7 +45,7 @@ export default function Generalreservations() {
             Security Deposit:
           </p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            $ 
+            $
             {reservationInfo?.securityDeposit
               ? reservationInfo?.securityDeposit
               : "---"}
@@ -63,8 +64,10 @@ export default function Generalreservations() {
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Date & Time: </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {reservationInfo?.PickUpDate ? reservationInfo?.PickUpDate : "---"}{" "}
-            {reservationInfo?.PickUpTime ? reservationInfo?.PickUpTime : "---"}
+            {reservationInfo?.PickUpDate
+              ? formatDate(reservationInfo?.PickUpDate)
+              : "---"}{" "}
+            {reservationInfo?.PickUpTime ? formatTime(reservationInfo?.PickUpTime) : "---"}
           </p>
         </div>
 
@@ -72,10 +75,10 @@ export default function Generalreservations() {
           <p className="font-[400] text-[18px] leading-[27px]">Date & Time: </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
             {reservationInfo?.dropOffDate
-              ? reservationInfo?.dropOffDate
+              ? formatDate(reservationInfo?.dropOffDate)
               : "---"}{" "}
             {reservationInfo?.dropOffTime
-              ? reservationInfo?.dropOffTime
+              ? formatTime(reservationInfo?.dropOffTime)
               : "---"}
           </p>
         </div>
@@ -91,9 +94,7 @@ export default function Generalreservations() {
             Current Odometer (KMPH):
           </p>
           <p className="w-[40%] text-start font-[400] text-[18px] leading-[27px]">
-            {reservationInfo?.odometer
-              ? reservationInfo?.odometer
-              : "---"}
+            {reservationInfo?.odometer ? reservationInfo?.odometer : "---"}
           </p>
         </div>
       </div>

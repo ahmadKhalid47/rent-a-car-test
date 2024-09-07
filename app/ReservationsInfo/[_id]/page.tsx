@@ -15,6 +15,7 @@ import { useParams } from "next/navigation";
 import Generalreservations from "./Generalreservation";
 import Emergencyreservations from "./Emergencyreservation";
 import Referencereservations from "./ReferenceChauffeurs";
+import { formatDate, formatTime } from "@/app/Components/functions/formats";
 
 export default function reservationInfoMainPage() {
   let { reservationInfo } = useSelector(
@@ -135,6 +136,9 @@ export default function reservationInfoMainPage() {
     }
     getData();
   }, []);
+  console.log(reservationInfo?._id);
+  const dateStr = "2024-09-26";
+  console.log(formatDate(dateStr));
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -145,7 +149,7 @@ export default function reservationInfoMainPage() {
       >
         <div className="w-full h-[200px ">
           <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-            {reservationInfo?.name ? reservationInfo?.name : "---"}
+            ID: {reservationInfo?.name ? reservationInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
@@ -156,43 +160,68 @@ export default function reservationInfoMainPage() {
         </div>
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-            <div className="w-full h-fit flex justify-start gap-[7%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
-              <div className="w-fit flex justify-start items-center gap-1">
-                <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
-                  <img
-                    src={reservationInfo?.reservationImage}
-                    className="w-full h-full"
-                  />
+            <div className=" bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
+              <div className="w-[40%] h-[150px]">
+                <div className="font-[600] text-[#242E69] text-[18px]  ">
+                  Pick-Up:
+                </div>
+                <div className="flex">
+                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover"></div>
+
+                  <div className=" border-b-[#242E69] border object-fill bg-white"></div>
+                </div>
+
+                <div className="mt-[13px]">
+                  <div className="font-[400] text-[18px]">
+                    {reservationInfo?.PickUpAddress
+                      ? reservationInfo?.PickUpAddress
+                      : "---"}
+                  </div>
+                  <div className="font-[400] text-[18px]">
+                    {reservationInfo?.PickUpDate
+                      ? formatDate(reservationInfo?.PickUpDate)
+                      : "---"}
+                    ,{" "}
+                    {reservationInfo?.PickUpTime
+                      ? formatTime(reservationInfo?.PickUpTime)
+                      : "---"}
+                  </div>
                 </div>
               </div>
-              <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
-                <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
-                  {reservationInfo?.name ? reservationInfo?.name : "---"}{" "}
-                </h3>
-                <p className="font-[400] text-[28px] leading-[42px] text-black">
-                  {reservationInfo?.phone ? reservationInfo?.phone : "---"}
-                </p>
-                <div className="w-[80%] flex justify-between items-center">
-                  <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
-                      City:
-                    </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      {reservationInfo?.city ? reservationInfo?.city : "---"}
-                    </p>
+              {/* 2nd */}
+              <div className="w-[40%] h-[150px]">
+                <div className="font-[600] text-[#242E69] text-[18px]  ">
+                  Drop-off:
+                </div>
+                <div className="flex">
+                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover"></div>
+                  <div className=" border-b-[#242E69] border object-fill bg-red-500"></div>
+                </div>
+
+                <div className="mt-[13px]">
+                  <div className="font-[400] text-[18px]">
+                    {reservationInfo?.dropOffAddress
+                      ? reservationInfo?.dropOffAddress
+                      : "---"}
+                  </div>
+                  <div className="font-[400] text-[18px]">
+                    {reservationInfo?.dropOffDate
+                      ? formatDate(reservationInfo?.dropOffDate)
+                      : "---"}
+                    ,{" "}
+                    {reservationInfo?.dropOffTime
+                      ? formatTime(reservationInfo?.dropOffTime)
+                      : "---"}
                   </div>
                 </div>
-                <div className="w-[80%] flex justify-between items-center bg-red-5">
-                  <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      Country:
-                    </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
-                      {reservationInfo?.country
-                        ? reservationInfo?.country
-                        : "---"}
-                    </p>
-                  </div>
+              </div>
+              {/* 3rd */}
+              <div className=" rounded-xl border border-gray-200 p-6 ">
+                <div className="text-[#242E69] font-[600] text-[24px]">
+                  {reservationInfo?.duration
+                    ? reservationInfo?.duration
+                    : "---"}{" "}
+                  Days
                 </div>
               </div>
             </div>
