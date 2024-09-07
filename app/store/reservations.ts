@@ -21,8 +21,12 @@ const initialState: any = {
   dropOffTime: "",
   discount: "",
   withChauffeur: true,
-  duration:"",
-  amount:"",
+  duration: "",
+  amount: "",
+  fuelCompletion: "",
+  fuelImagesCompletion: [],
+  odometerCompletion: "",
+  odometerImagesCompletion: [],
 };
 
 export const reservationSlice = createSlice({
@@ -95,6 +99,18 @@ export const reservationSlice = createSlice({
     setamount: (state, action) => {
       state.amount = action.payload;
     },
+    setfuelCompletion: (state, action) => {
+      state.fuelCompletion = action.payload;
+    },
+    setfuelImagesCompletion: (state, action) => {
+      state.fuelImagesCompletion = action.payload;
+    },
+    setodometerCompletion: (state, action) => {
+      state.odometerCompletion = action.payload;
+    },
+    setodometerImagesCompletion: (state, action) => {
+      state.odometerImagesCompletion = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -127,6 +143,10 @@ export const {
   setvehicleNameR,
   setduration,
   setamount,
+  setfuelCompletion,
+  setfuelImagesCompletion,
+  setodometerCompletion,
+  setodometerImagesCompletion,
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;

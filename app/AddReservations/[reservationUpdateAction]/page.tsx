@@ -121,28 +121,27 @@ export default function Reservations() {
     (customer: any) => customer._id === reservation?.vehicle_id
   );
 
-    useEffect(() => {
-      dispatch(resetState());
-      async function getData() {
-        try {
-          setLoading(true);
-          let result: any = await axios.get(
-            `/api/getreservationInfo/${reservationUpdateAction}`
-          );
-          if (result?.data?.data) {
-            dispatch(setAllValues(result?.data?.data?.data));
-          } else {
-            setShowError(result?.data?.error);
-          }
-        } catch (error: any) {
-          console.log(error);
-        } finally {
-          setLoading(false);
+  useEffect(() => {
+    dispatch(resetState());
+    async function getData() {
+      try {
+        setLoading(true);
+        let result: any = await axios.get(
+          `/api/getreservationInfo/${reservationUpdateAction}`
+        );
+        if (result?.data?.data) {
+          dispatch(setAllValues(result?.data?.data?.data));
+        } else {
+          setShowError(result?.data?.error);
         }
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
-      getData();
-    }, []);
-
+    }
+    getData();
+  }, []);
 
   async function saveData(action: string) {
     try {

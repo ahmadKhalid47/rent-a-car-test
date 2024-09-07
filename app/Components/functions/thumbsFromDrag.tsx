@@ -9,7 +9,7 @@ interface dataType {
 export function Thumbs({ files, setFiles }: dataType) {
   return (
     <>
-      {files.map((file: any) => (
+      {files?.map((file: any) => (
         <div
           key={file.name}
           className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
