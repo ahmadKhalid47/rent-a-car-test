@@ -136,7 +136,11 @@ export default function ListViewreservation({ data }: dataType) {
 
   return (
     <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-grey  ">
+      <h3
+        className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
+          itemToDeleteMany.length < 1 ? "text-grey" : "text-main-blue"
+        }  `}
+      >
         <span>
           <span className="cursor-pointer">
             <button
@@ -151,7 +155,7 @@ export default function ListViewreservation({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer"
+          className="underline cursor-pointer text-main-blue"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}

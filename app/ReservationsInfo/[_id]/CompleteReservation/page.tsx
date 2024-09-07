@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { formatId } from "@/app/Components/functions/formats";
 import { SmallLoader } from "@/app/Components/Loader";
 import { setAllValues } from "@/app/store/reservations";
@@ -26,6 +26,7 @@ export default function reservationInfoMainPage() {
   const formRef = useRef<any>(null);
   let [currentPage, setCurrentPage] = useState(0);
   let [goToPage, setGoToPage] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     if (isMobile) {
@@ -129,7 +130,7 @@ export default function reservationInfoMainPage() {
       });
 
       if (action === "close") {
-        // router.push("/Reservations");
+        router.push("/Reservations");
       }
     } catch (err) {
       console.log(err);

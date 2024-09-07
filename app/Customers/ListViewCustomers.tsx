@@ -208,7 +208,7 @@ export default function ListViewCustomers({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer"
+          className="underline cursor-pointer text-main-blue"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}
