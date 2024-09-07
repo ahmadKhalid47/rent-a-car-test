@@ -51,7 +51,7 @@ export default function Generalreservations() {
               : "---"}
           </p>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Current Fuel Status:
           </p>
@@ -89,7 +89,7 @@ export default function Generalreservations() {
           </p>
         </div>
 
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Current Odometer (KMPH):
           </p>
