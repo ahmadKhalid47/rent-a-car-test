@@ -15,7 +15,11 @@ import { useParams } from "next/navigation";
 import Generalreservations from "./Generalreservation";
 import Emergencyreservations from "./Emergencyreservation";
 import Referencereservations from "./ReferenceChauffeurs";
-import { formatDate, formatTime } from "@/app/Components/functions/formats";
+import {
+  formatDate,
+  formatId,
+  formatTime,
+} from "@/app/Components/functions/formats";
 
 export default function reservationInfoMainPage() {
   let { reservationInfo } = useSelector(
@@ -136,9 +140,6 @@ export default function reservationInfoMainPage() {
     }
     getData();
   }, []);
-  console.log(reservationInfo?._id);
-  const dateStr = "2024-09-26";
-  console.log(formatDate(dateStr));
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -148,13 +149,12 @@ export default function reservationInfoMainPage() {
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
         <div className="w-full h-[200px ">
-          <h3 className="font-[600] text-[25px] leading-[38px] text-black">
-            ID: {reservationInfo?.name ? reservationInfo?.name : "---"}
+          <h3 className="font-[600] text-[25px] leading-[38px] text-black uppercase">
+            ID: {_id ? formatId(_id) : "---"}
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              reservations / All reservations /
-              {reservationInfo?.name ? reservationInfo?.name : "---"}
+              reservations / All reservations / {formatId(_id)}
             </p>
           </div>
         </div>
@@ -165,10 +165,9 @@ export default function reservationInfoMainPage() {
                 <div className="font-[600] text-[#242E69] text-[18px]  ">
                   Pick-Up:
                 </div>
-                <div className="flex">
-                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover"></div>
-
-                  <div className=" border-b-[#242E69] border object-fill bg-white"></div>
+                <div className="flex justify-start items-center relative">
+                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover left-0 top-[50%]"></div>
+                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[1px]"></div>
                 </div>
 
                 <div className="mt-[13px]">
@@ -193,9 +192,9 @@ export default function reservationInfoMainPage() {
                 <div className="font-[600] text-[#242E69] text-[18px]  ">
                   Drop-off:
                 </div>
-                <div className="flex">
-                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover"></div>
-                  <div className=" border-b-[#242E69] border object-fill bg-red-500"></div>
+                <div className="flex justify-start items-center relative">
+                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover left-0 top-[50%]"></div>
+                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[1px]"></div>
                 </div>
 
                 <div className="mt-[13px]">

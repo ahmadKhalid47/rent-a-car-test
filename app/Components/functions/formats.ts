@@ -26,3 +26,8 @@ export function formatTime(timeString: string): string {
   // Return formatted time with AM/PM
   return `${hour12}:${minutes.toString().padStart(2, "0")} ${period}`;
 }
+
+export function formatId(id: any): any {
+  // Extract the last 6 characters from the string
+  return id.slice(-6);
+}
