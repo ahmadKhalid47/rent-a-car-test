@@ -258,8 +258,22 @@ export default function ListViewreservation({ data }: dataType) {
                 </h5>
                 <h5 className="text-start pe-3 w-[9%]">${item.data.amount}</h5>
                 <div className="text-start pe-3 w-[10%]">
-                  <div className="w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] complete-status">
-                    Completed
+                  <div
+                    className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]
+                   ${
+                     item?.data?.status === "complete"
+                       ? "complete-status"
+                       : item.data.status === "inComplete"
+                       ? "progress-status"
+                       : "progress-status"
+                   }
+                   `}
+                  >
+                    {item.data.status === "complete"
+                      ? "Completed"
+                      : item.data.status === "inComplete"
+                      ? "In Completed"
+                      : "In Completed"}
                   </div>
                 </div>
                 <div className="flex justify-start items-end w-[7%]">
