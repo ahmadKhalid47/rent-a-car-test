@@ -11,7 +11,7 @@ import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { setreservationInfo } from "@/app/store/reservationInfo";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Generalreservations from "./Generalreservation";
 import Emergencyreservations from "./Emergencyreservation";
 import Referencereservations from "./ReferenceChauffeurs";
@@ -20,6 +20,7 @@ import {
   formatId,
   formatTime,
 } from "@/app/Components/functions/formats";
+import { SmallLoader } from "@/app/Components/Loader";
 
 export default function reservationInfoMainPage() {
   let { reservationInfo } = useSelector(
@@ -46,6 +47,7 @@ export default function reservationInfoMainPage() {
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
+  const router = useRouter();
   // Customer Data
   useEffect(() => {
     async function getData() {
@@ -148,14 +150,22 @@ export default function reservationInfoMainPage() {
           global.sidebarShow ? "nav-width" : "nav-closed-width"
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
-        <div className="w-full h-[200px ">
-          <h3 className="font-[600] text-[25px] leading-[38px] text-black uppercase">
-            ID: {_id ? formatId(_id) : "---"}
-          </h3>
-          <div className="flex justify-between items-start">
+        <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+            ID: {formatId(_id)}
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              reservations / All reservations / {formatId(_id)}
+              Reservations / All Reservations / {formatId(_id)}
             </p>
+          </h3>
+          <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
+            <button
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              onClick={() => {
+                router.push("/AddReservations/AddNew");
+              }}
+            >
+              Complete Reservation
+            </button>
           </div>
         </div>
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
@@ -291,6 +301,26 @@ export default function reservationInfoMainPage() {
                   />
                 ) : null}
               </div>
+            </div>
+            <div className="w-full flex justify-end items-center gap-1 md:gap-3 mt-10">
+              <button
+                className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                disabled={loading}
+                onClick={() => {
+                  // saveData("close");
+                }}
+              >
+                {false ? <SmallLoader /> : "Create Contract"}
+              </button>
+              <button
+                className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                disabled={loading}
+                onClick={() => {
+                  // saveData("close");
+                }}
+              >
+                {false ? <SmallLoader /> : "Create Invoice"}
+              </button>
             </div>
           </div>
         </div>
