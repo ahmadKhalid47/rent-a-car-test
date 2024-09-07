@@ -96,7 +96,9 @@ export default function reservationInfoMainPage() {
         setchauffeursLoading(false);
       }
     }
-    getData();
+    if (reservationInfo?.chauffeur_id) {
+      getData();
+    }
   }, [reservationInfo]);
   // vehicle Data
   useEffect(() => {

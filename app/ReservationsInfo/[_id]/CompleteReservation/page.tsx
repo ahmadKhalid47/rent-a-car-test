@@ -69,6 +69,64 @@ export default function reservationInfoMainPage() {
     }
   };
 
+  async function updateData(action: string) {
+    try {
+      setLoading(true);
+      const damageImages = reservation.damages.map(
+        (damage: any) => damage.files
+      );
+      console.log(damageImages);
+
+      const formData = new FormData();
+      for (let i = 0; i < reservation.carImages.length; i++) {
+        formData.append("files", reservation.carImages[i]);
+      }
+      const res = await axios.post("/api/uploadWithCondition", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const formData2 = new FormData();
+      formData2.append("length1", reservation.damages.length);
+
+      for (let i = 0; i < reservation.damages.length; i++) {
+        formData2.append("length2", reservation.damages[i]?.files.length); // append length2 outside inner loop
+
+        for (let j = 0; j < reservation.damages[i]?.files.length; j++) {
+          formData2.append("files", reservation.damages[i]?.files[j]); // correct file reference
+        }
+      }
+
+      const res2 = await axios.post("/api/uploadNested", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = reservation.damages;
+      for (let i = 0; i < reservation.damages.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        files: res2?.data?.message[index].map((url: any) => url),
+      }));
+
+      await axios.post(`/api/updatereservation/${_id}`, {
+        ...reservation,
+        carImages: res?.data?.message,
+        damages: updatedObjects,
+      });
+
+      if (action === "close") {
+        // router.push("/Reservations");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
       <div
