@@ -21,13 +21,25 @@ import {
   setodometerCompletion,
   setodometerImagesCompletion,
 } from "@/app/store/reservations";
+import FirstPage from "./FirstPages";
 
 export default function reservationInfoMainPage() {
-  let { reservationInfo } = useSelector(
-    (state: RootState) => state.reservationInfo
-  );
   let reservation = useSelector((state: RootState) => state.reservation);
+  let global = useSelector((state: RootState) => state.Global);
+  let dispatch = useDispatch();
+  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
+  const params = useParams(); // Get all route parameters
+  const { _id } = params;
+  const [loading, setLoading] = useState<any>(true);
+  const [showError, setShowError] = useState(null);
 
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSidebarShowR(false));
+    } else {
+      dispatch(setSidebarShowR(true));
+    }
+  }, [isMobile]);
   useEffect(() => {
     async function getData() {
       try {
@@ -46,62 +58,6 @@ export default function reservationInfoMainPage() {
     }
     getData();
   }, []);
-
-  let [activeButton, setActiveButton] = useState("General");
-  let global = useSelector((state: RootState) => state.Global);
-  let dispatch = useDispatch();
-  const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  useEffect(() => {
-    if (isMobile) {
-      dispatch(setSidebarShowR(false));
-    } else {
-      dispatch(setSidebarShowR(true));
-    }
-  }, [isMobile]);
-  const params = useParams(); // Get all route parameters
-  const { _id } = params;
-  const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
-  const router = useRouter();
-  const [fuelFiles, setfuelFiles] = useState<any>(
-    reservation?.fuelImagesCompletion
-  );
-  const [odometerFiles, setodometerFiles] = useState<any>(
-    reservation?.odometerImagesCompletion
-  );
-
-  useEffect(() => {
-    setfuelFiles(reservation?.fuelImagesCompletion);
-  }, [reservation?.fuelImagesCompletion]);
-  useEffect(() => {
-    setodometerFiles(reservation?.odometerImagesCompletion);
-  }, [reservation?.odometerImagesCompletion]);
-
-  const onDropFuel = useFileDrop(
-    (files: any[]) => setfuelFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
-  );
-  const onDropodometer = useFileDrop(
-    (files: any[]) =>
-      setodometerFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
-  );
-
-  const { getRootProps: getRootPropsFuel, getInputProps: getInputPropsFuel } =
-    useDropzone({
-      onDrop: onDropFuel,
-    });
-  const {
-    getRootProps: getRootPropsodometer,
-    getInputProps: getInputPropsodometer,
-  } = useDropzone({
-    onDrop: onDropodometer,
-  });
-
-  useEffect(() => {
-    dispatch(setfuelImagesCompletion(fuelFiles));
-  }, [fuelFiles]);
-  useEffect(() => {
-    dispatch(setodometerImagesCompletion(odometerFiles));
-  }, [odometerFiles]);
 
   console.log(reservation);
 
@@ -123,66 +79,7 @@ export default function reservationInfoMainPage() {
         </div>
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              <TempTypeInput
-                setState={setfuelCompletion}
-                label={"Fuel Status %"}
-                value={reservation?.fuelCompletion}
-                required={true}
-                type={"number"}
-              />
-              <div
-                className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
-                {...getRootPropsFuel()}
-              >
-                <input {...getInputPropsFuel()} />
-                <img src={upload.src} />
-                <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
-                  Drag & Drop or
-                  <span className="text-link-blue cursor-pointer">
-                    {" "}
-                    choose file{" "}
-                  </span>
-                  to upload
-                </h4>
-              </div>
-              <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
-                Here you can Upload Image of Fuel Status
-              </span>
-              <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-                <Thumbs files={fuelFiles} setFiles={setfuelFiles} />
-              </div>
-            </div>
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              <TempTypeInput
-                setState={setodometerCompletion}
-                label={"Odometer"}
-                value={reservation?.odometerCompletion}
-                required={true}
-                type={"number"}
-              />
-              <div
-                className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
-                {...getRootPropsodometer()}
-              >
-                <input {...getInputPropsodometer()} />
-                <img src={upload.src} />
-                <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
-                  Drag & Drop or
-                  <span className="text-link-blue cursor-pointer">
-                    {" "}
-                    choose file{" "}
-                  </span>
-                  to upload
-                </h4>
-              </div>
-              <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
-                Here you can Upload Image of Odometer
-              </span>
-              <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-                <Thumbs files={odometerFiles} setFiles={setodometerFiles} />
-              </div>
-            </div>
+            <FirstPage />
             <div className="w-full flex justify-end items-center gap-1 md:gap-3 mt-10">
               <button
                 className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
