@@ -44,7 +44,7 @@ export default function Generalreservations() {
             Security Deposit:
           </p>
           <p className="w-[30%] text-start font-[400] text-[18px] leading-[27px]">
-            $
+            $ 
             {reservationInfo?.securityDeposit
               ? reservationInfo?.securityDeposit
               : "---"}

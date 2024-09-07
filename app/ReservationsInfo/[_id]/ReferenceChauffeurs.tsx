@@ -1,52 +1,51 @@
 import { FaEye } from "react-icons/fa";
-export default function Referencereservations() {
-  return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
-          Reference Info
-        </h3>
+import Link from "next/link";
 
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Full Name
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Address
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px]">
-            Relation
-          </p>
+interface dataType {
+  data: any;
+  loading: boolean;
+}
+export default function Referencereservations({ data, loading }: dataType) {
+  return (
+    <div className="w-full flex justify-between items-center  px-[70px] py-[20px] ">
+      <div className=" ">
+        <div className="w-[150px] h-[150px] rounded-2xl  ">
+          <img
+            src={data?.data?.chauffeurImage}
+            alt="image-0"
+            style={{ width: "100%", height: "100%" }}
+            className="rounded-[10px]"
+          />
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            John Smith
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Father
-          </p>
+      </div>
+      <div className="w-1/2">
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Full Name:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.name}</div>
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Lina Smith
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Mother
-          </p>
+        <div className="border border-t mt-2 mb-2"></div>
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Phone:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.phone}</div>
         </div>
+        <div className="border border-t mt-2 mb-2"></div>
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">City:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.city}</div>
+        </div>
+        <div className="border border-t mt-2 mb-2"></div>
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Country:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.country}</div>
+        </div>
+      </div>
+      <div className="">
+        <Link
+          href={`/ChauffeursInfo/${data?._id}`}
+          className="w-fit px-3 md:px-6 py-4 h-fit md:h-[44px] rounded-[10px] bg-[#F9F9F9] text-main-blue border border-gray-200 font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"
+        >
+          More Details
+        </Link>
       </div>
     </div>
   );

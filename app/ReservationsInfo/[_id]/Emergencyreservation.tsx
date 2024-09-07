@@ -1,88 +1,56 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
-export default function Emergencyreservations() {
-  let { reservationInfo } = useSelector(
-    (state: RootState) => state.reservationInfo
-  );
+interface dataType {
+  data: any;
+  loading: boolean;
+}
+
+export default function Emergencyreservations({ data, loading }: dataType) {
 
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
-          Emergency Info
-        </h3>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[30%] text-start text-[18px] leading-[27px]">
-            Emergency Contact Name
-          </p>
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Emergency Phone
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            Relationship
-          </p>
-        </div>
-
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
-          <p className="w-[30%] text-start text-[18px] leading-[27px]">
-            {reservationInfo?.emergencyContactName
-              ? reservationInfo?.emergencyContactName
-              : "---"}
-          </p>
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {reservationInfo?.emergencyContactPhone
-              ? reservationInfo?.emergencyContactPhone
-              : "---"}
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {reservationInfo?.emergencyContactRelation
-              ? reservationInfo?.emergencyContactRelation
-              : "---"}
-          </p>
+    <div className="w-full flex justify-between items-center  px-[70px] py-[20px] ">
+      <div className=" ">
+        <div className="w-[150px] h-[150px] rounded-2xl  ">
+          <img
+            src={data?.data?.carImages[data?.data.thumbnailImage]}
+            alt="image-0"
+            style={{ width: "100%", height: "100%" }}
+            className="rounded-[10px]"
+          />
         </div>
       </div>
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
-          Reference Info
-        </h3>
-
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Full Name
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Address
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px]">
-            Relation
-          </p>
+      <div className="w-1/2">
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Make:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.make}</div>
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {reservationInfo?.refName ? reservationInfo?.refName : "---"}
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            {reservationInfo?.refPhone ? reservationInfo?.refPhone : "---"}
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            {reservationInfo?.refAddress ? reservationInfo?.refAddress : "---"}
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {reservationInfo?.refRelation ? reservationInfo?.refRelation : "---"}
-          </p>
+        <div className="border border-t mt-2 mb-2"></div>
+
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Model:</div>
+
+          <div className="font-[400] text-[18px]">{data?.data?.model}</div>
+        </div>
+        <div className="border border-t mt-2 mb-2"></div>
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">City:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.city}</div>
+        </div>
+        <div className="border border-t mt-2 mb-2"></div>
+        <div className=" w-full flex justify-between ">
+          <div className="font-[400] text-[18px]">Country:</div>
+          <div className="font-[400] text-[18px]">{data?.data?.country}</div>
         </div>
       </div>
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
-          Additional Notes
-        </h3>
-        <div className="w-[100%] h-fit font-[400] text-[18px] leading-[27px]">
-          {reservationInfo?.additional
-            ? reservationInfo?.additional
-            : "No Additional Note Added"}
-        </div>
+      <div className="">
+        <Link
+          href={`/VehicleInfo/${data?._id}`}
+          className="w-fit px-3 md:px-6 py-4 h-fit md:h-[44px] rounded-[10px] bg-[#F9F9F9] text-main-blue border border-gray-200 font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"
+        >
+          More Details
+        </Link>
       </div>
     </div>
   );

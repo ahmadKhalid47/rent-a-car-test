@@ -14,8 +14,12 @@ import { setreservationInfo } from "@/app/store/reservationInfo";
 import { useParams } from "next/navigation";
 import Generalreservations from "./Generalreservation";
 import Emergencyreservations from "./Emergencyreservation";
+import Referencereservations from "./ReferenceChauffeurs";
 
 export default function reservationInfoMainPage() {
+  let { reservationInfo } = useSelector(
+    (state: RootState) => state.reservationInfo
+  );
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
@@ -27,13 +31,91 @@ export default function reservationInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const [customerloading, setcustomerLoading] = useState<any>(true);
+  const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
+  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
+  const [customersData, setCustomersData] = useState<any[]>([]);
+  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
-  let { reservationInfo } = useSelector(
-    (state: RootState) => state.reservationInfo
-  );
+  // Customer Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setcustomerLoading(true);
+        const result = await axios.get(
+          `/api/getCustomerInfo/${reservationInfo?.customer_id}`,
+          {
+            headers: { "Cache-Control": "no-store" },
+          }
+        );
+
+        if (result?.data?.data) {
+          setCustomersData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setcustomerLoading(false);
+      }
+    }
+    getData();
+  }, [reservationInfo]);
+  // Chauffeur Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setchauffeursLoading(true);
+        const result = await axios.get(
+          `/api/getchauffeurInfo/${reservationInfo?.chauffeur_id}`,
+          {
+            headers: { "Cache-Control": "no-store" },
+          }
+        );
+
+        if (result?.data?.data) {
+          setchauffeursData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setchauffeursLoading(false);
+      }
+    }
+    getData();
+  }, [reservationInfo]);
+  // vehicle Data
+  useEffect(() => {
+    async function getData() {
+      try {
+        setvehicleLoading(true);
+        const result = await axios.get(
+          `/api/getVehicleInfo/${reservationInfo?.vehicle_id}`,
+          {
+            headers: { "Cache-Control": "no-store" },
+          }
+        );
+
+        if (result?.data?.data) {
+          setVehiclesData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setvehicleLoading(false);
+      }
+    }
+    getData();
+  }, [reservationInfo]);
 
   useEffect(() => {
     async function getData() {
@@ -146,20 +228,39 @@ export default function reservationInfoMainPage() {
                 >
                   Vehicle Info
                 </div>
+                <div
+                  className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
+                    activeButton === "Chauffeur"
+                      ? "text-white bg-main-blue font-[500]"
+                      : " text-black "
+                  } font-[400] text-[18px] leading-[22px]`}
+                  onClick={() => setActiveButton("Chauffeur")}
+                >
+                  Chauffeur Info
+                </div>
               </div>
-              <div className="w-full h-[350px] flex justify-center items-start gap-8">
+              <div className="w-full h-[300px] flex justify-center items-start gap-8">
                 {activeButton === "General" ? (
                   <>
                     <Generalreservations />
                   </>
                 ) : activeButton === "Identity" ? (
                   <>
-                    <Identityreservation />
+                    <Identityreservation
+                      data={customersData}
+                      loading={customerloading}
+                    />
                   </>
                 ) : activeButton === "Emergency" ? (
-                  <div className="w-full flex flex-col justify-start items-start gap-2 h-fit">
-                    <Emergencyreservations />
-                  </div>
+                  <Emergencyreservations
+                    data={VehiclesData}
+                    loading={vehicleLoading}
+                  />
+                ) : activeButton === "Chauffeur" ? (
+                  <Referencereservations
+                    data={chauffeursData}
+                    loading={chauffeursloading}
+                  />
                 ) : null}
               </div>
             </div>
