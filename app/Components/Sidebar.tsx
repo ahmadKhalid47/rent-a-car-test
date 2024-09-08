@@ -67,7 +67,6 @@ export default function Sidebar() {
   }, [pathName]);
 
   let dispatch = useDispatch();
-  console.log(global.sidebarShow);
 
   return (
     <div
