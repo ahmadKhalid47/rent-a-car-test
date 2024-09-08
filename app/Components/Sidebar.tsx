@@ -9,7 +9,8 @@ import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import * as navigation from "next/navigation";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
@@ -17,10 +18,8 @@ import { RiSettings4Fill } from "react-icons/ri";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let pathName =
-    typeof window !== "undefined" ? window.location.pathname : null;
+  let pathName =usePathname()
   let [chevronState, setChevronState] = useState("");
-
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
@@ -63,6 +62,7 @@ export default function Sidebar() {
 
   let dispatch = useDispatch();
   const router = useRouter();
+
   return (
     <div
       className={`${

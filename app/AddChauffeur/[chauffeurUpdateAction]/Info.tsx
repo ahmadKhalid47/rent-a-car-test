@@ -40,9 +40,6 @@ export default function Info() {
   useEffect(() => {
     setFiles(chauffeur?.chauffeurImage); 
   }, [chauffeur.chauffeurImage[0]]);
-  console.log(chauffeur?.chauffeurImage);
-  console.log(files);
-
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG

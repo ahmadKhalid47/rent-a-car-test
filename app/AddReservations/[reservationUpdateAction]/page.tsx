@@ -35,7 +35,6 @@ export default function Reservations() {
   const params = useParams();
   const router = useRouter();
   const { reservationUpdateAction } = params;
-  console.log(reservationUpdateAction);
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
