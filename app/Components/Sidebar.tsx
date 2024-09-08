@@ -34,25 +34,26 @@ export default function Sidebar() {
     if (
       pathName === "/Customers" ||
       pathName === "/CustomerInfo" ||
-      pathName === "/AddCustomer/AddNew"
+      pathName?.includes("/AddCustomer")
     ) {
       setChevronState("Customers");
     } else if (
       pathName === "/Chauffeurs" ||
       pathName === "/ChauffeursInfo" ||
-      pathName === "/AddChauffeur/AddNew"
+      pathName?.includes("/AddChauffeur")
     ) {
       setChevronState("Chauffeurs");
     } else if (
       pathName === "/Vehicles" ||
       pathName?.includes("/VehicleInfo") ||
-      pathName === "/AddVehicle/AddNew" ||
+      pathName?.includes("/AddVehicle") ||
       pathName?.includes("/Configuration")
     ) {
       setChevronState("Vehicles");
     } else if (
       pathName === "/Reservations" ||
-      pathName === "/AddReservations/AddNew"
+      pathName?.includes("/ReservationsInfo") ||
+      pathName?.includes("/AddReservations")
     ) {
       setChevronState("Reservations");
     } else if (pathName === "/Settings") {
@@ -97,19 +98,6 @@ export default function Sidebar() {
           />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
         </div>
-        {/* <div
-          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
-        >
-          <MdCalendarMonth
-            className={`${
-              global.sidebarShow ? "ml-[0px]" : "ml-[-1px fixed"
-            } text-[24px]`}
-          />
-          <span className="">{global.sidebarShow ? "Calendar" : null}</span>
-        </div> */}
-
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -133,15 +121,9 @@ export default function Sidebar() {
           {global.sidebarShow ? (
             <div className="cursor-pointer">
               {chevronState === "Customers" ? (
-                <GoTriangleUp
-                  className="float-right me-5"
-                  // onClick={() => setChevronState("")}
-                />
+                <GoTriangleUp className="float-right me-5" />
               ) : (
-                <GoTriangleDown
-                  className="float-right me-5"
-                  // onClick={() => setChevronState("Customers")}
-                />
+                <GoTriangleDown className="float-right me-5" />
               )}
             </div>
           ) : null}
@@ -169,11 +151,7 @@ export default function Sidebar() {
               </Link>{" "}
             </div>
             <Link
-              // onClick={() => {
-              //   router.push(
               href="/AddCustomer/AddNew"
-              //   );
-              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -247,7 +225,8 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Chauffeurs" || pathName === "/ChauffeursInfo"
+                  pathName === "/Chauffeurs" ||
+                  pathName?.includes("/ChauffeursInfo")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}
@@ -256,11 +235,7 @@ export default function Sidebar() {
               </Link>{" "}
             </div>
             <Link
-              // onClick={() => {
-              // router.push(
               href="/AddChauffeur/AddNew"
-              // );
-              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -337,18 +312,17 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover ${
-                  pathName === "/Reservations" ? "bg-main-blue text-white" : ""
+                  pathName === "/Reservations" ||
+                  pathName?.includes("/ReservationsInfo")
+                    ? "bg-main-blue text-white"
+                    : ""
                 } hover:text-white rounded-[10px]`}
               >
                 {global.sidebarShow ? "All Reservations" : null}
               </Link>{" "}
             </div>
             <Link
-              // onClick={() => {
-              // router.push(
               href="/AddReservations/AddNew"
-              // );
-              // }}
               className="flex justify-start items-center w-full"
             >
               <div className="relative w-[20%] h-full">
@@ -475,18 +449,7 @@ export default function Sidebar() {
             </div>
           </div>
         ) : null}
-        {/* <div
-          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
-        >
-          <RiFileSettingsFill
-            className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
-          />
-          <span className="">
-            {global.sidebarShow ? "Offer Generator" : null}
-          </span>
-        </div> */}
+
         <Link
           href="/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
