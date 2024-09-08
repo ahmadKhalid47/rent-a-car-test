@@ -18,8 +18,9 @@ import { RiSettings4Fill } from "react-icons/ri";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let pathName =usePathname()
+  let pathName = usePathname();
   let [chevronState, setChevronState] = useState("");
+  let [chevronStateClose, setChevronStateClose] = useState("");
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
@@ -36,12 +37,14 @@ export default function Sidebar() {
       pathName?.includes("/AddCustomer")
     ) {
       setChevronState("Customers");
+      setChevronStateClose("Customers");
     } else if (
       pathName === "/Chauffeurs" ||
       pathName === "/ChauffeursInfo" ||
       pathName?.includes("/AddChauffeur")
     ) {
       setChevronState("Chauffeurs");
+      setChevronStateClose("Chauffeurs");
     } else if (
       pathName === "/Vehicles" ||
       pathName?.includes("/VehicleInfo") ||
@@ -49,19 +52,22 @@ export default function Sidebar() {
       pathName?.includes("/Configuration")
     ) {
       setChevronState("Vehicles");
+      setChevronStateClose("Vehicles");
     } else if (
       pathName === "/Reservations" ||
       pathName?.includes("/ReservationsInfo") ||
       pathName?.includes("/AddReservations")
     ) {
       setChevronState("Reservations");
+      setChevronStateClose("Reservations");
     } else if (pathName === "/Settings") {
       setChevronState("Settings");
+      setChevronStateClose("Settings");
     }
   }, [pathName]);
 
   let dispatch = useDispatch();
-  const router = useRouter();
+  console.log(global.sidebarShow);
 
   return (
     <div
@@ -85,8 +91,8 @@ export default function Sidebar() {
       </div>
       <div
         className={`w-full h-[calc(100vh-90px)] overflow-auto pt-7 ${
-          global.sidebarShow ? "px-3 sm:px-3" : "px-8"
-        } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions bg-red-40`}
+          global.sidebarShow ? "px-3 sm:px-3" : "px-1"
+        } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions`}
       >
         <div
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
@@ -102,15 +108,17 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Customers"
+            chevronState === "Customers" && global.sidebarShow
               ? "text-main-blue font-[600] hover:font-[500]"
+              : chevronStateClose === "Customers" && !global.sidebarShow
+              ? "text-white bg-main-blue"
               : ""
           } rounded-[10px]`}
           onClick={() =>
             setChevronState(chevronState === "Customers" ? "" : "Customers")
           }
         >
-          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+          <div className="w-fit flex justify-start items-center gap-2">
             <FaUsers
               className={`${
                 global.sidebarShow ? "ml-[1px]" : "ml-[-11px] fixed"
@@ -179,15 +187,17 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Chauffeurs"
+            chevronState === "Chauffeurs" && global.sidebarShow
               ? "text-main-blue font-[600] hover:font-[500]"
+              : chevronStateClose === "Chauffeurs" && !global.sidebarShow
+              ? "text-white bg-main-blue"
               : ""
           } rounded-[10px]`}
           onClick={() =>
             setChevronState(chevronState === "Chauffeurs" ? "" : "Chauffeurs")
           }
         >
-          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+          <div className="w-fit flex justify-start items-center gap-2">
             <FaUserTie
               className={`text-[16px] ${
                 global.sidebarShow ? "ml-[2px]" : "ml-[-11px] fixed"
@@ -263,8 +273,10 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Reservations"
+            chevronState === "Reservations" && global.sidebarShow
               ? "text-main-blue font-[600] hover:font-[500]"
+              : chevronStateClose === "Reservations" && !global.sidebarShow
+              ? "text-white bg-main-blue"
               : ""
           } rounded-[10px]`}
           onClick={() =>
@@ -273,7 +285,7 @@ export default function Sidebar() {
             )
           }
         >
-          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+          <div className="w-fit flex justify-start items-center gap-2">
             <FaListCheck
               className={`text-[20px] ${
                 global.sidebarShow ? "ml-[1.7px]" : "ml-[-11px] fixed"
@@ -350,15 +362,17 @@ export default function Sidebar() {
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
-            chevronState === "Vehicles"
+            chevronState === "Vehicles" && global.sidebarShow
               ? "text-main-blue font-[600] hover:font-[500]"
+              : chevronStateClose === "Vehicles" && !global.sidebarShow
+              ? "text-white bg-main-blue"
               : ""
           } rounded-[10px]`}
           onClick={() =>
             setChevronState(chevronState === "Vehicles" ? "" : "Vehicles")
           }
         >
-          <div className="w-fit flex justify-start items-center gap-2 bg-red-30">
+          <div className="w-fit flex justify-start items-center gap-2">
             <FaCar
               className={`${
                 global.sidebarShow ? "ml-[1px]" : "ml-[-12px] fixed"
@@ -457,6 +471,8 @@ export default function Sidebar() {
           } bg-main-blue-hover hover:text-white rounded-[10px] ${
             chevronState === "Settings" && global.sidebarShow
               ? "bg-main-blue text-white font-[500]"
+              : chevronStateClose === "Settings" && !global.sidebarShow
+              ? "text-white bg-main-blue"
               : ""
           }`}
         >
