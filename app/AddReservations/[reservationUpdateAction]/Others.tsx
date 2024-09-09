@@ -29,6 +29,12 @@ export default function Others({
   let carRentPerHours = isNaN(Number(vehicleData?.rentHour))
     ? 0
     : Number(vehicleData?.rentHour);
+  let carRentPerWeeks = isNaN(Number(vehicleData?.rentWeek))
+    ? 0
+    : Number(vehicleData?.rentWeek);
+  let carRentPerMonths = isNaN(Number(vehicleData?.rentMonth))
+    ? 0
+    : Number(vehicleData?.rentMonth);
   let discount = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
@@ -43,54 +49,24 @@ export default function Others({
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return Math.ceil(differenceInDays);
   }
-
   function calculateTimeDifference(pickUpTime: string, dropOffTime: string) {
     if (!pickUpTime || !dropOffTime) {
-      // return { hours: 0, minutes: 0 };
       return 0;
     }
-
-    // Split the time strings to get hours and minutes
     const [pickUpHours, pickUpMinutes] = pickUpTime.split(":").map(Number);
     const [dropOffHours, dropOffMinutes] = dropOffTime.split(":").map(Number);
-
-    // Create Date objects for both times (using the same date, since we only care about the time)
-    const today = new Date().toDateString(); // Get today's date string
-
+    const today = new Date().toDateString();
     const pickUpDateTime = new Date(
       `${today} ${pickUpHours}:${pickUpMinutes}:00`
     );
     const dropOffDateTime = new Date(
       `${today} ${dropOffHours}:${dropOffMinutes}:00`
     );
-
-    // Calculate the difference in milliseconds
     const differenceInTime =
       dropOffDateTime.getTime() - pickUpDateTime.getTime();
-
-    // Convert the difference to hours and minutes
     const differenceInHours = Math.floor(differenceInTime / (1000 * 60 * 60));
-    const differenceInMinutes = Math.floor(
-      (differenceInTime % (1000 * 60 * 60)) / (1000 * 60)
-    );
-
-    // Handle cases where drop-off time is earlier than pick-up time (crossing over midnight)
-    // if (differenceInTime < 0) {
-    //   const correctedDifferenceInTime = 24 * 60 * 60 * 1000 + differenceInTime; // Add 24 hours in milliseconds
-    //   const correctedHours = Math.floor(
-    //     correctedDifferenceInTime / (1000 * 60 * 60)
-    //   );
-    //   const correctedMinutes = Math.floor(
-    //     (correctedDifferenceInTime % (1000 * 60 * 60)) / (1000 * 60)
-    //   );
-
-    //   return { hours: correctedHours, minutes: correctedMinutes };
-    // }
-
-    // return { hours: differenceInHours, minutes: differenceInMinutes };
     return differenceInHours;
   }
-
   const daysBetween = calculateDaysBetween(
     reservation?.PickUpDate,
     reservation?.dropOffDate
@@ -99,11 +75,12 @@ export default function Others({
     reservation?.PickUpTime,
     reservation?.dropOffTime
   );
+  const weeksBetween = daysBetween / 7;
+  const monthsBetween = daysBetween / 30;
 
   useEffect(() => {
     dispatch(setduration(JSON.stringify(daysBetween)));
   }, [daysBetween]);
-
   function calculateRentPerDays(
     daysBetween: any,
     carRentPerDay: any,
@@ -115,13 +92,34 @@ export default function Others({
     let rent = rentWithDays + chauffeurWithDays - discount;
     return rent;
   }
+  function calculateRentPerWeeks(
+    daysBetween: any,
+    carRentPerWeek: any,
+    chauffeurRentPerDay: any,
+    discount: any
+  ) {
+    let rentWithWeeks = daysBetween * carRentPerWeek;
+    let chauffeurWithDays = daysBetween * 7 * chauffeurRentPerDay;
+    let rent = rentWithWeeks + chauffeurWithDays - discount;
+    return rent;
+  }
+  function calculateRentPerMonths(
+    daysBetween: any,
+    carRentPerMonth: any,
+    chauffeurRentPerDay: any,
+    discount: any
+  ) {
+    let rentWithMonths = daysBetween * carRentPerMonth;
+    let chauffeurWithDays = daysBetween * 30 * chauffeurRentPerDay;
+    let rent = rentWithMonths + chauffeurWithDays - discount;
+    return rent;
+  }
   function calculateRentPerHours(
     timeBetween: any,
     carRentPerHour: any,
     chauffeurRentPerDay: any,
     discount: any
   ) {
-    console.log(timeBetween, carRentPerHour, chauffeurRentPerDay, discount);
     let rentWithHours = timeBetween * carRentPerHour;
     let chauffeurWithDays = chauffeurRentPerDay;
     let rent = rentWithHours + chauffeurWithDays - discount;
@@ -136,6 +134,20 @@ export default function Others({
         chauffeurRentPerDays,
         discount
       );
+    } else if (daysBetween % 7 === 0) {
+      return calculateRentPerWeeks(
+        weeksBetween,
+        carRentPerWeeks,
+        chauffeurRentPerDays,
+        discount
+      );
+    } else if (daysBetween % 30 === 0) {
+      return calculateRentPerMonths(
+        monthsBetween,
+        carRentPerMonths,
+        chauffeurRentPerDays,
+        discount
+      );
     } else {
       return calculateRentPerDays(
         daysBetween,
@@ -145,11 +157,10 @@ export default function Others({
       );
     }
   }
-
+  console.log(monthsBetween);
   console.log(totalRentCalc());
 
   let totalRent = totalRentCalc();
-
   useEffect(() => {
     dispatch(setamount(JSON.stringify(totalRent)));
   }, [totalRent]);
@@ -165,14 +176,33 @@ export default function Others({
           <div className="w-full flex justify-between items-center h-fit">
             <span>Rental Period</span>
             <span>
-              {daysBetween < 1 ? timeBetween : daysBetween}{" "}
-              {daysBetween < 1 ? "Hours" : "Days"}
+              {daysBetween < 1
+                ? timeBetween + " Hours"
+                : daysBetween % 7 === 0
+                ? weeksBetween + " Weeks"
+                : daysBetween % 30 === 0
+                ? monthsBetween + " Months"
+                : daysBetween + " Days"}
             </span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>
-              Car Rent ${daysBetween < 1 ? carRentPerHours : carRentPerDays}×{" "}
-              {daysBetween < 1 ? timeBetween : daysBetween}
+              Car Rent $
+              {daysBetween < 1
+                ? carRentPerHours
+                : daysBetween % 7 === 0
+                ? carRentPerWeeks
+                : daysBetween % 30 === 0
+                ? carRentPerMonths
+                : carRentPerDays}
+              ×{" "}
+              {daysBetween < 1
+                ? timeBetween
+                : daysBetween % 7 === 0
+                ? weeksBetween
+                : daysBetween % 30 === 0
+                ? monthsBetween
+                : daysBetween}
             </span>
             <span>${carRentPerDays * daysBetween}</span>
           </div>

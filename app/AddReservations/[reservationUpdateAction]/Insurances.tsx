@@ -53,7 +53,8 @@ export default function Insurances() {
           setState={setfuelStatus}
           label={"Fuel Status"}
           value={reservation.fuelStatus}
-          required={true}
+          // required={true}
+          required={false}
           type={"number"}
           widthProp="sm:w-[48%]"
         />
@@ -69,7 +70,8 @@ export default function Insurances() {
           setState={setcountry}
           label={"Country"}
           value={reservation.country}
-          required={true}
+          // required={true}
+          required={false}
           options={countries.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
@@ -77,7 +79,8 @@ export default function Insurances() {
           setState={setcity}
           label={"City"}
           value={reservation.city}
-          required={true}
+          // required={true}
+          required={false}
           options={cities.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
@@ -93,7 +96,8 @@ export default function Insurances() {
           setState={setPickUpDate}
           label={"Pick Up Date"}
           value={reservation.PickUpDate}
-          required={true}
+          // required={true}
+          required={false}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -102,7 +106,8 @@ export default function Insurances() {
           label={"Pick Up Time"}
           value={reservation.PickUpTime}
           type={"time"}
-          required={true}
+          // required={true}
+          required={false}
           widthProp="sm:w-[48%]"
         />
         <TempTypeInputWidth
@@ -117,7 +122,8 @@ export default function Insurances() {
           setState={setdropOffDate}
           label={"Drop Off Date"}
           value={reservation.dropOffDate}
-          required={true}
+          // required={true}
+          required={false}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -125,7 +131,8 @@ export default function Insurances() {
           setState={setdropOffTime}
           label={"Drop Off Time"}
           value={reservation.dropOffTime}
-          required={true}
+          // required={true}
+          required={false}
           type={"time"}
           widthProp="sm:w-[48%]"
         />
