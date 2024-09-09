@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { MediumLoader } from "../../Components/Loader";
@@ -22,6 +22,8 @@ export default function Rental({ data, loading }: dataType) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   let dispatch = useDispatch();
 
+  const chauffeurRefs = useRef<any[]>([]); // Store refs for each chauffeur div
+
   function filterchauffeur() {
     if (!searchQuery) {
       setFilteredchauffeur(chauffeursData);
@@ -41,6 +43,19 @@ export default function Rental({ data, loading }: dataType) {
   useEffect(() => {
     filterchauffeur();
   }, [searchQuery, chauffeursData]);
+
+  // Scroll to the selected chauffeur when it changes
+  useEffect(() => {
+    const selectedIndex = filteredchauffeur.findIndex(
+      (item: any) => item._id === reservation.chauffeur_id
+    );
+    if (selectedIndex !== -1 && chauffeurRefs.current[selectedIndex]) {
+      chauffeurRefs.current[selectedIndex].scrollIntoView({
+        behavior: "smooth", // Smooth scrolling
+        block: "center", // Scroll to the center of the container
+      });
+    }
+  }, [reservation.chauffeur_id, filteredchauffeur]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
@@ -106,7 +121,8 @@ export default function Rental({ data, loading }: dataType) {
         ) : (
           filteredchauffeur?.map((item: any, index: number) => (
             <div
-              key={index}
+              key={item._id}
+              ref={(el:any) => (chauffeurRefs.current[index] = el)} // Store ref for each item
               className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">

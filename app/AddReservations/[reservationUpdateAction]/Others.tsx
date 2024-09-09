@@ -157,8 +157,6 @@ export default function Others({
       );
     }
   }
-  console.log(monthsBetween);
-  console.log(totalRentCalc());
 
   let totalRent = totalRentCalc();
   useEffect(() => {
