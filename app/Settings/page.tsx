@@ -47,8 +47,8 @@ export default function Vehicles() {
       try {
         // setLoading(true);
         // setIsVerified(undefined);
-        let userData = await axios.get("/api/verifyToken");
-        setUserData(userData?.data?.msg);
+        // let userData = await axios.get("/api/verifyToken");
+        // setUserData(userData?.data?.msg);
         // setIsVerified(true);
       } catch (err) {
         // setIsVerified(false);
@@ -93,10 +93,7 @@ export default function Vehicles() {
                 <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={settings1.src} />
                 </div>
-                <Link
-                  href={"/Settings/AddUser"}
-                  className="h-fit w-[80%]"
-                >
+                <Link href={"/Settings/AddUser"} className="h-fit w-[80%]">
                   <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                     Add New User
                   </h3>
@@ -139,89 +136,10 @@ export default function Vehicles() {
               </div>
               <div className="h-fit w-[80%]">
                 <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  User Management
+                  General
                 </h3>
                 <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Manage access to the system.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings4.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Report
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Customize reports for rentals, returns, revenue, and
-                  maintenance.
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings5.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Currency
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Choose your default currency{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings6.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Time Zone
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Set your preferred time zone for booking timings.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings7.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Language
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Select your preferred language for the application.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings8.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Insurance Options
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Select your default insurance option for rentals.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings9.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Agreement
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Choose agreement type{" "}
+                  Select your preferred language and Curruncy{" "}
                 </p>
               </div>
             </div>
@@ -240,14 +158,14 @@ export default function Vehicles() {
             </div>
             <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings11.src} />
+                <img src={settings9.src} />
               </div>
               <div className="h-fit w-[80%]">
                 <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Security Questions
+                  Agreement
                 </h3>
                 <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Set security questions to help secure your account.{" "}
+                  Edit agreement.{" "}
                 </p>
               </div>
             </div>
@@ -264,24 +182,6 @@ export default function Vehicles() {
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => {
-                logout();
-              }}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
-            >
-              {/* <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-              <img src={settings12.src} />
-            </div> */}
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Logout
-                </h3>
-                {/* <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                Contact customer support or IT helpdesk.{" "}
-              </p> */}
-              </div>
-            </button>
           </div>
         </div>
       </div>
