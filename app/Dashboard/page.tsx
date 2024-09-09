@@ -4,27 +4,19 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import settings1 from "@/public/settings (10).svg";
-import settings2 from "@/public/settings (7).svg";
-import settings3 from "@/public/settings (6).svg";
-import settings4 from "@/public/settings (5).svg";
-import settings5 from "@/public/settings (11).svg";
-import settings6 from "@/public/settings (12).svg";
-import settings7 from "@/public/settings (3).svg";
-import settings8 from "@/public/settings (2).svg";
-import settings9 from "@/public/settings (1).svg";
-import settings10 from "@/public/settings (4).svg";
-import settings11 from "@/public/settings (8).svg";
-import settings12 from "@/public/settings (9).svg";
-import Link from "next/link";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import d1 from "@/public/dashboard (1).svg";
+import d2 from "@/public/dashboard (2).svg";
+import d3 from "@/public/dashboard (3).svg";
+import d4 from "@/public/dashboard (4).svg";
+import d5 from "@/public/dashboard (5).svg";
+import d6 from "@/public/dashboard (6).svg";
+import d7 from "@/public/dashboard (7).svg";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  let [userData, setUserData] = useState<any>(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -33,31 +25,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  async function logout() {
-    try {
-      await axios.post("/api/logOut");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    } finally {
-      window.location.href = "/";
-    }
-  }
-  useEffect(() => {
-    async function verifyTokenApi() {
-      try {
-        // setLoading(true);
-        // setIsVerified(undefined);
-        // let userData = await axios.get("/api/verifyToken");
-        // setUserData(userData?.data?.msg);
-        // setIsVerified(true);
-      } catch (err) {
-        // setIsVerified(false);
-      } finally {
-        // setLoading(false);
-      }
-    }
-    verifyTokenApi();
-  }, []);
+
   return (
     <div
       className={`${
@@ -69,117 +37,119 @@ export default function Vehicles() {
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
-            Settings
+            Dashboard
           </h3>
         </div>
         <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
-          <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-">
-              Search
+          <div className="w-[100%] flex justify-start items-start flex-col">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+              Cars
             </h3>
-            <div className="w-full h-fit flex justify-between items-center">
-              <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
-                placeholder="Search..."
-              ></input>
-              <button className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                Search
-              </button>
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d7.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    120
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Total Cars{" "}
+                  </div>
+                </div>
+              </div>
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d6.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    80
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Cars Available
+                  </div>
+                </div>
+              </div>
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d5.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    40
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Cars Rented Out{" "}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
-            {userData?.admin ? (
-              <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-                <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={settings1.src} />
+          <div className="w-[100%] flex justify-start items-start flex-col">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+              Reservations
+            </h3>
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d4.src} />
                 </div>
-                <Link href={"/Settings/AddUser"} className="h-fit w-[80%]">
-                  <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                    Add New User
-                  </h3>
-                  <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                    Add New User.
-                  </p>
-                </Link>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    15
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Reservations Today{" "}
+                  </div>
+                </div>
               </div>
-            ) : null}
-
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings1.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  My Profile
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Manage your personal information and login credentials.
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings2.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Notification
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Customize how you receive updates and reminders.{" "}
-                </p>
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d3.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    190
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Total Reservations{" "}
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings3.src} />
+          </div>
+          <div className="w-[100%] flex justify-start items-start flex-col">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+              Revenue
+            </h3>
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d2.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    $150
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Revenue Today{" "}
+                  </div>
+                </div>
               </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  General
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Select your preferred language and Curruncy{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings10.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Invoicing
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Edit VAT & Taxes{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings9.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Agreement
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Edit agreement.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                <img src={settings12.src} />
-              </div>
-              <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Contact Support
-                </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
-                  Contact customer support or IT helpdesk.{" "}
-                </p>
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                  <img src={d1.src} />
+                </div>
+                <div>
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
+                    $120,000
+                  </div>
+                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                    Total Revenue
+                  </div>
+                </div>
               </div>
             </div>
           </div>

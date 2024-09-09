@@ -1,7 +1,5 @@
 "use client";
 import { RootState } from "@/app/store";
-import Nav from "../../Components/Nav";
-import Sidebar from "../../Components/Sidebar";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
