@@ -20,12 +20,15 @@ export default function Others({
 }: dataType) {
   let dispatch = useDispatch();
   let reservation = useSelector((state: RootState) => state.reservation);
-  let carRent = isNaN(Number(vehicleData?.rentDay))
+  let carRentPerDays = isNaN(Number(vehicleData?.rentDay))
     ? 0
     : Number(vehicleData?.rentDay);
-  let chauffeurRent = isNaN(Number(chauffeurData?.rentPerDay))
+  let chauffeurRentPerDays = isNaN(Number(chauffeurData?.rentPerDay))
     ? 0
     : Number(chauffeurData?.rentPerDay);
+  let carRentPerHours = isNaN(Number(vehicleData?.rentHour))
+    ? 0
+    : Number(vehicleData?.rentHour);
   let discount = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
@@ -41,10 +44,62 @@ export default function Others({
     return Math.ceil(differenceInDays);
   }
 
+  function calculateTimeDifference(pickUpTime: string, dropOffTime: string) {
+    if (!pickUpTime || !dropOffTime) {
+      // return { hours: 0, minutes: 0 };
+      return 0;
+    }
+
+    // Split the time strings to get hours and minutes
+    const [pickUpHours, pickUpMinutes] = pickUpTime.split(":").map(Number);
+    const [dropOffHours, dropOffMinutes] = dropOffTime.split(":").map(Number);
+
+    // Create Date objects for both times (using the same date, since we only care about the time)
+    const today = new Date().toDateString(); // Get today's date string
+
+    const pickUpDateTime = new Date(
+      `${today} ${pickUpHours}:${pickUpMinutes}:00`
+    );
+    const dropOffDateTime = new Date(
+      `${today} ${dropOffHours}:${dropOffMinutes}:00`
+    );
+
+    // Calculate the difference in milliseconds
+    const differenceInTime =
+      dropOffDateTime.getTime() - pickUpDateTime.getTime();
+
+    // Convert the difference to hours and minutes
+    const differenceInHours = Math.floor(differenceInTime / (1000 * 60 * 60));
+    const differenceInMinutes = Math.floor(
+      (differenceInTime % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    // Handle cases where drop-off time is earlier than pick-up time (crossing over midnight)
+    // if (differenceInTime < 0) {
+    //   const correctedDifferenceInTime = 24 * 60 * 60 * 1000 + differenceInTime; // Add 24 hours in milliseconds
+    //   const correctedHours = Math.floor(
+    //     correctedDifferenceInTime / (1000 * 60 * 60)
+    //   );
+    //   const correctedMinutes = Math.floor(
+    //     (correctedDifferenceInTime % (1000 * 60 * 60)) / (1000 * 60)
+    //   );
+
+    //   return { hours: correctedHours, minutes: correctedMinutes };
+    // }
+
+    // return { hours: differenceInHours, minutes: differenceInMinutes };
+    return differenceInHours;
+  }
+
   const daysBetween = calculateDaysBetween(
     reservation?.PickUpDate,
     reservation?.dropOffDate
   );
+  const timeBetween = calculateTimeDifference(
+    reservation?.PickUpTime,
+    reservation?.dropOffTime
+  );
+
   useEffect(() => {
     dispatch(setduration(JSON.stringify(daysBetween)));
   }, [daysBetween]);
@@ -55,19 +110,45 @@ export default function Others({
     chauffeurRentPerDay: any,
     discount: any
   ) {
-    console.log(discount);
     let rentWithDays = daysBetween * carRentPerDay;
     let chauffeurWithDays = daysBetween * chauffeurRentPerDay;
     let rent = rentWithDays + chauffeurWithDays - discount;
     return rent;
   }
+  function calculateRentPerHours(
+    timeBetween: any,
+    carRentPerHour: any,
+    chauffeurRentPerDay: any,
+    discount: any
+  ) {
+    console.log(timeBetween, carRentPerHour, chauffeurRentPerDay, discount);
+    let rentWithHours = timeBetween * carRentPerHour;
+    let chauffeurWithDays = chauffeurRentPerDay;
+    let rent = rentWithHours + chauffeurWithDays - discount;
+    return rent;
+  }
 
-  let totalRent = calculateRentPerDays(
-    daysBetween,
-    carRent,
-    chauffeurRent,
-    discount
-  );
+  function totalRentCalc() {
+    if (daysBetween < 1) {
+      return calculateRentPerHours(
+        timeBetween,
+        carRentPerHours,
+        chauffeurRentPerDays,
+        discount
+      );
+    } else {
+      return calculateRentPerDays(
+        daysBetween,
+        carRentPerDays,
+        chauffeurRentPerDays,
+        discount
+      );
+    }
+  }
+
+  console.log(totalRentCalc());
+
+  let totalRent = totalRentCalc();
 
   useEffect(() => {
     dispatch(setamount(JSON.stringify(totalRent)));
@@ -83,13 +164,17 @@ export default function Others({
         <div className="w-full h-fit mt-1 rounded-[10px] border-[1px] border-grey font-[400] text-[14px] leading-[17px] pt-5 pb-3 px-4 flex flex-col justify-start items-center gap-y-3 ">
           <div className="w-full flex justify-between items-center h-fit">
             <span>Rental Period</span>
-            <span>{daysBetween} Days</span>
+            <span>
+              {daysBetween < 1 ? timeBetween : daysBetween}{" "}
+              {daysBetween < 1 ? "Hours" : "Days"}
+            </span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>
-              Car Rent ${carRent} × {daysBetween}
+              Car Rent ${daysBetween < 1 ? carRentPerHours : carRentPerDays}×{" "}
+              {daysBetween < 1 ? timeBetween : daysBetween}
             </span>
-            <span>${carRent * daysBetween}</span>
+            <span>${carRentPerDays * daysBetween}</span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>VAT 24%</span>
@@ -101,9 +186,12 @@ export default function Others({
             <>
               <div className="w-full flex justify-between items-center h-fit">
                 <span>
-                  Chauffeur ${chauffeurRent} × {daysBetween}
+                  Chauffeur ${chauffeurRentPerDays} ×{" "}
+                  {daysBetween < 1 && timeBetween > 0
+                    ? daysBetween + 1
+                    : daysBetween}
                 </span>
-                <span>${chauffeurRent * daysBetween}</span>
+                <span>${chauffeurRentPerDays * daysBetween}</span>
               </div>
               <div className="border-b-[1px] border-grey w-full "></div>
             </>
