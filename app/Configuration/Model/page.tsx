@@ -37,45 +37,16 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     try {
-  //       setDataLoading(true);
-  //       const result = await axios.get("/api/getModel", {
-  //         headers: { "Cache-Control": "no-store" },
-  //       });
-  //       const result2 = await axios.get("/api/getMake", {
-  //         headers: { "Cache-Control": "no-store" },
-  //       });
-  //       setMakeData(result2?.data?.data);
-
-  //       if (result?.data?.data) {
-  //         setVehiclesData(result.data.data);
-  //       } else {
-  //         setShowError(result?.data?.error);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setDataLoading(false);
-  //     }
-  //   }
-  //   getData();
-  // }, [global.vehicleDataReloader]);
-
   useEffect(() => {
     async function getData() {
       try {
         setDataLoading(true);
-        console.log("Fetching vehicle data...");
         const result = await axios.get("/api/getModel", {
           headers: { "Cache-Control": "no-store" },
         });
         const result2 = await axios.get("/api/getMake", {
           headers: { "Cache-Control": "no-store" },
         });
-        console.log("Vehicle data:", result.data);
-        console.log("Make data:", result2.data);
         setMakeData(result2?.data?.data);
 
         if (result?.data?.data) {
@@ -84,7 +55,7 @@ export default function Vehicles() {
           setShowError(result?.data?.error);
         }
       } catch (error) {
-        console.log("Error fetching data:", error);
+        console.log(error);
       } finally {
         setDataLoading(false);
       }
