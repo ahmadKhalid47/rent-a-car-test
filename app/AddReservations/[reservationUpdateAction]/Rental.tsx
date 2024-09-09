@@ -105,7 +105,10 @@ export default function Rental({ data, loading }: dataType) {
           <MediumLoader />
         ) : (
           filteredchauffeur?.map((item: any, index: number) => (
-            <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
+            <div
+              key={index}
+              className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
+            >
               <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">
                   <img

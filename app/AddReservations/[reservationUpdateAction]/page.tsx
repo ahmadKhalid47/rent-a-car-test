@@ -201,6 +201,9 @@ export default function Reservations() {
     }
   };
 
+  // console.clear();
+  console.log(goToPage, currentPage);
+
   return (
     <div
       className={`${
@@ -235,7 +238,11 @@ export default function Reservations() {
                 <button
                   onClick={() => {
                     setGoToPage(0);
-                    submitButton();
+                    if (currentPage > 0) {
+                      setCurrentPage(0);
+                    } else {
+                      submitButton();
+                    }
                   }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 0
@@ -252,7 +259,11 @@ export default function Reservations() {
                 <button
                   onClick={() => {
                     setGoToPage(1);
-                    submitButton();
+                    if (currentPage > 1) {
+                      setCurrentPage(1);
+                    } else {
+                      submitButton();
+                    }
                   }}
                   className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
                     currentPage >= 1
@@ -363,7 +374,10 @@ export default function Reservations() {
             {currentPage !== 0 ? (
               <button
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => setCurrentPage(currentPage - 1)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentPage(currentPage - 1);
+                }}
               >
                 Back
               </button>
