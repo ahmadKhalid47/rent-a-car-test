@@ -139,7 +139,9 @@ export default function Reservations() {
         setLoading(false);
       }
     }
-    getData();
+    if (reservationUpdateAction !== "AddNew") {
+      getData();
+    }
   }, []);
 
   async function saveData(action: string) {
