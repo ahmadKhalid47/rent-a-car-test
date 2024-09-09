@@ -9,8 +9,7 @@ import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "../store/Global";
 import { useDispatch } from "react-redux";
-import { useRouter, usePathname } from "next/navigation";
-import * as navigation from "next/navigation";
+import { usePathname } from "next/navigation";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
@@ -63,6 +62,9 @@ export default function Sidebar() {
     } else if (pathName === "/Settings") {
       setChevronState("Settings");
       setChevronStateClose("Settings");
+    } else if (pathName === "/Dashboard") {
+      setChevronState("Dashboard");
+      setChevronStateClose("Dashboard");
     }
   }, [pathName]);
 
@@ -93,16 +95,23 @@ export default function Sidebar() {
           global.sidebarShow ? "px-3 sm:px-3" : "px-1"
         } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions`}
       >
-        <div
+        <Link
+          href="/Dashboard"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
             global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
-          } bg-main-blue-hover hover:text-white rounded-[10px]`}
+          } bg-main-blue-hover hover:text-white rounded-[10px] ${
+            chevronState === "Dashboard" && global.sidebarShow
+              ? "bg-main-blue text-white font-[500]"
+              : chevronStateClose === "Dashboard" && !global.sidebarShow
+              ? "text-white bg-main-blue"
+              : ""
+          }`}
         >
           <TbLayoutDashboardFilled
             className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
           />
           <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
-        </div>
+        </Link>
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -181,7 +190,6 @@ export default function Sidebar() {
             </Link>
           </div>
         ) : null}
-
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -267,7 +275,6 @@ export default function Sidebar() {
             </Link>
           </div>
         ) : null}
-
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -356,7 +363,6 @@ export default function Sidebar() {
             </Link>
           </div>
         ) : null}
-
         <div
           className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -395,7 +401,6 @@ export default function Sidebar() {
             </div>
           ) : null}
         </div>
-
         {chevronState === "Vehicles" && global.sidebarShow ? (
           <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
             <div className="flex justify-start items-center w-full">
@@ -462,7 +467,6 @@ export default function Sidebar() {
             </div>
           </div>
         ) : null}
-
         <Link
           href="/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
