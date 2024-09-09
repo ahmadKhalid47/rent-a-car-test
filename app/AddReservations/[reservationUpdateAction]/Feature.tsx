@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,11 @@ export default function Feature({ data, loading }: dataType) {
   let VehiclesData: any = data;
   const [filteredVehicle, setFilteredVehicle] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
   let dispatch = useDispatch();
+
+  // Store refs for each vehicle div
+  const vehicleRefs = useRef<any[]>([]);
 
   function filterVehicle() {
     if (!searchQuery) {
@@ -27,7 +31,6 @@ export default function Feature({ data, loading }: dataType) {
     const filtered = VehiclesData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { make, model } = data;
-      console.log(make, model);
 
       return (
         make.toLowerCase().includes(lowercasedQuery) ||
@@ -41,6 +44,19 @@ export default function Feature({ data, loading }: dataType) {
     filterVehicle();
   }, [searchQuery, VehiclesData]);
 
+  // Scroll to the selected vehicle when it changes
+  useEffect(() => {
+    const selectedIndex = filteredVehicle.findIndex(
+      (item: any) => item._id === reservation.vehicle_id
+    );
+    if (selectedIndex !== -1 && vehicleRefs.current[selectedIndex]) {
+      vehicleRefs.current[selectedIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [reservation.vehicle_id, filteredVehicle]);
+
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
@@ -49,21 +65,6 @@ export default function Feature({ data, loading }: dataType) {
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
         <div className="flex justify-between flex-wrap gap-y-3 items-center w-full h-fit">
-          {/* <SelectInputWidth
-            label={"Make"}
-            value={""}
-            required={false}
-            options={["Make1", "Make2"]}
-            widthProp="sm:w-[48.5%]"
-          />
-          <TempSelectInputWidth
-            setState={setSearchQuery}
-            label={"Model"}
-            value={""}
-            required={false}
-            options={["Model1", "Model2"]}
-            widthProp="sm:w-[48.5%]"
-          /> */}
           <input
             className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px] placeholder:text-black"
             placeholder="Search By Name"
@@ -74,7 +75,11 @@ export default function Feature({ data, loading }: dataType) {
           <MediumLoader />
         ) : (
           filteredVehicle?.map((item: any, index: number) => (
-            <div className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative">
+            <div
+              key={item._id}
+              ref={(el:any) => (vehicleRefs.current[index] = el)} // Store ref for each vehicle
+              className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
+            >
               <div className="w-[133px] h-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <img
                   src={item.data.carImages[item.data.thumbnailImage]}
