@@ -8,6 +8,7 @@ import {
   setchauffeurNameR,
   setwithChauffeur,
 } from "@/app/store/reservations";
+import image404 from "@/public/image404.png";
 
 interface dataType {
   data: Array<Object>;
@@ -122,13 +123,17 @@ export default function Rental({ data, loading }: dataType) {
           filteredchauffeur?.map((item: any, index: number) => (
             <div
               key={item._id}
-              ref={(el:any) => (chauffeurRefs.current[index] = el)} // Store ref for each item
+              ref={(el: any) => (chauffeurRefs.current[index] = el)} // Store ref for each item
               className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">
                   <img
-                    src={item.data.chauffeurImage}
+                    src={
+                      item.data.chauffeurImage
+                        ? item.data.chauffeurImage
+                        : image404.src
+                    }
                     className="w-full h-full"
                   />
                 </div>

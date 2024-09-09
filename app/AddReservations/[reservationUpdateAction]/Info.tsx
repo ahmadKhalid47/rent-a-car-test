@@ -4,6 +4,7 @@ import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setcustomer_idR, setcustomerNameR } from "@/app/store/reservations";
+import image404 from "@/public/image404.png";
 
 interface dataType {
   data: Array<Object>;
@@ -50,7 +51,6 @@ export default function Info({ data, loading }: dataType) {
         block: "center", // Scroll to the center of the container
       });
       console.log(customerRefs.current[selectedIndex]);
-      
     }
   }, [reservation.customer_id, filteredCustomer]);
 
@@ -82,7 +82,14 @@ export default function Info({ data, loading }: dataType) {
               className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">
-                <img src={item.data.customerImage} className="w-full h-full" />
+                <img
+                  src={
+                    item.data.customerImage
+                      ? item.data.customerImage
+                      : image404.src
+                  }
+                  className="w-full h-full"
+                />
               </div>
               <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
                 <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">

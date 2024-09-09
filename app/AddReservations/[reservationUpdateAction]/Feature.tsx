@@ -4,7 +4,7 @@ import { MediumLoader } from "../../Components/Loader";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setvehicle_idR, setvehicleNameR } from "@/app/store/reservations";
-
+import image404 from "@/public/image404.png";
 interface dataType {
   data: Array<Object>;
   loading: boolean;
@@ -77,12 +77,16 @@ export default function Feature({ data, loading }: dataType) {
           filteredVehicle?.map((item: any, index: number) => (
             <div
               key={item._id}
-              ref={(el:any) => (vehicleRefs.current[index] = el)} // Store ref for each vehicle
+              ref={(el: any) => (vehicleRefs.current[index] = el)} // Store ref for each vehicle
               className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] h-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <img
-                  src={item.data.carImages[item.data.thumbnailImage]}
+                  src={
+                    item.data.carImages[item.data.thumbnailImage]
+                      ? item.data.carImages[item.data.thumbnailImage]
+                      : image404.src
+                  }
                   className="w-full h-full"
                 />
               </div>
