@@ -201,9 +201,6 @@ export default function Reservations() {
     }
   };
 
-  // console.clear();
-  console.log(goToPage, currentPage);
-
   return (
     <div
       className={`${

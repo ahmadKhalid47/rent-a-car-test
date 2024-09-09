@@ -55,6 +55,7 @@ export default function Others({
     chauffeurRentPerDay: any,
     discount: any
   ) {
+    console.log(discount);
     let rentWithDays = daysBetween * carRentPerDay;
     let chauffeurWithDays = daysBetween * chauffeurRentPerDay;
     let rent = rentWithDays + chauffeurWithDays - discount;
