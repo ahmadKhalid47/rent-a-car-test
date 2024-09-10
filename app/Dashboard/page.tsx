@@ -110,7 +110,6 @@ export default function Vehicles() {
   }, []);
 
   function submitButton() {
-    console.log(VehiclesData);
     let filtered: any = VehiclesData;
 
     if (make) {
@@ -137,7 +136,9 @@ export default function Vehicles() {
       });
     }
     console.log("filtered", filtered);
+    console.log("reservationsData", reservationsData?.slice(0, 4));
   }
+
   return (
     <div
       className={`${
