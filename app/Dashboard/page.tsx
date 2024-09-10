@@ -33,7 +33,6 @@ export default function Vehicles() {
   const [regNo, setRegNo] = useState<any>("");
   const [date, setDate] = useState<any>("");
   const [time, setTime] = useState<any>("");
-
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -111,7 +110,33 @@ export default function Vehicles() {
   }, []);
 
   function submitButton() {
-    console.log(make, model, regNo, date, time);
+    console.log(VehiclesData);
+    let filtered: any = VehiclesData;
+
+    if (make) {
+      const lowercasedQuery = make.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (model) {
+      const lowercasedQuery = model.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (regNo) {
+      const lowercasedQuery = regNo.toLowerCase().trim();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+    console.log("filtered", filtered);
   }
   return (
     <div
