@@ -6,9 +6,15 @@ export async function GET(req: Request) {
   try {
     await connectDb();
     const data = await MakeModel.find().sort({ _id: -1 });
-    return NextResponse.json({
+
+    const response = NextResponse.json({
       data,
     });
+
+    // Disable cache
+    response.headers.set("Cache-Control", "no-store, max-age=0");
+
+    return response;
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
