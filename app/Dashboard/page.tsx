@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import d1 from "@/public/dashboard (1).svg";
 import d2 from "@/public/dashboard (2).svg";
 import d3 from "@/public/dashboard (3).svg";
@@ -12,11 +12,17 @@ import d4 from "@/public/dashboard (4).svg";
 import d5 from "@/public/dashboard (5).svg";
 import d6 from "@/public/dashboard (6).svg";
 import d7 from "@/public/dashboard (7).svg";
+import axios from "axios";
+import { TextLoader } from "../Components/Loader";
 
 export default function Vehicles() {
-  let global = useSelector((state: RootState) => state.Global);
-  let dispatch = useDispatch();
+  const global = useSelector((state: RootState) => state.Global);
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
+  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [reservationLoading, setreservationLoading] = useState<any>(true);
+  const [reservationsData, setreservationsData] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -25,6 +31,69 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setvehicleLoading(true);
+        const result = await axios.get("/api/getVehicle", {
+          headers: { "Cache-Control": "no-store" },
+        });
+        setVehiclesData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setvehicleLoading(false);
+      }
+    }
+    getData();
+  }, []);
+
+  const activeVehicles = VehiclesData.filter(
+    (item: any) => item.active === true
+  );
+  const rentOutVehicles = VehiclesData.filter(
+    (item: any) => item.rentOut === true
+  );
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setreservationLoading(true);
+        const result = await axios.get("/api/getreservation", {
+          headers: { "Cache-Control": "no-store" },
+        });
+        setreservationsData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setreservationLoading(false);
+      }
+    }
+    getData();
+  }, [global.vehicleDataReloader]);
+
+  const completedReservations = reservationsData.filter(
+    (item: any) => item.data.status === "complete"
+  );
+  const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
+
+  const completedReservationsToday = completedReservations.filter(
+    (item: any) => item.data.completeDate === currentDate
+  );
+  const reservationsMadeToday = reservationsData.filter(
+    (item: any) => item.data.reservationDate === currentDate
+  );
+  const totalAmount = completedReservations.reduce(
+    (sum, record) => sum + Number(record.data.amount),
+    0
+  );
+  const totalAmountToday = completedReservationsToday.reduce(
+    (sum, record) => sum + Number(record.data.amount),
+    0
+  );
+
+  console.log(rentOutVehicles);
 
   return (
     <div
@@ -51,8 +120,8 @@ export default function Vehicles() {
                   <img src={d7.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    120
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!vehicleLoading ? VehiclesData.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Cars{" "}
@@ -64,8 +133,8 @@ export default function Vehicles() {
                   <img src={d6.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    80
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!vehicleLoading ? activeVehicles.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Cars Available
@@ -77,8 +146,8 @@ export default function Vehicles() {
                   <img src={d5.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    40
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!vehicleLoading ? rentOutVehicles.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Cars Rented Out{" "}
@@ -97,8 +166,12 @@ export default function Vehicles() {
                   <img src={d4.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    15
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!reservationLoading ? (
+                      reservationsMadeToday.length
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Reservations Today{" "}
@@ -110,8 +183,12 @@ export default function Vehicles() {
                   <img src={d3.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    190
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!reservationLoading ? (
+                      reservationsData.length
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Reservations{" "}
@@ -130,8 +207,12 @@ export default function Vehicles() {
                   <img src={d2.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    $150
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!reservationLoading ? (
+                      "$" + totalAmountToday
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Revenue Today{" "}
@@ -143,8 +224,8 @@ export default function Vehicles() {
                   <img src={d1.src} />
                 </div>
                 <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px]">
-                    $120,000
+                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                    {!reservationLoading ? "$" + totalAmount : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Revenue

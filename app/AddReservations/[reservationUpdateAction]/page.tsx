@@ -148,6 +148,12 @@ export default function Reservations() {
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/savereservation`, reservation);
+      let result2: any = await axios.post(
+        `/api/updateRentOut/${reservation?.vehicle_id}`,
+        {
+          rentOut: true,
+        }
+      );
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
         setShowError(null);

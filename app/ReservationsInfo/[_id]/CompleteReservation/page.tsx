@@ -120,6 +120,7 @@ export default function reservationInfoMainPage() {
         ...obj,
         files: res3?.data?.message[index].map((url: any) => url),
       }));
+      const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
 
       await axios.post(`/api/updatereservation/${_id}`, {
         ...reservation,
@@ -127,8 +128,14 @@ export default function reservationInfoMainPage() {
         odometerImagesCompletion: res2?.data?.message,
         damages: updatedObjects,
         status: "complete",
+        completeDate: currentDate,
       });
-
+      let result2: any = await axios.post(
+        `/api/updateRentOut/${reservation?.vehicle_id}`,
+        {
+          rentOut: false,
+        }
+      );
       if (action === "close") {
         router.push("/Reservations");
       }
