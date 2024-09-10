@@ -13,7 +13,11 @@ import d5 from "@/public/dashboard (5).svg";
 import d6 from "@/public/dashboard (6).svg";
 import d7 from "@/public/dashboard (7).svg";
 import axios from "axios";
-import { TextLoader } from "../Components/Loader";
+import { TextLoader, MediumLoader } from "../Components/Loader";
+import Link from "next/link";
+import { formatDate2 } from "../Components/functions/formats";
+import { TypeInput } from "../Components/InputComponents/TypeInput";
+import { SelectInput } from "../Components/InputComponents/SelectInput";
 
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);
@@ -23,6 +27,12 @@ export default function Vehicles() {
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
+  const [Configurations, setConfigurationsData] = useState<any>([]);
+  const [make, setMake] = useState<any>("");
+  const [model, setModel] = useState<any>("");
+  const [regNo, setRegNo] = useState<any>("");
+  const [date, setDate] = useState<any>("");
+  const [time, setTime] = useState<any>("");
 
   useEffect(() => {
     if (isMobile) {
@@ -31,7 +41,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-
   useEffect(() => {
     async function getData() {
       try {
@@ -48,14 +57,12 @@ export default function Vehicles() {
     }
     getData();
   }, []);
-
   const activeVehicles = VehiclesData.filter(
     (item: any) => item.active === true
   );
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
-
   useEffect(() => {
     async function getData() {
       try {
@@ -72,12 +79,10 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
-
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
   );
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
-
   const completedReservationsToday = completedReservations.filter(
     (item: any) => item.data.completeDate === currentDate
   );
@@ -93,7 +98,19 @@ export default function Vehicles() {
     0
   );
 
-  console.log(rentOutVehicles);
+  useEffect(() => {
+    async function getData2() {
+      try {
+        let result: any = await axios.get(`/api/getConfigurations`);
+        setConfigurationsData(result?.data?.wholeData);
+      } catch (error: any) {
+        console.log(error);
+      }
+    }
+    getData2();
+  }, []);
+
+  console.log(make, model, regNo, date, time);
 
   return (
     <div
@@ -231,6 +248,114 @@ export default function Vehicles() {
                     Total Revenue
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-start bg">
+            <div className="h-[350px] flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-[49%] bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+              <div className="w-full flex justify-between items-end h-fit">
+                <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
+                  Car Availability{" "}
+                </h1>
+              </div>
+              <SelectInput
+                setState={setMake}
+                label={"Make"}
+                value={make}
+                required={false}
+                options={Configurations?.make?.map((item: any) => item.make)}
+              />
+              <SelectInput
+                setState={setModel}
+                label={"Model"}
+                value={model}
+                required={false}
+                options={Configurations?.model
+                  ?.filter((item: any) => item.make === make)
+                  .map((item: any) => item.model)}
+              />
+              <TypeInput
+                setState={setRegNo}
+                label={"Registration Number"}
+                value={regNo}
+                required={false}
+                type={"text"}
+                widthProp="sm:w-[100%]"
+              />
+              <TypeInput
+                setState={setDate}
+                label={"Date & Time"}
+                value={date}
+                required={false}
+                type={"date"}
+                widthProp="sm:w-[48%]"
+              />
+              <div
+                className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+              >
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
+                  {"label"}
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <input
+                    type={"time"}
+                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                    onChange={(e) => {
+                      setTime(e.target.value);
+                    }}
+                    value={time}
+                  />
+                </div>
+              </div>{" "}
+            </div>
+            <div className="h-[350px] flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-[49%] bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+              <div className="w-full flex justify-between items-end h-fit">
+                <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
+                  Recent Reservations
+                </h1>
+                <Link
+                  href="/Reservations"
+                  className="w-fit text-[12px] font-[400] leading-[12px] hover:underline"
+                >
+                  View More
+                </Link>
+              </div>
+              <div className="w-full flex flex-col justify-start items-center">
+                <div className="w-full h-[32px] flex justify-between items-center bg-light-grey border-[1px] border-grey rounded-[6px] px-3">
+                  <span className="w-[25%] text-[12px] font-[400] leading-[14px]">
+                    Customer
+                  </span>
+                  <span className="w-[35%] text-[12px] font-[400] leading-[14px]">
+                    Vehicle
+                  </span>
+                  <span className="w-[40%] text-[12px] font-[400] leading-[14px]">
+                    Duration
+                  </span>
+                </div>
+                {reservationLoading ? (
+                  <>
+                    <div className="mt-5"></div>
+                    <MediumLoader />
+                  </>
+                ) : (
+                  reservationsData?.slice(0, 8).map((item, index) => (
+                    <div
+                      key={index}
+                      className="w-full h-[32px] flex justify-between items-center bg-white border-b-[1px] border-grey px-3"
+                    >
+                      <span className="w-[25%] text-[12px] font-[400] leading-[14px]">
+                        {item.data.customerName}
+                      </span>
+                      <span className="w-[35%] text-[12px] font-[400] leading-[14px]">
+                        {item.data.vehicleName}
+                      </span>
+                      <span className="w-[40%] text-[12px] font-[400] leading-[14px]">
+                        {formatDate2(item.data.PickUpDate)} to{" "}
+                        {formatDate2(item.data.dropOffDate)}
+                      </span>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

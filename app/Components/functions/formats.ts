@@ -12,6 +12,10 @@ export function formatDate(dateString: string): string {
 
   return formattedDate;
 }
+export function formatDate2(dateString: string): string {
+  const formattedDate = dateString.split("-").reverse().join("-");
+  return formattedDate;
+}
 
 export function formatTime(timeString: string): string {
   // Create a new Date object using the provided time string
