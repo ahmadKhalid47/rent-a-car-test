@@ -1,11 +1,38 @@
 {
     "headers": [
         {
-            "source": "/api/:path*",
+            "source": "/api/no-cache/:path*",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "no-cache"
+                }
+            ]
+        },
+        {
+            "source": "/api/max-age-zero/:path*",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "max-age=0, must-revalidate"
+                }
+            ]
+        },
+        {
+            "source": "/api/no-store/:path*",
             "headers": [
                 {
                     "key": "Cache-Control",
                     "value": "no-store"
+                }
+            ]
+        },
+        {
+            "source": "/api/public-max-age/:path*",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=60"
                 }
             ]
         }
