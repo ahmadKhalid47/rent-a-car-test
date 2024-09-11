@@ -59,7 +59,8 @@ export default function Sidebar() {
     ) {
       setChevronState("Reservations");
       setChevronStateClose("Reservations");
-    } else if (pathName === "/Settings") {
+    } else if (pathName?.includes("/Settings")
+    ) {
       setChevronState("Settings");
       setChevronStateClose("Settings");
     } else if (pathName === "/Dashboard") {

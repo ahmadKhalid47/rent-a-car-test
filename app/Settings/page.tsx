@@ -104,7 +104,10 @@ export default function Vehicles() {
               </div>
             ) : null}
 
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            <Link
+              href={"Settings/MyProfile"}
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+            >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings1.src} />
               </div>
@@ -116,7 +119,7 @@ export default function Vehicles() {
                   Manage your personal information and login credentials.
                 </p>
               </div>
-            </div>
+            </Link>
             <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings2.src} />
