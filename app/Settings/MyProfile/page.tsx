@@ -149,14 +149,11 @@ export default function AddUser() {
                 <div className="w-[50%] h-full flex justify-start items-center gap-6">
                   <div className="w-[100px] h-[100px] flex justify-center items-center bg-light-grey rounded-full border-2 border-grey bg-light-grey relative">
                     <img
-                      // src={
-                      //   myProfile?.profilePic === ""
-                      //     ? account.src
-                      //     : myProfile?.profilePic
-                      // }
                       src={
                         selectedPic?.length > 0
                           ? selectedPic
+                          : myProfile?.profilePic === ""
+                          ? account.src
                           : myProfile?.profilePic
                       }
                       className="w-full h-full flex justify-center items-center bg-light-grey rounded-full"
