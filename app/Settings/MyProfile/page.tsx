@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setMyProfileReloader, setSidebarShowR } from "@/app/store/Global";
+import {
+  setLoginPageR,
+  setMyProfileReloader,
+  setSidebarShowR,
+} from "@/app/store/Global";
 import { FormEvent, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import axios, { AxiosResponse } from "axios";
@@ -189,7 +193,8 @@ export default function AddUser() {
                   >
                     <button
                       onClick={() => {
-                        editItem(username);
+                        router.push("/");
+                        dispatch(setLoginPageR(false));
                       }}
                       className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     >

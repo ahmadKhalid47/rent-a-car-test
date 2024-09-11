@@ -13,7 +13,9 @@ import Loader, { SmallLoader } from "@/app/Components/Loader";
 import expire404 from "@/public/404.svg";
 export default function ResetPassword() {
   const params = useParams();
-  const token = params?.token;
+  const { token } = params;
+  console.log(token);
+
   const [showError, setShowError] = useState<any>(null);
   const [showSuccess, setShowSuccess] = useState<any>(null);
   const [showPassword1, setShowPassword1] = useState(false);
