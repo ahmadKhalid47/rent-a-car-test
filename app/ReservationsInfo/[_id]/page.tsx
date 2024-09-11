@@ -55,9 +55,6 @@ export default function reservationInfoMainPage() {
         setcustomerLoading(true);
         const result = await axios.post(
           `/api/getCustomerInfo/${reservationInfo?.customer_id}`,
-          {
-            headers: { "Cache-Control": "no-store" },
-          }
         );
 
         if (result?.data?.data) {
@@ -80,9 +77,6 @@ export default function reservationInfoMainPage() {
         setchauffeursLoading(true);
         const result = await axios.post(
           `/api/getchauffeurInfo/${reservationInfo?.chauffeur_id}`,
-          {
-            headers: { "Cache-Control": "no-store" },
-          }
         );
 
         if (result?.data?.data) {
@@ -107,9 +101,6 @@ export default function reservationInfoMainPage() {
         setvehicleLoading(true);
         const result = await axios.post(
           `/api/getVehicleInfo/${reservationInfo?.vehicle_id}`,
-          {
-            headers: { "Cache-Control": "no-store" },
-          }
         );
 
         if (result?.data?.data) {

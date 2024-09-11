@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setMyProfileReloader, setSidebarShowR } from "@/app/store/Global";
 import { FormEvent, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Alert } from "@mui/material";
 import { SmallLoader } from "@/app/Components/Loader";
 import {
@@ -24,13 +24,14 @@ import { TempTypeInputWidth } from "@/app/Components/InputComponents/TypeInput";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
-  let myProfile = useSelector((state: RootState) => state.myProfile);
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [showError, setShowError] = useState(null);
   const [showSuccess, setShowSuccess] = useState(null);
   const [loading, setLoading] = useState<any>(false);
   const [saveloading, setSaveLoading] = useState<any>(false);
+  const [selectedPic, setSelectedPic] = useState<any>("");
   const [username, setusername] = useState<any>(myProfile?.username);
   useEffect(() => {
     if (isMobile) {
@@ -70,22 +71,41 @@ export default function AddUser() {
 
   async function editItem(username: any) {
     try {
+      let res: AxiosResponse<any, any> | null = null;
+      if (myProfile?.profilePic[0] instanceof File) {
+        const formData = new FormData();
+        formData.append("files", myProfile.profilePic[0]);
+        res = await axios.post("/api/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+
       setSaveLoading(true);
       let result: any = await axios.post(
         `/api/updateRegistration/${username}`,
-        myProfile
+        {
+          ...myProfile,
+          profilePic: res?.data?.message[0],
+        }
       );
-      console.log(result);
+      console.log(res?.data?.message);
       setusername(myProfile.username);
+      dispatch(setMyProfileReloader(global.myProfileReloader + 1));
     } catch (err) {
       console.log(err);
     } finally {
       setSaveLoading(false);
     }
   }
-
-  console.log(username);
-  console.log(myProfile.username);
+  const handleImageChange = (e: any) => {
+    const file = e.target.files[0]; // get the first selected file
+    if (file) {
+      setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
+    }
+  };
+  console.log(myProfile?.profilePic);
 
   return (
     <div
@@ -127,13 +147,31 @@ export default function AddUser() {
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div className="w-full h-fit py-4 flex justify-between items-center">
                 <div className="w-[50%] h-full flex justify-start items-center gap-6">
-                  <div className="w-[100px] h-[100px] flex justify-center items-center bg-light-grey rounded-full border-2 border-grey p-4 bg-light-grey relative">
+                  <div className="w-[100px] h-[100px] flex justify-center items-center bg-light-grey rounded-full border-2 border-grey bg-light-grey relative">
                     <img
-                      src={account.src}
-                      className="w-full h-full flex justify-center items-center bg-light-grey"
+                      // src={
+                      //   myProfile?.profilePic === ""
+                      //     ? account.src
+                      //     : myProfile?.profilePic
+                      // }
+                      src={
+                        selectedPic?.length > 0
+                          ? selectedPic
+                          : myProfile?.profilePic
+                      }
+                      className="w-full h-full flex justify-center items-center bg-light-grey rounded-full"
                     />
-                    <div className="text-[20px] text-main-blue bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center">
+                    <div className="text-[20px] text-main-blue bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center overflow-hidden">
                       <FaPlusCircle />
+                      <input
+                        onChange={(e) => {
+                          dispatch(setprofilePicR(e.target.files));
+                          handleImageChange(e);
+                        }}
+                        multiple={false}
+                        type="file"
+                        className="w-[200%] h-[200%] absolute top-0 opacity-0"
+                      />
                     </div>
                   </div>
                   <div className="w-[50%] flex flex-col justify-center items-start">

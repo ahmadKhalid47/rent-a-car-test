@@ -32,22 +32,22 @@ export default function RootLayout({
     }
   }, [isVerified, router]);
 
-  // useEffect(() => {
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setLoading(true);
-  //       setIsVerified(undefined);
-  //       let userData = await axios.post("/api/verifyToken");
-  //       // console.log(userData?.data?.msg);
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   verifyTokenApi();
-  // }, [pathName]);
+  useEffect(() => {
+    async function verifyTokenApi() {
+      try {
+        setLoading(true);
+        setIsVerified(undefined);
+        let userData = await axios.post("/api/verifyToken");
+        // console.log(userData?.data?.msg);
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    verifyTokenApi();
+  }, [pathName]);
 
   return (
     <StoreProvider>

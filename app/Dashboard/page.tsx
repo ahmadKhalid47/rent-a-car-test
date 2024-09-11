@@ -46,9 +46,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", {
-          headers: { "Cache-Control": "no-store" },
-        });
+        const result = await axios.post("/api/getVehicle", );
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -68,9 +66,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", {
-          headers: { "Cache-Control": "no-store" },
-        });
+        const result = await axios.post("/api/getreservation", );
         setreservationsData(result.data.data);
       } catch (error) {
         console.log(error);

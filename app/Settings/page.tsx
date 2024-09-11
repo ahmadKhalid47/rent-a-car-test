@@ -37,22 +37,6 @@ export default function Vehicles() {
       window.location.href = "/";
     }
   }
-  useEffect(() => {
-    async function verifyTokenApi() {
-      try {
-        // setLoading(true);
-        // setIsVerified(undefined);
-        let userData = await axios.post("/api/verifyToken");
-        dispatch(setusernameR(userData?.data?.msg.username));
-        // setIsVerified(true);
-      } catch (err) {
-        // setIsVerified(false);
-      } finally {
-        // setLoading(false);
-      }
-    }
-    verifyTokenApi();
-  }, []);
   console.log(myProfile?.username);
 
   return (
