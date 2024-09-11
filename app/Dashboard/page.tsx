@@ -369,13 +369,13 @@ export default function Vehicles() {
                 <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
                   Car Availability
                 </h1>
-                <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
-                  {carAvailable
+                <h1 className={`w-fit text-[18px] font-[600] leading-[0px] ${carAvailable && carAvailable!==0 ?"text-main-blue":"text-red-500"}`}>
+                  {carAvailable!==undefined
                     ? carAvailable === 0
-                      ? "Car Not Available"
+                      ? "Not Available"
                       : carAvailable === 1
-                      ? carAvailable + " Car Available"
-                      : carAvailable + " Cars Available"
+                      ? carAvailable + " Car Available !"
+                      : carAvailable + " Cars Available !"
                     : ""}
                 </h1>
               </div>
