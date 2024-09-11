@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 // Disable cache for this API route
 export const fetchCache = "force-no-store";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     await connectDb();
     const data = await MakeModel.find().sort({ _id: -1 });
