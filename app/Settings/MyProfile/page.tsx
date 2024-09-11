@@ -7,12 +7,10 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { FormEvent, useState } from "react";
-import { FaEye, FaEyeSlash, FaPlus, FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
-import { FaAsterisk } from "react-icons/fa";
 import {
   setprofilePicR,
   setusernameR,
@@ -32,8 +30,8 @@ export default function AddUser() {
   const [showError, setShowError] = useState(null);
   const [showSuccess, setShowSuccess] = useState(null);
   const [loading, setLoading] = useState<any>(false);
-  const router = useRouter();
-
+  const [saveloading, setSaveLoading] = useState<any>(false);
+  const [username, setusername] = useState<any>(myProfile?.username);
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -70,6 +68,25 @@ export default function AddUser() {
     }
   };
 
+  async function editItem(username: any) {
+    try {
+      setSaveLoading(true);
+      let result: any = await axios.post(
+        `/api/updateRegistration/${username}`,
+        myProfile
+      );
+      console.log(result);
+      setusername(myProfile.username);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSaveLoading(false);
+    }
+  }
+
+  console.log(username);
+  console.log(myProfile.username);
+
   return (
     <div
       className={`${
@@ -105,10 +122,7 @@ export default function AddUser() {
             </p>
           </h3>
         </div>
-        <form
-          onSubmit={addAgent}
-          className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5"
-        >
+        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div className="w-full h-fit py-4 flex justify-between items-center">
@@ -136,7 +150,9 @@ export default function AddUser() {
                     className={`w-full h-fit md:h-[100px] flex flex-wrap gap-y-2 ${"justify-end"} items-center`}
                   >
                     <button
-                      type="submit"
+                      onClick={() => {
+                        editItem(username);
+                      }}
                       className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     >
                       {loading ? <SmallLoader /> : "Change Password"}
@@ -196,21 +212,25 @@ export default function AddUser() {
                 className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
               >
                 <button
-                  type="submit"
+                  onClick={() => {
+                    editItem(username);
+                  }}
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 >
                   {loading ? <SmallLoader /> : "Cancel"}
                 </button>
                 <button
-                  type="submit"
+                  onClick={() => {
+                    editItem(username);
+                  }}
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 >
-                  {loading ? <SmallLoader /> : "Save"}
+                  {saveloading ? <SmallLoader /> : "Save"}
                 </button>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

@@ -26,8 +26,8 @@ export default function Nav() {
 
   let global = useSelector((state: RootState) => state.Global);
   let myProfile = useSelector((state: RootState) => state.myProfile);
-  console.log(myProfile);
   let username = myProfile?.username;
+  console.log(myProfile);
 
   useEffect(() => {
     async function getData() {
