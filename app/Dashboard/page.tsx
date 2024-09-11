@@ -33,6 +33,7 @@ export default function Vehicles() {
   const [regNo, setRegNo] = useState<any>("");
   const [date, setDate] = useState<any>("");
   const [time, setTime] = useState<any>("");
+  const [carAvailable, setCarAvailable] = useState<any>(undefined);
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -150,7 +151,6 @@ export default function Vehicles() {
         // return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
-    console.log("filtered", filtered);
 
     // Create a lookup map for vehicle name and corresponding make/model
     const allFilteredReservations: any[] = [];
@@ -166,8 +166,6 @@ export default function Vehicles() {
       allFilteredReservations.push(...filteredReservations);
     });
 
-    console.log("All filtered reservations:", allFilteredReservations);
-
     // Output filtered reservations
     let filteredReservations = allFilteredReservations;
     if (date || time) {
@@ -176,9 +174,10 @@ export default function Vehicles() {
         date,
         time
       );
+      setCarAvailable(filtered.length - filteredReservations.length);
+    } else {
+      setCarAvailable(filtered.length);
     }
-
-    console.log("time",filteredReservations);
   }
 
   function filterReservationsByDateTime(
@@ -222,7 +221,7 @@ export default function Vehicles() {
       return false;
     });
   }
-
+  console.log(carAvailable)
   return (
     <div
       className={`${
@@ -369,7 +368,13 @@ export default function Vehicles() {
                   Car Availability
                 </h1>
                 <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
-                  Available !
+                  {carAvailable
+                    ? carAvailable === 0
+                      ? "Car Not Available"
+                      : carAvailable === 1
+                      ? carAvailable + " Car Available"
+                      : carAvailable + " Cars Available"
+                    : ""}
                 </h1>
               </div>
               <div className="w-full flex justify-between items-start">
