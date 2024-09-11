@@ -94,10 +94,10 @@ export default function Vehicles() {
                   <img src={settings1.src} />
                 </div>
                 <Link href={"/Settings/AddUser"} className="h-fit w-[80%]">
-                  <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                  <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                     Add New User
                   </h3>
-                  <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                  <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                     Add New User.
                   </p>
                 </Link>
@@ -109,10 +109,10 @@ export default function Vehicles() {
                 <img src={settings1.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   My Profile
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Manage your personal information and login credentials.
                 </p>
               </div>
@@ -122,10 +122,10 @@ export default function Vehicles() {
                 <img src={settings2.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   Notification
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Customize how you receive updates and reminders.{" "}
                 </p>
               </div>
@@ -135,10 +135,10 @@ export default function Vehicles() {
                 <img src={settings3.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   General
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Select your preferred language and Curruncy{" "}
                 </p>
               </div>
@@ -148,10 +148,10 @@ export default function Vehicles() {
                 <img src={settings10.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   Invoicing
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Edit VAT & Taxes{" "}
                 </p>
               </div>
@@ -161,10 +161,10 @@ export default function Vehicles() {
                 <img src={settings9.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   Agreement
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Edit agreement.{" "}
                 </p>
               </div>
@@ -174,10 +174,10 @@ export default function Vehicles() {
                 <img src={settings12.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
                   Contact Support
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[24px]">
+                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Contact customer support or IT helpdesk.{" "}
                 </p>
               </div>
