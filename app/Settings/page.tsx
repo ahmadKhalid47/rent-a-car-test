@@ -7,24 +7,19 @@ import { setSidebarShowR } from "@/app/store/Global";
 import settings1 from "@/public/settings (10).svg";
 import settings2 from "@/public/settings (7).svg";
 import settings3 from "@/public/settings (6).svg";
-import settings4 from "@/public/settings (5).svg";
-import settings5 from "@/public/settings (11).svg";
-import settings6 from "@/public/settings (12).svg";
-import settings7 from "@/public/settings (3).svg";
-import settings8 from "@/public/settings (2).svg";
 import settings9 from "@/public/settings (1).svg";
 import settings10 from "@/public/settings (4).svg";
-import settings11 from "@/public/settings (8).svg";
 import settings12 from "@/public/settings (9).svg";
 import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { setusernameR } from "../store/myProfile";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  let [userData, setUserData] = useState<any>(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -47,8 +42,8 @@ export default function Vehicles() {
       try {
         // setLoading(true);
         // setIsVerified(undefined);
-        // let userData = await axios.post("/api/verifyToken");
-        // setUserData(userData?.data?.msg);
+        let userData = await axios.post("/api/verifyToken");
+        dispatch(setusernameR(userData?.data?.msg.username));
         // setIsVerified(true);
       } catch (err) {
         // setIsVerified(false);
@@ -58,6 +53,8 @@ export default function Vehicles() {
     }
     verifyTokenApi();
   }, []);
+  console.log(myProfile?.username);
+
   return (
     <div
       className={`${
@@ -88,22 +85,6 @@ export default function Vehicles() {
             </div>
           </div>
           <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
-            {userData?.admin ? (
-              <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
-                <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={settings1.src} />
-                </div>
-                <Link href={"/Settings/AddUser"} className="h-fit w-[80%]">
-                  <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
-                    Add New User
-                  </h3>
-                  <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                    Add New User.
-                  </p>
-                </Link>
-              </div>
-            ) : null}
-
             <Link
               href={"Settings/MyProfile"}
               className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"

@@ -69,7 +69,6 @@ export default function AddUser() {
       setLoading(false);
     }
   };
-  console.log(myProfile);
 
   return (
     <div

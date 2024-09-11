@@ -7,20 +7,50 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { setaddressR, setAllValues, setemailR, setfirstNameR, setlastNameR, setphoneR, setprofilePicR } from "../store/myProfile";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let dispatch = useDispatch();
+  const [loading, setLoading] = useState<any>(false);
+
   useEffect(() => {
     if (isMobile) {
-      dispatch(setSidebarShowR(false))
+      dispatch(setSidebarShowR(false));
     } else {
-      dispatch(setSidebarShowR(true))
+      dispatch(setSidebarShowR(true));
     }
-  },[isMobile])
+  }, [isMobile]);
 
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile = useSelector((state: RootState) => state.myProfile);
+  console.log(myProfile);
+  let username = myProfile?.username;
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.post(`/api/getRegistration/${username}`);
+        console.log("result", result.data.data);
+        dispatch(setprofilePicR(result?.data?.data?.profilePic));
+        dispatch(setemailR(result?.data?.data?.email));
+        dispatch(setphoneR(result?.data?.data?.phone));
+        dispatch(setfirstNameR(result?.data?.data?.firstName));
+        dispatch(setlastNameR(result?.data?.data?.lastName));
+        dispatch(setaddressR(result?.data?.data?.address));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (username) {
+      getData();
+    }
+  }, [username]);
 
   return (
     <div

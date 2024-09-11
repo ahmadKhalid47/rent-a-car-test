@@ -35,6 +35,9 @@ export const myProfileSlice = createSlice({
     setaddressR: (state, action) => {
       state.address = action.payload;
     },
+    setAllValues: (state, action) => {
+      return { ...state, ...action.payload };
+    },
   },
 });
 
@@ -46,6 +49,7 @@ export const {
   setphoneR,
   setemailR,
   setaddressR,
+  setAllValues,
 } = myProfileSlice.actions;
 
 export default myProfileSlice.reducer;
