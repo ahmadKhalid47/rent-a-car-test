@@ -26,6 +26,7 @@ export default function Vehicles() {
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
+  const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [Configurations, setConfigurationsData] = useState<any>([]);
   const [make, setMake] = useState<any>("");
@@ -115,10 +116,13 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData2() {
       try {
+        setConfigurationsLoading(true);
         let result: any = await axios.post(`/api/getConfigurations`);
         setConfigurationsData(result?.data?.wholeData);
       } catch (error: any) {
         console.log(error);
+      } finally {
+        setConfigurationsLoading(false);
       }
     }
     getData2();
@@ -369,8 +373,14 @@ export default function Vehicles() {
                 <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
                   Car Availability
                 </h1>
-                <h1 className={`w-fit text-[18px] font-[600] leading-[0px] ${carAvailable && carAvailable!==0 ?"text-main-blue":"text-red-500"}`}>
-                  {carAvailable!==undefined
+                <h1
+                  className={`w-fit text-[18px] font-[600] leading-[0px] ${
+                    carAvailable && carAvailable !== 0
+                      ? "text-main-blue"
+                      : "text-red-500"
+                  }`}
+                >
+                  {carAvailable !== undefined
                     ? carAvailable === 0
                       ? "Not Available"
                       : carAvailable === 1
@@ -379,67 +389,77 @@ export default function Vehicles() {
                     : ""}
                 </h1>
               </div>
-              <div className="w-full flex justify-between items-start">
-                <SelectInput
-                  setState={setMake}
-                  label={"Make"}
-                  value={make}
-                  required={false}
-                  options={Configurations?.make?.map((item: any) => item.make)}
-                />
-                <SelectInput
-                  setState={setModel}
-                  label={"Model"}
-                  value={model}
-                  required={false}
-                  options={Configurations?.model
-                    ?.filter((item: any) => item.make === make)
-                    .map((item: any) => item.model)}
-                />
-              </div>
-              <TypeInput
-                setState={setRegNo}
-                label={"Registration Number"}
-                value={regNo}
-                required={false}
-                type={"text"}
-                widthProp="sm:w-[100%]"
-              />
-              <div className="w-full flex justify-between items-start">
-                <TypeInput
-                  setState={setDate}
-                  label={"Date & Time"}
-                  value={date}
-                  required={false}
-                  type={"date"}
-                  widthProp="sm:w-[48%]"
-                />
-                <div
-                  className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
-                >
-                  <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
-                    {"label"}
-                  </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                    <input
-                      type={"time"}
-                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
-                      onChange={(e) => {
-                        setTime(e.target.value);
-                      }}
-                      value={time}
+              {configurationsLoading ? (
+                <div className="pt-5 w-full ">
+                  <MediumLoader />
+                </div>
+              ) : (
+                <>
+                  <div className="w-full flex justify-between items-start">
+                    <SelectInput
+                      setState={setMake}
+                      label={"Make"}
+                      value={make}
+                      required={false}
+                      options={Configurations?.make?.map(
+                        (item: any) => item.make
+                      )}
+                    />
+                    <SelectInput
+                      setState={setModel}
+                      label={"Model"}
+                      value={model}
+                      required={false}
+                      options={Configurations?.model
+                        ?.filter((item: any) => item.make === make)
+                        .map((item: any) => item.model)}
                     />
                   </div>
-                </div>
-              </div>
-              <button
-                className="px-2 md:px-0 w-fit md:w-full py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  submitButton();
-                }}
-              >
-                Check
-              </button>
+                  <TypeInput
+                    setState={setRegNo}
+                    label={"Registration Number"}
+                    value={regNo}
+                    required={false}
+                    type={"text"}
+                    widthProp="sm:w-[100%]"
+                  />
+                  <div className="w-full flex justify-between items-start">
+                    <TypeInput
+                      setState={setDate}
+                      label={"Date & Time"}
+                      value={date}
+                      required={false}
+                      type={"date"}
+                      widthProp="sm:w-[48%]"
+                    />
+                    <div
+                      className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
+                        {"label"}
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                        <input
+                          type={"time"}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          onChange={(e) => {
+                            setTime(e.target.value);
+                          }}
+                          value={time}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="px-2 md:px-0 w-fit md:w-full py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                    onClick={() => {
+                      submitButton();
+                    }}
+                  >
+                    Check
+                  </button>
+                </>
+              )}
             </div>
             <div className="h-[370px] flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-[49%] bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
               <div className="w-full flex justify-between items-end h-fit">
