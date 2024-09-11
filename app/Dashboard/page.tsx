@@ -227,7 +227,7 @@ export default function Vehicles() {
       return false;
     });
   }
-  console.log(carAvailable);
+  
   return (
     <div
       className={`${
