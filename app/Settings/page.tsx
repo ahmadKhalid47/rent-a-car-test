@@ -47,7 +47,7 @@ export default function Vehicles() {
       try {
         // setLoading(true);
         // setIsVerified(undefined);
-        // let userData = await axios.get("/api/verifyToken");
+        // let userData = await axios.post("/api/verifyToken");
         // setUserData(userData?.data?.msg);
         // setIsVerified(true);
       } catch (err) {

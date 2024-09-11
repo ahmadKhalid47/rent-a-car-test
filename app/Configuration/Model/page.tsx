@@ -41,10 +41,10 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.get("/api/getModel", {
+        const result = await axios.post("/api/getModel", {
           headers: { "Cache-Control": "no-store" },
         });
-        const result2 = await axios.get("/api/getMake", {
+        const result2 = await axios.post("/api/getMake", {
           headers: { "Cache-Control": "no-store" },
         });
         setMakeData(result2?.data?.data);

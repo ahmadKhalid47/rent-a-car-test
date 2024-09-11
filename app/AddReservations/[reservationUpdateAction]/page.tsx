@@ -48,7 +48,7 @@ export default function Reservations() {
     async function getData() {
       try {
         setcustomerLoading(true);
-        const result = await axios.get("/api/getCustomer", {
+        const result = await axios.post("/api/getCustomer", {
           headers: { "Cache-Control": "no-store" },
         });
 
@@ -70,7 +70,7 @@ export default function Reservations() {
     async function getData() {
       try {
         setchauffeursLoading(true);
-        const result = await axios.get("/api/getchauffeur", {
+        const result = await axios.post("/api/getchauffeur", {
           headers: { "Cache-Control": "no-store" },
         });
 
@@ -92,7 +92,7 @@ export default function Reservations() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.get("/api/getVehicle", {
+        const result = await axios.post("/api/getVehicle", {
           headers: { "Cache-Control": "no-store" },
         });
 
@@ -125,7 +125,7 @@ export default function Reservations() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(
+        let result: any = await axios.post(
           `/api/getreservationInfo/${reservationUpdateAction}`
         );
         if (result?.data?.data) {

@@ -53,7 +53,7 @@ export default function reservationInfoMainPage() {
     async function getData() {
       try {
         setcustomerLoading(true);
-        const result = await axios.get(
+        const result = await axios.post(
           `/api/getCustomerInfo/${reservationInfo?.customer_id}`,
           {
             headers: { "Cache-Control": "no-store" },
@@ -78,7 +78,7 @@ export default function reservationInfoMainPage() {
     async function getData() {
       try {
         setchauffeursLoading(true);
-        const result = await axios.get(
+        const result = await axios.post(
           `/api/getchauffeurInfo/${reservationInfo?.chauffeur_id}`,
           {
             headers: { "Cache-Control": "no-store" },
@@ -105,7 +105,7 @@ export default function reservationInfoMainPage() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.get(
+        const result = await axios.post(
           `/api/getVehicleInfo/${reservationInfo?.vehicle_id}`,
           {
             headers: { "Cache-Control": "no-store" },
@@ -130,7 +130,7 @@ export default function reservationInfoMainPage() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getreservationInfo/${_id}`);
+        let result: any = await axios.post(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setreservationInfo(result?.data?.data?.data));
         } else {

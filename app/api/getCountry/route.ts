@@ -2,7 +2,7 @@ import connectDb from "@/app/models/connectDb";
 import CountryModel from "@/app/models/Country";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     await connectDb();
     const data = await CountryModel.find().sort({ _id: -1 });

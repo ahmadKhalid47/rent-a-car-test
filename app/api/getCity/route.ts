@@ -2,7 +2,7 @@ import connectDb from "@/app/models/connectDb";
 import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     await connectDb();
     const data = await CityModel.find().sort({ _id: -1 });

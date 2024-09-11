@@ -47,7 +47,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(
+        let result: any = await axios.post(
           `/api/getVehicleInfo/${vehicleUpdateAction}`
         );
         if (result?.data?.data) {
@@ -71,7 +71,7 @@ export default function Vehicles() {
     async function getData2() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`);
         if (result) {
           dispatch(setConfigurations(result?.data?.wholeData));
         } else {

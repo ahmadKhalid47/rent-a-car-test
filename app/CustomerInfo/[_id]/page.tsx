@@ -36,7 +36,7 @@ export default function CustomerInfoMainPage() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getCustomerInfo/${_id}`);
+        let result: any = await axios.post(`/api/getCustomerInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setCustomerInfo(result?.data?.data?.data));
         } else {

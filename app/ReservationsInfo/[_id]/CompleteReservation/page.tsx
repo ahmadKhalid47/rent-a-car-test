@@ -39,7 +39,7 @@ export default function reservationInfoMainPage() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getreservationInfo/${_id}`);
+        let result: any = await axios.post(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
         } else {

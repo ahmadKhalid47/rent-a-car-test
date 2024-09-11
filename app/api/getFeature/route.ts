@@ -2,7 +2,7 @@ import connectDb from "@/app/models/connectDb";
 import FeatureModel from "@/app/models/Feature";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     await connectDb();
     const data = await FeatureModel.find().sort({ _id: -1 });

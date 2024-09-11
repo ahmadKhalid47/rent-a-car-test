@@ -38,7 +38,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.get("/api/getColor", {
+        const result = await axios.post("/api/getColor", {
           headers: { "Cache-Control": "no-store" },
         });
 

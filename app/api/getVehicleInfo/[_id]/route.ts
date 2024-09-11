@@ -2,7 +2,7 @@ import connectDb from "@/app/models/connectDb";
 import VehicleModel from "@/app/models/vehicle";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, params: any) {
+export async function POST(req: Request, params: any) {
   try {
     let { _id } = await params.params;
     await connectDb();

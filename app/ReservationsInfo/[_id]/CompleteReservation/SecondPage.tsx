@@ -150,7 +150,7 @@ export default function SecondPage() {
   useEffect(() => {
     async function getData2() {
       try {
-        let result: any = await axios.get(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`);
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);
@@ -163,7 +163,7 @@ export default function SecondPage() {
   useEffect(() => {
     async function getData() {
       try {
-        let result: any = await axios.get(
+        let result: any = await axios.post(
           `/api/getVehicleInfo/${reservation?.vehicle_id}`
         );
         if (result?.data?.data) {

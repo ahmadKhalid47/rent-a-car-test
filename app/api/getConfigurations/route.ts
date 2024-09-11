@@ -8,7 +8,7 @@ import CountryModel from "@/app/models/Country";
 import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
   try {
     await connectDb();
     const color = await ColorModel.find().sort({ _id: -1 });

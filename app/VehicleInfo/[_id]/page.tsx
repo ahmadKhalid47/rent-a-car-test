@@ -44,7 +44,7 @@ export default function CarInfoMainPage() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getVehicleInfo/${_id}`);
+        let result: any = await axios.post(`/api/getVehicleInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setVehicleInfo(result?.data?.data?.data));
         } else {

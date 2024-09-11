@@ -130,7 +130,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        let result: any = await axios.get(
+        let result: any = await axios.post(
           `/api/getCustomerInfo/${CustomerUpdateAction}`
         );
         if (result?.data?.data) {

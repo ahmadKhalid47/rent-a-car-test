@@ -30,7 +30,7 @@ export default function Damages() {
     async function getData2() {
       try {
         setLoading(true);
-        let result: any = await axios.get(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`);
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);
