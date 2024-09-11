@@ -21,6 +21,7 @@ import {
   setaddressR,
 } from "@/app/store/myProfile";
 import { TempTypeInputWidth } from "@/app/Components/InputComponents/TypeInput";
+import { useRouter } from "next/navigation";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -33,6 +34,8 @@ export default function AddUser() {
   const [saveloading, setSaveLoading] = useState<any>(false);
   const [selectedPic, setSelectedPic] = useState<any>("");
   const [username, setusername] = useState<any>(myProfile?.username);
+  const router = useRouter();
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -248,7 +251,7 @@ export default function AddUser() {
               >
                 <button
                   onClick={() => {
-                    editItem(username);
+                    router.push("/Settings");
                   }}
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 >
