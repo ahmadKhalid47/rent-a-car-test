@@ -175,6 +175,8 @@ export default function Vehicles() {
         time
       );
       setCarAvailable(filtered.length - filteredReservations.length);
+    } else if (!date && !time && !make && !model && !regNo) {
+      setCarAvailable(undefined);
     } else {
       setCarAvailable(filtered.length);
     }
@@ -221,7 +223,7 @@ export default function Vehicles() {
       return false;
     });
   }
-  console.log(carAvailable)
+  console.log(carAvailable);
   return (
     <div
       className={`${
