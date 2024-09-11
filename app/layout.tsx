@@ -37,7 +37,7 @@ export default function RootLayout({
   //     try {
   //       setLoading(true);
   //       setIsVerified(undefined);
-  //       let userData = await axios.post("/api/verifyToken");
+  //       let userData = await axios.get("/api/verifyToken");
   //       // console.log(userData?.data?.msg);
   //       setIsVerified(true);
   //     } catch (err) {
