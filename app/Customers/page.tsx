@@ -52,7 +52,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getCustomer", );
+        const result = await axios.post("/api/getCustomer", {
+          headers: { "Cache-Control": "no-store" },
+        });
 
         if (result?.data?.data) {
           setCustomersData(result.data.data);

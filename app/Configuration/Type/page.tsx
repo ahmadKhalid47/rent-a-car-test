@@ -40,7 +40,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getType", );
+        const result = await axios.post("/api/getType", {
+          headers: { "Cache-Control": "no-store" },
+        });
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);

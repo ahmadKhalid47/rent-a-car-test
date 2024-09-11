@@ -44,7 +44,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", );
+        const result = await axios.post("/api/getVehicle", {
+          headers: { "Cache-Control": "no-store" },
+        });
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -64,7 +66,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", );
+        const result = await axios.post("/api/getreservation", {
+          headers: { "Cache-Control": "no-store" },
+        });
         setreservationsData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -77,6 +81,20 @@ export default function Vehicles() {
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
   );
+
+  let carInRservations = reservationsData.filter((item: any) => {
+    if (make && !model) {
+      return item.data.vehicleName.includes(make);
+    } else if (make && model) {
+      return (
+        item.data.vehicleName.includes(make) &&
+        item.data.vehicleName.includes(model)
+      );
+    } else if (!make && !model) {
+      return item;
+    }
+  });
+
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
   const completedReservationsToday = completedReservations.filter(
     (item: any) => item.data.completeDate === currentDate
@@ -128,11 +146,81 @@ export default function Vehicles() {
       const lowercasedQuery = regNo.toLowerCase().trim();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
-        return keyValueInVehicle?.includes(lowercasedQuery);
+        return keyValueInVehicle === lowercasedQuery;
+        // return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
     console.log("filtered", filtered);
-    console.log("reservationsData", reservationsData?.slice(0, 4));
+
+    // Create a lookup map for vehicle name and corresponding make/model
+    const allFilteredReservations: any[] = [];
+
+    filtered.forEach((vehicle: any) => {
+      const vehicleId = vehicle._id;
+
+      const filteredReservations = reservationsData.filter(
+        (reservation: any) => reservation.data.vehicle_id === vehicleId
+      );
+
+      // Add the filtered reservations to the combined array
+      allFilteredReservations.push(...filteredReservations);
+    });
+
+    console.log("All filtered reservations:", allFilteredReservations);
+
+    // Output filtered reservations
+    let filteredReservations = allFilteredReservations;
+    if (date || time) {
+      filteredReservations = filterReservationsByDateTime(
+        allFilteredReservations,
+        date,
+        time
+      );
+    }
+
+    console.log("time",filteredReservations);
+  }
+
+  function filterReservationsByDateTime(
+    reservations: any,
+    date: any,
+    time: any
+  ) {
+    return reservations.filter((reservation: any) => {
+      const pickUpDateTime = new Date(
+        `${reservation.data.PickUpDate}T${reservation.data.PickUpTime}`
+      );
+      const dropOffDateTime = new Date(
+        `${reservation.data.dropOffDate}T${reservation.data.dropOffTime}`
+      );
+
+      // Check for both date and time
+      if (date && time) {
+        const selectedDateTime = new Date(`${date}T${time}`);
+        return (
+          selectedDateTime >= pickUpDateTime &&
+          selectedDateTime <= dropOffDateTime
+        );
+      }
+
+      // Check only for date
+      if (date && !time) {
+        const selectedDate = new Date(date);
+        const pickUpDate = new Date(reservation.data.PickUpDate);
+        const dropOffDate = new Date(reservation.data.dropOffDate);
+        return selectedDate >= pickUpDate && selectedDate <= dropOffDate;
+      }
+
+      // Check only for time
+      if (!date && time) {
+        const selectedTime = time;
+        const pickUpTime = reservation.data.PickUpTime;
+        const dropOffTime = reservation.data.dropOffTime;
+        return selectedTime >= pickUpTime && selectedTime <= dropOffTime;
+      }
+
+      return false;
+    });
   }
 
   return (

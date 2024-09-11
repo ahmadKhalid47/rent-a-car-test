@@ -47,7 +47,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getchauffeur", );
+        const result = await axios.post("/api/getchauffeur", {
+          headers: { "Cache-Control": "no-store" },
+        });
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
