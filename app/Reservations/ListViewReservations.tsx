@@ -254,7 +254,7 @@ export default function ListViewreservation({ data }: dataType) {
                   {item.data.customerName}
                 </h5>
                 <h5 className="text-start pe-3 w-[10%]">
-                  {item.data.vehicleName}
+                  {item.data.city}
                 </h5>
 
                 <h5 className="text-start pe-3 w-[9%]">
