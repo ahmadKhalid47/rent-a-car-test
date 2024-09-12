@@ -82,7 +82,7 @@ export default function Sidebar() {
       }
     >
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
-        <Link href={"/Vehicles"} className="w-fit h-fit">
+        <Link href={"/Dashboard"} className="w-fit h-fit">
           <img
             src={bar.src}
             className={`${
@@ -447,8 +447,9 @@ export default function Sidebar() {
               </div>{" "}
             </Link>
             <Link
-                href="/Configuration"
-              className="flex justify-start items-center w-full">
+              href="/Configuration"
+              className="flex justify-start items-center w-full"
+            >
               <div className="relative w-[20%] h-full">
                 <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
                 <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
