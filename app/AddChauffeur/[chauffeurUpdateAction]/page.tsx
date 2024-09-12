@@ -144,55 +144,49 @@ export default function AddChauffeur() {
     }
     getData();
   }, []);
+  console.log(chauffeur.passportImages);
 
   async function updateData(action: string) {
     try {
       setLoading(true);
       const carImages = chauffeur.chauffeurImage;
 
-      if (
-        Array.isArray(carImages) &&
-        carImages.some((item) => item instanceof File)
-      ) {
-        const formData = new FormData();
-        formData.append("files", chauffeur.chauffeurImage[0]);
-        const res = await axios.post("/api/uploadWithCondition", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const formData2 = new FormData();
-        for (let i = 0; i < chauffeur.passportImages.length; i++) {
-          formData2.append("files", chauffeur.passportImages[i]);
-        }
-        const res2 = await axios.post("/api/uploadWithCondition", formData2, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        const formData3 = new FormData();
-        for (let i = 0; i < chauffeur.licenseImages.length; i++) {
-          formData3.append("files", chauffeur.licenseImages[i]);
-        }
-        const res3 = await axios.post("/api/uploadWithCondition", formData3, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log(res2?.data?.message);
-
-        await axios.post(`/api/updatechauffeur/${chauffeurUpdateAction}`, {
-          ...chauffeur,
-          chauffeurImage: res?.data?.message,
-          passportImages: res2?.data?.message,
-          licenseImages: res3?.data?.message,
-        });
-      } else {
-        await axios.post(
-          `/api/updatechauffeur/${chauffeurUpdateAction}`,
-          chauffeur
-        );
+      const formData = new FormData();
+      formData.append("files", chauffeur.chauffeurImage[0]);
+      const res = await axios.post("/api/uploadWithCondition", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const formData2 = new FormData();
+      for (let i = 0; i < chauffeur.passportImages.length; i++) {
+        formData2.append("files", chauffeur.passportImages[i]);
       }
+      const res2 = await axios.post("/api/uploadWithCondition", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res2?.data?.message);
+
+      const formData3 = new FormData();
+      for (let i = 0; i < chauffeur.licenseImages.length; i++) {
+        formData3.append("files", chauffeur.licenseImages[i]);
+      }
+      const res3 = await axios.post("/api/uploadWithCondition", formData3, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res2?.data?.message);
+
+      await axios.post(`/api/updatechauffeur/${chauffeurUpdateAction}`, {
+        ...chauffeur,
+        chauffeurImage: res?.data?.message,
+        passportImages: res2?.data?.message,
+        licenseImages: res3?.data?.message,
+      });
+
       if (action === "close") {
         router.push("/Chauffeurs");
       }
