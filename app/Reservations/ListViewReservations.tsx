@@ -179,7 +179,8 @@ export default function ListViewreservation({ data }: dataType) {
               ></div>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-2">
-              ID <img src={arrows.src} />
+              ID
+              {/* <img src={arrows.src} /> */}
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"

@@ -228,7 +228,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
               ></div>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[11%] ps-7">
-              ID <img src={arrows.src} />
+              ID
+              {/* <img src={arrows.src} /> */}
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[19%]"
@@ -299,7 +300,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 >
                   <img
                     src={item.active ? check.src : unCheck.src}
-                    className="me-[8px] translate-y-[1px]"
+                    className="me-[8px] translate-y-[1px] hover:scale-[1.3] hover:scale-[1.3]"
                     onClick={() => {
                       updateActive(item?._id, item?.active);
                     }}
