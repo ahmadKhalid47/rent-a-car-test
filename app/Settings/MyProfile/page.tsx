@@ -144,7 +144,7 @@ export default function AddUser() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
             My Profile
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Users / My Profile
+              Settings / My Profile
             </p>
           </h3>
         </div>

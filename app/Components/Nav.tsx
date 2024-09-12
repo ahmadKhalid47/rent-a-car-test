@@ -51,7 +51,6 @@ export default function Nav() {
       try {
         setLoading(true);
         const result = await axios.post(`/api/getRegistration/${username}`);
-        console.log("result", result);
         dispatch(setprofilePicR(result?.data?.data?.profilePic));
         dispatch(setemailR(result?.data?.data?.email));
         dispatch(setphoneR(result?.data?.data?.phone));
