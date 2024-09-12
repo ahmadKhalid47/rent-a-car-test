@@ -116,27 +116,27 @@ export default function CarInfoMainPage() {
                     <p className="font-[400] text-[28px] leading-[42px] text-black">
                       {vehicleInfo.registration}
                     </p>
-                    <div className="w-[80%] flex justify-between items-center">
+                    <div className="w-[100%] flex justify-between items-center">
                       <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           Year:
                         </p>
-                        <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[70%]">
                           {vehicleInfo.year}
                         </p>
                       </div>
                       <div className="flex justify-start items-center gap-2 w-[50%]">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[35%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           Type:
                         </p>
-                        <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[70%]">
                           {vehicleInfo.type}
                         </p>
                       </div>
                     </div>
-                    <div className="w-[80%] flex justify-between items-center">
+                    <div className="w-[100%] flex justify-between items-center">
                       <div className="flex justify-start items-start h-fit gap-2 w-[50%] pe-5">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           Color:
                         </p>
                         <div className="font-[400] text-[20px] leading-[30px] w-[50%] mt-2">
@@ -149,10 +149,10 @@ export default function CarInfoMainPage() {
                         </div>
                       </div>
                       <div className="flex justify-start items-center gap-2 w-[50%]">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[35%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           City:
                         </p>
-                        <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[70%]">
                           {vehicleInfo.city}
                         </p>
                       </div>

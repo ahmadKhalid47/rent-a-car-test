@@ -256,7 +256,7 @@ export default function ListView({ data }: dataType) {
               onClick={() => sort("vehicleId")}
             >
               ID
-              <img src={arrows.src} />
+              {/* <img src={arrows.src} /> */}
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[20%] cursor-pointer"
