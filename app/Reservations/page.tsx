@@ -98,15 +98,21 @@ export default function Vehicles() {
     });
     setFilteredreservations(filtered);
   }
-
   function advanceFilterVehicles() {
     let filtered: any = reservationsData;
 
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
-        const lowercasedQuery = keyValue?.toLowerCase();
+        const lowercasedQuery = keyValue.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
+
+          if (key === "status") {
+            // Check if status is not equal
+            return keyValueInVehicle === lowercasedQuery;
+          }
+
+          // For other keys, continue with includes check
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
