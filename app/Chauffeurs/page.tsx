@@ -96,7 +96,15 @@ export default function Vehicles() {
         const lowercasedQuery = keyValue.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
+                  
+          if (key === "gender") {
+            // Check if status is not equal
+            return keyValueInVehicle === lowercasedQuery;
+          }
+
+          // For other keys, continue with includes check
           return keyValueInVehicle?.includes(lowercasedQuery);
+
         });
       }
     });
@@ -158,7 +166,7 @@ export default function Vehicles() {
           </div>
           {!showLess ? (
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Gender
                 </label>
@@ -189,7 +197,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Postal/Zip Code
                 </label>
@@ -217,9 +225,12 @@ export default function Vehicles() {
                       </option>
                     ))}
                   </select>
+                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                    <img src={shape.src} className="w-[10.5px]" />
+                  </div>
                 </div>
               </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[23.7%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   City
                 </label>
