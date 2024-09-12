@@ -298,7 +298,7 @@ export default function ListViewreservation({ data }: dataType) {
                   />
 
                   <img
-                    className="hover:scale-[1.3]"
+                    className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
                     onClick={() => {
                       setPopup(true);

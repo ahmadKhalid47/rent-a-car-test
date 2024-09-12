@@ -169,7 +169,6 @@ export default function ListViewCustomers({ data }: dataType) {
     }
   }
 
-
   return (
     <div className="w-full h-fit mt-4">
       <h3
@@ -270,31 +269,6 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
           </div>
 
-          {/* <Link
-            href={"/CustomerInfo"}
-            className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
-          >
-            <div className="text-center w-[3%] flex justify-center items-center ">
-              <div className="w-[15px] h-[15px] rounded-[1px] bg-light-grey border-2 border-dark-grey"></div>
-            </div>
-            <h5 className="text-start pe-3 w-[11%] ps-[10px]">539485</h5>
-            <div className="flex justify-start item-center gap-5 text-start pe-3 w-[19%]">
-              Glenn A. Jean
-            </div>
-            <h5 className="text-start pe-3 w-[14%]">Individual</h5>
-            <h5 className="text-start pe-3 w-[14%]">757-947-5015</h5>
-            <h5 className="text-start pe-3 w-[12%]">Female</h5>
-
-            <h5 className="text-start pe-3 w-[12%]">Dahlonega</h5>
-            <div className="flex justify-start gap items-end w-[8%]">
-              <img src={check.src} className="me-[8px] translate-y-[1px]" />
-              <img src={edit.src} className="me-[5.8px] hover:scale-[1.3]" />
-              <img                     className="hover:scale-[1.3]"
-                    src={deleteIcon.src}
- />
-            </div>
-          </Link> */}
-
           {paginatedData.map((item: any, index: number) => (
             <div key={index} className="w-full">
               <Link
@@ -352,9 +326,8 @@ export default function ListViewCustomers({ data }: dataType) {
                   />
 
                   <img
-                                        className="hover:scale-[1.3]"
+                    className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
-
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);

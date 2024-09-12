@@ -117,7 +117,7 @@ export default function ListView({ data, makeData }: dataType) {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateModel/${_id}`, {
         Model,
-        Make
+        Make,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -228,7 +228,7 @@ export default function ListView({ data, makeData }: dataType) {
                 >
                   <img
                     src={edit.src}
-                    className="cursor-pointer"
+                    className="me-[5.8px] hover:scale-[1.3]"
                     onClick={() => {
                       setEditPopup(true);
                       setItemToEdit(item?._id);
@@ -238,10 +238,8 @@ export default function ListView({ data, makeData }: dataType) {
                   />
 
                   <img
-                                        className="hover:scale-[1.3]"
+                    className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
-
-                    className="cursor-pointer"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);
