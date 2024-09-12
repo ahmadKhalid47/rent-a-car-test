@@ -270,7 +270,7 @@ export default function reservationInfoMainPage() {
                   Chauffeur Info
                 </div>
               </div>
-              <div className="w-full h-[300px] flex justify-center items-start gap-8">
+              <div className="w-full h-[300px] flex justify-center items-start gap-8 overflow-auto scroll">
                 {activeButton === "General" ? (
                   <>
                     <Generalreservations />

@@ -222,7 +222,7 @@ export default function CarInfoMainPage() {
                       Others
                     </div>
                   </div>
-                  <div className="w-full h-[380px] flex justify-center items-start gap-8">
+                  <div className="w-full h-[380px] flex justify-center items-start gap-8 overflow-auto scroll">
                     {activeButton === "General" ? (
                       <>
                         <General />
