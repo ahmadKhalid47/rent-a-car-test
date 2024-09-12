@@ -183,36 +183,36 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("vehicleName")}
             >
               Vehicle <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("customerName")}
             >
               Customer <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[10%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("city")}
             >
               City <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("duration")}
             >
               Duration <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("amount")}
             >
               Amount <img src={arrows.src} />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
-              Status <img src={arrows.src} />
+              Status
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[7%]">
               Documents{" "}
@@ -256,7 +256,7 @@ export default function ListViewreservation({ data }: dataType) {
                 <h5 className="text-start pe-3 w-[10%]">{item.data.city}</h5>
 
                 <h5 className="text-start pe-3 w-[9%]">
-                  {item.data.duration} Day
+                  {item.data.duration.padStart(2, "0")} Days
                 </h5>
                 <h5 className="text-start pe-3 w-[9%]">${item.data.amount}</h5>
                 <div className="text-start pe-3 w-[10%]">
