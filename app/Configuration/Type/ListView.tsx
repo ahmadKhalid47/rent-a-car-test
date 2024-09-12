@@ -175,7 +175,7 @@ export default function ListView({ data }: dataType) {
       >
         <span>
           <button
-            className="cursor-pointer"
+            className="cursor-pointer hover:underline"
             onClick={() => {
               setDeleteManyPopup(true);
             }}
@@ -253,7 +253,7 @@ export default function ListView({ data }: dataType) {
                   />
 
                   <img
-                                        className="hover:scale-[1.3] cursor-pointer"
+                    className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
                     onClick={() => {
                       setPopup(true);

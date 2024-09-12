@@ -111,9 +111,6 @@
 .font-weight {
   font-weight: 500;
 }
-.placeholder-color {
-  color: #9ca3af;
-}
 
 .scroll::-webkit-scrollbar {
   height: 0;

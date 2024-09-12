@@ -155,7 +155,7 @@ export default function ListView({ data, makeData }: dataType) {
       >
         <span>
           <button
-            className="cursor-pointer"
+            className="cursor-pointer hover:underline"
             onClick={() => {
               setDeleteManyPopup(true);
             }}

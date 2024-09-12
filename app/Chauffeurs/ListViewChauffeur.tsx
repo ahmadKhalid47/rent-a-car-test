@@ -176,7 +176,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         <span>
           <span className="cursor-pointer">
             <button
-              className="cursor-pointer"
+              className="cursor-pointer hover:underline"
               onClick={() => {
                 setDeleteManyPopup(true);
               }}
@@ -187,7 +187,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
           <span
-            className=" cursor-pointer"
+            className=" cursor-pointer hover:underline"
             onClick={() => {
               UpdateActiveManyItem(true);
             }}
@@ -195,7 +195,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
             Active /
           </span>
           <span
-            className=" cursor-pointer"
+            className=" cursor-pointer hover:underline"
             onClick={() => {
               UpdateActiveManyItem(false);
             }}

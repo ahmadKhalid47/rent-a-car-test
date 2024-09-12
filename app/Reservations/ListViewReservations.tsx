@@ -144,7 +144,7 @@ export default function ListViewreservation({ data }: dataType) {
         <span>
           <span className="cursor-pointer">
             <button
-              className="cursor-pointer"
+              className="cursor-pointer hover:underline"
               onClick={() => {
                 setDeleteManyPopup(true);
               }}
