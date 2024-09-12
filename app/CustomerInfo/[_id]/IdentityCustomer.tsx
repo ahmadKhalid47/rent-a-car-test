@@ -11,8 +11,8 @@ export default function GeneralCustomer() {
   const [zoomed, setZoomed] = useState<boolean>(false);
   let ImageArray =
     activeField === "passport"
-      ? CustomerInfo?.passportImages
-      : CustomerInfo?.licenseImages;
+      ? CustomerInfo?.passportImages?CustomerInfo?.passportImages:"---"
+      : CustomerInfo?.licenseImages?CustomerInfo?.licenseImages:"---";
 
   let imageLength =
     activeField === "passport"
@@ -32,7 +32,7 @@ export default function GeneralCustomer() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             Valid Until
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px]">
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
             Country/State
           </p>
         </div>
@@ -47,13 +47,13 @@ export default function GeneralCustomer() {
             Passport
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.passportNumber}
+            {CustomerInfo?.passportNumber?CustomerInfo?.passportNumber:"---"}
           </p>
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.passportValid}
+            {CustomerInfo?.passportValid?CustomerInfo?.passportValid:"---"}
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.passportCountry}
+          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+            {CustomerInfo?.passportCountry?CustomerInfo?.passportCountry:"---"}
             <FaEye
               className={
                 activeField === "passport" ? "text-main-blue" : "text-grey"
@@ -72,13 +72,13 @@ export default function GeneralCustomer() {
             License
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.licenseNumber}
+            {CustomerInfo?.licenseNumber?CustomerInfo?.licenseNumber:"---"}
           </p>
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.licenseValid}
+            {CustomerInfo?.licenseValid?CustomerInfo?.licenseValid:"---"}
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.licenseCountry}
+          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+            {CustomerInfo?.licenseCountry?CustomerInfo?.licenseCountry:"---"}
             <FaEye
               className={
                 activeField !== "passport" ? "text-main-blue" : "text-grey"
@@ -94,10 +94,10 @@ export default function GeneralCustomer() {
             setImagePopup(false);
           }}
         >
-          <div className="w-[700px] h-[700px] relative overflow-auto scroll">
+          <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
             <img
               src={ImageArray[imageIndex]}
-              className={"w-[100%] h-[100%]"}
+              className={"w-[100%] h-[100%] object-fill"}
               style={{
                 transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
                 cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
@@ -108,14 +108,14 @@ export default function GeneralCustomer() {
               }}
             />
           </div>
-          <span
+          {/* <span
             className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-28 right-28 ${
               zoomed ? "right-3" : ""
             } w-fit shadow bg-white rounded-full`}
             onClick={() => setImagePopup(false)}
           >
             <FaTimes />
-          </span>
+          </span> */}
         </div>
       ) : null}
 

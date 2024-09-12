@@ -11,40 +11,40 @@ export default function ReferenceCustomer() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             Full Name
           </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">Phone</p>
+          <p className="w-[40%] text-start text-[18px] leading-[27px]">
             Address
           </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px]">
+          <p className="w-[15%] text-start text-[18px] leading-[27px]">
             Relation
           </p>
         </div>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref1Name}
+            {CustomerInfo?.ref1Name?CustomerInfo?.ref1Name:"---"}
           </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref1Phone}
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
+            {CustomerInfo?.ref1Phone?CustomerInfo?.ref1Phone:"---"}
           </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref1Address}
+          <p className="w-[40%] text-start text-[18px] leading-[27px]">
+            {CustomerInfo?.ref1Address?CustomerInfo?.ref1Address:"---"}
           </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.ref1Relation}
+          <p className="w-[15%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+            {CustomerInfo?.ref1Relation?CustomerInfo?.ref1Relation:"---"}
           </p>
         </div>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref2Name}
+            {CustomerInfo?.ref2Name?CustomerInfo?.ref2Name:"---"}
           </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref2Phone}
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
+            {CustomerInfo?.ref2Phone?CustomerInfo?.ref2Phone:"---"}
           </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.ref2Address}
+          <p className="w-[40%] text-start text-[18px] leading-[27px]">
+            {CustomerInfo?.ref2Address?CustomerInfo?.ref2Address:"---"}
           </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.ref2Relation}
+          <p className="w-[15%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+            {CustomerInfo?.ref2Relation?CustomerInfo?.ref2Relation:"---"}
           </p>
         </div>
       </div>

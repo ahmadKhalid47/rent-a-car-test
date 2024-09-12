@@ -80,7 +80,7 @@ export default function CustomerInfoMainPage() {
                   />
                 </div>
               </div>
-              <div className="w-full lg:w-[60%] 1400:w-[35%] flex justify-start flex-col items-center lg:items-start gap-1 bg-green-">
+              <div className="w-full lg:w-[60%] 1400:w-[35%] flex justify-start flex-col items-center lg:items-start gap-1">
                 <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
                   {CustomerInfo?.name ? CustomerInfo?.name : "---"}
                   {CustomerInfo?.isVip ? (
@@ -93,22 +93,22 @@ export default function CustomerInfoMainPage() {
                 <p className="font-[400] text-[28px] leading-[42px] text-black">
                   {CustomerInfo?.phone ? CustomerInfo?.phone : "---"}
                 </p>
-                <div className="w-full lg:w-[80%] flex justify-center lg:justify-start items-center">
-                  <div className="flex justify-start items-center gap-3 lg:gap-0 w-fit lg:w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
+                <div className="w-full lg:w-[100%] flex justify-center lg:justify-start items-center">
+                  <div className="flex justify-start items-center gap-3 lg:gap-0 w-fit lg:w-[100%] pe-5">
+                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[30%]">
                       City:
                     </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
+                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-fit">
                       {CustomerInfo?.city ? CustomerInfo?.city : "---"}
                     </p>
                   </div>
                 </div>
-                <div className="w-full lg:w-[80%] flex justify-center lg:justify-start items-center">
-                  <div className="flex justify-start items-center gap-3 lg:gap-0 w-fit lg:w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
+                <div className="w-full lg:w-[100%] flex justify-center lg:justify-start items-center">
+                  <div className="flex justify-start items-center gap-3 lg:gap-0 w-fit lg:w-[100%] pe-5">
+                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[30%]">
                       Country:{" "}
                     </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-[50%]">
+                    <p className="font-[400] text-[20px] leading-[30px] w-full lg:w-fit">
                       {CustomerInfo?.country ? CustomerInfo?.country : "---"}
                     </p>
                   </div>

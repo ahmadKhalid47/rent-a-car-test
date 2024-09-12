@@ -94,7 +94,7 @@ export default function Generalchauffeur() {
             setImagePopup(false);
           }}
         >
-          <div className="w-[700px] h-[700px] relative overflow-auto scroll">
+          <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
             <img
               src={ImageArray[imageIndex]}
               className={"w-[100%] h-[100%]"}
