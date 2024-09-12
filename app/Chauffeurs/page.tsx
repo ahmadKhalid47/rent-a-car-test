@@ -9,6 +9,7 @@ import shape from "@/public/Shape2.svg";
 import ListViewChauffeur from "./ListViewChauffeur";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -260,7 +261,11 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          <ListViewChauffeur data={filteredchauffeur} />
+          {loading ? (
+            <MediumLoader />
+          ) : (
+            <ListViewChauffeur data={filteredchauffeur} />
+          )}
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import shape from "@/public/Shape2.svg";
 import ListViewReservations from "./ListViewReservations";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -47,7 +48,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getreservation", );
+        const result = await axios.post("/api/getreservation");
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
@@ -85,13 +86,7 @@ export default function Vehicles() {
         amount,
         duration,
       } = data;
-      console.log(
-        vehicleName,
-        customerName,
-        city,
-        amount,
-        duration
-      );
+      console.log(vehicleName, customerName, city, amount, duration);
 
       return (
         vehicleName?.toLowerCase().includes(lowercasedQuery) ||
@@ -280,7 +275,11 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          <ListViewReservations data={filteredreservations} />
+          {loading ? (
+            <MediumLoader />
+          ) : (
+            <ListViewReservations data={filteredreservations} />
+          )}
         </div>
       </div>
     </div>

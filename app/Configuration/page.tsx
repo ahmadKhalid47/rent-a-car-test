@@ -46,7 +46,7 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
               <Link
                 href={`/Configuration/Make`}
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"

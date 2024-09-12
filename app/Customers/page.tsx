@@ -9,6 +9,7 @@ import shape from "@/public/Shape2.svg";
 import ListViewCustomers from "./ListViewCustomers";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -52,7 +53,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getCustomer", );
+        const result = await axios.post("/api/getCustomer");
 
         if (result?.data?.data) {
           setCustomersData(result.data.data);
@@ -296,7 +297,11 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          <ListViewCustomers data={filteredCustomer} />
+          {loading ? (
+            <MediumLoader />
+          ) : (
+            <ListViewCustomers data={filteredCustomer} />
+          )}
         </div>
       </div>
     </div>
