@@ -7,7 +7,7 @@ export default function EmergencyChauffeurs() {
   );
 
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt-">
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt- ">
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
         <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
           Emergency Info
@@ -51,11 +51,11 @@ export default function EmergencyChauffeurs() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             Full Name
           </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">Phone</p>
+          <p className="w-[40%] text-start text-[18px] leading-[27px]">
             Address
           </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px]">
+          <p className="w-[15%] text-start text-[18px] leading-[27px]">
             Relation
           </p>
         </div>
@@ -63,13 +63,13 @@ export default function EmergencyChauffeurs() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             {chauffeurInfo?.refName ? chauffeurInfo?.refName : "---"}
           </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
             {chauffeurInfo?.refPhone ? chauffeurInfo?.refPhone : "---"}
           </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
+          <p className="w-[40%] text-start text-[18px] leading-[27px]">
             {chauffeurInfo?.refAddress ? chauffeurInfo?.refAddress : "---"}
           </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+          <p className="w-[15%] text-start text-[18px] leading-[27px] flex justify-between items-center">
             {chauffeurInfo?.refRelation ? chauffeurInfo?.refRelation : "---"}
           </p>
         </div>

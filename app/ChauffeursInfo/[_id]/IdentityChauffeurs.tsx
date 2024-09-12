@@ -32,7 +32,7 @@ export default function Generalchauffeur() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             Valid Until
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px]">
+          <p className="w-[25%] text-start text-[18px] leading-[27px]">
             Country/State
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function Generalchauffeur() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             {chauffeurInfo?.passportValid}
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
             {chauffeurInfo?.passportCountry}
             <FaEye
               className={
@@ -77,7 +77,7 @@ export default function Generalchauffeur() {
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             {chauffeurInfo?.licenseValid}
           </p>
-          <p className="w-[18%] text-start text-[18px] leading-[27px] flex justify-between items-center">
+          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
             {chauffeurInfo?.licenseCountry}
             <FaEye
               className={

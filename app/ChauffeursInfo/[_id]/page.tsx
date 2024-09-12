@@ -91,21 +91,21 @@ export default function chauffeurInfoMainPage() {
                   {chauffeurInfo?.phone ? chauffeurInfo?.phone : "---"}
                 </p>
                 <div className="w-[80%] flex justify-between items-center">
-                  <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%]">
+                  <div className="flex justify-start items-center gap-0 w-[100%] pe-5">
+                    <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                       City:
                     </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
+                    <p className="font-[400] text-[20px] leading-[30px] w-[70%] ">
                       {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
                     </p>
                   </div>
                 </div>
                 <div className="w-[80%] flex justify-between items-center bg-red-5">
-                  <div className="flex justify-start items-center gap-0 w-[70%] pe-5">
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
+                  <div className="flex justify-start items-center gap-0 w-[100%] pe-5">
+                    <p className="font-[400] text-[20px] leading-[30px] w-[30%] ">
                       Country:
                     </p>
-                    <p className="font-[400] text-[20px] leading-[30px] w-[50%] ">
+                    <p className="font-[400] text-[20px] leading-[30px] w-[70%] ">
                       {chauffeurInfo?.country ? chauffeurInfo?.country : "---"}
                     </p>
                   </div>
@@ -145,7 +145,7 @@ export default function chauffeurInfoMainPage() {
                   Additional Info
                 </div>
               </div>
-              <div className="w-full h-[350px] flex justify-center items-start gap-8">
+              <div className="w-full h-[350px] flex justify-center items-start gap-8 overflow-auto scroll">
                 {activeButton === "General" ? (
                   <>
                     <GeneralChauffeurs />
