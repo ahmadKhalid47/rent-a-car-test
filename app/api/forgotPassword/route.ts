@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   });
   let siteUrl = process.env.URL;
 
-  try {
+  try { 
     let { email } = await req.json();
     connectDb();
     let loginData = await RegistrationModel.findOne({
