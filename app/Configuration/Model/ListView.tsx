@@ -238,7 +238,9 @@ export default function ListView({ data, makeData }: dataType) {
                   />
 
                   <img
+                                        className="hover:scale-[1.3]"
                     src={deleteIcon.src}
+
                     className="cursor-pointer"
                     onClick={() => {
                       setPopup(true);

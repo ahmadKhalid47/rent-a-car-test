@@ -118,7 +118,7 @@ export default function GridView({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
         <span
-          className="underline cursor-pointer text-main-blue"
+          className="underline cursor-pointer text-main-blue hover:no-underline"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}

@@ -155,7 +155,7 @@ export default function ListViewreservation({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer text-main-blue"
+          className="underline cursor-pointer text-main-blue hover:no-underline"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}
@@ -253,9 +253,7 @@ export default function ListViewreservation({ data }: dataType) {
                 <h5 className="text-start pe-3 w-[14%]">
                   {item.data.customerName}
                 </h5>
-                <h5 className="text-start pe-3 w-[10%]">
-                  {item.data.city}
-                </h5>
+                <h5 className="text-start pe-3 w-[10%]">{item.data.city}</h5>
 
                 <h5 className="text-start pe-3 w-[9%]">
                   {item.data.duration} Day
@@ -293,13 +291,14 @@ export default function ListViewreservation({ data }: dataType) {
                 >
                   <img
                     src={edit.src}
-                    className="me-[5.8px]"
+                    className="me-[5.8px] hover:scale-[1.3]"
                     onClick={() => {
                       router.push(`/AddReservations/${item?._id}`);
                     }}
                   />
 
                   <img
+                    className="hover:scale-[1.3]"
                     src={deleteIcon.src}
                     onClick={() => {
                       setPopup(true);

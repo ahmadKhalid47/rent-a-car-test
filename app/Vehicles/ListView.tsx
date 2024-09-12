@@ -227,7 +227,7 @@ export default function ListView({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer text-main-blue"
+          className="underline cursor-pointer text-main-blue hover:no-underline"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}
@@ -356,14 +356,16 @@ export default function ListView({ data }: dataType) {
                   />
                   <img
                     src={edit.src}
-                    className="me-[5.8px]"
+                    className="me-[5.8px] hover:scale-[1.3]"
                     onClick={() => {
                       router.push(`/AddVehicle/${item?._id}`);
                     }}
                   />
 
                   <img
+                                        className="hover:scale-[1.3]"
                     src={deleteIcon.src}
+
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);
