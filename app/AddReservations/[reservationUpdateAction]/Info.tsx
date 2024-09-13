@@ -92,24 +92,24 @@ export default function Info({ data, loading }: dataType) {
                 />
               </div>
               <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">
-                <div className="w-full flex justify-center sm:justify-start items-center  pe-0 sm:pe-5 -mb-1">
-                  <p className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
+                <div className="w-full flex justify-center sm:justify-start items-center pe-0 sm:pe-5  leading-6">
+                  <span className="font-[600] text-[15px] xs:text-[24px] leading-6 sm:leading-[36px]">
                     {item.data.name}
-                  </p>
+                  </span>
                 </div>
                 <div className="w-full flex justify-center sm:justify-start items-center">
-                  <p className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
+                  <span className="font-[500] text-[14px] xs:text-[20px] leading-6 sm:leading-[30px]">
                     {item.data.phone}
-                  </p>
+                  </span>
                 </div>
-                <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-5 sm:leading-[21px]">
-                  <div className="flex justify-start items-center gap-2 w-fit sm:w-[40%] pe-0 sm:pe-5">
-                    <p className="w-fit">City:</p>
-                    <p className="w-fit">{item.data.city}</p>
+                <div className="w-full flex justify-between items-center sm:items-start flex-col font-[400] text-[14px] leading-6 sm:leading-[21px]">
+                  <div className="flex justify-start items-center gap-2 w-fit sm:w-[100%] pe-0 sm:pe-5">
+                    <span className="w-fit">City:</span>
+                    <span className="w-fit">{item.data.city}</span>
                   </div>
-                  <div className="flex justify-start items-center gap-2 w-fit sm:w-[50%]">
-                    <p className="w-fit">Country:</p>
-                    <p className="w-fit">{item.data.country}</p>
+                  <div className="flex justify-start items-center gap-2 w-fit sm:w-[100%]">
+                    <span className="w-fit">Country:</span>
+                    <span className="w-fit">{item.data.country}</span>
                   </div>
                 </div>
               </div>

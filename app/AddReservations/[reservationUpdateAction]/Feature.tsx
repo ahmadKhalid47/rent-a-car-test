@@ -111,7 +111,7 @@ export default function Feature({ data, loading }: dataType) {
                   </div>
                   <div className="flex justify-center sm:justify-start items-center gap- w-[50%]">
                     <span className="leading-7 w-[50%] sm:w-[30%]">Type:</span>
-                    <span className="leading-7 w-[50%] sm:w-[30%]">
+                    <span className="leading-7 w-[50%] sm:w-[70%]">
                       {item.data.type}
                     </span>
                   </div>
@@ -131,7 +131,7 @@ export default function Feature({ data, loading }: dataType) {
                   </div>
                   <div className="flex justify-center sm:justify-start items-center gap- w-[50%]">
                     <span className="leading-7 w-[50%] sm:w-[30%]">City:</span>
-                    <span className="leading-7 w-[50%] sm:w-[30%]">
+                    <span className="leading-7 w-[50%] sm:w-[70%]">
                       {item.data.city}
                     </span>
                   </div>
