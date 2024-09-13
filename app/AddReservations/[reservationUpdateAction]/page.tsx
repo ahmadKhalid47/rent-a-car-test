@@ -200,8 +200,7 @@ export default function Reservations() {
       event.preventDefault(); // Prevent form submission on Enter key
     }
   };
-console.log(reservation);
-
+  
   return (
     <div
       className={`${
@@ -389,7 +388,6 @@ console.log(reservation);
                       disabled={loading}
                       onClick={() => {
                         updateData("close");
-                        console.log(reservation);
                       }}
                     >
                       {loading ? <SmallLoader /> : "Update and Close"}
@@ -403,7 +401,6 @@ console.log(reservation);
                       disabled={loading}
                       onClick={() => {
                         saveData("close");
-                        console.log(reservation);
                       }}
                     >
                       {loading ? <SmallLoader /> : "Save and Close"}
@@ -413,7 +410,6 @@ console.log(reservation);
                       disabled={loading}
                       onClick={() => {
                         saveData("new");
-                        console.log(reservation);
                       }}
                     >
                       {loading ? <SmallLoader /> : "Save and New"}

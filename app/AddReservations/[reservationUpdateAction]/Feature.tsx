@@ -60,6 +60,7 @@ export default function Feature({ data, loading }: dataType) {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
+console.log(filteredVehicle);
 
   return (
     <div className="w-full h-full">
@@ -139,12 +140,12 @@ export default function Feature({ data, loading }: dataType) {
 
                 <div
                   className={`flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px] ${
-                    item.active
+                    !item?.rentOut
                       ? "w-[77px] complete-status"
                       : "progress-status w-[100px]"
                   } font-[600] mt-1`}
                 >
-                  {item.active ? "Available" : "Not Available"}
+                  {!item?.rentOut ? "Available" : "Not Available"}
                 </div>
               </div>
               <button
