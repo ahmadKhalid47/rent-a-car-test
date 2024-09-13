@@ -11,8 +11,6 @@ import { useParams, useRouter } from "next/navigation";
 import { formatId } from "@/app/Components/functions/formats";
 import { SmallLoader } from "@/app/Components/Loader";
 import { setAllValues } from "@/app/store/reservations";
-import FirstPage from "./FirstPages";
-import SecondPage from "./SecondPage";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -162,66 +160,7 @@ export default function reservationInfoMainPage() {
             </p>
           </h3>
         </div>
-        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
-          <form
-            onSubmit={handleSubmit}
-            onKeyDown={handleKeyDown}
-            className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-"
-          >
-            {currentPage === 0 ? (
-              <FirstPage />
-            ) : currentPage === 1 ? (
-              <SecondPage />
-            ) : null}
-
-            <div
-              className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${
-                currentPage === 0 ? "justify-end" : "justify-between"
-              } items-center`}
-            >
-              {currentPage !== 0 ? (
-                <button
-                  className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage(currentPage - 1);
-                  }}
-                >
-                  Back
-                </button>
-              ) : null}
-              {currentPage === 1 ? (
-                <button
-                  className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                  disabled={loading}
-                  onClick={() => {
-                    updateData("close");
-                    console.log(reservation);
-                  }}
-                >
-                  {loading ? <SmallLoader /> : "Save"}
-                </button>
-              ) : (
-                <>
-                  <button
-                    className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => {
-                      setGoToPage(currentPage + 1);
-                      submitButton();
-                    }}
-                  >
-                    Save and Continue
-                  </button>
-                  <button
-                    ref={formRef}
-                    className="absolute hidden"
-                    type="submit"
-                  ></button>
-                </>
-              )}
-            </div>
-          </form>
-        </div>
+        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative bg-red-400"></div>
       </div>
     </div>
   );

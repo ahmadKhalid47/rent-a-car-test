@@ -20,8 +20,8 @@ export default function RootLayout({
   const router = useRouter();
 
   const pathName = usePathname();
-  // const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [isVerified, setIsVerified] = useState<any>(true);
+  const [isVerified, setIsVerified] = useState<any>(undefined);
+  // const [isVerified, setIsVerified] = useState<any>(true);
   const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
@@ -29,16 +29,39 @@ export default function RootLayout({
       if (!pathName.includes("forgotPassword")) {
         router.push("/");
       }
+    } else if (isVerified === true && pathName === "/") {
+      router.push("/Dashboard");
     }
   }, [isVerified, router]);
 
+  // useEffect(() => {
+  //   async function verifyTokenApi() {
+  //     try {
+  //       setLoading(true);
+  //       setIsVerified(undefined);
+  //       let userData = await axios.post("/api/verifyToken");
+  //       // console.log(userData?.data?.msg);
+  //       setIsVerified(true);
+  //     } catch (err) {
+  //       setIsVerified(false);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   verifyTokenApi();
+  // }, [pathName]);
   useEffect(() => {
+    const [navigationEntry] = window.performance.getEntriesByType(
+      "navigation"
+    ) as PerformanceNavigationTiming[];
+
+    const isPageReload = navigationEntry?.type === "reload";
+
     async function verifyTokenApi() {
       try {
         setLoading(true);
         setIsVerified(undefined);
-        let userData = await axios.post("/api/verifyToken");
-        // console.log(userData?.data?.msg);
+        await axios.post("/api/verifyToken");
         setIsVerified(true);
       } catch (err) {
         setIsVerified(false);
@@ -46,8 +69,10 @@ export default function RootLayout({
         setLoading(false);
       }
     }
-    verifyTokenApi();
-  }, [pathName]);
+    if (isPageReload) {
+      verifyTokenApi();
+    }
+  }, []);
 
   return (
     <StoreProvider>
