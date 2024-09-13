@@ -137,7 +137,7 @@ function PrintCom({ data, id }: any) {
       getData();
     }
   }, [data]);
-  console.log(data);
+  console.log(chauffeursData);
 
   return (
     <>
@@ -189,10 +189,25 @@ function PrintCom({ data, id }: any) {
                   Rapid Rent a Car
                 </span>
                 <span className="text-transparent">transparent</span>
-                <span className="">237 Roanoke Road, North York,</span>
-                <span className="">Ontario, Canada</span>
-                <span className="">4654927726</span>
-                <span className="">demo@email.com</span>
+                <span className="">
+                  {data.withChauffeur
+                    ? chauffeursData?.streetAddress
+                    : "---"}
+                </span>
+                <span className="">
+                  {data.withChauffeur
+                    ? chauffeursData?.data?.city + ", "
+                    : "---"}
+                  {data.withChauffeur ? chauffeursData?.data?.country : "---"}
+                </span>
+                <span className="">
+                  {data.withChauffeur ? customersData?.data?.phone : "---"}
+                </span>
+                <span className="">
+                  {data.withChauffeur
+                    ? customersData?.data?.emailAddress
+                    : "---"}
+                </span>
               </div>
             </div>
             <div className="w-full h-fit flex flex-col justify-between items-center mt-6">
@@ -221,8 +236,9 @@ function PrintCom({ data, id }: any) {
                   {data.withChauffeur
                     ? Number(data.amount) -
                       Number(chauffeursData?.data?.rentPerDay) *
-                        Number(data.duration)
-                    : data.amount}
+                        Number(data.duration) +
+                      Number(data.discount ? data.discount : "0")
+                    : data.amount + Number(data.discount ? data.discount : "0")}
                 </div>
               </div>
               {data.withChauffeur && (
@@ -272,23 +288,35 @@ function PrintCom({ data, id }: any) {
                     standard
                   </span>
                 </div>
-                <div className="w-[40%] py-2 h-fit flex justify-between items-center font-[600] bg-main-blue text-white">
-                  <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
-                    TOTAL:
-                  </div>
-                  <div className="w-[25%] h-fit flex justify-start items-center">
-                    ${data.amount}
+                <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600]">
+                  {data.discount && (
+                    <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
+                      <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                        Discount:
+                      </div>
+                      <div className="w-[25%] h-fit flex justify-start items-center">
+                        ${Number(data.discount)}
+                      </div>
+                    </div>
+                  )}
+                  <div className="w-[100%] py-2 h-fit flex justify-between items-center font-[600] bg-main-blue text-white mt-1">
+                    <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                      TOTAL:
+                    </div>
+                    <div className="w-[25%] h-fit flex justify-start items-center">
+                      ${data.amount}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-5">
+              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-3">
                 <div className="w-[100%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
                   <span className="text-[18px] font-[600] leading-[41px] text-black underline">
                     TERMS & CONDITIONS
                   </span>
                   <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    <span className="w-[2%] leading-[21px] mt-1">1.</span>
-                    <span className="w-[98%] leading-[21px] mt-1">
+                    <span className="w-[2%] leading-[21px]">1.</span>
+                    <span className="w-[98%] leading-[21px]">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown
@@ -297,8 +325,8 @@ function PrintCom({ data, id }: any) {
                     </span>
                   </div>
                   <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    <span className="w-[2%] leading-[21px] mt-1">2.</span>
-                    <span className="w-[98%] leading-[21px] mt-1">
+                    <span className="w-[2%] leading-[21px]">2.</span>
+                    <span className="w-[98%] leading-[21px]">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown
@@ -308,7 +336,7 @@ function PrintCom({ data, id }: any) {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-5">
+              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-3">
                 <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
                   <span className="text-[18px] font-[600] leading-[41px] text-black">
                     PAYMENT INFO
