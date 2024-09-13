@@ -202,15 +202,17 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%]"
-              onClick={() => sort("duration")}
+              // onClick={() => sort("duration")}
             >
-              Duration <img src={arrows.src} />
+              Duration
+              {/* <img src={arrows.src} /> */}
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%]"
-              onClick={() => sort("amount")}
+              // onClick={() => sort("amount")}
             >
-              Amount <img src={arrows.src} />
+              Amount
+              {/* <img src={arrows.src} /> */}
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               Status
