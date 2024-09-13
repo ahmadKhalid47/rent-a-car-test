@@ -99,12 +99,12 @@ function PrintCom({ data, id }: any) {
       className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative bg-white`}
     >
       <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
-        <h2 className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-start">
+        <h2 className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-start mt-4">
           Invoice Number:
           <span className="font-[600]"> #{formatId(id)}</span>
         </h2>
-        <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center">
-          <img src={carLogo.src} className={`w-[120px] h-[40px] mt-[30px]`} />
+        <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-3">
+          <img src={carLogo.src} className={`w-[120px] h-[40px]`} />
         </div>
         <div className="w-full h-fit flex justify-between items-center mt-1">
           <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
@@ -124,14 +124,14 @@ function PrintCom({ data, id }: any) {
               Rapid Rent a Car
             </span>
             <span className="text-transparent">transparent</span>
-            <span className="">Here you can Upload Passport</span>
-            <span className="">Here you can Upload Passport</span>
-            <span className="">Here you can Upload Passport</span>
-            <span className="">Here you can Upload Passport</span>
+            <span className="">237 Roanoke Road, North York,</span>
+            <span className="">Ontario, Canada</span>
+            <span className="">4654927726</span>
+            <span className="">demo@email.com</span>
           </div>
         </div>
         <div className="w-full h-fit flex flex-col justify-between items-center mt-6">
-          <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey border-[1px] border-grey">
+          <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey border-[1px] border-grey font-[600] text-[#808080]">
             <div className="w-[10%] h-fit flex justify-start items-center">
               SN
             </div>
