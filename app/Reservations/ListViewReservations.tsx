@@ -279,9 +279,24 @@ export default function ListViewreservation({ data }: dataType) {
                       : "In Completed"}
                   </div>
                 </div>
-                <div className="flex justify-start items-end w-[7%]">
-                  <img src={doc2.src} className="ms-3 1200:me-[5.8px]" />
-                  <img src={doc1.src} />
+                <div
+                  className="flex justify-start items-end w-[7%]"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }}
+                >
+                  <img
+                    src={doc2.src}
+                    className="ms-3 1200:me-[5.8px] hover:scale-[1.3] cursor-pointer"
+                    onClick={() => {
+                      router.push(`/ReservationsInfo/${item?._id}/Invoice`);
+                    }}
+                  />
+                  <img
+                    src={doc1.src}
+                    className="hover:scale-[1.3] cursor-pointer"
+                  />
                 </div>
                 <div
                   className="flex justify-start ps-2 items-end w-[7%]"
