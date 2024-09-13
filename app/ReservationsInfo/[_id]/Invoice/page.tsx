@@ -161,7 +161,9 @@ function PrintCom({ data, id }: any) {
                   Invoice To:
                 </span>
                 <span className="">
-                  {customersData?.data?.name ? customersData?.data?.name : "---"}
+                  {customersData?.data?.name
+                    ? customersData?.data?.name
+                    : "---"}
                 </span>
                 <span className="">
                   {customersData?.data?.streetAddress
@@ -169,14 +171,18 @@ function PrintCom({ data, id }: any) {
                     : "---"}
                 </span>
                 <span className="">
-                  {customersData?.data?.city ? customersData?.data?.city : "---"}
+                  {customersData?.data?.city
+                    ? customersData?.data?.city
+                    : "---"}
                   {", "}
                   {customersData?.data?.country
                     ? customersData?.data?.country
                     : "---"}
                 </span>
                 <span className="">
-                  {customersData?.data?.phone ? customersData?.data?.phone : "---"}
+                  {customersData?.data?.phone
+                    ? customersData?.data?.phone
+                    : "---"}
                 </span>
                 <span className="">
                   {customersData?.data?.emailAddress
@@ -190,9 +196,7 @@ function PrintCom({ data, id }: any) {
                 </span>
                 <span className="text-transparent">transparent</span>
                 <span className="">
-                  {data.withChauffeur
-                    ? chauffeursData?.streetAddress
-                    : "---"}
+                  {data.withChauffeur ? chauffeursData?.streetAddress : "---"}
                 </span>
                 <span className="">
                   {data.withChauffeur
@@ -238,7 +242,8 @@ function PrintCom({ data, id }: any) {
                       Number(chauffeursData?.data?.rentPerDay) *
                         Number(data.duration) +
                       Number(data.discount ? data.discount : "0")
-                    : data.amount + Number(data.discount ? data.discount : "0")}
+                    : Number(data.amount) +
+                      Number(data.discount ? data.discount : "0")}
                 </div>
               </div>
               {data.withChauffeur && (
@@ -263,7 +268,9 @@ function PrintCom({ data, id }: any) {
                     Subtotal
                   </div>
                   <div className="w-[25%] h-fit flex justify-start items-center">
-                    ${data.amount}
+                    $
+                    {Number(data.amount) +
+                      Number(data.discount ? data.discount : "0")}
                   </div>
                 </div>
               </div>
