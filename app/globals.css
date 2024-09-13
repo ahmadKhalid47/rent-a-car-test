@@ -11,7 +11,7 @@
   border-color: #242e69;
 }
 .border-main-red {
-  border-color: rgb(235,70,67);
+  border-color: rgb(235, 70, 67);
 }
 
 .text-main-blue {
@@ -353,5 +353,16 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.printing-width {
+  width: 100%;
+  background-color: red;
+}
+
+@media print {
+  .printing-width {
+    width: 794px;
   }
 }

@@ -158,14 +158,14 @@ export default function Damages() {
                     }}
                   />
                 </div>
-                <span
+                {/* <span
                   className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-36 right-36 ${
                     zoomed ? "right-3" : ""
                   } w-fit shadow bg-white rounded-full`}
                   onClick={() => setImagePopup(false)}
                 >
                   <FaTimes />
-                </span>
+                </span> */}
               </div>
             ) : null}
             <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">

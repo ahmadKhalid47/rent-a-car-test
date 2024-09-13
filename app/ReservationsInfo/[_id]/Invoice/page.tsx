@@ -9,8 +9,8 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { formatId } from "@/app/Components/functions/formats";
-import { SmallLoader } from "@/app/Components/Loader";
 import { setAllValues } from "@/app/store/reservations";
+import { useReactToPrint } from "react-to-print";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -21,11 +21,6 @@ export default function reservationInfoMainPage() {
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
-  const formRef = useRef<any>(null);
-  let [currentPage, setCurrentPage] = useState(0);
-  let [goToPage, setGoToPage] = useState(0);
-  const router = useRouter();
-
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -33,6 +28,7 @@ export default function reservationInfoMainPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
   useEffect(() => {
     async function getData() {
       try {
@@ -52,97 +48,12 @@ export default function reservationInfoMainPage() {
     getData();
   }, []);
 
-  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setCurrentPage(goToPage);
-  };
+  const componentRef = useRef<HTMLDivElement>(null);
 
-  const submitButton = () => {
-    if (formRef.current) {
-      formRef.current?.click();
-    }
-  };
-  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
-    }
-  };
-
-  async function updateData(action: string) {
-    try {
-      setLoading(true);
-      const damageImages = reservation.damages.map(
-        (damage: any) => damage.files
-      );
-
-      const formData = new FormData();
-      for (let i = 0; i < reservation.fuelImagesCompletion.length; i++) {
-        formData.append("files", reservation.fuelImagesCompletion[i]);
-      }
-      const res = await axios.post("/api/uploadWithCondition", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      const formData2 = new FormData();
-      for (let i = 0; i < reservation.odometerImagesCompletion.length; i++) {
-        formData2.append("files", reservation.odometerImagesCompletion[i]);
-      }
-      const res2 = await axios.post("/api/uploadWithCondition", formData2, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      const formData3 = new FormData();
-      formData3.append("length1", reservation.damages.length);
-
-      for (let i = 0; i < reservation.damages.length; i++) {
-        formData3.append("length2", reservation.damages[i]?.files.length); // append length2 outside inner loop
-
-        for (let j = 0; j < reservation.damages[i]?.files.length; j++) {
-          formData3.append("files", reservation.damages[i]?.files[j]); // correct file reference
-        }
-      }
-
-      const res3 = await axios.post("/api/uploadNested", formData3, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      let tempArray = reservation.damages;
-      for (let i = 0; i < reservation.damages.length; i++) {}
-
-      const updatedObjects = tempArray.map((obj: any, index: any) => ({
-        ...obj,
-        files: res3?.data?.message[index].map((url: any) => url),
-      }));
-      const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
-
-      await axios.post(`/api/updatereservation/${_id}`, {
-        ...reservation,
-        fuelImagesCompletion: res?.data?.message,
-        odometerImagesCompletion: res2?.data?.message,
-        damages: updatedObjects,
-        status: "complete",
-        completeDate: currentDate,
-      });
-      let result2: any = await axios.post(
-        `/api/updateRentOut/${reservation?.vehicle_id}`,
-        {
-          rentOut: false,
-        }
-      );
-      if (action === "close") {
-        router.push("/Reservations");
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "Custom Document Title",
+  });
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -152,16 +63,37 @@ export default function reservationInfoMainPage() {
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[100%]">
-            Complete Reservation{" "}
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+            Invoice
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Reservations / All Reservations / {formatId(_id)} / Complete
-              Reservation
+              Reservations / All Reservations / {formatId(_id)} / Invoice
             </p>
           </h3>
+          <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
+            <button
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              onClick={() => {
+                handlePrint();
+              }}
+            >
+              Print Invoice
+            </button>
+          </div>
         </div>
-        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative bg-red-400"></div>
+        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+          <div ref={componentRef} className="printing-width h-fit">
+            <PrintCom />
+          </div>
+        </div>
       </div>
     </div>
+  );
+}
+
+function PrintCom() {
+  return (
+    <div
+      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative `}
+    ></div>
   );
 }
