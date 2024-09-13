@@ -93,7 +93,10 @@ export default function reservationInfoMainPage() {
 function PrintCom() {
   return (
     <div
-      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative `}
-    ></div>
+      className={`w-full h-[1523px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative `}
+      >
+          
+
+    </div>
   );
 }
