@@ -199,7 +199,11 @@ export default function ListView({ data }: dataType) {
         <span>
           <span>
             <button
-              className="cursor-pointer hover:underline"
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
               onClick={() => {
                 setDeleteManyPopup(true);
               }}
@@ -210,7 +214,11 @@ export default function ListView({ data }: dataType) {
           </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
           <span
-            className=" cursor-pointer hover:underline"
+            className={`${
+              itemToDeleteMany.length < 1
+                ? ""
+                : "cursor-pointer hover:underline"
+            }`}
             onClick={() => {
               UpdateActiveManyItem(true);
             }}
@@ -218,7 +226,11 @@ export default function ListView({ data }: dataType) {
             Active /
           </span>
           <span
-            className=" cursor-pointer hover:underline"
+            className={`${
+              itemToDeleteMany.length < 1
+                ? ""
+                : "cursor-pointer hover:underline"
+            }`}
             onClick={() => {
               UpdateActiveManyItem(false);
             }}

@@ -179,7 +179,11 @@ export default function ListViewCustomers({ data }: dataType) {
         <span>
           <span className="cursor-pointer">
             <button
-              className="cursor-pointer hover:underline"
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
               onClick={() => {
                 setDeleteManyPopup(true);
               }}
@@ -190,7 +194,11 @@ export default function ListViewCustomers({ data }: dataType) {
           </span>
           <span className="ps-1"></span>|<span className="ps-1"></span>
           <span
-            className=" cursor-pointer hover:underline"
+            className={`${
+              itemToDeleteMany.length < 1
+                ? ""
+                : "cursor-pointer hover:underline"
+            }`}
             onClick={() => {
               UpdateActiveManyItem(true);
             }}
@@ -198,7 +206,11 @@ export default function ListViewCustomers({ data }: dataType) {
             Active /
           </span>
           <span
-            className=" cursor-pointer hover:underline"
+            className={`${
+              itemToDeleteMany.length < 1
+                ? ""
+                : "cursor-pointer hover:underline"
+            }`}
             onClick={() => {
               UpdateActiveManyItem(false);
             }}
