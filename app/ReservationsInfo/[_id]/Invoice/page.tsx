@@ -11,6 +11,7 @@ import { useParams, useRouter } from "next/navigation";
 import { formatId } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
+import carLogo from "@/public/car.svg";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -82,7 +83,7 @@ export default function reservationInfoMainPage() {
         </div>
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
           <div ref={componentRef} className="printing-width h-fit">
-            <PrintCom />
+            <PrintCom data={reservation} id={_id} />
           </div>
         </div>
       </div>
@@ -90,13 +91,99 @@ export default function reservationInfoMainPage() {
   );
 }
 
-function PrintCom() {
+function PrintCom({ data, id }: any) {
+  console.log(data);
+
   return (
     <div
-      className={`w-full h-[1523px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative `}
-      >
-          
-
+      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative bg-white`}
+    >
+      <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
+        <h2 className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-start">
+          Invoice Number:
+          <span className="font-[600]"> #{formatId(id)}</span>
+        </h2>
+        <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center">
+          <img src={carLogo.src} className={`w-[120px] h-[40px] mt-[30px]`} />
+        </div>
+        <div className="w-full h-fit flex justify-between items-center mt-1">
+          <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+            <span className=" text-[17px] font-[700] leading-[20px] text-main-blue">
+              Invoice To:
+            </span>
+            <span className="">{data.customerName}</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+          </div>
+          <div className="w-[50%] h-fit flex flex-col justify-start items-end text-[14px] font-[400] leading-[17px] text-black">
+            <span className=" text-[18px] font-[600] leading-[20px] text-black">
+              Rapid Rent a Car{" "}
+            </span>
+            <span className="text-transparent">transparent</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+            <span className="">Here you can Upload Passport</span>
+          </div>
+        </div>
+        <div className="w-full h-fit flex flex-col justify-between items-center mt-6">
+          <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey border-[1px] border-grey">
+            <div className="w-[10%] h-fit flex justify-start items-center">
+              SN
+            </div>
+            <div className="w-[70%] h-fit flex justify-start items-center">
+              Service description
+            </div>
+            <div className="w-[10%] h-fit flex justify-start items-center">
+              Price
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+            <div className="w-[10%] h-fit flex justify-start items-center">
+              01
+            </div>
+            <div className="w-[70%] h-fit flex justify-start items-center">
+              Suzuki Swift From 03.08.2024 | 05:00 To 04.08.2024 | 05:00{" "}
+            </div>
+            <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
+              $560
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+            <div className="w-[10%] h-fit flex justify-start items-center">
+              02
+            </div>
+            <div className="w-[70%] h-fit flex justify-start items-center">
+              Chauffeur
+            </div>
+            <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
+              $50
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-end items-center py-1 px-4">
+            <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
+              <div className="w-[50%] h-fit flex justify-start items-center">
+                Subtotal
+              </div>
+              <div className="w-[25%] h-fit flex justify-start items-center">
+                $610
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-end items-center py-1 px-4">
+            <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
+              <div className="w-[50%] h-fit flex justify-start items-center">
+                VAT
+              </div>
+              <div className="w-[25%] h-fit flex justify-start items-center">
+                20%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
