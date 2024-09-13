@@ -92,35 +92,35 @@ console.log(filteredVehicle);
                 />
               </div>
               <div className="w-full sm:w-[55%] h-fit flex justify-start flex-col bg-red-20 items-center sm:items-start">
-                <div className="w-full flex justify-center sm:justify-start items-center pe-0 sm:pe-5 h-fit py-[-10px] -mt-2">
-                  <span className="font-[600] text-[15px] xs:text-[24px] leading-7 sm:leading-[36px]">
+                <div className="w-full flex justify-center sm:justify-start items-center pe-0 sm:pe-5 h-fit py-[-10px] -mt-">
+                  <span className="font-[600] text-[15px] xs:text-[24px] leading-4 sm:leading-7">
                     {item.data.make} {item.data.model}
                   </span>
                 </div>
-                <div className="w-full flex justify-center sm:justify-start items-center py-[-10px] -mt-1">
-                  <span className="font-[500] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
+                <div className="w-full flex justify-center sm:justify-start items-center py-[-10px] -mt-">
+                  <span className="font-[500] text-[14px] xs:text-[20px] leading-4 sm:leading-[30px]">
                     {item.data.registration}
                   </span>
                 </div>
 
-                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt-1">
+                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt-">
                   <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[40%] pe-5">
-                    <span className="leading-7 w-[50%] sm:w-[42%]">Year:</span>
-                    <span className="leading-7 w-[50%] sm:w-[40%]">
+                    <span className="leading-4 w-[50%] sm:w-[50%]">Year:</span>
+                    <span className="leading-4 w-[50%] sm:w-[50%]">
                       {item.data.year}
                     </span>
                   </div>
-                  <div className="flex justify-center sm:justify-start items-center gap- w-[50%]">
-                    <span className="leading-7 w-[50%] sm:w-[30%]">Type:</span>
-                    <span className="leading-7 w-[50%] sm:w-[70%]">
+                  <div className="flex justify-center sm:justify-start items-center gap- w-[60%]">
+                    <span className="leading-4 w-[50%] sm:w-[30%]">Type:</span>
+                    <span className="leading-4 w-[50%] sm:w-[70%]">
                       {item.data.type}
                     </span>
                   </div>
                 </div>
 
-                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt-1">
+                <div className="w-full flex justify-center sm:justify-start gap-0 items-start font-[400] text-[14px] leading-[21px] mt-1">
                   <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[40%]">
-                    <span className="leading-7 w-[50%] sm:w-fit">Color:</span>
+                    <span className="leading-4 w-[50%] sm:w-fit">Color:</span>
                     <div className="w-[50%] sm:w-fit">
                       <div
                         className="w-[23px] h-[12px] rounded-full"
@@ -130,9 +130,9 @@ console.log(filteredVehicle);
                       ></div>
                     </div>
                   </div>
-                  <div className="flex justify-center sm:justify-start items-center gap- w-[50%]">
-                    <span className="leading-7 w-[50%] sm:w-[30%]">City:</span>
-                    <span className="leading-7 w-[50%] sm:w-[70%]">
+                  <div className="flex justify-center sm:justify-start items-start gap- w-[60%]">
+                    <span className="leading-4 w-[50%] sm:w-[30%]">City:</span>
+                    <span className="leading-4 w-[50%] sm:w-[70%] h-fit flex justify-start items-start">
                       {item.data.city}
                     </span>
                   </div>
