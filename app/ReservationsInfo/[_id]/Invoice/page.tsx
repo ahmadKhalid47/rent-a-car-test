@@ -111,7 +111,9 @@ function PrintCom({ data, id }: any) {
             <span className=" text-[17px] font-[700] leading-[20px] text-main-blue">
               Invoice To:
             </span>
-            <span className="">{data.customerName}</span>
+            <span className="">
+              {data.customerName ? data.customerName : "---"}
+            </span>
             <span className="">Here you can Upload Passport</span>
             <span className="">Here you can Upload Passport</span>
             <span className="">Here you can Upload Passport</span>
@@ -119,7 +121,7 @@ function PrintCom({ data, id }: any) {
           </div>
           <div className="w-[50%] h-fit flex flex-col justify-start items-end text-[14px] font-[400] leading-[17px] text-black">
             <span className=" text-[18px] font-[600] leading-[20px] text-black">
-              Rapid Rent a Car{" "}
+              Rapid Rent a Car
             </span>
             <span className="text-transparent">transparent</span>
             <span className="">Here you can Upload Passport</span>
@@ -133,7 +135,7 @@ function PrintCom({ data, id }: any) {
             <div className="w-[10%] h-fit flex justify-start items-center">
               SN
             </div>
-            <div className="w-[70%] h-fit flex justify-start items-center">
+            <div className="w-[80%] h-fit flex justify-start items-center">
               Service description
             </div>
             <div className="w-[10%] h-fit flex justify-start items-center">
@@ -144,8 +146,8 @@ function PrintCom({ data, id }: any) {
             <div className="w-[10%] h-fit flex justify-start items-center">
               01
             </div>
-            <div className="w-[70%] h-fit flex justify-start items-center">
-              Suzuki Swift From 03.08.2024 | 05:00 To 04.08.2024 | 05:00{" "}
+            <div className="w-[80%] h-fit flex justify-start items-center">
+              Suzuki Swift From 03.08.2024 | 05:00 To 04.08.2024 | 05:00
             </div>
             <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
               $560
@@ -155,7 +157,7 @@ function PrintCom({ data, id }: any) {
             <div className="w-[10%] h-fit flex justify-start items-center">
               02
             </div>
-            <div className="w-[70%] h-fit flex justify-start items-center">
+            <div className="w-[80%] h-fit flex justify-start items-center">
               Chauffeur
             </div>
             <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
@@ -164,7 +166,7 @@ function PrintCom({ data, id }: any) {
           </div>
           <div className="w-full h-fit flex justify-end items-center py-1 px-4">
             <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
-              <div className="w-[50%] h-fit flex justify-start items-center">
+              <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                 Subtotal
               </div>
               <div className="w-[25%] h-fit flex justify-start items-center">
@@ -174,12 +176,104 @@ function PrintCom({ data, id }: any) {
           </div>
           <div className="w-full h-fit flex justify-end items-center py-1 px-4">
             <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
-              <div className="w-[50%] h-fit flex justify-start items-center">
+              <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                 VAT
               </div>
               <div className="w-[25%] h-fit flex justify-start items-center">
                 20%
               </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-start py-1 px-4">
+            <div className="w-[55%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+              <span className="text-[18px] font-[600] leading-[21px] text-black">
+                ADDITIONAL INFORMATION
+              </span>
+              <span className="w-[80%] leading-[21px] mt-1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard
+              </span>
+            </div>
+            <div className="w-[40%] py-2 h-fit flex justify-between items-center font-[600] bg-main-ble text-white">
+              <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                TOTAL:
+              </div>
+              <div className="w-[25%] h-fit flex justify-start items-center">
+                $1160
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-5">
+            <div className="w-[100%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+              <span className="text-[18px] font-[600] leading-[41px] text-black underline">
+                TERMS & CONDITIONS
+              </span>
+              <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                <span className="w-[2%] leading-[21px] mt-1">1.</span>
+                <span className="w-[98%] leading-[21px] mt-1">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book
+                </span>
+              </div>
+              <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                <span className="w-[2%] leading-[21px] mt-1">2.</span>
+                <span className="w-[98%] leading-[21px] mt-1">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-5">
+            <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+              <span className="text-[18px] font-[600] leading-[41px] text-black">
+                PAYMENT INFO
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                A/C NAME: ____________
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                BANK: ____________
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                SWIFT: ____________
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                IBAN : ____________
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                ACCOUNT: ____________
+              </span>
+              <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
+                METHOD: Bank
+              </span>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5">
+            <div className="w-[50%] h-fit flex flex-col justify-center items-end text-[14px] font-[400] leading-[17px] text-black">
+              <span className="w-[50%] leading-[21px] mt-1 flex justify-between items-start text-justify border-b-[1px] border-black"></span>
+              <span className="w-[50%] leading-[21px] mt-1 text-center">
+                SIGNATURE
+              </span>
+            </div>
+          </div>
+          <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5">
+            <div className="w-[100%] h-fit flex justify-between items-end text-[14px] font-[400] leading-[17px] text-black">
+              <span className="w-[33%] leading-[21px] mt-1 text-center">
+                Address
+              </span>
+              <span className="w-[33%] leading-[21px] mt-1 text-center">
+                Phone
+              </span>
+              <span className="w-[33%] leading-[21px] mt-1 text-center">
+                Email
+              </span>
             </div>
           </div>
         </div>
