@@ -137,7 +137,7 @@ function PrintCom({ data, id }: any) {
       getData();
     }
   }, [data]);
-  console.log(chauffeursData);
+  console.log(data);
 
   return (
     <>
@@ -161,26 +161,26 @@ function PrintCom({ data, id }: any) {
                   Invoice To:
                 </span>
                 <span className="">
-                  {customersData.data.name ? customersData.data.name : "---"}
+                  {customersData?.data?.name ? customersData?.data?.name : "---"}
                 </span>
                 <span className="">
-                  {customersData.data.streetAddress
-                    ? customersData.data.streetAddress
+                  {customersData?.data?.streetAddress
+                    ? customersData?.data?.streetAddress
                     : "---"}
                 </span>
                 <span className="">
-                  {customersData.data.city ? customersData.data.city : "---"}
+                  {customersData?.data?.city ? customersData?.data?.city : "---"}
                   {", "}
-                  {customersData.data.country
-                    ? customersData.data.country
+                  {customersData?.data?.country
+                    ? customersData?.data?.country
                     : "---"}
                 </span>
                 <span className="">
-                  {customersData.data.phone ? customersData.data.phone : "---"}
+                  {customersData?.data?.phone ? customersData?.data?.phone : "---"}
                 </span>
                 <span className="">
-                  {customersData.data.emailAddress
-                    ? customersData.data.emailAddress
+                  {customersData?.data?.emailAddress
+                    ? customersData?.data?.emailAddress
                     : "---"}
                 </span>
               </div>
@@ -267,7 +267,7 @@ function PrintCom({ data, id }: any) {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-end items-center py-1 px-4">
+              <div className="w-full h-fit flex justify-end items-center py-1 px-4 text-transparent">
                 <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
                   <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                     VAT
