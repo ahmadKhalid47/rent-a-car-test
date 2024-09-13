@@ -40,9 +40,9 @@ export default function reservationInfoMainPage() {
   }, [isMobile]);
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
+  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [customersData, setCustomersData] = useState<any[]>([]);
-  const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const params = useParams(); // Get all route parameters
   const { _id } = params;
