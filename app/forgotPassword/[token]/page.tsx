@@ -29,8 +29,11 @@ export default function ResetPassword() {
       try {
         setLoading(true);
         setIsVerified(undefined);
-        await axios.get(`/api/verifyTokenForgotPassword`, {
-          headers: { token },
+        // await axios.get(`/api/verifyTokenForgotPassword`, {
+        //   headers: { token },
+        // });
+        await axios.post(`/api/verifyTokenForgotPassword`, {
+          token,
         });
         setIsVerified(true);
       } catch (err) {
