@@ -200,6 +200,7 @@ export default function Reservations() {
       event.preventDefault(); // Prevent form submission on Enter key
     }
   };
+console.log(reservation);
 
   return (
     <div

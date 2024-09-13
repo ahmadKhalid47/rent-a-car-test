@@ -8,9 +8,6 @@ interface dataType {
 export default function Referencereservations({ data, loading }: dataType) {
   return (
     <div className="w-full flex justify-between items-center  px-[70px] py-[20px] ">
-      {!data._id ? (
-        "No Chauffeur Was Selected In This Reservation"
-      ) : (
         <>
           <div className=" ">
             <div className="w-[150px] h-[150px] rounded-2xl  ">
@@ -54,7 +51,6 @@ export default function Referencereservations({ data, loading }: dataType) {
             </Link>
           </div>
         </>
-      )}
     </div>
   );
 }

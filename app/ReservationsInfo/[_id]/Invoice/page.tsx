@@ -137,9 +137,7 @@ function PrintCom({ data, id }: any) {
       getData();
     }
   }, [data]);
-
-  console.log(Number(chauffeursData.rentPerDay) , Number(data.duration));
-  console.log((chauffeursData.rentPerDay) ,(data.duration));
+  console.log(data);
 
   return (
     <>
@@ -219,10 +217,15 @@ function PrintCom({ data, id }: any) {
                   To {data.dropOffDate} | {data.dropOffTime}
                 </div>
                 <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
-                  $560
+                  $
+                  {data.withChauffeur
+                    ? Number(data.amount) -
+                      Number(chauffeursData?.data?.rentPerDay) *
+                        Number(data.duration)
+                    : data.amount}
                 </div>
               </div>
-              {data.chauffeur_id && (
+              {data.withChauffeur && (
                 <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
                   <div className="w-[10%] h-fit flex justify-start items-center">
                     02
@@ -231,7 +234,9 @@ function PrintCom({ data, id }: any) {
                     Chauffeur
                   </div>
                   <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
-                    ${Number(chauffeursData.rentPerDay) * Number(data.duration)}
+                    $
+                    {Number(chauffeursData?.data?.rentPerDay) *
+                      Number(data.duration)}
                   </div>
                 </div>
               )}

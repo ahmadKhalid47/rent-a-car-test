@@ -289,10 +289,16 @@ export default function reservationInfoMainPage() {
                     loading={vehicleLoading}
                   />
                 ) : activeButton === "Chauffeur" ? (
-                  <Referencereservations
-                    data={chauffeursData}
-                    loading={chauffeursloading}
-                  />
+                  !reservationInfo?.withChauffeur ? (
+                    <div className="w-full flex justify-between items-center  px-[70px] py-[20px] ">
+                      No Chauffeur Was Selected In This Reservation
+                    </div>
+                  ) : (
+                    <Referencereservations
+                      data={chauffeursData}
+                      loading={chauffeursloading}
+                    />
+                  )
                 ) : null}
               </div>
             </div>

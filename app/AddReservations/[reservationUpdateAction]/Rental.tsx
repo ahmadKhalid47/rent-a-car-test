@@ -17,7 +17,9 @@ interface dataType {
 
 export default function Rental({ data, loading }: dataType) {
   let reservation = useSelector((state: RootState) => state.reservation);
-  const [exterior, setExterior] = useState(true);
+  const [exterior, setExterior] = useState(
+    reservation?.withChauffeur ? reservation?.withChauffeur : false
+  );
   const chauffeursData: any = data;
   const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>(data);
   const [searchQuery, setSearchQuery] = useState<string>("");
