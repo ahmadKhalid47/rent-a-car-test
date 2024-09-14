@@ -46,7 +46,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", );
+        const result = await axios.post("/api/getVehicle");
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -66,7 +66,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", );
+        const result = await axios.post("/api/getreservation");
         setreservationsData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -144,7 +144,7 @@ export default function Vehicles() {
     }
 
     if (regNo) {
-      const lowercasedQuery = regNo.toLowerCase().trim();
+      const lowercasedQuery = regNo.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
         return keyValueInVehicle === lowercasedQuery;
@@ -223,7 +223,34 @@ export default function Vehicles() {
       return false;
     });
   }
-  
+
+  console.log(make, model);
+  console.log(filterReg().map((item: any) => item));
+  function filterReg() {
+    let filtered: any = VehiclesData;
+
+    if (make) {
+      const lowercasedQuery = make.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (model) {
+      const lowercasedQuery = model.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (!model && !make) {
+      filtered = [];
+    }
+    return filtered;
+  }
+
   return (
     <div
       className={`${
@@ -380,8 +407,8 @@ export default function Vehicles() {
                     ? carAvailable === 0
                       ? "Not Available"
                       : carAvailable === 1
-                      ? carAvailable + " Car Available !"
-                      : carAvailable + " Cars Available !"
+                      ? "Hooray! " + carAvailable + " Car Available !"
+                      : "Hooray! " + carAvailable + " Cars Available !"
                     : ""}
                 </h1>
               </div>
@@ -411,14 +438,18 @@ export default function Vehicles() {
                         .map((item: any) => item.model)}
                     />
                   </div>
-                  <TypeInput
-                    setState={setRegNo}
-                    label={"Registration Number"}
-                    value={regNo}
-                    required={false}
-                    type={"text"}
-                    widthProp="sm:w-[100%]"
-                  />
+                  <div className="w-[208%]">
+                    <SelectInput
+                      setState={setRegNo}
+                      label={"Registration Number"}
+                      value={regNo}
+                      required={false}
+                      options={filterReg()?.map(
+                        (item: any) => item.data.registration
+                      )}
+                    />
+                  </div>
+
                   <div className="w-full flex justify-between items-start">
                     <TypeInput
                       setState={setDate}
@@ -470,16 +501,10 @@ export default function Vehicles() {
                 </Link>
               </div>
               <div className="w-full flex flex-col justify-start items-center">
-                <div className="w-full h-[32px] flex justify-between items-center bg-light-grey border-[1px] border-grey rounded-[6px] px-3">
-                  <span className="w-[25%] text-[12px] font-[400] leading-[14px]">
-                    Customer
-                  </span>
-                  <span className="w-[35%] text-[12px] font-[400] leading-[14px]">
-                    Vehicle
-                  </span>
-                  <span className="w-[40%] text-[12px] font-[400] leading-[14px]">
-                    Duration
-                  </span>
+                <div className="w-full h-[32px] flex justify-between items-center bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[14px] font-[400] leading-[17px]">
+                  <span className="w-[25%]">Customer</span>
+                  <span className="w-[35%]">Vehicle</span>
+                  <span className="w-[40%]">Duration</span>
                 </div>
                 {reservationLoading ? (
                   <>
