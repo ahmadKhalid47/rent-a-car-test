@@ -69,8 +69,9 @@ export default function reservationInfoMainPage() {
         setcustomerLoading(false);
       }
     }
-    getData();
-  }, [reservationInfo]);
+    if (reservationInfo?.customer_id) {
+      getData();
+    }  }, [reservationInfo]);
   // Chauffeur Data
   useEffect(() => {
     async function getData() {
