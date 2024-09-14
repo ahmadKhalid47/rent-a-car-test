@@ -133,7 +133,9 @@ export default function Others({
   }, [daysBetween, chauffeurRentPerDays]);
 
   useEffect(() => {
-    dispatch(setamount(JSON.stringify(totalCarRent)));
+    dispatch(
+      setamount(JSON.stringify(totalCarRent + totalChauffeurRent - discount))
+    );
   }, [totalCarRent]);
 
   return (
