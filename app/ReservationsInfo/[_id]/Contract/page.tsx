@@ -16,6 +16,7 @@ import { log } from "util";
 import { MediumLoader } from "@/app/Components/Loader";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
+import { setConfigurations } from "@/app/store/Configurations";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -100,6 +101,7 @@ function PrintCom({ data, id }: any) {
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursData, setchauffeursData] = useState<any>([]);
   const [VehiclesData, setVehiclesData] = useState<any>([]);
+  let dispatch = useDispatch();
 
   // Customer Data
   useEffect(() => {
@@ -161,6 +163,22 @@ function PrintCom({ data, id }: any) {
       getData();
     }
   }, [data]);
+
+  // Configuration Data
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setcustomerLoading(true);
+        let result: any = await axios.post(`/api/getConfigurations`);
+        dispatch(setConfigurations(result?.data?.wholeData));
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setcustomerLoading(false);
+      }
+    }
+    getData2();
+  }, []);
 
   return (
     <>

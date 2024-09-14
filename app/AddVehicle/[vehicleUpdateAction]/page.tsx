@@ -85,6 +85,7 @@ export default function Vehicles() {
     }
     getData2();
   }, []);
+  
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setCurrentPage(goToPage);

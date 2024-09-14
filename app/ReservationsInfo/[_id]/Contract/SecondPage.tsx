@@ -1,5 +1,6 @@
 import { formatDate, formatId } from "@/app/Components/functions/formats";
-import carLogo from "@/public/car.svg";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
 
 export default function SecondPage({
   data,
@@ -10,14 +11,20 @@ export default function SecondPage({
 }: any) {
   const today = new Date();
   const todayDate = today.toISOString().split("T")[0];
+  let Configurations = useSelector((state: RootState) => state.Configurations);
+  let exteriorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === VehiclesData?.data?.type
+  )?.exterior;
+  let interiorImg = Configurations?.Configurations?.type?.find(
+    (item: any) => item.Type === VehiclesData?.data?.type
+  )?.interior;
+  console.log(data);
+
   return (
     <div
       className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative bg-white`}
     >
       <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
-        <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-[40px]">
-          <img src={carLogo.src} className={`w-[120px] h-[40px]`} />
-        </div>
         <div className="w-full h-fit flex justify-between items-center mt-1">
           <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
             <span className=" text-[17px] font-[700] leading-[20px] text-transparent">
@@ -36,215 +43,23 @@ export default function SecondPage({
               <span className="font-[400]">{formatDate(todayDate)}</span>
             </span>
           </div>
-          <div className="w-[50%] h-fit flex flex-col justify-start items-end text-[14px] font-[400] leading-[17px] text-black">
-            <span className=" text-[18px] font-[600] leading-[20px] text-black">
-              Rapid Rent a Car
-            </span>
-            <span className="text-transparent">transparent</span>
-            <span className="">
-              {data.withChauffeur ? chauffeursData?.streetAddress : "---"}
-            </span>
-            <span className="">
-              {data.withChauffeur ? chauffeursData?.data?.city + ", " : "---"}
-              {data.withChauffeur ? chauffeursData?.data?.country : "---"}
-            </span>
-            <span className="">
-              {data.withChauffeur ? customersData?.data?.phone : "---"}
-            </span>
-            <span className="">
-              {data.withChauffeur ? customersData?.data?.emailAddress : "---"}
-            </span>
-          </div>
         </div>
         <div className="w-full h-fit flex flex-col justify-between items-center">
           <div className="w-full flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden mt-6">
             <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey font-[600]">
               <div className="w-[100%] h-fit flex justify-start items-center text-[18px] font-[600]">
-                Customer{" "}
+                Damage Report{" "}
               </div>
             </div>
             <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
-              <div className="w-[30%] h-fit flex justify-between items-center ">
-                <div className="w-[35%] text-start font-[600] ">Full Name</div>
-                <div className="w-[65%] text-start font-[400] ">
+              <div className="w-fit h-fit flex justify-start items-center gap-2">
+                <div className="w-fit text-start font-[600] ">Customer:</div>
+                <div className="w-fit text-start font-[400] ">
                   {customersData?.data?.name
                     ? customersData?.data?.name
                     : "---"}
                 </div>
               </div>
-              <div className="w-[36%] h-fit flex justify-between items-center">
-                <div className="w-[45%] text-start font-[600] ">
-                  ID/Passport NO:
-                </div>
-                <div className="w-[55%] text-start font-[400] ">
-                  {customersData?.data?.passportNumber
-                    ? customersData?.data?.passportNumber
-                    : "---"}
-                </div>
-              </div>
-              <div className="w-[33%] h-fit flex justify-between items-center ">
-                <div className="w-[100%] text-start font-[600] ">Address:</div>
-              </div>
-            </div>
-            <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
-              <div className="w-[30%] h-fit flex justify-between items-center ">
-                <div className="w-[35%] text-start font-[600] ">Phone:</div>
-                <div className="w-[65%] text-start font-[400] ">
-                  {customersData?.data?.phone
-                    ? customersData?.data?.phone
-                    : "---"}
-                </div>
-              </div>
-              <div className="w-[36%] h-fit flex justify-between items-center">
-                <div className="w-[45%] text-start font-[600] ">
-                  Date of birth :
-                </div>
-                <div className="w-[55%] text-start font-[400] ">
-                  {customersData?.data?.dateOfBirth
-                    ? customersData?.data?.dateOfBirth
-                    : "---"}
-                </div>
-              </div>
-              <div className="w-[33%] h-fit flex justify-between items-center ">
-                <div className="w-[100%] text-start font-[400] ">
-                  {customersData?.data?.streetAddress
-                    ? customersData?.data?.streetAddress
-                    : "---"}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full flex justify-between items-start mt-6">
-            <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
-              <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey font-[600]">
-                <div className="w-[100%] h-fit flex justify-start items-center text-[18px] font-[600]">
-                  Reservation Details
-                </div>
-              </div>
-              <div className="w-full h-fit flex-col justify-start items-start py-3 px-4 text-[14px] divide-dashed divide-y divide-gray-300">
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">Pick Up:</div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.PickUpAddress ? data?.PickUpAddress : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Date & Time:
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.PickUpDate ? data?.PickUpDate : "---"}{" "}
-                    {data?.PickUpTime ? data?.PickUpTime : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-[60px] text-start font-[600] ">
-                    Drop Off:
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.dropOffAddress ? data?.dropOffAddress : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Date & Time:
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.dropOffDate ? data?.dropOffDate : "---"}{" "}
-                    {data?.dropOffTime ? data?.dropOffTime : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Security Deposit:
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.securityDeposit ? data?.securityDeposit : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Total Duration:
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {data?.duration ? data?.duration : "---"}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
-              <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey font-[600]">
-                <div className="w-[100%] h-fit flex justify-start items-center text-[18px] font-[600]">
-                  Chauffeur Information
-                </div>
-              </div>
-              <div className="w-full h-fit flex-col justify-start items-start py-3 px-4 text-[14px] divide-dashed divide-y divide-gray-300">
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Full Name :{" "}
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.name
-                      ? chauffeursData?.data?.name
-                      : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Driving Licence:{" "}
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.licenseNumber
-                      ? chauffeursData?.data?.licenseNumber
-                      : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Expire Date:{" "}
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.licenseValid
-                      ? chauffeursData?.data?.licenseValid
-                      : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">
-                    Nationality:{" "}
-                  </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.nationality
-                      ? chauffeursData?.data?.nationality
-                      : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">Phone: </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.phone
-                      ? chauffeursData?.data?.phone
-                      : "---"}
-                  </div>
-                </div>
-                <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
-                  <div className="w-fit text-start font-[600] ">Email: </div>
-                  <div className="w-fit text-start font-[400] ">
-                    {chauffeursData?.data?.emailAddress
-                      ? chauffeursData?.data?.emailAddress
-                      : "---"}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden mt-6">
-            <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey font-[600]">
-              <div className="w-[100%] h-fit flex justify-start items-center text-[18px] font-[600]">
-                Vehicle Information{" "}
-              </div>
-            </div>
-            <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
               <div className="w-fit h-fit flex justify-between items-center gap-2">
                 <div className="w-fit text-start font-[600] ">Make: </div>
                 <div className="w-fit text-start font-[400] ">
@@ -269,41 +84,107 @@ export default function SecondPage({
                     : "---"}
                 </div>
               </div>
-              <div className="w-[15%] h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">Year:</div>
-                <div className="w-fit text-start font-[400] ">
-                  {VehiclesData?.data?.year ? VehiclesData?.data?.year : "---"}
+            </div>
+          </div>
+          <div className="w-full flex justify-between items-start mt-6">
+            <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
+              <img src={exteriorImg} className="w-[250px] h-[300px]" />
+              {data.damages.map((item: any, index: any) => (
+                <>
+                  {item.exterior && (
+                    <div
+                      className={`absolute w-[15px] h-[15px] rounded-full bg-main-blue text-white text-[8px] flex justify-center items-center font-[600]`}
+                      key={index}
+                      style={{
+                        top: `${item.y}%`,
+                        left: `${item.x}%`,
+                      }}
+                    >
+                      {index + 1}
+                    </div>
+                  )}
+                </>
+              ))}
+            </div>
+            <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
+              <img src={interiorImg} className="w-[250px] h-[300px]" />
+              {data.damages.map((item: any, index: any) => (
+                <>
+                  {!item.exterior && (
+                    <div
+                      className={`absolute w-[15px] h-[15px] rounded-full bg-main-blue text-white text-[8px] flex justify-center items-center font-[600]`}
+                      key={index}
+                      style={{
+                        top: `${item.y}%`,
+                        left: `${item.x}%`,
+                      }}
+                    >
+                      {index + 1}
+                    </div>
+                  )}
+                </>
+              ))}
+            </div>
+          </div>
+          <div className="w-full flex justify-between items-start mt-6">
+            <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
+              <div className="w-full h-fit flex-col justify-start items-start text-[14px]">
+                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 bg-light-grey font-[600]">
+                  <div className="w-[10%]">No</div>
+                  <div className="w-[45%]">Damage Type</div>
+                  <div className="w-[45%]">Degree</div>
                 </div>
+                {data?.damages?.map((item: any, index: number) => (
+                  <>
+                    {item.exterior && (
+                      <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 font-[400] border-b border-dashed border-grey">
+                        <div className="w-[10%]">{index + 1}</div>
+                        <div className="w-[45%]">{item.damageType}</div>
+                        <div className="w-[45%]">{item.degree}</div>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+            <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
+              <div className="w-full h-fit flex-col justify-start items-start text-[14px]">
+                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 bg-light-grey font-[600]">
+                  <div className="w-[10%]">No</div>
+                  <div className="w-[45%]">Damage Type</div>
+                  <div className="w-[45%]">Degree</div>
+                </div>
+                {data?.damages?.map((item: any, index: number) => (
+                  <>
+                    {!item.exterior && (
+                      <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 font-[400] border-b border-dashed border-grey">
+                        <div className="w-[10%]">{index + 1}</div>
+                        <div className="w-[45%]">{item.damageType}</div>
+                        <div className="w-[45%]">{item.degree}</div>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden mt-6">
+            <div className="w-full h-fit flex justify-between items-center py-3 px-4 bg-light-grey font-[600]">
+              <div className="w-[100%] h-fit flex justify-start items-center text-[14px] font-[600]">
+                Notes{" "}
               </div>
             </div>
             <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
-              <div className="w-fit h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">
-                  Current Odometer (KMPH):
-                </div>
-                <div className="w-fit text-start font-[400] ">
-                  {VehiclesData?.data?.odometer
-                    ? VehiclesData?.data?.odometer
-                    : "---"}
-                </div>
-              </div>
-              <div className="w-fit h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">
-                  Current Fuel:{" "}
-                </div>
-                <div className="w-fit text-start font-[400] ">
-                  {data?.fuelStatus ? data?.fuelStatus : "---"}
-                </div>
-              </div>
-              <div className="w-[27%] h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">
-                  Rental Price Per Day:
-                </div>
-                <div className="w-fit text-start font-[400] ">
-                  {VehiclesData?.data?.rentDay
-                    ? VehiclesData?.data?.rentDay
-                    : "---"}
-                </div>
+              <div className="w-full h-fit flex justify-start items-center gap-2">
+                <span className="w-full text-justify font-[400] ">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged.
+                </span>
               </div>
             </div>
           </div>
