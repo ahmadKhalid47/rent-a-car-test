@@ -52,29 +52,29 @@ export default function RootLayout({
   // }, [pathName]);
 
   
-  // useEffect(() => {
-  //   const [navigationEntry] = window.performance.getEntriesByType(
-  //     "navigation"
-  //   ) as PerformanceNavigationTiming[];
+  useEffect(() => {
+    const [navigationEntry] = window.performance.getEntriesByType(
+      "navigation"
+    ) as PerformanceNavigationTiming[];
 
-  //   const isPageReload = navigationEntry?.type === "reload";
+    const isPageReload = navigationEntry?.type === "reload";
 
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setLoading(true);
-  //       setIsVerified(undefined);
-  //       await axios.post("/api/verifyToken");
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   if (isPageReload) {
-  //     verifyTokenApi();
-  //   }
-  // }, []);
+    async function verifyTokenApi() {
+      try {
+        setLoading(true);
+        setIsVerified(undefined);
+        await axios.post("/api/verifyToken");
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (isPageReload) {
+      verifyTokenApi();
+    }
+  }, []);
 
   return (
     <StoreProvider>
