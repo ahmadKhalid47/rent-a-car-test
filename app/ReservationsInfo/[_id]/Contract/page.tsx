@@ -2,21 +2,20 @@
 import upload from "@/public/Paper Upload.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { formatDate, formatId } from "@/app/Components/functions/formats";
+import { useParams } from "next/navigation";
+import { formatId } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
-import carLogo from "@/public/car.svg";
-import { log } from "util";
 import { MediumLoader } from "@/app/Components/Loader";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
 import { setConfigurations } from "@/app/store/Configurations";
+import ThirdPage from "./ThirdPage";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -186,13 +185,6 @@ function PrintCom({ data, id }: any) {
         <MediumLoader />
       ) : (
         <div className="flex flex-col justify-start items-start gap-3 print:gap-0">
-          <SecondPage
-            data={data}
-            customersData={customersData}
-            chauffeursData={chauffeursData}
-            VehiclesData={VehiclesData}
-            id={id}
-          />
           <FirstPage
             data={data}
             customersData={customersData}
@@ -200,6 +192,13 @@ function PrintCom({ data, id }: any) {
             VehiclesData={VehiclesData}
             id={id}
           />
+          <SecondPage
+            data={data}
+            customersData={customersData}
+            VehiclesData={VehiclesData}
+            id={id}
+          />
+          <ThirdPage customersName={customersData?.data?.name} id={id} />
         </div>
       )}
     </>

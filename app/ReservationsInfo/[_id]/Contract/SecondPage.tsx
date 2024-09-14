@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 export default function SecondPage({
   data,
   customersData,
-  chauffeursData,
   VehiclesData,
   id,
 }: any) {
