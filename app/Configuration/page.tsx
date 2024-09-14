@@ -107,7 +107,7 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg5.src} />
+                  {/* <img src={configImg5.src} /> */}
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Country
@@ -118,7 +118,7 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
               >
                 <div className="bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg5.src} />
+                  {/* <img src={configImg5.src} /> */}
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   City
