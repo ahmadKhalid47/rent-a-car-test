@@ -4,7 +4,8 @@ import { TempTypeInputWidth } from "../../Components/InputComponents/TypeInput";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setdiscount, setduration, setamount } from "@/app/store/reservations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import chauffeurInfoMainPage from "../../ChauffeursInfo/[_id]/page";
 
 interface dataType {
   customerData: any;
@@ -76,90 +77,71 @@ export default function Others({
   );
   const weeksBetween = daysBetween / 7;
   const monthsBetween = daysBetween / 30;
-
+  let [days, setDays] = useState(0);
+  let [weeks, setWeeks] = useState(0);
+  let [months, setMonths] = useState(0);
   useEffect(() => {
     dispatch(setduration(JSON.stringify(daysBetween)));
   }, [daysBetween]);
-  function calculateRentPerDays(
-    daysBetween: any,
-    carRentPerDay: any,
-    chauffeurRentPerDay: any,
-    discount: any
-  ) {
-    let rentWithDays = daysBetween * carRentPerDay;
-    let chauffeurWithDays = daysBetween * chauffeurRentPerDay;
-    let rent = rentWithDays + chauffeurWithDays - discount;
-    return rent;
-  }
-  function calculateRentPerWeeks(
-    daysBetween: any,
-    carRentPerWeek: any,
-    chauffeurRentPerDay: any,
-    discount: any
-  ) {
-    let rentWithWeeks = daysBetween * carRentPerWeek;
-    let chauffeurWithDays = daysBetween * 7 * chauffeurRentPerDay;
-    let rent = rentWithWeeks + chauffeurWithDays - discount;
-    return rent;
-  }
-  function calculateRentPerMonths(
-    daysBetween: any,
-    carRentPerMonth: any,
-    chauffeurRentPerDay: any,
-    discount: any
-  ) {
-    let rentWithMonths = daysBetween * carRentPerMonth;
-    let chauffeurWithDays = daysBetween * 30 * chauffeurRentPerDay;
-    let rent = rentWithMonths + chauffeurWithDays - discount;
-    return rent;
-  }
-  function calculateRentPerHours(
-    timeBetween: any,
-    carRentPerHour: any,
-    chauffeurRentPerDay: any,
-    discount: any
-  ) {
-    let rentWithHours = timeBetween * carRentPerHour;
-    let chauffeurWithDays = chauffeurRentPerDay;
-    let rent = rentWithHours + chauffeurWithDays - discount;
-    return rent;
-  }
-  function totalRentCalc() {
-    if (daysBetween < 1) {
-      return calculateRentPerHours(
-        timeBetween,
-        carRentPerHours,
-        chauffeurRentPerDays,
-        discount
-      );
-    } else if (daysBetween % 7 === 0) {
-      return calculateRentPerWeeks(
-        weeksBetween,
-        carRentPerWeeks,
-        chauffeurRentPerDays,
-        discount
-      );
-    } else if (daysBetween % 30 === 0) {
-      return calculateRentPerMonths(
-        monthsBetween,
-        carRentPerMonths,
-        chauffeurRentPerDays,
-        discount
-      );
-    } else {
-      return calculateRentPerDays(
-        daysBetween,
-        carRentPerDays,
-        chauffeurRentPerDays,
-        discount
-      );
-    }
-  }
 
-  let totalRent = totalRentCalc();
+  function calculateRentPerHours(timeBetween: any, carRentPerHour: any) {
+    let rentWithHours = timeBetween * carRentPerHour;
+    return rentWithHours;
+  }
+  function tempAmount() {
+    let total = 0;
+    let totalDays = daysBetween;
+
+    let months = Math.floor(totalDays / 30);
+    let remainingDaysAfterMonths = totalDays % 30;
+
+    let weeks = Math.floor(remainingDaysAfterMonths / 7);
+    let days = remainingDaysAfterMonths % 7;
+    console.log(`Months: ${months}, Weeks: ${weeks}, Days: ${days}`);
+    setDays(days);
+    setWeeks(weeks);
+    setMonths(months);
+    if (daysBetween < 1) {
+      total = calculateRentPerHours(timeBetween, carRentPerHours);
+    } else {
+      let totalPerDays = days * carRentPerDays;
+      let totalPerWeeks = weeks * carRentPerWeeks;
+      let totalPerMonths = months * carRentPerMonths;
+      total = totalPerDays + totalPerWeeks + totalPerMonths;
+      console.log(days, weeks, months);
+      console.log(carRentPerDays, carRentPerWeeks, carRentPerMonths);
+      console.log(total);
+    }
+    return total;
+  }
+  let [totalCarRent, setTotalCarRent] = useState(0);
+  let [totalChauffeurRent, setTotalChauffeurRent] = useState(0);
+
   useEffect(() => {
-    dispatch(setamount(JSON.stringify(totalRent)));
-  }, [totalRent]);
+    setTotalCarRent(tempAmount());
+  }, [
+    daysBetween,
+    timeBetween,
+    weeksBetween,
+    monthsBetween,
+    carRentPerDays,
+    carRentPerWeeks,
+    carRentPerMonths,
+    carRentPerHours,
+  ]);
+  useEffect(() => {
+    if (daysBetween < 1) {
+      setTotalChauffeurRent(chauffeurRentPerDays * 1);
+    } else {
+      setTotalChauffeurRent(chauffeurRentPerDays * daysBetween);
+    }
+  }, [daysBetween, chauffeurRentPerDays]);
+
+  useEffect(() => {
+    dispatch(setamount(JSON.stringify(totalCarRent)));
+  }, [totalCarRent]);
+
+  console.log(totalCarRent + totalChauffeurRent - discount);
 
   return (
     <div className="w-full h-full  ">
@@ -172,47 +154,56 @@ export default function Others({
           <div className="w-full flex justify-between items-center h-fit">
             <span>Rental Period</span>
             <span>
-              {daysBetween < 1
-                ? timeBetween + " Hours"
-                : daysBetween % 7 === 0
-                ? weeksBetween + " Weeks"
-                : daysBetween % 30 === 0
-                ? monthsBetween + " Months"
-                : daysBetween + " Days"}
+              {daysBetween < 1 ? (
+                <span>
+                  {timeBetween} {timeBetween === 1 ? "Hour" : "Hours"}
+                </span>
+              ) : (
+                <>
+                  {months !== 0 && (
+                    <span>
+                      {months} {months === 1 ? "Month" : "Months"}
+                    </span>
+                  )}{" "}
+                  {weeks !== 0 && (
+                    <span>
+                      {weeks} {weeks === 1 ? "Week" : "Weeks"}
+                    </span>
+                  )}{" "}
+                  {days !== 0 && (
+                    <span>
+                      {days} {days === 1 ? "Day" : "Days"}
+                    </span>
+                  )}{" "}
+                </>
+              )}
             </span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>
               Car Rent ${" "}
-              {daysBetween < 1
-                ? carRentPerHours
-                : daysBetween % 7 === 0
-                ? carRentPerWeeks
-                : daysBetween % 30 === 0
-                ? carRentPerMonths
-                : carRentPerDays}
-              ×{" "}
-              {daysBetween < 1
-                ? timeBetween
-                : daysBetween % 7 === 0
-                ? weeksBetween
-                : daysBetween % 30 === 0
-                ? monthsBetween
-                : daysBetween}
+              {daysBetween < 1 ? (
+                <span>{timeBetween + " x " + carRentPerHours}</span>
+              ) : (
+                <>
+                  {months !== 0 && (
+                    <span>{months + " x " + carRentPerMonths}</span>
+                  )}
+                  {weeks !== 0 && months !== 0 && <span>{" + "}</span>}
+                  {weeks !== 0 && (
+                    <span>{weeks + " x " + carRentPerWeeks}</span>
+                  )}
+                  {weeks !== 0 && days !== 0 && <span>{" + "}</span>}
+                  {days !== 0 && (
+                    <span>{days + " x " + carRentPerDays}</span>
+                  )}{" "}
+                </>
+              )}
             </span>
-            <span>
-              $
-              {daysBetween < 1
-                ? carRentPerHours * timeBetween
-                : daysBetween % 7 === 0
-                ? carRentPerWeeks * weeksBetween
-                : daysBetween % 30 === 0
-                ? carRentPerMonths * monthsBetween
-                : carRentPerDays * daysBetween}
-            </span>
+            <span>$ {isNaN(totalCarRent) ? 0 : totalCarRent} </span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
-            <span>VAT 24%</span>
+            <span>VAT %</span>
             <span>$0.00</span>
           </div>
           <div className="border-b-[1px] border-grey w-full "></div>
@@ -256,7 +247,12 @@ export default function Others({
           ) : null}
           <div className="w-full flex justify-between items-center h-fit">
             <span>Total</span>
-            <span>${isNaN(totalRent) ? 0 : totalRent}</span>
+            <span>
+              $
+              {isNaN(totalCarRent)
+                ? 0
+                : totalCarRent + totalChauffeurRent - discount}
+            </span>
           </div>
         </div>
       </div>
