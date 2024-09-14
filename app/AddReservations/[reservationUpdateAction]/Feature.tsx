@@ -60,7 +60,6 @@ export default function Feature({ data, loading }: dataType) {
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
   }
-console.log(filteredVehicle);
 
   return (
     <div className="w-full h-full">

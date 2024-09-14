@@ -4,7 +4,6 @@ import { TempTypeInputWidth } from "../../Components/InputComponents/TypeInput";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setdiscount, setduration, setamount } from "@/app/store/reservations";
-import chauffeurInfoSlice from "../../store/chauffeurInfo";
 import { useEffect } from "react";
 
 interface dataType {
@@ -125,7 +124,6 @@ export default function Others({
     let rent = rentWithHours + chauffeurWithDays - discount;
     return rent;
   }
-
   function totalRentCalc() {
     if (daysBetween < 1) {
       return calculateRentPerHours(
@@ -185,7 +183,7 @@ export default function Others({
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>
-              Car Rent $
+              Car Rent ${" "}
               {daysBetween < 1
                 ? carRentPerHours
                 : daysBetween % 7 === 0
@@ -202,7 +200,16 @@ export default function Others({
                 ? monthsBetween
                 : daysBetween}
             </span>
-            <span>${carRentPerDays * daysBetween}</span>
+            <span>
+              $
+              {daysBetween < 1
+                ? carRentPerHours * timeBetween
+                : daysBetween % 7 === 0
+                ? carRentPerWeeks * weeksBetween
+                : daysBetween % 30 === 0
+                ? carRentPerMonths * monthsBetween
+                : carRentPerDays * daysBetween}
+            </span>
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>VAT 24%</span>
