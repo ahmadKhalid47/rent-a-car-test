@@ -5,7 +5,6 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setdiscount, setduration, setamount } from "@/app/store/reservations";
 import { useEffect, useState } from "react";
-import chauffeurInfoMainPage from "../../ChauffeursInfo/[_id]/page";
 
 interface dataType {
   customerData: any;
@@ -97,7 +96,6 @@ export default function Others({
 
     let weeks = Math.floor(remainingDaysAfterMonths / 7);
     let days = remainingDaysAfterMonths % 7;
-    console.log(`Months: ${months}, Weeks: ${weeks}, Days: ${days}`);
     setDays(days);
     setWeeks(weeks);
     setMonths(months);
@@ -108,9 +106,6 @@ export default function Others({
       let totalPerWeeks = weeks * carRentPerWeeks;
       let totalPerMonths = months * carRentPerMonths;
       total = totalPerDays + totalPerWeeks + totalPerMonths;
-      console.log(days, weeks, months);
-      console.log(carRentPerDays, carRentPerWeeks, carRentPerMonths);
-      console.log(total);
     }
     return total;
   }
@@ -140,8 +135,6 @@ export default function Others({
   useEffect(() => {
     dispatch(setamount(JSON.stringify(totalCarRent)));
   }, [totalCarRent]);
-
-  console.log(totalCarRent + totalChauffeurRent - discount);
 
   return (
     <div className="w-full h-full  ">
