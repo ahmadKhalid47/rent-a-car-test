@@ -298,10 +298,15 @@ export default function ListViewreservation({ data }: dataType) {
                     onClick={() => {
                       router.push(`/ReservationsInfo/${item?._id}/Invoice`);
                     }}
+                    title="Invoice"
                   />
                   <img
                     src={doc1.src}
                     className="hover:scale-[1.3] cursor-pointer"
+                    onClick={() => {
+                      router.push(`/ReservationsInfo/${item?._id}/Contract`);
+                    }}
+                    title="Contract"
                   />
                 </div>
                 <div

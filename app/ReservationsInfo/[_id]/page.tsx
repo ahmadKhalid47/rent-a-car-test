@@ -303,15 +303,12 @@ export default function reservationInfoMainPage() {
               </div>
             </div>
             <div className="w-full flex justify-end items-center gap-1 md:gap-3 mt-10">
-              <button
-                className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                disabled={loading}
-                onClick={() => {
-                  // saveData("close");
-                }}
+              <Link
+                href={`/ReservationsInfo/${_id}/Contract`}
+                className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center flex justify-center items-center`}
               >
                 {false ? <SmallLoader /> : "Create Contract"}
-              </button>
+              </Link>
               <Link
                 href={`/ReservationsInfo/${_id}/Invoice`}
                 className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center flex justify-center items-center`}
