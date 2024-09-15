@@ -34,30 +34,13 @@ export default function RootLayout({
     }
   }, [isVerified, router]);
 
-  // useEffect(() => {
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setLoading(true);
-  //       setIsVerified(undefined);
-  //       let userData = await axios.post("/api/verifyToken");
-  //       // console.log(userData?.data?.msg);
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   verifyTokenApi();
-  // }, [pathName]);
-
-  
   useEffect(() => {
     const [navigationEntry] = window.performance.getEntriesByType(
       "navigation"
     ) as PerformanceNavigationTiming[];
 
-    const isPageReload = navigationEntry?.type === "reload";
+    const isPageReload =
+      navigationEntry?.type === "reload" || document.referrer === "";
 
     async function verifyTokenApi() {
       try {
@@ -74,7 +57,7 @@ export default function RootLayout({
     if (isPageReload) {
       verifyTokenApi();
     }
-}, []);
+  }, []);
 
   return (
     <StoreProvider>
