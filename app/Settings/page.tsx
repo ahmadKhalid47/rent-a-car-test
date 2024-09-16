@@ -116,7 +116,10 @@ export default function Vehicles() {
                 </p>
               </div>
             </div>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            <Link
+              href={"Settings/Invoicing"}
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+            >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings10.src} />
               </div>
@@ -128,7 +131,7 @@ export default function Vehicles() {
                   Edit VAT & Taxes{" "}
                 </p>
               </div>
-            </div>
+            </Link>
             <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings9.src} />
