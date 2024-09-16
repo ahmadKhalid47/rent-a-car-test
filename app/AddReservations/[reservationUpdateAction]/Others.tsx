@@ -5,9 +5,8 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setdiscount, setduration, setamount } from "@/app/store/reservations";
 import { useEffect, useState } from "react";
-import { setAllValues as setAllInvoiceValues } from '@/app/store/Invoicing';
+import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
 import axios from "axios";
-let Invoicing = useSelector((state: RootState) => state.Invoicing);
 
 interface dataType {
   customerData: any;
@@ -40,6 +39,7 @@ export default function Others({
   let discount = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
+  let Invoicing = useSelector((state: RootState) => state.Invoicing);
 
   function calculateDaysBetween(pickUpDate: any, dropOffDate: any) {
     if (!pickUpDate || !dropOffDate) {
@@ -136,7 +136,7 @@ export default function Others({
   }, [daysBetween, chauffeurRentPerDays]);
 
   let amountToSet = totalCarRent + totalChauffeurRent - discount;
-  
+
   function varAmount(varPer: any, total: any) {
     let tempvar = (total * varPer) / 100;
 
@@ -150,17 +150,17 @@ export default function Others({
   }, [totalCarRent]);
 
   useEffect(() => {
-      async function getData() {
-        try {
-          const result = await axios.post("/api/getInvoicing");
-          dispatch(setAllInvoiceValues(result.data.data[0].data));
-          console.log(result.data.data[0].data);
-        } catch (error) {
-          console.log(error);
-        }
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getInvoicing");
+        dispatch(setAllInvoiceValues(result.data.data[0].data));
+        console.log(result.data.data[0].data);
+      } catch (error) {
+        console.log(error);
       }
-      getData();
-    }, []);
+    }
+    getData();
+  }, []);
 
   let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
     ? 0
