@@ -112,6 +112,8 @@ export default function AddUser() {
       setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
     }
   };
+  console.log(myProfile);
+  
 
   return (
     <div
@@ -179,10 +181,10 @@ export default function AddUser() {
                   </div>
                   <div className="w-[50%] flex flex-col justify-center items-start">
                     <span className="font-[600] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
-                      Alexa Rawles
+                      {myProfile?.firstName} {myProfile?.lastName}
                     </span>
                     <span className="font-[500] text-[14px] xs:text-[16px] leading-7 sm:leading-[30px]">
-                      alexarawles@gmail.com
+                      {myProfile?.email}
                     </span>
                   </div>
                 </div>
