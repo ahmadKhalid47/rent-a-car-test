@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import axios from "axios";
 import React from "react";
-import { Editor, EditorProvider } from "react-simple-wysiwyg";
 import JoditEditor from "jodit-react";
 
 export default function AddUser() {
