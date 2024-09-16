@@ -16,6 +16,9 @@ import {
   setAllValues,
 } from "@/app/store/Invoicing";
 import { formatListing } from "@/app/Components/functions/formats";
+import { useRouter } from "next/navigation";
+import { SmallLoader } from "@/app/Components/Loader";
+import axios from "axios";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -24,6 +27,9 @@ export default function AddUser() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [currencies, setCurrencies] = useState<any>([]);
   const [selectedCurrency, setSelectedCurrency] = useState<any>([]);
+  const router = useRouter();
+  const [loading, setLoading] = useState<any>(false);
+  const [saveloading, setSaveLoading] = useState<any>(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -70,6 +76,17 @@ export default function AddUser() {
       }
     }
   };
+
+  async function editItem() {
+    try {
+      setSaveLoading(true);
+      await axios.post(`/api/updateInvoicing`, { Invoicing });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSaveLoading(false);
+    }
+  }
 
   return (
     <div
@@ -193,6 +210,26 @@ export default function AddUser() {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
+          >
+            <button
+              onClick={() => {
+                router.push("/Settings");
+              }}
+              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            >
+              {loading ? <SmallLoader /> : "Cancel"}
+            </button>
+            <button
+              onClick={() => {
+                editItem();
+              }}
+              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            >
+              {saveloading ? <SmallLoader /> : "Save"}
+            </button>
           </div>
         </div>
       </div>
