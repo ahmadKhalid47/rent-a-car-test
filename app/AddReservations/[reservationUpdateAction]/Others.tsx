@@ -5,6 +5,9 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setdiscount, setduration, setamount } from "@/app/store/reservations";
 import { useEffect, useState } from "react";
+import { setAllValues as setAllInvoiceValues } from '@/app/store/Invoicing';
+import axios from "axios";
+let Invoicing = useSelector((state: RootState) => state.Invoicing);
 
 interface dataType {
   customerData: any;
@@ -132,11 +135,36 @@ export default function Others({
     }
   }, [daysBetween, chauffeurRentPerDays]);
 
+  let amountToSet = totalCarRent + totalChauffeurRent - discount;
+  
+  function varAmount(varPer: any, total: any) {
+    let tempvar = (total * varPer) / 100;
+
+    return tempvar + total;
+  }
+
   useEffect(() => {
     dispatch(
       setamount(JSON.stringify(totalCarRent + totalChauffeurRent - discount))
     );
   }, [totalCarRent]);
+
+  useEffect(() => {
+      async function getData() {
+        try {
+          const result = await axios.post("/api/getInvoicing");
+          dispatch(setAllInvoiceValues(result.data.data[0].data));
+          console.log(result.data.data[0].data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getData();
+    }, []);
+
+  let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
+    ? 0
+    : Number(Invoicing?.vatPercentage);
 
   return (
     <div className="w-full h-full  ">
