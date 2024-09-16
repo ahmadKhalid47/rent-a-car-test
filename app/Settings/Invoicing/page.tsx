@@ -38,7 +38,6 @@ export default function AddUser() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  // console.log(Invoicing);
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const input = e.target.value;
 
@@ -77,6 +76,19 @@ export default function AddUser() {
     }
   };
 
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getInvoicing");
+        dispatch(setAllValues(result.data.data[0].data));
+        console.log(result.data.data[0].data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, [global.vehicleDataReloader]);
+
   async function editItem() {
     try {
       setSaveLoading(true);
@@ -87,6 +99,7 @@ export default function AddUser() {
       setSaveLoading(false);
     }
   }
+  console.log(Invoicing);
 
   return (
     <div
