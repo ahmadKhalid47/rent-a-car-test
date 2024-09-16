@@ -99,6 +99,7 @@ function PrintCom({ data, id }: any) {
   const [chauffeursData, setchauffeursData] = useState<any>([]);
   let dispatch = useDispatch();
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
 
   // Customer Data
   useEffect(() => {
@@ -221,21 +222,13 @@ function PrintCom({ data, id }: any) {
                 </span>
                 <span className="text-transparent">transparent</span>
                 <span className="">
-                  {data.withChauffeur ? chauffeursData?.streetAddress : "---"}
+                  {myProfile?.address}
                 </span>
                 <span className="">
-                  {data.withChauffeur
-                    ? chauffeursData?.data?.city + ", "
-                    : "---"}
-                  {data.withChauffeur ? chauffeursData?.data?.country : "---"}
+                  {myProfile?.phone}
                 </span>
                 <span className="">
-                  {data.withChauffeur ? customersData?.data?.phone : "---"}
-                </span>
-                <span className="">
-                  {data.withChauffeur
-                    ? customersData?.data?.emailAddress
-                    : "---"}
+                  {myProfile?.email}
                 </span>
               </div>
             </div>
@@ -376,7 +369,7 @@ function PrintCom({ data, id }: any) {
                   ))}
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5 absolute bottom-[100px]">
+              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5 absolute bottom-[80px]">
                 <div className="w-[50%] h-fit flex flex-col justify-center items-end text-[14px] font-[400] leading-[17px] text-black">
                   <span className="w-[50%] leading-[21px] mt-1 flex justify-between items-start text-justify border-b-[1px] border-black"></span>
                   <span className="w-[50%] leading-[21px] mt-1 text-center">

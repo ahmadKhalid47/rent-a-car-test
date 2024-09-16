@@ -13,7 +13,6 @@ export default function FirstPage({
   const today = new Date();
   const todayDate = today.toISOString().split("T")[0];
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
-console.log(myProfile);
 
   return (
     <div
@@ -47,17 +46,13 @@ console.log(myProfile);
             </span>
             <span className="text-transparent">transparent</span>
             <span className="">
-              {data.withChauffeur ? chauffeursData?.streetAddress : "---"}
+              {myProfile?.address}
             </span>
             <span className="">
-              {data.withChauffeur ? chauffeursData?.data?.city + ", " : "---"}
-              {data.withChauffeur ? chauffeursData?.data?.country : "---"}
+              {myProfile?.phone}
             </span>
             <span className="">
-              {data.withChauffeur ? customersData?.data?.phone : "---"}
-            </span>
-            <span className="">
-              {data.withChauffeur ? customersData?.data?.emailAddress : "---"}
+              {myProfile?.email}
             </span>
           </div>
         </div>
