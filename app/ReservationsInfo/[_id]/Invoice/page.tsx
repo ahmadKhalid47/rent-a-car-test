@@ -12,7 +12,7 @@ import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
 import carLogo from "@/public/car.svg";
 import { MediumLoader } from "@/app/Components/Loader";
-import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
+import { setAllValues as setAllInvoiceValues } from "@/app/store/Agreement";
 import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 
 export default function reservationInfoMainPage() {
@@ -99,7 +99,7 @@ function PrintCom({ data, id }: any) {
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursData, setchauffeursData] = useState<any>([]);
   let dispatch = useDispatch();
-  let Invoicing = useSelector((state: RootState) => state.Invoicing);
+  let Agreement = useSelector((state: RootState) => state.Agreement);
 
   // Customer Data
   useEffect(() => {
@@ -144,7 +144,7 @@ function PrintCom({ data, id }: any) {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getInvoicing");
+        const result = await axios.post("/api/getAgreement");
         dispatch(setAllInvoiceValues(result.data.data[0].data));
         console.log(result.data.data[0].data);
       } catch (error) {
@@ -153,10 +153,10 @@ function PrintCom({ data, id }: any) {
     }
     getData();
   }, []);
-  console.log(Invoicing);
-  let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
+  console.log(Agreement);
+  let varPerNum = isNaN(Number(Agreement?.vatPercentage))
     ? 0
-    : Number(Invoicing?.vatPercentage);
+    : Number(Agreement?.vatPercentage);
   let amountNum = isNaN(Number(data?.amount)) ? 0 : Number(data?.amount);
 
   function varAmount(varPer: any, total: any) {
@@ -293,7 +293,7 @@ function PrintCom({ data, id }: any) {
                     ADDITIONAL INFORMATION
                   </span>
                   <span className="w-[100%] leading-[21px] mt-1">
-                    {Invoicing?.additionalInfo}{" "}
+                    {Agreement?.additionalInfo}{" "}
                   </span>
                 </div>
                 <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600]">
@@ -319,14 +319,14 @@ function PrintCom({ data, id }: any) {
                       </div>
                     </div>
                   )}
-                  {Invoicing?.vatInclude && (
+                  {Agreement?.vatInclude && (
                     <div className="w-full h-fit flex justify-end items-center py-1 px-">
                       <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                         <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                           VAT
                         </div>
                         <div className="w-[25%] h-fit flex justify-start items-center">
-                          {Invoicing?.vatPercentage}%
+                          {Agreement?.vatPercentage}%
                         </div>
                       </div>
                     </div>
@@ -336,7 +336,7 @@ function PrintCom({ data, id }: any) {
                     <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                       TOTAL:
                     </div>
-                    {Invoicing?.vatInclude ? (
+                    {Agreement?.vatInclude ? (
                       <div className="w-[25%] h-fit flex justify-start items-center">
                         ${varAmount(varPerNum, amountNum)}
                       </div>
@@ -353,7 +353,7 @@ function PrintCom({ data, id }: any) {
                   <span className="text-[18px] font-[600] leading-[41px] text-black underline">
                     TERMS & CONDITIONS
                   </span>
-                  {formatListing(Invoicing?.terms).map(
+                  {formatListing(Agreement?.terms).map(
                     (item: any, index: any) => (
                       <div className="w-[100%] leading-[21px] mt- flex justify-between items-start text-justify">
                         <span className="w-[2%]">{index + 1}.</span>
@@ -370,7 +370,7 @@ function PrintCom({ data, id }: any) {
                   <span className="text-[18px] font-[600] leading-[41px] text-black">
                     PAYMENT INFO
                   </span>
-                  {Invoicing?.paymentInfo.split("\n").map((item) => (
+                  {Agreement?.paymentInfo.split("\n").map((item) => (
                     <span className="w-[100%] leading-[21px] flex justify-between items-start text-justify">
                       {item}
                     </span>

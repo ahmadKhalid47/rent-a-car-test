@@ -184,7 +184,7 @@ export default function AddUser() {
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-                    placeholder={`Enter Payment Method`}
+                    placeholder={`Enter Additional information in invoice.`}
                     rows={6}
                     cols={6}
                     onChange={(e) => {
@@ -208,7 +208,7 @@ export default function AddUser() {
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center input-color rounded-xl border-2 border-grey"
-                    placeholder={`Enter Payment Method`}
+                    placeholder={`Enter terms and conditions.`}
                     rows={6}
                     cols={6}
                     onKeyDown={handleKeyDown}
