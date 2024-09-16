@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   vatPercentage: "",
-  vatInclude: "",
+  vatInclude: false,
   paymentInfo: "",
   additionalInfo: "",
   terms: "",

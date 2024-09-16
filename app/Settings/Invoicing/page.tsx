@@ -6,11 +6,20 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import axios from "axios";
 import { TempTypeInput } from "@/app/Components/InputComponents/TypeInput";
+import {
+  setvatPercentageR,
+  setvatIncludeR,
+  setpaymentInfoR,
+  setadditionalInfoR,
+  settermsR,
+  setAllValues,
+} from "@/app/store/Invoicing";
+import { formatListing } from "@/app/Components/functions/formats";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
+  let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [currencies, setCurrencies] = useState<any>([]);
@@ -23,6 +32,44 @@ export default function AddUser() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  // console.log(Invoicing);
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const input = e.target.value;
+
+    // Split the user's input into lines
+    const lines = input.split("\n");
+
+    // Remove existing numbering before adding new numbers
+    const cleanLines = lines.map((line) => line.replace(/^\d+\.\s*/, ""));
+
+    // Add line numbers
+    const numberedLines = cleanLines
+      .map((line, index) => {
+        // Only add a number if there's content on the line
+        return line.trim() ? `${index + 1}. ${line}` : "";
+      })
+      .join("\n");
+
+    dispatch(settermsR(numberedLines));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    // Handle backspace so that it doesn't get stuck on numbers
+    if (e.key === "Backspace") {
+      const { selectionStart, selectionEnd } = e.currentTarget;
+      const lines = Invoicing?.terms.split("\n");
+      const currentLine = lines[selectionStart ? selectionStart - 1 : 0];
+
+      // If backspace is pressed on an empty line number, allow the number to be deleted
+      if (currentLine && currentLine.match(/^\d+\.\s*$/)) {
+        e.preventDefault(); // Prevent the default behavior
+        const newText =
+          Invoicing?.terms.substring(0, selectionStart - currentLine.length) +
+          Invoicing?.terms.substring(selectionEnd);
+        dispatch(settermsR(newText));
+      }
+    }
+  };
 
   return (
     <div
@@ -55,29 +102,28 @@ export default function AddUser() {
                   <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center bg-white ">
                     <input
                       type="checkbox"
-                      // checked={customer.isVip}
+                      checked={Invoicing.vatInclude}
                       className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
-                      // onChange={(e) =>
-                      //   dispatch(setisVipR(e.target.checked))
-                      // }
+                      onChange={(e) =>
+                        dispatch(setvatIncludeR(e.target.checked))
+                      }
                     />
                     Prices include VAT
                   </div>
                 </div>
               </div>
-
               <TempTypeInput
-                setState={"setrefNameR"}
+                setState={setvatPercentageR}
                 label={"VAT percentage (%)"}
-                value={"10"}
+                value={Invoicing.vatPercentage}
                 required={false}
-                type={"text"}
+                type={"number"}
               />
             </div>
           </div>
           <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-3 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
             <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
-              VAT Percentage
+              Payment Information{" "}
             </h3>
             <div className="flex justify-start items-center gap-x-[4%] gap-y-5 w-full h-fit">
               <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
@@ -90,16 +136,10 @@ export default function AddUser() {
                     placeholder={`Enter Payment Method`}
                     rows={6}
                     cols={6}
-                    value={`A/C NAME: __________ 
-BANK: __________ 
-SWIFT : __________ 
-IBAN : __________ 
-ACCOUNT: __________
-METHOD: Bank`}
-                    // onChange={(e) => {
-                    //   dispatch(setState(e.target.value));
-                    // }}
-                    // value={value}
+                    value={Invoicing.paymentInfo}
+                    onChange={(e) => {
+                      dispatch(setpaymentInfoR(e.target.value));
+                    }}
                   />
                 </div>
               </div>
@@ -120,11 +160,10 @@ METHOD: Bank`}
                     placeholder={`Enter Payment Method`}
                     rows={6}
                     cols={6}
-                    value={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
-                    // onChange={(e) => {
-                    //   dispatch(setState(e.target.value));
-                    // }}
-                    // value={value}
+                    onChange={(e) => {
+                      dispatch(setadditionalInfoR(e.target.value));
+                    }}
+                    value={Invoicing.additionalInfo}
                   />
                 </div>
               </div>
@@ -145,11 +184,11 @@ METHOD: Bank`}
                     placeholder={`Enter Payment Method`}
                     rows={6}
                     cols={6}
-                    value={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book`}
-                    // onChange={(e) => {
-                    //   dispatch(setState(e.target.value));
-                    // }}
-                    // value={value}
+                    onKeyDown={handleKeyDown}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    value={Invoicing?.terms}
                   />
                 </div>
               </div>

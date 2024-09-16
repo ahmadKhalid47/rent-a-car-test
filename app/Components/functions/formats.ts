@@ -35,3 +35,6 @@ export function formatId(id: any): any {
   // Extract the last 6 characters from the string
   return id.slice(-6);
 }
+export function formatListing(text: any) {
+    return text.split(/\d+\.\s/).filter(Boolean);
+  }
