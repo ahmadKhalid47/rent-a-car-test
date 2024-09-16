@@ -25,8 +25,6 @@ export default function AddUser() {
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [currencies, setCurrencies] = useState<any>([]);
-  const [selectedCurrency, setSelectedCurrency] = useState<any>([]);
   const router = useRouter();
   const [loading, setLoading] = useState<any>(false);
   const [saveloading, setSaveLoading] = useState<any>(false);

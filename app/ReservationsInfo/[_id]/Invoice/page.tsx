@@ -1,5 +1,4 @@
 "use client";
-import upload from "@/public/Paper Upload.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
@@ -8,22 +7,24 @@ import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
-import { formatId } from "@/app/Components/functions/formats";
+import { formatId, formatListing } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
 import carLogo from "@/public/car.svg";
-import { log } from "util";
 import { MediumLoader } from "@/app/Components/Loader";
+import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
   let global = useSelector((state: RootState) => state.Global);
-  let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
+  let dispatch = useDispatch();
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -97,6 +98,8 @@ function PrintCom({ data, id }: any) {
   const [customersData, setCustomersData] = useState<any>([]);
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursData, setchauffeursData] = useState<any>([]);
+  let dispatch = useDispatch();
+  let Invoicing = useSelector((state: RootState) => state.Invoicing);
 
   // Customer Data
   useEffect(() => {
@@ -137,7 +140,30 @@ function PrintCom({ data, id }: any) {
       getData();
     }
   }, [data]);
-  console.log(data);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getInvoicing");
+        dispatch(setAllInvoiceValues(result.data.data[0].data));
+        console.log(result.data.data[0].data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, []);
+  console.log(Invoicing);
+  let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
+    ? 0
+    : Number(Invoicing?.vatPercentage);
+  let amountNum = isNaN(Number(data?.amount)) ? 0 : Number(data?.amount);
+
+  function varAmount(varPer: any, total: any) {
+    let tempvar = (total * varPer) / 100;
+
+    return tempvar + total;
+  }
 
   return (
     <>
@@ -148,7 +174,7 @@ function PrintCom({ data, id }: any) {
           className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative bg-white`}
         >
           <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
-            <h2 className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-start mt-4">
+            <h2 className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-start mt-2">
               Invoice Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
@@ -226,7 +252,7 @@ function PrintCom({ data, id }: any) {
                   Price
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+              <div className="w-full h-fit flex justify-between items-center py-3 px- border-b-[1px] border-grey">
                 <div className="w-[10%] h-fit flex justify-start items-center">
                   01
                 </div>
@@ -247,7 +273,7 @@ function PrintCom({ data, id }: any) {
                 </div>
               </div>
               {data.withChauffeur && (
-                <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+                <div className="w-full h-fit flex justify-between items-center py-3 px- border-b-[1px] border-grey">
                   <div className="w-[10%] h-fit flex justify-start items-center">
                     02
                   </div>
@@ -261,41 +287,28 @@ function PrintCom({ data, id }: any) {
                   </div>
                 </div>
               )}
-
-              <div className="w-full h-fit flex justify-end items-center py-1 px-4">
-                <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
-                  <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
-                    Subtotal
-                  </div>
-                  <div className="w-[25%] h-fit flex justify-start items-center">
-                    $
-                    {Number(data.amount) +
-                      Number(data.discount ? data.discount : "0")}
-                  </div>
-                </div>
-              </div>
-              <div className="w-full h-fit flex justify-end items-center py-1 px-4 text-transparent">
-                <div className="w-[40%] h-fit flex justify-between items-center font-[600]">
-                  <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
-                    VAT
-                  </div>
-                  <div className="w-[25%] h-fit flex justify-start items-center">
-                    20%
-                  </div>
-                </div>
-              </div>
-              <div className="w-full h-fit flex justify-between items-start py-1 px-4">
-                <div className="w-[55%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+              <div className="w-full h-fit flex justify-between items-start py-1 px-">
+                <div className="w-[55%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black mt-2">
                   <span className="text-[18px] font-[600] leading-[21px] text-black">
                     ADDITIONAL INFORMATION
                   </span>
-                  <span className="w-[80%] leading-[21px] mt-1">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard
+                  <span className="w-[100%] leading-[21px] mt-1">
+                    {Invoicing?.additionalInfo}{" "}
                   </span>
                 </div>
                 <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600]">
+                  <div className="w-full h-fit flex justify-end items-center py-1 px-">
+                    <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
+                      <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                        Subtotal
+                      </div>
+                      <div className="w-[25%] h-fit flex justify-start items-center">
+                        $
+                        {Number(data.amount) +
+                          Number(data.discount ? data.discount : "0")}
+                      </div>
+                    </div>
+                  </div>
                   {data.discount && (
                     <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                       <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
@@ -306,69 +319,65 @@ function PrintCom({ data, id }: any) {
                       </div>
                     </div>
                   )}
+                  {Invoicing?.vatInclude && (
+                    <div className="w-full h-fit flex justify-end items-center py-1 px-">
+                      <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
+                        <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                          VAT
+                        </div>
+                        <div className="w-[25%] h-fit flex justify-start items-center">
+                          {Invoicing?.vatPercentage}%
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="w-[100%] py-2 h-fit flex justify-between items-center font-[600] bg-main-blue text-white mt-1">
                     <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                       TOTAL:
                     </div>
-                    <div className="w-[25%] h-fit flex justify-start items-center">
-                      ${data.amount}
-                    </div>
+                    {Invoicing?.vatInclude ? (
+                      <div className="w-[25%] h-fit flex justify-start items-center">
+                        ${varAmount(varPerNum, amountNum)}
+                      </div>
+                    ) : (
+                      <div className="w-[25%] h-fit flex justify-start items-center">
+                        ${data.amount}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-3">
+              <div className="w-full h-fit flex justify-between items-start py-1 px- mt-3">
                 <div className="w-[100%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
                   <span className="text-[18px] font-[600] leading-[41px] text-black underline">
                     TERMS & CONDITIONS
                   </span>
-                  <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    <span className="w-[2%] leading-[21px]">1.</span>
-                    <span className="w-[98%] leading-[21px]">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book
-                    </span>
-                  </div>
-                  <div className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    <span className="w-[2%] leading-[21px]">2.</span>
-                    <span className="w-[98%] leading-[21px]">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book
-                    </span>
-                  </div>
+                  {formatListing(Invoicing?.terms).map(
+                    (item: any, index: any) => (
+                      <div className="w-[100%] leading-[21px] mt- flex justify-between items-start text-justify">
+                        <span className="w-[2%]">{index + 1}.</span>
+                        <span key={index} className="w-[98%]">
+                          {item}
+                        </span>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-start py-1 px-4 mt-3">
-                <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
+              <div className="w-full h-fit flex justify-between items-start py-1 px- mt-3">
+                <div className="w-[100%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
                   <span className="text-[18px] font-[600] leading-[41px] text-black">
                     PAYMENT INFO
                   </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    A/C NAME: ____________
-                  </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    BANK: ____________
-                  </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    SWIFT: ____________
-                  </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    IBAN : ____________
-                  </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    ACCOUNT: ____________
-                  </span>
-                  <span className="w-[100%] leading-[21px] mt-1 flex justify-between items-start text-justify">
-                    METHOD: Bank
-                  </span>
+                  {Invoicing?.paymentInfo.split("\n").map((item) => (
+                    <span className="w-[100%] leading-[21px] flex justify-between items-start text-justify">
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5">
+              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5 absolute bottom-[100px]">
                 <div className="w-[50%] h-fit flex flex-col justify-center items-end text-[14px] font-[400] leading-[17px] text-black">
                   <span className="w-[50%] leading-[21px] mt-1 flex justify-between items-start text-justify border-b-[1px] border-black"></span>
                   <span className="w-[50%] leading-[21px] mt-1 text-center">
@@ -376,7 +385,7 @@ function PrintCom({ data, id }: any) {
                   </span>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5">
+              <div className="w-full h-fit flex justify-end items-start py-1 px-4 mt-5 absolute bottom-[20px]">
                 <div className="w-[100%] h-fit flex justify-between items-end text-[14px] font-[400] leading-[17px] text-black">
                   <span className="w-[33%] leading-[21px] mt-1 text-center">
                     Address
