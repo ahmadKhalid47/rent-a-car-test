@@ -10,6 +10,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { formatId } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
+import { setAllValues as setAllAgreementValues } from "@/app/store/Agreement";
 import { useReactToPrint } from "react-to-print";
 import { MediumLoader } from "@/app/Components/Loader";
 import FirstPage from "./FirstPage";
@@ -178,6 +179,20 @@ function PrintCom({ data, id }: any) {
     }
     getData2();
   }, []);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getAgreement");
+        dispatch(setAllAgreementValues(result.data.data[0].data));
+        console.log(result.data.data[0].data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, []);
+
 
   return (
     <>

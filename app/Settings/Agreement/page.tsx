@@ -2,17 +2,17 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { TempTypeInput } from "@/app/Components/InputComponents/TypeInput";
-import {
-  settermsR,
-  setAllValues,
-} from "@/app/store/Agreement";
+import { settermsR, setAllValues } from "@/app/store/Agreement";
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import axios from "axios";
+import React from "react";
+import { Editor, EditorProvider } from "react-simple-wysiwyg";
+import JoditEditor from "jodit-react";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -22,6 +22,7 @@ export default function AddUser() {
   const router = useRouter();
   const [loading, setLoading] = useState<any>(false);
   const [saveloading, setSaveLoading] = useState<any>(false);
+  const editor = useRef(null);
 
   useEffect(() => {
     if (isMobile) {
@@ -30,43 +31,6 @@ export default function AddUser() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const input = e.target.value;
-
-    // Split the user's input into lines
-    const lines = input.split("\n");
-
-    // Remove existing numbering before adding new numbers
-    const cleanLines = lines.map((line) => line.replace(/^\d+\.\s*/, ""));
-
-    // Add line numbers
-    const numberedLines = cleanLines
-      .map((line, index) => {
-        // Only add a number if there's content on the line
-        return line.trim() ? `${index + 1}. ${line}` : "";
-      })
-      .join("\n");
-
-    dispatch(settermsR(numberedLines));
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Handle backspace so that it doesn't get stuck on numbers
-    if (e.key === "Backspace") {
-      const { selectionStart, selectionEnd } = e.currentTarget;
-      const lines = Agreement?.terms.split("\n");
-      const currentLine = lines[selectionStart ? selectionStart - 1 : 0];
-
-      // If backspace is pressed on an empty line number, allow the number to be deleted
-      if (currentLine && currentLine.match(/^\d+\.\s*$/)) {
-        e.preventDefault(); // Prevent the default behavior
-        const newText =
-          Agreement?.terms.substring(0, selectionStart - currentLine.length) +
-          Agreement?.terms.substring(selectionEnd);
-        dispatch(settermsR(newText));
-      }
-    }
-  };
 
   useEffect(() => {
     async function getData() {
@@ -91,6 +55,7 @@ export default function AddUser() {
       setSaveLoading(false);
     }
   }
+  console.log(Agreement?.terms);
 
   return (
     <div
@@ -114,7 +79,7 @@ export default function AddUser() {
             <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
               Terms and Conditions
             </h3>
-            <textarea
+            {/* <textarea
               className="min-h-[50vh] max-h-fit py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center input-color rounded-xl border-2 border-grey"
               placeholder={`Enter terms and conditions.`}
               onKeyDown={handleKeyDown}
@@ -122,6 +87,14 @@ export default function AddUser() {
                 handleChange(e);
               }}
               value={Agreement?.terms}
+            /> */}
+            <JoditEditor
+              ref={editor}
+              value={Agreement?.terms}
+              onChange={(newContent) => {
+                dispatch(settermsR(newContent));
+              }}
+              className="h-fit font-[400] text-[16px] leading-[19px] w-[90%] input-color rounded-xl border-grey"
             />
           </div>
           <div

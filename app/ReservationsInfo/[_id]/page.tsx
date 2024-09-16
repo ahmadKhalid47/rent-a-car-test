@@ -22,6 +22,7 @@ import {
 } from "@/app/Components/functions/formats";
 import { SmallLoader } from "@/app/Components/Loader";
 import Link from "next/link";
+import { setAllValues } from "@/app/store/Agreement";
 
 export default function reservationInfoMainPage() {
   let { reservationInfo } = useSelector(

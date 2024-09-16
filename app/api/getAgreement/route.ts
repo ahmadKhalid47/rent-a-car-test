@@ -1,5 +1,5 @@
 import connectDb from "@/app/models/connectDb";
-import updateInvoicingModel from "@/app/models/updateInvoicing";
+import updateAgreementModel from "@/app/models/updateAgreement";
 import { NextResponse } from "next/server";
 
 // Disable cache for this API route
@@ -8,7 +8,7 @@ export const fetchCache = "force-no-store";
 export async function POST(req: Request) {
   try {
     await connectDb();
-    const data = await updateInvoicingModel.find();
+    const data = await updateAgreementModel.find();
     const response = NextResponse.json({ data });
     return response;
   } catch (err) {

@@ -1,15 +1,12 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import {
-  formatDate,
-  formatId,
-  formatListing,
-} from "@/app/Components/functions/formats";
+import { formatDate, formatId } from "@/app/Components/functions/formats";
 
 export default function ThirdPage({ customersName, id }: any) {
   let Agreement = useSelector((state: RootState) => state.Agreement);
   const today = new Date();
   const todayDate = today.toISOString().split("T")[0];
+  console.log(Agreement?.terms);
 
   return (
     <div
@@ -35,18 +32,12 @@ export default function ThirdPage({ customersName, id }: any) {
             </span>
           </div>
         </div>
-        <div className="w-full h-fit flex flex-col justify-between items-center">
-          {formatListing(Agreement?.terms).map((item: any, index: any) => (
-            <div className="w-full flex flex-col justify-start items-start rounded-[5px] overflow-hidden mt-6">
-              <div className="w-[100%] h-fit flex justify-start items-center text-[16px] font-[600] py-3 px-5 bg-light-grey ">
-                {index + 1}. Your contract with us.
-              </div>
-              <div className="w-[100%] h-fit flex justify-start items-center py-1 px-5 text-[14px] font-[400] text-justify leading-[21px]">
-                {item}
-              </div>
-            </div>
-          ))}
-        </div>
+        <div
+          className="w-full h-fit flex flex-col justify-between items-center mt-4"
+          dangerouslySetInnerHTML={{
+            __html: Agreement?.terms,
+          }}
+        />
       </div>
     </div>
   );

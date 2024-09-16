@@ -17,7 +17,6 @@ export default function SecondPage({
   let interiorImg = Configurations?.Configurations?.type?.find(
     (item: any) => item.Type === VehiclesData?.data?.type
   )?.interior;
-  console.log(data);
 
   return (
     <div
@@ -88,9 +87,9 @@ export default function SecondPage({
           <div className="w-full flex justify-between items-start mt-6">
             <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
               <img src={exteriorImg} className="w-[250px] h-[300px]" />
-              {data.damages.map((item: any, index: any) => (
-                <>
-                  {item.exterior && (
+              {data.damages.map(
+                (item: any, index: any) =>
+                  item.exterior && (
                     <div
                       className={`absolute w-[15px] h-[15px] rounded-full bg-main-blue text-white text-[8px] flex justify-center items-center font-[600]`}
                       key={index}
@@ -101,9 +100,8 @@ export default function SecondPage({
                     >
                       {index + 1}
                     </div>
-                  )}
-                </>
-              ))}
+                  )
+              )}
             </div>
             <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
               <img src={interiorImg} className="w-[250px] h-[300px]" />
