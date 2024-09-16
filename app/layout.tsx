@@ -20,8 +20,8 @@ export default function RootLayout({
   const router = useRouter();
 
   const pathName = usePathname();
-  const [isVerified, setIsVerified] = useState<any>(undefined);
-  // const [isVerified, setIsVerified] = useState<any>(true);
+  // const [isVerified, setIsVerified] = useState<any>(undefined);
+  const [isVerified, setIsVerified] = useState<any>(true);
   const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {

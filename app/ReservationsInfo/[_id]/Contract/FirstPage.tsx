@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import { formatDate, formatId } from "@/app/Components/functions/formats";
 import carLogo from "@/public/car.svg";
+import { RootState } from "@/app/store";
 
 export default function FirstPage({
   data,
@@ -10,8 +12,10 @@ export default function FirstPage({
 }: any) {
   const today = new Date();
   const todayDate = today.toISOString().split("T")[0];
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
+console.log(myProfile);
 
-    return (
+  return (
     <div
       className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative bg-white`}
     >
