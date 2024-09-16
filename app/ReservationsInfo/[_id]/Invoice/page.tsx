@@ -55,7 +55,7 @@ export default function reservationInfoMainPage() {
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-    documentTitle: "Custom Document Title",
+    documentTitle: `"Contract"${reservation?.customerName}`,
   });
 
   return (

@@ -58,10 +58,10 @@ export default function reservationInfoMainPage() {
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-    documentTitle: `"Contract-"${"Document Title"}`,
+    documentTitle: `"Contract"${reservation?.customerName}`,
   });
   
-  console.log(reservation);
+  console.log(reservation?.customerName);
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
