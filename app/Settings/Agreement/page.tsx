@@ -7,10 +7,6 @@ import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { TempTypeInput } from "@/app/Components/InputComponents/TypeInput";
 import {
-  setvatPercentageR,
-  setvatIncludeR,
-  setpaymentInfoR,
-  setadditionalInfoR,
   settermsR,
   setAllValues,
 } from "@/app/store/Agreement";
