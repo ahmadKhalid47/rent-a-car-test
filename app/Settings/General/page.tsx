@@ -48,8 +48,6 @@ export default function AddUser() {
     getData();
   }, []);
 
-  console.log(selectedCurrency);
-
   return (
     <div
       className={`${

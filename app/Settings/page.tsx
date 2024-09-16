@@ -37,7 +37,6 @@ export default function Vehicles() {
       window.location.href = "/";
     }
   }
-  console.log(myProfile?.username);
 
   return (
     <div
