@@ -99,7 +99,6 @@ export default function AddUser() {
       setSaveLoading(false);
     }
   }
-  console.log(Invoicing);
 
   return (
     <div
