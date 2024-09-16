@@ -112,7 +112,6 @@ export default function AddUser() {
       setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
     }
   };
-  console.log(myProfile);
   
 
   return (
