@@ -62,8 +62,7 @@ export default function Vehicles() {
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
-  console.log(activeVehicles);
-  
+
   useEffect(() => {
     async function getData() {
       try {
@@ -127,7 +126,8 @@ export default function Vehicles() {
   }, []);
 
   function submitButton() {
-    let filtered: any = VehiclesData;
+    // let filtered: any = VehiclesData;
+    let filtered: any = activeVehicles;
 
     if (make) {
       const lowercasedQuery = make.toLowerCase();
@@ -182,6 +182,7 @@ export default function Vehicles() {
     } else {
       setCarAvailable(filtered.length);
     }
+    console.log(filtered);
   }
 
   function filterReservationsByDateTime(
@@ -226,8 +227,6 @@ export default function Vehicles() {
     });
   }
 
-  console.log(make, model);
-  console.log(filterReg().map((item: any) => item));
   function filterReg() {
     let filtered: any = VehiclesData;
 
