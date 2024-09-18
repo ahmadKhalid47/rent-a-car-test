@@ -251,7 +251,7 @@ function PrintCom({ data, id }: any) {
                       </div>
                     </div>
                   </div>
-                  {Invoicing?.vatInclude && (
+                  {data?.vatInclude && (
                     <div className="w-full h-fit flex justify-end items-center py-1 pe-4">
                       <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                         <div className="w-[50%] h-fit flex ps-4 justify-start items-center">

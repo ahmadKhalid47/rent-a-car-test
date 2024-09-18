@@ -10,6 +10,7 @@ import {
   setdurationinDays,
   setcarTotal,
   setchauffeurTotal,
+  setvatInclude,
 } from "@/app/store/reservations";
 import { useEffect, useState } from "react";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
@@ -138,6 +139,10 @@ export default function Others({
     carRentPerMonths,
     carRentPerHours,
   ]);
+
+  useEffect(() => {
+    dispatch(setvatInclude(Invoicing?.vatInclude));
+  }, []);
 
   useEffect(() => {
     if (daysBetween < 1) {

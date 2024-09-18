@@ -23,6 +23,7 @@ const initialState: any = {
   withChauffeur: true,
   duration: "",
   durationinDays: false,
+  vatInclude: false,
   amount: "",
   carTotal: "",
   chauffeurTotal: "",
@@ -135,6 +136,9 @@ export const reservationSlice = createSlice({
     setstatus: (state, action) => {
       state.status = action.payload;
     },
+    setvatInclude: (state, action) => {
+      state.vatInclude = action.payload;
+    },
 
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
@@ -178,6 +182,7 @@ export const {
   setdurationinDays,
   setcarTotal,
   setchauffeurTotal,
+  setvatInclude,
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;
