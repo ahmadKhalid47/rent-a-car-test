@@ -42,7 +42,6 @@ export default function Info() {
   const [files, setFiles] = useState(vehicle.carImages);
   const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
-  const [colorOnHover, setColorOnHover] = useState("");
   useEffect(() => {
     setFiles(vehicle.carImages);
   }, [vehicle.carImages]);
@@ -218,7 +217,7 @@ export default function Info() {
               )}
             </select>
             <div
-              className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] border-2 border-grey bg-white"
+              className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] bg-white"
               style={{
                 backgroundColor: vehicle.color,
               }}

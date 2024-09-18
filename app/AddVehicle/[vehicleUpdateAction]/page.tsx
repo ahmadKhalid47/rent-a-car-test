@@ -85,7 +85,7 @@ export default function Vehicles() {
     }
     getData2();
   }, []);
-  
+
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setCurrentPage(goToPage);
@@ -410,21 +410,32 @@ export default function Vehicles() {
           ) : null}
 
           <div
-            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${
-              currentPage === 0 ? "justify-end" : "justify-between"
-            } items-center`}
+            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 justify-between items-center`}
           >
-            {currentPage !== 0 ? (
+            <div className="w-[50%] flex justify-start item-center gap-1 md:gap-3">
+              {currentPage !== 0 ? (
+                <button
+                  className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(currentPage - 1);
+                  }}
+                >
+                  Back
+                </button>
+              ) : null}
               <button
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
-                  setCurrentPage(currentPage - 1);
+                  dispatch(resetState());
+                    setCurrentPage(0);
                 }}
               >
-                Back
+                Reset
               </button>
-            ) : null}
+            </div>
+
             {currentPage === 5 ? (
               <>
                 {vehicleUpdateAction !== "AddNew" ? (
