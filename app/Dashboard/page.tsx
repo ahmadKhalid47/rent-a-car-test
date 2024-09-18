@@ -57,7 +57,7 @@ export default function Vehicles() {
     getData();
   }, []);
   const activeVehicles = VehiclesData.filter(
-    (item: any) => item.active === true
+    (item: any) => item.rentOut === false
   );
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
