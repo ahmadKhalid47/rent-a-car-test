@@ -57,11 +57,13 @@ export default function Vehicles() {
     getData();
   }, []);
   const activeVehicles = VehiclesData.filter(
-    (item: any) => item.rentOut === false
+    (item: any) => item.rentOut === false && item.active === true
   );
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
+  console.log(activeVehicles);
+  
   useEffect(() => {
     async function getData() {
       try {
