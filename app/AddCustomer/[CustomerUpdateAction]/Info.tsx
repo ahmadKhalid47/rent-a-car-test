@@ -1,11 +1,13 @@
 "use client";
 import vip from "@/public/vip.svg";
 import upload from "@/public/Paper Upload.svg";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
-import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
+import {
+  TempTypeInput,
+  TypeInput,
+} from "../../Components/InputComponents/TypeInput";
 import {
   SelectInput,
   TempSelectInput,
@@ -28,19 +30,21 @@ import {
   setstreetAddressR,
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 
 export default function Info() {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  let customer = useSelector((state: RootState) => state.Customer);
-  const [files, setFiles] = useState<any>(customer?.customerImage);
+  const customer = useSelector((state: RootState) => state.Customer);
+  const [files, setFiles] = useState<any>(customer?.customerImage || []);
+
+  // Removed the useEffect that was causing the loop
+  /*
   useEffect(() => {
     setFiles(customer.customerImage);
   }, [customer.customerImage]);
+  */
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
@@ -83,7 +87,7 @@ export default function Info() {
         />
       </div>
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        image4.jpg
+        {file.name}
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
@@ -102,17 +106,20 @@ export default function Info() {
     onDrop,
     multiple: false,
   });
-  useEffect(() => {
-    dispatch(setcustomerImageR(files));
-  }, [files]);
 
-  let { countries, states, cities } = CountryStateCity(
+  useEffect(() => {
+    // Optional: Check if files have actually changed to prevent unnecessary dispatch
+    // This requires a deep comparison if files is an array or object
+    dispatch(setcustomerImageR(files));
+  }, [files, dispatch]);
+
+  const { countries, states, cities } = CountryStateCity(
     customer.country,
     customer.state
   );
 
   return (
-    <div className="w-full h-fit  ">
+    <div className="w-full h-fit">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempSelectInput
           setState={setcustomerTypeR}

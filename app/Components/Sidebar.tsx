@@ -181,7 +181,7 @@ export default function Sidebar() {
                     ? "justify-start ps-5"
                     : "justify-center px-0"
                 } bg-main-blue-hover  ${
-                  pathName === "/AddCustomer/AddNew"
+                  pathName.includes("/AddCustomer")
                     ? "bg-main-blue text-white"
                     : ""
                 } hover:text-white rounded-[10px]`}

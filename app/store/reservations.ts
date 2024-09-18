@@ -22,7 +22,10 @@ const initialState: any = {
   discount: "",
   withChauffeur: true,
   duration: "",
+  durationinDays: false,
   amount: "",
+  carTotal: "",
+  chauffeurTotal: "",
   fuelCompletion: "",
   fuelImagesCompletion: [],
   odometerCompletion: "",
@@ -99,6 +102,9 @@ export const reservationSlice = createSlice({
     setduration: (state, action) => {
       state.duration = action.payload;
     },
+    setdurationinDays: (state, action) => {
+      state.durationinDays = action.payload;
+    },
     setamount: (state, action) => {
       state.amount = action.payload;
     },
@@ -116,6 +122,12 @@ export const reservationSlice = createSlice({
     },
     setdamages: (state, action) => {
       state.damages = action.payload;
+    },
+    setcarTotal: (state, action) => {
+      state.carTotal = action.payload;
+    },
+    setchauffeurTotal: (state, action) => {
+      state.chauffeurTotal = action.payload;
     },
     setdamageImagesToDelete: (state, action) => {
       state.damageImagesToDelete.push(...action.payload);
@@ -163,6 +175,9 @@ export const {
   setdamages,
   setdamageImagesToDelete,
   setstatus,
+  setdurationinDays,
+  setcarTotal,
+  setchauffeurTotal,
 } = reservationSlice.actions;
 
 export default reservationSlice.reducer;

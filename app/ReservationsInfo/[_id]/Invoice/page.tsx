@@ -96,7 +96,6 @@ export default function reservationInfoMainPage() {
 function PrintCom({ data, id }: any) {
   const [customersData, setCustomersData] = useState<any>([]);
   const [customerloading, setcustomerLoading] = useState<any>(true);
-  const [chauffeursData, setchauffeursData] = useState<any>([]);
   let dispatch = useDispatch();
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
@@ -121,49 +120,17 @@ function PrintCom({ data, id }: any) {
     }
   }, [data]);
 
-  // Chauffeur Data
-  useEffect(() => {
-    async function getData() {
-      try {
-        setcustomerLoading(true);
-        const result = await axios.post(
-          `/api/getchauffeurInfo/${data?.chauffeur_id}`
-        );
-        setchauffeursData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setcustomerLoading(false);
-      }
-    }
-    if (data?.chauffeur_id) {
-      getData();
-    }
-  }, [data]);
-
   useEffect(() => {
     async function getData() {
       try {
         const result = await axios.post("/api/getInvoicing");
         dispatch(setAllInvoiceValues(result.data.data[0].data));
-        console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
     }
     getData();
   }, []);
-  console.log(Invoicing);
-  let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
-    ? 0
-    : Number(Invoicing?.vatPercentage);
-  let amountNum = isNaN(Number(data?.amount)) ? 0 : Number(data?.amount);
-
-  function varAmount(varPer: any, total: any) {
-    let tempvar = (total * varPer) / 100;
-
-    return tempvar + total;
-  }
 
   return (
     <>
@@ -221,15 +188,9 @@ function PrintCom({ data, id }: any) {
                   Rapid Rent a Car
                 </span>
                 <span className="text-transparent">transparent</span>
-                <span className="">
-                  {myProfile?.address}
-                </span>
-                <span className="">
-                  {myProfile?.phone}
-                </span>
-                <span className="">
-                  {myProfile?.email}
-                </span>
+                <span className="">{myProfile?.address}</span>
+                <span className="">{myProfile?.phone}</span>
+                <span className="">{myProfile?.email}</span>
               </div>
             </div>
             <div className="w-full h-fit flex flex-col justify-between items-center mt-6">
@@ -244,7 +205,7 @@ function PrintCom({ data, id }: any) {
                   Price
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-center py-3 px- border-b-[1px] border-grey">
+              <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
                 <div className="w-[10%] h-fit flex justify-start items-center">
                   01
                 </div>
@@ -254,18 +215,11 @@ function PrintCom({ data, id }: any) {
                   To {data.dropOffDate} | {data.dropOffTime}
                 </div>
                 <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
-                  $
-                  {data.withChauffeur
-                    ? Number(data.amount) -
-                      Number(chauffeursData?.data?.rentPerDay) *
-                        Number(data.duration) +
-                      Number(data.discount ? data.discount : "0")
-                    : Number(data.amount) +
-                      Number(data.discount ? data.discount : "0")}
+                  ${Number(data?.carTotal)}
                 </div>
               </div>
               {data.withChauffeur && (
-                <div className="w-full h-fit flex justify-between items-center py-3 px- border-b-[1px] border-grey">
+                <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
                   <div className="w-[10%] h-fit flex justify-start items-center">
                     02
                   </div>
@@ -273,9 +227,7 @@ function PrintCom({ data, id }: any) {
                     Chauffeur
                   </div>
                   <div className="w-[10%] h-fit flex justify-start items-center font-[600]">
-                    $
-                    {Number(chauffeursData?.data?.rentPerDay) *
-                      Number(data.duration)}
+                    ${Number(data?.chauffeurTotal)}
                   </div>
                 </div>
               )}
@@ -289,30 +241,18 @@ function PrintCom({ data, id }: any) {
                   </span>
                 </div>
                 <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600]">
-                  <div className="w-full h-fit flex justify-end items-center py-1 px-">
+                  <div className="w-full h-fit flex justify-end items-center py-1 pe-4">
                     <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                       <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                         Subtotal
                       </div>
                       <div className="w-[25%] h-fit flex justify-start items-center">
-                        $
-                        {Number(data.amount) +
-                          Number(data.discount ? data.discount : "0")}
+                        ${Number(data?.carTotal) + Number(data?.chauffeurTotal)}
                       </div>
                     </div>
                   </div>
-                  {data.discount && (
-                    <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
-                      <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
-                        Discount:
-                      </div>
-                      <div className="w-[25%] h-fit flex justify-start items-center">
-                        ${Number(data.discount)}
-                      </div>
-                    </div>
-                  )}
                   {Invoicing?.vatInclude && (
-                    <div className="w-full h-fit flex justify-end items-center py-1 px-">
+                    <div className="w-full h-fit flex justify-end items-center py-1 pe-4">
                       <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                         <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                           VAT
@@ -323,20 +263,24 @@ function PrintCom({ data, id }: any) {
                       </div>
                     </div>
                   )}
+                  {data.discount && (
+                    <div className="w-[100%] h-fit flex justify-between items-center font-[600] pe-4">
+                      <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
+                        Discount:
+                      </div>
+                      <div className="w-[25%] h-fit flex justify-start items-center">
+                        ${Number(data.discount)}
+                      </div>
+                    </div>
+                  )}
 
-                  <div className="w-[100%] py-2 h-fit flex justify-between items-center font-[600] bg-main-blue text-white mt-1">
+                  <div className="w-[100%] py-2 h-fit flex justify-between items-center font-[600] bg-main-blue text-white mt-1 pe-4">
                     <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                       TOTAL:
                     </div>
-                    {Invoicing?.vatInclude ? (
-                      <div className="w-[25%] h-fit flex justify-start items-center">
-                        ${varAmount(varPerNum, amountNum)}
-                      </div>
-                    ) : (
-                      <div className="w-[25%] h-fit flex justify-start items-center">
-                        ${data.amount}
-                      </div>
-                    )}
+                    <div className="w-[25%] h-fit flex justify-start items-center">
+                      ${data.amount}
+                    </div>
                   </div>
                 </div>
               </div>

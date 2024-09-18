@@ -263,7 +263,11 @@ export default function ListViewreservation({ data }: dataType) {
                 <h5 className="text-start pe-3 w-[10%]">{item.data.city}</h5>
 
                 <h5 className="text-start pe-3 w-[9%]">
-                  {item.data.duration.padStart(2, "0")} Days
+                  {item.data?.durationinDays ? (
+                    <>{item.data.duration.padStart(2, "0")} Days</>
+                  ) : (
+                    <>{item.data.duration.padStart(2, "0")} Hours</>
+                  )}
                 </h5>
                 <h5 className="text-start pe-3 w-[9%]">${item.data.amount}</h5>
                 <div className="text-start pe-3 w-[10%]">
