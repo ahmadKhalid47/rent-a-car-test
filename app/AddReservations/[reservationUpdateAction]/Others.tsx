@@ -89,6 +89,7 @@ export default function Others({
   let [days, setDays] = useState(0);
   let [weeks, setWeeks] = useState(0);
   let [months, setMonths] = useState(0);
+
   useEffect(() => {
     dispatch(
       setduration(JSON.stringify(daysBetween ? daysBetween : timeBetween))
@@ -100,6 +101,7 @@ export default function Others({
     let rentWithHours = timeBetween * carRentPerHour;
     return rentWithHours;
   }
+
   function tempAmount() {
     let total = 0;
     let totalDays = daysBetween;
@@ -126,6 +128,7 @@ export default function Others({
   useEffect(() => {
     dispatch(setcarTotal(tempAmount()));
   }, [
+    reservation?.carTotal,
     daysBetween,
     timeBetween,
     weeksBetween,
@@ -135,6 +138,7 @@ export default function Others({
     carRentPerMonths,
     carRentPerHours,
   ]);
+
   useEffect(() => {
     if (daysBetween < 1) {
       dispatch(setchauffeurTotal(chauffeurRentPerDays * 1));
@@ -177,7 +181,7 @@ export default function Others({
 
   let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
     ? 0
-    : Number(Invoicing?.vatPercentage);
+    : Number(Invoicing?.vatInclude ? Invoicing?.vatPercentage : "0");
 
   let totalAmount =
     daysBetween || timeBetween
@@ -277,11 +281,15 @@ export default function Others({
             </>
           ) : null}
 
-          <div className="w-full flex justify-between items-center h-fit">
-            <span>VAT {varPerNum}%</span>
-            <span>${varAmount(varPerNum, totalAmount)}</span>
-          </div>
-          <div className="border-b-[1px] border-grey w-full "></div>
+          {Invoicing?.vatInclude && (
+            <>
+              <div className="w-full flex justify-between items-center h-fit">
+                <span>VAT {varPerNum}%</span>
+                <span>${varAmount(varPerNum, totalAmount)}</span>
+              </div>
+              <div className="border-b-[1px] border-grey w-full "></div>
+            </>
+          )}
 
           <TempTypeInputWidth
             setState={setdiscount}
