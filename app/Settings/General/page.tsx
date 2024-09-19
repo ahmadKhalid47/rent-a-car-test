@@ -104,7 +104,7 @@ export default function AddUser() {
         <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
+              {/* <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
                     Currency
@@ -136,7 +136,7 @@ export default function AddUser() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
