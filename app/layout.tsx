@@ -20,8 +20,8 @@ export default function RootLayout({
   const router = useRouter();
 
   const pathName = usePathname();
-  // const [isVerified, setIsVerified] = useState<any>(undefined);
-  const [isVerified, setIsVerified] = useState<any>(true);
+  const [isVerified, setIsVerified] = useState<any>(undefined);
+  // const [isVerified, setIsVerified] = useState<any>(true);
   const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
@@ -34,30 +34,30 @@ export default function RootLayout({
     }
   }, [isVerified, router]);
 
-  // useEffect(() => {
-  //   const [navigationEntry] = window.performance.getEntriesByType(
-  //     "navigation"
-  //   ) as PerformanceNavigationTiming[];
+  useEffect(() => {
+    const [navigationEntry] = window.performance.getEntriesByType(
+      "navigation"
+    ) as PerformanceNavigationTiming[];
 
-  //   const isPageReload =
-  //     navigationEntry?.type === "reload" || document.referrer === "";
+    const isPageReload =
+      navigationEntry?.type === "reload" || document.referrer === "";
 
-  //   async function verifyTokenApi() {
-  //     try {
-  //       setLoading(true);
-  //       setIsVerified(undefined);
-  //       await axios.post("/api/verifyToken");
-  //       setIsVerified(true);
-  //     } catch (err) {
-  //       setIsVerified(false);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   if (isPageReload) {
-  //     verifyTokenApi();
-  //   }
-  // }, []);
+    async function verifyTokenApi() {
+      try {
+        setLoading(true);
+        setIsVerified(undefined);
+        await axios.post("/api/verifyToken");
+        setIsVerified(true);
+      } catch (err) {
+        setIsVerified(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (isPageReload) {
+      verifyTokenApi();
+    }
+  }, []);
 
   return (
     <StoreProvider>

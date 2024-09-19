@@ -367,7 +367,6 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
-.list ol{
-  /* list-style-type: decimal;
-  list-style-position: outside; */
+.h3{
+  text-emphasis: "hello";
 }
