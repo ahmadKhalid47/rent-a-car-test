@@ -76,7 +76,7 @@ export default function Vehicles() {
                 <img src={settings1.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   My Profile
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -92,7 +92,7 @@ export default function Vehicles() {
                 <img src={settings2.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   Notification
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -108,7 +108,7 @@ export default function Vehicles() {
                 {/* <img src={settings2.src} /> */}
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   Company Profile
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -124,7 +124,7 @@ export default function Vehicles() {
                 <img src={settings3.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   General
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -140,7 +140,7 @@ export default function Vehicles() {
                 <img src={settings10.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   Invoicing
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -156,7 +156,7 @@ export default function Vehicles() {
                 <img src={settings9.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   Agreement
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
@@ -169,7 +169,7 @@ export default function Vehicles() {
                 <img src={settings12.src} />
               </div>
               <div className="h-full w-[100%] flex flex-col justify-center item-start">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[15px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[40px]">
                   Contact Support
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">

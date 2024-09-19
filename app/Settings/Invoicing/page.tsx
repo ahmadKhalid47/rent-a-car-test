@@ -155,6 +155,7 @@ export default function AddUser() {
                     placeholder={`Enter Additional information in invoice.`}
                     rows={6}
                     cols={6}
+                    maxLength={250}
                     onChange={(e) => {
                       dispatch(setadditionalInfoR(e.target.value));
                     }}
@@ -179,6 +180,7 @@ export default function AddUser() {
                     placeholder={`Enter terms and conditions.`}
                     rows={6}
                     cols={6}
+                    maxLength={700}
                     onKeyDown={handleKeyDown}
                     onChange={(e) => {
                       handleChange(e);
