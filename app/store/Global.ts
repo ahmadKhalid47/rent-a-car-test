@@ -7,6 +7,7 @@ const initialState = {
   check: "",
   vehicleDataReloader: 0,
   myProfileReloader: 0,
+  companyProfileReloader: 0,
 };
 
 export const GlobalSlice = createSlice({
@@ -31,6 +32,9 @@ export const GlobalSlice = createSlice({
     setMyProfileReloader: (state, action) => {
       state.myProfileReloader = action.payload;
     },
+    setcompanyProfileReloader: (state, action) => {
+      state.companyProfileReloader = action.payload;
+    },
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   setCheck,
   setVehicleDataReloader,
   setMyProfileReloader,
+  setcompanyProfileReloader
 } = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;
