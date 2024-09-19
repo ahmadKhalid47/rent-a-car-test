@@ -98,6 +98,12 @@ export default function AddUser() {
     }
   }
 
+  function lengthMeasure(content: any) {
+    let contentArray = content.split("").length;
+    console.log(contentArray);
+    return contentArray;
+  }
+
   return (
     <div
       className={`${
@@ -146,8 +152,24 @@ export default function AddUser() {
             </h3>
             <div className="flex justify-start items-center gap-x-[4%] gap-y-5 w-full h-fit">
               <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                <label className="w-full flex justify-between gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   {"Additional information in invoice."}
+                  <span
+                    className={`flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] ${
+                      lengthMeasure(
+                        Invoicing?.additionalInfo
+                          ? Invoicing.additionalInfo
+                          : ""
+                      ) === 250
+                        ? "text-red-600"
+                        : ""
+                    }`}
+                  >
+                    {lengthMeasure(
+                      Invoicing?.additionalInfo ? Invoicing.additionalInfo : ""
+                    )}
+                    / 250
+                  </span>
                 </label>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <textarea
@@ -159,7 +181,7 @@ export default function AddUser() {
                     onChange={(e) => {
                       dispatch(setadditionalInfoR(e.target.value));
                     }}
-                    value={Invoicing.additionalInfo}
+                    value={Invoicing?.additionalInfo}
                   />
                 </div>
               </div>
@@ -171,9 +193,21 @@ export default function AddUser() {
             </h3>
             <div className="flex justify-start items-center gap-x-[4%] gap-y-5 w-full h-fit">
               <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                <label className="w-full flex justify-between gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   {"Please specify terms and conditions."}
+                  <span
+                    className={`flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] ${
+                      lengthMeasure(Invoicing?.terms ? Invoicing.terms : "") ===
+                      700
+                        ? "text-red-600"
+                        : ""
+                    }`}
+                  >
+                    {lengthMeasure(Invoicing?.terms ? Invoicing.terms : "")} /
+                    700
+                  </span>
                 </label>
+
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center input-color rounded-xl border-2 border-grey"
