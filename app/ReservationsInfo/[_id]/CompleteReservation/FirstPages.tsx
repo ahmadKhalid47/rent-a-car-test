@@ -34,12 +34,12 @@ export default function FirstPage() {
   const [odometerFiles, setodometerFiles] = useState<any>(
     reservation?.odometerImagesCompletion
   );
-  useEffect(() => {
-    setfuelFiles(reservation?.fuelImagesCompletion);
-  }, [reservation?.fuelImagesCompletion]);
-  useEffect(() => {
-    setodometerFiles(reservation?.odometerImagesCompletion);
-  }, [reservation?.odometerImagesCompletion]);
+  // useEffect(() => {
+  //   setfuelFiles(reservation?.fuelImagesCompletion);
+  // }, [reservation?.fuelImagesCompletion]);
+  // useEffect(() => {
+  //   setodometerFiles(reservation?.odometerImagesCompletion);
+  // }, [reservation?.odometerImagesCompletion]);
 
   const onDropFuel = useFileDrop(
     (files: any[]) => setfuelFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
