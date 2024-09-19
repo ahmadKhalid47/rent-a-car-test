@@ -76,15 +76,15 @@ export default function Vehicles() {
                 <img src={settings1.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   My Profile
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Manage your personal information and login credentials.
-                </p>
+                </span>
               </div>
             </Link>
-            <Link
+            {/* <Link
               href={"Settings/Notification"}
               className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
             >
@@ -92,12 +92,28 @@ export default function Vehicles() {
                 <img src={settings2.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   Notification
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Customize how you receive updates and reminders.{" "}
-                </p>
+                </span>
+              </div>
+            </Link> */}
+            <Link
+              href={"Settings/CompanyProfile"}
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+            >
+              <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                {/* <img src={settings2.src} /> */}
+              </div>
+              <div className="h-fit w-[80%]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
+                  Company Profile
+                </h3>
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                  Manage your Company Profile.
+                </span>
               </div>
             </Link>
             <div
@@ -108,12 +124,12 @@ export default function Vehicles() {
                 <img src={settings3.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   General
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Select your preferred language and Curruncy{" "}
-                </p>
+                </span>
               </div>
             </div>
             <Link
@@ -124,12 +140,12 @@ export default function Vehicles() {
                 <img src={settings10.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   Invoicing
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Edit VAT & Taxes{" "}
-                </p>
+                </span>
               </div>
             </Link>
             <Link
@@ -140,12 +156,12 @@ export default function Vehicles() {
                 <img src={settings9.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   Agreement
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Edit agreement.{" "}
-                </p>
+                </span>
               </div>
             </Link>
             <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
@@ -153,12 +169,12 @@ export default function Vehicles() {
                 <img src={settings12.src} />
               </div>
               <div className="h-fit w-[80%]">
-                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[30px]">
+                <h3 className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[20px]">
                   Contact Support
                 </h3>
-                <p className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
+                <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
                   Contact customer support or IT helpdesk.{" "}
-                </p>
+                </span>
               </div>
             </div>
           </div>
