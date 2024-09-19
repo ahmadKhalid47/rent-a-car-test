@@ -6,9 +6,39 @@ import ForgotPassword from "./Components/ForgotPassword";
 import car from "@/public/Layer_1 (1).svg";
 // import car from "@/public/car.svg";
 import { RootState } from "./store";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import {
+  setprofilePicR as setCompanyLogo,
+  setprofilePic2R as setCompanyLogo2,
+} from "./store/companyProfile";
+
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let companyProfile: any = useSelector(
+    (state: RootState) => state.companyProfile
+  );
+  const [loading, setLoading] = useState<any>(false);
+  let dispatch = useDispatch();
+  
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.post(`/api/getcompanyProfile`);
+        dispatch(setCompanyLogo(result?.data?.data?.profilePic));
+        dispatch(setCompanyLogo2(result?.data?.data?.profilePic2));
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData();
+  }, [global.companyProfileReloader]);
 
   return (
     <div className="w-full h-fit">
@@ -24,7 +54,14 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            <img src={car.src} className="w-[120px] sm:w-[175px] z-10" />
+            <img
+              src={
+                companyProfile?.profilePic2
+                  ? companyProfile.profilePic2
+                  : car.src
+              }
+              className="w-[120px] sm:w-[175px] z-10"
+            />
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
                 <>
