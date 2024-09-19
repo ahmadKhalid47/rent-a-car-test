@@ -99,7 +99,9 @@ function PrintCom({ data, id }: any) {
   let dispatch = useDispatch();
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
-
+  let companyProfile: any = useSelector(
+    (state: RootState) => state.companyProfile
+  );
   // Customer Data
   useEffect(() => {
     async function getData() {
@@ -146,7 +148,14 @@ function PrintCom({ data, id }: any) {
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
             <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-3">
-              <img src={carLogo.src} className={`w-[120px] h-[40px]`} />
+              <img
+                src={
+                  companyProfile?.profilePic
+                    ? companyProfile.profilePic
+                    : carLogo.src
+                }
+                className={`w-[120px] h-[40px]`}
+              />
             </div>
             <div className="w-full h-fit flex justify-between items-center mt-1">
               <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">

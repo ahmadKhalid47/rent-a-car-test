@@ -17,6 +17,9 @@ import { RiSettings4Fill } from "react-icons/ri";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
+  let companyProfile: any = useSelector(
+    (state: RootState) => state.companyProfile
+  );
   let pathName = usePathname();
   let [chevronState, setChevronState] = useState("");
   let [chevronStateClose, setChevronStateClose] = useState("");
@@ -59,8 +62,7 @@ export default function Sidebar() {
     ) {
       setChevronState("Reservations");
       setChevronStateClose("Reservations");
-    } else if (pathName?.includes("/Settings")
-    ) {
+    } else if (pathName?.includes("/Settings")) {
       setChevronState("Settings");
       setChevronStateClose("Settings");
     } else if (pathName === "/Dashboard") {
@@ -70,6 +72,7 @@ export default function Sidebar() {
   }, [pathName]);
 
   let dispatch = useDispatch();
+  console.log(companyProfile);
 
   return (
     <div
@@ -84,7 +87,9 @@ export default function Sidebar() {
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
         <Link href={"/Dashboard"} className="w-fit h-fit">
           <img
-            src={bar.src}
+            src={
+              companyProfile?.profilePic ? companyProfile.profilePic : bar.src
+            }
             className={`${
               global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
             } mt-[30px]`}

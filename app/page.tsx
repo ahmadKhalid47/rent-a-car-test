@@ -4,6 +4,7 @@ import loginPage2 from "@/public/Vector 10 (1).png";
 import Login from "./Components/Login";
 import ForgotPassword from "./Components/ForgotPassword";
 import car from "@/public/Layer_1 (1).svg";
+// import car from "@/public/car.svg";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
 export default function Vehicles() {

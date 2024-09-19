@@ -20,6 +20,7 @@ import {
 } from "../store/myProfile";
 import {
   setprofilePicR as setCompanyLogo,
+  setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
 
 export default function Nav() {
@@ -77,15 +78,15 @@ export default function Nav() {
         setLoading(true);
         const result = await axios.post(`/api/getcompanyProfile`);
         dispatch(setCompanyLogo(result?.data?.data?.profilePic));
+        dispatch(setCompanyLogo2(result?.data?.data?.profilePic2));
+        console.log(result);
       } catch (error) {
         console.log(error);
       } finally {
         setLoading(false);
       }
     }
-    if (username) {
-      getData();
-    }
+    getData();
   }, [global.companyProfileReloader]);
 
   return (
@@ -109,7 +110,7 @@ export default function Nav() {
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4">
         <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
-          {/* <img src={bell.src} className="w-[24px] h-[24px]" /> */}
+          <img src={bell.src} className="w-[24px] h-[24px]" />
         </div>
         <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden">
           <img

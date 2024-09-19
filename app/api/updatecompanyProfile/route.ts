@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { profilePic } = await req.json();
+    let { profilePic, profilePic2 } = await req.json();
     connectDb();
     await companyProfileModel.updateOne(
       {},
-      { $set: { profilePic: profilePic } }
+      { $set: { profilePic: profilePic, profilePic2: profilePic2 } }
     );
     return NextResponse.json({
       success: "User Created",
