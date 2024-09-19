@@ -258,7 +258,7 @@ export default function Vehicles() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
     >
-      <div
+      <div 
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
