@@ -7,13 +7,25 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import axios from "axios";
+import { SmallLoader } from "@/app/Components/Loader";
+import {
+  setAllValues,
+  setvatIncludeR,
+  setvatPercentageR,
+} from "@/app/store/Invoicing";
+import { Switch } from "@/components/ui/switch";
+import { useRouter } from "next/navigation";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
+  let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [currencies, setCurrencies] = useState<any>([]);
   const [selectedCurrency, setSelectedCurrency] = useState<any>([]);
+  const [saveloading, setSaveLoading] = useState<any>(false);
+  const [loading, setLoading] = useState<any>(false);
+  const router = useRouter();
 
   const fetchExchangeRates = async () => {
     try {
@@ -47,6 +59,30 @@ export default function AddUser() {
 
     getData();
   }, []);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getInvoicing");
+        dispatch(setAllValues(result.data.data[0].data));
+        console.log(result.data.data[0].data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, [global.vehicleDataReloader]);
+
+  async function editItem() {
+    try {
+      setSaveLoading(true);
+      await axios.post(`/api/updateInvoicing`, { Invoicing });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSaveLoading(false);
+    }
+  }
 
   return (
     <div
@@ -101,6 +137,72 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
+              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
+                <div className="w-fit flex flex-col justify-start items-start">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                    VAT Percentage{" "}
+                  </h3>
+                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                    You can VAT percentage (%){" "}
+                  </span>
+                </div>
+                <div className="w-[180px] h-[50px] flex justify-center items-center">
+                  <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <input
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                        onChange={(e) => {
+                          dispatch(setvatPercentageR(e.target.value));
+                        }}
+                        value={Invoicing.vatPercentage}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px border-grey">
+                <div className="w-fit flex flex-col justify-start items-start">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                    Include VAT Percentage{" "}
+                  </h3>
+                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                    Prices include VAT
+                  </span>
+                </div>
+                <div className="w-[180px] h-[50px] flex justify-center items-center">
+                  <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                    <div className="w-full h-fit flex justify-end items-center relative overflow-hidden">
+                      <Switch
+                        disabled={loading}
+                        checked={Invoicing.vatInclude}
+                        onCheckedChange={(checked) => {
+                          dispatch(setvatIncludeR(checked));
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
+            >
+              <button
+                onClick={() => {
+                  router.push("/Settings");
+                }}
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              >
+                {loading ? <SmallLoader /> : "Cancel"}
+              </button>
+              <button
+                onClick={() => {
+                  editItem();
+                }}
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              >
+                {saveloading ? <SmallLoader /> : "Save"}
+              </button>
             </div>
           </div>
         </div>

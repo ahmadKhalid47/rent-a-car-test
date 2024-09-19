@@ -116,8 +116,8 @@ export default function Vehicles() {
                 </span>
               </div>
             </Link>
-            <div
-              // href={"Settings/General"}
+            <Link
+              href={"Settings/General"}
               className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
@@ -128,10 +128,10 @@ export default function Vehicles() {
                   General
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Select your preferred language and Curruncy{" "}
+                  Select your preferred language and Currency.{" "}
                 </span>
               </div>
-            </div>
+            </Link>
             <Link
               href={"Settings/Invoicing"}
               className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
@@ -144,7 +144,7 @@ export default function Vehicles() {
                   Invoicing
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Edit VAT & Taxes{" "}
+                  Edit Invoicing.{" "}
                 </span>
               </div>
             </Link>
@@ -164,7 +164,7 @@ export default function Vehicles() {
                 </span>
               </div>
             </Link>
-            <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            {/* <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings12.src} />
               </div>
@@ -176,7 +176,7 @@ export default function Vehicles() {
                   Contact customer support or IT helpdesk.{" "}
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

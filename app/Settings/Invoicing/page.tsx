@@ -118,38 +118,6 @@ export default function AddUser() {
         <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5 gap-5">
           <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-3 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
             <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
-              VAT Percentage
-            </h3>
-            <div className="flex justify-start items-center gap-x-[4%] gap-y-5 w-full h-fit">
-              <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-0 sm:gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[0px] sm:text-[14px] leading-[0px] sm:leading-[17px] text-transparent">
-                  VIP Client
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center bg-white ">
-                    <input
-                      type="checkbox"
-                      checked={Invoicing.vatInclude}
-                      className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center bg-white rounded-xl border-2 border-grey"
-                      onChange={(e) =>
-                        dispatch(setvatIncludeR(e.target.checked))
-                      }
-                    />
-                    Prices include VAT
-                  </div>
-                </div>
-              </div>
-              <TempTypeInput
-                setState={setvatPercentageR}
-                label={"VAT percentage (%)"}
-                value={Invoicing.vatPercentage}
-                required={false}
-                type={"number"}
-              />
-            </div>
-          </div>
-          <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-3 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-            <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
               Payment Information{" "}
             </h3>
             <div className="flex justify-start items-center gap-x-[4%] gap-y-5 w-full h-fit">
