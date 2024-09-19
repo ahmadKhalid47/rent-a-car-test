@@ -6,16 +6,11 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { formatId } from "@/app/Components/functions/formats";
-import { SmallLoader } from "@/app/Components/Loader";
 import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
 import { useDropzone } from "react-dropzone";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 import { TempTypeInput } from "@/app/Components/InputComponents/TypeInput";
 import {
-  setAllValues,
   setfuelCompletion,
   setfuelImagesCompletion,
   setodometerCompletion,
