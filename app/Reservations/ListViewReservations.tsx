@@ -276,17 +276,17 @@ export default function ListViewreservation({ data }: dataType) {
                    ${
                      item?.data?.status === "complete"
                        ? "complete-status"
-                       : item.data.status === "inComplete"
-                       ? "progress-status"
+                       : item.data.status === "cancel"
+                       ? "cancel-status"
                        : "progress-status"
                    }
                    `}
                   >
                     {item.data.status === "complete"
                       ? "Completed"
-                      : item.data.status === "inComplete"
-                      ? "In Completed"
-                      : "In Completed"}
+                      : item.data.status === "cancel"
+                      ? "Canceled"
+                      : "Incomplete"}
                   </div>
                 </div>
                 <div

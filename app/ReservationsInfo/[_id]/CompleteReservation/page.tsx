@@ -175,7 +175,7 @@ export default function reservationInfoMainPage() {
             ) : null}
 
             <div
-              className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${
+              className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-2 ${
                 currentPage === 0 ? "justify-end" : "justify-between"
               } items-center`}
             >

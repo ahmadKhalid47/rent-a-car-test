@@ -20,9 +20,8 @@ import {
   formatId,
   formatTime,
 } from "@/app/Components/functions/formats";
-import { SmallLoader } from "@/app/Components/Loader";
+import { MediumLoader, SmallLoader } from "@/app/Components/Loader";
 import Link from "next/link";
-import { setAllValues } from "@/app/store/Agreement";
 
 export default function reservationInfoMainPage() {
   let { reservationInfo } = useSelector(
@@ -45,6 +44,7 @@ export default function reservationInfoMainPage() {
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [statusLoading, setStatusLoading] = useState<any>(undefined);
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
@@ -72,7 +72,8 @@ export default function reservationInfoMainPage() {
     }
     if (reservationInfo?.customer_id) {
       getData();
-    }  }, [reservationInfo]);
+    }
+  }, [reservationInfo]);
   // Chauffeur Data
   useEffect(() => {
     async function getData() {
@@ -139,6 +140,17 @@ export default function reservationInfoMainPage() {
     getData();
   }, []);
 
+  async function updateCancel() {
+    try {
+      setStatusLoading(true);
+      await axios.post(`/api/updatereservationCancel/${_id}`, {
+        status: "cancel",
+      });
+    } finally {
+      setStatusLoading(false);
+    }
+  }
+
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
       <div
@@ -154,6 +166,26 @@ export default function reservationInfoMainPage() {
             </p>
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
+            <button
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              onClick={() => {
+                updateCancel();
+              }}
+              disabled={
+                reservationInfo?.status === "cancel" || statusLoading === false
+                  ? true
+                  : false
+              }
+            >
+              {reservationInfo?.status === "cancel" ||
+              statusLoading === false ? (
+                "Canceled"
+              ) : statusLoading === true ? (
+                <MediumLoader />
+              ) : (
+                "Cancel Reservation"
+              )}
+            </button>
             <button
               className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
