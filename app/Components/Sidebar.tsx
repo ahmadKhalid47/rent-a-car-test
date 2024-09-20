@@ -72,7 +72,6 @@ export default function Sidebar() {
   }, [pathName]);
 
   let dispatch = useDispatch();
-  console.log(companyProfile);
 
   return (
     <div

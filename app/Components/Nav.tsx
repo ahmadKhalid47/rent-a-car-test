@@ -5,7 +5,11 @@ import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { setSidebarShowR, setSidebarShowTempR } from "../store/Global";
+import {
+  setcurrentCurrency,
+  setSidebarShowR,
+  setSidebarShowTempR,
+} from "../store/Global";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -79,7 +83,6 @@ export default function Nav() {
         const result = await axios.post(`/api/getcompanyProfile`);
         dispatch(setCompanyLogo(result?.data?.data?.profilePic));
         dispatch(setCompanyLogo2(result?.data?.data?.profilePic2));
-        console.log(result);
       } catch (error) {
         console.log(error);
       } finally {
@@ -88,6 +91,37 @@ export default function Nav() {
     }
     getData();
   }, [global.companyProfileReloader]);
+
+  useEffect(() => {
+    let currencyInLS: any = undefined;
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getGeneralSettings");
+        console.log(result.data.data[0].currency);
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            "currency",
+            JSON.stringify(result.data.data[0].currency)
+          );
+
+          let value = localStorage.getItem("currency");
+          currencyInLS = value ? JSON.parse(value) : value;
+          console.log(localStorage.getItem("currency"));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (typeof window !== "undefined") {
+      let value = localStorage.getItem("currency");
+      currencyInLS = value ? JSON.parse(value) : value;
+    }
+    if (!currencyInLS) {
+      getData();
+    }
+    console.log(currencyInLS);
+    dispatch(setcurrentCurrency(currencyInLS));
+  }, []);
 
   return (
     <div
