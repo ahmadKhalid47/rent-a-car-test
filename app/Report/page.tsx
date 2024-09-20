@@ -5,10 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import { handleExport } from "../Components/functions/exportFunction";
-import { TypeInput } from "../Components/InputComponents/TypeInput";
 import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
 import { TextLoader, MediumLoader } from "../Components/Loader";
 
@@ -193,6 +190,7 @@ export default function Vehicles() {
       setCarAvailable(filtered?.length);
     }
   }
+console.log(carAvailable);
 
   return (
     <div
