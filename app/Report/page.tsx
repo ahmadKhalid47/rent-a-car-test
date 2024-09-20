@@ -16,19 +16,13 @@ export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
   const [make, setMake] = useState<any>("");
   const [model, setModel] = useState<any>("");
   const [regNo, setRegNo] = useState<any>("");
-  const [date, setDate] = useState<any>("");
   const [carAvailable, setCarAvailable] = useState<any>(undefined);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [Configurations, setConfigurationsData] = useState<any>([]);
-  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
 
@@ -43,47 +37,15 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        setLoading(true);
         const result = await axios.post("/api/getVehicle");
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); // Initialize with full data
-        } else {
-          setShowError(result?.data?.error);
-        }
+        setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
       }
     }
     getData();
   }, [global.vehicleDataReloader]);
-
-  useEffect(() => {
-    filterVehicles();
-  }, [searchQuery, VehiclesData]);
-
-  function filterVehicles() {
-    if (!searchQuery) {
-      setFilteredVehicles(VehiclesData);
-      return;
-    }
-
-    const lowercasedQuery = searchQuery.toLowerCase();
-    const filtered = VehiclesData.filter((vehicle) => {
-      const { data } = vehicle;
-      const { registration, city, make, model } = data;
-      const carName = `${make} ${model}`.toLowerCase();
-      return (
-        registration.toLowerCase().includes(lowercasedQuery) ||
-        city.toLowerCase().includes(lowercasedQuery) ||
-        carName.includes(lowercasedQuery)
-      );
-    });
-    setFilteredVehicles(filtered);
-  }
 
   useEffect(() => {
     async function getData2() {
@@ -127,13 +89,10 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        setvehicleLoading(true);
         const result = await axios.post("/api/getVehicle");
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
-      } finally {
-        setvehicleLoading(false);
       }
     }
     getData();
@@ -164,28 +123,16 @@ export default function Vehicles() {
     return item?.data?.status === "inComplete";
   });
   const upComingReservations = reservationsData.filter((item: any) => {
-    console.log(item?.data?.PickUpDate > currentDate?item:"null");
+    console.log(item?.data?.PickUpDate > currentDate ? item : "null");
     return (
       item?.data?.PickUpDate > currentDate &&
       item?.data?.status === "inComplete"
     );
   });
-
-  const completedReservationsToday = completedReservations.filter(
-    (item: any) => item.data.completeDate === currentDate
-  );
-  const reservationsMadeToday = reservationsData.filter(
-    (item: any) => item.data.reservationDate === currentDate
-  );
   const totalAmount = completedReservations.reduce(
     (sum, record) => sum + Number(record.data.amount),
     0
   );
-  const totalAmountToday = completedReservationsToday.reduce(
-    (sum, record) => sum + Number(record.data.amount),
-    0
-  );
-
   useEffect(() => {
     async function getData2() {
       try {
