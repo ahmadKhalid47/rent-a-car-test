@@ -14,6 +14,7 @@ import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
+import { TbTargetArrow } from "react-icons/tb";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -68,6 +69,9 @@ export default function Sidebar() {
     } else if (pathName === "/Dashboard") {
       setChevronState("Dashboard");
       setChevronStateClose("Dashboard");
+    } else if (pathName === "/Report") {
+      setChevronState("Report");
+      setChevronStateClose("Report");
     }
   }, [pathName]);
 
@@ -474,6 +478,23 @@ export default function Sidebar() {
             </Link>
           </div>
         ) : null}
+        <Link
+          href="/Report"
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
+          } bg-main-blue-hover hover:text-white rounded-[10px] ${
+            chevronState === "Report" && global.sidebarShow
+              ? "bg-main-blue text-white font-[500]"
+              : chevronStateClose === "Report" && !global.sidebarShow
+              ? "text-white bg-main-blue"
+              : ""
+          }`}
+        >
+          <TbTargetArrow
+            className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
+          />
+          <span className="">{global.sidebarShow ? "Report" : null}</span>
+        </Link>
         <Link
           href="/Settings"
           className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
