@@ -62,6 +62,7 @@ export default function Vehicles() {
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
+console.log(VehiclesData);
 
   useEffect(() => {
     async function getData() {
@@ -78,7 +79,7 @@ export default function Vehicles() {
     getData();
   }, [global.vehicleDataReloader]);
   const completedReservations = reservationsData.filter(
-    (item: any) => item.status === "complete"
+    (item: any) => item.data.status === "complete"
   );
 
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
@@ -169,7 +170,6 @@ export default function Vehicles() {
     } else {
       setCarAvailable(filtered.length);
     }
-    console.log(filtered);
   }
 
   function filterReservationsByDateTime(

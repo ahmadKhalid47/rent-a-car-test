@@ -25,7 +25,6 @@ export default function Vehicles() {
   const [model, setModel] = useState<any>("");
   const [regNo, setRegNo] = useState<any>("");
   const [date, setDate] = useState<any>("");
-  const [time, setTime] = useState<any>("");
   const [carAvailable, setCarAvailable] = useState<any>(undefined);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [Configurations, setConfigurationsData] = useState<any>([]);
@@ -76,7 +75,6 @@ export default function Vehicles() {
     const filtered = VehiclesData.filter((vehicle) => {
       const { data } = vehicle;
       const { registration, city, make, model } = data;
-
       const carName = `${make} ${model}`.toLowerCase();
       return (
         registration.toLowerCase().includes(lowercasedQuery) ||
@@ -156,10 +154,23 @@ export default function Vehicles() {
     getData();
   }, [global.vehicleDataReloader]);
   const completedReservations = reservationsData.filter(
-    (item: any) => item.status === "complete"
+    (item: any) => item?.data?.status === "complete"
   );
-
+  const canceledReservations = reservationsData.filter(
+    (item: any) => item?.data?.status === "cancel"
+  );
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
+  const pendingReservations = reservationsData.filter((item: any) => {
+    return item?.data?.status === "inComplete";
+  });
+  const upComingReservations = reservationsData.filter((item: any) => {
+    console.log(item?.data?.PickUpDate > currentDate?item:"null");
+    return (
+      item?.data?.PickUpDate > currentDate &&
+      item?.data?.status === "inComplete"
+    );
+  });
+
   const completedReservationsToday = completedReservations.filter(
     (item: any) => item.data.completeDate === currentDate
   );
@@ -229,58 +240,11 @@ export default function Vehicles() {
       allFilteredReservations.push(...filteredReservations);
     });
 
-    let filteredReservations = allFilteredReservations;
-    if (date || time) {
-      filteredReservations = filterReservationsByDateTime(
-        allFilteredReservations,
-        date,
-        time
-      );
-      setCarAvailable(filtered.length - filteredReservations.length);
-    } else if (!date && !time && !make && !model && !regNo) {
+    if (!make && !model && !regNo) {
       setCarAvailable(undefined);
     } else {
-      setCarAvailable(filtered.length);
+      setCarAvailable(filtered?.length);
     }
-  }
-
-  function filterReservationsByDateTime(
-    reservations: any,
-    date: any,
-    time: any
-  ) {
-    return reservations.filter((reservation: any) => {
-      const pickUpDateTime = new Date(
-        `${reservation.data.PickUpDate}T${reservation.data.PickUpTime}`
-      );
-      const dropOffDateTime = new Date(
-        `${reservation.data.dropOffDate}T${reservation.data.dropOffTime}`
-      );
-
-      if (date && time) {
-        const selectedDateTime = new Date(`${date}T${time}`);
-        return (
-          selectedDateTime >= pickUpDateTime &&
-          selectedDateTime <= dropOffDateTime
-        );
-      }
-
-      if (date && !time) {
-        const selectedDate = new Date(date);
-        const pickUpDate = new Date(reservation.data.PickUpDate);
-        const dropOffDate = new Date(reservation.data.dropOffDate);
-        return selectedDate >= pickUpDate && selectedDate <= dropOffDate;
-      }
-
-      if (!date && time) {
-        const selectedTime = time;
-        const pickUpTime = reservation.data.PickUpTime;
-        const dropOffTime = reservation.data.dropOffTime;
-        return selectedTime >= pickUpTime && selectedTime <= dropOffTime;
-      }
-
-      return false;
-    });
   }
 
   return (
@@ -348,17 +312,12 @@ export default function Vehicles() {
           <h3
             className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
           >
-            <span
-              className="font-[600] text-black"
-              onClick={() => {
-              }}
-            >
+            <span className="font-[600] text-black" onClick={() => {}}>
               All Vehicles
             </span>
             <span
               className="underline cursor-pointer hover:no-underline"
-              onClick={() => {
-              }}
+              onClick={() => {}}
             >
               Export
             </span>
@@ -370,55 +329,67 @@ export default function Vehicles() {
                   Total Revenue
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  $1000
+                  {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Total Maintenance Cost{" "}
+                  Total Reservations
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  $1000{" "}
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Total Reservation{" "}
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  100
+                  {!reservationLoading ? (
+                    reservationsData?.length
+                  ) : (
+                    <TextLoader />
+                  )}
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Complete Reservation{" "}
+                  Complete Reservations
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  100
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Cancel Reservation{" "}
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  100
+                  {!reservationLoading ? (
+                    completedReservations?.length
+                  ) : (
+                    <TextLoader />
+                  )}
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Pending Reservation{" "}
+                  Cancel Reservations
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  100
+                  {!reservationLoading ? (
+                    canceledReservations?.length
+                  ) : (
+                    <TextLoader />
+                  )}
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Upcoming Reservation{" "}
+                  Pending Reservations
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  100
+                  {!reservationLoading ? (
+                    pendingReservations?.length
+                  ) : (
+                    <TextLoader />
+                  )}
+                </div>
+              </div>
+              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Upcoming Reservations
+                </div>
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  {!reservationLoading ? (
+                    upComingReservations?.length
+                  ) : (
+                    <TextLoader />
+                  )}
                 </div>
               </div>
             </div>

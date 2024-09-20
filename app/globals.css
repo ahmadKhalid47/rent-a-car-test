@@ -369,3 +369,6 @@ input[type="number"]::-webkit-inner-spin-button {
 button:hover{
   opacity: 0.9;
 }
+button:active{
+  opacity: 1;
+}
