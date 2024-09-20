@@ -97,7 +97,6 @@ export default function Nav() {
     async function getData() {
       try {
         const result = await axios.post("/api/getGeneralSettings");
-        console.log(result.data.data[0].currency);
         if (typeof window !== "undefined") {
           localStorage.setItem(
             "currency",
@@ -106,7 +105,6 @@ export default function Nav() {
 
           let value = localStorage.getItem("currency");
           currencyInLS = value ? JSON.parse(value) : value;
-          console.log(localStorage.getItem("currency"));
         }
       } catch (error) {
         console.log(error);
@@ -119,7 +117,6 @@ export default function Nav() {
     if (!currencyInLS) {
       getData();
     }
-    console.log(currencyInLS);
     dispatch(setcurrentCurrency(currencyInLS));
   }, []);
 

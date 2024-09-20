@@ -366,3 +366,6 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 794px;
   }
 }
+button:hover{
+  opacity: 0.9;
+}

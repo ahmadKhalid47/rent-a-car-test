@@ -8,37 +8,30 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { handleExport } from "../Components/functions/exportFunction";
+import { TypeInput } from "../Components/InputComponents/TypeInput";
+import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
+import { TextLoader, MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [gridView, setGridView] = useState(false);
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
-  const [vehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
-  const [advanceFilters, setAdvanceFilters] = useState<any>([
-    {
-      key: "year",
-      keyValue: "",
-    },
-    {
-      key: "type",
-      keyValue: "",
-    },
-    {
-      key: "city",
-      keyValue: "",
-    },
-    {
-      key: "color",
-      keyValue: "",
-    },
-  ]);
+  const [make, setMake] = useState<any>("");
+  const [model, setModel] = useState<any>("");
+  const [regNo, setRegNo] = useState<any>("");
+  const [date, setDate] = useState<any>("");
+  const [time, setTime] = useState<any>("");
+  const [carAvailable, setCarAvailable] = useState<any>(undefined);
+  const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
+  const [Configurations, setConfigurationsData] = useState<any>([]);
+  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
+  const [reservationsData, setreservationsData] = useState<any[]>([]);
+  const [reservationLoading, setreservationLoading] = useState<any>(true);
 
   useEffect(() => {
     if (isMobile) {
@@ -71,16 +64,16 @@ export default function Vehicles() {
 
   useEffect(() => {
     filterVehicles();
-  }, [searchQuery, vehiclesData]);
+  }, [searchQuery, VehiclesData]);
 
   function filterVehicles() {
     if (!searchQuery) {
-      setFilteredVehicles(vehiclesData);
+      setFilteredVehicles(VehiclesData);
       return;
     }
 
     const lowercasedQuery = searchQuery.toLowerCase();
-    const filtered = vehiclesData.filter((vehicle) => {
+    const filtered = VehiclesData.filter((vehicle) => {
       const { data } = vehicle;
       const { registration, city, make, model } = data;
 
@@ -94,24 +87,200 @@ export default function Vehicles() {
     setFilteredVehicles(filtered);
   }
 
-  function advanceFilterVehicles() {
-    let filtered: any = vehiclesData;
-
-    advanceFilters.forEach(({ key, keyValue }: any) => {
-      if (keyValue) {
-        const lowercasedQuery = keyValue.toLowerCase();
-        filtered = filtered.filter((vehicle: any) => {
-          const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
-          return keyValueInVehicle?.includes(lowercasedQuery);
-        });
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setConfigurationsLoading(true);
+        let result: any = await axios.post(`/api/getConfigurations`);
+        setConfigurationsData(result?.data?.wholeData);
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setConfigurationsLoading(false);
       }
+    }
+    getData2();
+  }, []);
+
+  function filterReg() {
+    let filtered: any = VehiclesData;
+
+    if (make) {
+      const lowercasedQuery = make.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (model) {
+      const lowercasedQuery = model.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (!model && !make) {
+      filtered = [];
+    }
+    return filtered;
+  }
+  useEffect(() => {
+    async function getData() {
+      try {
+        setvehicleLoading(true);
+        const result = await axios.post("/api/getVehicle");
+        setVehiclesData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setvehicleLoading(false);
+      }
+    }
+    getData();
+  }, []);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        setreservationLoading(true);
+        const result = await axios.post("/api/getreservation");
+        setreservationsData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setreservationLoading(false);
+      }
+    }
+    getData();
+  }, [global.vehicleDataReloader]);
+  const completedReservations = reservationsData.filter(
+    (item: any) => item.status === "complete"
+  );
+
+  const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
+  const completedReservationsToday = completedReservations.filter(
+    (item: any) => item.data.completeDate === currentDate
+  );
+  const reservationsMadeToday = reservationsData.filter(
+    (item: any) => item.data.reservationDate === currentDate
+  );
+  const totalAmount = completedReservations.reduce(
+    (sum, record) => sum + Number(record.data.amount),
+    0
+  );
+  const totalAmountToday = completedReservationsToday.reduce(
+    (sum, record) => sum + Number(record.data.amount),
+    0
+  );
+
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setConfigurationsLoading(true);
+        let result: any = await axios.post(`/api/getConfigurations`);
+        setConfigurationsData(result?.data?.wholeData);
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setConfigurationsLoading(false);
+      }
+    }
+    getData2();
+  }, []);
+
+  function submitButton() {
+    let filtered: any = VehiclesData;
+
+    if (make) {
+      const lowercasedQuery = make.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (model) {
+      const lowercasedQuery = model.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        return keyValueInVehicle?.includes(lowercasedQuery);
+      });
+    }
+
+    if (regNo) {
+      const lowercasedQuery = regNo.toLowerCase();
+      filtered = filtered.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
+        return keyValueInVehicle === lowercasedQuery;
+      });
+    }
+
+    const allFilteredReservations: any[] = [];
+
+    filtered.forEach((vehicle: any) => {
+      const vehicleId = vehicle._id;
+
+      const filteredReservations = reservationsData.filter(
+        (reservation: any) => reservation.data.vehicle_id === vehicleId
+      );
+
+      allFilteredReservations.push(...filteredReservations);
     });
 
-    setFilteredVehicles(filtered);
+    let filteredReservations = allFilteredReservations;
+    if (date || time) {
+      filteredReservations = filterReservationsByDateTime(
+        allFilteredReservations,
+        date,
+        time
+      );
+      setCarAvailable(filtered.length - filteredReservations.length);
+    } else if (!date && !time && !make && !model && !regNo) {
+      setCarAvailable(undefined);
+    } else {
+      setCarAvailable(filtered.length);
+    }
   }
 
-  function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+  function filterReservationsByDateTime(
+    reservations: any,
+    date: any,
+    time: any
+  ) {
+    return reservations.filter((reservation: any) => {
+      const pickUpDateTime = new Date(
+        `${reservation.data.PickUpDate}T${reservation.data.PickUpTime}`
+      );
+      const dropOffDateTime = new Date(
+        `${reservation.data.dropOffDate}T${reservation.data.dropOffTime}`
+      );
+
+      if (date && time) {
+        const selectedDateTime = new Date(`${date}T${time}`);
+        return (
+          selectedDateTime >= pickUpDateTime &&
+          selectedDateTime <= dropOffDateTime
+        );
+      }
+
+      if (date && !time) {
+        const selectedDate = new Date(date);
+        const pickUpDate = new Date(reservation.data.PickUpDate);
+        const dropOffDate = new Date(reservation.data.dropOffDate);
+        return selectedDate >= pickUpDate && selectedDate <= dropOffDate;
+      }
+
+      if (!date && time) {
+        const selectedTime = time;
+        const pickUpTime = reservation.data.PickUpTime;
+        const dropOffTime = reservation.data.dropOffTime;
+        return selectedTime >= pickUpTime && selectedTime <= dropOffTime;
+      }
+
+      return false;
+    });
   }
 
   return (
@@ -121,176 +290,74 @@ export default function Vehicles() {
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
     >
       <div
-        className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
+        className={` w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
             Report
           </h3>
         </div>
-        <div className=" w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
-          <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-">
-              Search
-            </h3>
-            <div className="w-full h-fit flex justify-between items-center">
-              <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
-                placeholder="Search By Car Name, Reg No, City..."
-                onChange={handleSearchQueryChange}
-              ></input>
+        <div className="bg-red-600 w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+          {configurationsLoading ? (
+            <div className="pt-5 w-full ">
+              <MediumLoader />
+            </div>
+          ) : (
+            <div className="w-full flex flex-wrap justify-between items-start gap-y-4">
+              <SelectInputWidth
+                widthProp="sm:w-[32%]"
+                setState={setMake}
+                label={"Make"}
+                value={make}
+                required={false}
+                options={Configurations?.make?.map((item: any) => item.make)}
+              />
+              <SelectInputWidth
+                widthProp="sm:w-[32%]"
+                setState={setModel}
+                label={"Model"}
+                value={model}
+                required={false}
+                options={Configurations?.model
+                  ?.filter((item: any) => item.make === make)
+                  .map((item: any) => item.model)}
+              />
+              <SelectInputWidth
+                widthProp="sm:w-[32%]"
+                setState={setRegNo}
+                label={"Registration Number"}
+                value={regNo}
+                required={false}
+                options={filterReg()?.map(
+                  (item: any) => item.data.registration
+                )}
+              />
+
               <button
-                className=" w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-fit md:w-full py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
-                  advanceFilterVehicles();
+                  submitButton();
                 }}
               >
-                Search
+                Check
               </button>
             </div>
-          </div>
-          {!showLess ? (
-            <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                  Year
-                </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "year"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(vehiclesData.map((item) => item.data.year))
-                    ).map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none"></div>
-                </div>{" "}
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                  Type
-                </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "type"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(vehiclesData.map((item) => item.data.type))
-                    ).map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none"></div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                  City
-                </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
-                  <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "city"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(vehiclesData.map((item) => item.data.city))
-                    ).map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none"></div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
-                  Color
-                </h3>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="ps-7 font-[400] text-[14px] xs:text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "color"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(vehiclesData.map((item) => item.data.color))
-                    ).map((color) => (
-                      <option key={color} value={color}>
-                        {color}
-                      </option>
-                    ))}
-                  </select>
-                  <div
-                    className="rounded-full w-[19px] h-[12px] bg-red-5 absolute left-2 top-[15.5px]"
-                    style={{
-                      backgroundColor: advanceFilters[3].keyValue,
-                    }}
-                  ></div>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
-          <h3
-            className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-1 underline hover:no-underline cursor-pointer"
-            onClick={() => setShowLess(!showLess)}
-          >
-            {showLess ? "Advanced Filters" : "Show Less"}
-          </h3>
+          )}
         </div>
         <div className="w-full h-fit mt-4">
           <h3
-            className={`w-full flex justify-end items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
+            className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
           >
             <span
-              className="underline cursor-pointer text-main-blue hover:no-underline"
+              className="font-[600] text-black"
               onClick={() => {
-                // handleExport(data?.map((item: any) => item.data));
+              }}
+            >
+              All Vehicles
+            </span>
+            <span
+              className="underline cursor-pointer hover:no-underline"
+              onClick={() => {
               }}
             >
               Export
@@ -299,54 +366,61 @@ export default function Vehicles() {
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
             <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
               <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
                   Total Revenue
                 </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  $1000
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Total Revenue
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Total Maintenance Cost{" "}
                 </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Total Revenue
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  $1000{" "}
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Total Revenue
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Total Reservation{" "}
                 </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Total Revenue
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  100
                 </div>
               </div>
               <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Total Revenue
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Complete Reservation{" "}
                 </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%] cursor-pointer">
-                  Registration No
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  100
                 </div>
               </div>
-
+              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Cancel Reservation{" "}
+                </div>
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  100
+                </div>
+              </div>
+              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Pending Reservation{" "}
+                </div>
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  100
+                </div>
+              </div>
+              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  Upcoming Reservation{" "}
+                </div>
+                <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  100
+                </div>
+              </div>
             </div>
           </div>
         </div>
