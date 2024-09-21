@@ -3,8 +3,6 @@ import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import Login from "./Components/Login";
 import ForgotPassword from "./Components/ForgotPassword";
-import car from "@/public/Layer_1 (1).svg";
-// import car from "@/public/car.svg";
 import { RootState } from "./store";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -22,23 +20,34 @@ export default function Vehicles() {
   );
   const [loading, setLoading] = useState<any>(false);
   let dispatch = useDispatch();
-  
+
   useEffect(() => {
     async function getData() {
       try {
-        setLoading(true);
-        const result = await axios.post(`/api/getcompanyProfile`);
-        dispatch(setCompanyLogo(result?.data?.data?.profilePic));
-        dispatch(setCompanyLogo2(result?.data?.data?.profilePic2));
-        console.log(result);
+        const result = await axios.post("/api/getcompanyProfile");
+        const profilePic = result?.data?.data?.profilePic;
+        const profilePic2 = result?.data?.data?.profilePic;
+        if (typeof window !== "undefined") {
+          localStorage.setItem("companyLogo", profilePic);
+          localStorage.setItem("companyLogo2", profilePic2);
+          dispatch(setCompanyLogo([profilePic]));
+          dispatch(setCompanyLogo2([profilePic2]));
+        }
       } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching company profile:", error);
       }
     }
-    getData();
-  }, [global.companyProfileReloader]);
+    if (typeof window !== "undefined") {
+      const storedLogo = localStorage.getItem("companyLogo");
+      const storedLogo2 = localStorage.getItem("companyLogo2");
+      if (storedLogo && storedLogo2) {
+        dispatch(setCompanyLogo([storedLogo]));
+        dispatch(setCompanyLogo2([storedLogo2]));
+      } else {
+        getData();
+      }
+    }
+  }, []);
 
   return (
     <div className="w-full h-fit">
@@ -54,14 +63,12 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            <img
-              src={
-                companyProfile?.profilePic2
-                  ? companyProfile.profilePic2
-                  : car.src
-              }
-              className="w-[120px] sm:w-[175px] z-10"
-            />
+            {companyProfile?.profilePic2 ? (
+              <img
+                src={companyProfile?.profilePic2}
+                className="w-[120px] sm:w-[175px] z-10"
+              />
+            ) : null}
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
                 <>

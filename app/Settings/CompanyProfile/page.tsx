@@ -39,6 +39,7 @@ export default function AddUser() {
 
   async function editItem() {
     try {
+      setSaveLoading(true);
       let res: AxiosResponse<any, any> | null = null;
       const formData = new FormData();
       formData.append("files", companyProfile.profilePic[0]);
@@ -55,11 +56,12 @@ export default function AddUser() {
           "Content-Type": "multipart/form-data",
         },
       });
-      setSaveLoading(true);
       await axios.post(`/api/updatecompanyProfile`, {
         profilePic: res?.data?.message[0],
         profilePic2: res2?.data?.message[0],
       });
+      localStorage.setItem("companyLogo", res?.data?.message[0]);
+      localStorage.setItem("companyLogo2", res2?.data?.message[0]);
       dispatch(setcompanyProfileReloader(global.companyProfileReloader + 1));
     } catch (err) {
       console.log(err);
@@ -79,6 +81,7 @@ export default function AddUser() {
       setSelectedPic2(URL.createObjectURL(file));
     }
   };
+  console.log(companyProfile);
 
   return (
     <div
