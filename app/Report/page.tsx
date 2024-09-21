@@ -313,10 +313,10 @@ export default function Vehicles() {
                 Filter
               </button>
               <button
-                className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
+                className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
                   vehicle === "All Vehicles"
-                    ? "text-gray-600"
-                    : "text-main-blue"
+                    ? "bg-light-grey text-grey"
+                    : "bg-white text-main-blue"
                 }`}
                 onClick={(e) => {
                   setFilterReservationsData(reservationsData);
