@@ -73,6 +73,9 @@
 .nav-width-resp {
   width: calc(100% - 300px);
 }
+.filter-button {
+  width: calc(100% - 60px);
+}
 
 @media (max-width: 640px) {
   .nav-width-resp {

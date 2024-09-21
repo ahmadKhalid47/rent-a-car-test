@@ -10,6 +10,10 @@ import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
 import { TextLoader, MediumLoader } from "../Components/Loader";
 import { GrPowerReset } from "react-icons/gr";
 import { handleExport } from "../Components/functions/exportFunction";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -285,7 +289,25 @@ export default function Vehicles() {
     upComingReservations?.length,
   ]);
 
-  console.log(exportData);
+  // about graph
+  const data = {
+    labels: ["Complete", "Cancel", "Pending", "Upcoming"],
+    datasets: [
+      {
+        label: "Reservations",
+        backgroundColor: ["#4CAF50", "#FF4C4C", "#FFA500", "#42A5F5"],
+        data: [
+          completedReservations?.length,
+          canceledReservations?.length,
+          pendingReservations?.length,
+          upComingReservations?.length,
+        ],
+      },
+    ],
+  };
+  const options = {
+    maintainAspectRatio: false, // Ensures custom sizing works
+  };
 
   return (
     <div
@@ -341,10 +363,10 @@ export default function Vehicles() {
               />
 
               <button
-                className="px-2 md:px-0 w-fit md:w-[94%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 type="submit"
               >
-                Filter
+                Filter By Vehicle
               </button>
               <button
                 className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
@@ -382,75 +404,86 @@ export default function Vehicles() {
               Export
             </span>
           </h3>
-          <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 bg-red-300 relative">
-            <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
-              <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Total Revenue
+          <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
+            <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
+              <div className="w-[100%] 1200:w-[60%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
+                <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Total Revenue
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
+                  </div>
                 </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Total Reservations
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? (
+                      filterReservationsData?.length
+                    ) : (
+                      <TextLoader />
+                    )}
+                  </div>
+                </div>
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Complete Reservations
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? (
+                      completedReservations?.length
+                    ) : (
+                      <TextLoader />
+                    )}
+                  </div>
+                </div>
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Cancel Reservations
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? (
+                      canceledReservations?.length
+                    ) : (
+                      <TextLoader />
+                    )}
+                  </div>
+                </div>
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Pending Reservations
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? (
+                      pendingReservations?.length
+                    ) : (
+                      <TextLoader />
+                    )}
+                  </div>
+                </div>
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-r-2 border-grey">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    Upcoming Reservations
+                  </div>
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                    {!reservationLoading ? (
+                      upComingReservations?.length
+                    ) : (
+                      <TextLoader />
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Total Reservations
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? (
-                    filterReservationsData?.length
-                  ) : (
-                    <TextLoader />
-                  )}
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Complete Reservations
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? (
-                    completedReservations?.length
-                  ) : (
-                    <TextLoader />
-                  )}
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Cancel Reservations
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? (
-                    canceledReservations?.length
-                  ) : (
-                    <TextLoader />
-                  )}
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Pending Reservations
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? (
-                    pendingReservations?.length
-                  ) : (
-                    <TextLoader />
-                  )}
-                </div>
-              </div>
-              <div className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  Upcoming Reservations
-                </div>
-                <div className="text-start px-8 flex justify-between items-center w-[50%]">
-                  {!reservationLoading ? (
-                    upComingReservations?.length
-                  ) : (
-                    <TextLoader />
-                  )}
-                </div>
+              <div className="w-[40%] h-[360px] flex justify-center items-center">
+                {configurationsLoading ? (
+                  <MediumLoader />
+                ) : (
+                  <div className="w-[100%] h-[330px] flex justify-center items-center">
+                    <Pie data={data} options={options} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
