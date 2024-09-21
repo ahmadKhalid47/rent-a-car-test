@@ -229,7 +229,6 @@ export default function Vehicles() {
         );
       }
     }
-
     if (carAvailable) {
       reFilter();
     }
@@ -302,6 +301,7 @@ export default function Vehicles() {
           pendingReservations?.length,
           upComingReservations?.length,
         ],
+        hoverOffset: 4,
       },
     ],
   };
@@ -406,20 +406,21 @@ export default function Vehicles() {
           </h3>
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
             <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
-              <div className="w-[100%] 1200:w-[60%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
+
+              <div className="w-[100%] 1200:w-[55%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
                 <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Total Revenue
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Total Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? (
                       filterReservationsData?.length
                     ) : (
@@ -428,10 +429,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Complete Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? (
                       completedReservations?.length
                     ) : (
@@ -440,10 +441,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Cancel Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? (
                       canceledReservations?.length
                     ) : (
@@ -452,10 +453,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Pending Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? (
                       pendingReservations?.length
                     ) : (
@@ -464,10 +465,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
                     Upcoming Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
                     {!reservationLoading ? (
                       upComingReservations?.length
                     ) : (
@@ -476,7 +477,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              <div className="w-[40%] h-[360px] flex justify-center items-center">
+              <div className="w-[45%] h-[360px] flex justify-center items-center">
                 {configurationsLoading ? (
                   <MediumLoader />
                 ) : (
@@ -485,6 +486,7 @@ export default function Vehicles() {
                   </div>
                 )}
               </div>
+            
             </div>
           </div>
         </div>
