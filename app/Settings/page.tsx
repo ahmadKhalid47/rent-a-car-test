@@ -96,7 +96,7 @@ export default function Vehicles() {
                   Notification
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Customize how you receive updates and reminders.{" "}
+                  Customize how you receive updates and reminders.
                 </span>
               </div>
             </Link> */}
@@ -128,7 +128,7 @@ export default function Vehicles() {
                   General
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Select your preferred language and Currency.{" "}
+                  Manage your VAT rate and other general settings.
                 </span>
               </div>
             </Link>
@@ -144,7 +144,7 @@ export default function Vehicles() {
                   Invoicing
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Edit Invoicing.{" "}
+                  Edit Invoicing.
                 </span>
               </div>
             </Link>
@@ -160,7 +160,7 @@ export default function Vehicles() {
                   Agreement
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Edit agreement.{" "}
+                  Edit agreement.
                 </span>
               </div>
             </Link>
@@ -173,7 +173,7 @@ export default function Vehicles() {
                   Contact Support
                 </h3>
                 <span className="font-[400] text-[12px] xs:text-[16px] leading-4 xs:leading-[20px]">
-                  Contact customer support or IT helpdesk.{" "}
+                  Contact customer support or IT helpdesk.
                 </span>
               </div>
             </div> */}
