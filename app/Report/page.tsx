@@ -12,6 +12,7 @@ import { GrPowerReset } from "react-icons/gr";
 import { handleExport } from "../Components/functions/exportFunction";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -23,6 +24,8 @@ export default function Vehicles() {
   const [make, setMake] = useState<any>("");
   const [model, setModel] = useState<any>("");
   const [regNo, setRegNo] = useState<any>("");
+  const [fromDate, setFromDate] = useState<any>("");
+  const [toDate, setToDate] = useState<any>("");
   const [carAvailable, setCarAvailable] = useState<any>(undefined);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [Configurations, setConfigurationsData] = useState<any>([]);
@@ -205,6 +208,23 @@ export default function Vehicles() {
       allFilteredReservations.push(...filteredReservations);
     });
 
+    let filteredReservations = reservationsData;
+    if (fromDate) {
+      const lowercasedQuery = fromDate;
+      filteredReservations = filteredReservations.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.PickUpDate;
+        return keyValueInVehicle >= lowercasedQuery;
+      });
+    }
+    if (toDate) {
+      const lowercasedQuery = toDate;
+      filteredReservations = reservationsData.filter((vehicle: any) => {
+        const keyValueInVehicle = vehicle.data.dropOffDate;
+        return keyValueInVehicle <= lowercasedQuery;
+      });
+    }
+    setFilterReservationsData(filteredReservations);
+
     if (!make || !model || !regNo) {
       setCarAvailable(undefined);
     } else {
@@ -215,6 +235,7 @@ export default function Vehicles() {
     event.preventDefault();
     submitButton();
   };
+  console.log(filterReservationsData);
 
   useEffect(() => {
     function reFilter() {
@@ -222,6 +243,22 @@ export default function Vehicles() {
       let filteredReservations: any = reservationsData.filter(
         (item: any) => item?.data?.vehicle_id === vehicle_id
       );
+      if (fromDate) {
+        const lowercasedQuery = fromDate;
+        filteredReservations = filteredReservations.filter((vehicle: any) => {
+          const keyValueInVehicle = vehicle.data.PickUpDate;
+          return keyValueInVehicle >= lowercasedQuery;
+        });
+      }
+
+      if (toDate) {
+        const lowercasedQuery = toDate;
+        filteredReservations = filteredReservations.filter((vehicle: any) => {
+          const keyValueInVehicle = vehicle.data.dropOffDate;
+          return keyValueInVehicle <= lowercasedQuery;
+        });
+      }
+
       setFilterReservationsData(filteredReservations);
       if (carAvailable) {
         setVehicle(
@@ -331,14 +368,14 @@ export default function Vehicles() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="w-full flex flex-wrap justify-between items-start gap-y-4"
+              className="w-full flex flex-wrap justify-start items-start gap-y-4 gap-x-[2%]"
             >
               <SelectInputWidth
                 widthProp="sm:w-[32%]"
                 setState={setMake}
                 label={"Make"}
                 value={make}
-                required={true}
+                required={false}
                 options={Configurations?.make?.map((item: any) => item.make)}
               />
               <SelectInputWidth
@@ -346,7 +383,7 @@ export default function Vehicles() {
                 setState={setModel}
                 label={"Model"}
                 value={model}
-                required={true}
+                required={false}
                 options={Configurations?.model
                   ?.filter((item: any) => item.make === make)
                   .map((item: any) => item.model)}
@@ -356,35 +393,61 @@ export default function Vehicles() {
                 setState={setRegNo}
                 label={"Registration Number"}
                 value={regNo}
-                required={true}
+                required={false}
                 options={filterReg()?.map(
                   (item: any) => item.data.registration
                 )}
               />
-
-              <button
-                className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                type="submit"
+              <TypeInputWidth
+                widthProp="sm:w-[32%]"
+                setState={setFromDate}
+                label={"From"}
+                value={fromDate}
+                required={false}
+                type="date"
+              />
+              <TypeInputWidth
+                widthProp="sm:w-[32%]"
+                setState={setToDate}
+                label={"To"}
+                value={toDate}
+                required={false}
+                type="date"
+              />
+              <div
+                className={`w-[32%] h-fit flex flex-col justify-start items-start gap-1`}
               >
-                Filter By Vehicle
-              </button>
-              <button
-                className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
-                  vehicle === "All Vehicles"
-                    ? "bg-light-grey text-grey"
-                    : "bg-white text-main-blue"
-                }`}
-                onClick={(e) => {
-                  setFilterReservationsData(reservationsData);
-                  setMake("");
-                  setModel("");
-                  setRegNo("");
-                  setVehicle("All Vehicles");
-                }}
-                type="button"
-              >
-                <GrPowerReset />
-              </button>
+                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
+                  "label"
+                </label>
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <button
+                    className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                    type="submit"
+                  >
+                    Filter By Vehicle
+                  </button>
+                  <button
+                    className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
+                      vehicle === "All Vehicles"
+                        ? "bg-light-grey text-grey"
+                        : "bg-white text-main-blue"
+                    }`}
+                    onClick={(e) => {
+                      setFilterReservationsData(reservationsData);
+                      setMake("");
+                      setModel("");
+                      setRegNo("");
+                      setFromDate("");
+                      setToDate("");
+                      setVehicle("All Vehicles");
+                    }}
+                    type="button"
+                  >
+                    <GrPowerReset />
+                  </button>
+                </div>
+              </div>
             </form>
           )}
         </div>
@@ -394,6 +457,8 @@ export default function Vehicles() {
           >
             <span className="font-[600] text-black" onClick={() => {}}>
               {vehicle}
+              {fromDate ? ", From " + fromDate : ""}
+              {toDate ? " To " + toDate : ""}
             </span>
             <span
               className="underline cursor-pointer hover:no-underline"
@@ -406,21 +471,20 @@ export default function Vehicles() {
           </h3>
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
             <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
-
-              <div className="w-[100%] 1200:w-[55%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
+              <div className="w-[100%] 1200:w-[100%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
                 <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Total Revenue
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Total Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? (
                       filterReservationsData?.length
                     ) : (
@@ -429,10 +493,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Complete Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? (
                       completedReservations?.length
                     ) : (
@@ -441,10 +505,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Cancel Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? (
                       canceledReservations?.length
                     ) : (
@@ -453,10 +517,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Pending Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? (
                       pendingReservations?.length
                     ) : (
@@ -465,10 +529,10 @@ export default function Vehicles() {
                   </div>
                 </div>
                 <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-r-2 border-grey">
-                  <div className="text-start px-8 flex justify-between items-center w-[60%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Upcoming Reservations
                   </div>
-                  <div className="text-start px-8 flex justify-between items-center w-[40%]">
+                  <div className="text-start px-8 flex justify-between items-center w-[50%] s">
                     {!reservationLoading ? (
                       upComingReservations?.length
                     ) : (
@@ -477,7 +541,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              <div className="w-[45%] h-[360px] flex justify-center items-center">
+              {/* <div className="w-[45%] h-[360px] flex justify-center items-center">
                 {configurationsLoading ? (
                   <MediumLoader />
                 ) : (
@@ -485,8 +549,7 @@ export default function Vehicles() {
                     <Pie data={data} options={options} />
                   </div>
                 )}
-              </div>
-            
+              </div> */}
             </div>
           </div>
         </div>
