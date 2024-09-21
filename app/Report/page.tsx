@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
 import { TextLoader, MediumLoader } from "../Components/Loader";
+import { GrPowerReset } from "react-icons/gr";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -21,6 +22,10 @@ export default function Vehicles() {
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [Configurations, setConfigurationsData] = useState<any>([]);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
+  const [vehicle, setVehicle] = useState<any>("All Vehicles");
+  const [filterReservationsData, setFilterReservationsData] = useState<any[]>(
+    []
+  );
   const [reservationLoading, setreservationLoading] = useState<any>(true);
 
   useEffect(() => {
@@ -30,7 +35,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-
   useEffect(() => {
     async function getData() {
       try {
@@ -43,7 +47,6 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
-
   useEffect(() => {
     async function getData2() {
       try {
@@ -58,7 +61,6 @@ export default function Vehicles() {
     }
     getData2();
   }, []);
-
   function filterReg() {
     let filtered: any = VehiclesData;
 
@@ -94,13 +96,13 @@ export default function Vehicles() {
     }
     getData();
   }, []);
-
   useEffect(() => {
     async function getData() {
       try {
         setreservationLoading(true);
         const result = await axios.post("/api/getreservation");
         setreservationsData(result.data.data);
+        setFilterReservationsData(result.data.data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -109,26 +111,31 @@ export default function Vehicles() {
     }
     getData();
   }, [global.vehicleDataReloader]);
-  const completedReservations = reservationsData.filter(
-    (item: any) => item?.data?.status === "complete"
-  );
-  const canceledReservations = reservationsData.filter(
-    (item: any) => item?.data?.status === "cancel"
-  );
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
-  const pendingReservations = reservationsData.filter((item: any) => {
-    return item?.data?.status === "inComplete";
-  });
-  const upComingReservations = reservationsData.filter((item: any) => {
-    console.log(item?.data?.PickUpDate > currentDate ? item : "null");
-    return (
-      item?.data?.PickUpDate > currentDate &&
-      item?.data?.status === "inComplete"
-    );
-  });
-  const totalAmount = completedReservations.reduce(
-    (sum, record) => sum + Number(record.data.amount),
-    0
+  const [completedReservations, setCompletedReservations] = useState(
+    reservationsData.filter((item: any) => item?.data?.status === "complete")
+  );
+  const [canceledReservations, setCanceledReservations] = useState(
+    reservationsData.filter((item: any) => item?.data?.status === "cancel")
+  );
+  const [pendingReservations, setPendingReservations] = useState(
+    reservationsData.filter((item: any) => {
+      return item?.data?.status === "inComplete";
+    })
+  );
+  const [upComingReservations, setUpComingReservations] = useState(
+    reservationsData.filter((item: any) => {
+      return (
+        item?.data?.PickUpDate > currentDate &&
+        item?.data?.status === "inComplete"
+      );
+    })
+  );
+  const [totalAmount, setTotalAmount] = useState(
+    completedReservations.reduce(
+      (sum, record) => sum + Number(record.data.amount),
+      0
+    )
   );
   useEffect(() => {
     async function getData2() {
@@ -144,7 +151,6 @@ export default function Vehicles() {
     }
     getData2();
   }, []);
-
   function submitButton() {
     let filtered: any = VehiclesData;
 
@@ -184,13 +190,68 @@ export default function Vehicles() {
       allFilteredReservations.push(...filteredReservations);
     });
 
-    if (!make && !model && !regNo) {
+    if (!make || !model || !regNo) {
       setCarAvailable(undefined);
     } else {
-      setCarAvailable(filtered?.length);
+      setCarAvailable(filtered);
     }
   }
-console.log(carAvailable);
+  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitButton();
+  };
+
+  useEffect(() => {
+    function reFilter() {
+      let vehicle_id = carAvailable ? carAvailable[0]._id : undefined;
+      let filteredReservations: any = reservationsData.filter(
+        (item: any) => item?.data?.vehicle_id === vehicle_id
+      );
+      setFilterReservationsData(filteredReservations);
+      if (carAvailable) {
+        setVehicle(
+          `${carAvailable[0]?.data?.make} ${carAvailable[0]?.data?.model} ${carAvailable[0]?.data?.registration}`
+        );
+      }
+    }
+
+    if (carAvailable) {
+      reFilter();
+    }
+  }, [carAvailable]);
+  useEffect(() => {
+    function reFilter() {
+      setCompletedReservations(
+        filterReservationsData.filter(
+          (item: any) => item?.data?.status === "complete"
+        )
+      );
+      setCanceledReservations(
+        filterReservationsData.filter(
+          (item: any) => item?.data?.status === "cancel"
+        )
+      );
+      setPendingReservations(
+        filterReservationsData.filter((item: any) => {
+          return item?.data?.status === "inComplete";
+        })
+      );
+      setUpComingReservations(
+        filterReservationsData.filter((item: any) => {
+          return (
+            item?.data?.PickUpDate > currentDate &&
+            item?.data?.status === "inComplete"
+          );
+        })
+      );
+      setTotalAmount(
+        filterReservationsData
+          .filter((item: any) => item?.data?.status === "complete")
+          .reduce((sum, record) => sum + Number(record.data.amount), 0)
+      );
+    }
+    reFilter();
+  }, [filterReservationsData]);
 
   return (
     <div
@@ -206,19 +267,22 @@ console.log(carAvailable);
             Report
           </h3>
         </div>
-        <div className="bg-red-600 w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           {configurationsLoading ? (
             <div className="pt-5 w-full ">
               <MediumLoader />
             </div>
           ) : (
-            <div className="w-full flex flex-wrap justify-between items-start gap-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full flex flex-wrap justify-between items-start gap-y-4"
+            >
               <SelectInputWidth
                 widthProp="sm:w-[32%]"
                 setState={setMake}
                 label={"Make"}
                 value={make}
-                required={false}
+                required={true}
                 options={Configurations?.make?.map((item: any) => item.make)}
               />
               <SelectInputWidth
@@ -226,7 +290,7 @@ console.log(carAvailable);
                 setState={setModel}
                 label={"Model"}
                 value={model}
-                required={false}
+                required={true}
                 options={Configurations?.model
                   ?.filter((item: any) => item.make === make)
                   .map((item: any) => item.model)}
@@ -236,21 +300,36 @@ console.log(carAvailable);
                 setState={setRegNo}
                 label={"Registration Number"}
                 value={regNo}
-                required={false}
+                required={true}
                 options={filterReg()?.map(
                   (item: any) => item.data.registration
                 )}
               />
 
               <button
-                className="px-2 md:px-0 w-fit md:w-full py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  submitButton();
-                }}
+                className="px-2 md:px-0 w-fit md:w-[94%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                type="submit"
               >
-                Check
+                Filter
               </button>
-            </div>
+              <button
+                className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
+                  vehicle === "All Vehicles"
+                    ? "text-gray-600"
+                    : "text-main-blue"
+                }`}
+                onClick={(e) => {
+                  setFilterReservationsData(reservationsData);
+                  setMake("");
+                  setModel("");
+                  setRegNo("");
+                  setVehicle("All Vehicles");
+                }}
+                type="button"
+              >
+                <GrPowerReset />
+              </button>
+            </form>
           )}
         </div>
         <div className="w-full h-fit mt-4">
@@ -258,7 +337,7 @@ console.log(carAvailable);
             className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
           >
             <span className="font-[600] text-black" onClick={() => {}}>
-              All Vehicles
+              {vehicle}
             </span>
             <span
               className="underline cursor-pointer hover:no-underline"
@@ -283,7 +362,7 @@ console.log(carAvailable);
                 </div>
                 <div className="text-start px-8 flex justify-between items-center w-[50%]">
                   {!reservationLoading ? (
-                    reservationsData?.length
+                    filterReservationsData?.length
                   ) : (
                     <TextLoader />
                   )}
