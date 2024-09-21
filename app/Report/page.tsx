@@ -9,6 +9,7 @@ import axios from "axios";
 import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
 import { TextLoader, MediumLoader } from "../Components/Loader";
 import { GrPowerReset } from "react-icons/gr";
+import { handleExport } from "../Components/functions/exportFunction";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -137,6 +138,16 @@ export default function Vehicles() {
       0
     )
   );
+  const [exportData, setExportData] = useState<any>([
+    {
+      "Total Revenue": totalAmount,
+      "Total Reservations": filterReservationsData?.length,
+      "Complete Reservations": completedReservations?.length,
+      "Cancel Reservations": canceledReservations?.length,
+      "Pending Reservations": pendingReservations?.length,
+      "Upcoming Reservations": upComingReservations?.length,
+    },
+  ]);
   useEffect(() => {
     async function getData2() {
       try {
@@ -219,6 +230,7 @@ export default function Vehicles() {
       reFilter();
     }
   }, [carAvailable]);
+
   useEffect(() => {
     function reFilter() {
       setCompletedReservations(
@@ -252,6 +264,28 @@ export default function Vehicles() {
     }
     reFilter();
   }, [filterReservationsData]);
+
+  useEffect(() => {
+    setExportData([
+      {
+        "Total Revenue": totalAmount,
+        "Total Reservations": filterReservationsData?.length,
+        "Complete Reservations": completedReservations?.length,
+        "Cancel Reservations": canceledReservations?.length,
+        "Pending Reservations": pendingReservations?.length,
+        "Upcoming Reservations": upComingReservations?.length,
+      },
+    ]);
+  }, [
+    totalAmount,
+    filterReservationsData?.length,
+    completedReservations?.length,
+    canceledReservations?.length,
+    pendingReservations?.length,
+    upComingReservations?.length,
+  ]);
+
+  console.log(exportData);
 
   return (
     <div
@@ -341,7 +375,9 @@ export default function Vehicles() {
             </span>
             <span
               className="underline cursor-pointer hover:no-underline"
-              onClick={() => {}}
+              onClick={() => {
+                handleExport(exportData);
+              }}
             >
               Export
             </span>
