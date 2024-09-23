@@ -27,15 +27,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  async function logout() {
-    try {
-      await axios.post("/api/logOut");
-    } catch (error) {
-      console.error("Error logging out:", error);
-    } finally {
-      window.location.href = "/";
-    }
-  }
 
   return (
     <div

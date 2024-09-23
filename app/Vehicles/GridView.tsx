@@ -104,16 +104,6 @@ export default function GridView({ data }: dataType) {
       // setEditLoading(false);
     }
   }
-
-  // let data2 = data?.map((item: any) => {
-  //   return {
-  //     data: {
-  //       ...item.data,
-  //       active: item.active,
-  //     },
-  //   };
-  // });
-  // console.log(data2);
   return (
     <div className="w-full h-fit mt-4">
       <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">

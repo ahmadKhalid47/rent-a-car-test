@@ -28,6 +28,8 @@ import {
   setprofilePicR as setCompanyLogo,
   setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
+import { FaDoorOpen } from "react-icons/fa";
+import { Logout } from "@mui/icons-material";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -140,7 +142,25 @@ export default function Nav() {
     }
     dispatch(setcurrentCurrency(currencyInLS));
   }, []);
-  console.log(global.currentCurrency);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  };
+  async function logout() {
+    try {
+      await axios.post("/api/logOut");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    } finally {
+      window.location.reload();
+    }
+  }
 
   return (
     <div
@@ -161,11 +181,16 @@ export default function Nav() {
           } h-full`}
         />
       </button>
-      <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4">
-        <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
+      <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">
+        {/* <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={bell.src} className="w-[24px] h-[24px]" />
-        </div>
-        <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden">
+        </div> */}
+        <div
+          className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden"
+          onClick={() => {
+            toggleDropdown();
+          }}
+        >
           <img
             src={
               myProfile?.profilePic !== "" ? myProfile?.profilePic : account.src
@@ -174,6 +199,18 @@ export default function Nav() {
               myProfile?.profilePic ? "w-[100%] h-[100%]" : "w-[24px] h-[24px]"
             }`}
           />
+          {isOpen && (
+            <div className="z-10 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-md text-black flex flex-col justify-start items-start">
+              <button
+                className="px-4 py-2 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
+                onClick={() => {
+                  logout();
+                }}
+              >
+                Logout <Logout />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
