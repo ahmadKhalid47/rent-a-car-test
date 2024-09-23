@@ -1,12 +1,14 @@
 "use client";
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
+import carLogo from "@/public/Layer_1 (1).svg";
 import Login from "./Components/Login";
 import ForgotPassword from "./Components/ForgotPassword";
 import { RootState } from "./store";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+
 import axios from "axios";
 import {
   setprofilePicR as setCompanyLogo,
@@ -63,12 +65,13 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            {companyProfile?.profilePic2 ? (
+            {/* {companyProfile?.profilePic2 ? (
               <img
                 src={companyProfile?.profilePic2}
                 className="w-[120px] sm:w-[175px] z-10"
               />
-            ) : null}
+              ) : null} */}
+            <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" />
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
                 <>
