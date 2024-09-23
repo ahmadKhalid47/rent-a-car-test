@@ -31,7 +31,7 @@ export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>(false);
-
+  const [user, setUser] = useState("");
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -44,7 +44,7 @@ export default function Nav() {
     async function verifyTokenApi() {
       try {
         let userData = await axios.post("/api/verifyToken");
-        dispatch(setusernameR(userData?.data?.msg.username));
+        setUser(userData?.data?.msg.username);
       } catch (err) {}
     }
     verifyTokenApi();
@@ -52,29 +52,29 @@ export default function Nav() {
 
   let global = useSelector((state: RootState) => state.Global);
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let username = myProfile?.username;
 
   useEffect(() => {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post(`/api/getRegistration/${username}`);
+        const result = await axios.post(`/api/getRegistration/${user}`);
         dispatch(setprofilePicR(result?.data?.data?.profilePic));
         dispatch(setemailR(result?.data?.data?.email));
         dispatch(setphoneR(result?.data?.data?.phone));
         dispatch(setfirstNameR(result?.data?.data?.firstName));
         dispatch(setlastNameR(result?.data?.data?.lastName));
         dispatch(setaddressR(result?.data?.data?.address));
+        dispatch(setusernameR(result?.data?.data.username));
       } catch (error) {
         console.log(error);
       } finally {
         setLoading(false);
       }
     }
-    if (username) {
+    if (user) {
       getData();
     }
-  }, [username, global.myProfileReloader]);
+  }, [user, global.myProfileReloader]);
 
   useEffect(() => {
     async function getData() {

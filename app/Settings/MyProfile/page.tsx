@@ -48,34 +48,6 @@ export default function AddUser() {
     }
   }, [isMobile]);
 
-  // const addAgent = async (event: FormEvent<HTMLFormElement>) => {
-  //   if (typeof window === "undefined") {
-  //     return;
-  //   }
-  //   event.preventDefault();
-
-  //   const formData = new FormData(event.currentTarget);
-  //   const formDataObj: { [key: string]: string } = {};
-  //   formData.forEach((value, key) => {
-  //     formDataObj[key] = value.toString();
-  //   });
-  //   try {
-  //     setLoading(true);
-  //     let result: any = await axios.post(`/api/addAgent`, formDataObj);
-  //     if (result?.data?.success) {
-  //       setShowSuccess(result?.data?.success);
-  //       setShowError(null);
-  //     } else {
-  //       setShowError(result?.data?.error);
-  //       setShowSuccess(null);
-  //     }
-  //   } catch (error: any) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   async function editItem(username: any) {
     try {
       let res: AxiosResponse<any, any> | null = null;
@@ -112,7 +84,8 @@ export default function AddUser() {
       setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
     }
   };
-  console.log(myProfile.username);
+  
+  console.log(myProfile);
   
 
   return (

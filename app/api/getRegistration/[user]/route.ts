@@ -4,11 +4,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    let { username } = await params.params;
-    console.log("username", username);
-    
+    let { user } = await params.params;
+    console.log("user", user);
+
     await connectDb();
-    const data = await registrationModel.findOne({ username: username });
+    const data = await registrationModel.findOne({
+      $or: [{ username: user }, { email: user }],
+    });
+    console.log(data);
+
     return NextResponse.json({
       data,
     });
