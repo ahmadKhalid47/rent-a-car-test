@@ -1,4 +1,5 @@
 import Link from "next/link";
+import image404 from "@/public/image404.png";
 
 interface dataType {
   data: any;
@@ -11,7 +12,7 @@ export default function Generalreservation({ data, loading }: dataType) {
       <div className=" ">
         <div className="w-[150px] h-[150px] rounded-2xl  ">
           <img
-            src={data?.data?.customerImage}
+            src={data?.data?.customerImage || image404.src}
             alt="image-0"
             style={{ width: "100%", height: "100%" }}
             className="rounded-[10px]"

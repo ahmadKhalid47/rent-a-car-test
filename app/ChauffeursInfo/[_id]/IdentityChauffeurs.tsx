@@ -1,10 +1,13 @@
 import { FaChevronRight, FaChevronLeft, FaEye, FaTimes } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import image404 from "@/public/image404.png";
 
 export default function Generalchauffeur() {
-  let { chauffeurInfo } = useSelector((state: RootState) => state.chauffeurInfo);
+  let { chauffeurInfo } = useSelector(
+    (state: RootState) => state.chauffeurInfo
+  );
   let [activeField, setActiveField] = useState("passport");
   const [imagePopup, setImagePopup] = useState<boolean>(false);
   const [imageIndex, setImageIndex] = useState<number>(0);
@@ -95,33 +98,33 @@ export default function Generalchauffeur() {
           }}
         >
           <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
-            <img
-              src={ImageArray[imageIndex]}
-              className={"w-[100%] h-[100%]"}
-              style={{
-                transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
-                cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomed(!zoomed);
-              }}
-            />
+            <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
+              <img
+                src={ImageArray[imageIndex] || image404.src}
+                className={"w-[100%] h-[100%]"}
+                style={{
+                  transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                  cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setZoomed(!zoomed);
+                }}
+              />
+            </div>
+            <span
+              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full`}
+              onClick={() => setImagePopup(false)}
+            >
+              <FaTimes />
+            </span>
           </div>
-          {/* <span
-            className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-[13%] right-[13%] ${
-              zoomed ? "right-3" : ""
-            } w-fit shadow bg-white rounded-full`}
-            onClick={() => setImagePopup(false)}
-          >
-            <FaTimes />
-          </span> */}
         </div>
       ) : null}
 
       <div className="w-[210px] h-[210px] bg-white rounded-[10px] border-[1px] border-grey my-2">
         <img
-          src={ImageArray[imageIndex]}
+          src={ImageArray[imageIndex] || image404.src}
           className={"w-[100%] h-[100%]"}
           onClick={() => {
             setImagePopup(true);

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { setConfigurations } from "@/app/store/Configurations";
 import axios from "axios";
+import image404 from "@/public/image404.png";
 
 export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -151,32 +152,38 @@ export default function Damages() {
                 }}
               >
                 <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
-                  <img
-                    src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
-                    className={"w-[100%] h-[100%]"}
-                    style={{
-                      transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
-                      cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setZoomed(!zoomed);
-                    }}
-                  />
+                  <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
+                    <img
+                      src={
+                        vehicleInfo.damages[damageIndex]?.files[imageIndex] ||
+                        image404.src
+                      }
+                      className={"w-[100%] h-[100%]"}
+                      style={{
+                        transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                        cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setZoomed(!zoomed);
+                      }}
+                    />
+                  </div>
+                  <span
+                    className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full`}
+                    onClick={() => setImagePopup(false)}
+                  >
+                    <FaTimes />
+                  </span>
                 </div>
-                {/* <span
-                  className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-36 right-36 ${
-                    zoomed ? "right-3" : ""
-                  } w-fit shadow bg-white rounded-full`}
-                  onClick={() => setImagePopup(false)}
-                >
-                  <FaTimes />
-                </span> */}
               </div>
             ) : null}
             <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
               <img
-                src={vehicleInfo.damages[damageIndex]?.files[imageIndex]}
+                src={
+                  vehicleInfo.damages[damageIndex]?.files[imageIndex] ||
+                  image404.src
+                }
                 className={"w-[100%] h-[100%]"}
                 onClick={() => {
                   setImagePopup(true);

@@ -14,6 +14,7 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
+import image404 from "@/public/image404.png";
 
 export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
@@ -104,7 +105,7 @@ export default function CarInfoMainPage() {
                     </div>
                     <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                       <img
-                        src={vehicleInfo.carImages[imageIndex]}
+                        src={vehicleInfo.carImages[imageIndex] || image404.src}
                         className="w-full h-full"
                       />
                     </div>

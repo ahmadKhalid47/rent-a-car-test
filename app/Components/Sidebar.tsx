@@ -97,12 +97,6 @@ export default function Sidebar() {
               } mt-[30px]`}
             />
             ) : null}
-          {/* <img
-            src={bar.src}
-            className={`${
-              global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
-            } mt-[30px]`}
-          /> */}
         </Link>
       </div>
       <div

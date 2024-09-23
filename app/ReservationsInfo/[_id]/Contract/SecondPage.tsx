@@ -1,4 +1,5 @@
 import { formatDate, formatId } from "@/app/Components/functions/formats";
+import { MediumLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
@@ -87,6 +88,7 @@ export default function SecondPage({
           <div className="w-full flex justify-between items-start mt-6">
             <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
               <img src={exteriorImg} className="w-[250px] h-[300px]" />
+              <MediumLoader />
               {data.damages.map(
                 (item: any, index: any) =>
                   item.exterior && (

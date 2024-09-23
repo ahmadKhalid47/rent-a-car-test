@@ -12,6 +12,8 @@ import React, { useCallback } from "react";
 import { setdamages, setdamageImagesToDelete } from "@/app/store/reservations";
 import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
+import image404 from "@/public/image404.png";
+import { MediumLoader } from "@/app/Components/Loader";
 
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -240,22 +242,32 @@ export default function SecondPage() {
                 <div className="w-[326px] h-fit sm:h-[408px]  relative Damage-Zooming">
                   {exterior ? (
                     <div className="w-[326px] h-[408px] relative">
-                      <img
-                        src={exteriorImg}
-                        className="w-[326px] h-[408px] cursor-pointer"
-                        onClick={(e) => {
-                          handleClick(e, true);
-                        }}
-                      />
+                      {exteriorImg ? (
+                        <img
+                          src={exteriorImg}
+                          className="w-[326px] h-[408px] cursor-pointer"
+                          onClick={(e) => {
+                            handleClick(e, true);
+                          }}
+                        />
+                      ) : (
+                        <MediumLoader />
+                      )}
                     </div>
                   ) : (
-                    <img
-                      src={interiorImg}
-                      className="w-[326px] h-[408px]"
-                      onClick={(e) => {
-                        handleClick(e, false);
-                      }}
-                    />
+                    <>
+                      {interiorImg ? (
+                        <img
+                          src={interiorImg}
+                          className="w-[326px] h-[408px]"
+                          onClick={(e) => {
+                            handleClick(e, false);
+                          }}
+                        />
+                      ) : (
+                        <MediumLoader />
+                      )}
+                    </>
                   )}
                   {reservation?.damages?.map((mark: any, index: any) => (
                     <>
@@ -332,7 +344,7 @@ export default function SecondPage() {
                     </p>
                   </div>
                 ))}
-                {vehicleInfo?.damages.length === 0 ? (
+                {reservation?.damages.length === 0 ? (
                   <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                     Tap on the vehicle's part to add damage
                   </p>

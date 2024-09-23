@@ -25,8 +25,6 @@ export default function FirstPage({
           <img
             src={
               companyProfile?.profilePic
-                ? companyProfile.profilePic
-                : carLogo.src
             }
             className={`w-[120px] h-[40px]`}
           />

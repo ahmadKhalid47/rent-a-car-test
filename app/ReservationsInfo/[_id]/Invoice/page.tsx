@@ -151,8 +151,6 @@ function PrintCom({ data, id }: any) {
               <img
                 src={
                   companyProfile?.profilePic
-                    ? companyProfile.profilePic
-                    : carLogo.src
                 }
                 className={`w-[120px] h-[40px]`}
               />

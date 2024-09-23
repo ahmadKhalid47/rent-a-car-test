@@ -1,7 +1,8 @@
 import { FaChevronRight, FaChevronLeft, FaEye, FaTimes } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import image404 from "@/public/image404.png";
 
 export default function GeneralCustomer() {
   let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
@@ -11,8 +12,12 @@ export default function GeneralCustomer() {
   const [zoomed, setZoomed] = useState<boolean>(false);
   let ImageArray =
     activeField === "passport"
-      ? CustomerInfo?.passportImages?CustomerInfo?.passportImages:"---"
-      : CustomerInfo?.licenseImages?CustomerInfo?.licenseImages:"---";
+      ? CustomerInfo?.passportImages
+        ? CustomerInfo?.passportImages
+        : "---"
+      : CustomerInfo?.licenseImages
+      ? CustomerInfo?.licenseImages
+      : "---";
 
   let imageLength =
     activeField === "passport"
@@ -47,13 +52,17 @@ export default function GeneralCustomer() {
             Passport
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.passportNumber?CustomerInfo?.passportNumber:"---"}
+            {CustomerInfo?.passportNumber
+              ? CustomerInfo?.passportNumber
+              : "---"}
           </p>
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.passportValid?CustomerInfo?.passportValid:"---"}
+            {CustomerInfo?.passportValid ? CustomerInfo?.passportValid : "---"}
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.passportCountry?CustomerInfo?.passportCountry:"---"}
+            {CustomerInfo?.passportCountry
+              ? CustomerInfo?.passportCountry
+              : "---"}
             <FaEye
               className={
                 activeField === "passport" ? "text-main-blue" : "text-grey"
@@ -72,13 +81,15 @@ export default function GeneralCustomer() {
             License
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.licenseNumber?CustomerInfo?.licenseNumber:"---"}
+            {CustomerInfo?.licenseNumber ? CustomerInfo?.licenseNumber : "---"}
           </p>
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {CustomerInfo?.licenseValid?CustomerInfo?.licenseValid:"---"}
+            {CustomerInfo?.licenseValid ? CustomerInfo?.licenseValid : "---"}
           </p>
           <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {CustomerInfo?.licenseCountry?CustomerInfo?.licenseCountry:"---"}
+            {CustomerInfo?.licenseCountry
+              ? CustomerInfo?.licenseCountry
+              : "---"}
             <FaEye
               className={
                 activeField !== "passport" ? "text-main-blue" : "text-grey"
@@ -95,33 +106,33 @@ export default function GeneralCustomer() {
           }}
         >
           <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
-            <img
-              src={ImageArray[imageIndex]}
-              className={"w-[100%] h-[100%] object-fill"}
-              style={{
-                transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
-                cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomed(!zoomed);
-              }}
-            />
+            <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
+              <img
+                src={ImageArray[imageIndex] || image404.src}
+                className={"w-[100%] h-[100%] object-fill"}
+                style={{
+                  transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                  cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setZoomed(!zoomed);
+                }}
+              />
+            </div>
+            <span
+              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full`}
+              onClick={() => setImagePopup(false)}
+            >
+              <FaTimes />
+            </span>
           </div>
-          {/* <span
-            className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-28 right-28 ${
-              zoomed ? "right-3" : ""
-            } w-fit shadow bg-white rounded-full`}
-            onClick={() => setImagePopup(false)}
-          >
-            <FaTimes />
-          </span> */}
         </div>
       ) : null}
 
       <div className="w-[210px] h-[210px] bg-white rounded-[10px] border-[1px] border-grey my-2">
         <img
-          src={ImageArray[imageIndex]}
+          src={ImageArray[imageIndex] || image404.src}
           className={"w-[100%] h-[100%]"}
           onClick={() => {
             setImagePopup(true);

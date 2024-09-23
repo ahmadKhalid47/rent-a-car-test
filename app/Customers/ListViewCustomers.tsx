@@ -244,7 +244,6 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[11%] ps-7">
               ID
-              {/* <img src={arrows.src} /> */}
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[19%]"

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { handleExport } from "../functions/exportFunction";
 import { SmallLoader } from "../Components/Loader";
 import { handleExport } from "../Components/functions/exportFunction";
+import image404 from "@/public/image404.png";
 
 interface dataType {
   data: Array<Object>;
@@ -171,7 +172,10 @@ export default function GridView({ data }: dataType) {
             <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
               {item?.data?.carImages ? (
                 <img
-                  src={item?.data?.carImages[item?.data?.thumbnailImage]}
+                  src={
+                    item?.data?.carImages[item?.data?.thumbnailImage] ||
+                    image404.src
+                  }
                   className="w-full h-full"
                 />
               ) : null}

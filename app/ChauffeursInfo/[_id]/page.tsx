@@ -1,10 +1,7 @@
 "use client";
-import vip from "@/public/vip.svg";
 import Identitychauffeur from "./IdentityChauffeurs";
-import Emergencychauffeur from "./EmergencyChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import Referencechauffeur from "./ReferenceChauffeurs";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
@@ -14,6 +11,7 @@ import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
 import { useParams } from "next/navigation";
 import GeneralChauffeurs from "./GeneralChauffeurs";
 import EmergencyChauffeurs from "./EmergencyChauffeurs";
+import image404 from "@/public/image404.png";
 
 export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -78,7 +76,7 @@ export default function chauffeurInfoMainPage() {
               <div className="w-fit flex justify-start items-center gap-1">
                 <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
                   <img
-                    src={chauffeurInfo?.chauffeurImage}
+                    src={chauffeurInfo?.chauffeurImage || image404.src}
                     className="w-full h-full"
                   />
                 </div>

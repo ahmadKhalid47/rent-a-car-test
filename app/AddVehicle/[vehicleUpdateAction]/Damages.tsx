@@ -169,7 +169,6 @@ export default function Damages() {
                 onClick={() => setExterior(true)}
               >
                 {exterior ? (
-                  // <img src={checkBlue.src} />
                   <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
                     <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
                   </div>
