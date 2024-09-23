@@ -26,6 +26,8 @@ export default function Login() {
     formData.forEach((value, key) => {
       formDataObj[key] = value.toString();
     });
+    setShowError(null);
+
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/login`, formDataObj);
@@ -40,6 +42,7 @@ export default function Login() {
       setLoading(false);
     }
   };
+  console.log(showError);
 
   return (
     <>

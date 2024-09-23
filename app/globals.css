@@ -282,9 +282,31 @@ input[type="number"]::-webkit-inner-spin-button {
   animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.125)
     infinite;
 }
+
 .alert-animation {
-  transition: all 1s;
+  animation: bounceInRight 1s ease-in-out;
 }
+
+@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-25px);
+  }
+  75% {
+    transform: translateX(0px);
+  }
+  90% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes pulse {
   0%,
   100% {
@@ -361,7 +383,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .printing-width {
   /* width: 100%; */
-    width: 794px;
+  width: 794px;
 }
 
 @media print {
@@ -369,9 +391,9 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 794px;
   }
 }
-button:hover{
+button:hover {
   opacity: 0.9;
 }
-button:active{
+button:active {
   opacity: 1;
 }
