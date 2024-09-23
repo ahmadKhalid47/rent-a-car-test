@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const updateGeneralSettingsSchema = mongoose.Schema(
   {
-    currency: { type: Object },
+    currency: { type: String },
   },
   {
     timestamps: true,

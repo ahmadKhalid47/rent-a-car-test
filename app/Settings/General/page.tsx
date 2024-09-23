@@ -21,47 +21,33 @@ export default function AddUser() {
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [currencies, setCurrencies] = useState<any>([]);
   const [saveloading, setSaveLoading] = useState<any>(false);
   const [loading, setLoading] = useState<any>(false);
   const router = useRouter();
 
-  const currencySymbols: any = {
-    USD: "$",
-    EUR: "€",
-    GBP: "£",
-    JPY: "¥",
-    AUD: "A$",
-    CAD: "C$",
-    CHF: "CHF",
-    CNY: "¥",
-    INR: "₹", // Indian Rupee
-    NZD: "NZ$",
-    SEK: "kr", // Swedish Krona
-    NOK: "kr", // Norwegian Krone
-    MXN: "$", // Mexican Peso
-    SGD: "S$", // Singapore Dollar
-    HKD: "HK$",
-    ZAR: "R", // South African Rand
-    RUB: "₽", // Russian Ruble
-    TRY: "₺", // Turkish Lira
-    BRL: "R$", // Brazilian Real
-    AED: "د.إ", // UAE Dirham
-    PKR: "₨", // Pakistani Rupee
-  };
-
-  const fetchExchangeRates = async () => {
-    try {
-      const response: any = await axios.get(
-        "https://api.currencylayer.com/live?access_key=58272b06c9c4db23d8165a9b547e7faf&format=1"
-      );
-      const rates: any = response.data.quotes;
-      const quotesArray: any = Object.entries(rates);
-      setCurrencies(quotesArray);
-    } catch (error) {
-      console.error("Error fetching exchange rates:", "error");
-    }
-  };
+  const currencySymbols: any = [
+    "$",
+    "€",
+    "₨",
+    "£",
+    "¥",
+    "A$",
+    "C$",
+    "CHF",
+    "¥",
+    "₹",
+    "NZ$",
+    "kr",
+    "kr",
+    "$",
+    "S$",
+    "HK$",
+    "R",
+    "₽",
+    "₺",
+    "R$",
+    "د.إ",
+  ];
 
   useEffect(() => {
     if (isMobile) {
@@ -70,18 +56,6 @@ export default function AddUser() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const result = await axios.post("/api/getNotification");
-      } finally {
-      }
-    }
-    fetchExchangeRates();
-
-    getData();
-  }, []);
 
   useEffect(() => {
     async function getData() {
@@ -108,22 +82,6 @@ export default function AddUser() {
     }
   }
 
-  function setCurrencyData(value: any) {
-    let arrayValue = value.split(",");
-    let code = arrayValue[0].toString().slice(3);
-    let rate = arrayValue[1];
-    let symbol = currencySymbols[code];
-
-    let currencyObject = {
-      code: code,
-      rate: rate,
-      symbol: symbol ? symbol : code,
-    };
-    dispatch(setcurrentCurrency(currencyObject));
-  }
-
-  console.log(currencies);
-
   return (
     <div
       className={`${
@@ -144,7 +102,7 @@ export default function AddUser() {
         <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              {/* <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
+              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
                     Currency
@@ -159,14 +117,12 @@ export default function AddUser() {
                       <select
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
                         onChange={(e) => {
-                          setCurrencyData(e.target.value);
-                          console.log(e.target.value);
+                          dispatch(setcurrentCurrency(e.target.value));
                         }}
-                        value={`USD${global?.currentCurrency?.code},${global?.currentCurrency?.rate}`}
                       >
-                        {currencies?.map((item: any, index: number) => (
+                        {currencySymbols?.map((item: any, index: number) => (
                           <option value={item} key={index}>
-                            {item[0].toString().slice(3)}
+                            {item}
                           </option>
                         ))}
                       </select>
@@ -176,7 +132,7 @@ export default function AddUser() {
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">

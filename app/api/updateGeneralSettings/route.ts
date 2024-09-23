@@ -4,15 +4,14 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { selectedCurrency } = await req.json();
-    console.log(selectedCurrency);
+    let {currency}  = await req.json();
+    console.log(currency);
 
     connectDb();
-    // await updateGeneralSettingsModel.updateOne(
-    //   {},
-    //   { $set: { currency: selectedCurrency } }
-    // );
-    await new updateGeneralSettingsModel({ currency: selectedCurrency }).save();
+    await updateGeneralSettingsModel.updateOne(
+      {},
+      { $set: { currency: currency } }
+    );
     return NextResponse.json({
       success: "User Created",
     });
