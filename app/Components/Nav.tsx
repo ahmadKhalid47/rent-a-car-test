@@ -28,7 +28,6 @@ import {
   setprofilePicR as setCompanyLogo,
   setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
-import { FaDoorOpen } from "react-icons/fa";
 import { Logout } from "@mui/icons-material";
 
 export default function Nav() {
@@ -96,26 +95,26 @@ export default function Nav() {
         const result = await axios.post("/api/getcompanyProfile");
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;
-        if (typeof window !== "undefined") {
-          localStorage.setItem("companyLogo", profilePic);
-          localStorage.setItem("companyLogo2", profilePic2);
+        // if (typeof window !== "undefined") {
+        //   localStorage.setItem("companyLogo", profilePic);
+        //   localStorage.setItem("companyLogo2", profilePic2);
           dispatch(setCompanyLogo([profilePic]));
           dispatch(setCompanyLogo2([profilePic2]));
-        }
+        // }
       } catch (error) {
         console.error("Error fetching company profile:", error);
       }
     }
-    if (typeof window !== "undefined") {
-      const storedLogo = localStorage.getItem("companyLogo");
-      const storedLogo2 = localStorage.getItem("companyLogo2");
-      if (storedLogo && storedLogo2) {
-        dispatch(setCompanyLogo([storedLogo]));
-        dispatch(setCompanyLogo2([storedLogo2]));
-      } else {
+    // if (typeof window !== "undefined") {
+    //   const storedLogo = localStorage.getItem("companyLogo");
+    //   const storedLogo2 = localStorage.getItem("companyLogo2");
+    //   if (storedLogo && storedLogo2) {
+    //     dispatch(setCompanyLogo([storedLogo]));
+    //     dispatch(setCompanyLogo2([storedLogo2]));
+    //   } else {
         getData();
-      }
-    }
+    //   }
+    // }
   }, [global.companyProfileReloader]);
 
   useEffect(() => {

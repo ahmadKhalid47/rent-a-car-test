@@ -29,26 +29,26 @@ export default function Vehicles() {
         const result = await axios.post("/api/getcompanyProfile");
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;
-        if (typeof window !== "undefined") {
-          localStorage.setItem("companyLogo", profilePic);
-          localStorage.setItem("companyLogo2", profilePic2);
+        // if (typeof window !== "undefined") {
+        //   localStorage.setItem("companyLogo", profilePic);
+        //   localStorage.setItem("companyLogo2", profilePic2);
           dispatch(setCompanyLogo([profilePic]));
           dispatch(setCompanyLogo2([profilePic2]));
-        }
+        // }
       } catch (error) {
         console.error("Error fetching company profile:", error);
       }
     }
-    if (typeof window !== "undefined") {
-      const storedLogo = localStorage.getItem("companyLogo");
-      const storedLogo2 = localStorage.getItem("companyLogo2");
-      if (storedLogo && storedLogo2) {
-        dispatch(setCompanyLogo([storedLogo]));
-        dispatch(setCompanyLogo2([storedLogo2]));
-      } else {
+    // if (typeof window !== "undefined") {
+    //   const storedLogo = localStorage.getItem("companyLogo");
+    //   const storedLogo2 = localStorage.getItem("companyLogo2");
+    //   if (storedLogo && storedLogo2) {
+    //     dispatch(setCompanyLogo([storedLogo]));
+    //     dispatch(setCompanyLogo2([storedLogo2]));
+    //   } else {
         getData();
-      }
-    }
+    //   }
+    // }
   }, []);
 
   return (
@@ -65,13 +65,13 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            {/* {companyProfile?.profilePic2 ? (
+            {companyProfile?.profilePic2 ? (
               <img
                 src={companyProfile?.profilePic2}
                 className="w-[120px] sm:w-[175px] z-10"
               />
-              ) : null} */}
-            <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" />
+              ) : null}
+            {/* <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" /> */}
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
                 <>

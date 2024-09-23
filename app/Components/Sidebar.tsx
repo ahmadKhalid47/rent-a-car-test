@@ -89,20 +89,20 @@ export default function Sidebar() {
     >
       <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
         <Link href={"/Dashboard"} className="w-fit h-fit">
-          {/* {companyProfile?.profilePic ? (
+          {companyProfile?.profilePic ? (
             <img
               src={companyProfile?.profilePic}
               className={`${
                 global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
               } mt-[30px]`}
             />
-            ) : null} */}
-          <img
+            ) : null}
+          {/* <img
             src={bar.src}
             className={`${
               global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
             } mt-[30px]`}
-          />
+          /> */}
         </Link>
       </div>
       <div
