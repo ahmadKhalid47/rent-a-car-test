@@ -218,7 +218,7 @@ export default function Vehicles() {
     }
     if (toDate) {
       const lowercasedQuery = toDate;
-      filteredReservations = reservationsData.filter((vehicle: any) => {
+      filteredReservations = filteredReservations.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.dropOffDate;
         return keyValueInVehicle <= lowercasedQuery;
       });
