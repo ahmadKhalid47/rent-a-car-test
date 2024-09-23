@@ -33,7 +33,6 @@ export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>(false);
-  // const [user, setUser] = useState("");
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -81,17 +80,13 @@ export default function Nav() {
       }
     }
     if (
-      myProfile.user
-      &&
+      myProfile.user &&
       myProfile.username !== undefined &&
       myProfile.email !== undefined
     ) {
       getData();
     }
-  }, [
-    myProfile.user,
-    global.myProfileReloader,
-  ]);
+  }, [myProfile.user, global.myProfileReloader]);
 
   useEffect(() => {
     async function getData() {
@@ -127,13 +122,9 @@ export default function Nav() {
       try {
         const result = await axios.post("/api/getGeneralSettings");
         if (typeof window !== "undefined") {
-          localStorage.setItem(
-            "currency",
-            JSON.stringify(result.data.data[0].currency)
-          );
-
+          localStorage.setItem("currency", result.data.data[0].currency);
           let value = localStorage.getItem("currency");
-          currencyInLS = value ? JSON.parse(value) : value;
+          currencyInLS = value;
         }
       } catch (error) {
         console.log(error);
@@ -141,13 +132,14 @@ export default function Nav() {
     }
     if (typeof window !== "undefined") {
       let value = localStorage.getItem("currency");
-      currencyInLS = value ? JSON.parse(value) : value;
+      currencyInLS = value;
     }
     if (!currencyInLS) {
       getData();
     }
     dispatch(setcurrentCurrency(currencyInLS));
   }, []);
+  console.log(global.currentCurrency);
 
   return (
     <div

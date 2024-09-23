@@ -8,11 +8,7 @@ const initialState = {
   vehicleDataReloader: 0,
   myProfileReloader: 0,
   companyProfileReloader: 0,
-  currentCurrency: {
-    code: "USD",
-    rate: 0,
-    symbol: "$",
-  },
+  currentCurrency:""
 };
 
 export const GlobalSlice = createSlice({

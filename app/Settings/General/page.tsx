@@ -75,6 +75,9 @@ export default function AddUser() {
       setSaveLoading(true);
       await axios.post(`/api/updateInvoicing`, { Invoicing });
       await axios.post(`/api/updateGeneralSettings`, { currency });
+      if (typeof window !== "undefined") {
+        localStorage.setItem("currency", global.currentCurrency);
+      }
     } catch (err) {
       console.log(err);
     } finally {
@@ -119,7 +122,9 @@ export default function AddUser() {
                         onChange={(e) => {
                           dispatch(setcurrentCurrency(e.target.value));
                         }}
+                        value={global.currentCurrency}
                       >
+                        <option value={""}>Select</option>
                         {currencySymbols?.map((item: any, index: number) => (
                           <option value={item} key={index}>
                             {item}
