@@ -353,7 +353,7 @@ console.log(VehiclesData);
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                     {!reservationLoading ? (
-                      "$" + totalAmountToday
+                      `${global.currentCurrency} ` + totalAmountToday
                     ) : (
                       <TextLoader />
                     )}
@@ -369,7 +369,11 @@ console.log(VehiclesData);
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? "$" + totalAmount : <TextLoader />}
+                    {!reservationLoading ? (
+                      `${global.currentCurrency} ` + totalAmount
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Revenue

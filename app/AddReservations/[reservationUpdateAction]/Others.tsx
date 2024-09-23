@@ -48,6 +48,7 @@ export default function Others({
     ? 0
     : Number(reservation.discount);
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
+  let global = useSelector((state: RootState) => state.Global);
 
   function calculateDaysBetween(pickUpDate: any, dropOffDate: any) {
     if (!pickUpDate || !dropOffDate) {
@@ -240,7 +241,7 @@ export default function Others({
           </div>
           <div className="w-full flex justify-between items-center h-fit">
             <span>
-              Car Rent ${" "}
+              Car Rent {global.currentCurrency}{" "}
               {daysBetween < 1 ? (
                 <span>{timeBetween + " x " + carRentPerHours}</span>
               ) : (
@@ -260,7 +261,8 @@ export default function Others({
               )}
             </span>
             <span>
-              ${isNaN(reservation?.carTotal) ? 0 : reservation?.carTotal}{" "}
+              {global.currentCurrency}
+              {isNaN(reservation?.carTotal) ? 0 : reservation?.carTotal}{" "}
             </span>
           </div>
 
@@ -268,13 +270,13 @@ export default function Others({
             <>
               <div className="w-full flex justify-between items-center h-fit">
                 <span>
-                  Chauffeur $ {chauffeurRentPerDays} ×{" "}
+                  Chauffeur {global.currentCurrency} {chauffeurRentPerDays} ×{" "}
                   {daysBetween < 1 && timeBetween > 0
                     ? daysBetween + 1
                     : daysBetween}
                 </span>
                 <span>
-                  $
+                  {global.currentCurrency}
                   {daysBetween
                     ? chauffeurRentPerDays * daysBetween
                     : timeBetween
@@ -290,7 +292,10 @@ export default function Others({
             <>
               <div className="w-full flex justify-between items-center h-fit">
                 <span>VAT {varPerNum}%</span>
-                <span>${varAmount(varPerNum, totalAmount)}</span>
+                <span>
+                  {global.currentCurrency}
+                  {varAmount(varPerNum, totalAmount)}
+                </span>
               </div>
               <div className="border-b-[1px] border-grey w-full "></div>
             </>
@@ -309,13 +314,16 @@ export default function Others({
           {reservation?.discount ? (
             <div className="w-full flex justify-between items-center h-fit">
               <span>Discount</span>
-              <span>${reservation?.discount}</span>
+              <span>
+                {global.currentCurrency}
+                {reservation?.discount}
+              </span>
             </div>
           ) : null}
           <div className="w-full flex justify-between items-center h-fit">
             <span>Total</span>
             <span>
-              $
+              {global.currentCurrency}
               {isNaN(reservation?.carTotal)
                 ? 0
                 : varTotalAmount(varPerNum, totalAmount) - discount}

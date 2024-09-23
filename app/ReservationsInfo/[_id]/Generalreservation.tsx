@@ -6,6 +6,7 @@ export default function Generalreservations() {
   let { reservationInfo } = useSelector(
     (state: RootState) => state.reservationInfo
   );
+  let global = useSelector((state: RootState) => state.Global);
 
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
@@ -45,7 +46,7 @@ export default function Generalreservations() {
             Security Deposit:
           </p>
           <p className="w-[50%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            $
+            {global.currentCurrency}
             {reservationInfo?.securityDeposit
               ? reservationInfo?.securityDeposit
               : "---"}
@@ -78,7 +79,8 @@ export default function Generalreservations() {
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Amount:</p>
           <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            ${reservationInfo?.amount ? reservationInfo?.amount : "---"}
+            {global.currentCurrency}
+            {reservationInfo?.amount ? reservationInfo?.amount : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
