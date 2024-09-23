@@ -150,6 +150,19 @@ export default function reservationInfoMainPage() {
       setStatusLoading(false);
     }
   }
+  const currentDate = new Date().toISOString().split("T")[0];
+  const pickUpDate = reservationInfo?.PickUpDate;
+  const dropOffDate = reservationInfo?.dropOffDate;
+
+  function getDateDifference(currentDate: any, pickUpDate: any) {
+    const current: any = new Date(currentDate);
+    const pickUp: any = new Date(pickUpDate);
+    const diffTime: any = Math.abs(current - pickUp);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+
+  console.log(getDateDifference(currentDate, pickUpDate)); 
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -203,9 +216,9 @@ export default function reservationInfoMainPage() {
                 <div className="font-[600] text-[#242E69] text-[18px]  ">
                   Pick-Up:
                 </div>
-                <div className="flex justify-start items-center relative">
-                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover left-0 top-[50%]"></div>
-                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[1px]"></div>
+                <div className="flex justify-start items-center relative mt-1">
+                  <div className="w-[9px] h-[9px] rounded-full bg-[#242E69] absolute left-0 top-[-3.125px]"></div>
+                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[2.5px]"></div>
                 </div>
 
                 <div className="mt-[13px]">
@@ -230,9 +243,9 @@ export default function reservationInfoMainPage() {
                 <div className="font-[600] text-[#242E69] text-[18px]  ">
                   Drop-off:
                 </div>
-                <div className="flex justify-start items-center relative">
-                  <div className="p-[3px] rounded-full bg-[#242E69] object-cover left-0 top-[50%]"></div>
-                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[1px]"></div>
+                <div className="flex justify-start items-center relative mt-1">
+                  <div className="w-[9px] h-[9px] rounded-full bg-[#242E69] absolute left-0 top-[-3.125px]"></div>
+                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[2.5px]"></div>{" "}
                 </div>
 
                 <div className="mt-[13px]">

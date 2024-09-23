@@ -41,15 +41,23 @@ export default function Generalreservations() {
               : "---"}
           </div>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
             Security Deposit:
           </p>
           <p className="w-[50%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {global.currentCurrency}
+            {global.currentCurrency}{" "}
             {reservationInfo?.securityDeposit
               ? reservationInfo?.securityDeposit
               : "---"}
+          </p>
+        </div>
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
+          <p className="font-[400] text-[18px] leading-[27px]">
+            Current Fuel Status:
+          </p>
+          <p className="w-[50%] text-start break-words font-[400] text-[18px] leading-[27px]">
+            {reservationInfo?.fuelStatus ? reservationInfo?.fuelStatus : "---"}%
           </p>
         </div>
       </div>
@@ -79,24 +87,16 @@ export default function Generalreservations() {
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Amount:</p>
           <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {global.currentCurrency}
+            {global.currentCurrency}{" "}
             {reservationInfo?.amount ? reservationInfo?.amount : "---"}
           </p>
         </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
+        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
             Current Odometer (KMPH):
           </p>
           <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
             {reservationInfo?.odometer ? reservationInfo?.odometer : "---"}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Current Fuel Status:
-          </p>
-          <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {reservationInfo?.fuelStatus ? reservationInfo?.fuelStatus : "---"}%
           </p>
         </div>
       </div>
