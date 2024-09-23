@@ -102,15 +102,18 @@ export default function Damages() {
           </div>
           <div className="w-[40%] h-fit flex flex-col justify-start items-start  ">
             <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-              <p className="w-[50px]  font-[600] text-[18px] leading-[27px] text-start">
+              <span className="py-2 w-[50px]  font-[600] text-[18px] leading-[27px] text-start">
                 No
-              </p>
-              <p className="w-[60%]  font-[600] text-[18px] leading-[27px] text-start">
+              </span>
+              <span className="py-2 w-[40%]  font-[600] text-[18px] leading-[27px] text-start">
                 Damage Type
-              </p>
-              <p className="w-[100px]  font-[600] text-[18px] leading-[27px] text-start">
+              </span>
+              <span className="py-2 w-[150px]  font-[600] text-[18px] leading-[27px] text-start">
+                Position
+              </span>
+              <span className="py-2 w-[100px]  font-[600] text-[18px] leading-[27px] text-start">
                 Degree
-              </p>
+              </span>
             </div>
             {vehicleInfo.damages.map((item: any, index: number) => (
               <div
@@ -119,20 +122,23 @@ export default function Damages() {
                   setdamageIndex(index);
                 }}
               >
-                <p className="w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
+                <span className="py-2 w-[50px]  font-[400] text-[18px] leading-[27px] text-start">
                   {index + 1}
-                </p>
-                <p className="w-[60%]  font-[400] text-[18px] leading-[27px] text-start">
+                </span>
+                <span className="py-2 w-[40%]  font-[400] text-[18px] leading-[27px] text-start">
                   {item.damageType}
-                </p>
-                <p className="flex justify-between items-center w-[100px]  font-[400] text-[18px] leading-[27px] text-start">
+                </span>
+                <span className="py-2 w-[150px]  font-[400] text-[18px] leading-[27px] text-start">
+                  {item.exterior ? "Exterior" : "Interior"}
+                </span>
+                <span className="py-2 flex justify-between items-center w-[100px]  font-[400] text-[18px] leading-[27px] text-start">
                   {item.degree}
                   <FaEye
                     className={
                       index === damageIndex ? "text-main-blue" : "text-grey"
                     }
                   />
-                </p>
+                </span>
               </div>
             ))}
           </div>
@@ -201,9 +207,9 @@ export default function Damages() {
           </div>
         </>
       ) : (
-        <p className="font-[400] text-[18px] leading-[27px]">
+        <span className="py-2 font-[400] text-[18px] leading-[27px]">
           No Damage Added
-        </p>
+        </span>
       )}
     </div>
   );
