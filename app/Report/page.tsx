@@ -425,7 +425,7 @@ export default function Vehicles() {
                     className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     type="submit"
                   >
-                    Filter By Vehicle
+                    Filter 
                   </button>
                   <button
                     className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
