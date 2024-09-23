@@ -26,7 +26,7 @@ export default function Vehicles() {
       try {
         const result = await axios.post("/api/getcompanyProfile");
         const profilePic = result?.data?.data?.profilePic;
-        const profilePic2 = result?.data?.data?.profilePic;
+        const profilePic2 = result?.data?.data?.profilePic2;
         if (typeof window !== "undefined") {
           localStorage.setItem("companyLogo", profilePic);
           localStorage.setItem("companyLogo2", profilePic2);

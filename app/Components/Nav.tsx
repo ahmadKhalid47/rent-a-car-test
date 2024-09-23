@@ -93,7 +93,7 @@ export default function Nav() {
       try {
         const result = await axios.post("/api/getcompanyProfile");
         const profilePic = result?.data?.data?.profilePic;
-        const profilePic2 = result?.data?.data?.profilePic;
+        const profilePic2 = result?.data?.data?.profilePic2;
         if (typeof window !== "undefined") {
           localStorage.setItem("companyLogo", profilePic);
           localStorage.setItem("companyLogo2", profilePic2);
@@ -121,6 +121,7 @@ export default function Nav() {
     async function getData() {
       try {
         const result = await axios.post("/api/getGeneralSettings");
+        dispatch(setcurrentCurrency(result.data.data[0].currency));
         if (typeof window !== "undefined") {
           localStorage.setItem("currency", result.data.data[0].currency);
           let value = localStorage.getItem("currency");
