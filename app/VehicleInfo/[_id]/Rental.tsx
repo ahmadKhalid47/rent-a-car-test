@@ -12,8 +12,10 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Hour:
           </p>
-          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentHour ? global.currentCurrency + vehicleInfo.rentHour : "---"}
+          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+            {vehicleInfo.rentHour
+              ? `${global.currentCurrency} ` + vehicleInfo.rentHour
+              : "---"}
           </p>
         </div>
 
@@ -21,8 +23,10 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Week:
           </p>
-          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentWeek ? global.currentCurrency + vehicleInfo.rentWeek : "---"}
+          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+            {vehicleInfo.rentWeek
+              ? `${global.currentCurrency} ` + vehicleInfo.rentWeek
+              : "---"}
           </p>
         </div>
       </div>
@@ -31,8 +35,10 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Day:
           </p>
-          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentDay ? global.currentCurrency + vehicleInfo.rentDay : "---"}
+          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+            {vehicleInfo.rentDay
+              ? `${global.currentCurrency} ` + vehicleInfo.rentDay
+              : "---"}
           </p>
         </div>
 
@@ -40,8 +46,10 @@ export default function Rental() {
           <p className="font-[400] text-[18px] leading-[27px]">
             Rental Price Per Month:
           </p>
-          <p className="w-[17%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentMonth ? global.currentCurrency + vehicleInfo.rentMonth : "---"}
+          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+            {vehicleInfo.rentMonth
+              ? `${global.currentCurrency} ` + vehicleInfo.rentMonth
+              : "---"}
           </p>
         </div>
       </div>
