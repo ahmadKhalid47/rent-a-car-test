@@ -65,12 +65,14 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            {companyProfile?.profilePic2 ? (
-              <img
-                src={companyProfile?.profilePic2}
-                className="w-[120px] sm:w-[175px] z-10"
-              />
+            <div className="w-[120px] sm:w-[175px] h-[50px]">
+              {companyProfile?.profilePic2 ? (
+                <img
+                  src={companyProfile?.profilePic2}
+                  className="w-full z-10"
+                />
               ) : null}
+            </div>
             {/* <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" /> */}
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
