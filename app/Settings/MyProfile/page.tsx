@@ -37,7 +37,6 @@ export default function AddUser() {
   const [loading, setLoading] = useState<any>(false);
   const [saveloading, setSaveLoading] = useState<any>(false);
   const [selectedPic, setSelectedPic] = useState<any>("");
-  const [username, setusername] = useState<any>(myProfile?.username);
   const router = useRouter();
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function AddUser() {
     }
   }, [isMobile]);
 
-  async function editItem(username: any) {
+  async function editItem(user: any) {
     try {
       let res: AxiosResponse<any, any> | null = null;
       if (myProfile?.profilePic[0] instanceof File) {
@@ -62,15 +61,15 @@ export default function AddUser() {
       }
 
       setSaveLoading(true);
-      let result: any = await axios.post(
-        `/api/updateRegistration/${username}`,
-        {
-          ...myProfile,
-          profilePic: res?.data?.message[0],
-        }
-      );
-      console.log(res?.data?.message);
-      setusername(myProfile.username);
+      let result: any = await axios.post(`/api/updateRegistration/${user}`, {
+        ...myProfile,
+        profilePic: res?.data?.message[0],
+      });
+      console.log(result);
+      await axios.post(`/api/changeToken`, {
+        username: myProfile.username,
+        admin: myProfile.admin,
+      });
       dispatch(setMyProfileReloader(global.myProfileReloader + 1));
     } catch (err) {
       console.log(err);
@@ -84,9 +83,8 @@ export default function AddUser() {
       setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
     }
   };
-  
+
   console.log(myProfile);
-  
 
   return (
     <div
@@ -238,7 +236,7 @@ export default function AddUser() {
                 </button>
                 <button
                   onClick={() => {
-                    editItem(username);
+                    editItem(myProfile.user);
                   }}
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 >

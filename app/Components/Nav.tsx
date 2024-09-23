@@ -15,12 +15,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {
   setaddressR,
+  setadminR,
   setemailR,
   setfirstNameR,
   setlastNameR,
   setphoneR,
   setprofilePicR,
   setusernameR,
+  setuserR,
 } from "../store/myProfile";
 import {
   setprofilePicR as setCompanyLogo,
@@ -31,7 +33,7 @@ export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>(false);
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -44,7 +46,7 @@ export default function Nav() {
     async function verifyTokenApi() {
       try {
         let userData = await axios.post("/api/verifyToken");
-        setUser(userData?.data?.msg.username);
+        dispatch(setuserR(userData?.data?.msg.username));
       } catch (err) {}
     }
     verifyTokenApi();
@@ -57,7 +59,13 @@ export default function Nav() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post(`/api/getRegistration/${user}`);
+        const result = await axios.post(
+          `/api/getRegistration/${myProfile.user}`,
+          {
+            username: myProfile.user,
+            email: myProfile.email,
+          }
+        );
         dispatch(setprofilePicR(result?.data?.data?.profilePic));
         dispatch(setemailR(result?.data?.data?.email));
         dispatch(setphoneR(result?.data?.data?.phone));
@@ -65,16 +73,25 @@ export default function Nav() {
         dispatch(setlastNameR(result?.data?.data?.lastName));
         dispatch(setaddressR(result?.data?.data?.address));
         dispatch(setusernameR(result?.data?.data.username));
+        dispatch(setadminR(result?.data?.data.admin));
       } catch (error) {
         console.log(error);
       } finally {
         setLoading(false);
       }
     }
-    if (user) {
+    if (
+      myProfile.user
+      &&
+      myProfile.username !== undefined &&
+      myProfile.email !== undefined
+    ) {
       getData();
     }
-  }, [user, global.myProfileReloader]);
+  }, [
+    myProfile.user,
+    global.myProfileReloader,
+  ]);
 
   useEffect(() => {
     async function getData() {

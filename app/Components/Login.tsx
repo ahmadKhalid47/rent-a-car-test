@@ -30,8 +30,6 @@ export default function Login() {
       setLoading(true);
       let result: any = await axios.post(`/api/login`, formDataObj);
       if (result?.data?.error === null) {
-        // router.push("/Dashboard");
-        // router.refresh()
         window.location.reload();
       } else {
         setShowError(result?.data?.error);

@@ -12,8 +12,7 @@ import settings10 from "@/public/settings (4).svg";
 import settings12 from "@/public/settings (9).svg";
 import Link from "next/link";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { setusernameR } from "../store/myProfile";
+import { useEffect} from "react";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);

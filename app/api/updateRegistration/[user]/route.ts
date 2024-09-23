@@ -6,21 +6,21 @@ export async function POST(req: Request, params: any) {
   try {
     let {
       profilePic,
-      username: usernameToSet,
+      username,
       firstName,
       lastName,
       phone,
       email,
       address,
     } = await req.json();
-    let { username } = await params.params;
+    let { user } = await params.params;
     connectDb();
     await RegistrationModel.updateOne(
-      { username: username },
+      { $or: [{ username: user }, { email: user }] },
       {
         $set: {
           profilePic: profilePic,
-          username: usernameToSet,
+          username,
           firstName: firstName,
           lastName: lastName,
           phone: phone,

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  user: "",
   profilePic: null,
   username: "",
   firstName: "",
@@ -8,12 +9,16 @@ const initialState = {
   phone: "",
   email: "",
   address: "",
+  admin: false,
 };
 
 export const myProfileSlice = createSlice({
   name: "myProfile",
   initialState,
   reducers: {
+    setuserR: (state, action) => {
+      state.user = action.payload;
+    },
     setprofilePicR: (state, action) => {
       state.profilePic = action.payload;
     },
@@ -35,6 +40,9 @@ export const myProfileSlice = createSlice({
     setaddressR: (state, action) => {
       state.address = action.payload;
     },
+    setadminR: (state, action) => {
+      state.admin = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -49,6 +57,8 @@ export const {
   setphoneR,
   setemailR,
   setaddressR,
+  setuserR,
+  setadminR,
   setAllValues,
 } = myProfileSlice.actions;
 
