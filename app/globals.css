@@ -405,3 +405,6 @@ button:active {
 .dropShadow {
   filter: brightness(0) invert(1);
 }
+.count-button button:hover {
+  opacity: 1;
+}
