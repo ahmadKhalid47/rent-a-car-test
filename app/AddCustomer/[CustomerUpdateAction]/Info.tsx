@@ -265,7 +265,7 @@ export default function Info() {
           </h4>
         </div>
 
-        <div className="w-full h-fit flex justify-start items-center gap-5">
+        <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
           {thumbs}
         </div>
       </div>

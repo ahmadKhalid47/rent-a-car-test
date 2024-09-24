@@ -81,7 +81,7 @@ export default function Info() {
         />
       </div>
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        image4.jpg
+        {file.name}
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
@@ -234,7 +234,7 @@ export default function Info() {
           </h4>
         </div>
 
-        <div className="w-full h-fit flex justify-start items-center gap-5">
+        <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
           {thumbs}
         </div>
       </div>

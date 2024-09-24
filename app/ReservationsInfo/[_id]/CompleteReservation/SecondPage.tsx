@@ -73,10 +73,10 @@ export default function SecondPage() {
         />
       </div>
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        image4.jpg
+        {file.name}
       </span>
       <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
+        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute top-[2px] right-[2px]"
         onClick={() => removing(file)}
       >
         <FaTimesCircle />
@@ -407,7 +407,7 @@ export default function SecondPage() {
                   </div>
                 </div>
               </div>
-              <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              {/* <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Description
                 </label>
@@ -423,7 +423,7 @@ export default function SecondPage() {
                     placeholder="Enter Description"
                   ></textarea>
                 </div>
-              </div>
+              </div> */}
               <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit dark:bg-dark1 bg-white mt- p">
                 <h3 className="font-[400] text-[14px] leading-[17px] dark:text-white text-black w-[100%]">
                   Add Images
@@ -447,7 +447,7 @@ export default function SecondPage() {
                   </h4>
                 </div>
 
-                <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto">
+                <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto py-[2px]">
                   {thumbs}
                 </div>
               </div>
