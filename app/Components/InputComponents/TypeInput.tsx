@@ -30,7 +30,7 @@ export const TypeInput: React.FC<TypeInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}
@@ -71,7 +71,7 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}
@@ -119,7 +119,7 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
           <GrCircleInformation />
         </Popover>
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}
@@ -158,7 +158,7 @@ export const TempTypeInput: React.FC<TempTypeInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}
@@ -200,7 +200,7 @@ export const TempTypeInputWidth: React.FC<TempTypeInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}
@@ -248,7 +248,7 @@ export const TempTypeInputInfo: React.FC<TempTypeInputInfo> = ({
           <GrCircleInformation />
         </Popover> */}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <input
           required={required}
           type={type}

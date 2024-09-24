@@ -420,7 +420,7 @@ export default function Vehicles() {
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
                   "label"
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                   <button
                     className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     type="submit"

@@ -319,7 +319,7 @@ export default function ListView({ data }: dataType) {
                         {"Update Color"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
                           type={"text"}

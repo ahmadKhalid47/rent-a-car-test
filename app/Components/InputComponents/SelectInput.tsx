@@ -27,7 +27,7 @@ export const SelectInput: React.FC<SelectInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
@@ -76,7 +76,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
@@ -127,7 +127,7 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
           <GrCircleInformation />
         </Popover>
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
@@ -170,7 +170,7 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
@@ -221,7 +221,7 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
@@ -276,7 +276,7 @@ export const TempSelectInputInfo: React.FC<TempSelectInputInfo> = ({
           <GrCircleInformation />
         </Popover> */}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
         <select
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}

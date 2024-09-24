@@ -139,7 +139,7 @@ export default function AddUser() {
                 </div>
                 <div className="w-[180px] h-[50px] flex justify-center items-center">
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                       <select
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                         onChange={(e) => {
@@ -155,7 +155,10 @@ export default function AddUser() {
                         ))}
                       </select>
                       <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                        <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                        <img
+                          src={shape.src}
+                          className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                        />
                       </div>
                     </div>
                   </div>
@@ -195,13 +198,14 @@ export default function AddUser() {
                 </div>
                 <div className="w-[180px] h-[50px] flex justify-center items-center">
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                       <input
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                         onChange={(e) => {
                           dispatch(setvatPercentageR(e.target.value));
                         }}
                         value={Invoicing.vatPercentage}
+                        type="number"
                       />
                     </div>
                   </div>

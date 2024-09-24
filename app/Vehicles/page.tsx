@@ -201,7 +201,7 @@ export default function Vehicles() {
                 <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   Year
                 </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                   <select
                     className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
@@ -232,7 +232,7 @@ export default function Vehicles() {
                 <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   Type
                 </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                   <select
                     className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
@@ -266,7 +266,7 @@ export default function Vehicles() {
                 <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   City
                 </h3>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                   <select
                     className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {

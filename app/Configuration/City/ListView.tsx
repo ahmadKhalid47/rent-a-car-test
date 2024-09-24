@@ -325,7 +325,7 @@ export default function ListView({ data, makeData }: dataType) {
                         Select Country
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <select
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                           required={true}
@@ -354,7 +354,7 @@ export default function ListView({ data, makeData }: dataType) {
                         {"Update City"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
                           type={"text"}

@@ -12,6 +12,8 @@ import configImg2 from "@/public/configImg (3).svg";
 import configImg3 from "@/public/configImg (4).svg";
 import configImg4 from "@/public/configImg (5).svg";
 import configImg5 from "@/public/configImg (1).svg";
+import configImg6 from "@/public/city.svg";
+import configImg7 from "@/public/country.svg";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -39,8 +41,8 @@ export default function Vehicles() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Configuration
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
-              Lorem ipsum is a placeholder text commonly used to demonstrate the
-              visual form.
+              Manage and customize vehicle configurations to meet your specific
+              needs.{" "}
             </p>
           </h3>
         </div>
@@ -52,7 +54,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg1.src} className="dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={configImg1.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Make
@@ -63,7 +68,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg2.src} className="dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={configImg2.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Model
@@ -74,7 +82,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg3.src} className="dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={configImg3.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Type
@@ -85,7 +96,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg4.src} className="dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={configImg4.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Color
@@ -96,7 +110,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={configImg5.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Add. Features
@@ -107,7 +124,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" /> */}
+                  <img
+                    src={configImg6.src}
+                    className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Country
@@ -118,7 +138,10 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" /> */}
+                  <img
+                    src={configImg7.src}
+                    className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   City

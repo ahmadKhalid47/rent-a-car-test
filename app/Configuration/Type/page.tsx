@@ -147,7 +147,7 @@ export default function Vehicles() {
                     {"Add New"}
                     <FaAsterisk className="text-[6px] text-red-600" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                     <input
                       required={true}
                       type={"text"}
@@ -167,7 +167,7 @@ export default function Vehicles() {
                     {"Add Exterior Image"}
                     <FaAsterisk className="text-[6px] text-red-600" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                     <input
                       required={true}
                       type={"file"}
@@ -185,7 +185,7 @@ export default function Vehicles() {
                     {"Add Interior Image"}
                     <FaAsterisk className="text-[6px] text-red-600" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                     <input
                       required={true}
                       type={"file"}

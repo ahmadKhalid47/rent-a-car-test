@@ -165,7 +165,7 @@ export default function Info() {
             Year
             <FaAsterisk className="text-[6px]" />
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
             <input
               required
               type="number"

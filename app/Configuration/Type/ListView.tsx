@@ -342,7 +342,7 @@ export default function ListView({ data }: dataType) {
                         {"Update Type"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
                           type={"text"}
@@ -362,7 +362,7 @@ export default function ListView({ data }: dataType) {
                         {"Update Exterior Image"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
                           type={"file"}
@@ -381,7 +381,7 @@ export default function ListView({ data }: dataType) {
                         {"Update Interior Image"}
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
                           type={"file"}

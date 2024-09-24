@@ -87,7 +87,7 @@ export default function CustomerInfoMainPage() {
                   {CustomerInfo?.isVip ? (
                     <img
                       src={vip.src}
-                      className="w-[44px] h-[32px] -translate-y-1"
+                      className="w-[44px] h-[32px] -translate-y-1 dark:filter dark:brightness-[0] dark:invert"
                     />
                   ) : null}
                 </h3>

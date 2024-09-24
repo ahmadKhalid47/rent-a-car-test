@@ -227,7 +227,7 @@ export default function Info() {
           <label className="flex justify-start gap-1 items-start font-[400] text-[0px] sm:text-[14px] leading-[0px] sm:leading-[17px] text-transparent">
             VIP Client
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
+          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
             <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center dark:bg-dark1 bg-white ">
               <input
                 type="checkbox"
@@ -235,7 +235,10 @@ export default function Info() {
                 className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
                 onChange={(e) => dispatch(setisVipR(e.target.checked))}
               />
-              <img src={vip.src} />
+              <img
+                src={vip.src}
+                className="dark:filter dark:brightness-[0] dark:invert"
+              />
               It’s VIP Client
             </div>
           </div>
