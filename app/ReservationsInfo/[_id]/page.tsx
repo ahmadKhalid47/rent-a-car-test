@@ -213,12 +213,12 @@ export default function reservationInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
             <div className=" dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] text-[#242E69] text-[18px]  ">
+                <div className="font-[600] dark:text-white text-main-blue text-[18px]  ">
                   Pick-Up:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
-                  <div className="w-[9px] h-[9px] rounded-full bg-[#242E69] absolute left-0 top-[-3.125px]"></div>
-                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[2.5px]"></div>
+                  {/* <div className="w-[9px] h-[9px] rounded-full dark:bg-white bg-main-blue absolute left-0 top-[-3.125px]"></div> */}
+                  <div className="dark:bg-white bg-main-blue border object-fill w-[250px] border-none h-[1px]"></div>
                 </div>
 
                 <div className="mt-[13px]">
@@ -240,12 +240,12 @@ export default function reservationInfoMainPage() {
               </div>
               {/* 2nd */}
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] text-[#242E69] text-[18px]  ">
+                <div className="font-[600] dark:text-white text-main-blue text-[18px]  ">
                   Drop-off:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
-                  <div className="w-[9px] h-[9px] rounded-full bg-[#242E69] absolute left-0 top-[-3.125px]"></div>
-                  <div className="bg-[#242E69] border object-fill w-[250px] border-none h-[2.5px]"></div>{" "}
+                  {/* <div className="w-[9px] h-[9px] rounded-full dark:bg-white bg-main-blue absolute left-0 top-[-3.125px]"></div> */}
+                  <div className="dark:bg-white bg-main-blue border object-fill w-[250px] border-none h-[1px]"></div>{" "}
                 </div>
 
                 <div className="mt-[13px]">
@@ -267,7 +267,7 @@ export default function reservationInfoMainPage() {
               </div>
               {/* 3rd */}
               <div className=" rounded-xl border border-gray-200 p-6 ">
-                <div className="text-[#242E69] font-[600] text-[24px]">
+                <div className="dark:text-white text-main-blue font-[600] text-[24px]">
                   {reservationInfo?.duration
                     ? reservationInfo?.duration
                     : "---"}{" "}

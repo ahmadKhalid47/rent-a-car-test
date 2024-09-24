@@ -94,9 +94,9 @@ export default function Sidebar() {
               src={companyProfile?.profilePic}
               className={`${
                 global.sidebarShow ? "w-[124px] h-[37px]" : "w-[60px] h-[25px]"
-              } mt-[30px]`}
+              } mt-[30px] dark:filter dark:brightness-[0] dark:invert`}
             />
-            ) : null}
+          ) : null}
         </Link>
       </div>
       <div
