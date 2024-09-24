@@ -126,7 +126,7 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Customers" && global.sidebarShow
-              ? "text-main-blue font-[600] hover:font-[500]"
+              ? "dark:text-white text-main-blue font-[600] hover:font-[500]"
               : chevronStateClose === "Customers" && !global.sidebarShow
               ? "text-white bg-main-blue"
               : ""
@@ -204,7 +204,7 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Chauffeurs" && global.sidebarShow
-              ? "text-main-blue font-[600] hover:font-[500]"
+              ? "dark:text-white text-main-blue font-[600] hover:font-[500]"
               : chevronStateClose === "Chauffeurs" && !global.sidebarShow
               ? "text-white bg-main-blue"
               : ""
@@ -289,7 +289,7 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Reservations" && global.sidebarShow
-              ? "text-main-blue font-[600] hover:font-[500]"
+              ? "dark:text-white text-main-blue font-[600] hover:font-[500]"
               : chevronStateClose === "Reservations" && !global.sidebarShow
               ? "text-white bg-main-blue"
               : ""
@@ -377,7 +377,7 @@ export default function Sidebar() {
             global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
           } bg-main-blue-hover hover:text-white  ${
             chevronState === "Vehicles" && global.sidebarShow
-              ? "text-main-blue font-[600] hover:font-[500]"
+              ? "dark:text-white text-main-blue font-[600] hover:font-[500]"
               : chevronStateClose === "Vehicles" && !global.sidebarShow
               ? "text-white bg-main-blue"
               : ""

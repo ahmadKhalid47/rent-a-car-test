@@ -164,7 +164,9 @@ export default function Damages() {
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
+                  exterior
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark1 bg-white dark:text-white text-black"
                 }`}
                 onClick={() => setExterior(true)}
               >
@@ -181,7 +183,9 @@ export default function Damages() {
               </button>
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  !exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
+                  !exterior
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark1 bg-white dark:text-white text-black"
                 }`}
                 onClick={() => setExterior(false)}
               >
@@ -203,7 +207,7 @@ export default function Damages() {
                   <div className="w-[326px] h-[408px] relative">
                     <img
                       src={exteriorImg}
-                      className="w-[326px] h-[408px] cursor-pointer"
+                      className="w-[326px] h-[408px] cursor-pointer bg-white"
                       onClick={(e) => {
                         handleClick(e, true);
                       }}
@@ -212,7 +216,7 @@ export default function Damages() {
                 ) : (
                   <img
                     src={interiorImg}
-                    className="w-[326px] h-[408px]"
+                    className="w-[326px] h-[408px] bg-white"
                     onClick={(e) => {
                       handleClick(e, false);
                     }}
@@ -323,7 +327,10 @@ export default function Damages() {
                   <option value="Scratch">Scratch</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={shape.src}
+                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
               </div>
             </div>
@@ -344,7 +351,10 @@ export default function Damages() {
                   <option value="High">High</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                  <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                  <img
+                    src={shape.src}
+                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                  />
                 </div>
               </div>
             </div>

@@ -105,7 +105,7 @@ export default function SecondPage({
               )}
             </div>
             <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
-              <img src={interiorImg} className="w-[250px] h-[300px]" />
+              <img src={interiorImg} className="w-[250px] h-[300px] bg-white" />
               {data.damages.map((item: any, index: any) => (
                 <>
                   {!item.exterior && (

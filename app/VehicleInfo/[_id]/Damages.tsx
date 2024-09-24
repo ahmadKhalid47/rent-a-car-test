@@ -59,7 +59,7 @@ export default function Damages() {
                   ? exteriorImg
                   : interiorImg
               }
-              className="w-[250px] h-[300px]"
+              className="w-[250px] h-[300px] bg-white"
             />
             {vehicleInfo.damages.map((item: any, index: any) => (
               <>
