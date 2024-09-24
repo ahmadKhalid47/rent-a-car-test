@@ -21,11 +21,11 @@ export default function SecondPage({
 
   return (
     <div
-      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative dark:bg-dark1 bg-white`}
+      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative g-dark1 bg-white text-black`}
     >
       <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
         <div className="w-full h-fit flex justify-between items-center mt-1">
-          <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] dark:text-white text-black">
+          <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] ext-white text-black">
             <span className=" text-[17px] font-[700] leading-[20px] text-transparent">
               Contract To:
             </span>
@@ -33,7 +33,7 @@ export default function SecondPage({
               {customersData?.data?.name ? customersData?.data?.name : "---"}
             </span>
 
-            <h2 className="w-full h-fit rounded-[10px] dark:text-white text-black font-[400] text-[18px] leading-[21px] text-start">
+            <h2 className="w-full h-fit rounded-[10px] ext-white text-black font-[400] text-[18px] leading-[21px] text-start">
               Contract Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
@@ -45,7 +45,7 @@ export default function SecondPage({
         </div>
         <div className="w-full h-fit flex flex-col justify-between items-center">
           <div className="w-full flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden mt-6">
-            <div className="w-full h-fit flex justify-between items-center py-3 px-4 dark:bg-dark2 bg-light-grey font-[600]">
+            <div className="w-full h-fit flex justify-between items-center py-3 px-4 g-dark2 bg-light-grey font-[600]">
               <div className="w-[100%] h-fit flex justify-start items-center text-[18px] font-[600]">
                 Damage Report{" "}
               </div>
@@ -88,7 +88,6 @@ export default function SecondPage({
           <div className="w-full flex justify-between items-start mt-6">
             <div className="w-[49%] flex justify-center items-start overflow-hidden relative">
               <img src={exteriorImg} className="w-[250px] h-[300px]" />
-              <MediumLoader />
               {data.damages.map(
                 (item: any, index: any) =>
                   item.exterior && (
@@ -128,7 +127,7 @@ export default function SecondPage({
           <div className="w-full flex justify-between items-start mt-6">
             <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
               <div className="w-full h-fit flex-col justify-start items-start text-[14px]">
-                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 dark:bg-dark2 bg-light-grey font-[600]">
+                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 g-dark2 bg-light-grey font-[600]">
                   <div className="w-[10%]">No</div>
                   <div className="w-[45%]">Damage Type</div>
                   <div className="w-[45%]">Degree</div>
@@ -148,7 +147,7 @@ export default function SecondPage({
             </div>
             <div className="w-[49%] flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden">
               <div className="w-full h-fit flex-col justify-start items-start text-[14px]">
-                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 dark:bg-dark2 bg-light-grey font-[600]">
+                <div className="w-[100%] h-fit flex justify-start items-start px-4 py-3 g-dark2 bg-light-grey font-[600]">
                   <div className="w-[10%]">No</div>
                   <div className="w-[45%]">Damage Type</div>
                   <div className="w-[45%]">Degree</div>
@@ -168,7 +167,7 @@ export default function SecondPage({
             </div>
           </div>
           <div className="w-full flex flex-col justify-start items-start rounded-[5px] border-2 border-grey overflow-hidden mt-6">
-            <div className="w-full h-fit flex justify-between items-center py-3 px-4 dark:bg-dark2 bg-light-grey font-[600]">
+            <div className="w-full h-fit flex justify-between items-center py-3 px-4 g-dark2 bg-light-grey font-[600]">
               <div className="w-[100%] h-fit flex justify-start items-center text-[14px] font-[600]">
                 Notes{" "}
               </div>
@@ -189,7 +188,7 @@ export default function SecondPage({
           </div>
 
           <div className="w-full h-fit flex justify-end items-start py-1 px-4 absolute bottom-[60px]">
-            <div className="w-[50%] h-fit flex flex-col justify-center items-end text-[14px] font-[400] leading-[17px] dark:text-white text-black">
+            <div className="w-[50%] h-fit flex flex-col justify-center items-end text-[14px] font-[400] leading-[17px] ext-white text-black">
               <span className="w-[50%] leading-[21px] mt-1 flex justify-between items-start text-justify border-b-[1px] border-black"></span>
               <span className="w-[50%] leading-[21px] mt-1 text-center">
                 SIGNATURE

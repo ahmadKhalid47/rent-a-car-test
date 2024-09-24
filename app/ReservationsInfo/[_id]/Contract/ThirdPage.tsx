@@ -10,11 +10,11 @@ export default function ThirdPage({ customersName, id }: any) {
 
   return (
     <div
-      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative dark:bg-dark1 bg-white`}
+      className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative g-dark1 bg-white text-black`}
     >
       <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
         <div className="w-full h-fit flex justify-between items-center mt-1">
-          <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] dark:text-white text-black">
+          <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] ext-white text-black">
             <span className=" text-[17px] font-[700] leading-[20px] text-transparent">
               Contract To:
             </span>
@@ -22,7 +22,7 @@ export default function ThirdPage({ customersName, id }: any) {
               {customersName ? customersName : "---"}
             </span>
 
-            <h2 className="w-full h-fit rounded-[10px] dark:text-white text-black font-[400] text-[18px] leading-[21px] text-start">
+            <h2 className="w-full h-fit rounded-[10px] ext-white text-black font-[400] text-[18px] leading-[21px] text-start">
               Contract Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
