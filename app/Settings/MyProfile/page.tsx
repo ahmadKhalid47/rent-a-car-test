@@ -137,8 +137,8 @@ export default function AddUser() {
                       }
                       className="w-full h-full flex justify-center items-center dark:bg-dark2 bg-light-grey rounded-full"
                     />
-                    <div className="text-[25px] dark:text-white text-main-blue dark:bg-dark1 bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center overflow-hidden">
-                      <FaPlusCircle />
+                    <div className="text-[25px] text-main-blue dark:bg-dark1 bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center overflow-hidden">
+                      <FaPlusCircle className="dark:bg-white text-main-blue" />
                       <input
                         onChange={(e) => {
                           dispatch(setprofilePicR(e.target.files));
