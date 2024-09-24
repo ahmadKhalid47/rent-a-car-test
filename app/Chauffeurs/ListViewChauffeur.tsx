@@ -311,7 +311,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 >
                   <img
                     src={item.active ? check.src : unCheck.src}
-                    className="me-[8px] translate-y-[1px] hover:scale-[1.3] hover:scale-[1.3]"
+                    className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
                     onClick={() => {
                       updateActive(item?._id, item?.active);
                     }}

@@ -210,7 +210,7 @@ export default function Nav() {
           {isOpen && (
             <div className="z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-start">
               <button
-                className="px-4 py-2 dark:hover:bg-slate-500 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
+                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
                 onClick={() => {
                   logout();
                 }}

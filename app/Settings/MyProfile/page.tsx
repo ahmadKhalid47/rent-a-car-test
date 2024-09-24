@@ -126,7 +126,7 @@ export default function AddUser() {
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div className="w-full h-fit py-4 flex justify-between items-center">
                 <div className="w-[50%] h-full flex justify-start items-center gap-6">
-                  <div className="w-[100px] h-[100px] flex justify-center items-center dark:bg-dark2 bg-light-grey rounded-full border-2 border-grey dark:bg-dark2 bg-light-grey relative">
+                  <div className="w-[100px] h-[100px] flex justify-center items-center rounded-full border-2 border-grey dark:bg-dark2 bg-light-grey relative">
                     <img
                       src={
                         selectedPic?.length > 0
@@ -137,7 +137,7 @@ export default function AddUser() {
                       }
                       className="w-full h-full flex justify-center items-center dark:bg-dark2 bg-light-grey rounded-full"
                     />
-                    <div className="text-[20px] text-main-blue dark:bg-dark1 bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center overflow-hidden">
+                    <div className="text-[25px] dark:text-white text-main-blue dark:bg-dark1 bg-white w-fit h-fit rounded-full absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] z-[10] flex justify-center items-center overflow-hidden">
                       <FaPlusCircle />
                       <input
                         onChange={(e) => {
