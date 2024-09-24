@@ -350,17 +350,17 @@ export default function Vehicles() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div
         className={` w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Report
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           {configurationsLoading ? (
             <div className="pt-5 w-full ">
               <MediumLoader />
@@ -430,8 +430,8 @@ export default function Vehicles() {
                   <button
                     className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
                       vehicle === "All Vehicles"
-                        ? "bg-light-grey text-grey"
-                        : "bg-white text-main-blue"
+                        ? "dark:bg-dark2 bg-light-grey text-grey"
+                        : "dark:bg-dark1 bg-white text-main-blue"
                     }`}
                     onClick={(e) => {
                       setFilterReservationsData(reservationsData);
@@ -455,7 +455,7 @@ export default function Vehicles() {
           <h3
             className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
           >
-            <span className="font-[600] text-black" onClick={() => {}}>
+            <span className="font-[600] dark:text-white text-black" onClick={() => {}}>
               {vehicle}
               {fromDate ? ", From " + fromDate : ""}
               {toDate ? " To " + toDate : ""}
@@ -470,7 +470,7 @@ export default function Vehicles() {
             </span>
           </h3>
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
-            <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
+            <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
               <div className="w-[100%] 1200:w-[100%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
                 <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">

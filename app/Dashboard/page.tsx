@@ -243,23 +243,23 @@ console.log(VehiclesData);
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Dashboard
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           <div className="w-[100%] flex justify-start items-start flex-col">
-            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
               Cars
             </h3>
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d7.src} />
                 </div>
@@ -272,7 +272,7 @@ console.log(VehiclesData);
                   </div>
                 </div>
               </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d6.src} />
                 </div>
@@ -285,7 +285,7 @@ console.log(VehiclesData);
                   </div>
                 </div>
               </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d5.src} />
                 </div>
@@ -301,11 +301,11 @@ console.log(VehiclesData);
             </div>
           </div>
           <div className="w-[100%] flex justify-start items-start flex-col">
-            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
               Reservations
             </h3>
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d4.src} />
                 </div>
@@ -322,7 +322,7 @@ console.log(VehiclesData);
                   </div>
                 </div>
               </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d3.src} />
                 </div>
@@ -342,11 +342,11 @@ console.log(VehiclesData);
             </div>
           </div>
           <div className="w-[100%] flex justify-start items-start flex-col">
-            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+            <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
               Revenue
             </h3>
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d2.src} />
                 </div>
@@ -363,7 +363,7 @@ console.log(VehiclesData);
                   </div>
                 </div>
               </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey bg-white relative">
+              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
                   <img src={d1.src} />
                 </div>
@@ -383,7 +383,7 @@ console.log(VehiclesData);
             </div>
           </div>
           <div className="w-full h-fit flex justify-between items-start bg">
-            <div className="h-[370px] flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-[49%] bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+            <div className="h-[370px] flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-[49%] dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
               <div className="w-full flex justify-between items-end h-fit">
                 <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
                   Car Availability
@@ -460,7 +460,7 @@ console.log(VehiclesData);
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                         <input
                           type={"time"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                           onChange={(e) => {
                             setTime(e.target.value);
                           }}
@@ -480,7 +480,7 @@ console.log(VehiclesData);
                 </>
               )}
             </div>
-            <div className="h-[370px] flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-[49%] bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+            <div className="h-[370px] flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-[49%] dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
               <div className="w-full flex justify-between items-end h-fit">
                 <h1 className="w-fit text-[18px] font-[400] leading-[0px]">
                   Recent Reservations
@@ -493,7 +493,7 @@ console.log(VehiclesData);
                 </Link>
               </div>
               <div className="w-full flex flex-col justify-start items-center">
-                <div className="w-full h-[32px] flex justify-between items-center bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[14px] font-[400] leading-[17px]">
+                <div className="w-full h-[32px] flex justify-between items-center dark:bg-dark2 bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[14px] font-[400] leading-[17px]">
                   <span className="w-[25%]">Customer</span>
                   <span className="w-[35%]">Vehicle</span>
                   <span className="w-[40%]">Duration</span>
@@ -508,8 +508,8 @@ console.log(VehiclesData);
                   reservationsData?.slice(0, 8).map((item, index) => (
                     <div
                       key={index}
-                      className={`w-full h-[32px] flex justify-between items-center bg-white ${
-                        index === 5 ? "" : "border-b-[1px]"
+                      className={`w-full h-[32px] flex justify-between items-center dark:bg-dark1 bg-white ${
+                        index === 7 ? "" : "border-b-[1px]"
                       } border-grey px-3`}
                     >
                       <span className="w-[25%] text-[12px] font-[400] leading-[14px]">

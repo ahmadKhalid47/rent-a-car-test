@@ -125,15 +125,15 @@ export default function Vehicles() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             All Vehicles
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
               Vehicles / All Vehicles
             </p>
           </h3>
@@ -143,7 +143,7 @@ export default function Vehicles() {
                 className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
                   !gridView
                     ? "bg-main-blue text-white"
-                    : "bg-light-grey border-2 border-grey"
+                    : "dark:bg-dark2 bg-light-grey border-2 border-grey"
                 } font-[500] xs:text-[12px] md:text-[12px] text-[20px] leading-[30px] text-center`}
                 onClick={() => setGridView(false)}
               >
@@ -157,7 +157,7 @@ export default function Vehicles() {
                 className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-[35px] md:h-[44px] rounded-[10px] ${
                   gridView
                     ? "bg-main-blue text-white"
-                    : "bg-light-grey border-2 border-grey"
+                    : "dark:bg-dark2 bg-light-grey border-2 border-grey"
                 }  font-[500] xs:text-[0px] md:text-[2px] text-[20px] leading-[30px] text-center`}
                 onClick={() => setGridView(true)}
               >
@@ -174,14 +174,14 @@ export default function Vehicles() {
             </button>
           </div>
         </div>
-        <div className=" w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        <div className=" w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-">
+            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
               Search
             </h3>
             <div className="w-full h-fit flex justify-between items-center">
               <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
+                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
                 placeholder="Search By Car Name, Reg No, City..."
                 onChange={handleSearchQueryChange}
               ></input>
@@ -198,12 +198,12 @@ export default function Vehicles() {
           {!showLess ? (
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
+                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   Year
                 </h3>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
+                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
                       setAdvanceFilters((prevFilters: any) =>
                         prevFilters.map((filter: any) =>
@@ -223,18 +223,18 @@ export default function Vehicles() {
                       </option>
                     ))}
                   </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
                   </div>
                 </div>{" "}
               </div>
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
+                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   Type
                 </h3>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
+                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
                       setAdvanceFilters((prevFilters: any) =>
                         prevFilters.map((filter: any) =>
@@ -257,18 +257,18 @@ export default function Vehicles() {
                       </option>
                     ))}
                   </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
                   </div>
                 </div>
               </div>
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
+                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   City
                 </h3>
                 <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                   <select
-                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
+                    className="pe-10 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
                       setAdvanceFilters((prevFilters: any) =>
                         prevFilters.map((filter: any) =>
@@ -291,18 +291,18 @@ export default function Vehicles() {
                       </option>
                     ))}
                   </select>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
                   </div>
                 </div>
               </div>
               <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] text-black pb-[2px] ">
+                <h3 className="font-[400] text-[12px] xs:text-[14px] leading-[17px] dark:text-white text-black pb-[2px] ">
                   Color
                 </h3>
                 <div className="w-full h-fit flex justify-between items-center relative">
                   <select
-                    className="ps-7 font-[400] text-[14px] xs:text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center bg-white rounded-xl border-2 border-grey "
+                    className="ps-7 font-[400] text-[14px] xs:text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey "
                     onChange={(e) => {
                       setAdvanceFilters((prevFilters: any) =>
                         prevFilters.map((filter: any) =>
@@ -331,7 +331,7 @@ export default function Vehicles() {
                       backgroundColor: advanceFilters[3].keyValue,
                     }}
                   ></div>
-                  <div className="w-[30px] h-[35px] bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img src={shape.src} className="w-[10.5px]" />
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function Vehicles() {
           ) : null}
 
           <h3
-            className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-1 underline hover:no-underline cursor-pointer"
+            className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-1 underline hover:no-underline cursor-pointer"
             onClick={() => setShowLess(!showLess)}
           >
             {showLess ? "Advanced Filters" : "Show Less"}

@@ -22,14 +22,14 @@ export const SelectInput: React.FC<SelectInput> = ({
   setState,
 }) => {
   return (
-    <div className="w-[100%] sm:w-[48%] h-fit flex flex-col justify-start items-start gap-1">
+    <div className="w-[100%] sm:w-[48%] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black">
       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
           onChange={(e) => {
             setState(e.target.value);
@@ -43,7 +43,7 @@ export const SelectInput: React.FC<SelectInput> = ({
             </option>
           ))}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>
@@ -78,7 +78,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
           onChange={(e) => {
             setState(e.target.value);
@@ -92,7 +92,7 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
             </option>
           ))}{" "}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>
@@ -129,7 +129,7 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
         >
           {options?.map((item: any, key: number) => (
@@ -138,7 +138,7 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
             </option>
           ))}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>
@@ -172,7 +172,7 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
           onChange={(e) => {
             dispatch(setState(e.target.value));
@@ -186,7 +186,7 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
             </option>
           ))}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>
@@ -223,7 +223,7 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
           onChange={(e) => {
             dispatch(setState(e.target.value));
@@ -237,7 +237,7 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
             </option>
           ))}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>
@@ -278,7 +278,7 @@ export const TempSelectInputInfo: React.FC<TempSelectInputInfo> = ({
       </label>
       <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
         <select
-          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
           required={required}
           onChange={(e) => {
             dispatch(setState(e.target.value));
@@ -291,7 +291,7 @@ export const TempSelectInputInfo: React.FC<TempSelectInputInfo> = ({
             </option>
           ))}
         </select>
-        <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
           <img src={shape.src} className="w-[10.5px]" />
         </div>
       </div>

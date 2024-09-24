@@ -111,7 +111,7 @@ export default function Info() {
 
   return (
     <div className="w-full h-fit  ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempTypeInput
           setState={setnameR}
           label={"Full Name"}
@@ -213,8 +213,8 @@ export default function Info() {
           type={"text"}
         />
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
-        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
           Add Image
         </h3>
         <div
@@ -224,7 +224,7 @@ export default function Info() {
           <input {...getInputProps()} />
 
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload

@@ -121,7 +121,7 @@ export default function GeneralCustomer() {
               />
             </div>
             <span
-              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow bg-white rounded-full`}
+              className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full`}
               onClick={() => setImagePopup(false)}
             >
               <FaTimes />
@@ -130,7 +130,7 @@ export default function GeneralCustomer() {
         </div>
       ) : null}
 
-      <div className="w-[210px] h-[210px] bg-white rounded-[10px] border-[1px] border-grey my-2">
+      <div className="w-[210px] h-[210px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey my-2">
         <img
           src={ImageArray[imageIndex] || image404.src}
           className={"w-[100%] h-[100%]"}

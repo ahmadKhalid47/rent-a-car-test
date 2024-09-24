@@ -205,9 +205,9 @@ export default function Others({
 
   return (
     <div className="w-full h-full  ">
-      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-0 xs:gap-y-3 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
+      <div className="flex flex-col justify-start items-center gap-x-[4%] gap-y-0 xs:gap-y-3 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-8 py-8">
         <img src={car.src} className="mt-2" />
-        <h3 className="font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black text-center w-full">
+        <h3 className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black text-center w-full">
           Payment Calculation
         </h3>
         <div className="w-full h-fit mt-1 rounded-[10px] border-[1px] border-grey font-[400] text-[14px] leading-[17px] pt-5 pb-3 px-4 flex flex-col justify-start items-center gap-y-3 ">

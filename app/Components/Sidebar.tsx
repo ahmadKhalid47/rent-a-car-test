@@ -81,13 +81,13 @@ export default function Sidebar() {
     <div
       className={`${
         global.sidebarShow ? "w-[250px] sm:w-[300px]" : "w-[70px]"
-      } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] bg-white xl:z-0 transitions`}
+      } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] dark:bg-dark1 bg-white xl:z-0 transitions`}
       onMouseEnter={() => dispatch(setSidebarShowR(true))}
       onMouseLeave={() =>
         dispatch(setSidebarShowR(global.sidebarShowTemp ? true : false))
       }
     >
-      <div className="w-full h-[90px] bg-white flex justify-center border-b-[2px] transitions">
+      <div className="w-full h-[90px] dark:bg-dark1 bg-white flex justify-center border-b-[2px] transitions">
         <Link href={"/Dashboard"} className="w-fit h-fit">
           {companyProfile?.profilePic ? (
             <img

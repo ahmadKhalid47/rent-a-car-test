@@ -129,7 +129,7 @@ export default function Info() {
 
   return (
     <div className="w-full h-fit ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempSelectInput
           setState={setmakeR}
           label={"Make"}
@@ -169,7 +169,7 @@ export default function Info() {
             <input
               required
               type="number"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
               placeholder="Enter Year"
               onChange={(e) => {
                 const value = e.target.value;
@@ -199,7 +199,7 @@ export default function Info() {
           </label>
           <div className="w-full h-fit flex justify-between items-center relative">
             <select
-              className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
               // required={false}
               required={true}
               onChange={(e) => {
@@ -217,12 +217,12 @@ export default function Info() {
               )}
             </select>
             <div
-              className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] bg-white"
+              className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
               style={{
                 backgroundColor: vehicle.color,
               }}
             ></div>
-            <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+            <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img src={shape.src} className="w-[10.5px]" />
             </div>
           </div>
@@ -328,8 +328,8 @@ export default function Info() {
           type={"text"}
         />
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
-        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+        <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
           Add Vehicle Images
         </h3>
         <div
@@ -338,7 +338,7 @@ export default function Info() {
         >
           <input {...getInputProps()} />
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
@@ -352,8 +352,8 @@ export default function Info() {
         </div>
       </div>
       {files.length > 1 ? (
-        <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
-          <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+        <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
+          <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
             Select Thumbnail Image
           </h3>
           <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">

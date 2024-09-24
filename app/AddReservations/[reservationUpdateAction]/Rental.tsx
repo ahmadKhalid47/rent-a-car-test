@@ -66,11 +66,11 @@ export default function Rental({ data, loading }: dataType) {
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
+      <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
         <div className="w-[100%] h-fit flex flex-wrap justify-center items-center bg-green-20 gap-y-2 gap-x-5 font-[500] text-[14px] md:text-[16px] leading-[19px] ">
           <button
             className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-              exterior ? "bg-main-blue text-white" : "bg-white text-black"
+              exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
             }`}
             onClick={() => {
               setExterior(true);
@@ -79,10 +79,10 @@ export default function Rental({ data, loading }: dataType) {
           >
             {exterior ? (
               <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
-                <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
               </div>
             ) : (
-              <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+              <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
                 <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
               </div>
             )}
@@ -90,7 +90,7 @@ export default function Rental({ data, loading }: dataType) {
           </button>
           <button
             className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-              !exterior ? "bg-main-blue text-white" : "bg-white text-black"
+              !exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
             }`}
             onClick={() => {
               setExterior(false);
@@ -99,10 +99,10 @@ export default function Rental({ data, loading }: dataType) {
           >
             {!exterior ? (
               <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
-                <div className="w-[10px] h-[10px] bg-white rounded-full"></div>
+                <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
               </div>
             ) : (
-              <div className="w-[20px] h-[20px] bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+              <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
                 <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
               </div>
             )}
@@ -114,7 +114,7 @@ export default function Rental({ data, loading }: dataType) {
             Search chauffeur
           </span>
           <input
-            className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] input-color text-[16px] leading-[19px] placeholder:text-black"
+            className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] dark:bg-dark1 input-color text-[16px] leading-[19px] placeholder:dark:text-white text-black"
             placeholder="Search By Name"
             onChange={handleSearchQueryChange}
           />

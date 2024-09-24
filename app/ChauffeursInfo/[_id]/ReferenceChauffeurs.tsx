@@ -3,7 +3,7 @@ export default function ReferenceChauffeurs() {
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
+        <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
           Reference Info
         </h3>
 

@@ -70,7 +70,7 @@ export default function ForgotPassword() {
           <h3 className="font-[400]">Forgot Password</h3>
 
           <input
-            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+            className="w-full h-[59px] px-4 dark:bg-dark1 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
             type="email"
             name="email"
             placeholder="Enter Your Email Address"

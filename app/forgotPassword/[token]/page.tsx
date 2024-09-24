@@ -91,7 +91,7 @@ export default function ResetPassword() {
           {isVerified === false ? (
             <>
               <img src={expire404.src} className="w-[40vw] mx-auto mt-10" />
-              <h3 className="font-[600] text-[25px] leading-[38px] text-black text-center">
+              <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black text-center">
                 Sorry, your link to reset password has been expired!
               </h3>
             </>
@@ -127,7 +127,7 @@ export default function ResetPassword() {
                   </div>
                 </div>
 
-                <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full bg-white flex justify-center items-center">
+                <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full dark:bg-dark1 bg-white flex justify-center items-center">
                   <div className="w-full flex justify-center items-center">
                     {showError ? (
                       <Alert
@@ -154,7 +154,7 @@ export default function ResetPassword() {
                         <h3 className="font-[400]">New Password</h3>
                         <div className="w-full h-fit relative">
                           <input
-                            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+                            className="w-full h-[59px] px-4 dark:bg-dark1 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
                             type={!showPassword1 ? "Password" : "text"}
                             name="password"
                             placeholder="New Password"
@@ -179,7 +179,7 @@ export default function ResetPassword() {
                         <h3 className="font-[400]">Confirm Password</h3>
                         <div className="w-full h-fit relative">
                           <input
-                            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+                            className="w-full h-[59px] px-4 dark:bg-dark1 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
                             type={!showPassword2 ? "Password" : "text"}
                             name="confirmPassword"
                             placeholder="Confirm Password"

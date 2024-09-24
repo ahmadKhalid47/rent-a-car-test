@@ -225,7 +225,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden leading-[17px]">
+        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center ">
               <div
@@ -275,7 +275,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
             <div key={index} className="w-full">
               <Link
                 href={`/ChauffeursInfo/${item?._id}`}
-                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center bg-white border-b-2 border-grey"
+                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center dark:bg-dark1 bg-white border-b-2 border-grey"
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
@@ -336,7 +336,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
               </Link>
               {popup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete this item
@@ -346,7 +346,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setPopup(false);
                         }}
@@ -368,7 +368,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
               ) : null}
               {deleteManyPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete these items
@@ -378,7 +378,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setDeleteManyPopup(false);
                         }}

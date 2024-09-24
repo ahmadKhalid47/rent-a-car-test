@@ -69,7 +69,7 @@ export default function FirstPage() {
 
   return (
     <>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempTypeInput
           setState={setfuelCompletion}
           label={"Fuel Status %"}
@@ -83,20 +83,20 @@ export default function FirstPage() {
         >
           <input {...getInputPropsFuel()} />
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </h4>
         </div>
-        <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
+        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload Image of Fuel Status
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={fuelFiles} setFiles={setfuelFiles} />
         </div>
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempTypeInput
           setState={setodometerCompletion}
           label={"Odometer"}
@@ -110,13 +110,13 @@ export default function FirstPage() {
         >
           <input {...getInputPropsodometer()} />
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </h4>
         </div>
-        <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
+        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload Image of Odometer
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">

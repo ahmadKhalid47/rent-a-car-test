@@ -95,7 +95,7 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full bg-white flex justify-center items-center">
+        <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full dark:bg-dark1 bg-white flex justify-center items-center">
           <div className="w-full flex justify-center items-center">
             {global.loginPage ? <Login /> : <ForgotPassword />}
           </div>

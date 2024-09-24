@@ -1,5 +1,6 @@
 "use client";
 import bar from "@/public/Layer_1 bar.svg";
+import bar_white from "@/public/Layer_1 bar white.svg";
 import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
@@ -9,6 +10,7 @@ import {
   setcurrentCurrency,
   setSidebarShowR,
   setSidebarShowTempR,
+  setTheme,
 } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
@@ -32,6 +34,7 @@ import { Logout } from "@mui/icons-material";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
+  let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>(false);
   useEffect(() => {
@@ -43,6 +46,14 @@ export default function Nav() {
   }, [isMobile]);
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      dispatch(setTheme(storedTheme as "light" | "dark"));
+      document.documentElement.classList.toggle("dark", storedTheme === "dark");
+    }
+  }, []);
+
+  useEffect(() => {
     async function verifyTokenApi() {
       try {
         let userData = await axios.post("/api/verifyToken");
@@ -52,7 +63,6 @@ export default function Nav() {
     verifyTokenApi();
   }, []);
 
-  let global = useSelector((state: RootState) => state.Global);
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
 
   useEffect(() => {
@@ -160,12 +170,13 @@ export default function Nav() {
       window.location.reload();
     }
   }
+console.log(global.theme);
 
   return (
     <div
       className={`${
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
-      } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed bg-white right-0 transitions`}
+      } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed dark:bg-dark1 bg-white right-0 transitions`}
     >
       <button
         onClick={() => {
@@ -174,18 +185,18 @@ export default function Nav() {
         }}
       >
         <img
-          src={bar.src}
+          src={global.theme === "dark" ? bar_white.src : bar.src}
           className={`${
             global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
-          } h-full`}
+          } h-full dark:dark:bg-dark1 bg-white`}
         />
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">
-        {/* <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
+        {/* <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] dark:bg-dark2 bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
           <img src={bell.src} className="w-[24px] h-[24px]" />
         </div> */}
         <div
-          className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden"
+          className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] dark:bg-dark2 bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden"
           onClick={() => {
             toggleDropdown();
           }}
@@ -199,9 +210,9 @@ export default function Nav() {
             }`}
           />
           {isOpen && (
-            <div className="z-10 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-md text-black flex flex-col justify-start items-start">
+            <div className="z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-start">
               <button
-                className="px-4 py-2 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
+                className="px-4 py-2 dark:hover:bg-slate-500 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
                 onClick={() => {
                   logout();
                 }}

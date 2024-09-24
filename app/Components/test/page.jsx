@@ -21,7 +21,7 @@ export default function UploadForm() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div className="flex flex-col ">
         <input

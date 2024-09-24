@@ -74,7 +74,7 @@ export default function Rental() {
 
   return (
     <div className="w-full h-fit  ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempTypeInput
           setState={setpassportNumberR}
           label={"Passport / ID Number"}
@@ -106,20 +106,20 @@ export default function Rental() {
           <input {...getInputPropsPass()} />
 
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </h4>
         </div>
-        <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
+        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload Passport / ID scans
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={passfiles} setFiles={setPassFiles} />
         </div>
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <TempTypeInput
           setState={setlicenseNumberR}
           label={"Driver's License Number"}
@@ -150,13 +150,13 @@ export default function Rental() {
           <input {...getInputPropsLic()} />
 
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  text-black mt-[5px]">
+          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </h4>
         </div>
-        <span className="font-[400] text-[14px] leading-[17px] text-black -mt-4">
+        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload driving license scans
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">

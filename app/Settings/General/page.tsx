@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setcurrentCurrency, setSidebarShowR } from "@/app/store/Global";
+import { setcurrentCurrency, setSidebarShowR, setTheme } from "@/app/store/Global";
 import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import {
@@ -23,6 +23,7 @@ export default function AddUser() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [saveloading, setSaveLoading] = useState<any>(false);
   const [loading, setLoading] = useState<any>(false);
+  const [darkModeLoading, setDarkModeLoading] = useState<any>(false);
   const router = useRouter();
 
   const currencySymbols: any = [
@@ -84,33 +85,51 @@ export default function AddUser() {
       setSaveLoading(false);
     }
   }
+  // dark mode
+  // const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Check user's previous theme preference
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      dispatch(setTheme(storedTheme as "light" | "dark"));
+      document.documentElement.classList.toggle("dark", storedTheme === "dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = global.theme === "light" ? "dark" : "light";
+    dispatch(setTheme(newTheme));
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
 
   return (
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black `}
     >
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] w-[100%] md:w-[50%]">
             General
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               Settings / General
             </p>
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
+        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
                     Currency
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px]">
                     You can select default currency here{" "}
                   </span>
                 </div>
@@ -118,7 +137,7 @@ export default function AddUser() {
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                     <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                       <select
-                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                         onChange={(e) => {
                           dispatch(setcurrentCurrency(e.target.value));
                         }}
@@ -131,19 +150,42 @@ export default function AddUser() {
                           </option>
                         ))}
                       </select>
-                      <div className="w-[30px] h-[35px] input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                      <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                         <img src={shape.src} className="w-[10.5px]" />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
+                    Dark Theme
+                  </h3>
+                  <span className="font-[400] text-[14px] leading-[17px]">
+                    Turn on dark mode.
+                  </span>
+                </div>
+                <div className="w-[180px] h-[50px] flex justify-center items-center">
+                  <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                    <div className="w-full h-fit flex justify-end items-center relative overflow-hidden">
+                      <Switch
+                        disabled={darkModeLoading}
+                        checked={global.theme === "dark" ? true : false}
+                        onCheckedChange={toggleTheme}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
+                <div className="w-fit flex flex-col justify-start items-start">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
                     VAT Percentage{" "}
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px]">
                     You can VAT percentage (%){" "}
                   </span>
                 </div>
@@ -151,7 +193,7 @@ export default function AddUser() {
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                     <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
                       <input
-                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey"
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                         onChange={(e) => {
                           dispatch(setvatPercentageR(e.target.value));
                         }}
@@ -163,10 +205,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
                     Include VAT Percentage{" "}
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px]">
                     Prices include VAT
                   </span>
                 </div>
@@ -192,7 +234,7 @@ export default function AddUser() {
                 onClick={() => {
                   router.push("/Settings");
                 }}
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               >
                 {loading ? <SmallLoader /> : "Cancel"}
               </button>

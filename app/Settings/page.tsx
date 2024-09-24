@@ -32,24 +32,24 @@ export default function Vehicles() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Settings
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] text-black pb-">
+            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
               Search
             </h3>
             <div className="w-full h-fit flex justify-between items-center">
               <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
+                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
                 placeholder="Search..."
               ></input>
               <button className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
@@ -60,7 +60,7 @@ export default function Vehicles() {
           <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
             <Link
               href={"Settings/MyProfile"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings1.src} />
@@ -76,7 +76,7 @@ export default function Vehicles() {
             </Link>
             {/* <Link
               href={"Settings/Notification"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings2.src} />
@@ -92,7 +92,7 @@ export default function Vehicles() {
             </Link> */}
             <Link
               href={"Settings/CompanyProfile"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 {/* <img src={settings2.src} /> */}
@@ -108,7 +108,7 @@ export default function Vehicles() {
             </Link>
             <Link
               href={"Settings/General"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings3.src} />
@@ -124,7 +124,7 @@ export default function Vehicles() {
             </Link>
             <Link
               href={"Settings/Invoicing"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings10.src} />
@@ -140,7 +140,7 @@ export default function Vehicles() {
             </Link>
             <Link
               href={"Settings/Agreement"}
-              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2"
+              className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
             >
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings9.src} />
@@ -154,7 +154,7 @@ export default function Vehicles() {
                 </span>
               </div>
             </Link>
-            {/* <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 bg-white rounded-[10px] border-grey border-2">
+            {/* <div className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2">
               <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
                 <img src={settings12.src} />
               </div>

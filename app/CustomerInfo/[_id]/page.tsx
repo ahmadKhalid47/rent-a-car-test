@@ -60,21 +60,21 @@ export default function CustomerInfoMainPage() {
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
         <div className="w-full h-[200px ">
-          <h3 className="font-[600] text-[25px] leading-[38px] text-black">
+          <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
             {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
               Customers / All Customers /{" "}
               {CustomerInfo?.name ? CustomerInfo?.name : "---"}
             </p>
           </div>
         </div>
-        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%] rounded-[10px] bg-">
             <div className="w-full h-fit flex flex-col lg:flex-row justify-start gap-5 lg:gap-[7%] items-center px- g-white rounded-[10px] border-2 border-grey py-7 px-6 ">
               <div className="w-fit flex justify-start items-center gap-1">
-                <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
+                <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
                   <img
                     src={CustomerInfo?.customerImage || image404.src}
                     className="w-full h-full"
@@ -82,7 +82,7 @@ export default function CustomerInfoMainPage() {
                 </div>
               </div>
               <div className="w-full lg:w-[60%] 1400:w-[35%] flex justify-start flex-col items-center lg:items-start gap-1">
-                <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] text-black">
+                <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] dark:text-white text-black">
                   {CustomerInfo?.name ? CustomerInfo?.name : "---"}
                   {CustomerInfo?.isVip ? (
                     <img
@@ -91,7 +91,7 @@ export default function CustomerInfoMainPage() {
                     />
                   ) : null}
                 </h3>
-                <p className="font-[400] text-[28px] leading-[42px] text-black">
+                <p className="font-[400] text-[28px] leading-[42px] dark:text-white text-black">
                   {CustomerInfo?.phone ? CustomerInfo?.phone : "---"}
                 </p>
                 <div className="w-full lg:w-[100%] flex justify-center lg:justify-start items-center">
@@ -116,13 +116,13 @@ export default function CustomerInfoMainPage() {
                 </div>
               </div>
             </div>
-            <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
+            <div className="w-full h-fit dark:bg-dark1 bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
               <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
                 <div
                   className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "General"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("General")}
                 >
@@ -132,7 +132,7 @@ export default function CustomerInfoMainPage() {
                   className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Identity"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Identity")}
                 >
@@ -142,7 +142,7 @@ export default function CustomerInfoMainPage() {
                   className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Emergency"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Emergency")}
                 >
@@ -152,7 +152,7 @@ export default function CustomerInfoMainPage() {
                   className={`w-[215px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Reference"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Reference")}
                 >

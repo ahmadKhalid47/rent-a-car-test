@@ -166,7 +166,7 @@ export default function ListView({ data }: dataType) {
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start bg-light-grey overflow-hidden mt-0 leading-[17px]">
+        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
@@ -194,7 +194,7 @@ export default function ListView({ data }: dataType) {
             <div key={index} className="w-full">
               <div
                 className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
-                  index % 2 !== 0 ? "bg-light-grey" : "bg-white"
+                  index % 2 !== 0 ? "dark:bg-dark2 bg-light-grey" : "dark:bg-dark1 bg-white"
                 } border-b-2 border-grey`}
               >
                 <div className="text-center w-[6%] flex justify-center items-center ">
@@ -244,7 +244,7 @@ export default function ListView({ data }: dataType) {
               </div>
               {popup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete this item
@@ -254,7 +254,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setPopup(false);
                         }}
@@ -276,7 +276,7 @@ export default function ListView({ data }: dataType) {
               ) : null}
               {deleteManyPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete these items
@@ -286,7 +286,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setDeleteManyPopup(false);
                         }}
@@ -308,7 +308,7 @@ export default function ListView({ data }: dataType) {
               ) : null}
               {editPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
                     <div
                       className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                     >
@@ -320,7 +320,7 @@ export default function ListView({ data }: dataType) {
                         <input
                           required={true}
                           type={"text"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center input-color rounded-xl border-2 border-grey truncate"
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                           placeholder={`Enter Text Here`}
                           onChange={(e) => {
                             setFeature(e.target.value);
@@ -334,7 +334,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
+                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
                         onClick={() => {
                           setEditPopup(false);
                           setFeature("");

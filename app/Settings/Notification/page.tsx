@@ -48,28 +48,28 @@ export default function AddUser() {
     <div
       className={`${
         global.sidebarShow ? "nav-width" : "nav-closed-width"
-      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions`}
+      } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Notifications
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
               Settings / Notifications
             </p>
           </h3>
         </div>
-        <div className="w-full h-fit bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
+        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     New Car
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>
@@ -83,10 +83,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     New Chauffeur
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>
@@ -100,10 +100,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     New Customer
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>
@@ -117,10 +117,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     New Reservation
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>
@@ -134,10 +134,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     Reservation Complete
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>
@@ -151,10 +151,10 @@ export default function AddUser() {
               </div>
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
-                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] text-black w-[100%]">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
                     Reservation Pending
                   </h3>
-                  <span className="font-[400] text-[14px] leading-[17px] text-black">
+                  <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black">
                     Lorem ipsum dolor sit amet
                   </span>
                 </div>

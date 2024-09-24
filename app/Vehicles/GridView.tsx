@@ -117,15 +117,15 @@ export default function GridView({ data }: dataType) {
           Export
         </span>
       </h3>
-      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey bg-light-grey mt-2">
+      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] dark:bg-dark2 bg-light-grey border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
         {paginatedData.map((item: any, index: number) => (
           <Link
             key={index} // Added unique key prop
             href={`/VehicleInfo/${item?._id}`}
-            className="w-[100%] lg:w-[47.5%] h-[183px bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
+            className="w-[100%] lg:w-[47.5%] h-[183px dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
           >
             <div
-              className="absolute top-5 right-5 hover:cursor-pointer bg w-[30px] h-[30px] rounded-full flex justify-center items-center hover:bg-gray-200"
+              className="absolute top-5 right-5 hover:cursor-pointer bg w-[30px] h-[30px] rounded-full flex justify-center items-center dark:hover:bg-slate-500 hover:bg-gray-200"
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
@@ -138,9 +138,9 @@ export default function GridView({ data }: dataType) {
               />
               <div className="relative">
                 {isOpen === item._id && (
-                  <div className="z-10 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md text-black flex flex-col justify-start items-start">
+                  <div className="z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-start">
                     <button
-                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
                       onClick={() => {
                         router.push(`/AddVehicle/${item?._id}`);
                       }}
@@ -148,7 +148,7 @@ export default function GridView({ data }: dataType) {
                       Edit
                     </button>
                     <button
-                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
                       onClick={() => {
                         setPopup(true);
                         setItemToDelete(item?._id);
@@ -157,7 +157,7 @@ export default function GridView({ data }: dataType) {
                       Delete
                     </button>
                     <button
-                      className="px-4 py-2 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
@@ -238,7 +238,7 @@ export default function GridView({ data }: dataType) {
       </div>
       {popup ? (
         <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
             <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Are you sure you want to delete this item
@@ -246,7 +246,7 @@ export default function GridView({ data }: dataType) {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                 }}

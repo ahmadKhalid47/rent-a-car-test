@@ -23,8 +23,8 @@ export default function Feature() {
   console.log(chauffeur?.emergencyContactName);
   return (
     <div className="w-full h-fit  ">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
           Reference Info
         </h3>
         <TempTypeInput
@@ -56,8 +56,8 @@ export default function Feature() {
           options={["Father", "Mother", "Brother", "Other"]}
         />
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
           Emergency Info
         </h3>
         <TempTypeInput
@@ -82,14 +82,14 @@ export default function Feature() {
           type={"number"}
         />
       </div>
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] text-black ">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
           Additional Notes
         </h3>
         <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidden">
             <textarea
-              className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center input-color rounded-xl border-2 border-grey"
+              className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
               rows={6}
               cols={6}
               onChange={(e) => dispatch(setadditionalR(e.target.value))}

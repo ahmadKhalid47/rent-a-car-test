@@ -172,15 +172,15 @@ export default function reservationInfoMainPage() {
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] text-black w-[100%] md:w-[50%]">
+          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             ID: {formatId(_id)}
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
               Reservations / All Reservations / {formatId(_id)}
             </p>
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 updateCancel();
               }}
@@ -209,9 +209,9 @@ export default function reservationInfoMainPage() {
             </button>
           </div>
         </div>
-        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative">
+        <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-            <div className=" bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
+            <div className=" dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
               <div className="w-[40%] h-[150px]">
                 <div className="font-[600] text-[#242E69] text-[18px]  ">
                   Pick-Up:
@@ -275,13 +275,13 @@ export default function reservationInfoMainPage() {
                 </div>
               </div>
             </div>
-            <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
+            <div className="w-full h-fit dark:bg-dark1 bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
               <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
                 <div
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "General"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("General")}
                 >
@@ -291,7 +291,7 @@ export default function reservationInfoMainPage() {
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Identity"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Identity")}
                 >
@@ -301,7 +301,7 @@ export default function reservationInfoMainPage() {
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Emergency"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Emergency")}
                 >
@@ -311,7 +311,7 @@ export default function reservationInfoMainPage() {
                   className={`w-[290px] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                     activeButton === "Chauffeur"
                       ? "text-white bg-main-blue font-[500]"
-                      : " text-black "
+                      : " dark:text-white text-black "
                   } font-[400] text-[18px] leading-[22px]`}
                   onClick={() => setActiveButton("Chauffeur")}
                 >

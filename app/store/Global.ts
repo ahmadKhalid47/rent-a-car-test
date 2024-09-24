@@ -8,7 +8,8 @@ const initialState = {
   vehicleDataReloader: 0,
   myProfileReloader: 0,
   companyProfileReloader: 0,
-  currentCurrency:""
+  currentCurrency: "",
+  theme: "",
 };
 
 export const GlobalSlice = createSlice({
@@ -36,6 +37,9 @@ export const GlobalSlice = createSlice({
     setcurrentCurrency: (state, action) => {
       state.currentCurrency = action.payload;
     },
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+    },
     setcompanyProfileReloader: (state, action) => {
       state.companyProfileReloader = action.payload;
     },
@@ -50,7 +54,8 @@ export const {
   setVehicleDataReloader,
   setMyProfileReloader,
   setcompanyProfileReloader,
-  setcurrentCurrency
+  setcurrentCurrency,
+  setTheme,
 } = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;

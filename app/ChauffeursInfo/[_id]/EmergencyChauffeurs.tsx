@@ -9,7 +9,7 @@ export default function EmergencyChauffeurs() {
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt- ">
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
+        <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
           Emergency Info
         </h3>
         <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
@@ -43,7 +43,7 @@ export default function EmergencyChauffeurs() {
         </div>
       </div>
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
+        <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
           Reference Info
         </h3>
 
@@ -75,7 +75,7 @@ export default function EmergencyChauffeurs() {
         </div>
       </div>
       <div className="w-[100%] h-fit flex flex-col justify-between items-center bg-red-30 ">
-        <h3 className="font-[600] text-[25px] leading-[38px] text-black w-full">
+        <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
           Additional Notes
         </h3>
         <div className="w-[100%] h-fit font-[400] text-[18px] leading-[27px]">

@@ -63,7 +63,7 @@ export default function Login() {
         <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
           <h3 className="font-[400]">Email or Username</h3>
           <input
-            className="w-full h-[59px] px-4 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+            className="w-full h-[59px] px-4 dark:bg-dark2 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
             type="text"
             name="username"
             placeholder="Email or Username"
@@ -76,7 +76,7 @@ export default function Login() {
           <h3 className="font-[400]">Password</h3>
           <div className="w-full h-fit relative">
             <input
-              className="w-full h-[59px] ps-4 pe-7 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
+              className="w-full h-[59px] ps-4 pe-7 dark:bg-dark2 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
               placeholder="Password"
               type={!showPassword ? "Password" : "text"}
               name="password"

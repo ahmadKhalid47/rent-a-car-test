@@ -70,19 +70,19 @@ export default function CarInfoMainPage() {
             } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
           >
             <div className="w-full h-[200px ">
-              <h3 className="font-[600] text-[25px] leading-[38px] text-black">
+              <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
                 {vehicleInfo.make} {vehicleInfo.model}
               </h3>
               <div className="flex justify-between items-start">
-                <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
+                <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
                   Vehicles / All Vehicles / {vehicleInfo.make}{" "}
                   {vehicleInfo.model}
                 </p>
               </div>
             </div>
-            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey bg-light-grey mt-5 relative overflow-hidden">
+            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
               <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-                <div className="w-full h-fit flex justify-start gap-[5%] items-center px- bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
+                <div className="w-full h-fit flex justify-start gap-[5%] items-center px- dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
                   <div className="w-fit flex justify-start items-center gap-1">
                     <div className="h-[464px] fex justify-start flex-col items-center gap-[8px] overflow-y-auto overflow-x-hidden scroll">
                       {vehicleInfo?.carImages?.map(
@@ -90,7 +90,7 @@ export default function CarInfoMainPage() {
                           <>
                             {index !== imageIndex ? (
                               <div
-                                className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center bg-white rounded-[10px] border-2 border-grey"
+                                className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
                                 onClick={() => {
                                   setImageIndex(index);
                                 }}
@@ -103,7 +103,7 @@ export default function CarInfoMainPage() {
                         )
                       )}
                     </div>
-                    <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey bg-white ms-1">
+                    <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
                       <img
                         src={vehicleInfo.carImages[imageIndex] || image404.src}
                         className="w-full h-full"
@@ -111,10 +111,10 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                   <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
-                    <h3 className="font-[600] text-[36px] leading-[54px] text-black">
+                    <h3 className="font-[600] text-[36px] leading-[54px] dark:text-white text-black">
                       {vehicleInfo.make} {vehicleInfo.model}
                     </h3>
-                    <p className="font-[400] text-[28px] leading-[42px] text-black">
+                    <p className="font-[400] text-[28px] leading-[42px] dark:text-white text-black">
                       {vehicleInfo.registration}
                     </p>
                     <div className="w-[100%] flex justify-between items-center">
@@ -160,13 +160,13 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-fit bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
+                <div className="w-full h-fit dark:bg-dark1 bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
                   <div className="w-full h-fit flex justify-between items-center mt-3 border-b-2 border-grey pb-3">
                     <div
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "General"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("General")}
                     >
@@ -176,7 +176,7 @@ export default function CarInfoMainPage() {
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "Rental"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("Rental")}
                     >
@@ -186,7 +186,7 @@ export default function CarInfoMainPage() {
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "Insurance"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("Insurance")}
                     >
@@ -196,7 +196,7 @@ export default function CarInfoMainPage() {
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "Additional"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("Additional")}
                     >
@@ -206,7 +206,7 @@ export default function CarInfoMainPage() {
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "Damages"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("Damages")}
                     >
@@ -216,7 +216,7 @@ export default function CarInfoMainPage() {
                       className={`w-[16%] h-[43px] flex justify-center rounded-[10px] hover:cursor-pointer items-center ${
                         activeButton === "Others"
                           ? "text-white bg-main-blue font-[500]"
-                          : " text-black "
+                          : " dark:text-white text-black "
                       } font-[400] text-[18px] leading-[22px]`}
                       onClick={() => setActiveButton("Others")}
                     >
