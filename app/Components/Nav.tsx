@@ -1,6 +1,5 @@
 "use client";
 import bar from "@/public/Layer_1 bar.svg";
-import bar_white from "@/public/Layer_1 bar white.svg";
 import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
 import { useDispatch } from "react-redux";
@@ -108,8 +107,8 @@ export default function Nav() {
         // if (typeof window !== "undefined") {
         //   localStorage.setItem("companyLogo", profilePic);
         //   localStorage.setItem("companyLogo2", profilePic2);
-          dispatch(setCompanyLogo([profilePic]));
-          dispatch(setCompanyLogo2([profilePic2]));
+        dispatch(setCompanyLogo([profilePic]));
+        dispatch(setCompanyLogo2([profilePic2]));
         // }
       } catch (error) {
         console.error("Error fetching company profile:", error);
@@ -122,7 +121,7 @@ export default function Nav() {
     //     dispatch(setCompanyLogo([storedLogo]));
     //     dispatch(setCompanyLogo2([storedLogo2]));
     //   } else {
-        getData();
+    getData();
     //   }
     // }
   }, [global.companyProfileReloader]);
@@ -184,10 +183,10 @@ export default function Nav() {
         }}
       >
         <img
-          src={global.theme === "dark" ? bar_white.src : bar.src}
+          src={bar.src}
           className={`${
             global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
-          } h-full dark:dark:bg-dark1 bg-white`}
+          } h-full dark:filter dark:brightness-[0] dark:invert`}
         />
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">

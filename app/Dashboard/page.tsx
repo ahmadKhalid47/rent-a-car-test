@@ -391,7 +391,7 @@ console.log(VehiclesData);
                 <h1
                   className={`w-fit text-[18px] font-[600] leading-[0px] ${
                     carAvailable && carAvailable !== 0
-                      ? "text-main-blue"
+                      ? "dark:text-white text-main-blue"
                       : "text-red-500"
                   }`}
                 >
