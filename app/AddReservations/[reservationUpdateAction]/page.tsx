@@ -303,31 +303,31 @@ export default function Reservations() {
                 </button>
               </div>
             </div>
-            <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px]">
+            <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Customer
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Chauffeur
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Reservation Details
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 3 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Vehicle

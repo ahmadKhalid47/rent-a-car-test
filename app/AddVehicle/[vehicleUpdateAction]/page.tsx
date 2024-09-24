@@ -349,45 +349,45 @@ export default function Vehicles() {
                 </button>
               </div>
             </div>
-            <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px]">
+            <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Vehicle Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Rental Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Insurance Info
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 3 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Features
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 4 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 4 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Damages
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 5 ? "text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 5 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Others
