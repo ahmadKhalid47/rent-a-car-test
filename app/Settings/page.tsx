@@ -96,13 +96,10 @@ export default function Vehicles() {
             </h3>
             <div className="w-full h-fit flex justify-between items-center">
               <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
+                className="px-2 w-[100%] md:w-[100%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
                 placeholder="Search..."
                 onChange={handleSearch}
               ></input>
-              <button className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center">
-                Search
-              </button>
             </div>
           </div>
           <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
