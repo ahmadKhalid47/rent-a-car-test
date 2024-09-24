@@ -137,10 +137,14 @@
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 5%;
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }
 input[type="time"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 5%;
+  background-color: #f9f9f9;
+  border-radius: 5px;
 }
 
 input[type="number"]::-webkit-inner-spin-button {
@@ -398,6 +402,6 @@ button:hover {
 button:active {
   opacity: 1;
 }
-.dropShadow{
+.dropShadow {
   filter: brightness(0) invert(1);
 }
