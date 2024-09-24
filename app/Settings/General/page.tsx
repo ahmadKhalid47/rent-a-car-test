@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setcurrentCurrency, setSidebarShowR, setTheme } from "@/app/store/Global";
+import {
+  setcurrentCurrency,
+  setSidebarShowR,
+  setTheme,
+} from "@/app/store/Global";
 import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import {

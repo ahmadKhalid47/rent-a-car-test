@@ -170,7 +170,6 @@ export default function Nav() {
       window.location.reload();
     }
   }
-console.log(global.theme);
 
   return (
     <div
