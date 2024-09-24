@@ -425,7 +425,7 @@ export default function Vehicles() {
                     className="px-2 md:px-0 filter-button py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     type="submit"
                   >
-                    Filter 
+                    Filter
                   </button>
                   <button
                     className={`px-2 md:px-0 w-fit md:w-[44px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey font-[500] text-[12px] md:text-[28px] leading-[21px] text-center flex justify-center items-center ${
@@ -455,13 +455,16 @@ export default function Vehicles() {
           <h3
             className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] text-main-blue`}
           >
-            <span className="font-[600] dark:text-white text-black" onClick={() => {}}>
+            <span
+              className="font-[600] dark:text-white text-black"
+              onClick={() => {}}
+            >
               {vehicle}
               {fromDate ? ", From " + fromDate : ""}
               {toDate ? " To " + toDate : ""}
             </span>
             <span
-              className="underline cursor-pointer hover:no-underline"
+              className="underline cursor-pointer dark:text-white text-main-blue hover:no-underline"
               onClick={() => {
                 handleExport(exportData);
               }}
