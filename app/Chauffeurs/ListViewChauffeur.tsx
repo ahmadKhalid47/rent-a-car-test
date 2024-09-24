@@ -170,7 +170,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : "text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " dark:text-white text-main-blue"
         }  `}
       >
         <span>
@@ -216,7 +216,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           </span>
         </span>
         <span
-          className="underline cursor-pointer text-main-blue hover:no-underline"
+          className="underline cursor-pointer dark:text-white text-main-blue hover:no-underline"
           onClick={() => {
             handleExport(data?.map((item: any) => item.data));
           }}
@@ -318,7 +318,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   />
                   <img
                     src={edit.src}
-                    className="me-[5.8px] hover:scale-[1.3]"
+                    className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       router.push(`/AddChauffeur/${item?._id}`);
                     }}
@@ -346,7 +346,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setPopup(false);
                         }}
@@ -378,7 +378,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setDeleteManyPopup(false);
                         }}

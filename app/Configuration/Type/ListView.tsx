@@ -170,7 +170,7 @@ export default function ListView({ data }: dataType) {
     <div className="w-full h-fit mt-4 relative">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : "text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " dark:text-white text-main-blue"
         }  `}
       >
         <span>
@@ -218,7 +218,9 @@ export default function ListView({ data }: dataType) {
             <div key={index} className="w-full">
               <div
                 className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
-                  index % 2 !== 0 ? "dark:bg-dark2 bg-light-grey" : "dark:bg-dark1 bg-white"
+                  index % 2 !== 0
+                    ? "dark:bg-dark2 bg-light-grey"
+                    : "dark:bg-dark1 bg-white"
                 } border-b-2 border-grey`}
               >
                 <div className="text-center w-[6%] flex justify-center items-center ">
@@ -248,7 +250,7 @@ export default function ListView({ data }: dataType) {
                 >
                   <img
                     src={edit.src}
-                    className="me-[5.8px] hover:scale-[1.3]"
+                    className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       setEditPopup(true);
                       setItemToEdit(item?._id);
@@ -278,7 +280,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setPopup(false);
                         }}
@@ -310,7 +312,7 @@ export default function ListView({ data }: dataType) {
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >
                       <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                         onClick={() => {
                           setDeleteManyPopup(false);
                         }}

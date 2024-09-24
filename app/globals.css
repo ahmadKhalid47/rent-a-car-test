@@ -398,3 +398,6 @@ button:hover {
 button:active {
   opacity: 1;
 }
+.dropShadow{
+  filter: brightness(0) invert(1);
+}
