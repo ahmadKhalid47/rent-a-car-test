@@ -46,13 +46,13 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] dark:bg-dark2 bg-light-grey border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
               <Link
                 href={`/Configuration/Make`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg1.src} />
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg1.src} className="dark:filter dark:brightness-[0] dark:invert" />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Make
@@ -60,10 +60,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Model`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg2.src} />
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg2.src} className="dark:filter dark:brightness-[0] dark:invert" />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Model
@@ -71,10 +71,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Type`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg3.src} />
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg3.src} className="dark:filter dark:brightness-[0] dark:invert" />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Type
@@ -82,10 +82,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Color`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg4.src} />
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg4.src} className="dark:filter dark:brightness-[0] dark:invert" />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Color
@@ -93,10 +93,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Features`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img src={configImg5.src} />
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" />
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Add. Features
@@ -104,10 +104,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Country`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img src={configImg5.src} /> */}
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  {/* <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" /> */}
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Country
@@ -115,10 +115,10 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/City`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-6 lg:justify-center items-center relative flex-col"
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col"
               >
-                <div className="dark:bg-dark2 bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img src={configImg5.src} /> */}
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  {/* <img src={configImg5.src} className="dark:filter dark:brightness-[0] dark:invert" /> */}
                 </div>
                 <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   City
