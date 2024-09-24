@@ -10,6 +10,7 @@ import settings3 from "@/public/settings (6).svg";
 import settings9 from "@/public/settings (1).svg";
 import settings10 from "@/public/settings (4).svg";
 import settings12 from "@/public/settings (9).svg";
+import settings13 from "@/public/Company.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,7 @@ export default function Vehicles() {
     },
     {
       link: "Settings/CompanyProfile",
-      img: settings1,
+      img: settings13,
       heading: "Company Profile",
       text: "Manage your Company Profile.",
       prefixes: "company profiles logos",
@@ -119,13 +120,15 @@ export default function Vehicles() {
 }
 
 function SettingBox({ link, img, heading, text }: any) {
+console.log(img);
+
   return (
     <Link
       href={link}
       className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
     >
       <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-        <img src={img.src} />
+        <img src={img.src} className={`w-[25px] h-[25px]`} />
       </div>
       <div className="h-full w-[100%] flex flex-col justify-center item-start">
         <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[20px]">
