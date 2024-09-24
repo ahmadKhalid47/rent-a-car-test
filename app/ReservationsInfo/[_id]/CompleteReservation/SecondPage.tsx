@@ -374,7 +374,7 @@ export default function SecondPage() {
                     <option value="Scratch">Scratch</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]" />
+                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
                   </div>
                 </div>
               </div>
@@ -395,7 +395,7 @@ export default function SecondPage() {
                     <option value="High">High</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]" />
+                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
                   </div>
                 </div>
               </div>
