@@ -59,7 +59,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getVehicle", );
+        const result = await axios.post("/api/getVehicle");
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -104,6 +104,18 @@ export default function Vehicles() {
   function advanceFilterVehicles() {
     let filtered: any = vehiclesData;
 
+    const lowercasedQuery = searchQuery.toLowerCase();
+    filtered = vehiclesData.filter((vehicle) => {
+      const { data } = vehicle;
+      const { registration, city, make, model } = data;
+
+      const carName = `${make} ${model}`.toLowerCase();
+      return (
+        registration.toLowerCase().includes(lowercasedQuery) ||
+        city.toLowerCase().includes(lowercasedQuery) ||
+        carName.includes(lowercasedQuery)
+      );
+    });
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
         const lowercasedQuery = keyValue.toLowerCase();
@@ -119,6 +131,24 @@ export default function Vehicles() {
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
+    setAdvanceFilters([
+      {
+        key: "year",
+        keyValue: "",
+      },
+      {
+        key: "type",
+        keyValue: "",
+      },
+      {
+        key: "city",
+        keyValue: "",
+      },
+      {
+        key: "color",
+        keyValue: "",
+      },
+    ]);
   }
 
   return (
@@ -213,6 +243,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "year"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -224,7 +259,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>{" "}
               </div>
@@ -244,11 +282,13 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "type"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
-                    {/* {filteredVehicles.map((item) => (
-                    <option value={item.data.type}>{item.data.type}</option>
-                  ))} */}
                     {Array.from(
                       new Set(vehiclesData.map((item) => item.data.type))
                     ).map((type) => (
@@ -258,7 +298,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -278,11 +321,13 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "city"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
-                    {/* {filteredVehicles.map((item) => (
-                    <option value={item.data.city}>{item.data.city}</option>
-                  ))} */}
                     {Array.from(
                       new Set(vehiclesData.map((item) => item.data.city))
                     ).map((city) => (
@@ -292,7 +337,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -312,11 +360,13 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "color"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
-                    {/* {filteredVehicles.map((item) => (
-                    <option value={item.data.color}>{item.data.color}</option>
-                  ))} */}
                     {Array.from(
                       new Set(vehiclesData.map((item) => item.data.color))
                     ).map((color) => (
@@ -332,7 +382,10 @@ export default function Vehicles() {
                     }}
                   ></div>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>

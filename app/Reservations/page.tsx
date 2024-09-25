@@ -99,7 +99,26 @@ export default function Vehicles() {
   }
   function advanceFilterVehicles() {
     let filtered: any = reservationsData;
+    const lowercasedQuery = searchQuery?.toLowerCase();
+    filtered = reservationsData.filter((vehicle) => {
+      const { data } = vehicle;
+      const {
+        chauffeurName,
+        vehicleName,
+        customerName,
+        city,
+        amount,
+        duration,
+      } = data;
 
+      return (
+        vehicleName?.toLowerCase().includes(lowercasedQuery) ||
+        city?.toLowerCase().includes(lowercasedQuery) ||
+        amount?.toLowerCase().includes(lowercasedQuery) ||
+        duration?.toLowerCase().includes(lowercasedQuery) ||
+        customerName?.toLowerCase().includes(lowercasedQuery)
+      );
+    });
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
         const lowercasedQuery = keyValue.toLowerCase();
@@ -122,6 +141,20 @@ export default function Vehicles() {
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
+    setAdvanceFilters([
+      {
+        key: "status",
+        keyValue: "",
+      },
+      {
+        key: "city",
+        keyValue: "",
+      },
+      {
+        key: "duration",
+        keyValue: "",
+      },
+    ]);
   }
 
   return (
@@ -190,6 +223,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "status"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -201,7 +239,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -221,6 +262,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "city"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -232,7 +278,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -252,6 +301,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "duration"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -265,7 +319,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>

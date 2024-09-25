@@ -48,7 +48,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getchauffeur", );
+        const result = await axios.post("/api/getchauffeur");
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
@@ -91,12 +91,23 @@ export default function Vehicles() {
   function advanceFilterVehicles() {
     let filtered: any = chauffeursData;
 
+    const lowercasedQuery = searchQuery.toLowerCase();
+    filtered = chauffeursData.filter((vehicle) => {
+      const { data } = vehicle;
+      const { name, phone } = data;
+
+      return (
+        name.toLowerCase().includes(lowercasedQuery) ||
+        phone.toLowerCase().includes(lowercasedQuery)
+      );
+    });
+
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
         const lowercasedQuery = keyValue.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
-                  
+
           if (key === "gender") {
             // Check if status is not equal
             return keyValueInVehicle === lowercasedQuery;
@@ -104,7 +115,6 @@ export default function Vehicles() {
 
           // For other keys, continue with includes check
           return keyValueInVehicle?.includes(lowercasedQuery);
-
         });
       }
     });
@@ -114,6 +124,20 @@ export default function Vehicles() {
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
+    setAdvanceFilters([
+      {
+        key: "gender",
+        keyValue: "",
+      },
+      {
+        key: "city",
+        keyValue: "",
+      },
+      {
+        key: "postalCode",
+        keyValue: "",
+      },
+    ]);
   }
 
   return (
@@ -182,6 +206,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "gender"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -193,7 +222,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -213,6 +245,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "postalCode"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -226,7 +263,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
@@ -246,6 +286,11 @@ export default function Vehicles() {
                         )
                       );
                     }}
+                    value={
+                      advanceFilters.find(
+                        (filter: any) => filter.key === "city"
+                      )?.keyValue || ""
+                    }
                   >
                     <option value="">Select</option>
                     {Array.from(
@@ -257,7 +302,10 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+                    <img
+                      src={shape.src}
+                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                    />
                   </div>
                 </div>
               </div>
