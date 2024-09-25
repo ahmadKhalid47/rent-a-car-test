@@ -132,7 +132,7 @@ export default function Vehicles() {
                       onChange={(e) => {
                         setCountry(e.target.value);
                       }}
-                      value={country}
+                      value={country} 
                     />
                   </div>
                 </div>
