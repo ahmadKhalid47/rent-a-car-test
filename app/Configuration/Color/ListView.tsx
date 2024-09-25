@@ -1,8 +1,6 @@
-import check from "@/public/check.svg";
-import arrows from "@/public/arrows.svg";
+import { HexColorPicker } from "react-colorful";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import Link from "next/link";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
@@ -11,7 +9,6 @@ import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setVehicleDataReloader } from "@/app/store/Global";
-import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -205,9 +202,7 @@ export default function ListView({ data }: dataType) {
                 <div className="text-center w-[6%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={() => {
                       handlePushItem(item?._id);
@@ -219,7 +214,15 @@ export default function ListView({ data }: dataType) {
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}{" "}
                 </h5>
-                <h5 className="text-start pe-3 w-[70%]">{item?.Color}</h5>
+                <div className="text-start flex justify-start items-center gap-4 w-[70%]">
+                  <div
+                    className="w-[32px] h-[18px] rounded-[5px] "
+                    style={{
+                      backgroundColor: item?.Color,
+                    }}
+                  ></div>
+                  {item?.Color}
+                </div>
                 <div
                   className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
                   onClick={(event) => {
@@ -228,7 +231,7 @@ export default function ListView({ data }: dataType) {
                   }}
                 >
                   <img
-                                        src={edit.src}
+                    src={edit.src}
                     title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
@@ -240,7 +243,7 @@ export default function ListView({ data }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
+                    src={deleteIcon.src}
                     title="Delete"
                     onClick={() => {
                       setPopup(true);
@@ -315,47 +318,57 @@ export default function ListView({ data }: dataType) {
               ) : null}
               {editPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
-                    <div
-                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
-                    >
-                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                        {"Update Color"}
-                        <FaAsterisk className="text-[6px] text-red-600" />
-                      </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                        <input
-                          required={true}
-                          type={"text"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                          placeholder={`Enter Text Here`}
-                          onChange={(e) => {
-                            setColor(e.target.value);
-                          }}
-                          value={Color}
-                        />
-                      </div>
+                  <div className="w-[90%] sm:w-[800px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                    <div className="w-[300px] h-[200px] ">
+                      <HexColorPicker color={Color} onChange={setColor} />
                     </div>
-
-                    <div
-                      className={`w-full flex justify-end gap-4 items-center pt-4`}
-                    >
-                      <button
-                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
-                        onClick={() => {
-                          setEditPopup(false);
-                          setColor("");
-                        }}
+                    <div className="h-[200px] w-[90%] sm:w-[500px] h-fi border-[1px border-grey mt-0 flex flex-wrap justify-between items-end gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  px-1 xs:px-3 md:px-10">
+                      <div
+                        className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                       >
-                        <FaTimes />
-                      </button>
-                      <button
-                        className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => editItem(itemToEdit)}
-                        disabled={editLoading}
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                          {"Update Color"}
+                          <FaAsterisk className="text-[6px] text-red-600" />
+                        </label>
+                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <div
+                            className="w-[32px] h-[18px] rounded-[5px] absolute top-[12px] left-[8px]"
+                            style={{
+                              backgroundColor: Color,
+                            }}
+                          ></div>
+                          <input
+                            required={true}
+                            type={"text"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-[45px] w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            placeholder={`Enter Text Here`}
+                            onChange={(e) => {
+                              setColor(e.target.value);
+                            }}
+                            value={Color}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={`w-full flex justify-end gap-4 items-center pt-4`}
                       >
-                        {editLoading ? <SmallLoader /> : "Update and Close"}
-                      </button>
+                        <button
+                          className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-10"
+                          onClick={() => {
+                            setEditPopup(false);
+                            setColor("");
+                          }}
+                        >
+                          <FaTimes />
+                        </button>
+                        <button
+                          className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => editItem(itemToEdit)}
+                          disabled={editLoading}
+                        >
+                          {editLoading ? <SmallLoader /> : "Update and Close"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

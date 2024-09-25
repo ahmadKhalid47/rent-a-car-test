@@ -22,6 +22,7 @@ export default function Vehicles() {
   const [popup, setPopup] = useState(false);
   const [make, setMake] = useState("");
   // const [makeReloader, setMakeReloader] = useState(0);
+console.log(make);
 
   useEffect(() => {
     if (isMobile) {

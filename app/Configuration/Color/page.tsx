@@ -153,7 +153,7 @@ export default function Vehicles() {
                     className={`w-full flex justify-end gap-4 items-center pt-4`}
                   >
                     <button
-                      className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-10 right-"
+                      className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-10"
                       onClick={() => {
                         setPopup(false);
                         setColor("");
