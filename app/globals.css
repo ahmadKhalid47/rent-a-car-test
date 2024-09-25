@@ -411,7 +411,23 @@ button:active {
 .height-calc {
   height: calc(100% - 0px);
 }
-.modal-position{
+.modal-position {
   position: fixed;
   top: calc(50vh - 135px);
+}
+
+.bg-check {
+  padding: 0px;
+  margin: 0%;
+  /* background-color: #242e69; */
+  background-image: url("/tick2.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius:3px;
+  border: none;
 }
