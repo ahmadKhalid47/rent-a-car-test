@@ -120,7 +120,7 @@ export default function CarInfoMainPage() {
                     <div className="w-[100%] flex justify-between items-center">
                       <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
                         <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
-                          Year:
+                          Making Year:
                         </p>
                         <p className="font-[400] text-[20px] leading-[30px] w-[70%]">
                           {vehicleInfo.year}

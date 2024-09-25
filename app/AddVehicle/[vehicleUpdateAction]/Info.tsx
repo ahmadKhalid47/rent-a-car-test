@@ -162,7 +162,7 @@ export default function Info() {
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Year
+            Making Year
             <FaAsterisk className="text-[6px]" />
           </label>
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
@@ -170,7 +170,7 @@ export default function Info() {
               required
               type="number"
               className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-              placeholder="Enter Year"
+              placeholder="Enter Making Year"
               onChange={(e) => {
                 const value = e.target.value;
                 if (/^\d{0,4}$/.test(value)) {

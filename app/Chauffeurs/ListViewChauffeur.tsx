@@ -241,9 +241,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[11%] ps-7">
-              ID
-            </div>
+            <div className="text-start w-[4%]">ID</div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[19%]"
               onClick={() => sort("name")}
@@ -277,7 +275,11 @@ export default function ListViewchauffeurs({ data }: dataType) {
             <div key={index} className="w-full">
               <Link
                 href={`/ChauffeursInfo/${item?._id}`}
-                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center dark:bg-dark1 bg-white border-b-2 border-grey"
+                className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                  index % 2 !== 0
+                    ? "dark:bg-dark2 bg-light-grey"
+                    : "dark:bg-dark1 bg-white"
+                } border-b-2 border-grey`}
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
@@ -293,7 +295,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-start pe-5 w-[11%] ps-7">
+                <h5 className="text-start w-[4%]">
                   {JSON.stringify(
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}

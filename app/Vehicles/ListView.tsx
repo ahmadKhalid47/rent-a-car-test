@@ -266,8 +266,8 @@ export default function ListView({ data }: dataType) {
             </div>
 
             <div
-              className="text-start pe-3 flex justify-between items-center w-[9%] ps-7 cursor-pointer"
-              onClick={() => sort("vehicleId")}
+              className="text-start w-[4%]"
+              // onClick={() => sort("vehicleId")}
             >
               ID
             </div>
@@ -284,10 +284,10 @@ export default function ListView({ data }: dataType) {
               Registration No <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
+              className="text-start pe-3 flex justify-between items-center w-[11%] cursor-pointer"
               onClick={() => sort("year")}
             >
-              Year <img src={arrows.src} />
+              Making Year <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
@@ -315,7 +315,11 @@ export default function ListView({ data }: dataType) {
             <div key={index} className="w-full">
               <Link
                 href={`/VehicleInfo/${item?._id}`}
-                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center dark:bg-dark1 bg-white border-b-2 border-grey"
+                className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                  index % 2 !== 0
+                    ? "dark:bg-dark2 bg-light-grey"
+                    : "dark:bg-dark1 bg-white"
+                } border-b-2 border-grey`}
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
@@ -331,7 +335,7 @@ export default function ListView({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-center pe-5 w-[9%]">
+                <h5 className="text-start w-[4%]">
                   {JSON.stringify(
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}
@@ -342,7 +346,7 @@ export default function ListView({ data }: dataType) {
                 <h5 className="text-start pe-3 w-[13%]">
                   {item?.data?.registration}
                 </h5>
-                <h5 className="text-start pe-3 w-[9%]">{item?.data?.year}</h5>
+                <h5 className="text-start pe-3 w-[11%]">{item?.data?.year}</h5>
                 <h5 className="text-start pe-3 w-[9%]">{item?.data?.type}</h5>
                 <h5 className="text-start pe-3 w-[9%]">
                   <div

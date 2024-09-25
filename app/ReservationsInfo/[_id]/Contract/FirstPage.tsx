@@ -269,7 +269,7 @@ export default function FirstPage({
                 </div>
               </div>
               <div className="w-[15%] h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">Year:</div>
+                <div className="w-fit text-start font-[600] ">Making Year:</div>
                 <div className="w-fit text-start font-[400] ">
                   {VehiclesData?.data?.year ? VehiclesData?.data?.year : "---"}
                 </div>

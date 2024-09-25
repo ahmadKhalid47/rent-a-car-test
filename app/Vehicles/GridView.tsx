@@ -194,7 +194,7 @@ export default function GridView({ data }: dataType) {
               <div className="w-full flex justify-start 1400:justify-between items-center">
                 <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
                   <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
-                    Year:
+                    Making Year:
                   </p>
                   <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[70%]">
                     {item?.data?.year}

@@ -184,12 +184,9 @@ export default function ListViewreservation({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%] ps-2">
-              ID
-              {/* <img src={arrows.src} /> */}
-            </div>
+            <div className="text-start w-[4%]">ID</div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              className="text-start pe-3 flex justify-between items-center w-[16%]"
               onClick={() => sort("vehicleName")}
             >
               Vehicle <img src={arrows.src} />
@@ -201,24 +198,16 @@ export default function ListViewreservation({ data }: dataType) {
               Customer <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[10%]"
+              className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("city")}
             >
               City <img src={arrows.src} />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[9%]"
-              // onClick={() => sort("duration")}
-            >
+            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
               Duration
-              {/* <img src={arrows.src} /> */}
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[9%]"
-              // onClick={() => sort("amount")}
-            >
+            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
               Amount
-              {/* <img src={arrows.src} /> */}
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               Status
@@ -234,7 +223,11 @@ export default function ListViewreservation({ data }: dataType) {
             <div key={index} className="w-full">
               <Link
                 href={`/ReservationsInfo/${item?._id}`}
-                className="w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center dark:bg-dark1 bg-white border-b-2 border-grey"
+                className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                  index % 2 !== 0
+                    ? "dark:bg-dark2 bg-light-grey"
+                    : "dark:bg-dark1 bg-white"
+                } border-b-2 border-grey`}
               >
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
@@ -250,19 +243,19 @@ export default function ListViewreservation({ data }: dataType) {
                     }}
                   ></div>
                 </div>
-                <h5 className="text-start pe-3 w-[9%] ps-2">
+                <h5 className="text-start w-[4%]">
                   {JSON.stringify(
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}
                 </h5>
-                <div className="flex justify-start item-center gap-5 text-start pe-3 w-[14%]">
+                <div className="flex justify-start item-center gap-5 text-start pe-3 w-[16%]">
                   {item.data.vehicleName}
                 </div>
 
                 <h5 className="text-start pe-3 w-[14%]">
                   {item.data.customerName}
                 </h5>
-                <h5 className="text-start pe-3 w-[10%]">{item.data.city}</h5>
+                <h5 className="text-start pe-3 w-[12%]">{item.data.city}</h5>
 
                 <h5 className="text-start pe-3 w-[9%]">
                   {item.data?.durationinDays ? (

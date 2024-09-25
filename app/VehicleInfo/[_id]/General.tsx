@@ -14,7 +14,7 @@ export default function General() {
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Year:</p>
+          <p className="font-[400] text-[18px] leading-[27px]">Making Year:</p>
           <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.year}
           </p>
