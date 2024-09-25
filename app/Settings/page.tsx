@@ -91,7 +91,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
-          <div className="w-full h-fit">
+          {/* <div className="w-full h-fit">
             <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
               Search
             </h3>
@@ -102,8 +102,8 @@ export default function Vehicles() {
                 onChange={handleSearch}
               ></input>
             </div>
-          </div>
-          <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-8">
+          </div> */}
+          <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-0">
             {filteredSettings.map((item) => (
               <SettingBox
                 link={item.link}
