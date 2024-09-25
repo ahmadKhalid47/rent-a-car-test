@@ -316,7 +316,8 @@ export default function ListViewreservation({ data }: dataType) {
                   }}
                 >
                   <img
-                    src={edit.src}
+                                        src={edit.src}
+                    title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       router.push(`/AddReservations/${item?._id}`);
@@ -325,7 +326,8 @@ export default function ListViewreservation({ data }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                    src={deleteIcon.src}
+                                        src={deleteIcon.src}
+                    title="Delete"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);

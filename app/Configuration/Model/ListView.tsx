@@ -231,8 +231,9 @@ export default function ListView({ data, makeData }: dataType) {
                   }}
                 >
                   <img
-                    src={edit.src}
-                    className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
+                                        src={edit.src}
+                    title="Edit"
+                    className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       setEditPopup(true);
                       setItemToEdit(item?._id);
@@ -243,7 +244,8 @@ export default function ListView({ data, makeData }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                    src={deleteIcon.src}
+                                        src={deleteIcon.src}
+                    title="Delete"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);

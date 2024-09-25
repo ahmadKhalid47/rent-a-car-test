@@ -284,9 +284,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={(event) => {
                       handlePushItem(item?._id);
@@ -315,6 +313,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 >
                   <img
                     src={item.active ? check.src : unCheck.src}
+                    title={item.active ? "Inactive" : "Active"}
                     className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
                     onClick={() => {
                       updateActive(item?._id, item?.active);
@@ -322,7 +321,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   />
                   <img
                     src={edit.src}
-                    className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
+                    title="Edit"
+                    className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       router.push(`/AddChauffeur/${item?._id}`);
                     }}
@@ -331,6 +331,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
+                    title="Delete"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);

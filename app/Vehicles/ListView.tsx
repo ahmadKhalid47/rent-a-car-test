@@ -365,15 +365,17 @@ export default function ListView({ data }: dataType) {
                   }}
                 >
                   <img
-                    src={item.active ? check.src : unCheck.src}
+                                        src={item.active ? check.src : unCheck.src}
+                    title={item.active ? "Inactive" : "Active"}
                     className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
                     onClick={() => {
                       updateActive(item?._id, item?.active);
                     }}
                   />
                   <img
-                    src={edit.src}
-                    className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
+                                        src={edit.src}
+                    title="Edit"
+                    className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
                       router.push(`/AddVehicle/${item?._id}`);
                     }}
@@ -381,7 +383,8 @@ export default function ListView({ data }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                    src={deleteIcon.src}
+                                        src={deleteIcon.src}
+                    title="Delete"
                     onClick={() => {
                       setPopup(true);
                       setItemToDelete(item?._id);
