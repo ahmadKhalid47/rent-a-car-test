@@ -85,10 +85,13 @@ export default function CustomerInfoMainPage() {
                 <h3 className="font-[600] text-[36px] flex justify-start items-center gap-4 leading-[54px] dark:text-white text-black">
                   {CustomerInfo?.name ? CustomerInfo?.name : "---"}
                   {CustomerInfo?.isVip ? (
-                    <img
-                      src={vip.src}
-                      className="w-[44px] h-[32px] -translate-y-1 dark:filter dark:brightness-[0] dark:invert"
-                    />
+                    <>
+                      <img
+                        src={vip.src}
+                        className="w-[44px] h-[32px] -translate-y-1 dark:filter dark:brightness-[0] dark:invert"
+                      />
+                      <span className="text-[16px] mt-[8px]">It’s VIP Client</span>
+                    </>
                   ) : null}
                 </h3>
                 <p className="font-[400] text-[28px] leading-[42px] dark:text-white text-black">

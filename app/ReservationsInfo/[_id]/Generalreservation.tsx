@@ -95,7 +95,7 @@ export default function Generalreservations() {
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
           <p className="font-[400] text-[18px] leading-[27px]">
-            Current Odometer (KMPH):
+            Current Odometer (KM):
           </p>
           <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
             {reservationInfo?.odometer ? reservationInfo?.odometer : "---"}

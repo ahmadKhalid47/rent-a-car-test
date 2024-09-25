@@ -81,7 +81,7 @@ export default function General() {
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">
-            Odometer (KMPH):
+            Odometer (KM):
           </p>
           <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.odometer}

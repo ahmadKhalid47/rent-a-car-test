@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { handleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import vip from "@/public/vip.svg";
 
 interface dataType {
   data: Array<Object>;
@@ -290,9 +291,7 @@ export default function ListViewCustomers({ data }: dataType) {
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={(event) => {
                       handlePushItem(item?._id);
@@ -306,7 +305,15 @@ export default function ListViewCustomers({ data }: dataType) {
                     index + (page - 1) * itemsPerPage + 1
                   ).padStart(2, "0")}
                 </h5>
-                <h5 className="text-start pe-3 w-[19%]">{item?.data?.name}</h5>
+                <h5 className="text-start pe-3 w-[19%] flex justify-start items-center gap-4">
+                  {item?.data?.name}
+                  {item?.data?.isVip && (
+                    <img
+                      src={vip.src}
+                      className="w-[20px] h-[15px] -translate-y-[1px] dark:filter dark:brightness-[0] dark:invert"
+                    />
+                  )}
+                </h5>
                 <h5 className="text-start pe-3 w-[14%]">
                   {item?.data?.customerType}
                 </h5>

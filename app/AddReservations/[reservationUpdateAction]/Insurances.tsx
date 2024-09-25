@@ -36,7 +36,7 @@ export default function Insurances() {
         />
         <TempTypeInputWidth
           setState={setodometer}
-          label={"Odometer (KMPH)"}
+          label={"Odometer (KM)"}
           value={reservation.odometer}
           required={false}
           type={"number"}

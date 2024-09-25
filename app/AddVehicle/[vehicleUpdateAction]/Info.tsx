@@ -285,7 +285,7 @@ export default function Info() {
         />
         <TempTypeInput
           setState={setodometerR}
-          label={"Odometer (KMPH)"}
+          label={"Odometer (KM)"}
           value={vehicle.odometer}
           // required={false}
           required={true}

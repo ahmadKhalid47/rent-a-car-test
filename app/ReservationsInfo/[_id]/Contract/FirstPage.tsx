@@ -278,7 +278,7 @@ export default function FirstPage({
             <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
               <div className="w-fit h-fit flex justify-start items-center gap-2">
                 <div className="w-fit text-start font-[600] ">
-                  Current Odometer (KMPH):
+                  Current Odometer (KM):
                 </div>
                 <div className="w-fit text-start font-[400] ">
                   {VehiclesData?.data?.odometer
