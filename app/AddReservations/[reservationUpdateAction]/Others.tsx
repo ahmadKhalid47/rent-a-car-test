@@ -262,7 +262,9 @@ export default function Others({
             </span>
             <span>
               {global.currentCurrency}
-              {isNaN(reservation?.carTotal) ? 0 : reservation?.carTotal}{" "}
+              {isNaN(reservation?.carTotal)
+                ? 0
+                : reservation?.carTotal.toLocaleString("en-US")}{" "}
             </span>
           </div>
 
@@ -270,7 +272,8 @@ export default function Others({
             <>
               <div className="w-full flex justify-between items-center h-fit">
                 <span>
-                  Chauffeur {global.currentCurrency} {chauffeurRentPerDays} ×{" "}
+                  Chauffeur {global.currentCurrency}{" "}
+                  {chauffeurRentPerDays.toLocaleString("en-US")} ×{" "}
                   {daysBetween < 1 && timeBetween > 0
                     ? daysBetween + 1
                     : daysBetween}
@@ -278,9 +281,11 @@ export default function Others({
                 <span>
                   {global.currentCurrency}
                   {daysBetween
-                    ? chauffeurRentPerDays * daysBetween
+                    ? (chauffeurRentPerDays * daysBetween).toLocaleString(
+                        "en-US"
+                      )
                     : timeBetween
-                    ? chauffeurRentPerDays
+                    ? chauffeurRentPerDays.toLocaleString("en-US")
                     : 0}
                 </span>
               </div>
@@ -316,7 +321,7 @@ export default function Others({
               <span>Discount</span>
               <span>
                 {global.currentCurrency}
-                {reservation?.discount}
+                {reservation?.discount.toLocaleString("en-US")}
               </span>
             </div>
           ) : null}
@@ -326,7 +331,9 @@ export default function Others({
               {global.currentCurrency}
               {isNaN(reservation?.carTotal)
                 ? 0
-                : varTotalAmount(varPerNum, totalAmount) - discount}
+                : (
+                    varTotalAmount(varPerNum, totalAmount) - discount
+                  ).toLocaleString("en-US")}
             </span>
           </div>
         </div>

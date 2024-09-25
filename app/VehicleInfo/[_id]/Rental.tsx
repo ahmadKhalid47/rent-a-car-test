@@ -14,7 +14,8 @@ export default function Rental() {
           </p>
           <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.rentHour
-              ? `${global.currentCurrency} ` + vehicleInfo.rentHour
+              ? `${global.currentCurrency} ` +
+                vehicleInfo.rentHour.toLocaleString("en-US")
               : "---"}
           </p>
         </div>
@@ -25,7 +26,8 @@ export default function Rental() {
           </p>
           <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.rentWeek
-              ? `${global.currentCurrency} ` + vehicleInfo.rentWeek
+              ? `${global.currentCurrency} ` +
+                vehicleInfo.rentWeek.toLocaleString("en-US")
               : "---"}
           </p>
         </div>
@@ -37,7 +39,8 @@ export default function Rental() {
           </p>
           <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.rentDay
-              ? `${global.currentCurrency} ` + vehicleInfo.rentDay
+              ? `${global.currentCurrency} ` +
+                vehicleInfo.rentDay.toLocaleString("en-US")
               : "---"}
           </p>
         </div>
@@ -48,7 +51,8 @@ export default function Rental() {
           </p>
           <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
             {vehicleInfo.rentMonth
-              ? `${global.currentCurrency} ` + vehicleInfo.rentMonth
+              ? `${global.currentCurrency} ` +
+                vehicleInfo.rentMonth.toLocaleString("en-US")
               : "---"}
           </p>
         </div>

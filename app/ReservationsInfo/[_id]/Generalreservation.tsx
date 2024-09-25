@@ -48,7 +48,7 @@ export default function Generalreservations() {
           <p className="w-[50%] text-start break-words font-[400] text-[18px] leading-[27px]">
             {global.currentCurrency}{" "}
             {reservationInfo?.securityDeposit
-              ? reservationInfo?.securityDeposit
+              ? reservationInfo?.securityDeposit.toLocaleString("en-US")
               : "---"}
           </p>
         </div>
@@ -88,7 +88,9 @@ export default function Generalreservations() {
           <p className="font-[400] text-[18px] leading-[27px]">Amount:</p>
           <p className="w-[40%] text-start break-words font-[400] text-[18px] leading-[27px]">
             {global.currentCurrency}{" "}
-            {reservationInfo?.amount ? reservationInfo?.amount : "---"}
+            {reservationInfo?.amount
+              ? reservationInfo?.amount.toLocaleString("en-US")
+              : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">

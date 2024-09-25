@@ -29,6 +29,7 @@ import {
   setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
 import { Logout, Person2Outlined } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -37,7 +38,7 @@ export default function Nav() {
   const [loading, setLoading] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -173,6 +174,9 @@ export default function Nav() {
       window.location.reload();
     }
   }
+  async function pushToProfile() {
+    router.push("Settings/MyProfile");
+  }
 
   return (
     <div
@@ -211,7 +215,7 @@ export default function Nav() {
             <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-start items-start divide-y-[1px] divide-[#d9d9d9] p-4">
               <button
                 className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
-                onClick={logout}
+                onClick={pushToProfile}
               >
                 My Profile
                 <Person2Outlined />

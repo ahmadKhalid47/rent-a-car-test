@@ -353,7 +353,8 @@ console.log(VehiclesData);
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                     {!reservationLoading ? (
-                      `${global.currentCurrency} ` + totalAmountToday
+                      `${global.currentCurrency} ` +
+                      totalAmountToday.toLocaleString("en-US")
                     ) : (
                       <TextLoader />
                     )}
@@ -370,7 +371,8 @@ console.log(VehiclesData);
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                     {!reservationLoading ? (
-                      `${global.currentCurrency} ` + totalAmount
+                      `${global.currentCurrency} ` +
+                      totalAmount.toLocaleString("en-US")
                     ) : (
                       <TextLoader />
                     )}
