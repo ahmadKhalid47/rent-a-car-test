@@ -116,8 +116,7 @@ export default function ListView({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Deleted"));
-
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -135,7 +134,6 @@ export default function ListView({ data }: dataType) {
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Items Deleted"));
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -170,7 +168,6 @@ export default function ListView({ data }: dataType) {
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -187,7 +184,6 @@ export default function ListView({ data }: dataType) {
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert(active ? "Items Activated" : "Items Deactivated"));
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -332,9 +328,7 @@ export default function ListView({ data }: dataType) {
                 <div className="text-center w-[3%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={(event) => {
                       handlePushItem(item?._id);
@@ -373,7 +367,7 @@ export default function ListView({ data }: dataType) {
                   }}
                 >
                   <img
-                                        src={item.active ? check.src : unCheck.src}
+                    src={item.active ? check.src : unCheck.src}
                     title={item.active ? "Inactive" : "Active"}
                     className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
                     onClick={() => {
@@ -381,7 +375,7 @@ export default function ListView({ data }: dataType) {
                     }}
                   />
                   <img
-                                        src={edit.src}
+                    src={edit.src}
                     title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
@@ -391,7 +385,7 @@ export default function ListView({ data }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
+                    src={deleteIcon.src}
                     title="Delete"
                     onClick={() => {
                       setPopup(true);
