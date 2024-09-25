@@ -5,6 +5,7 @@ import bell from "@/public/Icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import {
+  setAlert,
   setcurrentCurrency,
   setSidebarShowR,
   setSidebarShowTempR,
@@ -30,6 +31,7 @@ import {
 } from "../store/companyProfile";
 import { Logout, Person2Outlined } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { Alert } from "@mui/material";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -177,13 +179,34 @@ export default function Nav() {
   async function pushToProfile() {
     router.push("Settings/MyProfile");
   }
+  useEffect(() => {
+    let timer: any;
+    if (global.alert) {
+      timer = setTimeout(() => {
+        dispatch(setAlert(null));
+      }, 4000); // Hide after 3 seconds
+    }
 
+    return () => {
+      clearTimeout(timer); // Clean up the timer
+    };
+  }, [global.alert, dispatch]);
   return (
     <div
       className={`${
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
       } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed dark:bg-dark1 bg-white right-0 transitions`}
     >
+      {global.alert ? (
+        <Alert
+          variant="filled"
+          severity="success"
+          className="fixed w-[200px] z-[100] top-2 right-2 alert-animation capitalize"
+        >
+          {global.alert}
+        </Alert>
+      ) : null}
+
       <button
         onClick={() => {
           dispatch(setSidebarShowR(!global.sidebarShow));

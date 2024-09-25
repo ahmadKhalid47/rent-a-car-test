@@ -10,6 +10,7 @@ const initialState = {
   companyProfileReloader: 0,
   currentCurrency: "",
   theme: "",
+  alert: "",
 };
 
 export const GlobalSlice = createSlice({
@@ -40,6 +41,9 @@ export const GlobalSlice = createSlice({
     setTheme: (state, action) => {
       state.theme = action.payload;
     },
+    setAlert: (state, action) => {
+      state.alert = action.payload;
+    },
     setcompanyProfileReloader: (state, action) => {
       state.companyProfileReloader = action.payload;
     },
@@ -56,6 +60,7 @@ export const {
   setcompanyProfileReloader,
   setcurrentCurrency,
   setTheme,
+  setAlert,
 } = GlobalSlice.actions;
 
 export default GlobalSlice.reducer;

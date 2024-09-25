@@ -7,7 +7,7 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "@/app/store/Global";
+import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -78,6 +78,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.delete(`/api/deleteMake/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -95,6 +96,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -112,6 +114,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+            dispatch(setAlert("Item Updated"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -220,7 +223,7 @@ export default function ListView({ data }: dataType) {
                   }}
                 >
                   <img
-                                        src={edit.src}
+                    src={edit.src}
                     title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
@@ -231,7 +234,7 @@ export default function ListView({ data }: dataType) {
                   />
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
+                    src={deleteIcon.src}
                     title="Delete"
                     onClick={() => {
                       setPopup(true);

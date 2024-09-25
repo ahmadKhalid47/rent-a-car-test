@@ -211,9 +211,7 @@ export default function ListView({ data, makeData }: dataType) {
                 <div className="text-center w-[6%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={() => {
                       handlePushItem(item?._id);
@@ -235,7 +233,7 @@ export default function ListView({ data, makeData }: dataType) {
                   }}
                 >
                   <img
-                                        src={edit.src}
+                    src={edit.src}
                     title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
@@ -248,7 +246,7 @@ export default function ListView({ data, makeData }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
+                    src={deleteIcon.src}
                     title="Delete"
                     onClick={() => {
                       setPopup(true);

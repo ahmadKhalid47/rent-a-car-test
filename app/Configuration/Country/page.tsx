@@ -62,7 +62,6 @@ export default function Vehicles() {
       alert("This Item Already Exists");
       return;
     }
-
     try {
       setLoading(action);
       let result: any = await axios.post(`/api/saveCountry`, {

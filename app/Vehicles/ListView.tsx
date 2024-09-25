@@ -11,7 +11,7 @@ import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "../store/Global";
+import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { handleExport } from "../Components/functions/exportFunction";
@@ -116,6 +116,8 @@ export default function ListView({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+            dispatch(setAlert("Item Deleted"));
+
     } catch (err) {
       console.log(err);
     } finally {
@@ -132,6 +134,8 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Items Deleted"));
+
     } catch (err) {
       console.log(err);
     } finally {
@@ -165,6 +169,8 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
+
     } catch (err) {
       console.log(err);
     } finally {
@@ -180,6 +186,8 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert(active ? "Items Activated" : "Items Deactivated"));
+
     } catch (err) {
       console.log(err);
     } finally {

@@ -1,8 +1,6 @@
-import check from "@/public/check.svg";
-import arrows from "@/public/arrows.svg";
+import { Alert } from "@mui/material";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import Link from "next/link";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
@@ -10,8 +8,7 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "@/app/store/Global";
-import { setAllValues } from "@/app/store/Vehicle";
+import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -35,7 +32,6 @@ export default function ListView({ data }: dataType) {
   const [country, setCountry] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
-
   useEffect(() => {
     setSortedData(data);
   }, [data]);
@@ -81,8 +77,8 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCountry/${_id}`);
-      console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -100,6 +96,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -117,6 +114,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Item Updated"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -127,15 +125,10 @@ export default function ListView({ data }: dataType) {
   }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      // Check if the item is already present in the array
       const isPresent = prevArray.includes(_id);
-
-      // Return a new array with the item either added or removed
       if (isPresent) {
-        // Remove the item
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        // Add the item
         return [...prevArray, _id];
       }
     });
@@ -204,9 +197,7 @@ export default function ListView({ data }: dataType) {
                 <div className="text-center w-[6%] flex justify-center items-center ">
                   <div
                     className={`w-[15px] h-[15px] rounded-[1px] ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
+                      itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
                     } border-2 border-dark-grey`}
                     onClick={() => {
                       handlePushItem(item?._id);
@@ -227,7 +218,7 @@ export default function ListView({ data }: dataType) {
                   }}
                 >
                   <img
-                                        src={edit.src}
+                    src={edit.src}
                     title="Edit"
                     className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
                     onClick={() => {
@@ -239,7 +230,7 @@ export default function ListView({ data }: dataType) {
 
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
+                    src={deleteIcon.src}
                     title="Delete"
                     onClick={() => {
                       setPopup(true);
