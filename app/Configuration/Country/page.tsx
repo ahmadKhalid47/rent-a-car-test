@@ -10,6 +10,7 @@ import axios from "axios";
 import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
+import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -80,6 +81,8 @@ export default function Vehicles() {
       setLoading("");
     }
   }
+  let { countries, cities } = CountryCity(country);
+console.log(countries, cities);
 
   return (
     <div
@@ -124,16 +127,19 @@ export default function Vehicles() {
                     <FaAsterisk className="text-[6px] text-red-600" />
                   </label>
                   <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                    <input
+                    <select
                       required={true}
-                      type={"text"}
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Enter Text Here`}
                       onChange={(e) => {
                         setCountry(e.target.value);
                       }}
-                      value={country} 
-                    />
+                      value={country}
+                    >
+                      <option value="">Select</option>
+                      {countries.map((item: any) => (
+                        <option value={item.label}>{item.label}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
