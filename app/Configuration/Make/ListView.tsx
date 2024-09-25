@@ -1,8 +1,5 @@
-import check from "@/public/check.svg";
-import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import Link from "next/link";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
@@ -11,7 +8,6 @@ import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setVehicleDataReloader } from "@/app/store/Global";
-import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -47,7 +43,6 @@ export default function ListView({ data }: dataType) {
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
-  // Slice the data for the current page
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -143,10 +138,12 @@ export default function ListView({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
 
   return (
-    <div className="w-full h-fit mt-4 relative">
+    <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " dark:text-white text-main-blue"
+          itemToDeleteMany.length < 1
+            ? "text-grey"
+            : " dark:text-white text-main-blue"
         }  `}
       >
         <span>
@@ -233,7 +230,6 @@ export default function ListView({ data }: dataType) {
                       setMake(item?.make);
                     }}
                   />
-
                   <img
                     className="hover:scale-[1.3] cursor-pointer"
                     src={deleteIcon.src}
@@ -246,7 +242,7 @@ export default function ListView({ data }: dataType) {
               </div>
               {popup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete this item
@@ -276,9 +272,10 @@ export default function ListView({ data }: dataType) {
                   </div>
                 </div>
               ) : null}
+
               {deleteManyPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete these items
@@ -308,9 +305,10 @@ export default function ListView({ data }: dataType) {
                   </div>
                 </div>
               ) : null}
+
               {editPopup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 relative">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
                     <div
                       className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
                     >

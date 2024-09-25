@@ -63,7 +63,6 @@
   font-family: "Rubik";
 }
 .sidebar-height {
-  /* height: calc(100vh - 90px); */
   height: 100vh;
 }
 
@@ -407,4 +406,12 @@ button:active {
 }
 .count-button button:hover {
   opacity: 1;
+}
+
+.height-calc {
+  height: calc(100% - 0px);
+}
+.modal-position{
+  position: fixed;
+  top: calc(50vh - 135px);
 }

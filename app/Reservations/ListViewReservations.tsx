@@ -138,7 +138,9 @@ export default function ListViewreservation({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " dark:text-white text-main-blue"
+          itemToDeleteMany.length < 1
+            ? "text-grey"
+            : " dark:text-white text-main-blue"
         }  `}
       >
         <span>
@@ -340,7 +342,7 @@ export default function ListViewreservation({ data }: dataType) {
               </Link>
               {popup ? (
                 <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                     <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                         Are you sure you want to delete this item
