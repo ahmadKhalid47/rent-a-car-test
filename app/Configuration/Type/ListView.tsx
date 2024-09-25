@@ -1,8 +1,5 @@
-import check from "@/public/check.svg";
-import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import Link from "next/link";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
@@ -11,7 +8,6 @@ import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { setVehicleDataReloader } from "@/app/store/Global";
-import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
