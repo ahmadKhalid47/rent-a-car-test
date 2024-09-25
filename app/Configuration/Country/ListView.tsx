@@ -12,6 +12,7 @@ import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 
 interface dataType {
   data: Array<Object>;
@@ -134,6 +135,7 @@ export default function ListView({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
+  let { countries, cities } = CountryCity(country);
 
   return (
     <div className="w-full h-fit mt-4 relative">
@@ -314,16 +316,20 @@ export default function ListView({ data }: dataType) {
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                        <input
+
+                        <select
                           required={true}
-                          type={"text"}
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                          placeholder={`Enter Text Here`}
                           onChange={(e) => {
                             setCountry(e.target.value);
                           }}
                           value={country}
-                        />
+                        >
+                          <option value="">Select</option>
+                          {countries.map((item: any) => (
+                            <option value={item.label}>{item.label}</option>
+                          ))}
+                        </select>
                       </div>
                     </div>
 

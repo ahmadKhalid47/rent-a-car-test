@@ -11,11 +11,12 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setVehicleDataReloader } from "@/app/store/Global";
+import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 
 interface dataType {
   data: Array<Object>;
@@ -86,6 +87,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.delete(`/api/deleteCity/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -103,6 +105,7 @@ export default function ListView({ data, makeData }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -121,6 +124,7 @@ export default function ListView({ data, makeData }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Item Updated"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -145,6 +149,7 @@ export default function ListView({ data, makeData }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
+  let { countries, cities } = CountryCity(Make);
 
   return (
     <div className="w-full h-fit mt-4 relative">
@@ -360,16 +365,19 @@ export default function ListView({ data, makeData }: dataType) {
                         <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                        <input
+                        <select
                           required={true}
-                          type={"text"}
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                          placeholder={`Enter Text Here`}
                           onChange={(e) => {
                             setCity(e.target.value);
                           }}
                           value={city}
-                        />
+                        >
+                        <option value="">Select</option>
+                        {cities.map((item: any) => (
+                          <option value={item.label}>{item.label}</option>
+                        ))}
+                        </select>
                       </div>
                     </div>
 
