@@ -10,6 +10,7 @@ import axios from "axios";
 import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
+import Feature from '../../AddChauffeur/[chauffeurUpdateAction]/Feature';
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -57,6 +58,9 @@ export default function Vehicles() {
   async function save(action: string) {
     if (Feature.trim() === "") {
       alert("Please fill the input");
+      return;
+    } else if (vehiclesData.find((item) => item.Feature === Feature.trim())) {
+      alert("This Item Already Exists");
       return;
     }
 

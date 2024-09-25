@@ -60,6 +60,9 @@ export default function Vehicles() {
     if (Type.trim() === "" || interior === "" || exterior === "") {
       alert("Please fill the input");
       return;
+    } else if (vehiclesData.find((item) => item.Type === Type.trim())) {
+      alert("This Item Already Exists");
+      return;
     }
 
     try {

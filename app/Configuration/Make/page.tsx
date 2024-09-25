@@ -22,7 +22,7 @@ export default function Vehicles() {
   const [popup, setPopup] = useState(false);
   const [make, setMake] = useState("");
   // const [makeReloader, setMakeReloader] = useState(0);
-console.log(make);
+  console.log(make);
 
   useEffect(() => {
     if (isMobile) {
@@ -39,7 +39,7 @@ console.log(make);
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getMake", );
+        const result = await axios.post("/api/getMake");
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -58,6 +58,9 @@ console.log(make);
   async function save(action: string) {
     if (make.trim() === "") {
       alert("Please fill the input");
+      return;
+    } else if (vehiclesData.find((item) => item.make === make.trim())) {
+      alert("This Item Already Exists");
       return;
     }
 

@@ -58,6 +58,9 @@ export default function Vehicles() {
     if (country.trim() === "") {
       alert("Please fill the input");
       return;
+    } else if (vehiclesData.find((item) => item.country === country.trim())) {
+      alert("This Item Already Exists");
+      return;
     }
 
     try {

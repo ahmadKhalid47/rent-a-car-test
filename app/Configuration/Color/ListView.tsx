@@ -139,6 +139,11 @@ export default function ListView({ data }: dataType) {
   }
 
   const allIds = data.map((item: any) => item?._id);
+const isValidColor = (color: any) => {
+  const s = new Option().style;
+  s.color = color;
+  return s.color !== "";
+};
 
   return (
     <div className="w-full h-fit mt-4 relative">
@@ -334,7 +339,9 @@ export default function ListView({ data }: dataType) {
                           <div
                             className="w-[32px] h-[18px] rounded-[5px] absolute top-[12px] left-[8px]"
                             style={{
-                              backgroundColor: Color,
+                              backgroundColor: isValidColor(Color)
+                                ? Color
+                                : "transparent",
                             }}
                           ></div>
                           <input

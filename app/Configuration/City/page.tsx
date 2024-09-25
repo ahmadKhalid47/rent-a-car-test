@@ -63,6 +63,9 @@ export default function Vehicles() {
     if (city.trim() === "" || Make.trim() === "") {
       alert("Please fill the input");
       return;
+    } else if (vehiclesData.find((item) => item.city === city.trim())) {
+      alert("This Item Already Exists");
+      return;
     }
 
     try {
