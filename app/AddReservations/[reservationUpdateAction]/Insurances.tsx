@@ -1,10 +1,7 @@
 "use client";
-import shape from "@/public/ShapeBlack.svg";
 import { TempTypeInputWidth } from "../../Components/InputComponents/TypeInput";
 import { TempSelectInputWidth } from "../../Components/InputComponents/SelectInput";
 import {
-  setAllValues,
-  resetState,
   setreservationDate,
   setodometer,
   setfuelStatus,
@@ -17,9 +14,6 @@ import {
   setdropOffAddress,
   setdropOffDate,
   setdropOffTime,
-  setcustomer_idR,
-  setvehicle_idR,
-  setchauffeur_idR,
 } from "@/app/store/reservations";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -48,13 +42,12 @@ export default function Insurances() {
           type={"number"}
           widthProp="sm:w-[48%]"
         />
-        <TempTypeInputWidth
+        <TempSelectInputWidth
           setState={setfuelStatus}
           label={"Fuel Status"}
           value={reservation.fuelStatus}
           required={true}
-          // required={false}
-          type={"number"}
+          options={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           widthProp="sm:w-[48%]"
         />
         <TempTypeInputWidth
@@ -70,7 +63,6 @@ export default function Insurances() {
           label={"Country"}
           value={reservation.country}
           required={true}
-          // required={false}
           options={countries.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
@@ -79,7 +71,6 @@ export default function Insurances() {
           label={"City"}
           value={reservation.city}
           required={true}
-          // required={false}
           options={cities.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
@@ -96,7 +87,6 @@ export default function Insurances() {
           label={"Pick Up Date"}
           value={reservation.PickUpDate}
           required={true}
-          // required={false}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -106,7 +96,6 @@ export default function Insurances() {
           value={reservation.PickUpTime}
           type={"time"}
           required={true}
-          // required={false}
           widthProp="sm:w-[48%]"
         />
         <TempTypeInputWidth
@@ -122,7 +111,6 @@ export default function Insurances() {
           label={"Drop Off Date"}
           value={reservation.dropOffDate}
           required={true}
-          // required={false}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -131,7 +119,6 @@ export default function Insurances() {
           label={"Drop Off Time"}
           value={reservation.dropOffTime}
           required={true}
-          // required={false}
           type={"time"}
           widthProp="sm:w-[48%]"
         />

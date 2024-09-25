@@ -16,6 +16,7 @@ import {
   setodometerCompletion,
   setodometerImagesCompletion,
 } from "@/app/store/reservations";
+import { TempSelectInput } from "@/app/Components/InputComponents/SelectInput";
 
 export default function FirstPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -28,6 +29,7 @@ export default function FirstPage() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
   const [fuelFiles, setfuelFiles] = useState<any>(
     reservation?.fuelImagesCompletion
   );
@@ -70,12 +72,12 @@ export default function FirstPage() {
   return (
     <>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <TempTypeInput
+        <TempSelectInput
           setState={setfuelCompletion}
           label={"Fuel Status %"}
           value={reservation?.fuelCompletion}
           required={false}
-          type={"number"}
+          options={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
         />
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
