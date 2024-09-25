@@ -25,7 +25,7 @@ export default function Vehicles() {
       img: settings1,
       heading: "My Profile",
       text: "Manage your personal information and login credentials.",
-      prefixes: "my profiles username email address profile pic",
+      prefixes: "my profiles username email address profile pic password",
     },
     {
       link: "Settings/CompanyProfile",

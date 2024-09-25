@@ -2,8 +2,7 @@
 import bar from "@/public/Layer_1 bar.svg";
 import account from "@/public/account.svg";
 import bell from "@/public/Icon.svg";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import {
   setcurrentCurrency,
@@ -12,7 +11,7 @@ import {
   setTheme,
 } from "../store/Global";
 import { useMediaQuery } from "react-responsive";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
   setaddressR,
@@ -29,13 +28,40 @@ import {
   setprofilePicR as setCompanyLogo,
   setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
-import { Logout } from "@mui/icons-material";
+import { Logout, Person2Outlined } from "@mui/icons-material";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
-  const [loading, setLoading] = useState<any>(false);
+  const [loading, setLoading] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false); // Close the dropdown if clicked outside
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -104,26 +130,13 @@ export default function Nav() {
         const result = await axios.post("/api/getcompanyProfile");
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;
-        // if (typeof window !== "undefined") {
-        //   localStorage.setItem("companyLogo", profilePic);
-        //   localStorage.setItem("companyLogo2", profilePic2);
         dispatch(setCompanyLogo([profilePic]));
         dispatch(setCompanyLogo2([profilePic2]));
-        // }
       } catch (error) {
         console.error("Error fetching company profile:", error);
       }
     }
-    // if (typeof window !== "undefined") {
-    //   const storedLogo = localStorage.getItem("companyLogo");
-    //   const storedLogo2 = localStorage.getItem("companyLogo2");
-    //   if (storedLogo && storedLogo2) {
-    //     dispatch(setCompanyLogo([storedLogo]));
-    //     dispatch(setCompanyLogo2([storedLogo2]));
-    //   } else {
     getData();
-    //   }
-    // }
   }, [global.companyProfileReloader]);
 
   useEffect(() => {
@@ -151,15 +164,6 @@ export default function Nav() {
     dispatch(setcurrentCurrency(currencyInLS));
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    if (isOpen) {
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
-    }
-  };
   async function logout() {
     try {
       await axios.post("/api/logOut");
@@ -190,14 +194,10 @@ export default function Nav() {
         />
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">
-        {/* <div className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] dark:bg-dark2 bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center">
-          <img src={bell.src} className="w-[24px] h-[24px]" />
-        </div> */}
         <div
           className="w-[25px] sm:w-[50px] h-[30px] md:h-[50px] dark:bg-dark2 bg-light-grey rounded-lg md:rounded-2xl text-[30px] flex justify-center border-2 border-grey items-center overflow-hidden"
-          onClick={() => {
-            toggleDropdown();
-          }}
+          onClick={toggleDropdown}
+          ref={dropdownRef}
         >
           <img
             src={
@@ -208,14 +208,19 @@ export default function Nav() {
             }`}
           />
           {isOpen && (
-            <div className="z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-start">
+            <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-start items-start divide-y-[1px] divide-[#d9d9d9] p-4">
               <button
-                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-start gap-2 items-center"
-                onClick={() => {
-                  logout();
-                }}
+                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
+                onClick={logout}
               >
-                Logout <Logout />
+                My Profile
+                <Person2Outlined />
+              </button>
+              <button
+                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
+                onClick={logout}
+              >
+                Logout <Logout className="translate-x-[2px]" />
               </button>
             </div>
           )}

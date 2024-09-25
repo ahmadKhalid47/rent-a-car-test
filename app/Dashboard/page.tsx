@@ -487,13 +487,13 @@ console.log(VehiclesData);
                 </h1>
                 <Link
                   href="/Reservations"
-                  className="w-fit text-[12px] font-[400] leading-[12px] hover:underline"
+                  className="w-fit text-[14px] font-[400] leading-[12px] hover:underline"
                 >
                   View More
                 </Link>
               </div>
               <div className="w-full flex flex-col justify-start items-center">
-                <div className="w-full h-[32px] flex justify-between items-center dark:bg-dark2 bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[14px] font-[400] leading-[17px]">
+                <div className="w-full h-[32px] flex justify-between items-center dark:bg-dark2 bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[16px] font-[400] leading-[17px]">
                   <span className="w-[25%]">Customer</span>
                   <span className="w-[35%]">Vehicle</span>
                   <span className="w-[40%]">Duration</span>
@@ -512,14 +512,14 @@ console.log(VehiclesData);
                         index === 7 ? "" : "border-b-[1px]"
                       } border-grey px-3`}
                     >
-                      <span className="w-[25%] text-[12px] font-[400] leading-[14px]">
+                      <span className="w-[25%] text-[14px] font-[400] leading-[14px]">
                         {item.data.customerName}
                         {index}
                       </span>
-                      <span className="w-[35%] text-[12px] font-[400] leading-[14px]">
+                      <span className="w-[35%] text-[14px] font-[400] leading-[14px]">
                         {item.data.vehicleName}
                       </span>
-                      <span className="w-[40%] text-[12px] font-[400] leading-[14px]">
+                      <span className="w-[40%] text-[14px] font-[400] leading-[14px]">
                         {formatDate2(item.data.PickUpDate)} to{" "}
                         {formatDate2(item.data.dropOffDate)}
                       </span>
