@@ -181,7 +181,7 @@ export default function GridView({ data }: dataType) {
               ) : null}
             </div>
             <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
-              <div className="w-full flex justify-start items-center pe- bg-red-400 -mb-1">
+              <div className="w-full flex justify-start items-center pe- -mb-1">
                 <p className="font-[500] text-[18px] xs:text-[24px] leading-5 xs:leading-0 truncate">
                   {item?.data?.make} {item?.data?.model}
                 </p>
