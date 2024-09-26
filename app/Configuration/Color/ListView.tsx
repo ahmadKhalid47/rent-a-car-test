@@ -68,6 +68,12 @@ export default function ListView({ data }: dataType) {
                 },
               },
             },
+            "& .MuiPaginationItem-previousNext": {
+              color: "#878787",
+              "&:hover": {
+                opacity: 0.8,
+              },
+            },
           }}
         />
       </Stack>
