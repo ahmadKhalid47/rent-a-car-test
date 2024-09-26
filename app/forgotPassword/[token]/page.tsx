@@ -207,7 +207,7 @@ export default function ResetPassword() {
                             href={"/"}
                             className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
                           >
-                            Go Back To Login Page?
+                            Login
                           </Link>
                         ) : null}
                       </div>

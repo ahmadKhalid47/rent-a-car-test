@@ -84,7 +84,7 @@ export default function ForgotPassword() {
             className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
             onClick={() => dispatch(setLoginPageR(true))}
           >
-            Go Back To Login Page?
+            Login
           </p>
         </div>
         <button
