@@ -110,7 +110,7 @@ export default function CarInfoMainPage() {
                       />
                     </div>
                   </div>
-                  <div className="w-[35%] flex justify-start flex-col items-start gap-1 bg-green-">
+                  <div className="w-[45%] flex justify-start flex-col items-start gap-1 bg-green-">
                     <h3 className="font-[600] text-[36px] leading-[54px] dark:text-white text-black">
                       {vehicleInfo.make} {vehicleInfo.model}
                     </h3>
@@ -118,15 +118,15 @@ export default function CarInfoMainPage() {
                       {vehicleInfo.registration}
                     </p>
                     <div className="w-[100%] flex justify-between items-center">
-                      <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
+                      <div className="flex justify-start items-center gap-2 w-[50%] pe-5 bg-red-400">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[40%]">
                           Making Year:
                         </p>
-                        <p className="font-[400] text-[20px] leading-[30px] w-[70%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[60%]">
                           {vehicleInfo.year}
                         </p>
                       </div>
-                      <div className="flex justify-start items-center gap-2 w-[50%]">
+                      <div className="flex justify-start items-center gap-2 w-[50%] bg-green-300">
                         <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           Type:
                         </p>
@@ -137,7 +137,7 @@ export default function CarInfoMainPage() {
                     </div>
                     <div className="w-[100%] flex justify-between items-center">
                       <div className="flex justify-start items-start h-fit gap-2 w-[50%] pe-5">
-                        <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
+                        <p className="font-[400] text-[20px] leading-[30px] w-[40%]">
                           Color:
                         </p>
                         <div className="font-[400] text-[20px] leading-[30px] w-[50%] mt-2">

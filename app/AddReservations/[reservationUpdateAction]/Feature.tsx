@@ -102,14 +102,14 @@ export default function Feature({ data, loading }: dataType) {
                   </span>
                 </div>
 
-                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt-">
-                  <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[40%] pe-5">
-                    <span className="leading-4 w-[50%] sm:w-[50%]">Making Year:</span>
-                    <span className="leading-4 w-[50%] sm:w-[50%]">
+                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt- ">
+                  <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[50%] pe-5">
+                    <span className="leading-4 w-[50%] sm:w-[70%]">Making Year:</span>
+                    <span className="leading-4 w-[50%] sm:w-[30%]">
                       {item.data.year}
                     </span>
                   </div>
-                  <div className="flex justify-center sm:justify-start items-center gap- w-[60%]">
+                  <div className="flex justify-center sm:justify-start items-center gap- w-[50%]">
                     <span className="leading-4 w-[50%] sm:w-[30%]">Type:</span>
                     <span className="leading-4 w-[50%] sm:w-[70%]">
                       {item.data.type}
@@ -118,7 +118,7 @@ export default function Feature({ data, loading }: dataType) {
                 </div>
 
                 <div className="w-full flex justify-center sm:justify-start gap-0 items-start font-[400] text-[14px] leading-[21px] mt-1">
-                  <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[40%]">
+                  <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[50%]">
                     <span className="leading-4 w-[50%] sm:w-fit">Color:</span>
                     <div className="w-[50%] sm:w-fit">
                       <div
@@ -129,7 +129,7 @@ export default function Feature({ data, loading }: dataType) {
                       ></div>
                     </div>
                   </div>
-                  <div className="flex justify-center sm:justify-start items-start gap- w-[60%]">
+                  <div className="flex justify-center sm:justify-start items-start gap- w-[50%]">
                     <span className="leading-4 w-[50%] sm:w-[30%]">City:</span>
                     <span className="leading-4 w-[50%] sm:w-[70%] h-fit flex justify-start items-start">
                       {item.data.city}
