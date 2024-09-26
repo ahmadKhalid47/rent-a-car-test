@@ -147,7 +147,11 @@ export default function Nav() {
     async function getData() {
       try {
         const result = await axios.post("/api/getGeneralSettings");
-        dispatch(setcurrentCurrency(result.data.data[0].currency));
+        dispatch(
+          setcurrentCurrency(
+            result.data.data[0].currency ? result.data.data[0].currency : "$"
+          )
+        );
         if (typeof window !== "undefined") {
           localStorage.setItem("currency", result.data.data[0].currency);
           let value = localStorage.getItem("currency");
@@ -164,7 +168,7 @@ export default function Nav() {
     if (!currencyInLS) {
       getData();
     }
-    dispatch(setcurrentCurrency(currencyInLS));
+    dispatch(setcurrentCurrency(currencyInLS ? currencyInLS : "$"));
   }, []);
 
   async function logout() {
