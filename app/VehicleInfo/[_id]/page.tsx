@@ -118,7 +118,7 @@ export default function CarInfoMainPage() {
                       {vehicleInfo.registration}
                     </p>
                     <div className="w-[100%] flex justify-between items-center">
-                      <div className="flex justify-start items-center gap-2 w-[50%] pe-5 bg-red-400">
+                      <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
                         <p className="font-[400] text-[20px] leading-[30px] w-[40%]">
                           Making Year:
                         </p>
@@ -126,7 +126,7 @@ export default function CarInfoMainPage() {
                           {vehicleInfo.year}
                         </p>
                       </div>
-                      <div className="flex justify-start items-center gap-2 w-[50%] bg-green-300">
+                      <div className="flex justify-start items-center gap-2 w-[50%]">
                         <p className="font-[400] text-[20px] leading-[30px] w-[30%]">
                           Type:
                         </p>
