@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({
-      error: "Can't process your request at the moment",
+      error: err,
     });
   }
 }
