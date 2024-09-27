@@ -40,7 +40,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getCountry" , {
+        const result = await axios.post("/api/getCountry", {
           createdBy: myProfile._id,
         });
 
@@ -56,7 +56,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
     if (country.trim() === "") {

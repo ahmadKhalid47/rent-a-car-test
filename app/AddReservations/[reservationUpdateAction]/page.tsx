@@ -65,7 +65,7 @@ export default function Reservations() {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
   // Chauffeur Data
   useEffect(() => {
     async function getData() {

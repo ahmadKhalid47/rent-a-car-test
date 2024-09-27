@@ -143,7 +143,7 @@ export default function Nav() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.companyProfileReloader]);
+  }, [myProfile._id,global.companyProfileReloader]);
 
   useEffect(() => {
     let currencyInLS: any = undefined;
@@ -174,7 +174,7 @@ export default function Nav() {
       getData();
     }
     dispatch(setcurrentCurrency(currencyInLS ? currencyInLS : "$"));
-  }, []);
+  }, [myProfile._id]);
 
   async function logout() {
     try {

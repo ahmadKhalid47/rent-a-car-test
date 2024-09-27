@@ -43,7 +43,7 @@ export default function Damages() {
       }
     }
     if (myProfile._id) getData2();
-  }, []);
+  }, [myProfile._id]);
   let exteriorImg = Configurations?.Configurations?.type?.find(
     (item: any) => item.Type === vehicleInfo.type
   )?.exterior;

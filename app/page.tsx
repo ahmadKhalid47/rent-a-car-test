@@ -53,7 +53,7 @@ export default function Vehicles() {
     //   }
     // }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
 
   return (
     <div className="w-full h-fit">

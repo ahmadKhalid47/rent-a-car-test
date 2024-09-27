@@ -134,7 +134,7 @@ function PrintCom({ data, id }: any) {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
 
   return (
     <>

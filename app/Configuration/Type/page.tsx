@@ -57,7 +57,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
     if (Type.trim() === "" || interior === "" || exterior === "") {

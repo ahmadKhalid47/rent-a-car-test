@@ -59,7 +59,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getVehicle" ,{
+        const result = await axios.post("/api/getVehicle", {
           createdBy: myProfile._id,
         });
 
@@ -76,7 +76,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   useEffect(() => {
     filterVehicles();

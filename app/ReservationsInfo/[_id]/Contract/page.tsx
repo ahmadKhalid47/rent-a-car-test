@@ -181,12 +181,12 @@ function PrintCom({ data, id }: any) {
       }
     }
     if (myProfile._id) getData2();
-  }, []);
+  }, [myProfile._id]);
 
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getAgreement" ,{
+        const result = await axios.post("/api/getAgreement", {
           createdBy: myProfile._id,
         });
         dispatch(setAllAgreementValues(result.data.data[0].data));
@@ -196,7 +196,7 @@ function PrintCom({ data, id }: any) {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
 
   return (
     <>

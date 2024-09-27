@@ -44,10 +44,10 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getModel", {
           createdBy: myProfile._id,
-        } );
+        });
         const result2 = await axios.post("/api/getMake", {
           createdBy: myProfile._id,
-        } );
+        });
         setMakeData(result2?.data?.data);
 
         if (result?.data?.data) {
@@ -62,7 +62,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
     if (Model.trim() === "" || Make.trim() === "") {

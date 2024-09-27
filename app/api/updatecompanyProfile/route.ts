@@ -4,10 +4,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { profilePic, profilePic2 } = await req.json();
+    let { profilePic, profilePic2, createdBy } = await req.json();
     connectDb();
     await companyProfileModel.updateOne(
-      {},
+      { createdBy },
       { $set: { profilePic: profilePic, profilePic2: profilePic2 } }
     );
     return NextResponse.json({

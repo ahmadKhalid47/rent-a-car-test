@@ -58,7 +58,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
   const activeVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === false && item.active === true
   );
@@ -81,7 +81,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
   );
@@ -117,7 +117,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData2();
-  }, []);
+  }, [myProfile._id]);
 
   function submitButton() {
     // let filtered: any = VehiclesData;

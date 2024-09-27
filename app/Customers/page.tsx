@@ -69,8 +69,8 @@ export default function Vehicles() {
         setLoading(false);
       }
     }
-   if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+    if (myProfile._id) getData();
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   useEffect(() => {
     filterCustomer();

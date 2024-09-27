@@ -44,7 +44,7 @@ export default function AddUser() {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
 
   return (
     <div

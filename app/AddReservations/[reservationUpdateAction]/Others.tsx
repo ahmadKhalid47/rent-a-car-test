@@ -181,7 +181,7 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
       }
     }
     if (myProfile._id) getData();
-  }, []);
+  }, [myProfile._id]);
 
   let varPerNum = isNaN(Number(Invoicing?.vatPercentage))
     ? 0

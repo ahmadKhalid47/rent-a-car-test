@@ -57,7 +57,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
   useEffect(() => {
     async function getData2() {
       try {
@@ -73,7 +73,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData2();
-  }, []);
+  }, [myProfile._id]);
   function filterReg() {
     let filtered: any = VehiclesData;
 
@@ -114,7 +114,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
   const [completedReservations, setCompletedReservations] = useState(
     reservationsData.filter((item: any) => item?.data?.status === "complete")
@@ -166,7 +166,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData2();
-  }, []);
+  }, [myProfile._id]);
   function submitButton() {
     let filtered: any = VehiclesData;
 

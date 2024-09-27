@@ -66,7 +66,7 @@ export default function Vehicles() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [myProfile._id, global.vehicleDataReloader]);
 
   useEffect(() => {
     filterchauffeur();

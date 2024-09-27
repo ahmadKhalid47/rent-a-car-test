@@ -75,7 +75,7 @@ export default function AddUser() {
       }
     }
     if (myProfile._id) getData();
-  }, [global.vehicleDataReloader]);
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function editItem() {
     let currency = global.currentCurrency;
