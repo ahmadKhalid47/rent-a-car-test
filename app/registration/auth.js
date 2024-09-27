@@ -3,11 +3,11 @@ import { serialize } from "cookie";
 
 export function setTokenToCookies(userData) {
   const securityKey = process.env.SECURITY_KEY;
-  const token = jwt.sign(userData, securityKey, { expiresIn: "1h" });
+  const token = jwt.sign(userData, securityKey, { expiresIn: "3h" });
 
   const cookie = serialize("authToken", token, {
-    maxAge: 7200,
-    expires: new Date(Date.now() + 7200 * 1000),
+    maxAge: 10800, // 3 hours in seconds (3 * 3600)
+    expires: new Date(Date.now() + 10800 * 1000), // 3 hours in milliseconds
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
@@ -17,7 +17,7 @@ export function setTokenToCookies(userData) {
 
 export function generateTokenForDb(userData) {
   const securityKey = process.env.SECURITY_KEY;
-  const token = jwt.sign(userData, securityKey, { expiresIn: "1h" });
+  const token = jwt.sign(userData, securityKey, { expiresIn: "3h" });
   const decoded = jwt.decode(token);
   const expiryDate = new Date(decoded.exp * 1000);
 
