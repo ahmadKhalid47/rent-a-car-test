@@ -5,7 +5,7 @@ const MakeSchema = mongoose.Schema(
     make: { type: String, required: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Registration",
       required: true,
     }, 
   },

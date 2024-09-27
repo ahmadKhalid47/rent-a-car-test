@@ -3,9 +3,14 @@ import mongoose from "mongoose";
 const FeatureSchema = mongoose.Schema(
   {
     Feature: { type: String, required: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Registration",
+      required: true,
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 const FeatureModel =

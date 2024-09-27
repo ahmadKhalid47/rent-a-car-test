@@ -4,9 +4,14 @@ const ModelSchema = mongoose.Schema(
   {
     model: { type: String, required: true },
     make: { type: String },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Registration",
+      required: true,
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 const ModelModel =

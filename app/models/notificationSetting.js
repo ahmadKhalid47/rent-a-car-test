@@ -8,9 +8,14 @@ const notificationSettingSchema = mongoose.Schema(
     newReservation: { type: Boolean, default: true },
     reservationComplete: { type: Boolean, default: true },
     reservationPending: { type: Boolean, default: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Registration",
+      required: true,
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 const notificationSettingModel =

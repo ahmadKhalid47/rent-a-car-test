@@ -6,7 +6,7 @@ const chauffeurSchema = mongoose.Schema(
     active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Registration",
       required: true,
     }, 
   },

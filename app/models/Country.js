@@ -3,9 +3,14 @@ import mongoose from "mongoose";
 const CountrySchema = mongoose.Schema(
   {
     country: { type: String, required: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Registration",
+      required: true,
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 const CountryModel =
