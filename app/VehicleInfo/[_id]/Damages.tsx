@@ -52,7 +52,7 @@ export default function Damages() {
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
       {vehicleInfo.damages.length > 0 ? (
         <>
-          <div className="w-[23%] h-fit flex flex-col justify-start items-start relative">
+          <div className="w-[250px] h-[300px] flex flex-col justify-start items-start relative bg-green-300">
             <img
               src={
                 vehicleInfo.damages[damageIndex]?.exterior
