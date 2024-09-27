@@ -78,6 +78,7 @@ export default function Vehicles() {
       let result: any = await axios.post(`/api/saveModel`, {
         make: Make,
         model: Model,
+        createdBy: myProfile._id,
       });
       console.log(result);
       // setModelReloader(ModelReloader + 1);

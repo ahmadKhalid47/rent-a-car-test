@@ -10,7 +10,6 @@ import axios from "axios";
 import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
-import Feature from "../../AddChauffeur/[chauffeurUpdateAction]/Feature";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -23,7 +22,6 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Feature, setFeature] = useState("");
-  // const [FeatureReloader, setFeatureReloader] = useState(0);
 
   useEffect(() => {
     if (isMobile) {
@@ -69,11 +67,10 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveFeature`, {
+      await axios.post(`/api/saveFeature`, {
         Feature,
+        createdBy: myProfile._id,
       });
-      console.log(result);
-      // setFeatureReloader(FeatureReloader + 1);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);

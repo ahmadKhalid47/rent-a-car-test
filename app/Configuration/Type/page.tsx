@@ -94,6 +94,7 @@ export default function Vehicles() {
         Type,
         exterior: res?.data?.message,
         interior: res2?.data?.message,
+        createdBy: myProfile._id,
       });
       console.log(result);
       // setTypeReloader(TypeReloader + 1);

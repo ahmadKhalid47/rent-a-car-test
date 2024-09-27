@@ -70,6 +70,7 @@ export default function Vehicles() {
       setLoading(action);
       let result: any = await axios.post(`/api/saveCountry`, {
         country,
+        createdBy: myProfile._id,
       });
       console.log(result);
       // setCountryReloader(CountryReloader + 1);

@@ -20,6 +20,7 @@ export default function Vehicles() {
   const params = useParams();
   const { CustomerUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let customer = useSelector((state: RootState) => state.Customer);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
@@ -104,6 +105,7 @@ export default function Vehicles() {
         customerImage: res?.data?.message,
         passportImages: res2?.data?.message,
         licenseImages: res3?.data?.message,
+        createdBy: myProfile._id,
       });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);

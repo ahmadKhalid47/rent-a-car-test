@@ -17,6 +17,7 @@ export default function AddChauffeur() {
   const params = useParams();
   const { chauffeurUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
@@ -101,6 +102,7 @@ export default function AddChauffeur() {
         chauffeurImage: res?.data?.message,
         passportImages: res2?.data?.message,
         licenseImages: res3?.data?.message,
+        createdBy: myProfile._id,
       });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
@@ -279,21 +281,27 @@ export default function AddChauffeur() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Additional Information

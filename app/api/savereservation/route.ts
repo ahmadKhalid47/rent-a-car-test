@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let reservation = await req.json();
-    let {createdBy} = await req.json();
-    
+    let { reservation, createdBy } = await req.json();
+    console.log(reservation, createdBy);
+
     connectDb();
     await new reservationModel({ data: reservation, createdBy }).save();
     return NextResponse.json({

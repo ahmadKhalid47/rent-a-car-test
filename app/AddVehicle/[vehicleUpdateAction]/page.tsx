@@ -139,6 +139,7 @@ export default function Vehicles() {
         ...vehicle,
         carImages: res?.data?.message,
         damages: updatedObjects,
+        createdBy: myProfile._id,
       });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);

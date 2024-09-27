@@ -148,7 +148,10 @@ export default function Reservations() {
   async function saveData(action: string) {
     try {
       setLoading(true);
-      let result: any = await axios.post(`/api/savereservation`, reservation);
+      let result: any = await axios.post(`/api/savereservation`, {
+        reservation,
+        createdBy: myProfile._id,
+      });
       await axios.post(`/api/updateRentOut/${reservation?.vehicle_id}`, {
         rentOut: true,
       });
