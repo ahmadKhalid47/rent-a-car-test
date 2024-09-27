@@ -5,7 +5,7 @@ const CountrySchema = mongoose.Schema(
     country: { type: String, required: true },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const CountryModel =

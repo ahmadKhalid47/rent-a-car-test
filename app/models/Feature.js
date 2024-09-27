@@ -5,7 +5,7 @@ const FeatureSchema = mongoose.Schema(
     Feature: { type: String, required: true },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const FeatureModel =

@@ -5,7 +5,7 @@ const ColorSchema = mongoose.Schema(
     Color: { type: String, required: true },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const ColorModel =

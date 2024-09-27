@@ -7,7 +7,7 @@ const TypeSchema = mongoose.Schema(
     interior: { type: String, required: true },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const TypeModel = mongoose.models.Type || mongoose.model("Type", TypeSchema);

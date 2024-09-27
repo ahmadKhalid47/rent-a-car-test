@@ -6,7 +6,7 @@ const companyProfileSchema = mongoose.Schema(
     profilePic2: { type: Array, required: true, default: "" },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const companyProfileModel =

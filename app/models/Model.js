@@ -6,7 +6,7 @@ const ModelSchema = mongoose.Schema(
     make: { type: String },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const ModelModel =

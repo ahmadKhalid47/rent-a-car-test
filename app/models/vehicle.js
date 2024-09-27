@@ -7,7 +7,7 @@ const VehicleSchema = mongoose.Schema(
     rentOut: { type: Boolean, default: false },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const VehicleModel =

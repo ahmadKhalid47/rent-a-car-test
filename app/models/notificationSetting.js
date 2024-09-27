@@ -10,7 +10,7 @@ const notificationSettingSchema = mongoose.Schema(
     reservationPending: { type: Boolean, default: true },
   },
   {
-    timestamps: true, // Enable timestamps
+    timestamps: true, 
   }
 );
 const notificationSettingModel =
