@@ -2,22 +2,20 @@ import connectDb from "@/app/models/connectDb";
 import MakeModel from "@/app/models/Make";
 import { NextResponse } from "next/server";
 
-// Disable cache for this API route
-export const fetchCache = "force-no-store";
-
 export async function POST(req: Request) {
   try {
+    const { createdBy } = await req.json();
+    if (!createdBy) {
+      return NextResponse.json(
+        { error: "createdBy is required" },
+        { status: 400 }
+      );
+    }
     await connectDb();
-    const data = await MakeModel.find().sort({ _id: -1 }).lean();
-
-    const response = NextResponse.json({ data });
-
-    // Ensure no cache
-    response.headers.set("Cache-Control", "no-store, max-age=0");
-
-    return response;
+    const data = await MakeModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    return NextResponse.json({ success: true, data });
   } catch (err) {
-    console.log("err: ", err);
+    console.error("Error processing request: ", err);
     return NextResponse.json(
       {
         error: "Can't process your request at the moment",

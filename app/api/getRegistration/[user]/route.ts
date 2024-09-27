@@ -7,7 +7,6 @@ export async function POST(req: Request, params: any) {
     let { username, email } = await req.json();
 
     let { user } = await params.params;
-    console.log("user", user);
 
     await connectDb();
     const data = await registrationModel
@@ -20,7 +19,6 @@ export async function POST(req: Request, params: any) {
         ],
       })
       .lean();
-    console.log(data);
 
     return NextResponse.json({
       data,

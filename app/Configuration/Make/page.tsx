@@ -13,6 +13,7 @@ import { setVehicleDataReloader } from "@/app/store/Global";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
@@ -21,8 +22,7 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [make, setMake] = useState("");
-  // const [makeReloader, setMakeReloader] = useState(0);
-  console.log(make);
+  console.log(myProfile._id);
 
   useEffect(() => {
     if (isMobile) {
@@ -39,7 +39,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getMake");
+        const result = await axios.post("/api/getMake", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -52,8 +54,10 @@ export default function Vehicles() {
         setDataLoading(false);
       }
     }
-    getData();
-  }, [global.vehicleDataReloader]);
+    if (myProfile._id) {
+      getData();
+    }
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
     if (make.trim() === "") {
@@ -68,9 +72,9 @@ export default function Vehicles() {
       setLoading(action);
       let result: any = await axios.post(`/api/saveMake`, {
         make,
+        createdBy: myProfile._id,
       });
       console.log(result);
-      // setMakeReloader(makeReloader + 1);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);

@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
 
-const ColorSchema = mongoose.Schema({
-  Color: { type: String, required: true },
-});
+const ColorSchema = mongoose.Schema(
+  {
+    Color: { type: String, required: true },
+  },
+  {
+    timestamps: true, // Enable timestamps
+  }
+);
 const ColorModel =
   mongoose.models.Color || mongoose.model("Color", ColorSchema);
 

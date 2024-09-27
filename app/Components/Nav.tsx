@@ -15,6 +15,7 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
+  set_idR,
   setaddressR,
   setadminR,
   setemailR,
@@ -112,6 +113,7 @@ export default function Nav() {
         dispatch(setaddressR(result?.data?.data?.address));
         dispatch(setusernameR(result?.data?.data.username));
         dispatch(setadminR(result?.data?.data.admin));
+        dispatch(set_idR(result?.data?.data._id));
       } catch (error) {
         console.log(error);
       } finally {

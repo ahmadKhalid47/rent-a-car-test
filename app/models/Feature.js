@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
 
-const FeatureSchema = mongoose.Schema({
-  Feature: { type: String, required: true },
-});
+const FeatureSchema = mongoose.Schema(
+  {
+    Feature: { type: String, required: true },
+  },
+  {
+    timestamps: true, // Enable timestamps
+  }
+);
 const FeatureModel =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
 

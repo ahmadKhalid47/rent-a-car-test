@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  _id: "",
   user: "",
   profilePic: null,
   username: "",
@@ -16,6 +17,9 @@ export const myProfileSlice = createSlice({
   name: "myProfile",
   initialState,
   reducers: {
+    set_idR: (state, action) => {
+      state._id = action.payload;
+    },
     setuserR: (state, action) => {
       state.user = action.payload;
     },
@@ -60,6 +64,7 @@ export const {
   setuserR,
   setadminR,
   setAllValues,
+  set_idR
 } = myProfileSlice.actions;
 
 export default myProfileSlice.reducer;
