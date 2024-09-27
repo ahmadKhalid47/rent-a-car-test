@@ -11,13 +11,13 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     await connectDb();
-    const color = await ColorModel.find().sort({ _id: -1 });
-    const make = await MakeModel.find().sort({ _id: -1 });
-    const model = await ModelModel.find().sort({ _id: -1 });
-    const feature = await FeatureModel.find().sort({ _id: -1 });
-    const type = await TypeModel.find().sort({ _id: -1 });
-    const country = await CountryModel.find().sort({ _id: -1 });
-    const city = await CityModel.find().sort({ _id: -1 });
+    const color = await ColorModel.find().sort({ _id: -1 }).lean();
+    const make = await MakeModel.find().sort({ _id: -1 }).lean();
+    const model = await ModelModel.find().sort({ _id: -1 }).lean();
+    const feature = await FeatureModel.find().sort({ _id: -1 }).lean();
+    const type = await TypeModel.find().sort({ _id: -1 }).lean();
+    const country = await CountryModel.find().sort({ _id: -1 }).lean();
+    const city = await CityModel.find().sort({ _id: -1 }).lean();
 
     let wholeData = {
       color,

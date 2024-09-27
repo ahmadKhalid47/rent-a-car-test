@@ -6,7 +6,7 @@ export async function POST(req: Request, params: any) {
   try {
     let { _id } = await params.params;
     await connectDb();
-    const data = await VehicleModel.findOne({ _id: _id });
+    const data = await VehicleModel.findOne({ _id: _id }).lean();
     return NextResponse.json({
       data,
     });

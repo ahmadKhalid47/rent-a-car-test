@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     await connectDb();
-    const data = await ColorModel.find().sort({ _id: -1 });
+    const data = await ColorModel.find().sort({ _id: -1 }).lean();
     return NextResponse.json({
       data,
     });

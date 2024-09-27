@@ -10,14 +10,16 @@ export async function POST(req: Request, params: any) {
     console.log("user", user);
 
     await connectDb();
-    const data = await registrationModel.findOne({
-      $or: [
-        { username: user },
-        { email: user },
-        { username: username },
-        { email: email },
-      ],
-    });
+    const data = await registrationModel
+      .findOne({
+        $or: [
+          { username: user },
+          { email: user },
+          { username: username },
+          { email: email },
+        ],
+      })
+      .lean();
     console.log(data);
 
     return NextResponse.json({

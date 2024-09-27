@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     let hashedPassword = await hashPassword(password);
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: email }],
-    });
+    }).lean();
 
     if (loginData) {
       return NextResponse.json({

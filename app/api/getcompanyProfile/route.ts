@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     await connectDb();
-    const data = await companyProfileModel.findOne({});
+    const data = await companyProfileModel.findOne({}).lean();
     return NextResponse.json({
       data,
     });

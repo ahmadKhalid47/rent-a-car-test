@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     connectDb();
-    let data = await notificationSettingModel.findOne();
+    let data = await notificationSettingModel.findOne().lean();
     return NextResponse.json({
       data,
     });

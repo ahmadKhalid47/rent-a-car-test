@@ -8,7 +8,7 @@ export const fetchCache = "force-no-store";
 export async function POST(req: Request) {
   try {
     await connectDb();
-    const data = await MakeModel.find().sort({ _id: -1 });
+    const data = await MakeModel.find().sort({ _id: -1 }).lean();
 
     const response = NextResponse.json({ data });
 

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
   let loginData = await RegistrationModel.findOne({
     fptoken: token,
-  });
+  }).lean();
   if (loginData) {
     jwt.verify(token, securityKey);
     return NextResponse.json({ msg: "verified" });

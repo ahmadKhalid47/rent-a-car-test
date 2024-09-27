@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     connectDb();
     let loginData = await RegistrationModel.findOne({
       email: email,
-    });
+    }).lean();
     if (!loginData) {
       return NextResponse.json({
         error: "User not found with this email",
