@@ -64,7 +64,7 @@ export default function Reservations() {
         setcustomerLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
   // Chauffeur Data
   useEffect(() => {
@@ -86,8 +86,8 @@ export default function Reservations() {
         setchauffeursLoading(false);
       }
     }
-    getData();
-  }, []);
+    if (myProfile._id) getData();
+  }, [myProfile._id]);
   // vehicle Data
   useEffect(() => {
     async function getData() {
@@ -108,8 +108,8 @@ export default function Reservations() {
         setvehicleLoading(false);
       }
     }
-    getData();
-  }, []);
+    if (myProfile._id) getData();
+  }, [myProfile._id]);
 
   const customerDataById = customersData.find(
     (customer: any) => customer._id === reservation?.customer_id
@@ -149,12 +149,9 @@ export default function Reservations() {
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/savereservation`, reservation);
-      let result2: any = await axios.post(
-        `/api/updateRentOut/${reservation?.vehicle_id}`,
-        {
-          rentOut: true,
-        }
-      );
+      await axios.post(`/api/updateRentOut/${reservation?.vehicle_id}`, {
+        rentOut: true,
+      });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
         setShowError(null);
@@ -207,7 +204,7 @@ export default function Reservations() {
       event.preventDefault(); // Prevent form submission on Enter key
     }
   };
-  
+
   return (
     <div
       className={`${
@@ -313,28 +310,36 @@ export default function Reservations() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Select Customer
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Select Chauffeur
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Reservation Details
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 3
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Select Vehicle

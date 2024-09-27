@@ -15,13 +15,13 @@ import {
   settermsR,
   setAllValues,
 } from "@/app/store/Invoicing";
-import { formatListing } from "@/app/Components/functions/formats";
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import axios from "axios";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -77,14 +77,16 @@ export default function AddUser() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getInvoicing");
+        const result = await axios.post("/api/getInvoicing", {
+          createdBy: myProfile._id,
+        });
         dispatch(setAllValues(result.data.data[0].data));
         console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
 
   async function editItem() {

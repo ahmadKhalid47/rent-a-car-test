@@ -18,6 +18,7 @@ import { MediumLoader } from "@/app/Components/Loader";
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   let reservation = useSelector((state: RootState) => state.reservation);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let { Configurations } = useSelector(
     (state: RootState) => state.Configurations
   );
@@ -152,7 +153,7 @@ export default function SecondPage() {
   useEffect(() => {
     async function getData2() {
       try {
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {createdBy: myProfile._id});
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);

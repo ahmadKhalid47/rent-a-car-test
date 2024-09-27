@@ -18,6 +18,7 @@ import image404 from "@/public/image404.png";
 export default function CustomerInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -90,7 +91,9 @@ export default function CustomerInfoMainPage() {
                         src={vip.src}
                         className="w-[44px] h-[32px] -translate-y-1 dark:filter dark:brightness-[0] dark:invert"
                       />
-                      <span className="text-[16px] mt-[8px]">It’s VIP Client</span>
+                      <span className="text-[16px] mt-[8px]">
+                        It’s VIP Client
+                      </span>
                     </>
                   ) : null}
                 </h3>

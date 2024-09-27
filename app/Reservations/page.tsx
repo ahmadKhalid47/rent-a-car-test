@@ -13,6 +13,7 @@ import { MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
@@ -48,7 +49,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getreservation");
+        const result = await axios.post("/api/getreservation", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
@@ -62,7 +65,7 @@ export default function Vehicles() {
         setLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
 
   useEffect(() => {

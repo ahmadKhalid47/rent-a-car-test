@@ -22,11 +22,7 @@ interface dataType {
   vehicleData: any;
 }
 
-export default function Others({
-  customerData,
-  chauffeurData,
-  vehicleData,
-}: dataType) {
+export default function Others({ chauffeurData, vehicleData }: dataType) {
   let dispatch = useDispatch();
   let reservation = useSelector((state: RootState) => state.reservation);
   let carRentPerDays = isNaN(Number(vehicleData?.rentDay))
@@ -47,9 +43,9 @@ export default function Others({
   let discount = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
-  let Invoicing = useSelector((state: RootState) => state.Invoicing);
-  let global = useSelector((state: RootState) => state.Global);
-
+  const Invoicing = useSelector((state: RootState) => state.Invoicing);
+  const global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   function calculateDaysBetween(pickUpDate: any, dropOffDate: any) {
     if (!pickUpDate || !dropOffDate) {
       return 0;
@@ -175,14 +171,16 @@ export default function Others({
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getInvoicing");
+        const result = await axios.post("/api/getInvoicing", {
+          createdBy: myProfile._id,
+        });
         dispatch(setAllInvoiceValues(result.data.data[0].data));
         console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
 
   let varPerNum = isNaN(Number(Invoicing?.vatPercentage))

@@ -54,9 +54,7 @@ export default function Vehicles() {
         setDataLoading(false);
       }
     }
-    if (myProfile._id) {
-      getData();
-    }
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
@@ -75,11 +73,10 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveColor`, {
+      await axios.post(`/api/saveColor`, {
         Color,
         createdBy: myProfile._id,
       });
-      console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);

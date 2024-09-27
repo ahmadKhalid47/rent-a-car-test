@@ -54,9 +54,7 @@ export default function Vehicles() {
         setDataLoading(false);
       }
     }
-    if (myProfile._id) {
-      getData();
-    }
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {

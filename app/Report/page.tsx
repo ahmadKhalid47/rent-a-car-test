@@ -17,8 +17,9 @@ import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Vehicles() {
-  let global = useSelector((state: RootState) => state.Global);
-  let dispatch = useDispatch();
+  const global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [make, setMake] = useState<any>("");
@@ -46,20 +47,24 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getVehicle");
+        const result = await axios.post("/api/getVehicle", {
+          createdBy: myProfile._id,
+        });
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
       } finally {
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
   useEffect(() => {
     async function getData2() {
       try {
         setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         setConfigurationsData(result?.data?.wholeData);
       } catch (error: any) {
         console.log(error);
@@ -67,7 +72,7 @@ export default function Vehicles() {
         setConfigurationsLoading(false);
       }
     }
-    getData2();
+    if (myProfile._id) getData2();
   }, []);
   function filterReg() {
     let filtered: any = VehiclesData;
@@ -96,19 +101,10 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getVehicle");
-        setVehiclesData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getData();
-  }, []);
-  useEffect(() => {
-    async function getData() {
-      try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation");
+        const result = await axios.post("/api/getreservation", {
+          createdBy: myProfile._id,
+        });
         setreservationsData(result.data.data);
         setFilterReservationsData(result.data.data);
       } catch (error) {
@@ -117,7 +113,7 @@ export default function Vehicles() {
         setreservationLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
   const [completedReservations, setCompletedReservations] = useState(
@@ -159,7 +155,9 @@ export default function Vehicles() {
     async function getData2() {
       try {
         setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         setConfigurationsData(result?.data?.wholeData);
       } catch (error: any) {
         console.log(error);
@@ -167,7 +165,7 @@ export default function Vehicles() {
         setConfigurationsLoading(false);
       }
     }
-    getData2();
+    if (myProfile._id) getData2();
   }, []);
   function submitButton() {
     let filtered: any = VehiclesData;
@@ -235,7 +233,6 @@ export default function Vehicles() {
     event.preventDefault();
     submitButton();
   };
-  console.log(filterReservationsData);
 
   useEffect(() => {
     function reFilter() {

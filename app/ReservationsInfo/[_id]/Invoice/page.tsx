@@ -125,13 +125,15 @@ function PrintCom({ data, id }: any) {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getInvoicing");
+        const result = await axios.post("/api/getInvoicing", {
+          createdBy: myProfile._id,
+        });
         dispatch(setAllInvoiceValues(result.data.data[0].data));
       } catch (error) {
         console.log(error);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
 
   return (

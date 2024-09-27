@@ -11,6 +11,7 @@ import image404 from "@/public/image404.png";
 export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   let Configurations = useSelector((state: RootState) => state.Configurations);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const [damageIndex, setdamageIndex] = useState<any>(0);
   const [imageIndex, setImageIndex] = useState<any>(0);
   const [imagePopup, setImagePopup] = useState<boolean>(false);
@@ -31,7 +32,9 @@ export default function Damages() {
     async function getData2() {
       try {
         setLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);
@@ -39,7 +42,7 @@ export default function Damages() {
         setLoading(false);
       }
     }
-    getData2();
+    if (myProfile._id) getData2();
   }, []);
   let exteriorImg = Configurations?.Configurations?.type?.find(
     (item: any) => item.Type === vehicleInfo.type

@@ -17,6 +17,7 @@ import {
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let companyProfile: any = useSelector(
     (state: RootState) => state.companyProfile
   );
@@ -26,14 +27,16 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getcompanyProfile");
+        const result = await axios.post("/api/getcompanyProfile", {
+          createdBy: myProfile._id,
+        });
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;
         // if (typeof window !== "undefined") {
         //   localStorage.setItem("companyLogo", profilePic);
         //   localStorage.setItem("companyLogo2", profilePic2);
-          dispatch(setCompanyLogo([profilePic]));
-          dispatch(setCompanyLogo2([profilePic2]));
+        dispatch(setCompanyLogo([profilePic]));
+        dispatch(setCompanyLogo2([profilePic2]));
         // }
       } catch (error) {
         console.error("Error fetching company profile:", error);
@@ -46,9 +49,10 @@ export default function Vehicles() {
     //     dispatch(setCompanyLogo([storedLogo]));
     //     dispatch(setCompanyLogo2([storedLogo2]));
     //   } else {
-        getData();
+    // getData();
     //   }
     // }
+    if (myProfile._id) getData();
   }, []);
 
   return (

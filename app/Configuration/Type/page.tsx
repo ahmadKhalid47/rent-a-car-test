@@ -13,6 +13,7 @@ import { setVehicleDataReloader } from "@/app/store/Global";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
@@ -40,7 +41,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getType", );
+        const result = await axios.post("/api/getType", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -53,7 +56,7 @@ export default function Vehicles() {
         setDataLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
 
   async function save(action: string) {

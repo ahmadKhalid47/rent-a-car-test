@@ -1,7 +1,6 @@
 "use client";
 import bar from "@/public/Layer_1 bar.svg";
 import account from "@/public/account.svg";
-import bell from "@/public/Icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import {
@@ -51,7 +50,7 @@ export default function Nav() {
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node)
     ) {
-      setIsOpen(false); // Close the dropdown if clicked outside
+      setIsOpen(false);
     }
   };
 
@@ -132,7 +131,9 @@ export default function Nav() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getcompanyProfile");
+        const result = await axios.post("/api/getcompanyProfile", {
+          createdBy: myProfile._id,
+        });
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;
         dispatch(setCompanyLogo([profilePic]));
@@ -141,14 +142,16 @@ export default function Nav() {
         console.error("Error fetching company profile:", error);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.companyProfileReloader]);
 
   useEffect(() => {
     let currencyInLS: any = undefined;
     async function getData() {
       try {
-        const result = await axios.post("/api/getGeneralSettings");
+        const result = await axios.post("/api/getGeneralSettings", {
+          createdBy: myProfile._id,
+        });
         dispatch(
           setcurrentCurrency(
             result.data.data[0].currency ? result.data.data[0].currency : "$"
@@ -167,7 +170,7 @@ export default function Nav() {
       let value = localStorage.getItem("currency");
       currencyInLS = value;
     }
-    if (!currencyInLS) {
+    if (!currencyInLS && myProfile._id) {
       getData();
     }
     dispatch(setcurrentCurrency(currencyInLS ? currencyInLS : "$"));

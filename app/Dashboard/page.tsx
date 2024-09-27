@@ -21,6 +21,7 @@ import { SelectInput } from "../Components/InputComponents/SelectInput";
 
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
@@ -46,7 +47,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle");
+        const result = await axios.post("/api/getVehicle", {
+          createdBy: myProfile._id,
+        });
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -54,7 +57,7 @@ export default function Vehicles() {
         setvehicleLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
   const activeVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === false && item.active === true
@@ -62,13 +65,14 @@ export default function Vehicles() {
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
-console.log(VehiclesData);
 
   useEffect(() => {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation");
+        const result = await axios.post("/api/getreservation", {
+          createdBy: myProfile._id,
+        });
         setreservationsData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -76,7 +80,7 @@ console.log(VehiclesData);
         setreservationLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
@@ -102,7 +106,9 @@ console.log(VehiclesData);
     async function getData2() {
       try {
         setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         setConfigurationsData(result?.data?.wholeData);
       } catch (error: any) {
         console.log(error);
@@ -110,7 +116,7 @@ console.log(VehiclesData);
         setConfigurationsLoading(false);
       }
     }
-    getData2();
+    if (myProfile._id) getData2();
   }, []);
 
   function submitButton() {

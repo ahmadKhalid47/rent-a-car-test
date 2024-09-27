@@ -21,9 +21,10 @@ import { setConfigurations } from "@/app/store/Configurations";
 export default function Vehicles() {
   const params = useParams();
   const { vehicleUpdateAction } = params;
-  let global = useSelector((state: RootState) => state.Global);
-  let Configurations = useSelector((state: RootState) => state.Configurations);
-  let dispatch = useDispatch();
+  const global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
+
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
@@ -32,9 +33,9 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  let [currentPage, setCurrentPage] = useState(0);
-  let [goToPage, setGoToPage] = useState(0);
-  let vehicle = useSelector((state: RootState) => state.Vehicle);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [goToPage, setGoToPage] = useState(0);
+  const vehicle = useSelector((state: RootState) => state.Vehicle);
   const [loading, setLoading] = useState<any>(false);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
@@ -71,7 +72,7 @@ export default function Vehicles() {
     async function getData2() {
       try {
         setLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {createdBy: myProfile._id});
         if (result) {
           dispatch(setConfigurations(result?.data?.wholeData));
         } else {
@@ -83,6 +84,7 @@ export default function Vehicles() {
         setLoading(false);
       }
     }
+    
     getData2();
   }, []);
 
@@ -352,42 +354,54 @@ export default function Vehicles() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Vehicle Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Rental Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Insurance Info
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 3
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Features
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 4 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 4
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Damages
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 5 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 5
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Others

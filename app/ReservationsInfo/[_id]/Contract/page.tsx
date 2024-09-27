@@ -60,8 +60,6 @@ export default function reservationInfoMainPage() {
     content: () => componentRef.current,
     documentTitle: `"Contract"${reservation?.customerName}`,
   });
-  
-  console.log(reservation?.customerName);
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -100,6 +98,7 @@ export default function reservationInfoMainPage() {
 
 function PrintCom({ data, id }: any) {
   const [customersData, setCustomersData] = useState<any>([]);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursData, setchauffeursData] = useState<any>([]);
   const [VehiclesData, setVehiclesData] = useState<any>([]);
@@ -171,7 +170,9 @@ function PrintCom({ data, id }: any) {
     async function getData2() {
       try {
         setcustomerLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);
@@ -179,22 +180,23 @@ function PrintCom({ data, id }: any) {
         setcustomerLoading(false);
       }
     }
-    getData2();
+    if (myProfile._id) getData2();
   }, []);
 
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getAgreement");
+        const result = await axios.post("/api/getAgreement" ,{
+          createdBy: myProfile._id,
+        });
         dispatch(setAllAgreementValues(result.data.data[0].data));
         console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
-
 
   return (
     <>

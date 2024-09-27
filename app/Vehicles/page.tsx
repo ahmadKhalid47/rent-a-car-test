@@ -17,12 +17,12 @@ import { MediumLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -59,7 +59,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getVehicle");
+        const result = await axios.post("/api/getVehicle" ,{
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -73,7 +75,7 @@ export default function Vehicles() {
         setLoading(false);
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, [global.vehicleDataReloader]);
 
   useEffect(() => {

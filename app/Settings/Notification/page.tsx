@@ -10,6 +10,7 @@ import axios from "axios";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 
@@ -30,8 +31,9 @@ export default function AddUser() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getNotification");
-        console.log(result.data.data);
+        const result = await axios.post("/api/getNotification", {
+          createdBy: myProfile._id,
+        });
         setNewCar(result?.data?.data?.newCar);
         setNewChauffeur(result?.data?.data?.newChauffeur);
         setNewCustomer(result?.data?.data?.newCustomer);
@@ -41,7 +43,7 @@ export default function AddUser() {
       } finally {
       }
     }
-    getData();
+    if (myProfile._id) getData();
   }, []);
 
   return (
