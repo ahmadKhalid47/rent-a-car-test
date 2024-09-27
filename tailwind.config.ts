@@ -78,6 +78,7 @@ const config: Config = {
         dark2: "#1a1a1a",
         inputColor: "#f9f9f9",
         main_blue: "#242e69",
+        blackOpacity: "transparent",
       },
     },
   },

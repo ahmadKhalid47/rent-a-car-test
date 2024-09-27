@@ -116,7 +116,7 @@ export default function Vehicles() {
           {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
 
           {popup ? (
-            <div className="w-full h-full bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
+            <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
                 <div
                   className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
