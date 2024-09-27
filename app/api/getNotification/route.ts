@@ -3,9 +3,19 @@ import notificationSettingModel from "@/app/models/notificationSetting";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  const { createdBy } = await req.json();
+  if (!createdBy) {
+    return NextResponse.json(
+      { error: "createdBy is required" },
+      { status: 400 }
+    );
+  }
   try {
     connectDb();
-    let data = await notificationSettingModel.findOne().lean();
+    let data = await notificationSettingModel
+      .find({ createdBy })
+      .sort({ _id: -1 })
+      .lean();
     return NextResponse.json({
       data,
     });

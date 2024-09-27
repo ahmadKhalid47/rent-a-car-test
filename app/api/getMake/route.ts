@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     }
     await connectDb();
     const data = await MakeModel.find({ createdBy }).sort({ _id: -1 }).lean();
-    console.log(data);
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error("Error processing request: ", err);

@@ -4,14 +4,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-        const { createdBy } = await req.json();
-        if (!createdBy) {
-          return NextResponse.json(
-            { error: "createdBy is required" },
-            { status: 400 }
-          );
-        }
-
+    const { createdBy } = await req.json();
+    if (!createdBy) {
+      return NextResponse.json(
+        { error: "createdBy is required" },
+        { status: 400 }
+      );
+    }
     await connectDb();
     const data = await CountryModel.find({ createdBy })
       .sort({ _id: -1 })
