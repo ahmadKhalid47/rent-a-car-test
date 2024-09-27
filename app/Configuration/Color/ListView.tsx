@@ -102,7 +102,6 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyColor`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Items Deleted"));
     } catch (err) {
@@ -115,12 +114,16 @@ export default function ListView({ data }: dataType) {
   }
 
   async function editItem(_id: any) {
+    if (!isValidColor(Color)) {
+      alert("Invalid color");
+      return;
+    }
+
     try {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateColor/${_id}`, {
         Color,
       });
-      console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Item Updated"));
     } catch (err) {
@@ -148,11 +151,11 @@ export default function ListView({ data }: dataType) {
   }
 
   const allIds = data.map((item: any) => item?._id);
-const isValidColor = (color: any) => {
-  const s = new Option().style;
-  s.color = color;
-  return s.color !== "";
-};
+  const isValidColor = (color: any) => {
+    const s = new Option().style;
+    s.color = color;
+    return s.color !== "";
+  };
 
   return (
     <div className="w-full h-fit mt-4 relative">

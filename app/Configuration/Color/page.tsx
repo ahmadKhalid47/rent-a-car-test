@@ -23,8 +23,6 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Color, setColor] = useState("");
-  // const [ColorReloader, setColorReloader] = useState(0);
-  console.log(Color);
 
   useEffect(() => {
     if (isMobile) {
@@ -56,8 +54,10 @@ export default function Vehicles() {
         setDataLoading(false);
       }
     }
-    getData();
-  }, [global.vehicleDataReloader]);
+    if (myProfile._id) {
+      getData();
+    }
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
     if (Color.trim() === "") {
@@ -68,6 +68,11 @@ export default function Vehicles() {
       return;
     }
 
+    if (!isValidColor(Color)) {
+      alert("Invalid color");
+      return;
+    }
+
     try {
       setLoading(action);
       let result: any = await axios.post(`/api/saveColor`, {
@@ -75,7 +80,6 @@ export default function Vehicles() {
         createdBy: myProfile._id,
       });
       console.log(result);
-      // setColorReloader(ColorReloader + 1);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);
