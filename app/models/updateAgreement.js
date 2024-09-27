@@ -14,7 +14,9 @@ const updateAgreementSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+updateAgreementSchema.index({ createdBy: 1 });
 const updateAgreementModel =
-  mongoose.models.updateAgreement || mongoose.model("updateAgreement", updateAgreementSchema);
+  mongoose.models.updateAgreement ||
+  mongoose.model("updateAgreement", updateAgreementSchema);
 
 export default updateAgreementModel;

@@ -14,6 +14,9 @@ const CustomerSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+CustomerSchema.index({ createdBy: 1 });
+
 const CustomerModel =
   mongoose.models.Customer || mongoose.model("Customer", CustomerSchema);
 

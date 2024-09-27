@@ -14,6 +14,7 @@ const ModelSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+ModelSchema.index({ createdBy: 1 });
 const ModelModel =
   mongoose.models.Model || mongoose.model("Model", ModelSchema);
 

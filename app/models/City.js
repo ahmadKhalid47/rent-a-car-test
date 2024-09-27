@@ -8,13 +8,12 @@ const CitySchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",
       required: true,
-    }, 
+    },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
-
 
 CitySchema.index({ createdBy: 1 });
 

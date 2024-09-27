@@ -8,13 +8,12 @@ const chauffeurSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",
       required: true,
-    }, 
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 chauffeurSchema.index({ createdBy: 1 });
 

@@ -10,14 +10,26 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
+    const { createdBy } = await req.json();
+    if (!createdBy) {
+      return NextResponse.json(
+        { error: "createdBy is required" },
+        { status: 400 }
+      );
+    }
+
     await connectDb();
-    const color = await ColorModel.find().sort({ _id: -1 }).lean();
-    const make = await MakeModel.find().sort({ _id: -1 }).lean();
-    const model = await ModelModel.find().sort({ _id: -1 }).lean();
-    const feature = await FeatureModel.find().sort({ _id: -1 }).lean();
-    const type = await TypeModel.find().sort({ _id: -1 }).lean();
-    const country = await CountryModel.find().sort({ _id: -1 }).lean();
-    const city = await CityModel.find().sort({ _id: -1 }).lean();
+    const color = await ColorModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    const make = await MakeModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    const model = await ModelModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    const feature = await FeatureModel.find({ createdBy })
+      .sort({ _id: -1 })
+      .lean();
+    const type = await TypeModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    const country = await CountryModel.find({ createdBy })
+      .sort({ _id: -1 })
+      .lean();
+    const city = await CityModel.find({ createdBy }).sort({ _id: -1 }).lean();
 
     let wholeData = {
       color,
@@ -26,7 +38,7 @@ export async function POST(req: Request) {
       feature,
       type,
       country,
-      city
+      city,
     };
     return NextResponse.json({
       wholeData,

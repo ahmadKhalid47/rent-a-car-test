@@ -14,6 +14,7 @@ const companyProfileSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+companyProfileSchema.index({ createdBy: 1 });
 const companyProfileModel =
   mongoose.models.companyProfile ||
   mongoose.model("companyProfile", companyProfileSchema);

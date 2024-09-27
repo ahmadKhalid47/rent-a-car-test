@@ -15,6 +15,7 @@ import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
@@ -42,8 +43,12 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getCity");
-        const result2 = await axios.post("/api/getCountry");
+        const result = await axios.post("/api/getCity", {
+          createdBy: myProfile._id,
+        });
+        const result2 = await axios.post("/api/getCountry", {
+          createdBy: myProfile._id,
+        });
         setMakeData(result2?.data?.data);
 
         if (result?.data?.data) {
@@ -89,9 +94,7 @@ export default function Vehicles() {
       setLoading("");
     }
   }
-  let { countries, cities } = CountryCity(Make);
-  console.log(Make);
-  console.log(countries, cities);
+  let { cities } = CountryCity(Make);
 
   return (
     <div

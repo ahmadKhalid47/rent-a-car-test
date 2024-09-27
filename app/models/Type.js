@@ -15,6 +15,9 @@ const TypeSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+TypeSchema.index({ createdBy: 1 });
+
 const TypeModel = mongoose.models.Type || mongoose.model("Type", TypeSchema);
 
 export default TypeModel;

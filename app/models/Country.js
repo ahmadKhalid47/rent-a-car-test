@@ -13,6 +13,9 @@ const CountrySchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+CountrySchema.index({ createdBy: 1 });
+
 const CountryModel =
   mongoose.models.Country || mongoose.model("Country", CountrySchema);
 

@@ -13,6 +13,7 @@ const FeatureSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+FeatureSchema.index({ createdBy: 1 });;
 const FeatureModel =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
 

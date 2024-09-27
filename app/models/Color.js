@@ -13,6 +13,7 @@ const ColorSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+ColorSchema.index({ createdBy: 1 });;
 const ColorModel =
   mongoose.models.Color || mongoose.model("Color", ColorSchema);
 

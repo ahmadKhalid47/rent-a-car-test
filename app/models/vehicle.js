@@ -15,6 +15,7 @@ const VehicleSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+VehicleSchema.index({ createdBy: 1 });
 const VehicleModel =
   mongoose.models.Vehicle || mongoose.model("Vehicle", VehicleSchema);
 

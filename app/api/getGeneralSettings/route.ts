@@ -4,8 +4,19 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
+        const { createdBy } = await req.json();
+        if (!createdBy) {
+          return NextResponse.json(
+            { error: "createdBy is required" },
+            { status: 400 }
+          );
+        }
+
     await connectDb();
-    const data = await updateGeneralSettingsModel.find().sort({ _id: -1 }).lean();
+    const data = await updateGeneralSettingsModel
+      .find({ createdBy })
+      .sort({ _id: -1 })
+      .lean();
     console.log(data);
     return NextResponse.json({
       data,

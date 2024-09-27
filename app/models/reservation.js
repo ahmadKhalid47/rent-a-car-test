@@ -14,6 +14,9 @@ const reservationSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+reservationSchema.index({ createdBy: 1 });
+
 const reservationModel =
   mongoose.models.reservation ||
   mongoose.model("reservation", reservationSchema);

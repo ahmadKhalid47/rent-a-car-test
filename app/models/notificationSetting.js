@@ -18,6 +18,9 @@ const notificationSettingSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+notificationSettingSchema.index({ createdBy: 1 });
+
 const notificationSettingModel =
   mongoose.models.notificationSetting ||
   mongoose.model("notificationSetting", notificationSettingSchema);

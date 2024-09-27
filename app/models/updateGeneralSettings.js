@@ -13,6 +13,9 @@ const updateGeneralSettingsSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+updateGeneralSettingsSchema.index({ createdBy: 1 });
+
 const updateGeneralSettingsModel =
   mongoose.models.updateGeneralSettings ||
   mongoose.model("updateGeneralSettings", updateGeneralSettingsSchema);

@@ -14,7 +14,6 @@ const MakeSchema = mongoose.Schema(
   }
 );
 
-
 MakeSchema.index({ createdBy: 1 });
 
 const MakeModel = mongoose.models.Make || mongoose.model("Make", MakeSchema);

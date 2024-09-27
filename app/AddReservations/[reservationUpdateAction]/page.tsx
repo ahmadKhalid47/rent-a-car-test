@@ -17,6 +17,7 @@ import { resetState, setAllValues } from "@/app/store/reservations";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let reservation = useSelector((state: RootState) => state.reservation);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [currentPage, setCurrentPage] = useState(0);
@@ -48,7 +49,9 @@ export default function Reservations() {
     async function getData() {
       try {
         setcustomerLoading(true);
-        const result = await axios.post("/api/getCustomer");
+        const result = await axios.post("/api/getCustomer", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setCustomersData(result.data.data);
@@ -68,7 +71,9 @@ export default function Reservations() {
     async function getData() {
       try {
         setchauffeursLoading(true);
-        const result = await axios.post("/api/getchauffeur");
+        const result = await axios.post("/api/getchauffeur", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
@@ -88,7 +93,9 @@ export default function Reservations() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle");
+        const result = await axios.post("/api/getVehicle", {
+          createdBy: myProfile._id,
+        });
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);

@@ -4,11 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let {Feature} = await req.json();
-    console.log(Feature);
-
+    let { Feature, createdBy } = await req.json();
     connectDb();
-    await new FeatureModel({ Feature }).save();
+    await new FeatureModel({ Feature, createdBy }).save();
     return NextResponse.json({
       success: "User Created",
     });

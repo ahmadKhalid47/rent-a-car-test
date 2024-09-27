@@ -4,13 +4,14 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { Type, exterior, interior } = await req.json();
+    let { Type, exterior, interior, createdBy } = await req.json();
 
     connectDb();
     await new TypeModel({
       Type,
       exterior: exterior[0],
       interior: interior[0],
+      createdBy,
     }).save();
     return NextResponse.json({
       success: "User Created",

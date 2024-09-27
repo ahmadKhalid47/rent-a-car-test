@@ -14,6 +14,8 @@ const updateInvoicingSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+updateInvoicingSchema.index({ createdBy: 1 });
 const updateInvoicingModel =
   mongoose.models.updateInvoicing || mongoose.model("updateInvoicing", updateInvoicingSchema);
 
