@@ -424,9 +424,10 @@ export default function ListViewchauffeurs({ data }: dataType) {
       </div>
       <div className="w-full h-[32px] mt-10 flex justify-between items-center">
         <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
-          Showing {(page - 1) * itemsPerPage + 1} -{" "}
-          {Math.min(page * itemsPerPage, data.length)} of {data.length} data{" "}
+          Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
+          {Math.min(page * itemsPerPage, data.length)} of {data.length} data
         </div>
+
         <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
           <PaginationComponent
             totalPages={totalPages}
