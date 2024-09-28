@@ -51,7 +51,10 @@ export default function AddUser() {
   async function editItem() {
     try {
       setSaveLoading(true);
-      await axios.post(`/api/updateAgreement`, { Agreement });
+      await axios.post(`/api/updateAgreement`, {
+        Agreement,
+        createdBy: myProfile._id,
+      });
     } catch (err) {
       console.log(err);
     } finally {

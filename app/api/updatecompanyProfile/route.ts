@@ -8,7 +8,8 @@ export async function POST(req: Request) {
     connectDb();
     await companyProfileModel.updateOne(
       { createdBy },
-      { $set: { profilePic: profilePic, profilePic2: profilePic2 } }
+      { $set: { profilePic: profilePic, profilePic2: profilePic2 } },
+      { upsert: true }
     );
     return NextResponse.json({
       success: "User Created",

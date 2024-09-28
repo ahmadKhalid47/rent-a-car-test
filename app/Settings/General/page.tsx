@@ -81,8 +81,14 @@ export default function AddUser() {
     let currency = global.currentCurrency;
     try {
       setSaveLoading(true);
-      await axios.post(`/api/updateInvoicing`, { Invoicing });
-      await axios.post(`/api/updateGeneralSettings`, { currency });
+      await axios.post(`/api/updateInvoicing`, {
+        Invoicing,
+        createdBy: myProfile._id,
+      });
+      await axios.post(`/api/updateGeneralSettings`, {
+        currency,
+        createdBy: myProfile._id,
+      });
       if (typeof window !== "undefined") {
         localStorage.setItem("currency", global.currentCurrency);
       }

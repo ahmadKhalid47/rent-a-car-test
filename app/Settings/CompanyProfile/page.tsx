@@ -19,6 +19,7 @@ export default function AddUser() {
   let companyProfile: any = useSelector(
     (state: RootState) => state.companyProfile
   );
+  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [showError, setShowError] = useState(null);
@@ -59,6 +60,7 @@ export default function AddUser() {
       await axios.post(`/api/updatecompanyProfile`, {
         profilePic: res?.data?.message[0],
         profilePic2: res2?.data?.message[0],
+        createdBy: myProfile._id,
       });
       // localStorage.setItem("companyLogo", res?.data?.message[0]);
       // localStorage.setItem("companyLogo2", res2?.data?.message[0]);

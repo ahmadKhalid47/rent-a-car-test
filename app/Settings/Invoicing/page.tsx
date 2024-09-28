@@ -92,7 +92,10 @@ export default function AddUser() {
   async function editItem() {
     try {
       setSaveLoading(true);
-      await axios.post(`/api/updateInvoicing`, { Invoicing });
+      await axios.post(`/api/updateInvoicing`, {
+        Invoicing,
+        createdBy: myProfile._id,
+      });
     } catch (err) {
       console.log(err);
     } finally {

@@ -29,6 +29,7 @@ export default function Vehicles() {
       try {
         const result = await axios.post("/api/getcompanyProfile", {
           createdBy: myProfile._id,
+          // createdBy: "66bb08c424d4ea013c61db3d",
         });
         const profilePic = result?.data?.data?.profilePic;
         const profilePic2 = result?.data?.data?.profilePic2;

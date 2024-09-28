@@ -13,11 +13,14 @@ const notificationFields: Record<string, string> = {
 
 export async function POST(req: Request) {
   try {
-    let { value, valueKey } = await req.json();
+    let { value, valueKey, createdBy } = await req.json();
     connectDb();
     const updateField = { [notificationFields[valueKey]]: value };
-    await notificationSettingModel.updateOne({}, { $set: updateField });
-
+    await notificationSettingModel.updateOne(
+      { createdBy },
+      { $set: updateField },
+      { upsert: true }
+    );
     return NextResponse.json({
       success: "User Created",
     });

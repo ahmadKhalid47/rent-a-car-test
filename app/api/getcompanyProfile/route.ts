@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { createdBy } = await req.json();
+    const { createdBy } = await req.json(); 
     if (!createdBy) {
       return NextResponse.json(
         { error: "createdBy is required" },
