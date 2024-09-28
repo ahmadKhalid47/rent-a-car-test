@@ -62,8 +62,8 @@ export default function AddUser() {
         profilePic2: res2?.data?.message[0],
         createdBy: myProfile._id,
       });
-      // localStorage.setItem("companyLogo", res?.data?.message[0]);
-      // localStorage.setItem("companyLogo2", res2?.data?.message[0]);
+      localStorage.setItem("companyLogo", res?.data?.message[0]);
+      localStorage.setItem("companyLogo2", res2?.data?.message[0]);
       dispatch(setcompanyProfileReloader(global.companyProfileReloader + 1));
     } catch (err) {
       console.log(err);

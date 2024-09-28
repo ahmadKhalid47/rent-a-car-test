@@ -21,40 +21,14 @@ export default function Vehicles() {
   let companyProfile: any = useSelector(
     (state: RootState) => state.companyProfile
   );
-  const [loading, setLoading] = useState<any>(false);
   let dispatch = useDispatch();
 
   useEffect(() => {
-    async function getData() {
-      try {
-        const result = await axios.post("/api/getcompanyProfile", {
-          createdBy: myProfile._id,
-          // createdBy: "66bb08c424d4ea013c61db3d",
-        });
-        const profilePic = result?.data?.data?.profilePic;
-        const profilePic2 = result?.data?.data?.profilePic2;
-        // if (typeof window !== "undefined") {
-        //   localStorage.setItem("companyLogo", profilePic);
-        //   localStorage.setItem("companyLogo2", profilePic2);
-        dispatch(setCompanyLogo([profilePic]));
-        dispatch(setCompanyLogo2([profilePic2]));
-        // }
-      } catch (error) {
-        console.error("Error fetching company profile:", error);
-      }
+    if (typeof window !== "undefined") {
+      const storedLogo2 = localStorage.getItem("companyLogo2");
+      dispatch(setCompanyLogo2([storedLogo2]));
     }
-    // if (typeof window !== "undefined") {
-    //   const storedLogo = localStorage.getItem("companyLogo");
-    //   const storedLogo2 = localStorage.getItem("companyLogo2");
-    //   if (storedLogo && storedLogo2) {
-    //     dispatch(setCompanyLogo([storedLogo]));
-    //     dispatch(setCompanyLogo2([storedLogo2]));
-    //   } else {
-    // getData();
-    //   }
-    // }
-    if (myProfile._id) getData();
-  }, [myProfile._id]);
+  }, []);
 
   return (
     <div className="w-full h-fit">
