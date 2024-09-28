@@ -226,7 +226,7 @@ export default function Nav() {
           src={bar.src}
           className={`${
             global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
-          } h-full dark:filter dark:brightness-[0] dark:invert`}
+          } h-full dark:filter dark:brightness-[0] dark:invert cursor-pointer`}
         />
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">
@@ -241,7 +241,7 @@ export default function Nav() {
             }
             className={`${
               myProfile?.profilePic ? "w-[100%] h-[100%]" : "w-[24px] h-[24px]"
-            }`}
+            } cursor-pointer`}
           />
           {isOpen && (
             <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-start items-start divide-y-[1px] divide-[#d9d9d9] p-4">

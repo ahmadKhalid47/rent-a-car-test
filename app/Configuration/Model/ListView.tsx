@@ -184,7 +184,7 @@ export default function ListView({ data, makeData }: dataType) {
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
-                className={`w-[15px] h-[15px] rounded-[1px] ${
+                className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length !== data.length ? "" : "bg-check"
                 } border-2 border-dark-grey`}
                 onClick={() => {
@@ -218,7 +218,7 @@ export default function ListView({ data, makeData }: dataType) {
               >
                 <div className="text-center w-[6%] flex justify-center items-center ">
                   <div
-                    className={`w-[15px] h-[15px] rounded-[1px] ${
+                    className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                       itemToDeleteMany?.includes(item?._id)
                         ? "bg-check"
                         : ""
