@@ -185,7 +185,9 @@ export default function ListView({ data, makeData }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length === data.length && data.length!==0 ? "bg-check" : ""
+                  itemToDeleteMany.length === data.length && data.length !== 0
+                    ? "bg-check"
+                    : ""
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
@@ -207,207 +209,209 @@ export default function ListView({ data, makeData }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.map((item: any, index: number) => (
-            <div key={index} className="w-full">
-              <div
-                className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
-                  index % 2 !== 0
-                    ? "dark:bg-dark2 bg-light-grey"
-                    : "dark:bg-dark1 bg-white"
-                } border-b-2 border-grey`}
-              >
-                <div className="text-center w-[6%] flex justify-center items-center ">
-                  <div
-                    className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                      itemToDeleteMany?.includes(item?._id)
-                        ? "bg-check"
-                        : ""
-                    } border-2 border-dark-grey`}
-                    onClick={() => {
-                      handlePushItem(item?._id);
-                    }}
-                  ></div>
-                </div>
-                <h5 className="text-start pe-5 w-[7%]">
-                  {JSON.stringify(
-                    index + (page - 1) * itemsPerPage + 1
-                  ).padStart(2, "0")}{" "}
-                </h5>
-                <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
-                <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
+          {paginatedData.map((item: any, index: number) =>
+            paginatedData.length < 1 ? (
+              "No Models found. Please add a Model."
+            ) : (
+              <div key={index} className="w-full">
                 <div
-                  className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                  }}
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                    index % 2 !== 0
+                      ? "dark:bg-dark2 bg-light-grey"
+                      : "dark:bg-dark1 bg-white"
+                  } border-b-2 border-grey`}
                 >
-                  <img
-                                        src={edit.src}
-                    title="Edit"
-                    className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
-                    onClick={() => {
-                      setEditPopup(true);
-                      setItemToEdit(item?._id);
-                      setMake(item?.make);
-                      setModel(item?.model);
+                  <div className="text-center w-[6%] flex justify-center items-center ">
+                    <div
+                      className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
+                        itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
+                      } border-2 border-dark-grey`}
+                      onClick={() => {
+                        handlePushItem(item?._id);
+                      }}
+                    ></div>
+                  </div>
+                  <h5 className="text-start pe-5 w-[7%]">
+                    {JSON.stringify(
+                      index + (page - 1) * itemsPerPage + 1
+                    ).padStart(2, "0")}{" "}
+                  </h5>
+                  <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
+                  <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
+                  <div
+                    className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
                     }}
-                  />
+                  >
+                    <img
+                      src={edit.src}
+                      title="Edit"
+                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
+                      onClick={() => {
+                        setEditPopup(true);
+                        setItemToEdit(item?._id);
+                        setMake(item?.make);
+                        setModel(item?.model);
+                      }}
+                    />
 
-                  <img
-                    className="hover:scale-[1.3] cursor-pointer"
-                                        src={deleteIcon.src}
-                    title="Delete"
-                    onClick={() => {
-                      setPopup(true);
-                      setItemToDelete(item?._id);
-                    }}
-                  />
-                </div>
-              </div>
-              {popup ? (
-                <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
-                    <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                        Are you sure you want to delete this item
-                      </label>
-                    </div>
-                    <div
-                      className={`w-full flex justify-end gap-4 items-center pt-4`}
-                    >
-                      <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => {
-                          setPopup(false);
-                        }}
-                      >
-                        No
-                      </button>
-                      <button
-                        className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => {
-                          deleteItem(itemToDelete);
-                        }}
-                        disabled={deleteLoading}
-                      >
-                        {deleteLoading ? <SmallLoader /> : "Yes"}
-                      </button>
-                    </div>
+                    <img
+                      className="hover:scale-[1.3] cursor-pointer"
+                      src={deleteIcon.src}
+                      title="Delete"
+                      onClick={() => {
+                        setPopup(true);
+                        setItemToDelete(item?._id);
+                      }}
+                    />
                   </div>
                 </div>
-              ) : null}
-              {deleteManyPopup ? (
-                <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
-                    <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-                      <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                        Are you sure you want to delete these items
-                      </label>
-                    </div>
-                    <div
-                      className={`w-full flex justify-end gap-4 items-center pt-4`}
-                    >
-                      <button
-                        className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => {
-                          setDeleteManyPopup(false);
-                        }}
+                {popup ? (
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
+                      <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                        <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                          Are you sure you want to delete this item
+                        </label>
+                      </div>
+                      <div
+                        className={`w-full flex justify-end gap-4 items-center pt-4`}
                       >
-                        No
-                      </button>
-                      <button
-                        className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => {
-                          deleteManyItem();
-                        }}
-                        disabled={deleteLoading}
-                      >
-                        {deleteLoading ? <SmallLoader /> : "Yes"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-              {editPopup ? (
-                <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
-                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
-                    <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
-                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                        Select Make
-                        <FaAsterisk className="text-[6px] text-red-600" />
-                      </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                        <select
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-                          required={true}
-                          onChange={(e) => {
-                            setMake(e.target.value);
+                        <button
+                          className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => {
+                            setPopup(false);
                           }}
-                          value={Make}
                         >
-                          <option value={""}>Select</option>
-                          {makeData?.map((item: any, key: number) => (
-                            <option value={item?.make} key={key}>
-                              {item?.make}
-                            </option>
-                          ))}
-                        </select>
-                        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                          <img
-                            src={shape.src}
-                            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                          No
+                        </button>
+                        <button
+                          className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => {
+                            deleteItem(itemToDelete);
+                          }}
+                          disabled={deleteLoading}
+                        >
+                          {deleteLoading ? <SmallLoader /> : "Yes"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+                {deleteManyPopup ? (
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
+                      <div className="w-full h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                        <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                          Are you sure you want to delete these items
+                        </label>
+                      </div>
+                      <div
+                        className={`w-full flex justify-end gap-4 items-center pt-4`}
+                      >
+                        <button
+                          className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => {
+                            setDeleteManyPopup(false);
+                          }}
+                        >
+                          No
+                        </button>
+                        <button
+                          className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => {
+                            deleteManyItem();
+                          }}
+                          disabled={deleteLoading}
+                        >
+                          {deleteLoading ? <SmallLoader /> : "Yes"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+                {editPopup ? (
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
+                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                      <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                          Select Make
+                          <FaAsterisk className="text-[6px] text-red-600" />
+                        </label>
+                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <select
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                            required={true}
+                            onChange={(e) => {
+                              setMake(e.target.value);
+                            }}
+                            value={Make}
+                          >
+                            <option value={""}>Select</option>
+                            {makeData?.map((item: any, key: number) => (
+                              <option value={item?.make} key={key}>
+                                {item?.make}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                            <img
+                              src={shape.src}
+                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                      >
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                          {"Update Model"}
+                          <FaAsterisk className="text-[6px] text-red-600" />
+                        </label>
+                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <input
+                            required={true}
+                            type={"text"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            placeholder={`Enter Text Here`}
+                            onChange={(e) => {
+                              setModel(e.target.value);
+                            }}
+                            value={Model}
                           />
                         </div>
                       </div>
-                    </div>
 
-                    <div
-                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
-                    >
-                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                        {"Update Model"}
-                        <FaAsterisk className="text-[6px] text-red-600" />
-                      </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                        <input
-                          required={true}
-                          type={"text"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                          placeholder={`Enter Text Here`}
-                          onChange={(e) => {
-                            setModel(e.target.value);
+                      <div
+                        className={`w-full flex justify-end gap-4 items-center pt-4`}
+                      >
+                        <button
+                          className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
+                          onClick={() => {
+                            setEditPopup(false);
+                            setModel("");
                           }}
-                          value={Model}
-                        />
+                        >
+                          <FaTimes />
+                        </button>
+                        <button
+                          className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          onClick={() => editItem(itemToEdit)}
+                          disabled={editLoading}
+                        >
+                          {editLoading ? <SmallLoader /> : "Update and Close"}
+                        </button>
                       </div>
                     </div>
-
-                    <div
-                      className={`w-full flex justify-end gap-4 items-center pt-4`}
-                    >
-                      <button
-                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
-                        onClick={() => {
-                          setEditPopup(false);
-                          setModel("");
-                        }}
-                      >
-                        <FaTimes />
-                      </button>
-                      <button
-                        className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                        onClick={() => editItem(itemToEdit)}
-                        disabled={editLoading}
-                      >
-                        {editLoading ? <SmallLoader /> : "Update and Close"}
-                      </button>
-                    </div>
                   </div>
-                </div>
-              ) : null}
-            </div>
-          ))}
+                ) : null}
+              </div>
+            )
+          )}
         </div>
       </div>
       <div className="w-full h-[32px] mt-10 flex justify-between items-center">
