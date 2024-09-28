@@ -274,10 +274,12 @@ export default function ListViewchauffeurs({ data }: dataType) {
             </div>
           </div>
 
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Chauffeurs found. Please add a Chauffeur."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">
+              No Chauffeurs found. Please add a Chauffeur.
+            </span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <Link
                   href={`/ChauffeursInfo/${item?._id}`}
@@ -416,7 +418,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

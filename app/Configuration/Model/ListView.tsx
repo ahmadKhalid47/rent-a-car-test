@@ -88,8 +88,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.delete(`/api/deleteModel/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Deleted"));
-
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -107,8 +106,7 @@ export default function ListView({ data, makeData }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Items Deleted"));
-
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -127,8 +125,7 @@ export default function ListView({ data, makeData }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Updated"));
-
+      dispatch(setAlert("Item Updated"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -209,10 +206,10 @@ export default function ListView({ data, makeData }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Models found. Please add a Model."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">No Models found. Please add a Model.</span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
                   className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
@@ -410,7 +407,7 @@ export default function ListView({ data, makeData }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

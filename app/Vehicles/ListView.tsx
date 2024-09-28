@@ -198,7 +198,7 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-console.log(paginatedData);
+  console.log(paginatedData);
 
   return (
     <div className="w-full h-fit mt-4">
@@ -324,11 +324,12 @@ console.log(paginatedData);
               Actions{" "}
             </div>
           </div>
-          {
-            paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Vehicles found. Please add a Vehicle."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">
+              No Vehicles found. Please add a Vehicle.
+            </span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <Link
                   href={`/VehicleInfo/${item?._id}`}
@@ -476,7 +477,7 @@ console.log(paginatedData);
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

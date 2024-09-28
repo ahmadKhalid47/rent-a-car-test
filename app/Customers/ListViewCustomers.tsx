@@ -92,8 +92,7 @@ export default function ListViewCustomers({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCustomer/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Deleted"));
-
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -110,8 +109,7 @@ export default function ListViewCustomers({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Items Deleted"));
-
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -145,9 +143,8 @@ export default function ListViewCustomers({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Updated"));
+      dispatch(setAlert("Item Updated"));
       dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -165,7 +162,6 @@ export default function ListViewCustomers({ data }: dataType) {
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert(active ? "Items Activated" : "Items Deactivated"));
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -289,10 +285,12 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
           </div>
 
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Chauffeurs found. Please add a Chauffeur."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">
+              No Chauffeurs found. Please add a Chauffeur.
+            </span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <Link
                   href={`/CustomerInfo/${item?._id}`}
@@ -440,7 +438,7 @@ export default function ListViewCustomers({ data }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

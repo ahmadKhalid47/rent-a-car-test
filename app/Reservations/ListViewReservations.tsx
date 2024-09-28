@@ -93,8 +93,7 @@ export default function ListViewreservation({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deletereservation/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Deleted"));
-
+      dispatch(setAlert("Item Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -111,8 +110,7 @@ export default function ListViewreservation({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Items Deleted"));
-
+      dispatch(setAlert("Items Deleted"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -225,10 +223,12 @@ export default function ListViewreservation({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Reservations found. Please add a Reservation."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">
+              No Reservations found. Please add a Reservation.
+            </span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <Link
                   href={`/ReservationsInfo/${item?._id}`}
@@ -409,7 +409,7 @@ export default function ListViewreservation({ data }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

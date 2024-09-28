@@ -120,7 +120,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-            dispatch(setAlert("Item Updated"));
+      dispatch(setAlert("Item Updated"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -198,10 +198,10 @@ export default function ListView({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Makes found. Please add a Make."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">No Makes found. Please add a Make.</span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
                   className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
@@ -368,7 +368,7 @@ export default function ListView({ data }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>

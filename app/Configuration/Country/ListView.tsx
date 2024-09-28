@@ -195,10 +195,12 @@ export default function ListView({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.map((item: any, index: number) =>
-            paginatedData.length < 1 ? (
-              "No Countries found. Please add a Country."
-            ) : (
+          {paginatedData.length < 1 ? (
+            <span className="p-3">
+              No Countries found. Please add a Country.
+            </span>
+          ) : (
+            paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
                   className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
@@ -367,7 +369,7 @@ export default function ListView({ data }: dataType) {
                   </div>
                 ) : null}
               </div>
-            )
+            ))
           )}
         </div>
       </div>
