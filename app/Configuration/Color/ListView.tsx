@@ -188,7 +188,7 @@ export default function ListView({ data }: dataType) {
             <div className="text-center w-[6%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length !== data.length ? "" : "bg-check"
+                  itemToDeleteMany.length === data.length && data.length!==0 ? "bg-check" : ""
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
