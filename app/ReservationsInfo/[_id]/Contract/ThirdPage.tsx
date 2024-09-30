@@ -6,7 +6,6 @@ export default function ThirdPage({ customersName, id }: any) {
   let Agreement = useSelector((state: RootState) => state.Agreement);
   const today = new Date();
   const todayDate = today.toISOString().split("T")[0];
-  console.log(Agreement?.terms);
 
   return (
     <div

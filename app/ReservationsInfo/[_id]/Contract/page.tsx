@@ -19,6 +19,7 @@ import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
 import { setConfigurations } from "@/app/store/Configurations";
 import ThirdPage from "./ThirdPage";
+import Link from "next/link";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -74,7 +75,11 @@ export default function reservationInfoMainPage() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Contract
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Reservations / All Reservations / {formatId(_id)} / Contract
+              <Link href={"/Reservations"} className="hover:underline">
+                Reservations / All Reservations
+              </Link>
+              {" / "}
+              {formatId(_id)} / Contract
             </p>
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
@@ -124,7 +129,7 @@ function PrintCom({ data, id }: any) {
     if (data?.customer_id) {
       getData();
     }
-  }, [data]);
+  }, [data?.customer_id]);
 
   // Chauffeur Data
   useEffect(() => {
@@ -144,7 +149,7 @@ function PrintCom({ data, id }: any) {
     if (data?.chauffeur_id) {
       getData();
     }
-  }, [data]);
+  }, [data?.chauffeur_id]);
 
   // vehicle Data
   useEffect(() => {
@@ -165,7 +170,7 @@ function PrintCom({ data, id }: any) {
     if (data?.vehicle_id) {
       getData();
     }
-  }, [data]);
+  }, [data?.vehicle_id]);
 
   // Configuration Data
   useEffect(() => {
@@ -192,7 +197,6 @@ function PrintCom({ data, id }: any) {
           createdBy: myProfile._id,
         });
         dispatch(setAllAgreementValues(result.data.data[0].data));
-        console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
