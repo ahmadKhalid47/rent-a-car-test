@@ -65,7 +65,7 @@ export default function CustomerInfoMainPage() {
             {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </h3>
           <div className="flex justify-between items-start">
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               Customers / All Customers /{" "}
               {CustomerInfo?.name ? CustomerInfo?.name : "---"}
             </p>

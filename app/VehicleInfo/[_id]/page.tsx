@@ -74,7 +74,7 @@ export default function CarInfoMainPage() {
                 {vehicleInfo.make} {vehicleInfo.model}
               </h3>
               <div className="flex justify-between items-start">
-                <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
+                <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
                   Vehicles / All Vehicles / {vehicleInfo.make}{" "}
                   {vehicleInfo.model}
                 </p>

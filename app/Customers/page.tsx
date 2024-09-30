@@ -156,7 +156,7 @@ export default function Vehicles() {
         <div className="w-[100%] gap-y-3 flex flex-wrap justify-between md:justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             All Customers
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               Customers / All Customers
             </p>
           </h3>

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -17,6 +18,7 @@ import { SmallLoader } from "../../Components/Loader";
 import { useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
+import Link from "next/link";
 
 export default function Vehicles() {
   const params = useParams();
@@ -72,7 +74,9 @@ export default function Vehicles() {
     async function getData2() {
       try {
         setLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {createdBy: myProfile._id});
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
         if (result) {
           dispatch(setConfigurations(result?.data?.wholeData));
         } else {
@@ -84,7 +88,7 @@ export default function Vehicles() {
         setLoading(false);
       }
     }
-    
+
     getData2();
   }, []);
 
@@ -236,9 +240,11 @@ export default function Vehicles() {
             {vehicleUpdateAction !== "AddNew"
               ? "Update Vehicle " + vehicle.vehicleId
               : "Add New Vehicle"}
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               {" "}
-              Vehicles /
+              <Link href={"/Vehicles"} className="hover:underline">
+                Vehicles
+              </Link>{" / "}
               {vehicleUpdateAction !== "AddNew"
                 ? "Update Vehicle"
                 : "Add New Vehicle"}
