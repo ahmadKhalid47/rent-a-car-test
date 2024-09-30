@@ -3,7 +3,7 @@ import React from "react";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
 import { useSelector } from "react-redux";

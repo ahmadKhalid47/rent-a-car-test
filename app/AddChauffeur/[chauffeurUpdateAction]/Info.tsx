@@ -3,7 +3,7 @@ import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
 import vip from "@/public/vip.svg";

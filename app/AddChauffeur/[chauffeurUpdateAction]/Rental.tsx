@@ -2,7 +2,7 @@
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";

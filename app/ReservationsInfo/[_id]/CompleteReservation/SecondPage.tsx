@@ -9,7 +9,7 @@ import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import shape from "@/public/ShapeBlack.svg";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { setdamages, setdamageImagesToDelete } from "@/app/store/reservations";
 import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";

@@ -5,7 +5,7 @@ import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import {
   TempTypeInput,
   TempTypeInputInfo,
