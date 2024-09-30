@@ -144,17 +144,18 @@ export default function GridView({ data }: dataType) {
               />
               <div className="relative">
                 {isOpen === item._id && (
-                  <div className="z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-start">
+                  <div className="w-[130px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-center py-3">
                     <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                       onClick={() => {
                         router.push(`/AddVehicle/${item?._id}`);
                       }}
                     >
                       Edit
                     </button>
+                    <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
                     <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                       onClick={() => {
                         setPopup(true);
                         setItemToDelete(item?._id);
@@ -162,8 +163,9 @@ export default function GridView({ data }: dataType) {
                     >
                       Delete
                     </button>
+                    <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
                     <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full text-start"
+                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
