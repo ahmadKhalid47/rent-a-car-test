@@ -4,6 +4,7 @@ import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import AdminSidebar from "./AdminSidebar";
 import UserSidebar from "./UserSidebar";
+import { SideBarLoader } from "./Loader";
 
 export default function Sidebar() {
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
@@ -12,5 +13,7 @@ export default function Sidebar() {
     <AdminSidebar />
   ) : myProfile.admin === false ? (
     <UserSidebar />
-  ) : null;
+  ) : (
+    <SideBarLoader />
+  );
 }
