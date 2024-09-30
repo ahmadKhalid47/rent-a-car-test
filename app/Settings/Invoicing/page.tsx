@@ -18,6 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import axios from "axios";
+import Link from "next/link";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -121,9 +122,12 @@ export default function AddUser() {
         <div className="w-[100%]  flex justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Invoicing
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] dark:text-white text-black">
-              Settings / Invoicing
-            </p>
+            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
+              <Link href={"/Settings"} className="hover:underline">
+                Settings
+              </Link>{" "}
+              / Invoicing
+            </p>{" "}
           </h3>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5 gap-5">

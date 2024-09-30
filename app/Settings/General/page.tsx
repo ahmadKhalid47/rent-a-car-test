@@ -19,6 +19,7 @@ import {
 } from "@/app/store/Invoicing";
 import { Switch } from "@/components/ui/switch";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
@@ -130,8 +131,11 @@ export default function AddUser() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] w-[100%] md:w-[50%]">
             General
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Settings / General
-            </p>
+              <Link href={"/Settings"} className="hover:underline">
+                Settings
+              </Link>{" "}
+              / General{" "}
+            </p>{" "}
           </h3>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
