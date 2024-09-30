@@ -1,4 +1,4 @@
-import React from "react";
+
 import shape from "@/public/ShapeBlack.svg";
 import { FaAsterisk } from "react-icons/fa";
 import { GrCircleInformation } from "react-icons/gr";

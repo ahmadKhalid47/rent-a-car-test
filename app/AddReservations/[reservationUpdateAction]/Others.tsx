@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import car from "@/public/PaymentCar.svg";
 import { TempTypeInputWidth } from "../../Components/InputComponents/TypeInput";
 import { RootState } from "@/app/store";

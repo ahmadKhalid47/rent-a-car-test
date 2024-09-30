@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import bar from "@/public/car.svg";
 import Link from "next/link";
 import { RootState } from "../store";

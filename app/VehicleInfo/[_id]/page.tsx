@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import General from "./General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";

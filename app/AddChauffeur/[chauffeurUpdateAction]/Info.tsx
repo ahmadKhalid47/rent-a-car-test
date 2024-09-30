@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";

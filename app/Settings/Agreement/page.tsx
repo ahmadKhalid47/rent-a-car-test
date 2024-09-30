@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import dynamic from "next/dynamic";
 import { RootState } from "@/app/store";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +10,7 @@ import { settermsR, setAllValues } from "@/app/store/Agreement";
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import axios from "axios";
-import React from "react";
+
 import Link from "next/link";
 
 // Dynamically import JoditEditor to disable SSR

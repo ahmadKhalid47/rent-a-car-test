@@ -89,8 +89,8 @@ export default function Vehicles() {
       }
     }
 
-    getData2();
-  }, []);
+    if (myProfile._id) getData2();
+  }, [myProfile._id]);
 
   let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

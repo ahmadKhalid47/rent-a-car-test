@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import shape from "@/public/ShapeBlack.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";

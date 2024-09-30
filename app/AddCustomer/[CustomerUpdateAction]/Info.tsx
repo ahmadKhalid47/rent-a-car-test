@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import vip from "@/public/vip.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useState, useEffect, useCallback } from "react";

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import vip from "@/public/vip.svg";
 import GeneralCustomer from "./GeneralCustomer";
 import IdentityCustomer from "./IdentityCustomer";

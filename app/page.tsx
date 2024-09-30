@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import White from "@/public/White.png";

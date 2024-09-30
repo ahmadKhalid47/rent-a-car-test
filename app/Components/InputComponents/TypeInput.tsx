@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FaAsterisk } from "react-icons/fa";
 import { GrCircleInformation } from "react-icons/gr";
 import { Popover } from "antd";

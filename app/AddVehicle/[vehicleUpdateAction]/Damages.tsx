@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import shape from "@/public/ShapeBlack.svg";
 import { useState, useEffect } from "react";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";

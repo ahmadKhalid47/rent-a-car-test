@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import vip from "@/public/vip.svg";
 import Generalreservation from "./Generalreservation";
 import Identityreservation from "./Identityreservation";

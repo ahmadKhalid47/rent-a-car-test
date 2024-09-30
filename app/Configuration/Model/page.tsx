@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { RootState } from "@/app/store";
 import shape from "@/public/ShapeBlack.svg";
 import { FaAsterisk, FaTimes } from "react-icons/fa";

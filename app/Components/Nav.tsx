@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import bar from "@/public/Layer_1 bar.svg";
 import account from "@/public/account.svg";
 import { useDispatch, useSelector } from "react-redux";
