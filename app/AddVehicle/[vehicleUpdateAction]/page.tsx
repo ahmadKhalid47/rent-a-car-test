@@ -140,9 +140,11 @@ export default function Vehicles() {
       }));
 
       let result: any = await axios.post(`/api/saveVehicle`, {
-        ...vehicle,
-        carImages: res?.data?.message,
-        damages: updatedObjects,
+        vehicle: {
+          ...vehicle,
+          carImages: res?.data?.message,
+          damages: updatedObjects,
+        },
         createdBy: myProfile._id,
       });
       if (result?.data?.success) {
@@ -244,7 +246,8 @@ export default function Vehicles() {
               {" "}
               <Link href={"/Vehicles"} className="hover:underline">
                 Vehicles
-              </Link>{" / "}
+              </Link>
+              {" / "}
               {vehicleUpdateAction !== "AddNew"
                 ? "Update Vehicle"
                 : "Add New Vehicle"}
