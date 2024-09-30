@@ -75,7 +75,8 @@ export default function AdminDashboard() {
   }>({});
   useEffect(() => {
     setSortedData(data);
-  }, [data]);
+  }, []);
+  // }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const itemsPerPage = 12;
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });

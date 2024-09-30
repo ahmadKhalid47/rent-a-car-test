@@ -201,16 +201,11 @@ export default function Nav() {
       window.location.reload();
     }
   }
-async function pushToProfile() {
-  try {
+  async function pushToProfile() {
     router.push("/Settings/MyProfile");
-  } catch (error) {
-    console.error("Navigation error:", error);
   }
-}
 
   async function pushToSettings(e: any) {
-    e.preventDefault();
     router.push("/Settings");
   }
   useEffect(() => {
