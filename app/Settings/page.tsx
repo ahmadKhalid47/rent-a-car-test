@@ -32,7 +32,7 @@ export default function Vehicles() {
       link: "Settings/CompanyProfile",
       img: settings13,
       heading: "Company Profile",
-      text: "Manage your Company Profile.",
+      text: "Refresh your company identity by updating the logo.",
       prefixes: "company profiles logos",
     },
     {
@@ -46,7 +46,7 @@ export default function Vehicles() {
       link: "Settings/Invoicing",
       img: settings10,
       heading: "Invoicing",
-      text: "Edit invoicing",
+      text: "Manage additional information and payment details for invoicing.",
       prefixes:
         "terms and conditions additional information invoice invoicing payment method",
     },
@@ -54,7 +54,7 @@ export default function Vehicles() {
       link: "Settings/Agreement",
       img: settings9,
       heading: "Agreement",
-      text: "Edit agreement",
+      text: "Customize the terms and conditions to suit your business needs.",
       prefixes: "terms and conditions terms & conditions",
     },
   ];
