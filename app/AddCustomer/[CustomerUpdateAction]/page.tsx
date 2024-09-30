@@ -102,10 +102,12 @@ export default function Vehicles() {
       });
 
       let result: any = await axios.post(`/api/saveCustomer`, {
-        ...customer,
-        customerImage: res?.data?.message,
-        passportImages: res2?.data?.message,
-        licenseImages: res3?.data?.message,
+        customer: {
+          ...customer,
+          customerImage: res?.data?.message,
+          passportImages: res2?.data?.message,
+          licenseImages: res3?.data?.message,
+        },
         createdBy: myProfile._id,
       });
       if (result?.data?.success) {
@@ -307,28 +309,36 @@ export default function Vehicles() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 0
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 1
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
                 className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 2
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Emergency Information
               </div>
               <div
                 className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3 ? "dark:text-white text-main-blue font-[600]" : " font-[400]"
+                  currentPage >= 3
+                    ? "dark:text-white text-main-blue font-[600]"
+                    : " font-[400]"
                 }`}
               >
                 Reference Information

@@ -4,11 +4,12 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { reservation, createdBy } = await req.json();
-    console.log(reservation, createdBy);
-
+    let data = await req.json();
     connectDb();
-    await new reservationModel({ data: reservation, createdBy }).save();
+    await new reservationModel({
+      data: data.reservation,
+      createdBy: data.createdBy,
+    }).save();
     return NextResponse.json({
       success: "User Created",
     });

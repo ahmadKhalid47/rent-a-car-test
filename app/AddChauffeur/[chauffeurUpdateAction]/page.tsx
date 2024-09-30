@@ -100,10 +100,12 @@ export default function AddChauffeur() {
       });
 
       let result: any = await axios.post(`/api/savechauffeur`, {
-        ...chauffeur,
-        chauffeurImage: res?.data?.message,
-        passportImages: res2?.data?.message,
-        licenseImages: res3?.data?.message,
+        chauffeur: {
+          ...chauffeur,
+          chauffeurImage: res?.data?.message,
+          passportImages: res2?.data?.message,
+          licenseImages: res3?.data?.message,
+        },
         createdBy: myProfile._id,
       });
       if (result?.data?.success) {
