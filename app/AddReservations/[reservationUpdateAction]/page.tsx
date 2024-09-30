@@ -15,6 +15,7 @@ import axios from "axios";
 import { SmallLoader } from "../../Components/Loader";
 import { useParams, useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/reservations";
+import Link from "next/link";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
@@ -222,7 +223,11 @@ export default function Reservations() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Add New Reservations
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Reservations / Add New Reservations
+              <Link href={"/Reservations"} className="hover:underline">
+                Reservations
+              </Link>
+              {" / "}
+              Add New Reservations
             </p>
           </h3>
         </div>

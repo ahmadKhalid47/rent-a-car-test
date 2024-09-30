@@ -14,6 +14,7 @@ import { useReactToPrint } from "react-to-print";
 import carLogo from "@/public/car.svg";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
+import Link from "next/link";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -70,7 +71,11 @@ export default function reservationInfoMainPage() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Invoice
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px] text-black">
-              Reservations / All Reservations / {formatId(_id)} / Invoice
+              <Link href={"/Reservations"} className="hover:underline">
+                Reservations / All Reservations
+              </Link>
+              {" / "}
+              {formatId(_id)} / Invoice
             </p>
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
@@ -111,6 +116,7 @@ function PrintCom({ data, id }: any) {
         const result = await axios.post(
           `/api/getCustomerInfo/${data?.customer_id}`
         );
+        console.log(result);
         setCustomersData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -121,7 +127,7 @@ function PrintCom({ data, id }: any) {
     if (data?.customer_id) {
       getData();
     }
-  }, [data]);
+  }, [data?.customer_id]);
 
   useEffect(() => {
     async function getData() {
@@ -152,9 +158,7 @@ function PrintCom({ data, id }: any) {
             </h2>
             <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-3">
               <img
-                src={
-                  companyProfile?.profilePic
-                }
+                src={companyProfile?.profilePic}
                 className={`w-[120px] h-[40px]`}
               />
             </div>
@@ -215,7 +219,7 @@ function PrintCom({ data, id }: any) {
                   Price
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+              <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey text-black">
                 <div className="w-[10%] h-fit flex justify-start items-center">
                   01
                 </div>
@@ -229,7 +233,7 @@ function PrintCom({ data, id }: any) {
                 </div>
               </div>
               {data.withChauffeur && (
-                <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey">
+                <div className="w-full h-fit flex justify-between items-center py-3 px-4 border-b-[1px] border-grey text-black">
                   <div className="w-[10%] h-fit flex justify-start items-center">
                     02
                   </div>
@@ -250,8 +254,8 @@ function PrintCom({ data, id }: any) {
                     {Invoicing?.additionalInfo}{" "}
                   </span>
                 </div>
-                <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600]">
-                  <div className="w-full h-fit flex justify-end items-center py-1 pe-4">
+                <div className="w-[40%] h-fit flex flex-col justify-between items-center font-[600] text-black">
+                  <div className="w-full h-fit flex justify-end items-center py-1 pe-4 text-black">
                     <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                       <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                         Subtotal
@@ -262,7 +266,7 @@ function PrintCom({ data, id }: any) {
                     </div>
                   </div>
                   {data?.vatInclude && (
-                    <div className="w-full h-fit flex justify-end items-center py-1 pe-4">
+                    <div className="w-full h-fit flex justify-end items-center py-1 pe-4 text-black">
                       <div className="w-[100%] h-fit flex justify-between items-center font-[600]">
                         <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                           VAT
@@ -274,7 +278,7 @@ function PrintCom({ data, id }: any) {
                     </div>
                   )}
                   {data.discount && (
-                    <div className="w-[100%] h-fit flex justify-between items-center font-[600] pe-4">
+                    <div className="w-[100%] h-fit flex justify-between items-center font-[600] pe-4 text-black">
                       <div className="w-[50%] h-fit flex ps-4 justify-start items-center">
                         Discount:
                       </div>
