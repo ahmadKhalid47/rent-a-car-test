@@ -61,11 +61,12 @@ export default function Vehicles() {
               )}
             </h1>
             <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
-              Are you ready to efficiently manage your fleet and
+              Take control of your fleet like never before with our cutting-edge
               <br className="hidden sm:block" />
-              reservations? Let's work together to ensure everything
+              rental management CRM. Streamline operations, optimize
+              performance,
               <br className="hidden sm:block" />
-              runs smoothly and seamlessly.
+              and unlock real-time insights to drive your business forward.
             </p>
           </div>
         </div>
