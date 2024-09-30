@@ -29,7 +29,7 @@ import {
   setprofilePicR as setCompanyLogo,
   setprofilePic2R as setCompanyLogo2,
 } from "../store/companyProfile";
-import { Logout, Person2Outlined } from "@mui/icons-material";
+import { Logout, Person2Outlined, Settings } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { Alert } from "@mui/material";
 
@@ -216,7 +216,10 @@ export default function Nav() {
     }
   }
   async function pushToProfile() {
-    router.push("Settings/MyProfile");
+    router.push("/Settings/MyProfile");
+  }
+  async function pushToSettings() {
+    router.push("/Settings");
   }
   useEffect(() => {
     let timer: any;
@@ -274,16 +277,24 @@ export default function Nav() {
             } cursor-pointer`}
           />
           {isOpen && (
-            <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-start items-start divide-y-[1px] divide-[#d9d9d9] p-4">
+            <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-start items-start">
               <button
-                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
+                className="px-4 py-3 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
                 onClick={pushToProfile}
               >
                 My Profile
                 <Person2Outlined />
               </button>
               <button
-                className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
+                className="px-4 py-3 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
+                onClick={pushToSettings}
+              >
+                Settings
+                <Settings />
+              </button>
+              <div className="mx-auto mt-2 mb-2 w-[100%] h-[0px] border-t-[1px] border-[#d9d9d9]"></div>
+              <button
+                className="px-4 py-3 dark:hover:bg-slate-500 hover:bg-gray-200 w-full flex justify-between gap-2 items-center"
                 onClick={logout}
               >
                 Logout <Logout className="translate-x-[2px]" />
