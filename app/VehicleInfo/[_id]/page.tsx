@@ -16,6 +16,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
+import Link from "next/link";
 
 export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
@@ -76,8 +77,11 @@ export default function CarInfoMainPage() {
               </h3>
               <div className="flex justify-between items-start">
                 <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-                  Vehicles / All Vehicles / {vehicleInfo.make}{" "}
-                  {vehicleInfo.model}
+                  <Link href={"/Vehicles"} className="hover:underline">
+                    Vehicles / All Vehicles
+                  </Link>
+                  {" / "}
+                  {vehicleInfo.make} {vehicleInfo.model}
                 </p>
               </div>
             </div>

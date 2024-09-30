@@ -218,7 +218,7 @@ export default function Damages() {
           </div>
         </>
       ) : (
-        <span className="py-2 font-[400] text-[18px] leading-[27px]">
+        <span className="py- font-[400] text-[18px] leading-[27px]">
           No Damage Added
         </span>
       )}
