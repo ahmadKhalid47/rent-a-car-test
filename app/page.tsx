@@ -44,10 +44,10 @@ export default function Vehicles() {
           />
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            <div className="w-[120px] sm:w-[175px h-[50px]">
+            <div className="w-[120px] sm:w-[175px h-[50px] filter brightness-[0] invert">
               {companyProfile?.profilePic2 ? (
                 <img
-                  src={companyProfile?.profilePic2}
+                  src={companyProfile?.profilePic1}
                   className="w-ful z-10 h-full"
                 />
               ) : null}
