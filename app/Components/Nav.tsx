@@ -86,6 +86,8 @@ export default function Nav() {
     async function verifyTokenApi() {
       try {
         let userData = await axios.post("/api/verifyToken");
+        console.log(userData);
+        
         dispatch(setuserR(userData?.data?.msg.username));
       } catch (err) {}
     }

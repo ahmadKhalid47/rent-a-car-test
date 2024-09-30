@@ -10,7 +10,7 @@ const initialState = {
   phone: "",
   email: "",
   address: "",
-  admin: false,
+  admin: undefined,
 };
 
 export const myProfileSlice = createSlice({
