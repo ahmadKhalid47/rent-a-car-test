@@ -356,7 +356,7 @@ export default function ListViewCustomers({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
+                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         router.push(`/AddCustomer/${item?._id}`);
                       }}

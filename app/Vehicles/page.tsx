@@ -184,7 +184,10 @@ export default function Vehicles() {
                 {!gridView ? (
                   <img src={list.src} />
                 ) : (
-                  <img src={listBlack.src} />
+                  <img
+                    src={listBlack.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
                 )}
               </button>
               <button

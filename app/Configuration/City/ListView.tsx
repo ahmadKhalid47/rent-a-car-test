@@ -68,7 +68,7 @@ export default function ListView({ data, makeData }: dataType) {
           sx={{
             "& .MuiPaginationItem-root": {
               "&.Mui-selected": {
-                backgroundColor: "#242e69",
+                backgroundColor: "#0094DA",
                 color: "white",
                 "&:hover": {
                   opacity: 0.8,
@@ -251,7 +251,7 @@ export default function ListView({ data, makeData }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
+                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         setEditPopup(true);
                         setItemToEdit(item?._id);

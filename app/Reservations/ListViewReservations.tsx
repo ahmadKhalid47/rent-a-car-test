@@ -5,7 +5,7 @@ import deleteIcon from "@/public/Group 9.svg";
 import doc1 from "@/public/doc (1).svg";
 import doc2 from "@/public/doc (2).svg";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
 import { RootState } from "../store";
@@ -302,7 +302,7 @@ export default function ListViewreservation({ data }: dataType) {
                   >
                     <img
                       src={doc2.src}
-                      className="ms-3 1200:me-[5.8px] hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
+                      className="ms-3 1200:me-[5.8px] hover:scale-[1.3] cursor-pointer "
                       onClick={() => {
                         router.push(`/ReservationsInfo/${item?._id}/Invoice`);
                       }}
@@ -310,7 +310,7 @@ export default function ListViewreservation({ data }: dataType) {
                     />
                     <img
                       src={doc1.src}
-                      className="hover:scale-[1.3] cursor-pointer dark:filter dark:brightness-[0] dark:invert"
+                      className="hover:scale-[1.3] cursor-pointer "
                       onClick={() => {
                         router.push(`/ReservationsInfo/${item?._id}/Contract`);
                       }}
@@ -327,7 +327,7 @@ export default function ListViewreservation({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] dark:filter dark:brightness-[0] dark:invert"
+                      className="me-[5.8px] hover:scale-[1.3] "
                       onClick={() => {
                         router.push(`/AddReservations/${item?._id}`);
                       }}

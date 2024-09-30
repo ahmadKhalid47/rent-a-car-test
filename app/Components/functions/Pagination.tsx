@@ -21,7 +21,7 @@ export function PaginationComponent({
         sx={{
           "& .MuiPaginationItem-root": {
             "&.Mui-selected": {
-              backgroundColor: "#242e69",
+              backgroundColor: "#0094DA",
               color: "white",
               "&:hover": {
                 opacity: 0.8,
