@@ -150,7 +150,7 @@ export default function AddUser() {
                   />
                 </div>
               </div>
-              <div className="w-[250px] h-[250px] flex justify-center items-center dark:bg-dark1 bg-white rounded-ful relative">
+              {/* <div className="w-[250px] h-[250px] flex justify-center items-center dark:bg-dark1 bg-white rounded-ful relative">
                 <img
                   src={
                     selectedPic2?.length > 0
@@ -173,7 +173,7 @@ export default function AddUser() {
                     className="w-[200%] h-[200%] absolute top-0 opacity-0"
                   />
                 </div>
-              </div>
+              </div> */}
               <div
                 className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
               >

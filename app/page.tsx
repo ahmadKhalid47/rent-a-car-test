@@ -1,7 +1,8 @@
 "use client";
+import React from "react";
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
-import carLogo from "@/public/Layer_1 (1).svg";
+import White from "@/public/White.png";
 import Login from "./Components/Login";
 import ForgotPassword from "./Components/ForgotPassword";
 import { RootState } from "./store";
@@ -45,12 +46,7 @@ export default function Vehicles() {
 
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
             <div className="w-[120px] sm:w-[175px h-[50px] filter brightness-[0] invert">
-              {companyProfile?.profilePic ? (
-                <img
-                  src={companyProfile?.profilePic}
-                  className="w-ful z-10 h-full"
-                />
-              ) : null}
+              <img src={White.src} className="w-ful z-10 h-full" />
             </div>
             {/* <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" /> */}
             <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
