@@ -1,29 +1,83 @@
 "use client";
 import React from "react";
+import { FaEllipsisVertical } from "react-icons/fa6";
+import arrows from "@/public/arrows.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useEffect, useState } from "react";
-import d1 from "@/public/dashboard (1).svg";
-import d2 from "@/public/dashboard (2).svg";
-import d3 from "@/public/dashboard (3).svg";
-import d4 from "@/public/dashboard (4).svg";
-import d5 from "@/public/dashboard (5).svg";
-import d6 from "@/public/dashboard (6).svg";
-import d7 from "@/public/dashboard (7).svg";
+import d1 from "@/public/ad (1).svg";
+import d2 from "@/public/ad (2).svg";
+import d3 from "@/public/ad (3).svg";
 import axios from "axios";
-import { TextLoader, MediumLoader } from "../Components/Loader";
+import { TextLoader } from "../Components/Loader";
 import Link from "next/link";
-import { formatDate2 } from "../Components/functions/formats";
-import { TypeInput } from "../Components/InputComponents/TypeInput";
-import { SelectInput } from "../Components/InputComponents/SelectInput";
+import { handleExport } from "../Components/functions/exportFunction";
+import { Pagination, Stack } from "@mui/material";
+import { FaEllipsisH } from "react-icons/fa";
 
 export default function AdminDashboard() {
+  const data: any = [
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Company name",
+        expiryDate: "dd/mm/yyyy",
+      },
+    },
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Company name",
+        expiryDate: "dd/mm/yyyy",
+      },
+    },
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Company name",
+        expiryDate: "dd/mm/yyyy",
+      },
+    },
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Company name",
+        expiryDate: "dd/mm/yyyy",
+      },
+    },
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Company name",
+        expiryDate: "dd/mm/yyyy",
+      },
+    },
+  ];
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const dispatch = useDispatch();
+  const [sortedData, setSortedData] = useState<any>(data);
+  const [sortOrder, setSortOrder] = useState<{
+    [key: string]: "asc" | "desc";
+  }>({});
+  useEffect(() => {
+    setSortedData(data);
+  }, [data]);
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const itemsPerPage = 12;
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
@@ -31,12 +85,8 @@ export default function AdminDashboard() {
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [Configurations, setConfigurationsData] = useState<any>([]);
-  const [make, setMake] = useState<any>("");
-  const [model, setModel] = useState<any>("");
-  const [regNo, setRegNo] = useState<any>("");
-  const [date, setDate] = useState<any>("");
-  const [time, setTime] = useState<any>("");
-  const [carAvailable, setCarAvailable] = useState<any>(undefined);
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -120,132 +170,78 @@ export default function AdminDashboard() {
     if (myProfile._id) getData2();
   }, [myProfile._id]);
 
-  function submitButton() {
-    // let filtered: any = VehiclesData;
-    let filtered: any = activeVehicles;
+  // Slice the data for the current page
+  const paginatedData = sortedData.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
-    if (make) {
-      const lowercasedQuery = make.toLowerCase();
-      filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
-        return keyValueInVehicle?.includes(lowercasedQuery);
-      });
-    }
+  // General sorting function
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
 
-    if (model) {
-      const lowercasedQuery = model.toLowerCase();
-      filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
-        return keyValueInVehicle?.includes(lowercasedQuery);
-      });
-    }
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
 
-    if (regNo) {
-      const lowercasedQuery = regNo.toLowerCase();
-      filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
-        return keyValueInVehicle === lowercasedQuery;
-        // return keyValueInVehicle?.includes(lowercasedQuery);
-      });
-    }
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
 
-    // Create a lookup map for vehicle name and corresponding make/model
-    const allFilteredReservations: any[] = [];
-
-    filtered.forEach((vehicle: any) => {
-      const vehicleId = vehicle._id;
-
-      const filteredReservations = reservationsData.filter(
-        (reservation: any) => reservation.data.vehicle_id === vehicleId
-      );
-
-      // Add the filtered reservations to the combined array
-      allFilteredReservations.push(...filteredReservations);
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
     });
 
-    // Output filtered reservations
-    let filteredReservations = allFilteredReservations;
-    if (date || time) {
-      filteredReservations = filterReservationsByDateTime(
-        allFilteredReservations,
-        date,
-        time
-      );
-      setCarAvailable(filtered.length - filteredReservations.length);
-    } else if (!date && !time && !make && !model && !regNo) {
-      setCarAvailable(undefined);
-    } else {
-      setCarAvailable(filtered.length);
-    }
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+  };
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+  const handleChange = (event: any, value: any) => {
+    setPage(value);
+  };
+
+  function PaginationRounded() {
+    return (
+      <Stack spacing={2}>
+        <Pagination
+          count={totalPages}
+          shape="rounded"
+          page={page}
+          onChange={handleChange}
+          sx={{
+            "& .MuiPaginationItem-root": {
+              "&.Mui-selected": {
+                backgroundColor: "#0094DA",
+                color: "white",
+                "&:hover": {
+                  opacity: 0.8,
+                },
+              },
+            },
+            "& .MuiPaginationItem-previousNext": {
+              color: "#878787",
+              "&:hover": {
+                opacity: 0.8,
+              },
+            },
+          }}
+        />
+      </Stack>
+    );
   }
-
-  function filterReservationsByDateTime(
-    reservations: any,
-    date: any,
-    time: any
-  ) {
-    return reservations.filter((reservation: any) => {
-      const pickUpDateTime = new Date(
-        `${reservation.data.PickUpDate}T${reservation.data.PickUpTime}`
-      );
-      const dropOffDateTime = new Date(
-        `${reservation.data.dropOffDate}T${reservation.data.dropOffTime}`
-      );
-
-      // Check for both date and time
-      if (date && time) {
-        const selectedDateTime = new Date(`${date}T${time}`);
-        return (
-          selectedDateTime >= pickUpDateTime &&
-          selectedDateTime <= dropOffDateTime
-        );
-      }
-
-      // Check only for date
-      if (date && !time) {
-        const selectedDate = new Date(date);
-        const pickUpDate = new Date(reservation.data.PickUpDate);
-        const dropOffDate = new Date(reservation.data.dropOffDate);
-        return selectedDate >= pickUpDate && selectedDate <= dropOffDate;
-      }
-
-      // Check only for time
-      if (!date && time) {
-        const selectedTime = time;
-        const pickUpTime = reservation.data.PickUpTime;
-        const dropOffTime = reservation.data.dropOffTime;
-        return selectedTime >= pickUpTime && selectedTime <= dropOffTime;
-      }
-
-      return false;
-    });
-  }
-
-  function filterReg() {
-    let filtered: any = VehiclesData;
-
-    if (make) {
-      const lowercasedQuery = make.toLowerCase();
-      filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
-        return keyValueInVehicle?.includes(lowercasedQuery);
-      });
-    }
-
-    if (model) {
-      const lowercasedQuery = model.toLowerCase();
-      filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
-        return keyValueInVehicle?.includes(lowercasedQuery);
-      });
-    }
-
-    if (!model && !make) {
-      filtered = [];
-    }
-    return filtered;
-  }
-
   return (
     <div
       className={`${
@@ -263,12 +259,12 @@ export default function AdminDashboard() {
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           <div className="w-[100%] flex justify-start items-start flex-col">
             <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
-              Cars Details
+              Users Details
             </h3>
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d7.src} />
+                  <img src={d1.src} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -281,7 +277,7 @@ export default function AdminDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d6.src} />
+                  <img src={d2.src} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -294,7 +290,7 @@ export default function AdminDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d5.src} />
+                  <img src={d3.src} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -308,6 +304,107 @@ export default function AdminDashboard() {
             </div>
           </div>
           <div className="w-full h-fit flex justify-between items-start">
+            <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+              <div className="w-full flex flex-col justify-start items-start h-fit">
+                <h1 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[20px]">
+                  Near To Expire{" "}
+                </h1>
+                <div className="w-full h-fit mt-2">
+                  <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey relative">
+                    <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
+                      <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                        <div
+                          className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
+                          onClick={() => sort("make")}
+                        >
+                          Name <img src={arrows.src} />
+                        </div>
+                        <div
+                          className="text-start pe-3 flex justify-between items-center w-[16%] 2 cursor-pointer"
+                          onClick={() => sort("registration")}
+                        >
+                          Username <img src={arrows.src} />
+                        </div>
+                        <div
+                          className="text-start pe-3 flex justify-between items-center w-[20%] 3 cursor-pointer"
+                          onClick={() => sort("year")}
+                        >
+                          Email <img src={arrows.src} />
+                        </div>
+                        <div
+                          className="text-start pe-3 flex justify-between items-center w-[18%] 4 cursor-pointer"
+                          onClick={() => sort("type")}
+                        >
+                          Company <img src={arrows.src} />
+                        </div>
+                        <div
+                          className="text-start pe-3 flex justify-between items-center w-[16%] 6 cursor-pointer"
+                          onClick={() => sort("color")}
+                        >
+                          Expiry Date <img src={arrows.src} />
+                        </div>
+                        <div className="text-center flex justify-center items-center w-[10%] pe-5 5">
+                          Actions{" "}
+                        </div>
+                      </div>
+                      {paginatedData.length < 1 ? (
+                        <span className="p-3">
+                          No Vehicles found. Please add a Vehicle.
+                        </span>
+                      ) : (
+                        paginatedData.map((item: any, index: number) => (
+                          <div key={index} className="w-full">
+                            <div
+                              className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                                index % 2 !== 0
+                                  ? "dark:bg-dark2 bg-light-grey"
+                                  : "dark:bg-dark1 bg-white"
+                              } border-b-2 border-grey`}
+                            >
+                              <h5 className="text-start pe-3 break-words w-[16%] 1 ps-5">
+                                {item?.data?.name}
+                              </h5>
+                              <h5 className="text-start pe-3 break-words w-[16%] 2">
+                                {item?.data?.username}
+                              </h5>
+                              <h5 className="text-start pe-3 break-words w-[20%] 3">
+                                {item?.data?.email}
+                              </h5>
+                              <h5 className="text-start pe-3 break-words w-[18%] 4">
+                                {item?.data?.companyDate}
+                              </h5>
+                              <h5 className="text-start pe-3 break-words w-[16%] 6">
+                                {item?.data?.expiryDate}
+                              </h5>
+                              <div
+                                className="flex justify-center items-center w-[10%] pe-5 5 h-full"
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                }}
+                              >
+                                <FaEllipsisH className="text-main-blue hover:scale-[1.3] cursor-pointer" />
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </div>
+                  <div className="w-full h-[32px] mt-10 flex justify-between items-center">
+                    <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
+                      Showing{" "}
+                      {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0}{" "}
+                      - {Math.min(page * itemsPerPage, data.length)} of{" "}
+                      {data.length} data
+                    </div>
+                    <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
+                      <PaginationRounded />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
