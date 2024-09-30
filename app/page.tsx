@@ -25,8 +25,8 @@ export default function Vehicles() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedLogo2 = localStorage.getItem("companyLogo2");
-      dispatch(setCompanyLogo2([storedLogo2]));
+      const storedLogo2 = localStorage.getItem("companyLogo");
+      dispatch(setCompanyLogo([storedLogo2]));
     }
   }, []);
 
