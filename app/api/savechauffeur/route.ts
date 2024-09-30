@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let data = await req.json();
-    let { createdBy } = await req.json();
     connectDb();
     await new chauffeurModel({
       data: data.chauffeur,
