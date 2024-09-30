@@ -285,7 +285,7 @@ export default function Nav() {
               </button>
               <div className="mx-auto mt-2 mb-2 w-[100%] h-[0px] border-t-[1px] border-[#d9d9d9]"></div>
               <button
-                className="w-[90%] px-4 py-3 dark:hover:bg-[#FF0000] hover:bg-[#FF0000] hover:text-white flex justify-between gap-2 items-center rounded-[10px]"
+                className="w-[90%] px-4 py-3 dark:hover:bg-[#FF8C00] hover:bg-[#FF8C00] hover:text-white flex justify-between gap-2 items-center rounded-[10px]"
                 onClick={logout}
               >
                 Logout <Logout className="translate-x-[2px]" />
