@@ -181,7 +181,7 @@ export default function reservationInfoMainPage() {
           </h3>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 updateCancel();
               }}
@@ -214,7 +214,7 @@ export default function reservationInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
             <div className=" dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] dark:text-white text-main-blue text-[18px]  ">
+                <div className="font-[600] text-main-blue text-[18px]  ">
                   Pick-Up:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
@@ -241,7 +241,7 @@ export default function reservationInfoMainPage() {
               </div>
               {/* 2nd */}
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] dark:text-white text-main-blue text-[18px]  ">
+                <div className="font-[600] text-main-blue text-[18px]  ">
                   Drop-off:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
@@ -268,7 +268,7 @@ export default function reservationInfoMainPage() {
               </div>
               {/* 3rd */}
               <div className=" rounded-xl border border-gray-200 p-6 ">
-                <div className="dark:text-white text-main-blue font-[600] text-[24px]">
+                <div className="text-main-blue font-[600] text-[24px]">
                   {reservationInfo?.duration
                     ? reservationInfo?.duration
                     : "---"}{" "}

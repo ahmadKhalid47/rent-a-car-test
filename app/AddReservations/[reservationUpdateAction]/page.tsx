@@ -320,7 +320,7 @@ export default function Reservations() {
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 0
-                    ? "dark:text-white text-main-blue font-[600]"
+                    ? "text-main-blue font-[600]"
                     : " font-[400]"
                 }`}
               >
@@ -329,7 +329,7 @@ export default function Reservations() {
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 1
-                    ? "dark:text-white text-main-blue font-[600]"
+                    ? "text-main-blue font-[600]"
                     : " font-[400]"
                 }`}
               >
@@ -338,7 +338,7 @@ export default function Reservations() {
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 2
-                    ? "dark:text-white text-main-blue font-[600]"
+                    ? "text-main-blue font-[600]"
                     : " font-[400]"
                 }`}
               >
@@ -347,7 +347,7 @@ export default function Reservations() {
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 3
-                    ? "dark:text-white text-main-blue font-[600]"
+                    ? "text-main-blue font-[600]"
                     : " font-[400]"
                 }`}
               >
@@ -390,7 +390,7 @@ export default function Reservations() {
             <div className="w-[50%] flex justify-start item-center gap-1 md:gap-3">
               {currentPage !== 0 ? (
                 <button
-                  className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                  className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                   onClick={(e) => {
                     e.preventDefault();
                     setCurrentPage(currentPage - 1);
@@ -400,7 +400,7 @@ export default function Reservations() {
                 </button>
               ) : null}
               <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey dark:text-white text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(resetState());

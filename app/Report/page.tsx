@@ -462,7 +462,7 @@ export default function Vehicles() {
               {toDate ? " To " + toDate : ""}
             </span>
             <span
-              className="underline cursor-pointer dark:text-white text-main-blue hover:no-underline"
+              className="underline cursor-pointer text-main-blue hover:no-underline"
               onClick={() => {
                 handleExport(exportData);
               }}

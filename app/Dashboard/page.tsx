@@ -400,7 +400,7 @@ export default function Vehicles() {
                 <h1
                   className={`w-fit text-[18px] font-[600] leading-[0px] ${
                     carAvailable && carAvailable !== 0
-                      ? "dark:text-white text-main-blue"
+                      ? "text-main-blue"
                       : "text-red-500"
                   }`}
                 >
