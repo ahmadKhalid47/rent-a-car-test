@@ -14,6 +14,7 @@ import axios, { AxiosResponse } from "axios";
 import { resetState, setAllValues } from "@/app/store/chauffeur";
 import { useParams, useRouter } from "next/navigation";
 import { SmallLoader } from "../../Components/Loader";
+import Link from "next/link";
 
 export default function AddChauffeur() {
   const params = useParams();
@@ -216,7 +217,11 @@ export default function AddChauffeur() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Add New Chauffeur
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Chauffeurs / Add New Chauffeur
+              <Link href={"/Chauffeurs"} className="hover:underline">
+                Chauffeurs
+              </Link>
+              {" / "}
+              Add New Chauffeur
             </p>
           </h3>
         </div>

@@ -16,6 +16,7 @@ import axios, { AxiosResponse } from "axios";
 import { SmallLoader } from "../../Components/Loader";
 import { resetState, setAllValues } from "@/app/store/Customer";
 import { Country, State, City } from "country-state-city";
+import Link from "next/link";
 
 export default function Vehicles() {
   const params = useParams();
@@ -225,7 +226,11 @@ export default function Vehicles() {
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Add New Customer
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Customers / Add New Customer
+              <Link href={"/Customers"} className="hover:underline">
+                Customers
+              </Link>
+              {" / "}
+              Add New Customer
             </p>
           </h3>
         </div>

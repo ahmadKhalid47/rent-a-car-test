@@ -15,6 +15,7 @@ import axios from "axios";
 import { setCustomerInfo } from "@/app/store/Customerinfo";
 import { useParams } from "next/navigation";
 import image404 from "@/public/image404.png";
+import Link from "next/link";
 
 export default function CustomerInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -67,7 +68,10 @@ export default function CustomerInfoMainPage() {
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Customers / All Customers /{" "}
+              <Link href={"/Customers"} className="hover:underline">
+                Customers / All Customers
+              </Link>
+              {" / "}
               {CustomerInfo?.name ? CustomerInfo?.name : "---"}
             </p>
           </div>

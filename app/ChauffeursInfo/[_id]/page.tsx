@@ -13,6 +13,7 @@ import { useParams } from "next/navigation";
 import GeneralChauffeurs from "./GeneralChauffeurs";
 import EmergencyChauffeurs from "./EmergencyChauffeurs";
 import image404 from "@/public/image404.png";
+import Link from "next/link";
 
 export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -66,7 +67,10 @@ export default function chauffeurInfoMainPage() {
           </h3>
           <div className="flex justify-between items-start">
             <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Chauffeurs / All Chauffeurs /
+              <Link href={"/Chauffeurs"} className="hover:underline">
+                Chauffeurs / All Chauffeurs
+              </Link>
+              {" / "}
               {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
             </p>
           </div>
