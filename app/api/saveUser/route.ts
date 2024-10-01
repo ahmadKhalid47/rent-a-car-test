@@ -1,8 +1,19 @@
 import connectDb from "@/app/models/connectDb";
 import registrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 
 export async function POST(req: Request) {
+  const saltRounds = 10;
+
+  const hashPassword = async (password: any) => {
+    try {
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      return hashedPassword;
+    } catch (error) {
+      throw new Error("Failed to hash password");
+    }
+  };
   try {
     let data = await req.json();
     let {
@@ -20,7 +31,11 @@ export async function POST(req: Request) {
     } = data;
     console.log(data);
     connectDb();
-    let profilePicString = profilePic ? profilePic[0] : null;
+
+    let profilePicString =
+      profilePic && Array.isArray(profilePic) ? profilePic[0] : null;
+    let hashedPassword = await hashPassword(password);
+
     await new registrationModel({
       profilePic: profilePicString,
       username: username,
@@ -34,10 +49,11 @@ export async function POST(req: Request) {
       state: state,
       city: city,
       plan: plan,
-      password: password,
+      password: hashedPassword,
       admin: false,
       address: "address",
     }).save();
+
     return NextResponse.json({
       success: "User Created",
     });
