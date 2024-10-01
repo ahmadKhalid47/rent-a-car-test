@@ -6,25 +6,21 @@ import { FaTimesCircle } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
+import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
-  TempSelectInput,
-} from "../../Components/InputComponents/SelectInput";
-import {
-  setalternativePhoneR,
   setcityR,
+  setcompanyR,
   setcountryR,
-  setchauffeurImageR,
-  setdateOfBirthR,
-  setemailAddressR,
-  setgenderR,
+  setemailR,
   setnameR,
-  setnationalityR,
+  setpasswordR,
   setphoneR,
-  setpostalCodeR,
+  setplanR,
+  setprofilePicR,
   setstateR,
-  setstreetAddressR,
-  setrentPerDayR,
-} from "@/app/store/chauffeur";
+  setusernameR,
+  setverifyPasswordR,
+} from "@/app/store/userProfile";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -33,16 +29,14 @@ import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 
 export default function Info() {
   let dispatch = useDispatch();
-
-  let chauffeur = useSelector((state: RootState) => state.chauffeur);
-  const [files, setFiles] = useState<any>(chauffeur.chauffeurImage);
+  let User = useSelector((state: RootState) => state.userProfile);
+  const [files, setFiles] = useState<any>(User.profilePic);
   useEffect(() => {
-    setFiles(chauffeur?.chauffeurImage); 
-  }, [chauffeur.chauffeurImage[0]]);
+    setFiles(User.profilePic);
+  }, [User.profilePic]);
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
-    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
-
+    const maxFileSize = 5 * 1024 * 1024;
+    const allowedTypes = ["image/jpeg", "image/png"];
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
         alert(
@@ -58,7 +52,6 @@ export default function Info() {
     });
 
     if (filteredFiles.length > 0) {
-      // Replace the current file with the new one
       setFiles([
         Object.assign(filteredFiles[0], {
           preview: URL.createObjectURL(filteredFiles[0]),
@@ -67,20 +60,20 @@ export default function Info() {
     }
   }, []);
 
-  const thumbs: any = files.map((file: any) => (
+  const thumbs: any = files?.map((file: any) => (
     <div
-      key={file.name}
+      key={file?.name}
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
     >
       <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
         <img
-          src={file.preview ? file.preview : file}
-          alt={file.name}
+          src={file?.preview ? file.preview : file}
+          alt={file?.name}
           className=" w-[64px] h-[64px]"
         />
       </div>
       <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        {file.name}
+        {file?.name}
       </span>
       <span
         className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
@@ -100,13 +93,14 @@ export default function Info() {
     multiple: false,
   });
   useEffect(() => {
-    dispatch(setchauffeurImageR(files));
+    dispatch(setprofilePicR(files));
   }, [files]);
 
   let { countries, states, cities } = CountryStateCity(
-    chauffeur.country,
-    chauffeur.state
+    User.country,
+    User.state
   );
+console.log(User);
 
   return (
     <div className="w-full h-fit  ">
@@ -114,102 +108,79 @@ export default function Info() {
         <TempTypeInput
           setState={setnameR}
           label={"Full Name"}
-          value={chauffeur.name}
+          value={User.name}
           required={true}
-          // required={false}
-          type={"text"}
-        />
-        <TempSelectInput
-          setState={setgenderR}
-          label={"Gender"}
-          value={chauffeur.gender}
-          required={true}
-          // required={false}
-          options={["Male", "Female", "Custom"]}
-        />
-
-        <TempTypeInput
-          setState={setdateOfBirthR}
-          label={"Date of Birth"}
-          value={chauffeur.dateOfBirth}
-          required={false}
-          type={"date"}
-        />
-
-        <TempTypeInput
-          setState={setnationalityR}
-          label={"Nationality"}
-          value={chauffeur.nationality}
-          required={false}
           type={"text"}
         />
         <TempTypeInput
-          setState={setemailAddressR}
-          label={"Email Address"}
-          value={chauffeur.emailAddress}
-          required={false}
+          setState={setusernameR}
+          label={"Username"}
+          value={User.username}
+          required={true}
+          type={"text"}
+        />
+        <TempTypeInput
+          setState={setcompanyR}
+          label={"Company"}
+          value={User.company}
+          required={true}
+          type={"text"}
+        />
+        <TempTypeInput
+          setState={setemailR}
+          label={"Email"}
+          value={User.email}
+          required={true}
           type={"email"}
         />
         <TempTypeInput
           setState={setphoneR}
           label={"Phone"}
-          value={chauffeur.phone}
+          value={User.phone}
           required={true}
-          // required={false}
           type={"number"}
-        />
-        <TempTypeInput
-          setState={setalternativePhoneR}
-          label={"Alternative Phone"}
-          value={chauffeur.alternativePhone}
-          required={false}
-          type={"number"}
-        />
-        <TempTypeInput
-          setState={setrentPerDayR}
-          label={"Rent Per Day"}
-          value={chauffeur.rentPerDay}
-          required={false}
-          type={"number"}
-        />
-        <TempTypeInput
-          setState={setstreetAddressR}
-          label={"Street Address"}
-          value={chauffeur.streetAddress}
-          required={false}
-          type={"text"}
         />
         <TempSelectInput
           setState={setcountryR}
           label={"Country"}
-          value={chauffeur.country}
+          value={User.country}
           required={true}
-          // required={false}
           options={countries.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setstateR}
-          label={"State/Province"}
-          value={chauffeur.state}
+          label={"State"}
+          value={User.state}
           required={true}
-          // required={false}
           options={states.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
-          value={chauffeur.city}
+          value={User.city}
           required={true}
-          // required={false}
           options={cities.map((item: any) => item.label)}
         />
-        <TempTypeInput
-          setState={setpostalCodeR}
-          label={"Postal/Zip Code"}
-          value={chauffeur.postalCode}
+        <TempSelectInput
+          setState={setplanR}
+          label={"Plan Validity"}
+          value={User.plan}
           required={true}
-          // required={false}
-          type={"text"}
+          options={["1 Month", "3 Months", "6 Months", "1 Year"]}
+        />
+        <TempTypeInput
+          setState={setpasswordR}
+          label={"Password"}
+          value={User.password}
+          required={true}
+          type={"password"}
+        />
+        <TempTypeInput
+          setState={setverifyPasswordR}
+          label={"Verify Password"}
+          value={User.verifyPassword}
+          required={true}
+          type={"password"}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">

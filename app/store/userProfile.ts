@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   _id: "",
   user: "",
-  profilePic: null,
+  profilePic: [],
   username: "",
   firstName: "",
   lastName: "",
@@ -16,11 +16,14 @@ const initialState = {
   country: "",
   state: "",
   city: "",
+  plan: "",
+  password: "",
+  verifyPassword: "",
   admin: undefined,
 };
 
-export const myProfileSlice = createSlice({
-  name: "myProfile",
+export const userProfileSlice = createSlice({
+  name: "userProfile",
   initialState,
   reducers: {
     set_idR: (state, action) => {
@@ -59,6 +62,24 @@ export const myProfileSlice = createSlice({
     setaddressR: (state, action) => {
       state.address = action.payload;
     },
+    setcountryR: (state, action) => {
+      state.country = action.payload;
+    },
+    setstateR: (state, action) => {
+      state.state = action.payload;
+    },
+    setcityR: (state, action) => {
+      state.city = action.payload;
+    },
+    setplanR: (state, action) => {
+      state.plan = action.payload;
+    },
+    setpasswordR: (state, action) => {
+      state.password = action.payload;
+    },
+    setverifyPasswordR: (state, action) => {
+      state.verifyPassword = action.payload;
+    },
     setadminR: (state, action) => {
       state.admin = action.payload;
     },
@@ -83,6 +104,12 @@ export const {
   set_idR,
   setcompanyR,
   setgenderR,
-} = myProfileSlice.actions;
+  setcityR,
+  setcountryR,
+  setstateR,
+  setplanR,
+  setpasswordR,
+  setverifyPasswordR,
+} = userProfileSlice.actions;
 
-export default myProfileSlice.reducer;
+export default userProfileSlice.reducer;

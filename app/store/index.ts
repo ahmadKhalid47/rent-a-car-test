@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import Global from "./Global";
 import myProfile from "./myProfile";
+import userProfile from "./userProfile";
 import companyProfile from "./companyProfile";
 import Vehicle from "./Vehicle";
 import VehicleUpdate from "./VehicleUpdate";
@@ -20,6 +21,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 const rootReducer = combineReducers({
   Global: Global,
   myProfile: myProfile,
+  userProfile: userProfile,
   companyProfile: companyProfile,
   Vehicle: Vehicle,
   VehicleUpdate: VehicleUpdate,

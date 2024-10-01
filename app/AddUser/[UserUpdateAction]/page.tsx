@@ -19,9 +19,9 @@ export default function AddUser() {
   const params = useParams();
   const { UserUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
-  const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  const userProfile: any = useSelector((state: RootState) => state.userProfile);
   // let User = useSelector((state: RootState) => state.User);
-  let User: any = useSelector((state: RootState) => state.myProfile);
+  let User: any = useSelector((state: RootState) => state.userProfile);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let [goToPage, setGoToPage] = useState(0);
   const [loading, setLoading] = useState<any>(false);
@@ -51,7 +51,7 @@ export default function AddUser() {
   };
   async function saveData() {
     console.log("saveData");
-    
+
     try {
       setLoading(true);
 
@@ -102,7 +102,7 @@ export default function AddUser() {
           passportImages: res2?.data?.message,
           licenseImages: res3?.data?.message,
         },
-        createdBy: myProfile._id,
+        createdBy: userProfile._id,
       });
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
@@ -118,7 +118,7 @@ export default function AddUser() {
       // if (action === "close") {
       //   router.push("/Users");
       // } else {
-        dispatch(resetState());
+      dispatch(resetState());
       // }
     }
   }
@@ -143,7 +143,9 @@ export default function AddUser() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    getData();
+    if (UserUpdateAction !== "AddNew") {
+      getData();
+    }
   }, []);
   console.log(User.passportImages);
 
