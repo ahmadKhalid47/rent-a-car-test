@@ -33,7 +33,7 @@ export default function Info() {
   const [files, setFiles] = useState<any>(User.profilePic);
   useEffect(() => {
     setFiles(User.profilePic);
-  }, [User.profilePic]);
+  }, [User.profilePic[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"];
@@ -100,7 +100,6 @@ export default function Info() {
     User.country,
     User.state
   );
-  console.log(User);
 
   return (
     <div className="w-full h-fit  ">

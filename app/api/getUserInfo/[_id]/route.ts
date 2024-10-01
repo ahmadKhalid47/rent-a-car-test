@@ -6,7 +6,11 @@ export async function POST(req: Request, params: any) {
   try {
     let { _id } = await params.params;
     await connectDb();
-    const data = await registrationModel.findOne({ _id: _id }).lean();
+    const userData: any = await registrationModel.findOne({ _id: _id }).lean();
+    let data = {
+      ...userData,
+      profilePic: [userData.profilePic],
+    };
     console.log(data);
     return NextResponse.json({
       data,

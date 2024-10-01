@@ -75,6 +75,7 @@ export const userProfileSlice = createSlice({
     setadminR: (state, action) => {
       state.admin = action.payload;
     },
+    resetState: () => initialState,
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -100,6 +101,7 @@ export const {
   setplanR,
   setpasswordR,
   setverifyPasswordR,
+  resetState,
 } = userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

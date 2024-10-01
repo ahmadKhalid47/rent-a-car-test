@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { setAlert, setSidebarShowR, setSeverity } from "@/app/store/Global";
 import Info from "./Info";
 import axios, { AxiosResponse } from "axios";
-import { resetState, setAllValues } from "@/app/store/chauffeur";
+import { resetState, setAllValues } from "@/app/store/userProfile";
 import { useParams, useRouter } from "next/navigation";
 import { SmallLoader } from "../../Components/Loader";
 import Link from "next/link";
@@ -92,7 +92,8 @@ export default function AddUser() {
           `/api/getUserInfo/${UserUpdateAction}`
         );
         if (result?.data?.data) {
-          dispatch(setAllValues(result?.data?.data?.data));
+          dispatch(setAllValues(result?.data?.data));
+          console.log(result?.data?.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -196,12 +197,21 @@ export default function AddUser() {
                 Reset
               </button>
             </div>
-            <button
-              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-              type="submit"
-            >
-              {loading ? <SmallLoader /> : "Save"}
-            </button>
+            {UserUpdateAction !== "AddNew" ? (
+              <button
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                type="submit"
+              >
+                {loading ? <SmallLoader /> : "Update"}
+              </button>
+            ) : (
+              <button
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                type="submit"
+              >
+                {loading ? <SmallLoader /> : "Save"}
+              </button>
+            )}
           </div>
         </form>
       </div>
