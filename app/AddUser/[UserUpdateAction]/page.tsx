@@ -110,45 +110,24 @@ export default function AddUser() {
   }, []);
   console.log(User);
 
-  async function updateData(action: string) {
+  async function updateData(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log("updateData");
     try {
       setLoading(true);
 
       const formData = new FormData();
-      formData.append("files", User.UserImage[0]);
+      formData.append("files", User.profilePic[0]);
       const res = await axios.post("/api/uploadWithCondition", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      const formData2 = new FormData();
-      for (let i = 0; i < User.passportImages.length; i++) {
-        formData2.append("files", User.passportImages[i]);
-      }
-      const res2 = await axios.post("/api/uploadWithCondition", formData2, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      const formData3 = new FormData();
-      for (let i = 0; i < User.licenseImages.length; i++) {
-        formData3.append("files", User.licenseImages[i]);
-      }
-      const res3 = await axios.post("/api/uploadWithCondition", formData3, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
       await axios.post(`/api/updateUser/${UserUpdateAction}`, {
         ...User,
-        UserImage: res?.data?.message,
-        passportImages: res2?.data?.message,
-        licenseImages: res3?.data?.message,
+        profilePic: res?.data?.message,
       });
-
-      if (action === "close") {
-        router.push("/Users");
-      }
+      router.push("/Users");
     } catch (err) {
       console.log(err);
     } finally {
@@ -178,7 +157,7 @@ export default function AddUser() {
           </h3>
         </div>
         <form
-          onSubmit={saveData}
+          onSubmit={UserUpdateAction === "AddNew" ? saveData : updateData}
           onKeyDown={handleKeyDown}
           className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >

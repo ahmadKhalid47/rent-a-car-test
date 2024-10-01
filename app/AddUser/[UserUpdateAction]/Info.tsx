@@ -25,12 +25,20 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
-import { TempTypeInput, TempTypeInputLimit } from '../../Components/InputComponents/TypeInput';
+import {
+  TempTypeInput,
+  TempTypeInputLimit,
+} from "../../Components/InputComponents/TypeInput";
+import { useParams } from "next/navigation";
 
 export default function Info() {
   let dispatch = useDispatch();
   let User = useSelector((state: RootState) => state.userProfile);
   const [files, setFiles] = useState<any>(User.profilePic);
+  const params = useParams();
+  const { UserUpdateAction } = params;
+  console.log(UserUpdateAction);
+
   useEffect(() => {
     setFiles(User.profilePic);
   }, [User.profilePic[0]]);
@@ -171,24 +179,28 @@ export default function Info() {
           required={true}
           options={["1 Month", "3 Months", "6 Months", "1 Year"]}
         />
-        <TempTypeInputLimit
-          setState={setpasswordR}
-          label={"Password"}
-          value={User.password}
-          required={true}
-          type={"password"}
-          minLength={6}
-          maxLength={30}
-        />
-        <TempTypeInputLimit
-          setState={setverifyPasswordR}
-          label={"Verify Password"}
-          value={User.verifyPassword}
-          required={true}
-          type={"password"}
-          minLength={6}
-          maxLength={30}
-        />
+        {UserUpdateAction === "AddNew" && (
+          <>
+            <TempTypeInputLimit
+              setState={setpasswordR}
+              label={"Password"}
+              value={User.password}
+              required={true}
+              type={"password"}
+              minLength={6}
+              maxLength={30}
+            />
+            <TempTypeInputLimit
+              setState={setverifyPasswordR}
+              label={"Verify Password"}
+              value={User.verifyPassword}
+              required={true}
+              type={"password"}
+              minLength={6}
+              maxLength={30}
+            />
+          </>
+        )}
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
         <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
