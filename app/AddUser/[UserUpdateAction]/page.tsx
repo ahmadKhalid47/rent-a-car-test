@@ -45,6 +45,7 @@ export default function AddUser() {
 
     if (User.verifyPassword.trim() !== User.password.trim()) {
       dispatch(setAlert("Passwords did not matched"));
+      dispatch(setSeverity("error"));
       return;
     }
 
@@ -68,6 +69,7 @@ export default function AddUser() {
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
         setShowError(null);
+        router.push("/Users");
       } else {
         setShowError(result?.data?.error);
         console.log(result, result?.data?.error);
@@ -79,7 +81,6 @@ export default function AddUser() {
       console.log(error);
     } finally {
       setLoading(false);
-      // router.push("/Users");
     }
   }
   useEffect(() => {
@@ -199,7 +200,7 @@ export default function AddUser() {
               className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               type="submit"
             >
-              Save
+              {loading ? <SmallLoader /> : "Save"}
             </button>
           </div>
         </form>
