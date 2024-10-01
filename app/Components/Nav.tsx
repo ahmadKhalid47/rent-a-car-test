@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import {
   setAlert,
+  setSeverity,
   setcurrentCurrency,
   setSidebarShowR,
   setSidebarShowTempR,
@@ -211,6 +212,7 @@ export default function Nav() {
     if (global.alert) {
       timer = setTimeout(() => {
         dispatch(setAlert(null));
+        dispatch(setSeverity("success"));
       }, 4000); // Hide after 3 seconds
     }
 
@@ -227,8 +229,8 @@ export default function Nav() {
       {global.alert ? (
         <Alert
           variant="filled"
-          severity="success"
-          className="fixed w-[200px] z-[100] top-2 right-2 alert-animation capitalize"
+          severity={global.severity as "success" | "error" | "info" | "warning"}
+          className="fixed w-fit z-[100] top-2 right-2 alert-animation capitalize"
         >
           {global.alert}
         </Alert>

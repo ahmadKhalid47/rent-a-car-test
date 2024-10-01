@@ -71,7 +71,7 @@ export default function AdminSidebar() {
               src={Logo.src}
               className={`${
                 global.sidebarShow ? "w-[172px] h-[50px]" : "w-[60px] h-[25px]"
-              } mt-[30px dark:filter dark:brightness-[0] dark:invert`}
+              } mt-[30px `}
             />
           ) : null}
         </Link>

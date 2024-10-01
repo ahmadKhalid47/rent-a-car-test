@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
-import { setAlert, setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR, setSeverity } from "@/app/store/Global";
 import Info from "./Info";
 import axios, { AxiosResponse } from "axios";
 import { resetState, setAllValues } from "@/app/store/chauffeur";
@@ -70,6 +70,9 @@ export default function AddUser() {
         setShowError(null);
       } else {
         setShowError(result?.data?.error);
+        console.log(result, result?.data?.error);
+        dispatch(setAlert(result?.data?.error));
+        dispatch(setSeverity("error"));
         setShowSuccess(null);
       }
     } catch (error: any) {

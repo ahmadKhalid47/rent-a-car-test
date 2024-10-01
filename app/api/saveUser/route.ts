@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 export async function POST(req: Request) {
   const saltRounds = 10;
 
-  const hashPassword = async (password: any) => {
+  const hashPassword = async (password: string) => {
     try {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       return hashedPassword;
@@ -14,6 +14,7 @@ export async function POST(req: Request) {
       throw new Error("Failed to hash password");
     }
   };
+
   try {
     let data = await req.json();
     let {
@@ -29,8 +30,31 @@ export async function POST(req: Request) {
       plan,
       password,
     } = data;
-    console.log(data);
+
     connectDb();
+
+    // Check if either the username or email already exists in a single query
+    const existingUser = await registrationModel.findOne({
+      $or: [{ username }, { email }],
+    });
+
+    if (existingUser) {
+      // Specify which field is already taken
+      if (existingUser.username === username) {
+        return NextResponse.json(
+          {
+            error: `Username "${username}" already exists`,
+          }
+        );
+      }
+      if (existingUser.email === email) {
+        return NextResponse.json(
+          {
+            error: `Email "${email}" already exists`,
+          }
+        );
+      }
+    }
 
     let profilePicString =
       profilePic && Array.isArray(profilePic) ? profilePic[0] : null;
@@ -38,17 +62,17 @@ export async function POST(req: Request) {
 
     await new registrationModel({
       profilePic: profilePicString,
-      username: username,
+      username,
       firstName: name,
       lastName: name,
-      name: name,
-      phone: phone,
-      email: email,
-      company: company,
-      country: country,
-      state: state,
-      city: city,
-      plan: plan,
+      name,
+      phone,
+      email,
+      company,
+      country,
+      state,
+      city,
+      plan,
       password: hashedPassword,
       admin: false,
       address: "address",
@@ -59,8 +83,11 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     console.log("err: ", err);
-    return NextResponse.json({
-      error: "Can't process your request at the moment",
-    });
+    return NextResponse.json(
+      {
+        error: "Can't process your request at the moment",
+      },
+      { status: 500 }
+    );
   }
 }
