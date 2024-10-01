@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   _id: "",
-  user: "",
   profilePic: [],
   username: "",
   firstName: "",
@@ -28,9 +27,6 @@ export const userProfileSlice = createSlice({
   reducers: {
     set_idR: (state, action) => {
       state._id = action.payload;
-    },
-    setuserR: (state, action) => {
-      state.user = action.payload;
     },
     setprofilePicR: (state, action) => {
       state.profilePic = action.payload;
@@ -97,7 +93,6 @@ export const {
   setphoneR,
   setemailR,
   setaddressR,
-  setuserR,
   setnameR,
   setadminR,
   setAllValues,

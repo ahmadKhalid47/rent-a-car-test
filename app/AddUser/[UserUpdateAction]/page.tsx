@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import Info from "./Info";
 import axios, { AxiosResponse } from "axios";
-// import { resetState, setAllValues } from "@/app/store/chauffeur";
 import { resetState, setAllValues } from "@/app/store/chauffeur";
 import { useParams, useRouter } from "next/navigation";
 import { SmallLoader } from "../../Components/Loader";
@@ -19,17 +18,13 @@ export default function AddUser() {
   const params = useParams();
   const { UserUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
-  const userProfile: any = useSelector((state: RootState) => state.userProfile);
-  // let User = useSelector((state: RootState) => state.User);
   let User: any = useSelector((state: RootState) => state.userProfile);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  let [goToPage, setGoToPage] = useState(0);
   const [loading, setLoading] = useState<any>(false);
   const [showSuccess, setShowSuccess] = useState(null);
   const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
-  const formRef = useRef<any>(null);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -40,70 +35,37 @@ export default function AddUser() {
     }
   }, [isMobile]);
 
-  let handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault();
     }
   };
-  async function saveData() {
+  async function saveData(event: FormEvent<HTMLFormElement>) {
+      event.preventDefault();
     console.log("saveData");
-
     try {
       setLoading(true);
-
       let res: AxiosResponse<any, any> | null = null;
-      if (User?.UserImage[0] instanceof File) {
+      if (User?.profilePic[0] instanceof File) {
         const formData = new FormData();
-        formData.append("files", User.UserImage[0]);
-
+        formData.append("files", User.profilePic[0]);
         res = await axios.post("/api/upload", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
       }
-
-      const formData2 = new FormData();
-      for (let i = 0; i < User.passportImages.length; i++) {
-        if (User.passportImages[i] instanceof File) {
-          formData2.append("files", User.passportImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(User.passportImages[i]);
-        }
-      }
-      const res2 = await axios.post("/api/upload", formData2, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      const formData3 = new FormData();
-      for (let i = 0; i < User.licenseImages.length; i++) {
-        if (User.licenseImages[i] instanceof File) {
-          formData3.append("files", User.licenseImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(User.licenseImages[i]);
-        }
-      }
-      const res3 = await axios.post("/api/upload", formData3, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
       let result: any = await axios.post(`/api/saveUser`, {
         User: {
           ...User,
-          UserImage: res?.data?.message,
-          passportImages: res2?.data?.message,
-          licenseImages: res3?.data?.message,
+          profilePic: res?.data?.message,
         },
-        createdBy: userProfile._id,
       });
+      console.log({
+        ...User,
+        profilePic: res?.data?.message,
+      });
+
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
         setShowError(null);
@@ -115,14 +77,9 @@ export default function AddUser() {
       console.log(error);
     } finally {
       setLoading(false);
-      // if (action === "close") {
-      //   router.push("/Users");
-      // } else {
-      dispatch(resetState());
-      // }
+      // router.push("/Users");
     }
   }
-
   useEffect(() => {
     dispatch(resetState());
     async function getData() {
@@ -147,12 +104,10 @@ export default function AddUser() {
       getData();
     }
   }, []);
-  console.log(User.passportImages);
-
+  console.log(User);
   async function updateData(action: string) {
     try {
       setLoading(true);
-      const carImages = User.UserImage;
 
       const formData = new FormData();
       formData.append("files", User.UserImage[0]);
