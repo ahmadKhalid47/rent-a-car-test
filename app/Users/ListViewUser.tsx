@@ -193,7 +193,7 @@ export default function ListViewUsers({ data }: dataType) {
               Delete Multiple
             </button>
           </span>
-          <span className="ps-1"></span>|<span className="ps-1"></span>
+          {/* <span className="ps-1"></span>|<span className="ps-1"></span>
           <span
             className={`${
               itemToDeleteMany.length < 1
@@ -217,12 +217,12 @@ export default function ListViewUsers({ data }: dataType) {
             }}
           >
             Inactive Multiple
-          </span>
+          </span> */}
         </span>
         <span
           className="underline cursor-pointer text-main-blue hover:no-underline"
           onClick={() => {
-            handleExport(data?.map((item: any) => item.data));
+            handleExport(data);
           }}
         >
           Export
