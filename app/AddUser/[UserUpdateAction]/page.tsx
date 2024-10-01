@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import Info from "./Info";
 import axios, { AxiosResponse } from "axios";
 import { resetState, setAllValues } from "@/app/store/chauffeur";
@@ -42,7 +42,12 @@ export default function AddUser() {
   };
   async function saveData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("saveData");
+
+    if (User.verifyPassword.trim() !== User.password.trim()) {
+      dispatch(setAlert("Passwords did not matched"));
+      return;
+    }
+
     try {
       setLoading(true);
       let res: AxiosResponse<any, any> | null = null;
@@ -56,10 +61,6 @@ export default function AddUser() {
         });
       }
       let result: any = await axios.post(`/api/saveUser`, {
-        ...User,
-        profilePic: res?.data?.message,
-      });
-      console.log({
         ...User,
         profilePic: res?.data?.message,
       });
@@ -103,6 +104,7 @@ export default function AddUser() {
     }
   }, []);
   console.log(User);
+
   async function updateData(action: string) {
     try {
       setLoading(true);
@@ -123,8 +125,6 @@ export default function AddUser() {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res2?.data?.message);
-
       const formData3 = new FormData();
       for (let i = 0; i < User.licenseImages.length; i++) {
         formData3.append("files", User.licenseImages[i]);
@@ -134,8 +134,6 @@ export default function AddUser() {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res2?.data?.message);
-
       await axios.post(`/api/updateUser/${UserUpdateAction}`, {
         ...User,
         UserImage: res?.data?.message,
@@ -194,7 +192,6 @@ export default function AddUser() {
                 Reset
               </button>
             </div>
-
             <button
               className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               type="submit"

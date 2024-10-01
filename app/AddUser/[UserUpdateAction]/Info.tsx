@@ -5,7 +5,10 @@ import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
+import {
+  TempTypeInput,
+  TempTypeInputLimit,
+} from "../../Components/InputComponents/TypeInput";
 import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
   setcityR,
@@ -100,7 +103,7 @@ export default function Info() {
     User.country,
     User.state
   );
-console.log(User);
+  console.log(User);
 
   return (
     <div className="w-full h-fit  ">
@@ -112,12 +115,14 @@ console.log(User);
           required={true}
           type={"text"}
         />
-        <TempTypeInput
+        <TempTypeInputLimit
           setState={setusernameR}
           label={"Username"}
           value={User.username}
           required={true}
           type={"text"}
+          minLength={6}
+          maxLength={30}
         />
         <TempTypeInput
           setState={setcompanyR}
@@ -126,12 +131,14 @@ console.log(User);
           required={true}
           type={"text"}
         />
-        <TempTypeInput
+        <TempTypeInputLimit
           setState={setemailR}
           label={"Email"}
           value={User.email}
           required={true}
           type={"email"}
+          minLength={6}
+          maxLength={30}
         />
         <TempTypeInput
           setState={setphoneR}
@@ -168,19 +175,23 @@ console.log(User);
           required={true}
           options={["1 Month", "3 Months", "6 Months", "1 Year"]}
         />
-        <TempTypeInput
+        <TempTypeInputLimit
           setState={setpasswordR}
           label={"Password"}
           value={User.password}
           required={true}
           type={"password"}
+          minLength={6}
+          maxLength={30}
         />
-        <TempTypeInput
+        <TempTypeInputLimit
           setState={setverifyPasswordR}
           label={"Verify Password"}
           value={User.verifyPassword}
           required={true}
           type={"password"}
+          minLength={6}
+          maxLength={30}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
