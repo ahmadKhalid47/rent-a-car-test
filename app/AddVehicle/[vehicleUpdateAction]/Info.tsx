@@ -8,7 +8,6 @@ import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
 import {
   TempTypeInput,
-  TempTypeInputInfo,
 } from "../../Components/InputComponents/TypeInput";
 import {
   TempSelectInput,
