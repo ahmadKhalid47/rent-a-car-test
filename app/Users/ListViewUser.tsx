@@ -101,6 +101,8 @@ export default function ListViewUsers({ data }: dataType) {
       setItemToDelete(null);
     }
   }
+  console.log(itemToDeleteMany);
+  
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -135,18 +137,19 @@ export default function ListViewUsers({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
 
   async function updateActive(_id: any, active: boolean) {
-    try {
-      setEditLoading(true);
-      let result: any = await axios.post(`/api/updateActiveUser/${_id}`, {
-        active: !active,
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setEditLoading(false);
-    }
+    return
+    // try {
+    //   setEditLoading(true);
+    //   let result: any = await axios.post(`/api/updateActiveUser/${_id}`, {
+    //     active: !active,
+    //   });
+    //   dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+    //   dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
+    // } catch (err) {
+    //   console.log(err);
+    // } finally {
+    //   setEditLoading(false);
+    // }
   }
 
   async function UpdateActiveManyItem(active: boolean) {
@@ -340,7 +343,8 @@ export default function ListViewUsers({ data }: dataType) {
                     }}
                   >
                     <img
-                      src={item.active ? check.src : unCheck.src}
+                      // src={item.active ? check.src : unCheck.src}
+                      src={check.src}
                       title={item.active ? "Inactive" : "Active"}
                       className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
                       onClick={() => {
