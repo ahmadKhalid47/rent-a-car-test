@@ -8,7 +8,6 @@ const initialState = {
   lastName: "",
   name: "",
   phone: "",
-  gender: "",
   email: "",
   address: "",
   company: "",
@@ -45,9 +44,6 @@ export const userProfileSlice = createSlice({
     },
     setcompanyR: (state, action) => {
       state.company = action.payload;
-    },
-    setgenderR: (state, action) => {
-      state.gender = action.payload;
     },
     setphoneR: (state, action) => {
       state.phone = action.payload;
@@ -98,7 +94,6 @@ export const {
   setAllValues,
   set_idR,
   setcompanyR,
-  setgenderR,
   setcityR,
   setcountryR,
   setstateR,

@@ -41,7 +41,7 @@ export default function AddUser() {
     }
   };
   async function saveData(event: FormEvent<HTMLFormElement>) {
-      event.preventDefault();
+    event.preventDefault();
     console.log("saveData");
     try {
       setLoading(true);
@@ -56,10 +56,8 @@ export default function AddUser() {
         });
       }
       let result: any = await axios.post(`/api/saveUser`, {
-        User: {
-          ...User,
-          profilePic: res?.data?.message,
-        },
+        ...User,
+        profilePic: res?.data?.message,
       });
       console.log({
         ...User,
