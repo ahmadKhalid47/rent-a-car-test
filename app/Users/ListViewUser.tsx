@@ -315,7 +315,7 @@ export default function ListViewUsers({ data }: dataType) {
                     ).padStart(2, "0")}
                   </h5>
                   <h5 className="text-start pe-3 truncate w-[14%]">
-                    {item?.firstName} {item?.lastName}
+                    {item?.name}
                   </h5>
                   <h5 className="text-start pe-3 truncate w-[13%]">
                     {item?.username}
@@ -330,7 +330,7 @@ export default function ListViewUsers({ data }: dataType) {
                     {item?.city}
                   </h5>
                   <h5 className="text-start pe-3 truncate w-[12%]">
-                    {item?.activePlan}
+                    {item?.plan}
                   </h5>
                   <div
                     className="flex justify-start gap items-center w-[8%] h-full"

@@ -5,10 +5,6 @@ import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import {
-  TempTypeInput,
-  TempTypeInputLimit,
-} from "../../Components/InputComponents/TypeInput";
 import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
   setcityR,
@@ -29,6 +25,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
+import { TempTypeInput, TempTypeInputLimit } from '../../Components/InputComponents/TypeInput';
 
 export default function Info() {
   let dispatch = useDispatch();
