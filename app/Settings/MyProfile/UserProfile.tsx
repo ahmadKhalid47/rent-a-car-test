@@ -28,6 +28,7 @@ import {
 import { TempTypeInputWidth } from "@/app/Components/InputComponents/TypeInput";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Diversity1TwoTone } from "@mui/icons-material";
 
 export default function UserProfile() {
   let global = useSelector((state: RootState) => state.Global);
@@ -118,12 +119,12 @@ export default function UserProfile() {
         <div className="w-[100%]  flex justify-start items-end">
           <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             My Profile
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               <Link href={"/Settings"} className="hover:underline">
                 Settings
               </Link>{" "}
               / My Profile
-            </p>
+            </span>
           </h3>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
@@ -180,54 +181,21 @@ export default function UserProfile() {
                   </div>
                 </div>
               </div>
-              <TempTypeInputWidth
-                setState={setusernameR}
-                label={"Username"}
-                value={myProfile.username}
-                required={false}
-                type={"text"}
-                widthProp="sm:w-[30.66%]"
-              />
-              <TempTypeInputWidth
-                setState={setfirstNameR}
-                label={"First Name"}
-                value={myProfile.firstName}
-                required={false}
-                type={"text"}
-                widthProp="sm:w-[30.66%]"
-              />
-              <TempTypeInputWidth
-                setState={setlastNameR}
-                label={"Last Name"}
-                value={myProfile.lastName}
-                required={false}
-                type={"text"}
-                widthProp="sm:w-[30.66%]"
-              />
-              <TempTypeInputWidth
-                setState={setphoneR}
-                label={"Phone"}
-                value={myProfile.phone}
-                required={false}
-                type={"number"}
-                widthProp="sm:w-[30.66%]"
-              />
-              <TempTypeInputWidth
-                setState={setemailR}
-                label={"Email"}
-                value={myProfile.email}
-                required={false}
-                type={"email"}
-                widthProp="sm:w-[30.66%]"
-              />
-              <TempTypeInputWidth
-                setState={setaddressR}
-                label={"Address"}
-                value={myProfile.address}
-                required={false}
-                type={"text"}
-                widthProp="sm:w-[30.66%]"
-              />
+              <div className="w-full flex flex-wrap justify-between items-start">
+                <TempTypeInfoShow
+                  label={"Username"}
+                  value={myProfile.username}
+                />
+                <TempTypeInfoShow label={"Email"} value={myProfile.email} />
+                <TempTypeInfoShow label={"Full Name"} value={myProfile.name} />
+                <TempTypeInfoShow
+                  label={"Company Name"}
+                  value={myProfile.company}
+                />
+                <TempTypeInfoShow label={"Phone"} value={myProfile.phone} />
+                <TempTypeInfoShow label={"City"} value={myProfile.city} />
+              </div>
+
               <div
                 className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
               >
@@ -255,3 +223,18 @@ export default function UserProfile() {
     </div>
   );
 }
+
+export const TempTypeInfoShow = ({ label, value }: any) => {
+  return (
+    <div
+      className={`w-[100%] sm:w-[43%] h-fit flex justify-start items-start gap-1`}
+    >
+      <div className="w-full h-fit flex justify-between items-start py-4 border-b-[2px]">
+        <span className="font-[400] text-[18px] leading-[27px]">{label}:</span>
+        <span className="text-end font-[400] text-[18px] leading-[27px]">
+          {value}
+        </span>
+      </div>
+    </div>
+  );
+};

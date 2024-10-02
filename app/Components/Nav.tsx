@@ -19,6 +19,7 @@ import {
   set_idR,
   setaddressR,
   setadminR,
+  setAllValues,
   setemailR,
   setfirstNameR,
   setlastNameR,
@@ -107,14 +108,9 @@ export default function Nav() {
           }
         );
         dispatch(setprofilePicR(result?.data?.data?.profilePic));
-        dispatch(setemailR(result?.data?.data?.email));
-        dispatch(setphoneR(result?.data?.data?.phone));
-        dispatch(setfirstNameR(result?.data?.data?.firstName));
-        dispatch(setlastNameR(result?.data?.data?.lastName));
-        dispatch(setaddressR(result?.data?.data?.address));
-        dispatch(setusernameR(result?.data?.data.username));
-        dispatch(setadminR(result?.data?.data.admin));
         dispatch(set_idR(result?.data?.data._id));
+        dispatch(setAllValues(result?.data?.data));
+        console.log(result?.data?.data);
       } catch (error) {
         console.log(error);
       } finally {
