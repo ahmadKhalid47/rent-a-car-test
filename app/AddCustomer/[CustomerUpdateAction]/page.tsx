@@ -164,12 +164,15 @@ export default function Vehicles() {
       //   carImages.some((item) => item instanceof File)
       // ) {
       const formData = new FormData();
-      formData.append("files", customer.customerImage[0]);
-      const res = await axios.post("/api/uploadWithCondition", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      let res: AxiosResponse<any, any> | null = null;
+      if (customer?.customerImage[0] instanceof File) {
+        formData.append("files", customer.customerImage[0]);
+        res = await axios.post("/api/uploadWithCondition", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
       const formData2 = new FormData();
       for (let i = 0; i < customer.passportImages.length; i++) {
         formData2.append("files", customer.passportImages[i]);
@@ -259,9 +262,7 @@ export default function Vehicles() {
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
                   } flex justify-center items-center rounded-full z-[5]`}
                 >
-                  <span className="text-center -translate-x-[2px]">
-                    1
-                  </span>
+                  <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -314,36 +315,28 @@ export default function Vehicles() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
                 className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Emergency Information
               </div>
               <div
                 className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Reference Information

@@ -63,7 +63,7 @@ export default function AddChauffeur() {
       let res: AxiosResponse<any, any> | null = null;
       if (chauffeur?.chauffeurImage[0] instanceof File) {
         const formData = new FormData();
-        formData.append("files", chauffeur.chauffeurImage[0]);
+        formData.append("files", chauffeur?.chauffeurImage[0]);
 
         res = await axios.post("/api/upload", formData, {
           headers: {
@@ -73,11 +73,11 @@ export default function AddChauffeur() {
       }
 
       const formData2 = new FormData();
-      for (let i = 0; i < chauffeur.passportImages.length; i++) {
-        if (chauffeur.passportImages[i] instanceof File) {
-          formData2.append("files", chauffeur.passportImages[i]);
+      for (let i = 0; i < chauffeur?.passportImages.length; i++) {
+        if (chauffeur?.passportImages[i] instanceof File) {
+          formData2.append("files", chauffeur?.passportImages[i]);
         } else {
-          // alreadyUploadedFiles.push(chauffeur.passportImages[i]);
+          // alreadyUploadedFiles.push(chauffeur?.passportImages[i]);
         }
       }
       const res2 = await axios.post("/api/upload", formData2, {
@@ -87,11 +87,11 @@ export default function AddChauffeur() {
       });
 
       const formData3 = new FormData();
-      for (let i = 0; i < chauffeur.licenseImages.length; i++) {
-        if (chauffeur.licenseImages[i] instanceof File) {
-          formData3.append("files", chauffeur.licenseImages[i]);
+      for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
+        if (chauffeur?.licenseImages[i] instanceof File) {
+          formData3.append("files", chauffeur?.licenseImages[i]);
         } else {
-          // alreadyUploadedFiles.push(chauffeur.licenseImages[i]);
+          // alreadyUploadedFiles.push(chauffeur?.licenseImages[i]);
         }
       }
       const res3 = await axios.post("/api/upload", formData3, {
@@ -151,23 +151,26 @@ export default function AddChauffeur() {
     }
     getData();
   }, []);
-  console.log(chauffeur.passportImages);
+  console.log(chauffeur?.passportImages);
 
   async function updateData(action: string) {
     try {
       setLoading(true);
-      const carImages = chauffeur.chauffeurImage;
+      const carImages = chauffeur?.chauffeurImage;
 
       const formData = new FormData();
-      formData.append("files", chauffeur.chauffeurImage[0]);
-      const res = await axios.post("/api/uploadWithCondition", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      formData.append("files", chauffeur?.chauffeurImage[0]);
+      let res: AxiosResponse<any, any> | null = null;
+      if (chauffeur?.chauffeurImage[0] instanceof File) {
+        res = await axios.post("/api/uploadWithCondition", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
       const formData2 = new FormData();
-      for (let i = 0; i < chauffeur.passportImages.length; i++) {
-        formData2.append("files", chauffeur.passportImages[i]);
+      for (let i = 0; i < chauffeur?.passportImages.length; i++) {
+        formData2.append("files", chauffeur?.passportImages[i]);
       }
       const res2 = await axios.post("/api/uploadWithCondition", formData2, {
         headers: {
@@ -177,8 +180,8 @@ export default function AddChauffeur() {
       console.log(res2?.data?.message);
 
       const formData3 = new FormData();
-      for (let i = 0; i < chauffeur.licenseImages.length; i++) {
-        formData3.append("files", chauffeur.licenseImages[i]);
+      for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
+        formData3.append("files", chauffeur?.licenseImages[i]);
       }
       const res3 = await axios.post("/api/uploadWithCondition", formData3, {
         headers: {
