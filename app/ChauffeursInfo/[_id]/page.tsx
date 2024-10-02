@@ -103,7 +103,7 @@ export default function chauffeurInfoMainPage() {
                     </p>
                   </div>
                 </div>
-                <div className="w-[80%] flex justify-between items-center bg-red-5">
+                <div className="w-[80%] flex justify-between items-center ">
                   <div className="flex justify-start items-center gap-0 w-[100%] pe-5">
                     <p className="font-[400] text-[20px] leading-[30px] w-[30%] ">
                       Country:

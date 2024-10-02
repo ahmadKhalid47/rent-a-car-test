@@ -383,7 +383,7 @@ export default function Vehicles() {
                     ))}
                   </select>
                   <div
-                    className="rounded-full w-[19px] h-[12px] bg-red-5 absolute left-2 top-[15.5px]"
+                    className="rounded-full w-[19px] h-[12px] absolute left-2 top-[15.5px]"
                     style={{
                       backgroundColor: advanceFilters[3].keyValue,
                     }}

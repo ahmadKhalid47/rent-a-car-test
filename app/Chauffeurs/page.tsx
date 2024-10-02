@@ -194,7 +194,7 @@ export default function Vehicles() {
           </div>
           {!showLess ? (
             <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Gender
                 </label>
@@ -233,7 +233,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Postal/Zip Code
                 </label>
@@ -274,7 +274,7 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   City
                 </label>

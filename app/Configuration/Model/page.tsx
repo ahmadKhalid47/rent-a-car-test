@@ -136,9 +136,9 @@ export default function Vehicles() {
           )}
 
           {popup ? (
-            <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] bg-red-40">
+            <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
-                <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+                <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Make
                     <FaAsterisk className="text-[6px] text-red-600" />
@@ -169,7 +169,7 @@ export default function Vehicles() {
                 </div>
 
                 <div
-                  className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                  className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     {"Add New"}

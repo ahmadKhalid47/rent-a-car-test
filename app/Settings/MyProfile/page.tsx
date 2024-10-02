@@ -235,11 +235,11 @@ export default function Profile() {
                 >
                   <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 absolute ">
                     <div
-                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                      className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                     >
                       <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                         {"Old Password"}
-                        <FaAsterisk className="text-[6px] text-red-600" />
+                        <FaAsterisk className="text-[6px]" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
@@ -257,7 +257,7 @@ export default function Profile() {
                       </div>
                     </div>
                     <div
-                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                      className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                     >
                       <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                         {"New Password"}

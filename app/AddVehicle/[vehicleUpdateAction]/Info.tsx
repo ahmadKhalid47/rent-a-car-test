@@ -160,7 +160,7 @@ export default function Info() {
             (item: any) => item.Type
           )}
         />
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Making Year
             <FaAsterisk className="text-[6px]" />
@@ -191,7 +191,7 @@ export default function Info() {
           required={true}
           type={"text"}
         />
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
             <FaAsterisk className="text-[6px]" />
@@ -210,7 +210,7 @@ export default function Info() {
                 (item: any, key: number) => (
                   <option value={item.Color} key={key}>
                     <div
-                      className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
+                      className="rounded-full w-[20px] h-[18px] absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
                       style={{
                         backgroundColor: item.Color,
                       }}
@@ -223,7 +223,7 @@ export default function Info() {
               )}
             </select>
             <div
-              className="rounded-full w-[20px] h-[18px] bg-red-5 absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
+              className="rounded-full w-[20px] h-[18px] absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
               style={{
                 backgroundColor: vehicle.color,
               }}

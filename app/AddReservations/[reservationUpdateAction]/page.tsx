@@ -260,7 +260,7 @@ export default function Reservations() {
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
                   } flex justify-center items-center rounded-full z-[5]`}
                 >
-                  <span className="bg-red-30 text-center -translate-x-[2px]">
+                  <span className="text-center -translate-x-[2px]">
                     1
                   </span>
                 </button>

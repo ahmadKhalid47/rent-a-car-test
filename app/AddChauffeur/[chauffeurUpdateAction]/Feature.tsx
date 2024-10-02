@@ -87,7 +87,7 @@ export default function Feature() {
         <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
           Additional Notes
         </h3>
-        <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+        <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
           <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
             <textarea
               className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"

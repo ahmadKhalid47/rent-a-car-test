@@ -461,7 +461,7 @@ export default function UserDashboard() {
                       widthProp="sm:w-[48%]"
                     />
                     <div
-                      className={`w-[100%] sm:w-[48%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                      className={`w-[100%] sm:w-[48%] h-fit flex flex-col justify-start items-start gap-1`}
                     >
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
                         {"label"}

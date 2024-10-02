@@ -160,8 +160,8 @@ export default function Damages() {
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 bg-red-30 relative">
-          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 bg-red-30">
+        <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 relative">
+          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 ">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
@@ -311,7 +311,7 @@ export default function Damages() {
       {popup ? (
         <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
           <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
-            <div className="w-full sm:w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-full sm:w-[181px] h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Damage Type
               </label>
@@ -335,7 +335,7 @@ export default function Damages() {
                 </div>
               </div>
             </div>
-            <div className="w-full sm:w-[181px] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            <div className="w-full sm:w-[181px] h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Degree
               </label>
@@ -359,7 +359,7 @@ export default function Damages() {
                 </div>
               </div>
             </div>
-            {/* <div className="w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1">
+            {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Description
               </label>
