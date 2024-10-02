@@ -192,6 +192,8 @@ export default function UserProfile() {
                   label={"Company Name"}
                   value={myProfile.company}
                 />
+                <TempTypeInfoShow label={"Plan"} value={myProfile.plan} />
+                <TempTypeInfoShow label={"Expiry Date"} value={"dd-mm-yyyy"} />
                 <TempTypeInfoShow label={"Phone"} value={myProfile.phone} />
                 <TempTypeInfoShow label={"City"} value={myProfile.city} />
               </div>
@@ -205,15 +207,7 @@ export default function UserProfile() {
                   }}
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 >
-                  {loading ? <SmallLoader /> : "Cancel"}
-                </button>
-                <button
-                  onClick={() => {
-                    editItem(myProfile.user);
-                  }}
-                  className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                >
-                  {saveloading ? <SmallLoader /> : "Save"}
+                  Back
                 </button>
               </div>
             </div>
