@@ -68,29 +68,32 @@ export default function Info() {
     }
   }, []);
 
-  const thumbs: any = files?.map((file: any) => (
-    <div
-      key={file?.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file?.preview ? file.preview : file}
-          alt={file?.name}
-          className=" w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="font-[400] text-[10px] leading-[12px] text-grey">
-        {file?.name}
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing()}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
+  const thumbs: any = files?.map(
+    (file: any) =>
+      file && (
+        <div
+          key={file?.name}
+          className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
+        >
+          <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
+            <img
+              src={file?.preview ? file.preview : file}
+              alt={file?.name}
+              className=" w-[64px] h-[64px]"
+            />
+          </div>
+          <span className="w-[64px] w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate truncate">
+            {file?.name}
+          </span>
+          <span
+            className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
+            onClick={() => removing()}
+          >
+            <FaTimesCircle />
+          </span>
+        </div>
+      )
+  );
 
   function removing() {
     setFiles([]);

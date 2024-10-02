@@ -72,7 +72,6 @@ export default function AddUser() {
         router.push("/Users");
       } else {
         setShowError(result?.data?.error);
-        console.log(result, result?.data?.error);
         dispatch(setAlert(result?.data?.error));
         dispatch(setSeverity("error"));
         setShowSuccess(null);
@@ -93,7 +92,6 @@ export default function AddUser() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data));
-          console.log(result?.data?.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -108,21 +106,23 @@ export default function AddUser() {
       getData();
     }
   }, []);
-  console.log(User);
 
   async function updateData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("updateData");
+    console.log(User.profilePic);
     try {
       setLoading(true);
 
       const formData = new FormData();
       formData.append("files", User.profilePic[0]);
-      const res = await axios.post("/api/uploadWithCondition", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      let res: AxiosResponse<any, any> | null = null;
+      if (User?.profilePic[0] instanceof File) {
+        res = await axios.post("/api/uploadWithCondition", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
       await axios.post(`/api/updateUser/${UserUpdateAction}`, {
         ...User,
         profilePic: res?.data?.message,

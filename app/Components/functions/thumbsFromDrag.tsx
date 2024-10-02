@@ -21,7 +21,7 @@ export function Thumbs({ files, setFiles }: dataType) {
               className=" w-[64px] h-[64px]"
             />
           </div>
-          <span className="font-[400] text-[10px] leading-[12px] text-grey truncate w-[64px]">
+          <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate truncate w-[64px]">
             {file?.name}
           </span>
           <span

@@ -74,7 +74,7 @@ export default function SecondPage() {
           className=" w-[64px] h-[64px]"
         />
       </div>
-      <span className="font-[400] text-[10px] leading-[12px] text-grey">
+      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
         {file.name}
       </span>
       <span
