@@ -1,4 +1,12 @@
 "use client";
+import d1 from "@/public/dashboard (1).svg";
+import d3 from "@/public/dashboard (3).svg";
+import d5 from "@/public/dashboard (5).svg";
+import d6 from "@/public/dashboard (6).svg";
+import d7 from "@/public/dashboard (7).svg";
+import d4 from "@/public/ad (1).svg";
+import d2 from "@/public/ad (2).svg";
+
 import React from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -11,6 +19,7 @@ import { useParams } from "next/navigation";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { setUserInfo } from "@/app/store/UserInfo";
+import { TextLoader } from "@/app/Components/Loader";
 
 export default function UserInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -49,6 +58,90 @@ export default function UserInfoMainPage() {
     getData();
   }, []);
   console.log(UserInfo);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [vehicleLoading, setvehicleLoading] = useState<any>(true);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setvehicleLoading(true);
+        const result = await axios.post("/api/getVehicle", {
+          createdBy: UserInfo?._id,
+        });
+        setVehiclesData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setvehicleLoading(false);
+      }
+    }
+    if (UserInfo?._id) getData();
+  }, [UserInfo?._id]);
+
+  const [CustomersData, setCustomersData] = useState<any[]>([]);
+  const [CustomerLoading, setCustomerLoading] = useState<any>(true);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setCustomerLoading(true);
+        const result = await axios.post("/api/getCustomer", {
+          createdBy: UserInfo?._id,
+        });
+        setCustomersData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setCustomerLoading(false);
+      }
+    }
+    if (UserInfo?._id) getData();
+  }, [UserInfo?._id]);
+
+  const [ChauffeursData, setChauffeursData] = useState<any[]>([]);
+  const [ChauffeurLoading, setChauffeurLoading] = useState<any>(true);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setChauffeurLoading(true);
+        const result = await axios.post("/api/getChauffeur", {
+          createdBy: UserInfo?._id,
+        });
+        setChauffeursData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setChauffeurLoading(false);
+      }
+    }
+    if (UserInfo?._id) getData();
+  }, [UserInfo?._id]);
+
+  const [reservationLoading, setreservationLoading] = useState<any>(true);
+  const [reservationsData, setreservationsData] = useState<any[]>([]);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setreservationLoading(true);
+        const result = await axios.post("/api/getreservation", {
+          createdBy: UserInfo?._id,
+        });
+        setreservationsData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setreservationLoading(false);
+      }
+    }
+    if (UserInfo?._id) getData();
+  }, [global.vehicleDataReloader, UserInfo?._id]);
+
+  const completedReservations = reservationsData.filter(
+    (item: any) => item.data.status === "complete"
+  );
+
+  const totalAmount = completedReservations.reduce(
+    (sum: any, record: any) => sum + Number(record.data.amount),
+    0
+  );
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -158,21 +251,86 @@ export default function UserInfoMainPage() {
                 </div>
               </div>
             </div>
-            <div className="w-full h-fit dark:bg-dark1 bg-white  border-2 border-grey mt-5 rounded-[10px] px-5 py-1">
-              <div className="w-full h-[350px] flex justify-center items-start gap-8 overflow-auto scroll">
-                {/* {activeButton === "General" ? (
-                  <>
-                    <GeneralUsers />
-                  </>
-                ) : activeButton === "Identity" ? (
-                  <>
-                    <IdentityUser />
-                  </>
-                ) : activeButton === "Emergency" ? (
-                  <div className="w-full flex flex-col justify-start items-start gap-2 h-fit">
-                    <EmergencyUsers />
+            <div className="w-full h-fit dark:bg-dark1 bg-white  border-2 border-grey mt-5 rounded-[10px] py-10 px-12">
+              <div className="w-full h-fit flex flex-wrap justify-start items-start gap-8 overflow-auto scroll">
+                <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
+                  <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                    <img src={d7.src} />
                   </div>
-                ) : null} */}
+                  <div>
+                    <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                      {!vehicleLoading ? VehiclesData.length : <TextLoader />}
+                    </div>
+                    <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                      Total Cars{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
+                  <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                    <img src={d3.src} />
+                  </div>
+                  <div>
+                    <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                      {!reservationLoading ? (
+                        reservationsData.length
+                      ) : (
+                        <TextLoader />
+                      )}
+                    </div>
+                    <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                      Total Reservations{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
+                  <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                    <img src={d4.src} />
+                  </div>
+                  <div>
+                    <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                      {!CustomerLoading ? CustomersData.length : <TextLoader />}
+                    </div>
+                    <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                      Total Customers{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
+                  <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                    <img src={d2.src} />
+                  </div>
+                  <div>
+                    <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                      {!ChauffeurLoading ? (
+                        ChauffeursData.length
+                      ) : (
+                        <TextLoader />
+                      )}
+                    </div>
+                    <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                      Total Chauffeurs{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
+                  <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
+                    <img src={d1.src} />
+                  </div>
+                  <div>
+                    <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
+                      {!reservationLoading ? (
+                        `${global.currentCurrency} ` +
+                        totalAmount.toLocaleString("en-US")
+                      ) : (
+                        <TextLoader />
+                      )}
+                    </div>
+                    <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
+                      Total Revenue
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
