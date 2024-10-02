@@ -110,7 +110,6 @@ export default function Nav() {
         dispatch(setprofilePicR(result?.data?.data?.profilePic));
         dispatch(set_idR(result?.data?.data._id));
         dispatch(setAllValues(result?.data?.data));
-        console.log(result?.data?.data);
       } catch (error) {
         console.log(error);
       } finally {
