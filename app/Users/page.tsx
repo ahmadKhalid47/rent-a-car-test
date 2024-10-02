@@ -81,12 +81,15 @@ export default function Vehicles() {
 
     const lowercasedQuery = searchQuery.toLowerCase();
     const filtered = UsersData.filter((vehicle) => {
-      const { data } = vehicle;
-      const { name, phone } = data;
+      const { name, username, email, city, company  } = vehicle;
 
       return (
         name.toLowerCase().includes(lowercasedQuery) ||
-        phone.toLowerCase().includes(lowercasedQuery)
+        username.toLowerCase().includes(lowercasedQuery) ||
+        email.toLowerCase().includes(lowercasedQuery) ||
+        city.toLowerCase().includes(lowercasedQuery) ||
+        company.toLowerCase().includes(lowercasedQuery) ||
+        username.toLowerCase().includes(lowercasedQuery)
       );
     });
     setFilteredUser(filtered);
@@ -97,8 +100,7 @@ export default function Vehicles() {
 
     const lowercasedQuery = searchQuery.toLowerCase();
     filtered = UsersData.filter((vehicle) => {
-      const { data } = vehicle;
-      const { name, phone } = data;
+      const { name, phone } = vehicle;
 
       return (
         name.toLowerCase().includes(lowercasedQuery) ||
@@ -257,9 +259,7 @@ export default function Vehicles() {
                   >
                     <option value="">Select</option>
                     {Array.from(
-                      new Set(
-                        UsersData.map((item) => item.data.postalCode)
-                      )
+                      new Set(UsersData.map((item) => item.data.postalCode))
                     ).map((postalCode) => (
                       <option key={postalCode} value={postalCode}>
                         {postalCode}
@@ -324,11 +324,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit">
-          {loading ? (
-            <MediumLoader />
-          ) : (
-            <ListViewUser data={filteredUser} />
-          )}
+          {loading ? <MediumLoader /> : <ListViewUser data={filteredUser} />}
         </div>
       </div>
     </div>

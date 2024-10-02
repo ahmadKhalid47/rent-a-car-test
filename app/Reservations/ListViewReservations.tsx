@@ -225,7 +225,7 @@ export default function ListViewreservation({ data }: dataType) {
           </div>
           {paginatedData.length < 1 ? (
             <span className="p-3">
-              No Reservations found. Please add a Reservation.
+              No Reservations found.
             </span>
           ) : (
             paginatedData.map((item: any, index: number) => (

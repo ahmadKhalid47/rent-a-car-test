@@ -224,7 +224,7 @@ export default function ListView({ data }: dataType) {
             </div>
           </div>
           {paginatedData.length < 1 ? (
-            <span className="p-3">No Types found. Please add a Type.</span>
+            <span className="p-3">No Types found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">

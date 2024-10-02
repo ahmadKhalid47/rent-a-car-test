@@ -197,7 +197,7 @@ export default function ListView({ data }: dataType) {
           </div>
           {paginatedData.length < 1 ? (
             <span className="p-3">
-              No Countries found. Please add a Country.
+              No Countries found.
             </span>
           ) : (
             paginatedData.map((item: any, index: number) => (

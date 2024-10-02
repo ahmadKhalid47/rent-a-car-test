@@ -350,7 +350,7 @@ export default function AdminDashboard() {
                       </div>
                       {paginatedData.length < 1 ? (
                         <span className="p-3">
-                          No Vehicles found. Please add a Vehicle.
+                          No Vehicles found.
                         </span>
                       ) : (
                         paginatedData.map((item: any, index: number) => (

@@ -205,7 +205,7 @@ export default function ListView({ data }: dataType) {
           </div>
           {paginatedData.length < 1 ? (
             <span className="p-3">
-              No Features found. Please add a Feature.
+              No Features found.
             </span>
           ) : (
             paginatedData.map((item: any, index: number) => (

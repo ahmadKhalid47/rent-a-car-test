@@ -287,7 +287,7 @@ export default function ListViewCustomers({ data }: dataType) {
 
           {paginatedData.length < 1 ? (
             <span className="p-3">
-              No Chauffeurs found. Please add a Chauffeur.
+              No Chauffeurs found.
             </span>
           ) : (
             paginatedData.map((item: any, index: number) => (

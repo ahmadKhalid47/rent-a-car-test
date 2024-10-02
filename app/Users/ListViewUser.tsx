@@ -288,7 +288,7 @@ export default function ListViewUsers({ data }: dataType) {
           </div>
 
           {paginatedData.length < 1 ? (
-            <span className="p-3">No Users found. Please add a User.</span>
+            <span className="p-3">No Users found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">

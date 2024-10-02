@@ -171,9 +171,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1
-            ? "text-grey"
-            : " text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
@@ -275,9 +273,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           </div>
 
           {paginatedData.length < 1 ? (
-            <span className="p-3">
-              No Chauffeurs found. Please add a Chauffeur.
-            </span>
+            <span className="p-3">No Chauffeurs found. </span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">

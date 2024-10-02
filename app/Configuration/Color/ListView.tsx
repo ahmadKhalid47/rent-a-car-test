@@ -210,7 +210,7 @@ export default function ListView({ data }: dataType) {
             </div>
           </div>
           {paginatedData.length < 1 ? (
-            <span className="p-3">No Colors found. Please add a Color. </span>
+            <span className="p-3">No Colors found. </span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
