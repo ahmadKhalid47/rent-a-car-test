@@ -9,8 +9,8 @@ const RegistrationSchema = new mongoose.Schema({
     unique: true,
   },
   email: { type: String, required: true, default: "", unique: true },
-  firstName: { type: String, required: false, default: "" },
-  lastName: { type: String, required: false, default: "" },
+  firstName: { type: String, required: false },
+  lastName: { type: String, required: false },
   name: { type: String, required: true, default: "" },
   phone: { type: String, required: true, default: "" },
   company: { type: String, required: true, default: "" },
@@ -20,7 +20,7 @@ const RegistrationSchema = new mongoose.Schema({
   plan: { type: String, required: true, default: "" },
   password: { type: String, required: true, default: "" },
   admin: { type: Boolean, required: true, default: false },
-  address: { type: String, required: false, default: "" },
+  address: { type: String, required: false },
   fptoken: { type: String },
 });
 const RegistrationModel =
