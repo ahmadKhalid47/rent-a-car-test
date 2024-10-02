@@ -101,7 +101,6 @@ export default function ListViewUsers({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-  console.log(itemToDeleteMany);
   
   async function deleteManyItem() {
     try {

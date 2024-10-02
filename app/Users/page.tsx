@@ -81,7 +81,7 @@ export default function Vehicles() {
 
     const lowercasedQuery = searchQuery.toLowerCase();
     const filtered = UsersData.filter((vehicle) => {
-      const { name, username, email, city, company  } = vehicle;
+      const { name, username, email, city, company } = vehicle;
 
       return (
         name.toLowerCase().includes(lowercasedQuery) ||

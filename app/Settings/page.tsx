@@ -14,52 +14,82 @@ import settings12 from "@/public/settings (9).svg";
 import settings13 from "@/public/Company.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MediumLoader } from "../Components/Loader";
+import { LinearProgress } from "@mui/material";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
+  let myProfile = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-
-  let settingsArray = [
-    {
-      link: "Settings/MyProfile",
-      img: settings1,
-      heading: "My Profile",
-      text: "Manage your personal info along with login credentials.",
-      prefixes: "my profiles username email address profile pic password",
-    },
-    {
-      link: "Settings/CompanyProfile",
-      img: settings13,
-      heading: "Company Profile",
-      text: "Upload your company logo to build your brand identity.",
-      prefixes: "company profiles logos",
-    },
-    {
-      link: "Settings/General",
-      img: settings3,
-      heading: "General",
-      text: "Manage your VAT rate and adjust other general settings.",
-      prefixes: "vat percentage dark themes light themes vat include currency",
-    },
-    {
-      link: "Settings/Invoicing",
-      img: settings10,
-      heading: "Invoicing",
-      text: "Manage additional info and payment details for invoices.",
-      prefixes:
-        "terms and conditions additional information invoice invoicing payment method",
-    },
-    {
-      link: "Settings/Agreement",
-      img: settings9,
-      heading: "Agreement",
-      text: "Customize terms and conditions to fit your business needs.",
-      prefixes: "terms and conditions terms & conditions",
-    },
-  ];
-
+  const [settingsArray, setSettingsArray] = useState<any>([]);
+  useEffect(() => {
+    if (myProfile.admin === true) {
+      setSettingsArray([
+        {
+          link: "Settings/MyProfile",
+          img: settings1,
+          heading: "My Profile",
+          text: "Manage your personal info along with login credentials.",
+          prefixes: "my profiles username email address profile pic password",
+        },
+        {
+          link: "Settings/General",
+          img: settings3,
+          heading: "General",
+          text: "Manage your VAT rate and adjust other general settings.",
+          prefixes:
+            "vat percentage dark themes light themes vat include currency",
+        },
+      ]);
+    } else if (myProfile.admin === false) {
+      setSettingsArray([
+        {
+          link: "Settings/MyProfile",
+          img: settings1,
+          heading: "My Profile",
+          text: "Manage your personal info along with login credentials.",
+          prefixes: "my profiles username email address profile pic password",
+        },
+        {
+          link: "Settings/CompanyProfile",
+          img: settings13,
+          heading: "Company Profile",
+          text: "Upload your company logo to build your brand identity.",
+          prefixes: "company profiles logos",
+        },
+        {
+          link: "Settings/General",
+          img: settings3,
+          heading: "General",
+          text: "Manage your VAT rate and adjust other general settings.",
+          prefixes:
+            "vat percentage dark themes light themes vat include currency",
+        },
+        {
+          link: "Settings/Invoicing",
+          img: settings10,
+          heading: "Invoicing",
+          text: "Manage additional info and payment details for invoices.",
+          prefixes:
+            "terms and conditions additional information invoice invoicing payment method",
+        },
+        {
+          link: "Settings/Agreement",
+          img: settings9,
+          heading: "Agreement",
+          text: "Customize terms and conditions to fit your business needs.",
+          prefixes: "terms and conditions terms & conditions",
+        },
+      ]);
+    } else if (myProfile.admin === undefined) {
+      setSettingsArray([]);
+    }
+  }, [myProfile.admin]);
   const [filteredSettings, setFilteredSettings] = useState(settingsArray);
+  useEffect(() => {
+    setFilteredSettings(settingsArray);
+  }, [settingsArray]);
 
   useEffect(() => {
     if (isMobile) {
@@ -105,14 +135,18 @@ export default function Vehicles() {
             </div>
           </div> */}
           <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-0">
-            {filteredSettings.map((item) => (
-              <SettingBox
-                link={item.link}
-                img={item.img}
-                heading={item.heading}
-                text={item.text}
-              />
-            ))}
+            {filteredSettings.length > 0 ? (
+              filteredSettings.map((item: any) => (
+                <SettingBox
+                  link={item.link}
+                  img={item.img}
+                  heading={item.heading}
+                  text={item.text}
+                />
+              ))
+            ) : (
+              <MediumLoader />
+            )}
           </div>
         </div>
       </div>
@@ -121,8 +155,6 @@ export default function Vehicles() {
 }
 
 function SettingBox({ link, img, heading, text }: any) {
-console.log(img);
-
   return (
     <Link
       href={link}
