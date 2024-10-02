@@ -4,10 +4,7 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
-import {
-  setMyProfileReloader,
-  setSidebarShowR,
-} from "@/app/store/Global";
+import { setMyProfileReloader, setSidebarShowR } from "@/app/store/Global";
 import { useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
@@ -61,18 +58,30 @@ export default function AdminProfile() {
       setSaveLoading(false);
     }
   }
-console.log("admin");
 
   return (
     <>
-      <TempTypeInputWidth
-        setState={setusernameR}
-        label={"Username"}
-        value={myProfile.username}
-        required={false}
-        type={"text"}
-        widthProp="sm:w-[30.66%]"
-      />
+      <div
+        className={`w-[100%] sm:w-[30.66%] h-fit flex flex-col justify-start items-start gap-1`}
+      >
+        <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+          Username{" "}
+        </label>
+        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+          <input
+            type={"text"}
+            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+            placeholder={`Enter Username`}
+            onChange={(e) => {
+              dispatch(setusernameR(e.target.value));
+            }}
+            value={myProfile.username}
+            minLength={6}
+            maxLength={30}
+          />
+        </div>
+      </div>
+
       <TempTypeInputWidth
         setState={setfirstNameR}
         label={"First Name"}
@@ -97,14 +106,26 @@ console.log("admin");
         type={"number"}
         widthProp="sm:w-[30.66%]"
       />
-      <TempTypeInputWidth
-        setState={setemailR}
-        label={"Email"}
-        value={myProfile.email}
-        required={false}
-        type={"email"}
-        widthProp="sm:w-[30.66%]"
-      />
+      <div
+        className={`w-[100%] sm:w-[30.66%] h-fit flex flex-col justify-start items-start gap-1`}
+      >
+        <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+          Email{" "}
+        </label>
+        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+          <input
+            type={"email"}
+            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+            placeholder={`Enter Email`}
+            onChange={(e) => {
+              dispatch(setemailR(e.target.value));
+            }}
+            value={myProfile.email}
+            minLength={6}
+            maxLength={30}
+          />
+        </div>
+      </div>
       <TempTypeInputWidth
         setState={setaddressR}
         label={"Address"}

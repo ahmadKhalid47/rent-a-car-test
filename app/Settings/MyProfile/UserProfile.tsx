@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 export default function UserProfile() {
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
-console.log("user");
 
   return (
     <div className="w-full flex flex-wrap justify-between items-start">

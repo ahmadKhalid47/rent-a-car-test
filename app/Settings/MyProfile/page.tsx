@@ -7,24 +7,25 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
+  setAlert,
   setLoginPageR,
   setMyProfileReloader,
+  setSeverity,
   setSidebarShowR,
 } from "@/app/store/Global";
 import { useState } from "react";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaTimes } from "react-icons/fa";
 import axios, { AxiosResponse } from "axios";
 import { Alert } from "@mui/material";
 import { MediumLoader, SmallLoader } from "@/app/Components/Loader";
-import {
-  setprofilePicR,
-} from "@/app/store/myProfile";
+import { setprofilePicR } from "@/app/store/myProfile";
 import { TempTypeInputWidth } from "@/app/Components/InputComponents/TypeInput";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Diversity1TwoTone } from "@mui/icons-material";
 import AdminProfile from "./AdminProfile";
 import UserProfile from "./UserProfile";
+import { FaAsterisk } from "react-icons/fa6";
 
 export default function Profile() {
   let global = useSelector((state: RootState) => state.Global);
@@ -36,8 +37,49 @@ export default function Profile() {
   const [loading, setLoading] = useState<any>(false);
   const [saveloading, setSaveLoading] = useState<any>(false);
   const [selectedPic, setSelectedPic] = useState<any>("");
+  const [oldPassword, setOldPassword] = useState<any>("");
+  const [newPassword, setNewPassword] = useState<any>("");
+  const [editPopup, setEditPopup] = useState(false);
+  const [editLoading, setEditLoading] = useState(false);
   const router = useRouter();
-console.log("main");
+  async function editPassword(e: any) {
+    e.preventDefault();
+    console.log(oldPassword);
+    console.log(newPassword);
+    if (oldPassword === newPassword) {
+      dispatch(
+        setAlert("New password cannot be the same as the old password.")
+      );
+      dispatch(setSeverity("error"));
+      return;
+    }
+
+    try {
+      setEditLoading(true);
+      let result: any = await axios.post(`/api/updatePassword`, {
+        oldPassword,
+        newPassword,
+        _id: myProfile._id,
+      });
+      console.log(result?.data);
+      if (result?.data?.success) {
+        dispatch(setAlert("Password Updated Successfully!"));
+        setEditPopup(false);
+      } else {
+        dispatch(setAlert(result?.data?.error));
+        dispatch(setSeverity("error"));
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEditLoading(false);
+    }
+  }
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission on Enter key
+    }
+  };
 
   useEffect(() => {
     if (isMobile) {
@@ -124,7 +166,7 @@ console.log("main");
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
-            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+            <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8 relative">
               <div className="w-full h-fit py-4 flex justify-between items-center">
                 <div className="w-[50%] h-full flex justify-start items-center gap-6">
                   <div className="w-[100px] h-[100px] flex justify-center items-center rounded-full border-2 border-grey dark:bg-dark2 bg-light-grey relative">
@@ -166,8 +208,9 @@ console.log("main");
                   >
                     <button
                       onClick={() => {
-                        router.push("/");
-                        dispatch(setLoginPageR(false));
+                        setEditPopup(true);
+                        setOldPassword("");
+                        setNewPassword("");
                       }}
                       className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     >
@@ -176,6 +219,7 @@ console.log("main");
                   </div>
                 </div>
               </div>
+
               {myProfile.admin === true ? (
                 <AdminProfile />
               ) : myProfile.admin === false ? (
@@ -183,6 +227,80 @@ console.log("main");
               ) : (
                 <MediumLoader />
               )}
+              {editPopup ? (
+                <form
+                  onSubmit={editPassword}
+                  onKeyDown={handleKeyDown}
+                  className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute bg-red-600 top-0 left-0 flex justify-center item-center sm:items-center z-[10]"
+                >
+                  <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 absolute ">
+                    <div
+                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        {"Old Password"}
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                        <input
+                          required={true}
+                          type={"password"}
+                          minLength={6}
+                          maxLength={30}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e) => {
+                            setOldPassword(e.target.value);
+                          }}
+                          value={oldPassword}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={`w-[100%] h-fit bg-red-30 flex flex-col justify-start items-start gap-1`}
+                    >
+                      <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        {"New Password"}
+                        <FaAsterisk className="text-[6px] text-red-600" />
+                      </label>
+                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                        <input
+                          required={true}
+                          type={"password"}
+                          minLength={6}
+                          maxLength={30}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e) => {
+                            setNewPassword(e.target.value);
+                          }}
+                          value={newPassword}
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      className={`w-full flex justify-end gap-4 items-center pt-4`}
+                    >
+                      <button
+                        className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
+                        onClick={() => {
+                          setEditPopup(false);
+                        }}
+                      >
+                        <FaTimes />
+                      </button>
+                      <button
+                        className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                        disabled={editLoading}
+                        type="submit"
+                      >
+                        {editLoading ? <SmallLoader /> : "Update and Close"}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              ) : null}
             </div>
           </div>
         </div>
