@@ -11,6 +11,7 @@ import Customer from "./Customer";
 import CustomerInfo from "./Customerinfo";
 import chauffeur from "./chauffeur";
 import chauffeurInfo from "./chauffeurInfo";
+import UserInfo from "./UserInfo";
 import reservation from "./reservations";
 import reservationInfo from "./reservationInfo";
 import Invoicing from "./Invoicing";
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   CustomerInfo: CustomerInfo,
   chauffeur: chauffeur,
   chauffeurInfo: chauffeurInfo,
+  UserInfo: UserInfo,
   reservation: reservation,
   reservationInfo: reservationInfo,
   Invoicing: Invoicing,
