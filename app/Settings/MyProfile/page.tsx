@@ -195,7 +195,7 @@ export default function Profile() {
                   </div>
                   <div className="w-[50%] flex flex-col justify-center items-start">
                     <span className="font-[600] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
-                      {myProfile?.firstName} {myProfile?.lastName}
+                      {myProfile?.name} {myProfile?.lastName}
                     </span>
                     <span className="font-[500] text-[14px] xs:text-[16px] leading-7 sm:leading-[30px]">
                       {myProfile?.email}
@@ -220,6 +220,10 @@ export default function Profile() {
                 </div>
               </div>
 
+              
+
+
+
               {myProfile.admin === true ? (
                 <AdminProfile />
               ) : myProfile.admin === false ? (
@@ -227,6 +231,10 @@ export default function Profile() {
               ) : (
                 <MediumLoader />
               )}
+
+              
+
+
               {editPopup ? (
                 <form
                   onSubmit={editPassword}
