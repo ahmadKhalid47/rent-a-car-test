@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
-import {
-  TempTypeInput,
-} from "../../Components/InputComponents/TypeInput";
+import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
 import {
   TempSelectInput,
   TempSelectInputInfo,
