@@ -1,5 +1,6 @@
 import connectDb from "@/app/models/connectDb";
 import ModelModel from "@/app/models/Model";
+import RegistrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -12,7 +13,13 @@ export async function POST(req: Request) {
       );
     }
     await connectDb();
-    const data = await ModelModel.find({ createdBy }).sort({ _id: -1 }).lean();
+        const adminCheck = await RegistrationModel.findOne({ admin: true });
+
+    const data = await ModelModel.find({
+      $or: [{ createdBy }, { createdBy: adminCheck._id }],
+    })
+      .sort({ _id: -1 })
+      .lean();
     return NextResponse.json({
       data,
     });
