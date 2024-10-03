@@ -15,13 +15,9 @@ import { FaUserTie } from "react-icons/fa6";
 import { useMediaQuery } from "react-responsive";
 import { RiSettings4Fill } from "react-icons/ri";
 import { TbTargetArrow } from "react-icons/tb";
-import Logo from "@/public/CarRentalDashboard.svg";
 
 export default function UserSidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let companyProfile: any = useSelector(
-    (state: RootState) => state.companyProfile
-  );
   let pathName = usePathname();
   let [chevronState, setChevronState] = useState("");
   let [chevronStateClose, setChevronStateClose] = useState("");

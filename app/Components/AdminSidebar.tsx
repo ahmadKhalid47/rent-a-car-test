@@ -11,15 +11,10 @@ import { useDispatch } from "react-redux";
 import { usePathname } from "next/navigation";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { useMediaQuery } from "react-responsive";
-import { TbTargetArrow } from "react-icons/tb";
-import Logo from "@/public/CarRentalDashboard.svg";
 import PaidIcon from "@mui/icons-material/Paid";
 
 export default function AdminSidebar() {
   let global = useSelector((state: RootState) => state.Global);
-  let companyProfile: any = useSelector(
-    (state: RootState) => state.companyProfile
-  );
   let pathName = usePathname();
   let [chevronState, setChevronState] = useState("");
   let [chevronStateClose, setChevronStateClose] = useState("");
