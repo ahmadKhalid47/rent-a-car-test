@@ -60,29 +60,15 @@ export function SideBarLoader() {
           }
         }
       `}</style>
-
       <div
-        className={`${
-          global.sidebarShow ? "w-[250px] sm:w-[300px]" : "w-[70px]"
-        } sidebar-height flex flex-col justify-start items-start border-r-[2px] fixed z-[100] dark:bg-dark1 bg-white xl:z-0 transitions`}
+        className={`w-full h-[calc(100vh-90px)] pt-7 ${
+          global.sidebarShow ? "px-3 sm:px-3" : "px-1"
+        } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions`}
       >
-        <div className="w-full h-[90px] dark:bg-dark1 bg-white flex justify-center border-b-[2px] transitions">
-          <div
-            className={`skeleton ${
-              global.sidebarShow ? "w-[124px] h-[40px]" : "w-[60px] h-[25px]"
-            } mt-[30px]`}
-          />
-        </div>
-        <div
-          className={`w-full h-[calc(100vh-90px)] pt-7 ${
-            global.sidebarShow ? "px-3 sm:px-3" : "px-1"
-          } flex flex-col justify-start items-center gap-[2px] overflow-auto transitions`}
-        >
-          <div className={`skeleton w-full h-[49px]`} />
-          <div className={`skeleton w-full h-[49px]`} />
-          <div className={`skeleton w-full h-[49px]`} />
-          <div className={`skeleton w-full h-[49px]`} />
-        </div>
+        <div className={`skeleton w-full h-[49px]`} />
+        <div className={`skeleton w-full h-[49px]`} />
+        <div className={`skeleton w-full h-[49px]`} />
+        <div className={`skeleton w-full h-[49px]`} />
       </div>
     </>
   );
