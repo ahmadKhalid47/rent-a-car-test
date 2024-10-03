@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import { FaUsers } from "react-icons/fa";
+import { FaCar, FaUsers } from "react-icons/fa";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { useState, useEffect } from "react";
 import { setSidebarShowR } from "../store/Global";
@@ -46,6 +46,9 @@ export default function AdminSidebar() {
     } else if (pathName === "/Subscriptions") {
       setChevronState("Subscriptions");
       setChevronStateClose("Subscriptions");
+    } else if (pathName === "/Configuration") {
+      setChevronState("Configuration");
+      setChevronStateClose("Configuration");
     }
   }, [pathName]);
 
@@ -191,6 +194,27 @@ export default function AdminSidebar() {
           />
           <span className="">
             {global.sidebarShow ? "Subscriptions" : null}
+          </span>
+        </Link>
+        <Link
+          href="/Configuration"
+          className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+            global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
+          } bg-main-blue-hover hover:text-white rounded-[10px] ${
+            chevronState === "Configuration" && global.sidebarShow
+              ? "bg-main-blue text-white font-[500]"
+              : chevronStateClose === "Configuration" && !global.sidebarShow
+              ? "text-white bg-main-blue"
+              : ""
+          }`}
+        >
+          <FaCar
+            className={`${
+              global.sidebarShow ? "ml-[1px]" : "ml-[-12px] fixed"
+            } text-[22px]`}
+          />{" "}
+          <span className="">
+            {global.sidebarShow ? "Configuration" : null}
           </span>
         </Link>
       </div>
