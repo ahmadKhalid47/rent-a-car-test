@@ -20,6 +20,7 @@ interface dataType {
 
 export default function ListView({ data, makeData }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const [popup, setPopup] = useState(false);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
@@ -149,49 +150,58 @@ export default function ListView({ data, makeData }: dataType) {
       }
     });
   }
-  const allIds = data.map((item: any) => item?._id);
+  const allIds = data
+    .filter((item: any) => item?.createdBy === myProfile._id)
+    .map((item: any) => item?._id);
+
+  const userData = data.filter(
+    (item: any) => item?.createdBy === myProfile._id
+  );
 
   return (
     <div className="w-full h-fit mt-4 relative">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1
-            ? "text-grey"
-            : " text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          <button
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              setDeleteManyPopup(true);
-            }}
-            disabled={itemToDeleteMany.length < 1 ? true : false}
-          >
-            Delete Multiple
-          </button>
+          {userData.length > 0 && (
+            <button
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
+              onClick={() => {
+                setDeleteManyPopup(true);
+              }}
+              disabled={itemToDeleteMany.length < 1 ? true : false}
+            >
+              Delete Multiple
+            </button>
+          )}
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div className="text-center w-[6%] flex justify-center items-center ">
-              <div
-                className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length === data.length && data.length !== 0
-                    ? "bg-check"
-                    : ""
-                } border-2 border-dark-grey`}
-                onClick={() => {
-                  setItemToDeleteMany(
-                    itemToDeleteMany.length !== data.length ? allIds : []
-                  );
-                }}
-              ></div>
+              {userData.length > 0 && (
+                <div
+                  className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
+                    itemToDeleteMany.length === userData.length &&
+                    userData.length !== 0
+                      ? "bg-check"
+                      : ""
+                  } border-2 border-dark-grey`}
+                  onClick={() => {
+                    setItemToDeleteMany(
+                      itemToDeleteMany.length !== userData.length ? allIds : []
+                    );
+                  }}
+                ></div>
+              )}
             </div>
             <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
               ID
@@ -219,14 +229,18 @@ export default function ListView({ data, makeData }: dataType) {
                   } border-b-2 border-grey`}
                 >
                   <div className="text-center w-[6%] flex justify-center items-center ">
-                    <div
-                      className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                        itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
-                      } border-2 border-dark-grey`}
-                      onClick={() => {
-                        handlePushItem(item?._id);
-                      }}
-                    ></div>
+                    {item?.createdBy === myProfile._id && (
+                      <button
+                        className={`w-[15px] h-[15px] rounded-[1px] ${
+                          itemToDeleteMany?.includes(item?._id)
+                            ? "bg-check"
+                            : ""
+                        } border-2 border-dark-grey`}
+                        onClick={() => {
+                          handlePushItem(item?._id);
+                        }}
+                      ></button>
+                    )}
                   </div>
                   <h5 className="text-start pe-5 w-[7%]">
                     {JSON.stringify(
@@ -245,22 +259,34 @@ export default function ListView({ data, makeData }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
+                      className={`me-[5.8px] ${
+                        item?.createdBy === myProfile._id
+                          ? "hover:scale-[1.3] cursor-pointer"
+                          : "grayscale opacity-50"
+                      }`}
                       onClick={() => {
-                        setEditPopup(true);
-                        setItemToEdit(item?._id);
-                        setMake(item?.make);
-                        setModel(item?.model);
+                        if (item?.createdBy === myProfile._id) {
+                          setEditPopup(true);
+                          setItemToEdit(item?._id);
+                          setMake(item?.make);
+                          setModel(item?.model);
+                        }
                       }}
                     />
 
                     <img
-                      className="hover:scale-[1.3] cursor-pointer"
+                      className={`${
+                        item?.createdBy === myProfile._id
+                          ? "hover:scale-[1.3] cursor-pointer"
+                          : "grayscale opacity-50"
+                      }`}
                       src={deleteIcon.src}
                       title="Delete"
                       onClick={() => {
-                        setPopup(true);
-                        setItemToDelete(item?._id);
+                        if (item?.createdBy === myProfile._id) {
+                          setPopup(true);
+                          setItemToDelete(item?._id);
+                        }
                       }}
                     />
                   </div>
