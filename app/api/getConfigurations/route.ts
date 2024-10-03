@@ -7,6 +7,7 @@ import TypeModel from "@/app/models/Type";
 import CountryModel from "@/app/models/Country";
 import CityModel from "@/app/models/City";
 import { NextResponse } from "next/server";
+import RegistrationModel from "@/app/models/registration";
 
 export async function POST(req: Request) {
   try {
@@ -19,19 +20,28 @@ export async function POST(req: Request) {
     }
 
     await connectDb();
-    const color = await ColorModel.find({ createdBy }).sort({ _id: -1 }).lean();
-    const make = await MakeModel.find({ createdBy }).sort({ _id: -1 }).lean();
-    const model = await ModelModel.find({ createdBy }).sort({ _id: -1 }).lean();
-    const feature = await FeatureModel.find({ createdBy })
-      .sort({ _id: -1 })
-      .lean();
-    const type = await TypeModel.find({ createdBy }).sort({ _id: -1 }).lean();
-    const country = await CountryModel.find({ createdBy })
-      .sort({ _id: -1 })
-      .lean();
-    const city = await CityModel.find({ createdBy }).sort({ _id: -1 }).lean();
+    const adminCheck = await RegistrationModel.findOne({ admin: true });
 
-    let wholeData = {
+    const queryData = async (model:any) => {
+      return model
+        .find({ $or: [{ createdBy }, { createdBy: adminCheck._id }] })
+        .sort({ _id: -1 })
+        .lean();
+    };
+
+    // Parallelize the queries
+    const [color, make, model, feature, type, country, city] =
+      await Promise.all([
+        queryData(ColorModel),
+        queryData(MakeModel),
+        queryData(ModelModel),
+        queryData(FeatureModel),
+        queryData(TypeModel),
+        queryData(CountryModel),
+        queryData(CityModel),
+      ]);
+
+    const wholeData = {
       color,
       make,
       model,
@@ -40,9 +50,8 @@ export async function POST(req: Request) {
       country,
       city,
     };
-    return NextResponse.json({
-      wholeData,
-    });
+
+    return NextResponse.json({ wholeData });
   } catch (err) {
     console.log("err: ", err);
     return NextResponse.json({

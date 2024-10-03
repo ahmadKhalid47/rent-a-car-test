@@ -95,7 +95,7 @@ export default function Info() {
           className=" w-[64px] h-[64px]"
         />
       </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate truncate w-[64px]">
+      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
         {file?.name}
       </span>
       <span
@@ -209,15 +209,7 @@ export default function Info() {
               {Configurations?.Configurations?.color?.map(
                 (item: any, key: number) => (
                   <option value={item.Color} key={key}>
-                    <div
-                      className="rounded-full w-[20px] h-[18px] absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
-                      style={{
-                        backgroundColor: item.Color,
-                      }}
-                    >
-
                     {item.Color}
-                    </div>
                   </option>
                 )
               )}

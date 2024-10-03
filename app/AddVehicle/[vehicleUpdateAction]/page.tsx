@@ -25,6 +25,8 @@ export default function Vehicles() {
   const { vehicleUpdateAction } = params;
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  let {Configurations} = useSelector((state: RootState) => state.Configurations);
+  console.log(Configurations);
 
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -279,9 +281,7 @@ export default function Vehicles() {
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
                   } flex justify-center items-center rounded-full z-[5]`}
                 >
-                  <span className="text-center -translate-x-[2px]">
-                    1
-                  </span>
+                  <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -364,54 +364,42 @@ export default function Vehicles() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Vehicle Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Rental Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Insurance Info
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Features
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 4
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 4 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Damages
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 5
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 5 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Others
