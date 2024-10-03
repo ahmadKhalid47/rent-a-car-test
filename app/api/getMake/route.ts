@@ -13,12 +13,7 @@ export async function POST(req: Request) {
       );
     }
     await connectDb();
-    const adminCheck = await RegistrationModel.findOne({ admin: true });
-    const data = await MakeModel.find({
-      $or: [{ createdBy }, { createdBy: adminCheck._id }],
-    })
-      .sort({ _id: -1 })
-      .lean();
+    const data = await MakeModel.find({ createdBy }).sort({ _id: -1 }).lean();
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error("Error processing request: ", err);
