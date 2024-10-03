@@ -4,11 +4,11 @@
 @import "@fontsource/rubik";
 
 .bg-main-blue {
-  background-color: #0094DA;
+  background-color: #0094da;
 }
 
 .border-main-blue {
-  border-color: #0094DA;
+  border-color: #0094da;
 }
 
 .border-main-red {
@@ -16,11 +16,11 @@
 }
 
 .text-main-blue {
-  color: #0094DA;
+  color: #0094da;
 }
 
 .bg-main-blue-hover:hover {
-  background-color: #0094DA;
+  background-color: #0094da;
 }
 
 .bg-hover-blue:hover {
@@ -197,7 +197,7 @@ input[type="number"]::-webkit-inner-spin-button {
 /* 1 */
 .loader {
   --uib-size: 80px;
-  --uib-color: #0094DA;
+  --uib-color: #0094da;
   --uib-speed: 1.75s;
   --uib-stroke: 5px;
   --uib-bg-opacity: 0.1;
@@ -428,6 +428,16 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius:3px;
+  border-radius: 3px;
   border: none;
 }
+
+.option-color {
+  /* width: 10px;
+  height: 10px; */
+  /* background-color: red; */
+}
+
+
+
+

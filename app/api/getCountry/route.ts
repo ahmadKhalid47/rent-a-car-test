@@ -13,8 +13,11 @@ export async function POST(req: Request) {
       );
     }
     await connectDb();
+    const adminCheck = await RegistrationModel.findOne({ admin: true });
 
-    const data = await CountryModel.find({ createdBy })
+    const data = await CountryModel.find({
+      $or: [{ createdBy }, { createdBy: adminCheck._id }],
+    })
       .sort({ _id: -1 })
       .lean();
     return NextResponse.json({
