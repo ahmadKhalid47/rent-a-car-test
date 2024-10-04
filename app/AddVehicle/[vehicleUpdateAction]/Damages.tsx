@@ -42,15 +42,16 @@ export default function Damages() {
       return true;
     });
 
-    setFiles((prevFiles: any) => [
-      ...prevFiles,
-      ...filteredFiles.map((file: any) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      ),
-    ]);
+    if (filteredFiles.length > 0) {
+      // Replace the current file with the new one
+      setFiles([
+        Object.assign(filteredFiles[0], {
+          preview: URL.createObjectURL(filteredFiles[0]),
+        }),
+      ]);
+    }
   }, []);
+  console.log(vehicle.damages);
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -91,7 +92,10 @@ export default function Damages() {
     setFiles(array);
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    multiple: false,
+  });
 
   const handleClick = (e: any, isExterior: any) => {
     const rect = e.target.getBoundingClientRect();
@@ -161,7 +165,7 @@ export default function Damages() {
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
         <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 relative">
-          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 ">
+          <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10 ">
             <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
               <button
                 className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
@@ -277,55 +281,68 @@ export default function Damages() {
               </div>
             </div>
           </div>
-          <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+          <div className="w-[100%] 900:w-[60%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
             <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
-              <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-                <p className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
+              
+              <div className="w-full h-[60px] flex justify-between items-center py-[3px] border-b-[2px">
+                <span className="w-[80px] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                  Image
+                </span>
+                <span className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                   No
-                </p>
-                <p className="w-[30%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                </span>
+                <span className="w-[20%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                   Damage Type
-                </p>
-                <p className="w-[20%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-center">
+                </span>
+                <span className="w-[15%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                   Position
-                </p>
-                <p className="w-[30%] md:w-[80px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-end">
+                </span>
+                <span className="w-[35%] md:w-[100px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                   Degree
-                </p>
-                <p className="text-transparent font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                </span>
+                <span className="text-transparent font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
                   <FaTrash />
-                </p>
+                </span>
               </div>
+
               {vehicle?.damages?.map((item: any, key: number) => (
-                <div className="w-full h-fit flex justify-between items-start border-b-[2px">
-                  <p className="w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
+                <div className="w-full h-[60px] mt-1 flex justify-between items-end border-b-[2px]">
+                  <img
+                    className="w-[80px] h-[50px] mb-2 font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none rounded-[5px]"
+                    src={
+                      item?.files[0] instanceof File
+                        ? URL.createObjectURL(item?.files[0])
+                        : item?.files[0]
+                    }
+                  />
+                  <span className="pb-2 w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                     {JSON.stringify(key + 1).padStart(2, "0")}{" "}
-                  </p>
-                  <p className="w-[30%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                  </span>
+                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                     {item?.damageType}
-                  </p>
-                  <p className="w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-center">
+                  </span>
+                  <span className="pb-2 w-[15%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                     {item?.exterior ? "Exterior" : "Interior"}
-                  </p>
-                  <p className="w-[30%] md:w-[80px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                  </span>
+                  <span className="pb-2 w-[35%] md:w-[100px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                     {item?.degree}
-                  </p>
-                  <p
-                    className="font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end cursor-pointer"
+                  </span>
+                  <span
+                    className="pb-2 font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end hover:scale-[1.3] cursor-pointer"
                     onClick={() => handleDelete(key)}
                   >
-                    <FaTrash />
-                  </p>
+                    <FaTrash className="text-red-600 " />
+                  </span>
                 </div>
               ))}
               {vehicle.damages.length === 0 ? (
-                <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
+                <span className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                   Tap on the vehicle's part to add damage
-                </p>
+                </span>
               ) : null}
             </div>
           </div>
-          <div className="absolute left-[50%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
+          <div className="absolute left-[40%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
         </div>
       </div>
       {popup ? (
