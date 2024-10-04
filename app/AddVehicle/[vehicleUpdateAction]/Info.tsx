@@ -29,6 +29,8 @@ import {
   setpostalCodeR,
   setCarImages,
   setthumbnailImage,
+  setengineVolume,
+  setvinNo,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -156,7 +158,6 @@ export default function Info() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  console.log(vehicle.color);
   let ColorArray = [
     { Color: "Red" },
     { Color: "Blue" },
@@ -204,7 +205,7 @@ export default function Info() {
     { Color: "Khaki" },
     { Color: "Tomato" },
   ];
-console.log(vehicle.year);
+console.log(vehicle);
 const currentYear = new Date().getFullYear();
 const years = [];
 for (let i = currentYear +1; i >= 1995; i--) {
@@ -356,6 +357,20 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setodometerR}
           label={"Odometer"}
           value={vehicle.odometer}
+          required={true}
+          type={"number"}
+        />
+        <TempTypeInput
+          setState={setengineVolume}
+          label={"Engine Volume"}
+          value={vehicle.engineVolume}
+          required={true}
+          type={"number"}
+        />
+        <TempTypeInput
+          setState={setvinNo}
+          label={"VIN Number"}
+          value={vehicle.vinNo}
           required={true}
           type={"number"}
         />

@@ -97,12 +97,22 @@ export default function Login() {
               />
             )}
           </div>
-          <p
-            className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
-            onClick={() => dispatch(setLoginPageR(false))}
-          >
-            Forgot Password?
-          </p>
+          <div className="flex justify-between items-center w-full font-[400] text-[16px] leading-[20px] text-end mb-2 cursor-pointer">
+            <p className="w-fit flex justify-start gap-2 items-center font-[400] text-[16px] leading-[20px] text-[#3d84ff text-end mb-2 cursor-pointer">
+              <input
+                type="checkbox"
+                className="w-fit bg-green-400 cursor-pointer"
+                checked={false}
+              />
+              Remember Me
+            </p>
+            <p
+              className="w-fit font-[400] text-[16px] leading-[20px] text-[#EB4643] text-end mb-2 cursor-pointer"
+              onClick={() => dispatch(setLoginPageR(false))}
+            >
+              Forgot Password?
+            </p>
+          </div>
         </div>
         <button
           type="submit"

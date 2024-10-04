@@ -22,6 +22,8 @@ const initialState: any = {
   insuranceNo: "",
   insuranceProvider: "",
   insuranceExpiry: "",
+  engineVolume: "",
+  vinNo: "",
   features: [],
   otherNote: "",
   damages: [],
@@ -100,6 +102,9 @@ export const VehicleSlice = createSlice({
     setfeatures: (state, action) => {
       state.features = action.payload;
     },
+    setengineVolume: (state, action) => {
+      state.engineVolume = action.payload;
+    },
     setotherNote: (state, action) => {
       state.otherNote = action.payload;
     },
@@ -108,6 +113,9 @@ export const VehicleSlice = createSlice({
     },
     setCarImages: (state, action) => {
       state.carImages = action.payload;
+    },
+    setvinNo: (state, action) => {
+      state.vinNo = action.payload;
     },
     setdamageImagesToDelete: (state, action) => {
       state.damageImagesToDelete.push(...action.payload);
@@ -151,7 +159,9 @@ export const {
   setAllValues,
   setdamageImagesToDelete,
   setthumbnailImage,
+  setvinNo,
   resetState,
+  setengineVolume,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;
