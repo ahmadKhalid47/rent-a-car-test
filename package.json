@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.0",
+    "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@fontsource/rubik": "^5.0.20",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -18,7 +18,7 @@
     "@google-cloud/translate": "^8.5.0",
     "@heroicons/react": "^2.1.5",
     "@mui/icons-material": "^5.16.4",
-    "@mui/material": "^5.16.4",
+    "@mui/material": "^5.16.7",
     "@radix-ui/react-switch": "^1.1.0",
     "@react-pdf/renderer": "^3.3.8",
     "@reduxjs/toolkit": "^2.2.4",

@@ -432,12 +432,28 @@ button:active {
   border: none;
 }
 
-.option-color {
-  /* width: 10px;
-  height: 10px; */
-  /* background-color: red; */
+.custom-select {
+    position: relative;
+    display: inline-block;
 }
 
+.select-selected {
+    background-color: #f0f0f0; /* Customize as needed */
+}
 
+.select-items {
+    display: block;
+    position: absolute;
+    background-color: white; /* Customize as needed */
+    border: 1px solid #ccc;
+    z-index: 99;
+    margin-top: 2px; /* Adjust spacing as needed */
+}
 
+.option {
+    padding: 10px;
+}
 
+.option:hover {
+    background-color: #007BFF; /* Customize hover effect */
+  }

@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import shape from "@/public/ShapeBlack.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
-import { FaAsterisk, FaTimesCircle } from "react-icons/fa";
+import { FaAsterisk, FaCircle, FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
 import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
@@ -34,6 +34,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { ClassNames } from "@emotion/react";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -128,6 +129,80 @@ export default function Info() {
     dispatch(setCarImages(files));
   }, [files]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(vehicle.color);
+  const dropdownRef: any = useRef(null);
+
+  const handleOptionClick = (color: any) => {
+    setSelectedOption(color);
+    dispatch(setcolorR(color));
+    setIsOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = (event: any) => {
+    if (dropdownRef.current && !dropdownRef.current?.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  console.log(vehicle.color);
+  let ColorArray = [
+    { Color: "Red" },
+    { Color: "Blue" },
+    { Color: "Green" },
+    { Color: "Black" },
+    { Color: "White" },
+    { Color: "Silver" },
+    { Color: "Gray" },
+    { Color: "Yellow" },
+    { Color: "Orange" },
+    { Color: "Purple" },
+    { Color: "Brown" },
+    { Color: "Teal" },
+    { Color: "Magenta" },
+    { Color: "Navy" },
+    { Color: "Gold" },
+    { Color: "Maroon" },
+    { Color: "Olive" },
+    { Color: "Coral" },
+    { Color: "Indigo" },
+    { Color: "Violet" },
+    { Color: "Beige" },
+    { Color: "Ivory" },
+    { Color: "Cyan" },
+    { Color: "Turquoise" },
+    { Color: "Lavender" },
+    { Color: "Mint" },
+    { Color: "Chocolate" },
+    { Color: "Crimson" },
+    { Color: "Salmon" },
+    { Color: "Rose" },
+    { Color: "Amber" },
+    { Color: "SlateGray" },
+    { Color: "DarkRed" },
+    { Color: "ForestGreen" },
+    { Color: "MidnightBlue" },
+    { Color: "DarkSlateGray" },
+    { Color: "Sienna" },
+    { Color: "RoyalBlue" },
+    { Color: "SeaGreen" },
+    { Color: "SteelBlue" },
+    { Color: "LightGray" },
+    { Color: "PeachPuff" },
+    { Color: "Plum" },
+    { Color: "Khaki" },
+    { Color: "Tomato" },
+  ];
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -194,8 +269,8 @@ export default function Info() {
             Color
             <FaAsterisk className="text-[6px]" />
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative">
-            <select
+          <div className="w-full h-fit flex justify-between items-center relative circle-edit">
+            {/* <select
               className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
               required={true}
               onChange={(e) => {
@@ -203,21 +278,64 @@ export default function Info() {
               }}
               value={vehicle.color}
             >
-              <option value="">Select</option>
-              {Configurations?.Configurations?.color?.map(
+              {ColorArray.map(
                 (item: any, key: number) => (
-                  <option value={item.Color} key={key}>
+                  <option value={item.Color} key={key} className="">
                     {item.Color}
                   </option>
                 )
               )}
-            </select>
+            </select> */}
             <div
-              className="rounded-full w-[20px] h-[18px] absolute left-2 top-[12.5px] dark:bg-dark1 bg-white"
-              style={{
-                backgroundColor: vehicle.color,
-              }}
-            ></div>
+              className="custom-select w-[100%] h-[43px] relative"
+              ref={dropdownRef}
+            >
+              <div
+                className=" h-full px-2 rounded-xl border-2 border-grey dark:bg-dark1 input-color flex justify-start items-center gap-2"
+                onClick={toggleDropdown}
+              >
+                <div
+                  className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
+                  style={{
+                    backgroundColor: vehicle.color,
+                  }}
+                ></div>
+                {selectedOption || "Select"}
+              </div>
+              {isOpen && (
+                <div className="select-items absolute z-10 bg-white border border-grey rounded-xl w-full max-h-60 overflow-auto">
+                  <div
+                    className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
+                    onClick={() => handleOptionClick("")}
+                  >
+                    <div
+                      className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
+                      style={{
+                        backgroundColor: "transparent",
+                      }}
+                    ></div>
+                    Select
+                  </div>
+                  {ColorArray.map((item: any, index: any) => (
+                    <div
+                      key={index}
+                      className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
+                      onClick={() => handleOptionClick(item.Color)}
+                    >
+                      <div
+                        className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
+                        style={{
+                          backgroundColor: item.Color,
+                        }}
+                      ></div>
+
+                      {item.Color}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
               <img
                 src={shape.src}
