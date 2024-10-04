@@ -1,6 +1,7 @@
 import { formatDate, formatId } from "@/app/Components/functions/formats";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
+import React from "react"
 
 export default function SecondPage({
   data,
@@ -93,7 +94,17 @@ export default function SecondPage({
                 (item: any, index: any) =>
                   item.exterior && (
                     <div
-                      className={`absolute w-[15px] h-[15px] rounded-full bg-main-blue text-white text-[8px] flex justify-center items-center font-[600]`}
+                      className={`absolute w-[15px] h-[15px] rounded-full ${
+                            item.degree === "Low"
+                              ? "bg-green-400 "
+                              : item.degree === "Medium"
+                              ? "bg-yellow-300"
+                              : item.degree === "High"
+                              ? "bg-orange-500"
+                              : item.degree === "Very High"
+                              ? "bg-red-500"
+                              : ""
+                          } text-[8px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{
                         top: `${item.y}%`,
@@ -111,7 +122,17 @@ export default function SecondPage({
                 <>
                   {!item.exterior && (
                     <div
-                      className={`absolute w-[15px] h-[15px] rounded-full bg-main-blue text-white text-[8px] flex justify-center items-center font-[600]`}
+                      className={`absolute w-[15px] h-[15px] rounded-full ${
+                            item.degree === "Low"
+                              ? "bg-green-400 "
+                              : item.degree === "Medium"
+                              ? "bg-yellow-300"
+                              : item.degree === "High"
+                              ? "bg-orange-500"
+                              : item.degree === "Very High"
+                              ? "bg-red-500"
+                              : ""
+                          } text-[8px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{
                         top: `${item.y}%`,

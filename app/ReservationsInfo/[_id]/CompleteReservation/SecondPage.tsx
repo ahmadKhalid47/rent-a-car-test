@@ -278,7 +278,17 @@ export default function SecondPage() {
                       {exterior ? (
                         mark.exterior ? (
                           <div
-                            className={`absolute w-[15px] h-[15px] rounded-full bg-red-600 text-white text-[8px] flex justify-center items-center font-[600]`}
+                            className={`absolute w-[15px] h-[15px] rounded-full ${
+                            mark.degree === "Low"
+                              ? "bg-green-400 "
+                              : mark.degree === "Medium"
+                              ? "bg-yellow-300"
+                              : mark.degree === "High"
+                              ? "bg-orange-500"
+                              : mark.degree === "Very High"
+                              ? "bg-red-500"
+                              : ""
+                          } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
                               top: `${mark.y}%`,
@@ -291,7 +301,17 @@ export default function SecondPage() {
                       ) : !exterior ? (
                         !mark.exterior ? (
                           <div
-                            className={`absolute w-[15px] h-[15px] rounded-full bg-red-600 text-white text-[8px] flex justify-center items-center font-[600]`}
+                            className={`absolute w-[15px] h-[15px] rounded-full ${
+                            mark.degree === "Low"
+                              ? "bg-green-400 "
+                              : mark.degree === "Medium"
+                              ? "bg-yellow-300"
+                              : mark.degree === "High"
+                              ? "bg-orange-500"
+                              : mark.degree === "Very High"
+                              ? "bg-red-500"
+                              : ""
+                          } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
                               top: `${mark.y}%`,

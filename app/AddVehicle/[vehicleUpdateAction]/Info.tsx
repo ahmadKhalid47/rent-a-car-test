@@ -262,7 +262,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
-            <FaAsterisk className="text-[6px]" />
+            {/* <FaAsterisk className="text-[6px]" /> */}
           </label>
           <div className="w-full h-fit flex justify-between items-center relative circle-edit cursor-default">
             <div
