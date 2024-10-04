@@ -217,16 +217,16 @@ export default function AddChauffeur() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-          <h3 className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
+          <span className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             Add New Chauffeur
-            <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               <Link href={"/Chauffeurs"} className="hover:underline">
                 Chauffeurs
               </Link>
               {" / "}
               Add New Chauffeur
-            </p>
-          </h3>
+            </span>
+          </span>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -253,9 +253,7 @@ export default function AddChauffeur() {
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
                   } flex justify-center items-center rounded-full z-[5]`}
                 >
-                  <span className="text-center -translate-x-[2px]">
-                    1
-                  </span>
+                  <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -293,27 +291,21 @@ export default function AddChauffeur() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Additional Information

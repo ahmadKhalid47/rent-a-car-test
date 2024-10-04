@@ -76,13 +76,13 @@ export default function CarInfoMainPage() {
                 {vehicleInfo.make} {vehicleInfo.model}
               </h3>
               <div className="flex justify-between items-start">
-                <p className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
+                <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
                   <Link href={"/Vehicles"} className="hover:underline">
                     Vehicles / All Vehicles
                   </Link>
                   {" / "}
                   {vehicleInfo.make} {vehicleInfo.model}
-                </p>
+                </span>
               </div>
             </div>
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
