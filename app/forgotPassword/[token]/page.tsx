@@ -92,9 +92,9 @@ export default function ResetPassword() {
           {isVerified === false ? (
             <>
               <img src={expire404.src} className="w-[40vw] mx-auto mt-10" />
-              <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black text-center">
+              <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black text-center">
                 Sorry, your link to reset password has been expired!
-              </h3>
+              </span>
             </>
           ) : (
             <div className="w-full h-fit">

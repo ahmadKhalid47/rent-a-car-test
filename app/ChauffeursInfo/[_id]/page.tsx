@@ -62,9 +62,9 @@ export default function chauffeurInfoMainPage() {
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
         <div className="w-full h-[200px ">
-          <h3 className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
+          <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
             {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
-          </h3>
+          </span>
           <div className="flex justify-between items-start">
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               <Link href={"/Chauffeurs"} className="hover:underline">
