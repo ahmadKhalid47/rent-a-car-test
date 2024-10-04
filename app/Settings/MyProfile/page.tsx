@@ -161,8 +161,8 @@ export default function Profile() {
                 Settings
               </Link>{" "}
               / My Profile
-            </p>{" "}
-          </h3>
+            </span>{" "}
+          </span>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
