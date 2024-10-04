@@ -400,6 +400,7 @@ export default function SecondPage() {
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
+                    <option value="Very High">Very High</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <img

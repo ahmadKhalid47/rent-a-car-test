@@ -64,7 +64,7 @@ export default function Damages() {
           className=" w-[64px] h-[64px]"
         />
       </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate truncate w-[64px] text-center">
+      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate text-center">
         {file.name}
       </span>
       <span
@@ -350,6 +350,7 @@ export default function Damages() {
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
+                  <option value="Very High">Very High</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                   <img

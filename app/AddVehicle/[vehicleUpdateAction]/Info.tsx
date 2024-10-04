@@ -10,6 +10,7 @@ import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
 import {
   TempSelectInput,
   TempSelectInputInfo,
+  TempSelectInputLink,
 } from "../../Components/InputComponents/SelectInput";
 import {
   setvehicleIdR,
@@ -203,10 +204,18 @@ export default function Info() {
     { Color: "Khaki" },
     { Color: "Tomato" },
   ];
+console.log(vehicle.year);
+const currentYear = new Date().getFullYear();
+const years = [];
+for (let i = currentYear +1; i >= 1995; i--) {
+  years.push(i.toString());
+}
+
+
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <TempSelectInput
+        <TempSelectInputLink
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
@@ -214,8 +223,9 @@ export default function Info() {
           options={Configurations?.Configurations?.make?.map(
             (item: any) => item.make
           )}
+          link={"/Configuration/Make"}
         />
-        <TempSelectInput
+        <TempSelectInputLink
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
@@ -223,8 +233,9 @@ export default function Info() {
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make === makeSelected)
             .map((item: any) => item.model)}
+          link={"/Configuration/Model"}
         />
-        <TempSelectInput
+        <TempSelectInputLink
           setState={settypeR}
           label={"Type"}
           value={vehicle.type}
@@ -232,31 +243,15 @@ export default function Info() {
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
+          link={"/Configuration/Type"}
         />
-        <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Making Year
-            <FaAsterisk className="text-[6px]" />
-          </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-            <input
-              required
-              type="number"
-              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-              placeholder="Enter Making Year"
-              onChange={(e) => {
-                const value = e.target.value;
-                if (/^\d{0,4}$/.test(value)) {
-                  dispatch(setyearR(value));
-                }
-              }}
-              value={vehicle.year}
-              min={1900}
-              max={2200}
-            />
-          </div>
-        </div>
-
+        <TempSelectInput
+          setState={setyearR}
+          label={"Making Year"}
+          value={vehicle.year}
+          required={true}
+          options={years}
+        />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
@@ -269,23 +264,7 @@ export default function Info() {
             Color
             <FaAsterisk className="text-[6px]" />
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative circle-edit">
-            {/* <select
-              className="ps-7 font-[400] text-[16px] leading-[19px] px-5 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-              required={true}
-              onChange={(e) => {
-                dispatch(setcolorR(e.target.value));
-              }}
-              value={vehicle.color}
-            >
-              {ColorArray.map(
-                (item: any, key: number) => (
-                  <option value={item.Color} key={key} className="">
-                    {item.Color}
-                  </option>
-                )
-              )}
-            </select> */}
+          <div className="w-full h-fit flex justify-between items-center relative circle-edit cursor-default">
             <div
               className="custom-select w-[100%] h-[43px] relative"
               ref={dropdownRef}
@@ -328,7 +307,6 @@ export default function Info() {
                           backgroundColor: item.Color,
                         }}
                       ></div>
-
                       {item.Color}
                     </div>
                   ))}
@@ -352,25 +330,12 @@ export default function Info() {
           options={[
             "Gasoline",
             "Diesel",
-            "Electric",
             "Hybrid",
-            "Plug-in Hybrid",
-            "Ethanol",
-            "Natural Gas",
-            "Hydrogen",
-            "Biodiesel",
+            "Electro",
+            "Gas",
+            "Petrol",
             "Propane (LPG)",
-            "Methanol",
-            "Coal",
-            "Wood",
-            "Solar",
-            "Compressed Air",
-            "Steam",
-            "Nuclear",
-            "Biogas",
-            "Algae-based fuels",
-            "Ammonia",
-            "Jet Fuel",
+            "Non",
           ]}
         />
         <TempSelectInput
@@ -379,40 +344,30 @@ export default function Info() {
           value={vehicle.transmission}
           required={true}
           options={[
-            "Automatic",
-            "Manual",
-            "CVT (Continuously Variable Transmission)",
-            "DSG (Direct-Shift Gearbox)",
-            "Dual-Clutch",
-            "Semi-Automatic",
-            "AMT (Automated Manual Transmission)", // Similar to Semi-Automatic but more distinct
-            "Torque Converter Automatic",
-            "Tiptronic", // A type of automatic transmission with manual override
-            "Sequential Manual", // Often used in racing vehicles
-            "Hydraulic Automatic",
-            "Hydrostatic Transmission",
-            "Electric Drive", // Common in electric vehicles, where the transmission is often simplified or non-existent
-            "Infinitely Variable Transmission (IVT)", // Similar to CVT but with different mechanical principles
-            "Preselector Gearbox", // An older type of manual transmission
-            "Synchromesh Manual", // A type of manual transmission that makes shifting smoother
-            "Single-Speed Transmission",
+            "Tiptronic",
+            "Dual-Clutch Transmission (DCT)",
+            "Automatic Transmission (AT)",
+            "Manual Transmission (MT)",
+            "Continuous Variable Transmission (CVT)",
+            "Electric Drive",
           ]}
         />
         <TempTypeInput
           setState={setodometerR}
-          label={"Odometer (KM)"}
+          label={"Odometer"}
           value={vehicle.odometer}
           required={true}
           type={"number"}
         />
         <TempSelectInput
           setState={setpassengersR}
-          label={"Passengers"}
+          label={"No. of Seats"}
           value={vehicle.passengers}
           required={true}
-          options={["1", "2", "3", "4", "5", "6", "7", "8", "9+"]}
+          options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
-        <TempSelectInput
+
+        <TempSelectInputLink
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
@@ -420,8 +375,9 @@ export default function Info() {
           options={Configurations?.Configurations?.country?.map(
             (item: any) => item.country
           )}
+          link={"/Configuration/Country"}
         />
-        <TempSelectInput
+        <TempSelectInputLink
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
@@ -429,6 +385,7 @@ export default function Info() {
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
             .map((item: any) => item.city)}
+          link={"/Configuration/City"}
         />
         <TempTypeInput
           setState={setpostalCodeR}

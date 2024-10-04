@@ -1,10 +1,10 @@
-
 import shape from "@/public/ShapeBlack.svg";
 import { FaAsterisk } from "react-icons/fa";
 import { GrCircleInformation } from "react-icons/gr";
 import { Popover } from "antd";
 import "antd/dist/reset.css";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 interface SelectInput {
   label: string;
@@ -44,7 +44,10 @@ export const SelectInput: React.FC<SelectInput> = ({
           ))}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
@@ -93,7 +96,10 @@ export const SelectInputWidth: React.FC<SelectInputWidth> = ({
           ))}{" "}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
@@ -139,7 +145,10 @@ export const SelectInputInfo: React.FC<SelectInputInfo> = ({
           ))}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
@@ -154,7 +163,6 @@ interface TempSelectInput {
   required: boolean;
   options: any;
 }
-
 export const TempSelectInput: React.FC<TempSelectInput> = ({
   setState,
   label,
@@ -187,7 +195,73 @@ export const TempSelectInput: React.FC<TempSelectInput> = ({
           ))}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+// Link
+interface TempSelectInputLink {
+  setState: any;
+  label: string;
+  value: any;
+  required: boolean;
+  options: any;
+  link: any;
+}
+export const TempSelectInputLink: React.FC<TempSelectInputLink> = ({
+  setState,
+  label,
+  value,
+  required,
+  options,
+  link,
+}) => {
+  let dispatch = useDispatch();
+
+  return (
+    <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
+      <label className="w-full flex justify-between gap-1 items-start font-[400] text-[14px] leading-[17px]">
+        <span className="flex justify-start gap-1 items-start">
+          {label}
+          {required && <FaAsterisk className="text-[6px]" />}
+        </span>
+        <span className="text-[12px]">
+          Not here?{" "}
+          <Link
+            href={link}
+            className="text-[#3d84ff] no-underline hover:underline capitalize"
+          >
+            {/* Add new */}
+            Add to the list
+          </Link>
+        </span>
+      </label>
+      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+        <select
+          className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+          required={required}
+          onChange={(e) => {
+            dispatch(setState(e.target.value));
+          }}
+          value={value}
+        >
+          <option value={""}>Select</option>
+          {options?.map((item: any, key: number) => (
+            <option value={item} key={key}>
+              {item ? item : "Select"}
+            </option>
+          ))}
+        </select>
+        <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
@@ -238,7 +312,10 @@ export const TempSelectInputWidth: React.FC<TempSelectInputWidth> = ({
           ))}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
@@ -292,7 +369,10 @@ export const TempSelectInputInfo: React.FC<TempSelectInputInfo> = ({
           ))}
         </select>
         <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-          <img src={shape.src} className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert" />
+          <img
+            src={shape.src}
+            className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+          />
         </div>
       </div>
     </div>
