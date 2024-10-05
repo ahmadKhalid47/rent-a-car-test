@@ -14,6 +14,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(null);
   const [loading, setLoading] = useState<any>(false);
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
   const router = useRouter();
 
   const loginSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -28,10 +29,14 @@ export default function Login() {
       formDataObj[key] = value.toString();
     });
     setShowError(null);
+    console.log(formDataObj);
 
     try {
       setLoading(true);
-      let result: any = await axios.post(`/api/login`, formDataObj);
+      let result: any = await axios.post(`/api/login`, {
+        ...formDataObj,
+        rememberMe,
+      });
       if (result?.data?.error === null) {
         window.location.reload();
       } else {
@@ -43,7 +48,7 @@ export default function Login() {
       setLoading(false);
     }
   };
-  console.log(showError);
+  console.log(rememberMe);
 
   return (
     <>
@@ -102,7 +107,8 @@ export default function Login() {
               <input
                 type="checkbox"
                 className="w-fit bg-green-400 cursor-pointer"
-                checked={false}
+                checked={rememberMe}
+                onChange={(e)=>{setRememberMe(e.target.checked);}}
               />
               Remember Me
             </p>

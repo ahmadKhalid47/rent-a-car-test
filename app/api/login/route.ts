@@ -10,7 +10,8 @@ export async function POST(req: Request) {
     return isMatch;
   }
   try {
-    let { username, password } = await req.json();
+    let { username, password, rememberMe } = await req.json();
+    console.log("api_____", rememberMe);
     connectDb();
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: username }],
@@ -28,7 +29,10 @@ export async function POST(req: Request) {
       } else {
         return new Response(JSON.stringify({ error: null }), {
           headers: {
-            "Set-Cookie": setTokenToCookies({ username, admin: loginData?.admin }),
+            "Set-Cookie": setTokenToCookies(
+              { username, admin: loginData?.admin },
+              rememberMe
+            ),
           },
         });
       }
