@@ -5,7 +5,7 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
@@ -140,6 +140,8 @@ export default function reservationInfoMainPage() {
       if (action === "close") {
         router.push("/Reservations");
       }
+            dispatch(setAlert("Reservation Completed Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {

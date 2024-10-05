@@ -220,6 +220,8 @@ export default function Vehicles() {
       if (action === "close") {
         router.push("/Vehicles");
       }
+      dispatch(setAlert("Vehicle Updated Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {

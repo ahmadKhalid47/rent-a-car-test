@@ -210,6 +210,8 @@ export default function Vehicles() {
       if (action === "close") {
         router.push("/Customers");
       }
+            dispatch(setAlert("Customer Updated Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {

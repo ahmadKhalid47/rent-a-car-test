@@ -130,6 +130,8 @@ export default function AddUser() {
         profilePic: res?.data?.message,
       });
       router.push("/Users");
+            dispatch(setAlert("User Updated Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {

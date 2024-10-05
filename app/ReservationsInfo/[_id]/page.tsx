@@ -8,7 +8,7 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { setreservationInfo } from "@/app/store/reservationInfo";
@@ -147,6 +147,8 @@ export default function reservationInfoMainPage() {
       await axios.post(`/api/updatereservationCancel/${_id}`, {
         status: "cancel",
       });
+            dispatch(setAlert("Reservation Canceled Successfully"));
+
     } finally {
       setStatusLoading(false);
     }

@@ -202,6 +202,8 @@ export default function AddChauffeur() {
       if (action === "close") {
         router.push("/Chauffeurs");
       }
+      dispatch(setAlert("Chauffeur Updated Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {

@@ -189,6 +189,8 @@ export default function Reservations() {
       if (action === "close") {
         router.push("/Reservations");
       }
+            dispatch(setAlert("Reservation Updated Successfully"));
+
     } catch (err) {
       console.log(err);
     } finally {
