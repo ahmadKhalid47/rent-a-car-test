@@ -9,9 +9,9 @@ import { setVehicleDataReloader } from "../store/Global";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 // import { SmallLoader } from "../Loader";
-// import { handleExport } from "../functions/exportFunction";
+// import { useHandleExport } from "../functions/exportFunction";
 import { SmallLoader } from "../Components/Loader";
-import { handleExport } from "../Components/functions/exportFunction";
+import { useHandleExport } from "../Components/functions/exportFunction";
 import image404 from "@/public/image404.png";
 
 interface dataType {
@@ -25,6 +25,7 @@ export default function GridView({ data }: dataType) {
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   const handleChange = (event: any, value: any) => {
     setPage(value);

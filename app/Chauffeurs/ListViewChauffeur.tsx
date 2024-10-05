@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { handleExport } from "../Components/functions/exportFunction";
+import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 
 interface dataType {
@@ -33,6 +33,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   useEffect(() => {
     setSortedData(data);
@@ -141,7 +142,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
         active: !active,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(!active ? "Selective Item Activated Successfully" : "Selective Item Deactivated Successfully"));
+      dispatch(
+        setAlert(
+          !active
+            ? "Selective Item Activated Successfully"
+            : "Selective Item Deactivated Successfully"
+        )
+      );
     } catch (err) {
       console.log(err);
     } finally {
@@ -157,7 +164,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
         active: active,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(active ? `Selective Items Activated Successfully` : "Selective Items Deactivated Successfully"));
+      dispatch(
+        setAlert(
+          active
+            ? `Selective Items Activated Successfully`
+            : "Selective Items Deactivated Successfully"
+        )
+      );
     } catch (err) {
       console.log(err);
     } finally {

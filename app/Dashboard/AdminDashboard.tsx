@@ -14,7 +14,7 @@ import d3 from "@/public/ad (3).svg";
 import axios from "axios";
 import { TextLoader } from "../Components/Loader";
 import Link from "next/link";
-import { handleExport } from "../Components/functions/exportFunction";
+import { useHandleExport } from "../Components/functions/exportFunction";
 import { Pagination, Stack } from "@mui/material";
 import { FaEllipsisH } from "react-icons/fa";
 

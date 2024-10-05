@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { handleExport } from "../Components/functions/exportFunction";
+import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import vip from "@/public/vip.svg";
 
@@ -33,6 +33,7 @@ export default function ListViewCustomers({ data }: dataType) {
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   useEffect(() => {
     setSortedData(data);
@@ -144,7 +145,13 @@ export default function ListViewCustomers({ data }: dataType) {
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Item Updated Successfully"));
-      dispatch(setAlert(!active ? "Selective Item Activated Successfully" : "Selective Item Deactivated Successfully"));
+      dispatch(
+        setAlert(
+          !active
+            ? "Selective Item Activated Successfully"
+            : "Selective Item Deactivated Successfully"
+        )
+      );
     } catch (err) {
       console.log(err);
     } finally {
@@ -161,7 +168,13 @@ export default function ListViewCustomers({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(active ? "Selective Items Activated Successfully" : "Selective Items Deactivated Successfully"));
+      dispatch(
+        setAlert(
+          active
+            ? "Selective Items Activated Successfully"
+            : "Selective Items Deactivated Successfully"
+        )
+      );
     } catch (err) {
       console.log(err);
     } finally {
@@ -175,9 +188,7 @@ export default function ListViewCustomers({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1
-            ? "text-grey"
-            : " text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
@@ -286,9 +297,7 @@ export default function ListViewCustomers({ data }: dataType) {
           </div>
 
           {paginatedData.length < 1 ? (
-            <span className="p-3">
-              No Chauffeurs found.
-            </span>
+            <span className="p-3">No Chauffeurs found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">

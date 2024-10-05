@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { handleExport } from "../Components/functions/exportFunction";
+import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 
 interface dataType {
@@ -34,6 +34,7 @@ export default function ListViewreservation({ data }: dataType) {
   const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   useEffect(() => {
     setSortedData(data);
@@ -140,9 +141,7 @@ export default function ListViewreservation({ data }: dataType) {
     <div className="w-full h-fit mt-4">
       <h3
         className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
-          itemToDeleteMany.length < 1
-            ? "text-grey"
-            : " text-main-blue"
+          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
@@ -224,9 +223,7 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
           </div>
           {paginatedData.length < 1 ? (
-            <span className="p-3">
-              No Reservations found.
-            </span>
+            <span className="p-3">No Reservations found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
