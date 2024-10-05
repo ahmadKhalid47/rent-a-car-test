@@ -5,7 +5,7 @@ import { RootState } from "@/app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useRef, useState } from "react";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { settermsR, setAllValues } from "@/app/store/Agreement";
 import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
@@ -57,6 +57,8 @@ export default function AddUser() {
         Agreement,
         createdBy: myProfile._id,
       });
+      dispatch(setAlert("Agreement Content Updated Successfully!"));
+
     } catch (err) {
       console.log(err);
     } finally {

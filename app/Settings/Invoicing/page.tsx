@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { TempTypeInput } from "@/app/Components/InputComponents/TypeInput";
 import {
   setvatPercentageR,
@@ -98,6 +98,8 @@ export default function AddUser() {
         Invoicing,
         createdBy: myProfile._id,
       });
+      dispatch(setAlert("Invoice Content Updated Successfully!"));
+
     } catch (err) {
       console.log(err);
     } finally {

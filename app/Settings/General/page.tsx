@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+  setAlert,
   setcurrentCurrency,
   setSidebarShowR,
   setTheme,
@@ -94,6 +95,7 @@ export default function AddUser() {
       if (typeof window !== "undefined") {
         localStorage.setItem("currency", global.currentCurrency);
       }
+      dispatch(setAlert("Settings Updated Successfully!"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -128,16 +130,16 @@ export default function AddUser() {
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
-        <div className="w-[100%]  flex justify-start items-end">
-          <span className="font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] w-[100%] md:w-[50%]">
+        <div className="w-[100%] flex justify-start items-end">
+          <span className="font-[600] flex flex-col text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] w-[100%] md:w-[50%]">
             General
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
               <Link href={"/Settings"} className="hover:underline">
                 Settings
               </Link>{" "}
               / General{" "}
-                        </span>{" "}
-                    </span>
+            </span>{" "}
+          </span>
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
