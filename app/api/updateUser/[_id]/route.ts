@@ -1,24 +1,11 @@
 import connectDb from "@/app/models/connectDb";
 import registrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
 
 export async function POST(req: Request, params: any) {
-  const saltRounds = 10;
-
-  const hashPassword = async (password: string) => {
-    try {
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-      return hashedPassword;
-    } catch (error) {
-      throw new Error("Failed to hash password");
-    }
-  };
-
   try {
     let data = await req.json();
-    console.log(data);
-    
+
     let {
       profilePic,
       username,
@@ -32,11 +19,16 @@ export async function POST(req: Request, params: any) {
       plan,
       password,
     } = data;
+    
+    console.log(
+      "_______________________________________________________",
+      password
+    );
+
     let { _id } = await params.params;
     connectDb();
     let profilePicString =
       profilePic && Array.isArray(profilePic) ? profilePic[0] : null;
-    let hashedPassword = await hashPassword(password);
     await registrationModel.updateOne(
       { _id: _id },
       {
@@ -53,7 +45,6 @@ export async function POST(req: Request, params: any) {
           state,
           city,
           plan,
-          password: hashedPassword,
           admin: false,
           address: "address",
         },

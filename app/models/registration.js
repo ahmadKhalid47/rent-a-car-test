@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const RegistrationSchema = new mongoose.Schema({
-  profilePic: { type: String, required: false, default: "" },
+  profilePic: { type: String, required: true, default: "noProfile" },
   username: {
     type: String,
     required: true,

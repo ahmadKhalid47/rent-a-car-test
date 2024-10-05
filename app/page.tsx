@@ -49,8 +49,7 @@ export default function Vehicles() {
             <div className="w-[120px] sm:w-[191px] h-[55px]">
               <img src={White.src} className="z-10 h-full w-full" />
             </div>
-            {/* <img src={carLogo.src} className="w-[120px] sm:w-[175px] z-10" /> */}
-            <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
+            <span className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (
                 <>
                   welcome <br /> back!
@@ -60,15 +59,15 @@ export default function Vehicles() {
                   Forgot <br /> Password?
                 </>
               )}
-            </h1>
-            <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
+            </span>
+            <span className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
               Take control of your fleet like never before with our cutting-edge
               <br className="hidden sm:block" />
               rental management CRM. Streamline operations, optimize
               performance,
               <br className="hidden sm:block" />
               and unlock real-time insights to drive your business forward.
-            </p>
+            </span>
           </div>
         </div>
 

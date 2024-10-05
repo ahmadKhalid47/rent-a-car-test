@@ -195,7 +195,8 @@ export default function Profile() {
                   </div>
                   <div className="w-[50%] flex flex-col justify-center items-start">
                     <span className="font-[600] text-[14px] xs:text-[20px] leading-7 sm:leading-[30px]">
-                      {myProfile?.name} {myProfile?.lastName}
+                      {myProfile?.name}
+                      {/* {myProfile?.lastName} */}
                     </span>
                     <span className="font-[500] text-[14px] xs:text-[16px] leading-7 sm:leading-[30px]">
                       {myProfile?.email}

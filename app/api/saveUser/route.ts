@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     }
 
     let profilePicString =
-      profilePic && Array.isArray(profilePic) ? profilePic[0] : null;
+      profilePic && Array.isArray(profilePic) ? profilePic[0] : "noProfile";
     let hashedPassword = await hashPassword(password);
 
     await new registrationModel({

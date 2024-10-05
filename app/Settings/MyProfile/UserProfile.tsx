@@ -19,7 +19,7 @@ export default function UserProfile() {
     try {
       setSaveLoading(true);
       let res: AxiosResponse<any, any> | null = null;
-      if (myProfile?.profilePic[0] instanceof File) {
+      if (myProfile?.profilePic && myProfile?.profilePic[0] instanceof File) {
         const formData = new FormData();
         formData.append("files", myProfile.profilePic[0]);
         res = await axios.post("/api/upload", formData, {
@@ -44,7 +44,6 @@ export default function UserProfile() {
       setSaveLoading(false);
     }
   }
-  console.log(myProfile?.profilePic[0] instanceof File);
 
   return (
     <div className="w-full flex flex-wrap justify-between items-start">
@@ -56,7 +55,7 @@ export default function UserProfile() {
       <TempTypeInfoShow label={"Expiry Date"} value={"dd-mm-yyyy"} />
       <TempTypeInfoShow label={"Phone"} value={myProfile.phone} />
       <TempTypeInfoShow label={"City"} value={myProfile.city} />
-      {myProfile?.profilePic[0] instanceof File && (
+      {myProfile?.profilePic && myProfile?.profilePic[0] instanceof File && (
         <div
           className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
         >
