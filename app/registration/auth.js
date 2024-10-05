@@ -5,8 +5,8 @@ export function setTokenToCookies(userData, rememberMe) {
   console.log("token_____", rememberMe);
 
   const securityKey = process.env.SECURITY_KEY;
-  const tokenExpiry = rememberMe ? "7d" : "3h"; // 7 days or 3 hours
-  const cookieExpiry = rememberMe ? 7 * 24 * 60 * 60 : 10800; // 7 days or 3 hours in seconds
+  const tokenExpiry = rememberMe ? "7d" : "1h"; // 7 days or 1 hour
+  const cookieExpiry = rememberMe ? 7 * 24 * 60 * 60 : 3600; // 7 days or 1 hour in seconds
 
   const token = jwt.sign(userData, securityKey, { expiresIn: tokenExpiry });
 
@@ -22,7 +22,7 @@ export function setTokenToCookies(userData, rememberMe) {
 }
 export function generateTokenForDb(userData) {
   const securityKey = process.env.SECURITY_KEY;
-  const token = jwt.sign(userData, securityKey, { expiresIn: "3h" });
+  const token = jwt.sign(userData, securityKey, { expiresIn: "1h" });
   const decoded = jwt.decode(token);
   const expiryDate = new Date(decoded.exp * 1000);
 
