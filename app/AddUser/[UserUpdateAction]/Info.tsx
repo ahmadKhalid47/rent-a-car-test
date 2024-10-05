@@ -37,7 +37,7 @@ export default function Info() {
   const [files, setFiles] = useState<any>(User.profilePic);
   const params = useParams();
   const { UserUpdateAction } = params;
-  console.log(UserUpdateAction);
+  console.log(User.profilePic[0]);
 
   useEffect(() => {
     setFiles(User.profilePic);
@@ -227,7 +227,7 @@ export default function Info() {
         </div>
 
         <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
-          {thumbs}
+          {User?.profilePic[0] !== "noProfile" && thumbs}
         </div>
       </div>
     </div>
