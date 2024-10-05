@@ -280,7 +280,7 @@ export default function ListView({ data }: dataType) {
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                          Are you sure you want to delete this item
+                          Are you sure you want to delete this item ?
                         </label>
                       </div>
                       <div
