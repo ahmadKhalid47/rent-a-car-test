@@ -174,7 +174,7 @@ export default function Profile() {
                       src={
                         selectedPic?.length > 0
                           ? selectedPic
-                          : myProfile?.profilePic === ""
+                          : !myProfile?.profilePic || myProfile?.profilePic === "noProfile"
                           ? account.src
                           : myProfile?.profilePic
                       }

@@ -215,7 +215,8 @@ export default function Nav() {
       clearTimeout(timer); // Clean up the timer
     };
   }, [global.alert, dispatch]);
-  
+  console.log(myProfile?.profilePic);
+
   return (
     <div
       className={`${
@@ -253,11 +254,11 @@ export default function Nav() {
         >
           <img
             src={
-              myProfile?.profilePic !== "" ? myProfile?.profilePic : account.src
+              myProfile?.profilePic && myProfile?.profilePic !== "noProfile"
+                ? myProfile?.profilePic
+                : account.src
             }
-            className={`${
-              myProfile?.profilePic ? "w-[100%] h-[100%]" : "w-[24px] h-[24px]"
-            } cursor-pointer`}
+            className={`w-[100%] h-[100%] cursor-pointer`}
           />
           {isOpen && (
             <div className="w-[250px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-[60px] overflow-hidden right-0 text-[14px] dark:text-white text-black flex flex-col justify-center items-center py-3">
