@@ -4,7 +4,7 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallLoader } from "@/app/Components/Loader";
 import { useRouter } from "next/navigation";
-import { setMyProfileReloader } from "@/app/store/Global";
+import { setAlert, setMyProfileReloader } from "@/app/store/Global";
 import axios, { AxiosResponse } from "axios";
 
 export default function UserProfile() {
@@ -38,6 +38,7 @@ export default function UserProfile() {
         admin: myProfile.admin,
       });
       dispatch(setMyProfileReloader(global.myProfileReloader + 1));
+      dispatch(setAlert("Profile Updated Successfully!"));
     } catch (err) {
       console.log(err);
     } finally {

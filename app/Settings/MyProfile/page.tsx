@@ -174,7 +174,8 @@ export default function Profile() {
                       src={
                         selectedPic?.length > 0
                           ? selectedPic
-                          : !myProfile?.profilePic || myProfile?.profilePic === "noProfile"
+                          : !myProfile?.profilePic ||
+                            myProfile?.profilePic === "noProfile"
                           ? account.src
                           : myProfile?.profilePic
                       }
@@ -221,10 +222,6 @@ export default function Profile() {
                 </div>
               </div>
 
-              
-
-
-
               {myProfile.admin === true ? (
                 <AdminProfile />
               ) : myProfile.admin === false ? (
@@ -232,9 +229,6 @@ export default function Profile() {
               ) : (
                 <MediumLoader />
               )}
-
-              
-
 
               {editPopup ? (
                 <form
