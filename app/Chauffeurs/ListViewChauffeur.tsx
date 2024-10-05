@@ -92,7 +92,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deletechauffeur/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Item Deleted"));
+      dispatch(setAlert("Selective Item Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -108,7 +108,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         _ids: itemToDeleteMany,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Items Deleted"));
+      dispatch(setAlert("Selective Items Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -141,7 +141,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         active: !active,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(!active ? "Item Activated" : "Item Deactivated"));
+      dispatch(setAlert(!active ? "Selective Item Activated Successfully" : "Selective Item Deactivated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -157,7 +157,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
         active: active,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert(active ? `Items Activated` : "Items Deactivated"));
+      dispatch(setAlert(active ? `Selective Items Activated Successfully` : "Selective Items Deactivated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {

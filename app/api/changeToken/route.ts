@@ -3,10 +3,14 @@ import { setTokenToCookies } from "@/app/registration/auth";
 
 export async function POST(req: Request) {
   try {
-    let { username, admin } = await req.json();
+    let { username, admin, rememberMe } = await req.json();
     return new Response(JSON.stringify({ error: null }), {
       headers: {
-        "Set-Cookie": setTokenToCookies({ username, admin }),
+        "Set-Cookie": setTokenToCookies({
+          username,
+          admin,
+          rememberMe,
+        }),
       },
     });
   } catch (err) {
