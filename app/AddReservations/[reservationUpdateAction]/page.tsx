@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
 import Others from "./Others";
@@ -164,6 +164,8 @@ export default function Reservations() {
         setShowError(result?.data?.error);
         setShowSuccess(null);
       }
+            dispatch(setAlert("Reservation Saved Successfully"));
+
     } catch (error: any) {
       console.log(error);
     } finally {

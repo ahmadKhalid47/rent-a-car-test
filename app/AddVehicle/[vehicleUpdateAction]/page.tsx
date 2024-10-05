@@ -4,7 +4,7 @@ import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { useParams } from "next/navigation";
 import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
 import Rental from "./Rental";
@@ -25,7 +25,9 @@ export default function Vehicles() {
   const { vehicleUpdateAction } = params;
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let {Configurations} = useSelector((state: RootState) => state.Configurations);
+  let { Configurations } = useSelector(
+    (state: RootState) => state.Configurations
+  );
   console.log(Configurations);
 
   const dispatch = useDispatch();
@@ -156,6 +158,7 @@ export default function Vehicles() {
         setShowError(result?.data?.error);
         setShowSuccess(null);
       }
+      dispatch(setAlert("Vehicle Saved Successfully"));
     } catch (error: any) {
       console.log(error);
     } finally {

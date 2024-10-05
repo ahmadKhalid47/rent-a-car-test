@@ -3,7 +3,7 @@ import React from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import Rental from "./Rental";
 import Insurances from "./Insurances";
@@ -118,6 +118,8 @@ export default function Vehicles() {
         setShowError(result?.data?.error);
         setShowSuccess(null);
       }
+            dispatch(setAlert("Customer Saved Successfully"));
+
     } catch (error: any) {
       console.log(error);
     } finally {
