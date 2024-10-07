@@ -31,6 +31,7 @@ import {
   setthumbnailImage,
   setengineVolume,
   setvinNo,
+  setfuelCapacity,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -338,6 +339,15 @@ for (let i = currentYear +1; i >= 1995; i--) {
             "Propane (LPG)",
             "Non",
           ]}
+        />
+        <TempSelectInput
+          setState={setfuelCapacity}
+          label={"Fuel Capacity"}
+          value={vehicle.fuelCapacity}
+          required={true}
+          options={Array.from({ length: 24 }, (_, i) =>
+            ((i + 1) * 5).toString()
+          )}
         />
         <TempSelectInput
           setState={settransmissionR}
