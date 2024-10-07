@@ -165,9 +165,6 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #79747e;
   background-color: #78788029;
 }
-.heading-class {
-  @apply bg-red-300;
-}
 
 @media (max-width: 500px) {
   .Damage-Zooming {

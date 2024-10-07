@@ -17,6 +17,12 @@ import { useParams } from "next/navigation";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
+import {
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
@@ -88,31 +94,41 @@ export default function CarInfoMainPage() {
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
               <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
                 <div className="w-full h-fit flex justify-start gap-[5%] items-center px- dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey py-7 px-6 ">
-                  <div className="w-fit flex justify-start items-center gap-1">
-                    <div className="h-[464px] fex justify-start flex-col items-center gap-[8px] overflow-y-auto overflow-x-hidden scroll">
-                      {vehicleInfo?.carImages?.map(
-                        (item: string, index: number) => (
-                          <>
-                            {index !== imageIndex ? (
-                              <div
-                                className="w-[110px] h-[110px] mb-[8px] flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
-                                onClick={() => {
-                                  setImageIndex(index);
-                                }}
-                                key={index}
-                              >
-                                <img src={item} className="w-full h-full" />
-                              </div>
-                            ) : null}
-                          </>
-                        )
-                      )}
-                    </div>
-                    <div className="w-[464px] h-[464px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
+                  <div className="w-fit flex flex-col justify-start items-center gap-1">
+                    <div className="w-[367px] h-[245px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
                       <img
                         src={vehicleInfo.carImages[imageIndex] || image404.src}
                         className="w-full h-full"
                       />
+                    </div>
+                    <div className="w-[367px] h-[70px] relative flex justify-center">
+                      <div className="w-[300px] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll">
+                        <div className="w-[20px] text-[#F4F4F4] h-full absolute left-0 top-0 flex items-center justify-start">
+                          <FaChevronCircleLeft className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
+                        </div>
+                        <div className="flex justify-start items-center gap-[8px]">
+                          {[...vehicleInfo?.carImages, ...Array(5)].map(
+                            (item: string, index: number) =>
+                              index !== imageIndex && (
+                                <div
+                                  className="w-[67px] h-[67px] flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
+                                  onClick={() => {
+                                    setImageIndex(index);
+                                  }}
+                                  key={index}
+                                >
+                                  <img
+                                    src={item}
+                                    className="w-[67px] h-[67px]"
+                                  />
+                                </div>
+                              )
+                          )}
+                        </div>
+                        <div className="w-[20px] text-[#F4F4F4] h-full absolute right-0 top-0 flex items-center justify-end">
+                          <FaChevronCircleRight className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="w-[45%] flex justify-start flex-col items-start gap-1 bg-green-">
