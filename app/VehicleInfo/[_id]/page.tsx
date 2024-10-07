@@ -120,7 +120,7 @@ export default function CarInfoMainPage() {
               </div>
             </div>
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
-              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] rounded-[10px] py-7 border-2 border-grey dark:bg-dark1 bg-white">
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-2 border-grey dark:bg-dark1 bg-white">
                 <div className="w-full h-fit flex justify-between gap-[5% items-star px- rounded-[10px] px-6 ">
                   <div className="w-[41%] flex flex-col justify-start items-start gap-1">
                     <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
