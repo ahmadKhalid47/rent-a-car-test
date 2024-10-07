@@ -95,7 +95,9 @@ export default function CarInfoMainPage() {
     }
     if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
-
+  console.log(vehicleInfo?.odometer);
+  let value = "102";
+  console.log(value.padStart(6, "0"));
   return (
     <>
       {!vehicleInfo ? null : (
@@ -229,7 +231,19 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Odometer
                         </span>
-                        <span className="">{vehicleInfo?.odometer}</span>
+                        <span className="w-[78px] h-[19px] bg-gradient-to-b from-white to-[rgb(229,230,231)] border-[1px] border-[rgb(128,130,133)] text-black flex justify-center items-center">
+                          {vehicleInfo?.odometer
+                            ?.padStart(6, "0")
+                            .split("")
+                            .map((item: any) => (
+                              <>
+                                <span className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[13px]">
+                                  {item}
+                                </span>
+                                <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%]"></div>
+                              </>
+                            ))}
+                        </span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">

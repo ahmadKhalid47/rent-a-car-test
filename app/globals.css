@@ -430,27 +430,31 @@ button:active {
 }
 
 .custom-select {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .select-selected {
-    background-color: #f0f0f0; /* Customize as needed */
+  background-color: #f0f0f0; /* Customize as needed */
 }
 
 .select-items {
-    display: block;
-    position: absolute;
-    background-color: white; /* Customize as needed */
-    border: 1px solid #ccc;
-    z-index: 99;
-    margin-top: 2px; /* Adjust spacing as needed */
+  display: block;
+  position: absolute;
+  background-color: white; /* Customize as needed */
+  border: 1px solid #ccc;
+  z-index: 99;
+  margin-top: 2px; /* Adjust spacing as needed */
 }
 
 .option {
-    padding: 10px;
+  padding: 10px;
 }
 
 .option:hover {
-    background-color: #007BFF; /* Customize hover effect */
-  }
+  background-color: #007bff; /* Customize hover effect */
+}
+
+.thin-border {
+  border-right: 0.1px solid rgb(147,149,152);
+}
