@@ -5,6 +5,7 @@ import { FaChevronDown } from "react-icons/fa";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
 import Other from "./Other";
+import Additional from "./Additional";
 
 export default function General() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -29,7 +30,7 @@ export default function General() {
     },
     {
       title: "Features",
-      content: <div className="w-full h-full"></div>,
+      content: <Additional />,
     },
     {
       title: "Damages",
