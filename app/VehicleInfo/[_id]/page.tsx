@@ -273,27 +273,15 @@ export default function CarInfoMainPage() {
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
                       Additional Information
                     </span>
-                    <div className="w-[100%] bg-green-00 rounded-[10px] border-2 border-grey h-[380px] flex flex-col justify-center items-start gap-8 overflow-auto scroll">
-                      {activeButton === "General" ? (
-                        <General />
-                      ) : activeButton === "Rental" ? (
-                        <Rental />
-                      ) : activeButton === "Insurance" ? (
-                        <Insurance />
-                      ) : activeButton === "Damages" ? (
-                        <Damages />
-                      ) : activeButton === "Additional" ? (
-                        <Additional />
-                      ) : activeButton === "Others" ? (
-                        <Other />
-                      ) : null}
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[376px] flex flex-col justify-start items-start gap-8 overflow-auto scroll">
+                      <General />
                     </div>
                   </div>
                   <div className="w-[48%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
                       Maintenance
                     </span>
-                    <div className="w-[100%] rounded-[10px] border-2 border-grey h-[380px] flex flex-col justify-center items-start gap-8 overflow-auto scroll"></div>
+                    <div className="w-[100%] rounded-[10px] border-2 border-grey h-[376px] flex flex-col justify-center items-start gap-8 overflow-auto scroll"></div>
                   </div>
                 </div>
                 <div className="w-full h-fit dark:bg-dark1 px-5 mt-5 flex justify-between items-center">

@@ -6,55 +6,45 @@ export default function Rental() {
   let global = useSelector((state: RootState) => state.Global);
 
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[43%] h-fit flex flex-col justify-start items-start ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Rental Price Per Hour:
-          </p>
-          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+    <div className="w-full h-full py-4 px-5">
+      <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+        <div className="w-[45%] flex justify-between items-center">
+          <span className="dark:text-white text-[#555555]">Rent Per Hour</span>
+          <span className="">
             {vehicleInfo.rentHour
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentHour.toLocaleString("en-US")
               : "---"}
-          </p>
+          </span>
         </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Rental Price Per Week:
-          </p>
-          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.rentWeek
-              ? `${global.currentCurrency} ` +
-                vehicleInfo.rentWeek.toLocaleString("en-US")
-              : "---"}
-          </p>
-        </div>
-      </div>
-      <div className="w-[43%] h-fit flex flex-col justify-start items-start ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Rental Price Per Day:
-          </p>
-          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+        <div className="w-[45%] flex justify-between items-center">
+          <span className="dark:text-white text-[#555555]">Rent Per Day</span>
+          <span className="">
             {vehicleInfo.rentDay
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentDay.toLocaleString("en-US")
               : "---"}
-          </p>
+          </span>
         </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Rental Price Per Month:
-          </p>
-          <p className="w-[20%] text-start font-[400] text-[18px] leading-[27px]">
+      </div>
+      <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-1">
+        <div className="w-[45%] flex justify-between items-center">
+          <span className="dark:text-white text-[#555555]">Rent Per Week</span>
+          <span className="">
+            {vehicleInfo.rentWeek
+              ? `${global.currentCurrency} ` +
+                vehicleInfo.rentWeek.toLocaleString("en-US")
+              : "---"}
+          </span>
+        </div>
+        <div className="w-[45%] flex justify-between items-center">
+          <span className="dark:text-white text-[#555555]">Rent Per Month</span>
+          <span className="">
             {vehicleInfo.rentMonth
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentMonth.toLocaleString("en-US")
               : "---"}
-          </p>
+          </span>
         </div>
       </div>
     </div>

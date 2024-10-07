@@ -1,99 +1,77 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+import Rental from "./Rental";
+import Insurance from "./Insurance";
 
 export default function General() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  const [activeIndex, setActiveIndex] = useState<any>(0);
+
+  const toggleAccordion = (index: any) => {
+    if (activeIndex === index) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(index);
+    }
+  };
+
+  const accordionData = [
+    {
+      title: "Rental Info",
+      content: <Rental />,
+    },
+    {
+      title: "Insurance Info",
+      content: <Insurance />,
+    },
+    {
+      title: "Features",
+      content: <div className="w-full h-full"></div>,
+    },
+    {
+      title: "Damages",
+      content: <div className="w-full h-full"></div>,
+    },
+    {
+      title: "Others",
+      content: <div className="w-full h-full"></div>,
+    },
+  ];
 
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[43%] h-fit flex flex-col justify-start items-start ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Make:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.make}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Making Year:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.year}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Color:</p>
-          <div className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
-            {vehicleInfo.color}
+    <div className="w-[100%] h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] border-grey">
+      <div id="accordion-collapse" className="w-full">
+        {accordionData.map((item, index) => (
+          <div key={index}>
+            <h2 id={`accordion-collapse-heading-${index + 1}`}>
+              <button
+                type="button"
+                className="w-[100%] h-[47px] flex items-center justify-between p-5 border-b-[1px] border-grey bg-light-grey"
+                onClick={() => toggleAccordion(index)}
+                aria-expanded={activeIndex === index}
+                aria-controls={`accordion-collapse-body-${index + 1}`}
+              >
+                <span>{item.title}</span>
+                <FaChevronDown
+                  className={`w-3 h-3 transition-transform ${
+                    activeIndex === index ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+            </h2>
             <div
-              className="w-[32px] h-[18px] rounded-[5px]"
-              style={{
-                backgroundColor: vehicleInfo.color,
-              }}
-            ></div>
+              id={`accordion-collapse-body-${index + 1}`}
+              className={`${
+                activeIndex === index ? "block" : "hidden"
+              } w-[100%] h-[141px] border-b-[1px] border-grey`}
+              aria-labelledby={`accordion-collapse-heading-${index + 1}`}
+            >
+              {item.content}
+            </div>
           </div>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Transmission:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.transmission}
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Passengers:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.passengers}
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">City:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.city}
-          </p>
-        </div>
-      </div>
-      <div className="w-[43%] h-fit flex flex-col justify-start items-start ">
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Registration No:
-          </p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.registration}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Model:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.model}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Type:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.type}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">Fuel Type:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.fuelType}
-          </p>
-        </div>
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
-          <p className="font-[400] text-[18px] leading-[27px]">
-            Odometer (KM):
-          </p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.odometer}
-          </p>
-        </div>
-
-        <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
-          <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
-          <p className="w-[40%] break-words text-start font-[400] text-[18px] leading-[27px]">
-            {vehicleInfo.country}
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );
