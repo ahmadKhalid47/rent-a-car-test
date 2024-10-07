@@ -4,10 +4,18 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    let reservation = await req.json();
+    let data = await req.json();
     let { _id } = await params.params;
     connectDb();
-    await reservationModel.updateOne({ _id: _id }, { $set: { data: reservation } });
+    await reservationModel.updateOne(
+      { _id: _id },
+      {
+        $set: {
+          data: data.reservation,
+          vehicle_id: data.vehicle_id,
+        },
+      }
+    );
     return NextResponse.json({
       success: "User Created",
     });

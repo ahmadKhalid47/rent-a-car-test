@@ -23,15 +23,20 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import ListViewreservation from "@/app/Reservations/ListViewReservations";
+import { MediumLoader } from "@/app/Components/Loader";
+import ListViewRecentReservations from "./ListViewRecentReservations";
 
 export default function CarInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
   let [activeButton, setActiveButton] = useState("General");
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let global = useSelector((state: RootState) => state.Global);
   const [showError, setShowError] = useState(null);
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
+  const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [imageIndex, setImageIndex] = useState<any>(
     vehicleInfo?.thumbnailImage
   );
@@ -68,7 +73,28 @@ export default function CarInfoMainPage() {
     getData();
   }, []);
 
-  console.log(vehicleInfo);
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.post("/api/getReservationsOfVehicle", {
+          createdBy: myProfile._id,
+          vehicle_id: _id,
+        });
+
+        if (result?.data?.data) {
+          setreservationsData(result.data.data);
+        } else {
+          setShowError(result?.data?.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (myProfile._id) getData();
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   return (
     <>
@@ -104,7 +130,7 @@ export default function CarInfoMainPage() {
                       />
                     </div>
                     <div className="w-[100%] h-[70px] relative flex justify-center">
-                      <div className="w-[292px] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll">
+                      <div className="w-[85%] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll">
                         <div className="w-[20px] text-[#F4F4F4] h-full absolute left-0 top-0 flex items-center justify-start">
                           <FaChevronCircleLeft className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
                         </div>
@@ -255,8 +281,20 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%] rounded-[10px] border-2 border-grey h-[380px] flex flex-col justify-center items-start gap-8 overflow-auto scroll"></div>
                   </div>
-                  
-                  
+                </div>
+                <div className="w-full h-fit dark:bg-dark1 px-5 mt-5 flex justify-between items-center">
+                  <div className="w-[100%] h-fit flex flex-col items-start gap-2">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+                      Recent Reservations
+                    </span>
+                    <div className="w-[100%]">
+                      {loading ? (
+                        <MediumLoader />
+                      ) : (
+                        <ListViewRecentReservations data={reservationsData} />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

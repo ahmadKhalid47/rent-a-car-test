@@ -147,12 +147,15 @@ export default function Reservations() {
     }
   }, []);
 
+  console.log(reservation?.vehicle_id);
+
   async function saveData(action: string) {
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/savereservation`, {
         reservation,
         createdBy: myProfile._id,
+        vehicle_id: reservation?.vehicle_id,
       });
       await axios.post(`/api/updateRentOut/${reservation?.vehicle_id}`, {
         rentOut: true,
@@ -164,8 +167,7 @@ export default function Reservations() {
         setShowError(result?.data?.error);
         setShowSuccess(null);
       }
-            dispatch(setAlert("Reservation Saved Successfully"));
-
+      dispatch(setAlert("Reservation Saved Successfully"));
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -184,13 +186,14 @@ export default function Reservations() {
       setLoading(true);
       await axios.post(
         `/api/updatereservation/${reservationUpdateAction}`,
-        reservation
+        reservation,
+        // vehicle_id: reservation?.vehicle_id,
+
       );
       if (action === "close") {
         router.push("/Reservations");
       }
-            dispatch(setAlert("Reservation Updated Successfully"));
-
+      dispatch(setAlert("Reservation Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -264,9 +267,7 @@ export default function Reservations() {
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
                   } flex justify-center items-center rounded-full z-[5]`}
                 >
-                  <span className="text-center -translate-x-[2px]">
-                    1
-                  </span>
+                  <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
               <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
@@ -323,36 +324,28 @@ export default function Reservations() {
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 0
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Customer
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 1
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Chauffeur
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 2
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Reservation Details
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
-                  currentPage >= 3
-                    ? "text-main-blue font-[600]"
-                    : " font-[400]"
+                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Select Vehicle

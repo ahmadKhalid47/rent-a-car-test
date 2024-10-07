@@ -4,15 +4,21 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let data = await req.json();
-    connectDb();
-    await new reservationModel({
-      data: data.reservation,
-      createdBy: data.createdBy,
-      vehicle_id: data.vehicle_id,
-    }).save();
+    const { createdBy, vehicle_id } = await req.json();
+    if (!createdBy) {
+      return NextResponse.json(
+        { error: "createdBy is required" },
+        { status: 400 }
+      );
+    }
+    await connectDb();
+    const data = await reservationModel
+      .find({ $and: [{ createdBy }, { vehicle_id: vehicle_id }] })
+      .sort({ _id: -1 })
+      .limit(6)
+      .lean();
     return NextResponse.json({
-      success: "User Created",
+      data,
     });
   } catch (err) {
     console.log("err: ", err);

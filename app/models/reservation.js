@@ -9,6 +9,11 @@ const reservationSchema = mongoose.Schema(
       ref: "Registration",
       required: true,
     },
+    vehicle_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Vehicle",
+      required: false,
+    },
   },
   {
     timestamps: true,
