@@ -372,7 +372,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           label={"VIN Number"}
           value={vehicle.vinNo}
           required={true}
-          type={"number"}
+          type={"text"}
         />
         <TempSelectInput
           setState={setpassengersR}
