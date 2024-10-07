@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
+import Other from "./Other";
 
 export default function General() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -11,7 +12,7 @@ export default function General() {
 
   const toggleAccordion = (index: any) => {
     if (activeIndex === index) {
-      setActiveIndex(0);
+      setActiveIndex(null);
     } else {
       setActiveIndex(index);
     }
@@ -36,7 +37,7 @@ export default function General() {
     },
     {
       title: "Others",
-      content: <div className="w-full h-full"></div>,
+      content: <Other />,
     },
   ];
 
