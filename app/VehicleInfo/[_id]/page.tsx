@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import General from "./General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
@@ -41,6 +41,8 @@ export default function CarInfoMainPage() {
     vehicleInfo?.thumbnailImage
   );
   let dispatch = useDispatch();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
     if (isMobile) {
@@ -95,9 +97,25 @@ export default function CarInfoMainPage() {
     }
     if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
-  console.log(vehicleInfo?.odometer);
-  let value = "102";
-  console.log(value.padStart(6, "0"));
+
+  const scrollLeft = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: -100, // Adjust scroll amount as needed
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({
+        left: 100, // Adjust scroll amount as needed
+        behavior: "smooth",
+      });
+    }
+  };
+  
   return (
     <>
       {!vehicleInfo ? null : (
@@ -132,19 +150,23 @@ export default function CarInfoMainPage() {
                       />
                     </div>
                     <div className="w-[100%] h-[70px] relative flex justify-center">
-                      <div className="w-[85%] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll">
+                      <div
+                        className="w-[85%] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
+                        ref={containerRef}
+                      >
                         <div className="w-[20px] text-[#F4F4F4] h-full absolute left-0 top-0 flex items-center justify-start">
-                          <FaChevronCircleLeft className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
+                          <FaChevronCircleLeft
+                            className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full"
+                            onClick={scrollLeft}
+                          />
                         </div>
                         <div className="flex justify-start items-center gap-[8px]">
-                          {vehicleInfo?.carImages.map(
+                          {[...vehicleInfo?.carImages, ...Array(5)].map(
                             (item: string, index: number) =>
                               index !== imageIndex && (
                                 <div
                                   className="w-[67px] h-[67px] cursor-pointer flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
-                                  onClick={() => {
-                                    setImageIndex(index);
-                                  }}
+                                  onClick={() => setImageIndex(index)}
                                   key={index}
                                 >
                                   <img
@@ -156,7 +178,10 @@ export default function CarInfoMainPage() {
                           )}
                         </div>
                         <div className="w-[20px] text-[#F4F4F4] h-full absolute right-0 top-0 flex items-center justify-end">
-                          <FaChevronCircleRight className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
+                          <FaChevronCircleRight
+                            className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full"
+                            onClick={scrollRight}
+                          />
                         </div>
                       </div>
                     </div>

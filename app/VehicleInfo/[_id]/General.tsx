@@ -6,6 +6,7 @@ import Rental from "./Rental";
 import Insurance from "./Insurance";
 import Other from "./Other";
 import Additional from "./Additional";
+import Damages from "./Damages";
 
 export default function General() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -34,7 +35,8 @@ export default function General() {
     },
     {
       title: "Damages",
-      content: <div className="w-full h-full"></div>,
+      content:
+        <Damages/>,
     },
     {
       title: "Others",
