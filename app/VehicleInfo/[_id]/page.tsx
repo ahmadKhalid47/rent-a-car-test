@@ -137,7 +137,7 @@ export default function CarInfoMainPage() {
                           <FaChevronCircleLeft className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full" />
                         </div>
                         <div className="flex justify-start items-center gap-[8px]">
-                          {[...vehicleInfo?.carImages, ...Array(5)].map(
+                          {vehicleInfo?.carImages.map(
                             (item: string, index: number) =>
                               index !== imageIndex && (
                                 <div

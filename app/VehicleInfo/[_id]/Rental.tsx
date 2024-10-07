@@ -6,7 +6,7 @@ export default function Rental() {
   let global = useSelector((state: RootState) => state.Global);
 
   return (
-    <div className="w-full h-full py-4 px-5 flex justify-start flex-col items-start gap-1">
+    <div className="w-full h-full py-4 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-[45%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Hour</span>
