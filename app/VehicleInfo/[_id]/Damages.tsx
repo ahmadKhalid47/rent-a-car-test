@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { setConfigurations } from "@/app/store/Configurations";
 import axios from "axios";
 import image404 from "@/public/image404.png";
+import { SwitchDamage } from "@/components/ui/switch";
 
 export default function Damages() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -48,24 +49,36 @@ export default function Damages() {
   let interiorImg = Configurations?.Configurations?.type?.find(
     (item: any) => item.Type === vehicleInfo.type
   )?.interior;
+  const [toggle, setToggle] = useState(false);
+  console.log(toggle);
 
   return (
     <div className="w-full h-full py-4 px-5 flex justify-between items-start">
       {vehicleInfo.damages.length > 0 ? (
         <>
-          <div className="w-[20%] h-[120px] flex justify-center items-center border-[1px] border-grey">
-            <div className="h-[120px] flex flex-col justify-start items-start relative">
+          <div className="w-[25%] h-[120px] flex flex-col justify-between items-center border-[1px] border-grey">
+            <div className="text-[8px] font-[500] px-2 flex justify-between items-center w-full h-[15px]">
+              <span className="w-fit leading-[0px]">Interior</span>
+              <SwitchDamage
+                checked={toggle}
+                onCheckedChange={(checked: boolean) => {
+                  setToggle(checked);
+                }}
+              />
+              <span className="w-fit leading-[0px] text-end">Interior</span>
+            </div>
+            <div className="h-[100px] flex flex-col justify-start items-start relative">
               <img
                 src={
-                  vehicleInfo.damages[damageIndex]?.exterior
+                  !toggle
                     ? exteriorImg
                     : interiorImg
                 }
-                className="h-[120px]"
+                className="h-[100px]"
               />
               {vehicleInfo.damages.map((item: any, index: any) => (
                 <>
-                  {vehicleInfo.damages[damageIndex]?.exterior ? (
+                  {!toggle ? (
                     item.exterior ? (
                       <div
                         className={`absolute w-[10px] h-[10px] rounded-full ${
@@ -88,7 +101,7 @@ export default function Damages() {
                         {index + 1}
                       </div>
                     ) : null
-                  ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
+                  ) : !toggle ? (
                     !item.exterior ? (
                       <div
                         className={`absolute w-[10px] h-[10px] rounded-full ${
@@ -116,9 +129,9 @@ export default function Damages() {
               ))}
             </div>
           </div>
-          <div className="w-[75%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
+          <div className="w-[70%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
             <div className="w-full-6px h-[40px] flex justify-between items-center border-b-[2px] mb-1 ">
-              <span className="w-[10%] h-[30px] font-[600] text-[12px] xs:text-[14px] md:text-[13px] leading-[27px]">
+              <span className="w-[10%] font-[600] text-[12px] xs:text-[14px] md:text-[13px] leading-[27px]">
                 Image
               </span>
               <span className="w-[7%] font-[600] text-[12px] xs:text-[14px] md:text-[13px] leading-[27px]">
@@ -138,23 +151,23 @@ export default function Damages() {
               {vehicleInfo.damages.map((item: any, index: number) => (
                 <div className="w-full h-[40px] flex justify-between items-end border-b-[2px]">
                   <img
-                    className="w-[40px] h-[30px] my-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none rounded-[5px]"
+                    className="w-[40px] h-[30px] my-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate rounded-[5px] cursor-pointer"
                     src={item?.files[0]}
                     onClick={() => {
                       setImagePopup(true);
                       setdamageIndex(index);
                     }}
                   />
-                  <span className="pb-2 w-[7%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none">
+                  <span className="pb-2 w-[7%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate">
                     {JSON.stringify(index + 1).padStart(2, "0")}{" "}
                   </span>
-                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none">
+                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate">
                     {item?.damageType}
                   </span>
-                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none">
+                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate">
                     {item?.exterior ? "Exterior" : "Interior"}
                   </span>
-                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none">
+                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate">
                     {item?.degree}
                   </span>
                 </div>
@@ -195,7 +208,7 @@ export default function Damages() {
                   />
                 </div>
                 <span
-                  className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full"
+                  className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit leading-[0px] shadow dark:bg-dark1 bg-white rounded-full"
                   onClick={() => {
                     setImagePopup(false);
                     setZoomed(false);
