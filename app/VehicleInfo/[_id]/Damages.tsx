@@ -101,7 +101,7 @@ export default function Damages() {
                         {index + 1}
                       </div>
                     ) : null
-                  ) : !toggle ? (
+                  ) : toggle ? (
                     !item.exterior ? (
                       <div
                         className={`absolute w-[10px] h-[10px] rounded-full ${
