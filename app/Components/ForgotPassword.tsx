@@ -80,12 +80,12 @@ export default function ForgotPassword() {
             required
           />
         </div>
-        <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+        <div className="w-[100%] h-fit flex flex-col justify-center items-end gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
           <p
-            className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
+            className="font-[400] text-[16px] leading-[20px] text-[#000000] w-fit text-end mb-2 cursor-pointer hover:underline"
             onClick={() => dispatch(setLoginPageR(true))}
           >
-            Login
+            Back to Login{" "}
           </p>
         </div>
         <button

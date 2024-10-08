@@ -119,7 +119,7 @@ export default function Login() {
               >Remember Me</label>
             </p>
             <p
-              className="w-fit font-[400] text-[16px] leading-[20px] text-[#EB4643] text-end mb-2 cursor-pointer"
+              className="w-fit font-[400] text-[16px] leading-[20px] text-[#000000] text-end mb-2 cursor-pointer hover:underline"
               onClick={() => dispatch(setLoginPageR(false))}
             >
               Forgot Password?
