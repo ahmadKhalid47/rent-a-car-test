@@ -503,8 +503,8 @@ export default function UserDashboard() {
               </div>
               <div className="w-full flex flex-col justify-start items-center">
                 <div className="w-full h-[32px] flex justify-between items-center dark:bg-dark2 bg-light-grey border-[1px] border-grey rounded-[6px] px-3 text-[16px] font-[400] leading-[17px]">
-                  <span className="w-[25%]">Customer</span>
-                  <span className="w-[35%]">Vehicle</span>
+                  <span className="w-[30%]">Customer</span>
+                  <span className="w-[30%]">Vehicle</span>
                   <span className="w-[40%]">Duration</span>
                 </div>
                 {reservationLoading ? (
@@ -521,11 +521,10 @@ export default function UserDashboard() {
                         index === 7 ? "" : "border-b-[1px]"
                       } border-grey px-3`}
                     >
-                      <span className="w-[25%] text-[14px] font-[400] leading-[14px]">
+                      <span className="w-[30%] text-[14px] font-[400] leading-[14px]">
                         {item.data.customerName}
-                        {index}
                       </span>
-                      <span className="w-[35%] text-[14px] font-[400] leading-[14px]">
+                      <span className="w-[30%] text-[14px] font-[400] leading-[14px]">
                         {item.data.vehicleName}
                       </span>
                       <span className="w-[40%] text-[14px] font-[400] leading-[14px]">
