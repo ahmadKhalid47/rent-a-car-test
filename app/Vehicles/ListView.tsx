@@ -328,6 +328,12 @@ export default function ListView({ data }: dataType) {
               className="text-start pe-3 flex justify-between items-center w-[12%] cursor-pointer"
               onClick={() => sort("city")}
             >
+              Odometer <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[12%] cursor-pointer"
+              onClick={() => sort("city")}
+            >
               City <img src={arrows.src} />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[8%]">
@@ -382,6 +388,23 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </h5>
+                  <div className="text-start pe-3 w-[12%]">
+                    <span className="w-[100px] h-[19px] bg-gradient-to-b from-white to-[rgb(229,230,231)] border-[1px] border-[rgb(128,130,133)] text-black flex justify-center items-center">
+                      {item?.data?.odometer
+                        ?.padStart(6, "0")
+                        .split("")
+                        .map((item: any, index: any) => (
+                          <>
+                            <span className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[16.66px]">
+                              {item}
+                            </span>
+                            {index !== 5 && (
+                              <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%]"></div>
+                            )}
+                          </>
+                        ))}
+                    </span>
+                  </div>
                   <h5 className="text-start pe-3 w-[12%]">
                     {item?.data?.city}
                   </h5>
