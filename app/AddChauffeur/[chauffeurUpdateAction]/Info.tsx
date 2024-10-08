@@ -42,7 +42,7 @@ export default function Info() {
     setFiles(chauffeur?.chauffeurImage); 
   }, [chauffeur.chauffeurImage[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; // 5MB in bytes
+    const maxFileSize = 1 * 1024 * 1024; // 1MB in bytes
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
@@ -53,7 +53,7 @@ export default function Info() {
         return false;
       }
       if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is 5MB.`);
+        alert(`File ${file.name} is too large. Maximum size is 1MB.`);
         return false;
       }
       return true;
