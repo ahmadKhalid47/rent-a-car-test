@@ -152,8 +152,14 @@ export default function Vehicles() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    getData();
-  }, []);
+    if (CustomerUpdateAction !== "AddNew") {
+      getData();
+    }
+    return () => {
+      if (CustomerUpdateAction !== "AddNew") {
+        dispatch(resetState());
+      }
+    };  }, []);
 
   async function updateData(action: string) {
     try {

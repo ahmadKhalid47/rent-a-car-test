@@ -49,7 +49,7 @@ export default function Info() {
   const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
   useEffect(() => {
-    setFiles(vehicle.carImages);
+    // setFiles(vehicle.carImages);
   }, [vehicle.carImages]);
   useEffect(() => {
     setMakeSelected(vehicle.make);

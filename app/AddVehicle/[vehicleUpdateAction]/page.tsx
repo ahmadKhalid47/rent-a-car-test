@@ -71,6 +71,11 @@ export default function Vehicles() {
     if (vehicleUpdateAction !== "AddNew") {
       getData();
     }
+    return () => {
+      if (vehicleUpdateAction !== "AddNew") {
+        dispatch(resetState());
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -220,7 +225,6 @@ export default function Vehicles() {
         router.push("/Vehicles");
       }
       dispatch(setAlert("Vehicle Updated Successfully"));
-
     } catch (err) {
       console.log(err);
     } finally {

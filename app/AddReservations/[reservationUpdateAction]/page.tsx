@@ -144,6 +144,11 @@ export default function Reservations() {
     if (reservationUpdateAction !== "AddNew") {
       getData();
     }
+    return () => {
+      if (reservationUpdateAction !== "AddNew") {
+        dispatch(resetState());
+      }
+    };
   }, []);
 
   console.log(reservation?.vehicle_id);

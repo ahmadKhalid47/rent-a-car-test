@@ -106,7 +106,11 @@ export default function AddUser() {
     if (UserUpdateAction !== "AddNew") {
       getData();
     }
-  }, []);
+    return () => {
+      if (UserUpdateAction !== "AddNew") {
+        dispatch(resetState());
+      }
+    };  }, []);
 
   async function updateData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

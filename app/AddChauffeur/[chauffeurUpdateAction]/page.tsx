@@ -117,7 +117,6 @@ export default function AddChauffeur() {
         setShowSuccess(null);
       }
       dispatch(setAlert("Chauffeur Saved Successfully"));
-
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -150,9 +149,15 @@ export default function AddChauffeur() {
         setDeleteTrigger(deleteTrigger + 1);
       }
     }
-    getData();
+    if (chauffeurUpdateAction !== "AddNew") {
+      getData();
+    }
+    return () => {
+      if (chauffeurUpdateAction !== "AddNew") {
+        dispatch(resetState());
+      }
+    };
   }, []);
-  console.log(chauffeur?.passportImages);
 
   async function updateData(action: string) {
     try {
@@ -202,7 +207,6 @@ export default function AddChauffeur() {
         router.push("/Chauffeurs");
       }
       dispatch(setAlert("Chauffeur Updated Successfully"));
-
     } catch (err) {
       console.log(err);
     } finally {
