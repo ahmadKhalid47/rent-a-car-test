@@ -85,7 +85,6 @@ export default function AddUser() {
     }
   }
   useEffect(() => {
-    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);

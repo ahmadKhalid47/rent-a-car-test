@@ -134,7 +134,6 @@ export default function Vehicles() {
   }
 
   useEffect(() => {
-    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);

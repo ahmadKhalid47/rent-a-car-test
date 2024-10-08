@@ -124,7 +124,6 @@ export default function Reservations() {
   );
 
   useEffect(() => {
-    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);

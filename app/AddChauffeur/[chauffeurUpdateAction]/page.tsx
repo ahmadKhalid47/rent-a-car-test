@@ -132,7 +132,6 @@ export default function AddChauffeur() {
   }
 
   useEffect(() => {
-    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
