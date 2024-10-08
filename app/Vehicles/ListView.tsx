@@ -31,7 +31,6 @@ export default function ListView({ data }: dataType) {
     {}
   );
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
