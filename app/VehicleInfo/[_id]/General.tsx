@@ -44,7 +44,7 @@ export default function General() {
             <div id={`accordion-collapse-heading-${index + 1}`}>
               <button
                 type="button"
-                className="w-[100%] h-[47px] flex items-center justify-between p-5 border-b-[1px] border-grey bg-light-grey"
+                className="font-[600] w-[100%] h-[47px] flex items-center justify-between p-5 border-b-[1px] border-grey bg-light-grey"
                 onClick={() => toggleAccordion(index)}
                 aria-expanded={activeIndex === index}
                 aria-controls={`accordion-collapse-body-${index + 1}`}
