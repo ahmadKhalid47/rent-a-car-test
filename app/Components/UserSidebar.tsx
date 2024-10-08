@@ -179,7 +179,7 @@ export default function UserSidebar() {
                   : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New Reservations" : null}
+              {global.sidebarShow ? "Add New Reservation" : null}
             </div>{" "}
           </Link>
         </div>
