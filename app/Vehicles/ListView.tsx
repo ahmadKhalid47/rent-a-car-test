@@ -295,7 +295,7 @@ export default function ListView({ data }: dataType) {
               ID
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[20%] cursor-pointer"
+              className="text-start pe-3 flex justify-between items-center w-[15%] cursor-pointer"
               onClick={() => sort("make")}
             >
               Car Name <img src={arrows.src} />
@@ -319,7 +319,7 @@ export default function ListView({ data }: dataType) {
               Type <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
+              className="text-start pe-3 flex justify-between items-center w-[7%] cursor-pointer"
               onClick={() => sort("color")}
             >
               Color <img src={arrows.src} />
@@ -331,7 +331,7 @@ export default function ListView({ data }: dataType) {
               Odometer <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%] cursor-pointer"
+              className="text-start pe-3 flex justify-between items-center w-[10%] cursor-pointer"
               onClick={() => sort("city")}
             >
               City <img src={arrows.src} />
@@ -370,7 +370,7 @@ export default function ListView({ data }: dataType) {
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
                   </h5>
-                  <h5 className="text-start pe-3 w-[20%]">
+                  <h5 className="text-start pe-3 w-[15%]">
                     {item?.data?.make} {item?.data?.model}
                   </h5>
                   <h5 className="text-start pe-3 w-[13%]">
@@ -380,7 +380,7 @@ export default function ListView({ data }: dataType) {
                     {item?.data?.year}
                   </h5>
                   <h5 className="text-start pe-3 w-[9%]">{item?.data?.type}</h5>
-                  <h5 className="text-start pe-3 w-[9%]">
+                  <h5 className="text-start pe-3 w-[7%]">
                     <div
                       className={`w-[23px] h-[12px] rounded-full`}
                       style={{
@@ -405,7 +405,7 @@ export default function ListView({ data }: dataType) {
                         ))}
                     </span>
                   </div>
-                  <h5 className="text-start pe-3 w-[12%]">
+                  <h5 className="text-start pe-3 w-[10%]">
                     {item?.data?.city}
                   </h5>
                   <div
