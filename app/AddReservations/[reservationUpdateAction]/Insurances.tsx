@@ -31,7 +31,7 @@ export default function Insurances() {
           setState={setreservationDate}
           label={"Reservation Date"}
           value={reservation.reservationDate}
-          required={false}
+          required={true}
           type={"date"}
           widthProp="sm:w-[48%]"
         />
@@ -47,7 +47,7 @@ export default function Insurances() {
           setState={setfuelStatus}
           label={"Fuel Status"}
           value={reservation.fuelStatus}
-          required={true}
+          required={false}
           options={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           widthProp="sm:w-[48%]"
         />
@@ -63,7 +63,7 @@ export default function Insurances() {
           setState={setcountry}
           label={"Country"}
           value={reservation.country}
-          required={true}
+          required={false}
           options={countries.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
@@ -71,7 +71,7 @@ export default function Insurances() {
           setState={setcity}
           label={"City"}
           value={reservation.city}
-          required={true}
+          required={false}
           options={cities.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />

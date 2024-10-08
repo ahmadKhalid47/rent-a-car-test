@@ -119,7 +119,7 @@ export default function Info() {
           setState={setnameR}
           label={"Full Name"}
           value={User.name}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TempTypeInputLimit
@@ -135,7 +135,7 @@ export default function Info() {
           setState={setcompanyR}
           label={"Company"}
           value={User.company}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TempTypeInputLimit
@@ -151,36 +151,36 @@ export default function Info() {
           setState={setphoneR}
           label={"Phone"}
           value={User.phone}
-          required={true}
+          required={false}
           type={"number"}
         />
         <TempSelectInput
           setState={setcountryR}
           label={"Country"}
           value={User.country}
-          required={true}
+          required={false}
           options={countries.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setstateR}
           label={"State"}
           value={User.state}
-          required={true}
+          required={false}
           options={states.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={User.city}
-          required={true}
+          required={false}
           options={cities.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setplanR}
           label={"Plan Validity"}
           value={User.plan}
-          required={true}
-          options={["1 Month", "3 Months", "6 Months", "1 Year"]}
+          required={false}
+          options={["Trial", "1 Month", "3 Months", "6 Months", "1 Year"]}
         />
         {UserUpdateAction === "AddNew" && (
           <>

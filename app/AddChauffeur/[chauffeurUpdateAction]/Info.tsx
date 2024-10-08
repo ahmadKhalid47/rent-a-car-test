@@ -118,15 +118,13 @@ export default function Info() {
           label={"Full Name"}
           value={chauffeur.name}
           required={true}
-          // required={false}
           type={"text"}
         />
         <TempSelectInput
           setState={setgenderR}
           label={"Gender"}
           value={chauffeur.gender}
-          required={true}
-          // required={false}
+          required={false}
           options={["Male", "Female", "Custom"]}
         />
 
@@ -156,8 +154,7 @@ export default function Info() {
           setState={setphoneR}
           label={"Phone"}
           value={chauffeur.phone}
-          required={true}
-          // required={false}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
@@ -171,7 +168,7 @@ export default function Info() {
           setState={setrentPerDayR}
           label={"Rent Per Day"}
           value={chauffeur.rentPerDay}
-          required={false}
+          required={true}
           type={"number"}
         />
         <TempTypeInput
@@ -185,32 +182,28 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={chauffeur.country}
-          required={true}
-          // required={false}
+          required={false}
           options={countries.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setstateR}
           label={"State/Province"}
           value={chauffeur.state}
-          required={true}
-          // required={false}
+          required={false}
           options={states.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={chauffeur.city}
-          required={true}
-          // required={false}
+          required={false}
           options={cities.map((item: any) => item.label)}
         />
         <TempTypeInput
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={chauffeur.postalCode}
-          required={true}
-          // required={false}
+          required={false}
           type={"text"}
         />
       </div>

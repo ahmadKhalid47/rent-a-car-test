@@ -251,7 +251,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setyearR}
           label={"Making Year"}
           value={vehicle.year}
-          required={true}
+          required={false}
           options={years}
         />
         <TempTypeInput
@@ -264,7 +264,6 @@ for (let i = currentYear +1; i >= 1995; i--) {
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Color
-            {/* <FaAsterisk className="text-[6px]" /> */}
           </label>
           <div className="w-full h-fit flex justify-between items-center relative circle-edit cursor-default">
             <div
@@ -328,7 +327,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          required={true}
+          required={false}
           options={[
             "Gasoline",
             "Diesel",
@@ -344,7 +343,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setfuelCapacity}
           label={"Fuel Capacity"}
           value={vehicle.fuelCapacity}
-          required={true}
+          required={false}
           options={Array.from({ length: 24 }, (_, i) =>
             ((i + 1) * 5).toString()
           )}
@@ -353,7 +352,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          required={true}
+          required={false}
           options={[
             "Tiptronic",
             "Dual-Clutch Transmission (DCT)",
@@ -367,28 +366,28 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setodometerR}
           label={"Odometer"}
           value={vehicle.odometer}
-          required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
           setState={setengineVolume}
           label={"Engine Volume"}
           value={vehicle.engineVolume}
-          required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
           setState={setvinNo}
           label={"VIN Number"}
           value={vehicle.vinNo}
-          required={true}
+          required={false}
           type={"text"}
         />
         <TempSelectInput
           setState={setpassengersR}
           label={"No. of Seats"}
           value={vehicle.passengers}
-          required={true}
+          required={false}
           options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
 
@@ -396,7 +395,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          required={true}
+          required={false}
           options={Configurations?.Configurations?.country?.map(
             (item: any) => item.country
           )}
@@ -406,7 +405,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          required={true}
+          required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
             .map((item: any) => item.city)}
@@ -416,7 +415,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={vehicle.postalCode}
-          required={true}
+          required={false}
           type={"text"}
         />
       </div>

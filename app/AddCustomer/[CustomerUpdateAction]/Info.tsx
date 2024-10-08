@@ -126,8 +126,7 @@ export default function Info() {
           setState={setcustomerTypeR}
           label={"Customer Type"}
           value={customer.customerType}
-          required={true}
-          // required={false}
+          required={false}
           options={["Individual", "Corporate"]}
         />
         <TempTypeInput
@@ -135,15 +134,13 @@ export default function Info() {
           label={"Full Name"}
           value={customer.name}
           required={true}
-          // required={false}
           type={"text"}
         />
         <TempSelectInput
           setState={setgenderR}
           label={"Gender"}
           value={customer.gender}
-          required={true}
-          // required={false}
+          required={false}
           options={["Male", "Female", "Custom"]}
         />
 
@@ -173,8 +170,7 @@ export default function Info() {
           setState={setphoneR}
           label={"Phone"}
           value={customer.phone}
-          required={true}
-          // required={false}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
@@ -196,32 +192,28 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={customer.country}
-          required={true}
-          // required={false}
+          required={false}
           options={countries.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setstateR}
           label={"State/Province"}
           value={customer.state}
-          required={true}
-          // required={false}
+          required={false}
           options={states.map((item: any) => item.label)}
         />
         <TempSelectInput
           setState={setcityR}
           label={"City"}
           value={customer.city}
-          required={true}
-          // required={false}
+          required={false}
           options={cities.map((item: any) => item.label)}
         />
         <TempTypeInput
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
           value={customer.postalCode}
-          required={true}
-          // required={false}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-0 sm:gap-1">
