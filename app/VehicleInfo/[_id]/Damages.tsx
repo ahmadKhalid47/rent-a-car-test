@@ -53,66 +53,68 @@ export default function Damages() {
     <div className="w-full h-full py-4 px-5 flex justify-between items-start">
       {vehicleInfo.damages.length > 0 ? (
         <>
-          <div className="w-[20%] h-[120px] flex flex-col justify-start items-start relative">
-            <img
-              src={
-                vehicleInfo.damages[damageIndex]?.exterior
-                  ? exteriorImg
-                  : interiorImg
-              }
-              className="w-[100%] h-[120px] bg-whit"
-            />
-            {vehicleInfo.damages.map((item: any, index: any) => (
-              <>
-                {vehicleInfo.damages[damageIndex]?.exterior ? (
-                  item.exterior ? (
-                    <div
-                      className={`absolute w-[10px] h-[10px] rounded-full ${
-                        item.degree === "Low"
-                          ? "bg-green-400 "
-                          : item.degree === "Medium"
-                          ? "bg-yellow-300"
-                          : item.degree === "High"
-                          ? "bg-orange-500"
-                          : item.degree === "Very High"
-                          ? "bg-red-500"
-                          : ""
-                      } text-black text-[5px] flex justify-center items-center font-[600]`}
-                      key={index}
-                      style={{
-                        top: `${item.y}%`,
-                        left: `${item.x}%`,
-                      }}
-                    >
-                      {index + 1}
-                    </div>
-                  ) : null
-                ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
-                  !item.exterior ? (
-                    <div
-                      className={`absolute w-[10px] h-[10px] rounded-full ${
-                        item.degree === "Low"
-                          ? "bg-green-400 "
-                          : item.degree === "Medium"
-                          ? "bg-yellow-300"
-                          : item.degree === "High"
-                          ? "bg-orange-500"
-                          : item.degree === "Very High"
-                          ? "bg-red-500"
-                          : ""
-                      } text-black text-[5px] flex justify-center items-center font-[600]`}
-                      key={index}
-                      style={{
-                        top: `${item.y}%`,
-                        left: `${item.x}%`,
-                      }}
-                    >
-                      {index + 1}
-                    </div>
-                  ) : null
-                ) : null}
-              </>
-            ))}
+          <div className="w-[20%] h-[120px] flex justify-center items-center border-[1px] border-grey">
+            <div className="h-[120px] flex flex-col justify-start items-start relative">
+              <img
+                src={
+                  vehicleInfo.damages[damageIndex]?.exterior
+                    ? exteriorImg
+                    : interiorImg
+                }
+                className="h-[120px]"
+              />
+              {vehicleInfo.damages.map((item: any, index: any) => (
+                <>
+                  {vehicleInfo.damages[damageIndex]?.exterior ? (
+                    item.exterior ? (
+                      <div
+                        className={`absolute w-[10px] h-[10px] rounded-full ${
+                          item.degree === "Low"
+                            ? "bg-green-400 "
+                            : item.degree === "Medium"
+                            ? "bg-yellow-300"
+                            : item.degree === "High"
+                            ? "bg-orange-500"
+                            : item.degree === "Very High"
+                            ? "bg-red-500"
+                            : ""
+                        } text-black text-[5px] flex justify-center items-center font-[600]`}
+                        key={index}
+                        style={{
+                          top: `${item.y}%`,
+                          left: `${item.x}%`,
+                        }}
+                      >
+                        {index + 1}
+                      </div>
+                    ) : null
+                  ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
+                    !item.exterior ? (
+                      <div
+                        className={`absolute w-[10px] h-[10px] rounded-full ${
+                          item.degree === "Low"
+                            ? "bg-green-400 "
+                            : item.degree === "Medium"
+                            ? "bg-yellow-300"
+                            : item.degree === "High"
+                            ? "bg-orange-500"
+                            : item.degree === "Very High"
+                            ? "bg-red-500"
+                            : ""
+                        } text-black text-[5px] flex justify-center items-center font-[600]`}
+                        key={index}
+                        style={{
+                          top: `${item.y}%`,
+                          left: `${item.x}%`,
+                        }}
+                      >
+                        {index + 1}
+                      </div>
+                    ) : null
+                  ) : null}
+                </>
+              ))}
+            </div>
           </div>
           <div className="w-[75%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
             <div className="w-full-6px h-[40px] flex justify-between items-center border-b-[2px] mb-1 ">

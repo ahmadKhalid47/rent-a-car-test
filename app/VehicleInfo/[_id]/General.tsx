@@ -11,7 +11,7 @@ export default function General() {
 
   const toggleAccordion = (index: any) => {
     if (activeIndex === index) {
-      setActiveIndex(null);
+      setActiveIndex(0);
     } else {
       setActiveIndex(index);
     }
@@ -66,7 +66,7 @@ export default function General() {
               id={`accordion-collapse-body-${index + 1}`}
               className={`${
                 activeIndex === index ? "block" : "hidden"
-              } w-[100%] h-[141px] border-b-[1px] border-grey`}
+              } w-[100%] h-[150px] border-b-[1px] border-grey`}
               aria-labelledby={`accordion-collapse-heading-${index + 1}`}
             >
               {item.content}
