@@ -97,6 +97,94 @@ export default function UserSidebar() {
         />
         <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
       </Link>
+
+      <div
+        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
+          global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
+        } bg-main-blue-hover hover:text-white  ${
+          chevronState === "Reservations" && global.sidebarShow
+            ? "text-main-blue font-[600] hover:font-[500]"
+            : chevronStateClose === "Reservations" && !global.sidebarShow
+            ? "text-white bg-main-blue"
+            : ""
+        } rounded-[10px]`}
+        onClick={() =>
+          setChevronState(chevronState === "Reservations" ? "" : "Reservations")
+        }
+      >
+        <div className="w-fit flex justify-start items-center gap-2">
+          <FaListCheck
+            className={`text-[20px] ${
+              global.sidebarShow ? "ml-[1.7px]" : "ml-[-11px] fixed"
+            }`}
+          />
+
+          {global.sidebarShow ? "Reservations" : null}
+        </div>
+        {global.sidebarShow ? (
+          <div className="cursor-pointer">
+            {chevronState === "Reservations" ? (
+              <GoTriangleUp
+                className="float-right me-5"
+                onClick={() => setChevronState("")}
+              />
+            ) : (
+              <GoTriangleDown
+                className="float-right me-5"
+                onClick={() => setChevronState("Reservations")}
+              />
+            )}
+          </div>
+        ) : null}
+      </div>
+      {chevronState === "Reservations" && global.sidebarShow ? (
+        <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
+          <div className="flex justify-start items-center w-full">
+            <div className="relative w-[20%] h-full">
+              <div className="absolute w-[2px] h-full bg-grey left-7"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
+            </div>
+            <Link
+              href="/Reservations"
+              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                global.sidebarShow
+                  ? "justify-start ps-5"
+                  : "justify-center px-0"
+              } bg-main-blue-hover ${
+                pathName === "/Reservations" ||
+                pathName?.includes("/ReservationsInfo")
+                  ? "bg-main-blue text-white"
+                  : ""
+              } hover:text-white rounded-[10px]`}
+            >
+              {global.sidebarShow ? "All Reservations" : null}
+            </Link>{" "}
+          </div>
+          <Link
+            href="/AddReservations/AddNew"
+            className="flex justify-start items-center w-full"
+          >
+            <div className="relative w-[20%] h-full">
+              <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+            </div>
+            <div
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+                global.sidebarShow
+                  ? "justify-start ps-5"
+                  : "justify-center px-0"
+              } bg-main-blue-hover  ${
+                pathName === "/AddReservations/AddNew"
+                  ? "bg-main-blue text-white"
+                  : ""
+              } hover:text-white rounded-[10px]`}
+            >
+              {global.sidebarShow ? "Add New Reservations" : null}
+            </div>{" "}
+          </Link>
+        </div>
+      ) : null}
+
       <div
         className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
           global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
@@ -256,92 +344,6 @@ export default function UserSidebar() {
               } hover:text-white rounded-[10px]`}
             >
               {global.sidebarShow ? "Add New Chauffeur" : null}
-            </div>{" "}
-          </Link>
-        </div>
-      ) : null}
-      <div
-        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
-          global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
-        } bg-main-blue-hover hover:text-white  ${
-          chevronState === "Reservations" && global.sidebarShow
-            ? "text-main-blue font-[600] hover:font-[500]"
-            : chevronStateClose === "Reservations" && !global.sidebarShow
-            ? "text-white bg-main-blue"
-            : ""
-        } rounded-[10px]`}
-        onClick={() =>
-          setChevronState(chevronState === "Reservations" ? "" : "Reservations")
-        }
-      >
-        <div className="w-fit flex justify-start items-center gap-2">
-          <FaListCheck
-            className={`text-[20px] ${
-              global.sidebarShow ? "ml-[1.7px]" : "ml-[-11px] fixed"
-            }`}
-          />
-
-          {global.sidebarShow ? "Reservations" : null}
-        </div>
-        {global.sidebarShow ? (
-          <div className="cursor-pointer">
-            {chevronState === "Reservations" ? (
-              <GoTriangleUp
-                className="float-right me-5"
-                onClick={() => setChevronState("")}
-              />
-            ) : (
-              <GoTriangleDown
-                className="float-right me-5"
-                onClick={() => setChevronState("Reservations")}
-              />
-            )}
-          </div>
-        ) : null}
-      </div>
-      {chevronState === "Reservations" && global.sidebarShow ? (
-        <div className="w-full h-fit -mt-[9px]  flex flex-col justify-start items-start z-0">
-          <div className="flex justify-start items-center w-full">
-            <div className="relative w-[20%] h-full">
-              <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
-            </div>
-            <Link
-              href="/Reservations"
-              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                global.sidebarShow
-                  ? "justify-start ps-5"
-                  : "justify-center px-0"
-              } bg-main-blue-hover ${
-                pathName === "/Reservations" ||
-                pathName?.includes("/ReservationsInfo")
-                  ? "bg-main-blue text-white"
-                  : ""
-              } hover:text-white rounded-[10px]`}
-            >
-              {global.sidebarShow ? "All Reservations" : null}
-            </Link>{" "}
-          </div>
-          <Link
-            href="/AddReservations/AddNew"
-            className="flex justify-start items-center w-full"
-          >
-            <div className="relative w-[20%] h-full">
-              <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
-            </div>
-            <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
-                global.sidebarShow
-                  ? "justify-start ps-5"
-                  : "justify-center px-0"
-              } bg-main-blue-hover  ${
-                pathName === "/AddReservations/AddNew"
-                  ? "bg-main-blue text-white"
-                  : ""
-              } hover:text-white rounded-[10px]`}
-            >
-              {global.sidebarShow ? "Add New Reservations" : null}
             </div>{" "}
           </Link>
         </div>
