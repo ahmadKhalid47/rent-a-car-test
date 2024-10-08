@@ -36,25 +36,6 @@ export default function Insurances() {
           required={false}
           type={"date"}
         />
-
-        {/* <TypeInput
-          label={"Insurance Policy No"}
-          value={""}
-          required={false}
-          type={"text"}
-        />
-        <TypeInput
-          label={"Insurance Provider"}
-          value={""}
-          required={false}
-          type={"text"}
-        />
-        <TypeInput
-          label={"Insurance Expiry Date"}
-          value={""}
-          required={false}
-          type={"date"}
-        /> */}
       </div>
     </div>
   );

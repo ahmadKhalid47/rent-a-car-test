@@ -50,7 +50,6 @@ export default function Vehicles() {
   const formRef = useRef<any>(null);
 
   useEffect(() => {
-    dispatch(resetState());
     async function getData() {
       try {
         setLoading(true);
