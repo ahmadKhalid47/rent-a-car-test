@@ -6,6 +6,7 @@ import { RootState } from "@/app/store";
 import { useDispatch } from "react-redux";
 import { setfeatures } from "@/app/store/Vehicle";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Feature() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -34,8 +35,18 @@ export default function Feature() {
 
   return (
     <div className="w-full h-fit  ">
-      <div className="w-full h-fit  ">
+      <div className="w-full h-fit">
         <div className="flex flex-wrap justify-start items-start gap-x-[4%] lg:gap-x-[6.66%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
+          <span className="text-[12px] w-full text-end">
+            Not found?{" "}
+            <Link
+              href={"/Configuration/Features"}
+              className="text-[#3d84ff] no-underline hover:underline capitalize"
+            >
+              Add new
+            </Link>
+          </span>
+
           {featuresDisplayArray?.map((item: any, key: any) => (
             <button
               className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] 
