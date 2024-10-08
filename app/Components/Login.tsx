@@ -102,15 +102,21 @@ export default function Login() {
               />
             )}
           </div>
-          <div className="flex justify-between items-center w-full font-[400] text-[16px] leading-[20px] text-end mb-2 cursor-pointer">
+          <div className="flex justify-between items-center w-full font-[400] text-[16px] leading-[20px] text-end mb-2">
             <p className="w-fit flex justify-start gap-2 items-center font-[400] text-[16px] leading-[20px] text-[#3d84ff text-end mb-2 cursor-pointer">
               <input
                 type="checkbox"
-                className="w-fit bg-green-400 cursor-pointer"
+                className="w-[19px] h-[19px] cursor-pointer"
                 checked={rememberMe}
-                onChange={(e)=>{setRememberMe(e.target.checked);}}
+                onChange={(e) => {
+                  setRememberMe(e.target.checked);
+                }}
+                id="rememberMe"
+                name="rememberMe"
               />
-              Remember Me
+              <label htmlFor="rememberMe"
+              className="cursor-pointer"
+              >Remember Me</label>
             </p>
             <p
               className="w-fit font-[400] text-[16px] leading-[20px] text-[#EB4643] text-end mb-2 cursor-pointer"
