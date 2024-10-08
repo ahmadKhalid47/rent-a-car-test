@@ -31,11 +31,6 @@ export default function General() {
       content: <Additional />,
     },
     {
-      title: "Damages",
-      content:
-        <Damages/>,
-    },
-    {
       title: "Others",
       content: <Other />,
     },

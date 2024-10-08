@@ -471,6 +471,9 @@ button:active {
 .w-full-70px {
   width: calc(100% - 70px);
 }
+.h-full-40px {
+  height: calc(100% - 40px);
+}
 .overscroll-behavior-block {
   overscroll-behavior-block: contain;
 }

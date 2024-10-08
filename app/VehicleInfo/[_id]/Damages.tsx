@@ -50,14 +50,13 @@ export default function Damages() {
     (item: any) => item.Type === vehicleInfo.type
   )?.interior;
   const [toggle, setToggle] = useState(false);
-  console.log(toggle);
 
   return (
     <div className="w-full h-full py-4 px-5 flex justify-between items-start">
       {vehicleInfo.damages.length > 0 ? (
         <>
-          <div className="w-[25%] h-[120px] flex flex-col justify-between items-center border-[1px] border-grey">
-            <div className="text-[8px] font-[500] px-2 flex justify-between items-center w-full h-[15px]">
+          <div className="w-[25%] h-full flex flex-col justify-between items-center order-[1px] border-grey">
+            {/* <div className="text-[13px] font-[400] flex justify-between items-center w-fit gap-3 h-[35px]">
               <span className="w-fit leading-[0px]">Interior</span>
               <SwitchDamage
                 checked={toggle}
@@ -65,23 +64,60 @@ export default function Damages() {
                   setToggle(checked);
                 }}
               />
-              <span className="w-fit leading-[0px] text-end">Interior</span>
-            </div>
-            <div className="h-[100px] flex flex-col justify-start items-start relative">
-              <img
-                src={
+              <span className="w-fit leading-[0px] text-end">Exterior</span>
+            </div> */}
+            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
+              <button
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
                   !toggle
-                    ? exteriorImg
-                    : interiorImg
-                }
-                className="h-[100px]"
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark1 bg-white dark:text-white text-black"
+                }`}
+                onClick={() => setToggle(false)}
+              >
+                {!toggle ? (
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
+                  </div>
+                ) : (
+                  <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
+                )}
+                Exterior{" "}
+              </button>
+              <button
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  toggle
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark1 bg-white dark:text-white text-black"
+                }`}
+                onClick={() => setToggle(true)}
+              >
+                {toggle ? (
+                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                    <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
+                  </div>
+                ) : (
+                  <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                  </div>
+                )}
+                Interior
+              </button>
+            </div>
+
+            <div className="h-full flex flex-col justify-start items-start relative">
+              <img
+                src={!toggle ? exteriorImg : interiorImg}
+                className="h-full"
               />
               {vehicleInfo.damages.map((item: any, index: any) => (
                 <>
                   {!toggle ? (
                     item.exterior ? (
                       <div
-                        className={`absolute w-[10px] h-[10px] rounded-full ${
+                        className={`absolute w-[15px] h-[15px] rounded-full ${
                           item.degree === "Low"
                             ? "bg-green-400 "
                             : item.degree === "Medium"
@@ -91,7 +127,7 @@ export default function Damages() {
                             : item.degree === "Very High"
                             ? "bg-red-500"
                             : ""
-                        } text-black text-[5px] flex justify-center items-center font-[600]`}
+                        } text-black text-[8px] flex justify-center items-center font-[600]`}
                         key={index}
                         style={{
                           top: `${item.y}%`,
@@ -104,7 +140,7 @@ export default function Damages() {
                   ) : toggle ? (
                     !item.exterior ? (
                       <div
-                        className={`absolute w-[10px] h-[10px] rounded-full ${
+                        className={`absolute w-[15px] h-[15px] rounded-full ${
                           item.degree === "Low"
                             ? "bg-green-400 "
                             : item.degree === "Medium"
@@ -114,7 +150,7 @@ export default function Damages() {
                             : item.degree === "Very High"
                             ? "bg-red-500"
                             : ""
-                        } text-black text-[5px] flex justify-center items-center font-[600]`}
+                        } text-black text-[8px] flex justify-center items-center font-[600]`}
                         key={index}
                         style={{
                           top: `${item.y}%`,
@@ -129,8 +165,8 @@ export default function Damages() {
               ))}
             </div>
           </div>
-          <div className="w-[70%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
-            <div className="w-full-6px h-[40px] flex justify-between items-center border-b-[2px] mb-1 ">
+          <div className="w-[70%]  h-full flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
+            <div className="w-full-6px h-[50px] flex justify-between items-center border-b-[2px] mb-1 ">
               <span className="w-[10%] font-[600] text-[12px] xs:text-[14px] md:text-[13px] leading-[27px]">
                 Image
               </span>
@@ -147,11 +183,15 @@ export default function Damages() {
                 Degree
               </span>
             </div>{" "}
-            <div className="w-[100%]  h-[85px] flex flex-col justify-start items-start overflow-auto scroll2">
-              {vehicleInfo.damages.map((item: any, index: number) => (
-                <div className="w-full h-[40px] flex justify-between items-end border-b-[2px]">
+            <div className="w-[100%] h-full-50px flex flex-col justify-start items-start overflow-auto scroll2">
+              {[
+                ...vehicleInfo.damages,
+                ...vehicleInfo.damages,
+                ...vehicleInfo.damages,
+              ].map((item: any, index: number) => (
+                <div className="w-full h-[50px] flex justify-between items-end border-b-[2px]">
                   <img
-                    className="w-[40px] h-[30px] my-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate rounded-[5px] cursor-pointer"
+                    className="w-[10%] h-[40px] my-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate rounded-[5px] cursor-pointer"
                     src={item?.files[0]}
                     onClick={() => {
                       setImagePopup(true);
