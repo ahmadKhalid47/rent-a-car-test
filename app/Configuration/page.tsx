@@ -60,7 +60,7 @@ export default function Vehicles() {
                     className="dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Make
                 </p>
               </Link>
@@ -74,7 +74,7 @@ export default function Vehicles() {
                     className="dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Model
                 </p>
               </Link>
@@ -88,7 +88,7 @@ export default function Vehicles() {
                     className="dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Type
                 </p>
               </Link>
@@ -102,7 +102,7 @@ export default function Vehicles() {
                     className="dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Color
                 </p>
               </Link>
@@ -116,7 +116,7 @@ export default function Vehicles() {
                     className="dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Add. Features
                 </p>
               </Link>
@@ -130,7 +130,7 @@ export default function Vehicles() {
                     className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Country
                 </p>
               </Link>
@@ -144,7 +144,7 @@ export default function Vehicles() {
                     className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
-                <p className="font-[600] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   City
                 </p>
               </Link>
