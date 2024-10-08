@@ -1,5 +1,3 @@
-import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Rental from "./Rental";
@@ -9,7 +7,6 @@ import Additional from "./Additional";
 import Damages from "./Damages";
 
 export default function General() {
-  let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   const [activeIndex, setActiveIndex] = useState<any>(0);
 
   const toggleAccordion = (index: any) => {
@@ -49,10 +46,10 @@ export default function General() {
       <div id="accordion-collapse" className="w-full">
         {accordionData.map((item, index) => (
           <div key={index}>
-            <h2 id={`accordion-collapse-heading-${index + 1}`}>
+            <div id={`accordion-collapse-heading-${index + 1}`}>
               <button
                 type="button"
-                className="w-[100%] h-[47px] flex items-center justify-between p-5 border-b-[1px] border-grey bg-light-grey"
+                className="w-[100%] h-[47px] flex items-center justify-between p-5 border-b-[1px] border-grey bg-light-gre bg-teal-400"
                 onClick={() => toggleAccordion(index)}
                 aria-expanded={activeIndex === index}
                 aria-controls={`accordion-collapse-body-${index + 1}`}
@@ -64,7 +61,7 @@ export default function General() {
                   }`}
                 />
               </button>
-            </h2>
+            </div>
             <div
               id={`accordion-collapse-body-${index + 1}`}
               className={`${

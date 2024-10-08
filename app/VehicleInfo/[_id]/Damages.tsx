@@ -4,7 +4,6 @@ import { FaEye, FaTimes } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { setConfigurations } from "@/app/store/Configurations";
 import axios from "axios";
 import image404 from "@/public/image404.png";
@@ -190,10 +189,9 @@ export default function Damages() {
                   <span
                     className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full"
                     onClick={() => {
-                      setImagePopup(false)
-                      setZoomed(false)
-                    }
-                    }
+                      setImagePopup(false);
+                      setZoomed(false);
+                    }}
                   >
                     <FaTimes />
                   </span>
