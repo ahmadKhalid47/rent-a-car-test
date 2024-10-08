@@ -66,9 +66,9 @@ export default function Damages() {
               />
               <span className="w-fit leading-[0px] text-end">Exterior</span>
             </div> */}
-            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
+            <div className="w-[100%] h-fit flex  justify-center items-center gap-1 sm:gap-5">
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-2 items-center font-[400] text-[13px] leading-[19px] text-center ${
                   !toggle
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark1 bg-white dark:text-white text-black"
@@ -87,7 +87,7 @@ export default function Damages() {
                 Exterior{" "}
               </button>
               <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-2 items-center font-[400] text-[13px] leading-[19px] text-center ${
                   toggle
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark1 bg-white dark:text-white text-black"
@@ -184,11 +184,7 @@ export default function Damages() {
               </span>
             </div>{" "}
             <div className="w-[100%] h-full-50px flex flex-col justify-start items-start overflow-auto scroll2">
-              {[
-                ...vehicleInfo.damages,
-                ...vehicleInfo.damages,
-                ...vehicleInfo.damages,
-              ].map((item: any, index: number) => (
+              {vehicleInfo.damages.map((item: any, index: number) => (
                 <div className="w-full h-[50px] flex justify-between items-end border-b-[2px]">
                   <img
                     className="w-[10%] h-[40px] my-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none truncate rounded-[5px] cursor-pointer"
