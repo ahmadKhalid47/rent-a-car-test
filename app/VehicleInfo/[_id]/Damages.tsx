@@ -208,7 +208,7 @@ export default function Damages() {
                   />
                 </div>
                 <span
-                  className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit leading-[0px] shadow dark:bg-dark1 bg-white rounded-full"
+                  className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full"
                   onClick={() => {
                     setImagePopup(false);
                     setZoomed(false);
