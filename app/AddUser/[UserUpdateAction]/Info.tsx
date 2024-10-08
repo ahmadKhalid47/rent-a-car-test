@@ -30,6 +30,7 @@ import {
   TempTypeInputLimit,
 } from "../../Components/InputComponents/TypeInput";
 import { useParams } from "next/navigation";
+import { SmallLoader } from "@/app/Components/Loader";
 
 export default function Info() {
   let dispatch = useDispatch();
@@ -119,7 +120,7 @@ export default function Info() {
           setState={setnameR}
           label={"Full Name"}
           value={User.name}
-          required={false}
+          required={true}
           type={"text"}
         />
         <TempTypeInputLimit
@@ -135,7 +136,7 @@ export default function Info() {
           setState={setcompanyR}
           label={"Company"}
           value={User.company}
-          required={false}
+          required={true}
           type={"text"}
         />
         <TempTypeInputLimit
@@ -179,10 +180,10 @@ export default function Info() {
           setState={setplanR}
           label={"Plan Validity"}
           value={User.plan}
-          required={false}
-          options={["Trial", "1 Month", "3 Months", "6 Months", "1 Year"]}
+          required={true}
+          options={["3-Day Trial", "1 Month", "3 Months", "6 Months", "1 Year"]}
         />
-        {UserUpdateAction === "AddNew" && (
+        {UserUpdateAction === "AddNew" ? (
           <>
             <TempTypeInputLimit
               setState={setpasswordR}
@@ -203,11 +204,26 @@ export default function Info() {
               maxLength={30}
             />
           </>
+        ) : (
+          <div
+            className={`w-full h-fit md:h-[100px] flex flex-wrap gap-y-2 ${"justify-end"} items-center`}
+          >
+            <button
+              onClick={() => {
+                // setEditPopup(true);
+                // setOldPassword("");
+                // setNewPassword("");
+              }}
+              className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            >
+              Change Password
+            </button>
+          </div>
         )}
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
         <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
-          Add Image
+          Add User Profile Image
         </h3>
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
