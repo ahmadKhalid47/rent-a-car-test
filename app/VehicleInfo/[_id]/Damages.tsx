@@ -14,7 +14,6 @@ export default function Damages() {
   let Configurations = useSelector((state: RootState) => state.Configurations);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const [damageIndex, setdamageIndex] = useState<any>(0);
-  const [imageIndex, setImageIndex] = useState<any>(0);
   const [imagePopup, setImagePopup] = useState<boolean>(false);
   const [zoomed, setZoomed] = useState<boolean>(false);
   const [imageLength, setImageLength] = useState<any>(
@@ -26,7 +25,6 @@ export default function Damages() {
 
   useEffect(() => {
     setImageLength(vehicleInfo.damages[damageIndex]?.files?.length);
-    setImageIndex(0);
   }, [damageIndex]);
 
   useEffect(() => {
@@ -70,11 +68,11 @@ export default function Damages() {
                 {vehicleInfo.damages[damageIndex]?.exterior ? (
                   item.exterior ? (
                     <div
-                      className={`absolute w-[15px] h-[15px] rounded-full ${
+                      className={`absolute w-[10px] h-[10px] rounded-full ${
                         index === damageIndex
                           ? "bg-main-blue"
                           : "bg-grey-of-text"
-                      } text-white text-[8px] flex justify-center items-center font-[600]`}
+                      } text-white text-[5px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{
                         top: `${item.y}%`,
@@ -87,11 +85,11 @@ export default function Damages() {
                 ) : !vehicleInfo.damages[damageIndex]?.exterior ? (
                   !item.exterior ? (
                     <div
-                      className={`absolute w-[15px] h-[15px] rounded-full ${
+                      className={`absolute w-[10px] h-[10px] rounded-full ${
                         index === damageIndex
                           ? "bg-main-blue"
                           : "bg-grey-of-text"
-                      } text-white text-[8px] flex justify-center items-center font-[600]`}
+                      } text-white text-[5px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{
                         top: `${item.y}%`,
@@ -127,29 +125,14 @@ export default function Damages() {
               </span>
             </div>{" "}
             {vehicleInfo.damages.map((item: any, index: number) => (
-              // <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px] cursor-pointer">
-              //   <span className="py-2 w-[50px]  font-[400] text-[14px] leading-[27px] text-start">
-              //     {index + 1}
-              //   </span>
-              //   <span className="py-2 w-[40%]  font-[400] text-[14px] leading-[27px] text-start">
-              //     {item.damageType}
-              //   </span>
-              //   <span className="py-2 w-[150px]  font-[400] text-[14px] leading-[27px] text-start">
-              //     {item.exterior ? "Exterior" : "Interior"}
-              //   </span>
-              //   <span className="py-2 flex justify-between items-center w-[100px]  font-[400] text-[14px] leading-[27px] text-start">
-              //     {item.degree}
-              //     <FaEye
-              //       className={
-              //         index === damageIndex ? "text-main-blue" : "text-grey"
-              //       }
-              //     />
-              //   </span>
-              // </div>
               <div className="w-full h-[30px] mt-1 flex justify-between items-end border-b-[2px]">
                 <img
                   className="w-[30px] h-[20px] mb-1 font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none rounded-[5px]"
                   src={item?.files[0]}
+                  onClick={() => {
+                    setImagePopup(true);
+                    setdamageIndex(index);
+                  }}
                 />
                 <span className="pb-2 w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[13px] leading-none">
                   {JSON.stringify(index + 1).padStart(2, "0")}{" "}
@@ -169,25 +152,33 @@ export default function Damages() {
               </div>
             ))}
           </div>
-
-          {/* <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
+          <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
             {imagePopup ? (
               <div
-                className="w-[100%] h-[100%] flex justify-center items-center absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
+                className="w-[100%] h-[100%] flex justify-center items-center scroll absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
                 onClick={() => {
                   setImagePopup(false);
+                  setZoomed(false);
                 }}
               >
-                <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
-                  <div className="w-[700px] h-[700px] relative overflow-auto scroll border-2 border-black">
+                <div className="w-[700px] h-[700px] relative overflow-hidden scroll border-2 border-black">
+                  <div
+                    className="relative"
+                    style={{
+                      transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
+                      transition: "transform 0.3s ease",
+                      width: "100%",
+                      height: "100%",
+                      overflow: "hidden", // To hide the overflow while zooming
+                    }}
+                  >
                     <img
                       src={
-                        vehicleInfo.damages[damageIndex]?.files[imageIndex] ||
+                        vehicleInfo.damages[damageIndex]?.files[0] ||
                         image404.src
                       }
-                      className={"w-[100%] h-[100%]"}
+                      className="w-[100%] h-[100%] object-cover" // Added object-cover for proper scaling
                       style={{
-                        transform: `${zoomed ? "scale(1.4)" : "scale(1)"}`,
                         cursor: `${zoomed ? "zoom-out" : "zoom-in"}`,
                       }}
                       onClick={(e) => {
@@ -197,8 +188,12 @@ export default function Damages() {
                     />
                   </div>
                   <span
-                    className={`cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full`}
-                    onClick={() => setImagePopup(false)}
+                    className="cursor-pointer font-[400] text-[30px] p-1 leading-[12px] text-red-500 absolute top-3 right-3 w-fit shadow dark:bg-dark1 bg-white rounded-full"
+                    onClick={() => {
+                      setImagePopup(false)
+                      setZoomed(false)
+                    }
+                    }
                   >
                     <FaTimes />
                   </span>
@@ -207,14 +202,11 @@ export default function Damages() {
             ) : null}
             <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
               <img
-                src={
-                  vehicleInfo.damages[damageIndex]?.files[imageIndex] ||
-                  image404.src
-                }
-                className={"w-[100%] h-[100%]"}
+                src={vehicleInfo.damages[damageIndex]?.files[0] || image404.src}
+                className="w-[100%] h-[100%] object-cover"
               />
             </div>
-          </div> */}
+          </div>
         </>
       ) : (
         <span className="py- font-[400] text-[14px] leading-[27px]">
