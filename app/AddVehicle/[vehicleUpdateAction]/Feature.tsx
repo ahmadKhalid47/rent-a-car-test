@@ -49,7 +49,7 @@ export default function Feature() {
 
           {featuresDisplayArray?.map((item: any, key: any) => (
             <button
-              className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] 
+              className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] truncate px-3
                 ${
                   featuresSubmitArray?.includes(item)
                     ? "bg-main-blue text-white font-[500]"
