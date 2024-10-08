@@ -106,7 +106,7 @@ export default function Login() {
             <p className="w-fit flex justify-start gap-2 items-center font-[400] text-[16px] leading-[20px] text-[#3d84ff text-end mb-2 cursor-pointer">
               <input
                 type="checkbox"
-                className="w-[19px] h-[19px] cursor-pointer"
+                className="w-[20px] h-[20px] cursor-pointer"
                 checked={rememberMe}
                 onChange={(e) => {
                   setRememberMe(e.target.checked);
@@ -115,7 +115,7 @@ export default function Login() {
                 name="rememberMe"
               />
               <label htmlFor="rememberMe"
-              className="cursor-pointer"
+              className="cursor-pointer leading-0"
               >Remember Me</label>
             </p>
             <p
