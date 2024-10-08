@@ -462,12 +462,15 @@ button:active {
 }
 
 .thin-border {
-  border-right: 0.1px solid rgb(147,149,152);
+  border-right: 0.1px solid rgb(147, 149, 152);
 }
 
-.w-full-6px{
+.w-full-6px {
   width: calc(100% - 6px);
 }
-.w-full-70px{
+.w-full-70px {
   width: calc(100% - 70px);
+}
+.overscroll-behavior-block {
+  overscroll-behavior-block: contain;
 }

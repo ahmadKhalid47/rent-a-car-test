@@ -6,12 +6,14 @@ export default function Additional() {
 
   return (
     <div className="w-[100%] h-fit flex justify-start flex-wrap items-start gap-1 py-4 px-5 border-grey overflow-auto">
-      <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center flex-wrap gap-y-1">
+      <div className="h-[120px] w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-start gap-x-[10%] items-center overflow-auto flex-wrap gap-y-1 scroll2">
         {vehicleInfo.features.length > 0 ? (
-          vehicleInfo.features.map((item: string, index: number) => (
+          [
+            ...vehicleInfo.features,
+          ].map((item: string, index: number) => (
             <div
               key={index}
-              className="w-[45%] h-fit flex justify-start items-start py-[0px] border-b-[2px] truncate"
+              className="w-[45%]  h-fit flex justify-start items-start py-[0px] border-b-[2px] truncate"
             >
               <span>
                 {index + 1}

@@ -114,7 +114,7 @@ export default function Damages() {
               </>
             ))}
           </div>
-          <div className="w-[75%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2">
+          <div className="w-[75%]  h-[120px] flex flex-col justify-start items-start overflow-auto scroll2 overscroll-behavior-block">
             <div className="w-full-6px h-[40px] flex justify-between items-center border-b-[2px] mb-1 ">
               <span className="w-[10%] h-[30px] font-[600] text-[12px] xs:text-[14px] md:text-[13px] leading-[27px]">
                 Image
