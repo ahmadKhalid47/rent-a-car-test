@@ -142,7 +142,7 @@ export default function CarInfoMainPage() {
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
               <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-2 border-grey dark:bg-dark1 bg-white">
                 <div className="w-full h-fit flex justify-between gap-[5% items-star px- rounded-[10px] px-6 ">
-                  <div className="w-[41%] flex flex-col justify-start items-start gap-1">
+                  <div className="w-[41%] select-none flex flex-col justify-start items-start gap-1">
                     <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
                       <img
                         src={vehicleInfo?.carImages[imageIndex] || image404.src}
@@ -151,12 +151,12 @@ export default function CarInfoMainPage() {
                     </div>
                     <div className="w-[100%] h-[70px] relative flex justify-center">
                       <div
-                        className="w-[85%] h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
+                        className="w-full-70px h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
                         ref={containerRef}
                       >
-                        <div className="w-[20px] text-[#F4F4F4] h-full absolute left-0 top-0 flex items-center justify-start">
-                          <FaChevronCircleLeft
-                            className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full"
+                        <div className="w-[30px] h-full absolute left-0 top-0 flex items-center justify-center">
+                          <FaChevronLeft
+                            className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
                             onClick={scrollLeft}
                           />
                         </div>
@@ -177,9 +177,9 @@ export default function CarInfoMainPage() {
                               )
                           )}
                         </div>
-                        <div className="w-[20px] text-[#F4F4F4] h-full absolute right-0 top-0 flex items-center justify-end">
-                          <FaChevronCircleRight
-                            className="cursor-pointer w-[20px] h-[20px] text-[15px] bg-black rounded-full"
+                        <div className="w-[30px] h-full absolute right-0 top-0 flex items-center justify-center">
+                          <FaChevronRight
+                            className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
                             onClick={scrollRight}
                           />
                         </div>

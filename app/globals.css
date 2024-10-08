@@ -120,11 +120,17 @@
   width: 0;
   background-color: transparent;
 }
-
 .scroll2::-webkit-scrollbar {
-  height: 100px;
-  width: 100px;
-  background-color: transparent;
+  width: 6px; /* Adjust the width to make it thin */
+}
+
+.scroll2::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounds the scrollbar thumb */
+}
+
+.scroll2::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
 }
 .text-link-blue {
   color: #156cf7;
@@ -457,4 +463,11 @@ button:active {
 
 .thin-border {
   border-right: 0.1px solid rgb(147,149,152);
+}
+
+.w-full-6px{
+  width: calc(100% - 6px);
+}
+.w-full-70px{
+  width: calc(100% - 70px);
 }

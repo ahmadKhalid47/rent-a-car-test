@@ -118,10 +118,10 @@ export default function ListViewRecentReservations({ data }: dataType) {
                   </div>
                   <h5 className="text-start pe-3 w-[12%]">{item.data?.city}</h5>
                   <div className="flex justify-start items-end w-[9%]">
-                    {item.data?.dropOffDate}
-                  </div>
-                  <div className="flex justify-start ps-2 items-end w-[9%]">
                     {item.data?.PickUpDate}
+                  </div>
+                  <div className="flex justify-start items-end w-[9%]">
+                    {item.data?.dropOffDate}
                   </div>
                   <h5 className="text-start pe-3 w-[9%]">
                     {item.data?.durationinDays ? (
