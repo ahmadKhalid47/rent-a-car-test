@@ -152,7 +152,7 @@ export default function Damages() {
             ))}
           </div>
           <div className="w-[250px] h-[100%] flex flex-col justify-start items-start">
-            {imagePopup ? (
+            {imagePopup && (
               <div
                 className="w-[100%] h-[100%] flex justify-center items-center scroll absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
                 onClick={() => {
@@ -197,7 +197,7 @@ export default function Damages() {
                   </span>
                 </div>
               </div>
-            ) : null}
+            )}
             <div className="w-[100%] h-[300px] flex justify-center items-center mx-auto">
               <img
                 src={vehicleInfo.damages[damageIndex]?.files[0] || image404.src}

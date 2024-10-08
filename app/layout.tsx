@@ -91,12 +91,12 @@ export default function RootLayout({
                 {pathName &&
                 pathName !== "/" &&
                 !pathName.includes("forgotPassword") &&
-                isVerified ? (
+                isVerified && (
                   <>
                     <Sidebar />
                     <Nav />
                   </>
-                ) : null}
+                ) }
                 <section className={inter.className}>{children}</section>
               </main>
             )}
