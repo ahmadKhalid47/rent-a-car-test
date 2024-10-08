@@ -190,9 +190,8 @@ export default function Reservations() {
       setLoading(true);
       await axios.post(
         `/api/updatereservation/${reservationUpdateAction}`,
-        reservation,
+        reservation
         // vehicle_id: reservation?.vehicle_id,
-
       );
       if (action === "close") {
         router.push("/Reservations");
@@ -400,6 +399,8 @@ export default function Reservations() {
                   Back
                 </button>
               ) : null}
+            </div>
+            <div className="w-[50%] flex justify-end item-center gap-1 md:gap-3">
               <button
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
@@ -410,64 +411,64 @@ export default function Reservations() {
               >
                 Reset
               </button>
+              {currentPage === 3 ? (
+                <>
+                  {reservationUpdateAction !== "AddNew" ? (
+                    <div className="flex justify-start items-center gap-1 md:gap-3">
+                      <button
+                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                        disabled={loading}
+                        onClick={() => {
+                          updateData("close");
+                        }}
+                      >
+                        {loading ? <SmallLoader /> : "Update and Close"}
+                      </button>
+                      <div />
+                    </div>
+                  ) : (
+                    <div className="flex justify-start items-center gap-1 md:gap-3">
+                      <button
+                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                        disabled={loading}
+                        onClick={() => {
+                          saveData("close");
+                        }}
+                      >
+                        {loading ? <SmallLoader /> : "Save and Close"}
+                      </button>
+                      <button
+                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                        disabled={loading}
+                        onClick={() => {
+                          saveData("new");
+                        }}
+                      >
+                        {loading ? <SmallLoader /> : "Save and New"}
+                      </button>
+                      <div />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <button
+                    className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                    onClick={() => {
+                      setGoToPage(currentPage + 1);
+                      submitButton();
+                    }}
+                  >
+                    Save and Continue
+                  </button>
+                  <button
+                    ref={formRef}
+                    className="absolute hidden"
+                    type="submit"
+                  ></button>
+                </>
+              )}
             </div>
-            {currentPage === 3 ? (
-              <>
-                {reservationUpdateAction !== "AddNew" ? (
-                  <div className="flex justify-start items-center gap-1 md:gap-3">
-                    <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                      disabled={loading}
-                      onClick={() => {
-                        updateData("close");
-                      }}
-                    >
-                      {loading ? <SmallLoader /> : "Update and Close"}
-                    </button>
-                    <div />
-                  </div>
-                ) : (
-                  <div className="flex justify-start items-center gap-1 md:gap-3">
-                    <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                      disabled={loading}
-                      onClick={() => {
-                        saveData("close");
-                      }}
-                    >
-                      {loading ? <SmallLoader /> : "Save and Close"}
-                    </button>
-                    <button
-                      className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                      disabled={loading}
-                      onClick={() => {
-                        saveData("new");
-                      }}
-                    >
-                      {loading ? <SmallLoader /> : "Save and New"}
-                    </button>
-                    <div />
-                  </div>
-                )}
-              </>
-            ) : (
-              <>
-                <button
-                  className="px-2 md:px-0 w-fit md:w-[240px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                  onClick={() => {
-                    setGoToPage(currentPage + 1);
-                    submitButton();
-                  }}
-                >
-                  Save and Continue
-                </button>
-                <button
-                  ref={formRef}
-                  className="absolute hidden"
-                  type="submit"
-                ></button>
-              </>
-            )}
           </div>
         </form>
       </div>

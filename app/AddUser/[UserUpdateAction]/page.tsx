@@ -170,19 +170,17 @@ export default function AddUser() {
         >
           <Info />
           <div
-            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 justify-between items-center`}
+            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-1 md:gap-3 justify-end items-center`}
           >
-            <div className="w-[50%] flex justify-start item-center gap-1 md:gap-3">
-              <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(resetState());
-                }}
-              >
-                Reset
-              </button>
-            </div>
+            <button
+              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(resetState());
+              }}
+            >
+              Reset
+            </button>
             {UserUpdateAction !== "AddNew" ? (
               <button
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
