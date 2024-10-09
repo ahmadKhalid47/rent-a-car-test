@@ -396,9 +396,9 @@ for (let i = currentYear +1; i >= 1995; i--) {
           label={"Country"}
           value={vehicle.country}
           required={false}
-          options={Configurations?.Configurations?.country?.map(
-            (item: any) => item.country
-          )}
+          options={Configurations?.Configurations?.country
+            ?.map((item: any) => item.country)
+            ?.sort((a: string, b: string) => a.localeCompare(b))}
           link={"/Configuration/Country"}
         />
         <TempSelectInputLink
@@ -408,9 +408,11 @@ for (let i = currentYear +1; i >= 1995; i--) {
           required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
-            .map((item: any) => item.city)}
+            ?.map((item: any) => item.city)
+            ?.sort((a: string, b: string) => a.localeCompare(b))}
           link={"/Configuration/City"}
         />
+
         <TempTypeInput
           setState={setpostalCodeR}
           label={"Postal/Zip Code"}
