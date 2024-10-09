@@ -318,7 +318,10 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   <h5 className="text-start pe-3 w-[19%]">
                     {item?.data?.name}
                   </h5>
-                  <h5 className="text-start pe-3 w-[14%]">
+                  <h5
+                    className="text-start pe-3 w-[14%] truncate"
+                    title={item?.data?.phone}
+                  >
                     {item?.data?.phone}
                   </h5>
                   <h5 className="text-start pe-3 w-[12%]">

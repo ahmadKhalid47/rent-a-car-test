@@ -259,7 +259,7 @@ export default function ListViewCustomers({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start w-[4%]">ID</div>
+            <div className="text-start w-[3%]">ID</div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[19%]"
               onClick={() => sort("name")}
@@ -274,19 +274,25 @@ export default function ListViewCustomers({ data }: dataType) {
               <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              className="text-start pe-3 flex justify-between items-center w-[10%]"
               onClick={() => sort("phone")}
             >
               Phone <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
+              className="text-start pe-3 flex justify-between items-center w-[15%]"
+              onClick={() => sort("phone")}
+            >
+              Email <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
               onClick={() => sort("gender")}
             >
               Gender <img src={arrows.src} />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
               onClick={() => sort("city")}
             >
               City <img src={arrows.src} />
@@ -321,7 +327,7 @@ export default function ListViewCustomers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start w-[4%]">
+                  <h5 className="text-start w-[3%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
@@ -338,15 +344,22 @@ export default function ListViewCustomers({ data }: dataType) {
                   <h5 className="text-start pe-3 w-[14%]">
                     {item?.data?.customerType}
                   </h5>
-                  <h5 className="text-start pe-3 w-[14%]">
+                  <h5
+                    className="text-start pe-3 w-[10%] truncate"
+                    title={item?.data?.phone}
+                  >
                     {item?.data?.phone}
                   </h5>
-                  <h5 className="text-start pe-3 w-[12%]">
+                  <h5
+                    className="text-start pe-3 w-[15%] truncate"
+                    title={item?.data?.emailAddress}
+                  >
+                    {item?.data?.emailAddress}
+                  </h5>
+                  <h5 className="text-start pe-3 w-[9%]">
                     {item?.data?.gender}
                   </h5>
-                  <h5 className="text-start pe-3 w-[12%]">
-                    {item?.data?.city}
-                  </h5>
+                  <h5 className="text-start pe-3 w-[9%]">{item?.data?.city}</h5>
                   <div
                     className="flex justify-start gap items-center w-[8%] h-full"
                     onClick={(event) => {
