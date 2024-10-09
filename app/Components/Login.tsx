@@ -64,9 +64,9 @@ export default function Login() {
 
       <form
         onSubmit={loginSubmit}
-        className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
+        className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[11px]"
       >
-        <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+        <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[8px] font-[500] text-[18px] leading-[12px] pb-[13px]">
           <h3 className="font-[400]">Email or Username</h3>
           <input
             className="w-full h-[59px] px-4 dark:bg-dark2 input-color rounded-[10px] font-[400] text-[16px] leading-[20px] border-[1px] border-grey"
@@ -78,7 +78,7 @@ export default function Login() {
             required
           />
         </div>
-        <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+        <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[8px] font-[500] text-[18px] leading-[12px] pb-[8px]">
           <h3 className="font-[400]">Password</h3>
           <div className="w-full h-fit relative">
             <input
@@ -102,29 +102,29 @@ export default function Login() {
               />
             )}
           </div>
-          <div className="flex justify-between items-center w-full font-[400] text-[16px] leading-[20px] text-end mb-2">
-            <p className="w-fit flex justify-start gap-2 items-center font-[400] text-[16px] leading-[20px] text-[#3d84ff text-end mb-2 cursor-pointer">
-              <input
-                type="checkbox"
-                className="w-[20px] h-[20px] cursor-pointer"
-                checked={rememberMe}
-                onChange={(e) => {
-                  setRememberMe(e.target.checked);
-                }}
-                id="rememberMe"
-                name="rememberMe"
-              />
-              <label htmlFor="rememberMe"
-              className="cursor-pointer leading-0"
-              >Remember Me</label>
-            </p>
-            <p
-              className="w-fit font-[400] text-[16px] leading-[20px] text-[#000000] text-end mb-2 cursor-pointer hover:underline"
-              onClick={() => dispatch(setLoginPageR(false))}
-            >
-              Forgot Password?
-            </p>
-          </div>
+        </div>
+        <div className="flex justify-between items-center w-full font-[400] text-[16px] leading-[20px] text-end pb-[13px]">
+          <p className="w-fit flex justify-start gap-2 items-center font-[400] text-[16px] leading-[20px] text-[#3d84ff text-end mb-2 cursor-pointer">
+            <input
+              type="checkbox"
+              className="w-[20px] h-[20px] cursor-pointer"
+              checked={rememberMe}
+              onChange={(e) => {
+                setRememberMe(e.target.checked);
+              }}
+              id="rememberMe"
+              name="rememberMe"
+            />
+            <label htmlFor="rememberMe" className="cursor-pointer leading-0">
+              Remember Me
+            </label>
+          </p>
+          <p
+            className="w-fit font-[400] text-[16px] leading-[20px] text-[#000000] text-end mb-2 cursor-pointer hover:underline"
+            onClick={() => dispatch(setLoginPageR(false))}
+          >
+            Forgot Password?
+          </p>
         </div>
         <button
           type="submit"
