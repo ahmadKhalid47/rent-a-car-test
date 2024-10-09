@@ -141,6 +141,7 @@ interface TempTypeInput {
   required: boolean;
   type: string;
 }
+
 export const TempTypeInput: React.FC<TempTypeInput> = ({
   label,
   setState,

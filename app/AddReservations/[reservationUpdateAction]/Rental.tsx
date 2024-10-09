@@ -10,6 +10,7 @@ import {
   setwithChauffeur,
 } from "@/app/store/reservations";
 import image404 from "@/public/image404.png";
+import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 
 interface dataType {
   data: Array<Object>;
@@ -71,7 +72,9 @@ export default function Rental({ data, loading }: dataType) {
         <div className="w-[100%] h-fit flex flex-wrap justify-center items-center bg-green-20 gap-y-2 gap-x-5 font-[500] text-[14px] md:text-[16px] leading-[19px] ">
           <button
             className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-              exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
+              exterior
+                ? "bg-main-blue text-white"
+                : "dark:bg-dark1 bg-white dark:text-white text-black"
             }`}
             onClick={() => {
               setExterior(true);
@@ -91,7 +94,9 @@ export default function Rental({ data, loading }: dataType) {
           </button>
           <button
             className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-              !exterior ? "bg-main-blue text-white" : "dark:bg-dark1 bg-white dark:text-white text-black"
+              !exterior
+                ? "bg-main-blue text-white"
+                : "dark:bg-dark1 bg-white dark:text-white text-black"
             }`}
             onClick={() => {
               setExterior(false);
@@ -112,13 +117,22 @@ export default function Rental({ data, loading }: dataType) {
         </div>
         <div className="w-full flex flex-wrap justify-center items-center h-fit gap-1">
           <span className="w-full text-start font-[400] text-[14px] leading-[17px]">
-            Search chauffeur
+            Search Chauffeur
           </span>
-          <input
-            className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] dark:bg-dark1 input-color text-[16px] leading-[19px] placeholder:dark:text-white text-black"
-            placeholder="Search By Name"
-            onChange={handleSearchQueryChange}
-          />
+          <div className="w-full h-fit relative">
+            <input
+              className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] dark:bg-dark1 input-color text-[16px] leading-[19px] placeholder:dark:text-white text-black"
+              placeholder="Search By Name"
+              onChange={handleSearchQueryChange}
+              value={searchQuery}
+            />
+            {searchQuery && (
+              <SearchEmpty
+                classes={"right-[0%] md:right-[2%] w-[3.5%] top-0"}
+                setState={setSearchQuery}
+              />
+            )}
+          </div>
         </div>
         {loading ? (
           <MediumLoader />

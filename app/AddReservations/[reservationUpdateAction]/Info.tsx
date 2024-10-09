@@ -6,6 +6,7 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setcustomer_idR, setcustomerNameR } from "@/app/store/reservations";
 import image404 from "@/public/image404.png";
+import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 
 interface dataType {
   data: Array<Object>;
@@ -66,11 +67,20 @@ export default function Info({ data, loading }: dataType) {
           <span className="w-full text-start font-[400] text-[14px] leading-[17px]">
             Search Customer
           </span>
-          <input
-            className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] dark:bg-dark1 input-color text-[16px] leading-[19px] placeholder:dark:text-white text-black"
-            placeholder="Search By Name"
-            onChange={handleSearchQueryChange}
-          />
+          <div className="w-full h-fit relative">
+            <input
+              className="w-full h-[43px] flex justify-start ps-5 items-center border-[1px] border-grey rounded-[10px] dark:bg-dark1 input-color text-[16px] leading-[19px] placeholder:dark:text-white text-black"
+              placeholder="Search By Name"
+              onChange={handleSearchQueryChange}
+              value={searchQuery}
+            />
+            {searchQuery && (
+              <SearchEmpty
+                classes={"right-[0%] md:right-[2%] w-[3.5%] top-0"}
+                setState={setSearchQuery}
+              />
+            )}
+          </div>
         </div>
 
         {loading ? (
