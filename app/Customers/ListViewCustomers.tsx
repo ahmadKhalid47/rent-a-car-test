@@ -273,7 +273,7 @@ export default function ListViewCustomers({ data }: dataType) {
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[15%]"
-              onClick={() => sort("phone")}
+              onClick={() => sort("emailAddress")}
             >
               Email <img src={arrows.src} />
             </div>

@@ -181,7 +181,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   }
 
   return (
-    <div className="w-full h-fit mt-4">
+    <div className="w-full h-fit">
       <div
         className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
@@ -229,14 +229,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
             Inactive Multiple
           </span>
         </span>
-        <span
-          className="underline cursor-pointer text-main-blue hover:no-underline"
-          onClick={() => {
-            handleExport(data?.map((item: any) => item.data));
-          }}
-        >
-          Export
-        </span>
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
@@ -267,6 +259,12 @@ export default function ListViewchauffeurs({ data }: dataType) {
               onClick={() => sort("phone")}
             >
               Phone <img src={arrows.src} />
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[15%]"
+              onClick={() => sort("emailAddress")}
+            >
+              Email <img src={arrows.src} />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
@@ -324,6 +322,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   >
                     {item?.data?.phone}
                   </h5>
+                  <h5
+                    className="text-start pe-3 w-[15%] truncate"
+                    title={item?.data?.emailAddress}
+                  >
+                    {item?.data?.emailAddress}
+                  </h5>
+
                   <h5 className="text-start pe-3 w-[12%]">
                     {item?.data?.gender}
                   </h5>
