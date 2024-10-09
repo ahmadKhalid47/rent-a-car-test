@@ -182,7 +182,7 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start w-[4%]">ID</div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[16%]"
+              className="text-start pe-3 flex justify-between items-center w-[13%]"
               onClick={() => sort("vehicleName")}
             >
               Vehicle <img src={arrows.src} />
@@ -199,7 +199,7 @@ export default function ListViewreservation({ data }: dataType) {
             >
               City <img src={arrows.src} />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
               Duration
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[9%]">
@@ -245,7 +245,7 @@ export default function ListViewreservation({ data }: dataType) {
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
                   </h5>
-                  <div className="flex justify-start item-center gap-5 text-start pe-3 w-[16%]">
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 w-[13%]">
                     {item?.data?.vehicleName}
                   </div>
 
@@ -254,7 +254,7 @@ export default function ListViewreservation({ data }: dataType) {
                   </h5>
                   <h5 className="text-start pe-3 w-[12%]">{item?.data?.city}</h5>
 
-                  <h5 className="text-start pe-3 w-[9%]">
+                  <h5 className="text-start pe-3 w-[12%]">
                     {item.data?.durationinDays ? (
                       <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
