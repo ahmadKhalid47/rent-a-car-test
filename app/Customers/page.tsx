@@ -11,6 +11,7 @@ import ListViewCustomers from "./ListViewCustomers";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
+import { useHandleExport } from "../Components/functions/exportFunction";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -144,6 +145,7 @@ export default function Vehicles() {
       },
     ]);
   }
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   return (
     <div
@@ -357,7 +359,17 @@ export default function Vehicles() {
             {showLess ? "Advanced Filters" : "Show Less"}
           </h3>
         </div>
-        <div className="w-full h-fit">
+        <div className="w-full h-fit mt-4">
+          <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+            <button
+              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
+              onClick={() => {
+                handleExport(customersData?.map((item: any) => item.data));
+              }}
+            >
+              Export
+            </button>
+          </div>
           {loading ? (
             <MediumLoader />
           ) : (

@@ -214,7 +214,7 @@ export default function ListView({ data }: dataType) {
   return (
     <div className="w-full h-fit">
       <div
-        className={`h-[24px] w-fit flex justify-between items-center font-[400] mt-[-24px] text-[14px] sm:text-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
