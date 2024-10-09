@@ -9,9 +9,9 @@ export default function ExpiredPage() {
   let dispatch = useDispatch();
 
   return (
-    <div className="w-[90vw] h-[90vh] mx-auto">
-      <img src={expire404.src} className="w-[40vw] mx-auto mt-10" />
-      <div className="w-[70%] mx-auto mt-10 font-[600] text-[16px] dark:text-white text-black text-center">
+    <div className="w-[90vw] h-[100vh] mx-auto flex flex-col justify-center items-center gap-12">
+      <img src={expire404.src} className="w-[800px] mx-auto" />
+      <div className="w-[70%] mx-auto font-[600] text-[16px] dark:text-white text-black text-center">
         It looks like your password reset link has expired for security reasons.
         Please{" "}
         <Link
