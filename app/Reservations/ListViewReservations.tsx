@@ -138,9 +138,9 @@ export default function ListViewreservation({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
 
   return (
-    <div className="w-full h-fit mt-4">
+    <div className="w-full h-fit">
       <h3
-        className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
+        className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
@@ -161,14 +161,6 @@ export default function ListViewreservation({ data }: dataType) {
             </button>
           </span>
         </span>
-        <span
-          className="underline cursor-pointer text-main-blue hover:no-underline"
-          onClick={() => {
-            handleExport(data?.map((item: any) => item.data));
-          }}
-        >
-          Export
-        </span>{" "}
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
