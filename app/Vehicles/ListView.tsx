@@ -395,7 +395,10 @@ export default function ListView({ data }: dataType) {
                         .split("")
                         .map((item: any, index: any) => (
                           <>
-                            <span className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[16.66px]">
+                            <span
+                              className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[16.66px]"
+                              key={index}
+                            >
                               {item}
                             </span>
                             {index !== 5 && (
