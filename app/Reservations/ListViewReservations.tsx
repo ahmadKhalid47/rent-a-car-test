@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { formatDuration } from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -245,23 +246,23 @@ export default function ListViewreservation({ data }: dataType) {
                     ).padStart(2, "0")}
                   </h5>
                   <div className="flex justify-start item-center gap-5 text-start pe-3 w-[16%]">
-                    {item.data.vehicleName}
+                    {item?.data?.vehicleName}
                   </div>
 
                   <h5 className="text-start pe-3 w-[14%]">
-                    {item.data.customerName}
+                    {item?.data?.customerName}
                   </h5>
-                  <h5 className="text-start pe-3 w-[12%]">{item.data.city}</h5>
+                  <h5 className="text-start pe-3 w-[12%]">{item?.data?.city}</h5>
 
                   <h5 className="text-start pe-3 w-[9%]">
                     {item.data?.durationinDays ? (
-                      <>{item.data.duration.padStart(2, "0")} Days</>
+                      <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
-                      <>{item.data.duration.padStart(2, "0")} Hours</>
+                      <>{item?.data?.duration.padStart(2, "0")} Hours</>
                     )}
                   </h5>
                   <h5 className="text-start pe-3 w-[9%]">
-                    ${item.data.amount}
+                    ${item?.data?.amount}
                   </h5>
                   <div className="text-start pe-3 w-[10%]">
                     <div
@@ -269,15 +270,15 @@ export default function ListViewreservation({ data }: dataType) {
                    ${
                      item?.data?.status === "complete"
                        ? "complete-status"
-                       : item.data.status === "cancel"
+                       : item?.data?.status === "cancel"
                        ? "cancel-status"
                        : "progress-status"
                    }
                    `}
                     >
-                      {item.data.status === "complete"
+                      {item?.data?.status === "complete"
                         ? "Completed"
-                        : item.data.status === "cancel"
+                        : item?.data?.status === "cancel"
                         ? "Canceled"
                         : "Incomplete"}
                     </div>
