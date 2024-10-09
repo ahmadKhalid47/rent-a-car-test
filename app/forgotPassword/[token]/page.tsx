@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import car from "@/public/Layer_1 (1).svg";
+import White from "@/public/DashboardLogo.svg";
 import axios from "axios";
 import { FormEvent } from "react";
 import { Alert } from "@mui/material";
@@ -15,7 +16,6 @@ import expire404 from "@/public/404.svg";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
-  console.log(token);
 
   const [showError, setShowError] = useState<any>(null);
   const [showSuccess, setShowSuccess] = useState<any>(null);
@@ -111,7 +111,7 @@ export default function ResetPassword() {
 
                   <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
                     <img
-                      src={car.src}
+                      src={White.src}
                       className="w-[120px] sm:w-[175px] z-10"
                     />
                     <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
