@@ -403,7 +403,7 @@ export default function Vehicles() {
                 } text-[12px]`}
                 onClick={() => setGridView(false)}
               >
-                <PiListBold />
+                <FaList />
               </button>
             </div>
             <button
