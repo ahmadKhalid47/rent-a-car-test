@@ -383,7 +383,7 @@ export default function Vehicles() {
           </h3>
         </div>
         <div className="w-full h-fit mt-4">
-          <div className="bg-red-30 h-[24px] w-full flex justify-end gap-3 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+          <div className="bg-red-30 h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
             <div className="w-fit h-fit flex justify-end items-end gap-1">
               <button
                 className={`w-[24px] flex justify-center items-center h-[24px] rounded-[6px] ${
