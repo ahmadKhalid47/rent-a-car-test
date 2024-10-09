@@ -157,11 +157,14 @@ export default function Vehicles() {
                       value={Make}
                     >
                       <option value={""}>Select</option>
-                      {makeData?.map((item: any, key: number) => (
-                        <option value={item?.country} key={key}>
-                          {item?.country}
-                        </option>
-                      ))}
+                      {makeData
+                        ?.map((item: any) => item.country)
+                        ?.sort((a: string, b: string) => a.localeCompare(b))
+                        ?.map((item: any, key: number) => (
+                          <option value={item} key={key}>
+                            {item}
+                          </option>
+                        ))}
                     </select>
                     <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                       <img

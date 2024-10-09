@@ -206,7 +206,7 @@ export default function Info() {
     { Color: "Khaki" },
     { Color: "Tomato" },
   ];
-console.log(vehicle);
+console.log(Configurations?.Configurations?.country);
 const currentYear = new Date().getFullYear();
 const years = [];
 for (let i = currentYear +1; i >= 1995; i--) {
