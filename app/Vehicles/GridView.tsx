@@ -113,17 +113,7 @@ export default function GridView({ data }: dataType) {
     }
   }
   return (
-    <div className="w-full h-fit mt-4">
-      <h3 className="w-full flex justify-end items-center font-[400] text-[14px] sm:text-[18px] leading-[21px] text-grey">
-        <span
-          className="underline cursor-pointer text-main-blue hover:no-underline"
-          onClick={() => {
-            handleExport(data?.map((item: any) => item.data));
-          }}
-        >
-          Export
-        </span>
-      </h3>
+    <div className="w-full h-fit">
       <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
         {paginatedData.map((item: any, index: number) => (
           <Link

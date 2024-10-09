@@ -12,10 +12,14 @@ import listBlack from "@/public/Group 110.svg";
 import ListView from "./ListView";
 import GridView from "./GridView";
 import { GridViewRounded } from "@mui/icons-material";
+import { HiViewGrid, HiViewList } from "react-icons/hi";
+import { FaList } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
 import Link from "next/link";
+import { useHandleExport } from "../Components/functions/exportFunction";
+import { PiListBold } from "react-icons/pi";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -56,6 +60,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   useEffect(() => {
     async function getData() {
@@ -172,35 +177,6 @@ export default function Vehicles() {
             </span>
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
-            <div className="w-fit h-fit flex justify-end items-end gap-3">
-              <button
-                className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] ${
-                  !gridView
-                    ? "bg-main-blue text-white"
-                    : "dark:bg-dark2 bg-light-grey border-2 border-grey"
-                } font-[500] xs:text-[12px] md:text-[12px] text-[20px] leading-[30px] text-center`}
-                onClick={() => setGridView(false)}
-              >
-                {!gridView ? (
-                  <img src={list.src} />
-                ) : (
-                  <img
-                    src={listBlack.src}
-                    className="dark:filter dark:brightness-[0] dark:invert"
-                  />
-                )}
-              </button>
-              <button
-                className={`w-[44px] flex justify-center items-center py-2 md:py-0 h-[35px] md:h-[44px] rounded-[10px] ${
-                  gridView
-                    ? "bg-main-blue text-white"
-                    : "dark:bg-dark2 bg-light-grey border-2 border-grey"
-                }  font-[500] xs:text-[0px] md:text-[2px] text-[20px] leading-[30px] text-center`}
-                onClick={() => setGridView(true)}
-              >
-                <GridViewRounded />
-              </button>
-            </div>
             <button
               className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
@@ -406,7 +382,40 @@ export default function Vehicles() {
             {showLess ? "Advanced Filters" : "Show Less"}
           </h3>
         </div>
-        <div className="w-full h-fit">
+        <div className="w-full h-fit mt-4">
+          <div className="bg-red-30 h-[24px] w-full flex justify-end gap-3 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+            <div className="w-fit h-fit flex justify-end items-end gap-1">
+              <button
+                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[4px] ${
+                  gridView
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark2 bg-light-grey text-black"
+                } text-[12px]`}
+                onClick={() => setGridView(true)}
+              >
+                <HiViewGrid />
+              </button>
+              <button
+                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[4px] ${
+                  !gridView
+                    ? "bg-main-blue text-white"
+                    : "dark:bg-dark2 bg-light-grey text-black"
+                } text-[12px]`}
+                onClick={() => setGridView(false)}
+              >
+                <PiListBold />
+              </button>
+            </div>
+            <button
+              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[4px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
+              onClick={() => {
+                handleExport(vehiclesData?.map((item: any) => item.data));
+              }}
+            >
+              Export
+            </button>
+          </div>
+
           {loading ? (
             <MediumLoader />
           ) : gridView ? (
