@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
-import { formatDate, formatId } from "@/app/Components/functions/formats";
+import {
+  formatDate,
+  formatDuration,
+  formatId,
+} from "@/app/Components/functions/formats";
 import carLogo from "@/public/car.svg";
 import { RootState } from "@/app/store";
 
@@ -16,6 +20,9 @@ export default function FirstPage({
   let companyProfile: any = useSelector(
     (state: RootState) => state.companyProfile
   );
+  console.log(Number(data?.duration));
+  console.log(data?.durationinDays);
+
   return (
     <div
       className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative -dark1 bg-white text-black`}
@@ -166,7 +173,19 @@ export default function FirstPage({
                     Total Duration:
                   </div>
                   <div className="w-fit text-start font-[400] ">
-                    {data?.duration ? data?.duration : "---"}
+                    {}
+                    {data?.durationinDays ? (
+                      <>
+                        {formatDuration(Number(data.duration))}
+                      </>
+                    ) : (
+                      <>
+                        {data?.duration
+                          ? data.duration.padStart(2, "0")
+                          : "---"}{" "}
+                        {data.duration === "1" ? "Hour" : "Hours"}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

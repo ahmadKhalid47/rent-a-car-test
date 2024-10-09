@@ -38,3 +38,28 @@ export function formatId(id: any): any {
 export function formatListing(text: any) {
     return text.split(/\d+\.\s/).filter(Boolean);
   }
+
+
+
+
+ export const formatDuration = (days:any) => {
+    if (days >= 30) {
+      const months = Math.floor(days / 30);
+      const remainingDays = days % 30;
+      return `${months} month${months > 1 ? "s" : ""} ${
+        remainingDays > 0
+          ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
+          : ""
+      }`;
+    } else if (days >= 7) {
+      const weeks = Math.floor(days / 7);
+      const remainingDays = days % 7;
+      return `${weeks} week${weeks > 1 ? "s" : ""} ${
+        remainingDays > 0
+          ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
+          : ""
+      }`;
+    } else {
+      return `${days} day${days > 1 ? "s" : ""}`;
+    }
+  };
