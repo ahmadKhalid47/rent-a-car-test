@@ -177,9 +177,9 @@ export default function ListViewUsers({ data }: dataType) {
   }
 
   return (
-    <div className="w-full h-fit mt-4">
+    <div className="w-full h-fit">
       <h3
-        className={`w-full flex justify-between items-center font-[400]  text-[14px] sm:text-[18px] leading-[21px] ${
+        className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
@@ -199,39 +199,6 @@ export default function ListViewUsers({ data }: dataType) {
               Delete Multiple
             </button>
           </span>
-          {/* <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(true);
-            }}
-          >
-            Active /
-          </span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(false);
-            }}
-          >
-            Inactive Multiple
-          </span> */}
-        </span>
-        <span
-          className="underline cursor-pointer text-main-blue hover:no-underline"
-          onClick={() => {
-            handleExport(data);
-          }}
-        >
-          Export
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
@@ -256,37 +223,61 @@ export default function ListViewUsers({ data }: dataType) {
               className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("name")}
             >
-              Full Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              Full Name{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[13%]"
               onClick={() => sort("name")}
             >
-              Username <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              Username{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[15%]"
               onClick={() => sort("name")}
             >
-              Company <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              Company{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[17%]"
               onClick={() => sort("phone")}
             >
-              Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              Email{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("gender")}
             >
-              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              City{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("city")}
             >
-              Active Plan <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+              Active Plan{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[8%]">
               Actions{" "}
