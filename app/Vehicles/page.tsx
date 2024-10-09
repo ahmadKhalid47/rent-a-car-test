@@ -386,7 +386,7 @@ export default function Vehicles() {
           <div className="bg-red-30 h-[24px] w-full flex justify-end gap-3 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
             <div className="w-fit h-fit flex justify-end items-end gap-1">
               <button
-                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[4px] ${
+                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[6px] ${
                   gridView
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark2 bg-light-grey text-black"
@@ -396,7 +396,7 @@ export default function Vehicles() {
                 <HiViewGrid />
               </button>
               <button
-                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[4px] ${
+                className={`w-[24px] flex justify-center items-center h-[24px] rounded-[6px] ${
                   !gridView
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark2 bg-light-grey text-black"
@@ -407,7 +407,7 @@ export default function Vehicles() {
               </button>
             </div>
             <button
-              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[4px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
+              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
               onClick={() => {
                 handleExport(vehiclesData?.map((item: any) => item.data));
               }}
