@@ -515,23 +515,24 @@ export default function UserDashboard() {
                   </>
                 ) : (
                   reservationsData?.slice(0, 8).map((item, index) => (
-                    <div
+                    <Link
+                      href={`/ReservationsInfo/${item?._id}`}
                       key={index}
                       className={`w-full h-[32px] flex justify-between items-center dark:bg-dark1 bg-white ${
                         index === 7 ? "" : "border-b-[1px]"
                       } border-grey px-3`}
                     >
-                      <span className="w-[30%] text-[14px] font-[400] leading-[14px]">
+                      <span className="w-[30%] text-[14px] pe-3 truncate font-[400] leading-[14px]">
                         {item.data.customerName}
                       </span>
-                      <span className="w-[30%] text-[14px] font-[400] leading-[14px]">
+                      <span className="w-[30%] text-[14px] pe-3 truncate font-[400] leading-[14px]">
                         {item.data.vehicleName}
                       </span>
-                      <span className="w-[40%] text-[14px] font-[400] leading-[14px]">
+                      <span className="w-[40%] text-[14px] pe-3 truncate font-[400] leading-[14px]">
                         {formatDate2(item.data.PickUpDate)} to{" "}
                         {formatDate2(item.data.dropOffDate)}
                       </span>
-                    </div>
+                    </Link>
                   ))
                 )}
               </div>
