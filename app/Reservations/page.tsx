@@ -12,6 +12,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { MediumLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
+import { FaTimesCircle } from "react-icons/fa";
+import SearchEmpty from "../Components/functions/SearchEmpty";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -195,12 +197,19 @@ export default function Vehicles() {
             <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
               Search
             </h3>
-            <div className="w-full h-fit flex justify-between items-center">
+            <div className="w-full h-fit flex justify-between items-center relative">
               <input
                 className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
                 placeholder="Search By Vehicle, Customer..."
                 onChange={handleSearchQueryChange}
+                value={searchQuery}
               ></input>
+              {searchQuery && (
+                <SearchEmpty
+                  classes={"left-[72%] md:left-[79%] w-[2%] text-[20px]"}
+                  setState={setSearchQuery}
+                />
+              )}
               <button
                 className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
