@@ -209,13 +209,13 @@ export default function ListView({ data, makeData }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
+            <div className="text-start pe-3 flex justify-start items-center w-[4%] cursor-pointer">
               ID
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[20%]">
               Country
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[60%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[50%]">
               City
             </div>
             <div className="text-center pe-3 flex justify-start items-center w-[13%]">
@@ -248,13 +248,13 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <h5 className="text-start pe-5 w-[7%]">
+                  <h5 className="text-start pe-5 w-[4%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}{" "}
                   </h5>
-                  <h5 className="text-start pe-3 w-[10%]">{item?.country}</h5>
-                  <h5 className="text-start pe-3 w-[60%]">{item?.city}</h5>
+                  <h5 className="text-start pe-3 w-[20%]">{item?.country}</h5>
+                  <h5 className="text-start pe-3 w-[50%]">{item?.city}</h5>
                   <div
                     className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
                     onClick={(event) => {
