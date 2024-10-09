@@ -13,6 +13,7 @@ import { FormEvent } from "react";
 import Loader, { SmallLoader } from "@/app/Components/Loader";
 import expire404 from "@/public/404.svg";
 import { setAlert, setSeverity } from "@/app/store/Global";
+import ExpiredPage from "./ExpiredPage";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
@@ -90,12 +91,7 @@ export default function ResetPassword() {
       ) : (
         <>
           {isVerified === false ? (
-            <>
-              <img src={expire404.src} className="w-[40vw] mx-auto mt-10" />
-              <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black text-center">
-                Sorry, your link to reset password has been expired!
-              </span>
-            </>
+            <ExpiredPage />
           ) : (
             <div className="w-full h-fit">
               <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">
