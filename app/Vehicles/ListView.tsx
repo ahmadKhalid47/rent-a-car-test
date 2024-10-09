@@ -279,53 +279,62 @@ export default function ListView({ data }: dataType) {
               ></div>
             </div>
 
-            <div
-              className="text-start w-[4%]"
-              // onClick={() => sort("vehicleId")}
-            >
-              ID
+            <div className="text-start w-[4%]">ID</div>
+            <div className="text-start pe-3 flex justify-between items-center w-[15%]">
+              Car Name{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("make")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[15%] cursor-pointer"
-              onClick={() => sort("make")}
-            >
-              Car Name <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[13%]">
+              Registration No{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("registration")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[13%] cursor-pointer"
-              onClick={() => sort("registration")}
-            >
-              Registration No <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[11%]">
+              Making Year{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("year")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[11%] cursor-pointer"
-              onClick={() => sort("year")}
-            >
-              Making Year <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+              Type{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("type")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[9%] cursor-pointer"
-              onClick={() => sort("type")}
-            >
-              Type <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[7%]">
+              Color{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("color")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[7%] cursor-pointer"
-              onClick={() => sort("color")}
-            >
-              Color <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+              Odometer{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%] cursor-pointer"
-              onClick={() => sort("city")}
-            >
-              Odometer <img src={arrows.src} />
-            </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[10%] cursor-pointer"
-              onClick={() => sort("city")}
-            >
-              City <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+              City{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[8%]">
               Actions{" "}

@@ -256,37 +256,37 @@ export default function ListViewUsers({ data }: dataType) {
               className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("name")}
             >
-              Full Name <img src={arrows.src} />
+              Full Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[13%]"
               onClick={() => sort("name")}
             >
-              Username <img src={arrows.src} />
+              Username <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[15%]"
               onClick={() => sort("name")}
             >
-              Company <img src={arrows.src} />
+              Company <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[17%]"
               onClick={() => sort("phone")}
             >
-              Email <img src={arrows.src} />
+              Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("gender")}
             >
-              City <img src={arrows.src} />
+              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("city")}
             >
-              Active Plan <img src={arrows.src} />
+              Active Plan <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[8%]">
               Actions{" "}

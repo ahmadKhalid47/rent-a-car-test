@@ -249,34 +249,29 @@ export default function ListViewchauffeurs({ data }: dataType) {
             </div>
             <div className="text-start w-[4%]">ID</div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[19%]"
-              onClick={() => sort("name")}
-            >
-              Full Name <img src={arrows.src} />
+              className="text-start pe-3 flex justify-between items-center w-[19%]">
+              Full Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              onClick={() => sort("name")}/>
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("phone")}
-            >
-              Phone <img src={arrows.src} />
+              className="text-start pe-3 flex justify-between items-center w-[14%]">
+              Phone <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              onClick={() => sort("phone")}/>
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[15%]"
-              onClick={() => sort("emailAddress")}
-            >
-              Email <img src={arrows.src} />
+              className="text-start pe-3 flex justify-between items-center w-[15%]">
+              Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              onClick={() => sort("emailAddress")}/>
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() => sort("gender")}
-            >
-              Gender <img src={arrows.src} />
+              className="text-start pe-3 flex justify-between items-center w-[12%]">
+              Gender <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              onClick={() => sort("gender")}/>
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() => sort("city")}
-            >
-              City <img src={arrows.src} />
+              className="text-start pe-3 flex justify-between items-center w-[12%]">
+              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              onClick={() => sort("city")}/>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[8%]">
               Actions{" "}

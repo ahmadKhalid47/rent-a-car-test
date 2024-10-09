@@ -181,23 +181,14 @@ export default function ListViewreservation({ data }: dataType) {
               ></div>
             </div>
             <div className="text-start w-[4%]">ID</div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[13%]"
-              onClick={() => sort("vehicleName")}
-            >
-              Vehicle <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[13%]">
+              Vehicle <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("vehicleName")}/>
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
-              onClick={() => sort("customerName")}
-            >
-              Customer <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[14%]">
+              Customer <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("customerName")}/>
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() => sort("city")}
-            >
-              City <img src={arrows.src} />
+            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("city")}/>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[12%]">
               Duration

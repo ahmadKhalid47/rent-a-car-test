@@ -318,31 +318,31 @@ export default function AdminDashboard() {
                           className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
                           onClick={() => sort("make")}
                         >
-                          Name <img src={arrows.src} />
+                          Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 2 cursor-pointer"
                           onClick={() => sort("registration")}
                         >
-                          Username <img src={arrows.src} />
+                          Username <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[20%] 3 cursor-pointer"
                           onClick={() => sort("year")}
                         >
-                          Email <img src={arrows.src} />
+                          Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[18%] 4 cursor-pointer"
                           onClick={() => sort("type")}
                         >
-                          Company <img src={arrows.src} />
+                          Company <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 6 cursor-pointer"
                           onClick={() => sort("color")}
                         >
-                          Expiry Date <img src={arrows.src} />
+                          Expiry Date <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
                         </div>
                         <div className="text-center flex justify-center items-center w-[10%] pe-5 5">
                           Actions{" "}

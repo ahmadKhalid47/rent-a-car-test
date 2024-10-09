@@ -64,19 +64,19 @@ export default function ListViewRecentReservations({ data }: dataType) {
               className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("customerName")}
             >
-              Customer <img src={arrows.src} />
+              Customer <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[16%]"
               onClick={() => sort("vehicleName")}
             >
-              Chauffeur <img src={arrows.src} />
+              Chauffeur <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("city")}
             >
-              City <img src={arrows.src} />
+              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[9%]">
               Start Date{" "}
