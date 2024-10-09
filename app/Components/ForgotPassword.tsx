@@ -4,13 +4,11 @@ import { FormEvent, useState } from "react";
 import axios from "axios";
 import { Alert } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { setLoginPageR } from "../store/Global";
+import { setAlert, setLoginPageR, setSeverity } from "../store/Global";
 import { SmallLoader } from "./Loader";
 
 export default function ForgotPassword() {
   let dispatch = useDispatch();
-  const [showError, setShowError] = useState(null);
-  const [showSuccess, setShowSuccess] = useState(null);
   const [loading, setLoading] = useState<any>(false);
 
   const ForgotPasswordSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -24,17 +22,13 @@ export default function ForgotPassword() {
     formData.forEach((value, key) => {
       formDataObj[key] = value.toString();
     });
-    setShowError(null);
-    setShowSuccess(null);
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/forgotPassword`, formDataObj);
       if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
+        dispatch(setAlert(result?.data?.success));
       } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
+        dispatch(setAlert(result?.data?.error));
       }
     } catch (error: any) {
       console.log(error);
@@ -45,24 +39,6 @@ export default function ForgotPassword() {
 
   return (
     <>
-      {showError ? (
-        <Alert
-          variant="filled"
-          severity="error"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showError}
-        </Alert>
-      ) : showSuccess ? (
-        <Alert
-          variant="filled"
-          severity="success"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showSuccess}
-        </Alert>
-      ) : null}
-
       <form
         onSubmit={ForgotPasswordSubmit}
         className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"

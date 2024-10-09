@@ -10,6 +10,7 @@ import Sidebar from "./Components/Sidebar";
 import Nav from "./Components/Nav";
 import axios from "axios";
 import Loader from "./Components/Loader";
+import AlertShower from "./Components/AlertShower";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -91,12 +92,16 @@ export default function RootLayout({
                 {pathName &&
                 pathName !== "/" &&
                 !pathName.includes("forgotPassword") &&
-                isVerified && (
+                isVerified ? (
                   <>
                     <Sidebar />
                     <Nav />
                   </>
-                ) }
+                ) : (
+                  <>
+                    <AlertShower />
+                  </>
+                )}
                 <section className={inter.className}>{children}</section>
               </main>
             )}

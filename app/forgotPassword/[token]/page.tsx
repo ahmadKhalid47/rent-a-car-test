@@ -1,29 +1,29 @@
 "use client";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
-import car from "@/public/Layer_1 (1).svg";
+import { useRouter } from "next/navigation";
 import White from "@/public/DashboardLogo.svg";
 import axios from "axios";
 import { FormEvent } from "react";
-import { Alert } from "@mui/material";
-import Link from "next/link";
 import Loader, { SmallLoader } from "@/app/Components/Loader";
 import expire404 from "@/public/404.svg";
+import { setAlert, setSeverity } from "@/app/store/Global";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
 
-  const [showError, setShowError] = useState<any>(null);
-  const [showSuccess, setShowSuccess] = useState<any>(null);
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(true);
   const [buttonLoading, setButtonLoading] = useState<any>(false);
+  const router = useRouter();
+  let dispatch = useDispatch();
 
   useEffect(() => {
     async function verifyTokenApi() {
@@ -59,7 +59,7 @@ export default function ResetPassword() {
     });
 
     if (formDataObj?.password !== formDataObj?.confirmPassword) {
-      setShowError("Passwords did not matched");
+      dispatch(setAlert("Passwords did not matched"));
       return;
     }
 
@@ -70,12 +70,12 @@ export default function ResetPassword() {
         ...formDataObj,
       });
       if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
+        dispatch(setAlert(result?.data?.success));
       } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
+        dispatch(setAlert(result?.data?.error));
+        dispatch(setSeverity("error"));
       }
+      router.push("/");
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -130,23 +130,6 @@ export default function ResetPassword() {
 
                 <div className="w-full lg:w-[50%] h-[60%] sm:h-[50%] lg:h-full dark:bg-dark1 bg-white flex justify-center items-center">
                   <div className="w-full flex justify-center items-center">
-                    {showError ? (
-                      <Alert
-                        variant="filled"
-                        severity="error"
-                        className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-                      >
-                        {showError}
-                      </Alert>
-                    ) : showSuccess ? (
-                      <Alert
-                        variant="filled"
-                        severity="success"
-                        className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-                      >
-                        {showSuccess}
-                      </Alert>
-                    ) : null}
                     <form
                       onSubmit={ResetPasswordSubmit}
                       className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
@@ -202,16 +185,7 @@ export default function ResetPassword() {
                         </div>
                       </div>
 
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
-                        {showSuccess ? (
-                          <Link
-                            href={"/"}
-                            className="font-[400] text-[16px] leading-[20px] text-[#EB4643] w-full text-end mb-2 cursor-pointer"
-                          >
-                            Login
-                          </Link>
-                        ) : null}
-                      </div>
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2 mb-2"></div>
 
                       <button
                         type="submit"

@@ -6,13 +6,12 @@ import axios from "axios";
 import { Alert } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setLoginPageR } from "../store/Global";
+import { setAlert, setLoginPageR, setSeverity } from "../store/Global";
 import { SmallLoader } from "./Loader";
 
 export default function Login() {
   let dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const [showError, setShowError] = useState(null);
   const [loading, setLoading] = useState<any>(false);
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const router = useRouter();
@@ -28,8 +27,6 @@ export default function Login() {
     formData.forEach((value, key) => {
       formDataObj[key] = value.toString();
     });
-    setShowError(null);
-    console.log(formDataObj);
 
     try {
       setLoading(true);
@@ -40,7 +37,8 @@ export default function Login() {
       if (result?.data?.error === null) {
         window.location.reload();
       } else {
-        setShowError(result?.data?.error);
+        dispatch(setAlert(result?.data?.error));
+        dispatch(setSeverity("error"));
       }
     } catch (error: any) {
       console.log(error);
@@ -52,16 +50,6 @@ export default function Login() {
 
   return (
     <>
-      {showError ? (
-        <Alert
-          variant="filled"
-          severity="error"
-          className="absolute w-[200px] z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showError}
-        </Alert>
-      ) : null}
-
       <form
         onSubmit={loginSubmit}
         className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[11px]"
