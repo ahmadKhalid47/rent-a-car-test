@@ -67,7 +67,7 @@ export default function CustomerInfoMainPage() {
             {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </span>
           <div className="flex justify-between items-start">
-            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
               <Link href={"/Customers"} className="hover:underline">
                 Customers / All Customers
               </Link>
