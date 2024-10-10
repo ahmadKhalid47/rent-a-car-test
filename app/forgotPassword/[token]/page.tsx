@@ -13,7 +13,10 @@ import { FormEvent } from "react";
 import Loader, { SmallLoader } from "@/app/Components/Loader";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import ExpiredPage from "./ExpiredPage";
-import { checkPasswordStrength } from "@/app/Components/functions/strengthChecker";
+import {
+  checkPasswordStrength,
+  PasswordStrength,
+} from "@/app/Components/functions/strengthChecker";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
@@ -23,7 +26,18 @@ export default function ResetPassword() {
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(true);
   const [buttonLoading, setButtonLoading] = useState<any>(false);
-  const [strength, setStrength] = useState<any>("");
+  const [strength, setStrength] = useState<PasswordStrength>({
+    criteria: {
+      length: false,
+      lowercase: false,
+      uppercase: false,
+      number: false,
+      specialCharacter: false,
+    },
+    score: 0,
+    message: "",
+    guide: "",
+  });
   const router = useRouter();
   let dispatch = useDispatch();
 
@@ -62,14 +76,15 @@ export default function ResetPassword() {
       dispatch(setSeverity("error"));
       return;
     }
-    if (strength?.score === 5) {
+    if (strength?.score < 5) {
       dispatch(setAlert(strength?.message));
       dispatch(setSeverity("error"));
       return;
     }
-
-    try {
-      setButtonLoading(true);
+    else {
+      
+      try {
+        setButtonLoading(true);
       let result: any = await axios.post(`/api/resetPassword`, {
         token,
         ...formDataObj,
@@ -86,6 +101,8 @@ export default function ResetPassword() {
     } finally {
       setButtonLoading(false);
     }
+    
+  }
   };
 
   const handleChange = (e: any) => {
@@ -93,7 +110,7 @@ export default function ResetPassword() {
     setPassword1(pwd);
     setStrength(checkPasswordStrength(pwd));
   };
-  console.log(strength);
+  console.log(strength?.score);
 
   return (
     <>
@@ -141,7 +158,7 @@ export default function ResetPassword() {
                       onSubmit={ResetPasswordSubmit}
                       className="w-[90%] sm:w-[60%] h-fit flex flex-col justify-center items-start gap-[10px]"
                     >
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[8px] font-[500] text-[18px] leading-[12px] pb-[13px]">
                         <h3 className="font-[400]">New Password</h3>
                         <div className="w-full h-fit relative">
                           <input
@@ -167,7 +184,7 @@ export default function ResetPassword() {
                           )}
                         </div>
                       </div>
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2">
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[8px] font-[500] text-[18px] leading-[12px] pb-[13px">
                         <h3 className="font-[400]">Confirm Password</h3>
                         <div className="w-full h-fit relative">
                           <input
@@ -193,24 +210,33 @@ export default function ResetPassword() {
                         </div>
                       </div>
 
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] -mt-1">
-                        <div className="flex flex-col justify-start items-start">
-                          <span
-                            className={`${
-                              strength?.score < 3
-                                ? "text-red-600"
-                                : strength?.score === 5
-                                ? "text-yellow-500"
-                                : "text-green-600"
-                            } font-[400] text-[12px] -mt-1 mb-1`}
-                          >
-                            {password1 && strength?.message}
-                          </span>
-                          <span className="font-[400] text-[12px]">
-                            {strength
-                              ? strength?.guide
-                              : "Password must be at least 6 characters long. Add lowercase letters. Add uppercase letters. Add numbers. Add special characters (e.g., !@#$%^&*)."}
-                          </span>
+                      <div className="w-full flex flex-col justify-start items-start">
+                        <div className="flex flex-col">
+                          {Object.entries(strength.criteria).map(
+                            ([key, isMet]) => (
+                              <label
+                                key={key}
+                                className="flex items-center mb-1"
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={isMet}
+                                  readOnly
+                                  className={
+                                    isMet ? "text-green-600" : "text-red-600"
+                                  }
+                                />
+                                <span
+                                  className={`ml-2 ${
+                                    isMet ? "text-green-600" : "text-red-600"
+                                  }`}
+                                >
+                                  {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
+                                  {/* {isMet ? "✔️" : "❌"} */}
+                                </span>
+                              </label>
+                            )
+                          )}
                         </div>
                       </div>
 

@@ -1,61 +1,47 @@
-export function checkPasswordStrength(password: string) {
-  let strength = {
-    score: 0,
-    message: "",
-    guide: "",
+// checkPasswordStrength.ts
+export interface PasswordStrength {
+  criteria: {
+    length: boolean;
+    lowercase: boolean;
+    uppercase: boolean;
+    number: boolean;
+    specialCharacter: boolean;
+  };
+  score: number;
+  message: string;
+  guide: string;
+}
+
+export function checkPasswordStrength(password: string): PasswordStrength {
+  const criteria = {
+    length: password.length >= 6,
+    lowercase: /[a-z]/.test(password),
+    uppercase: /[A-Z]/.test(password),
+    number: /\d/.test(password),
+    specialCharacter: /[!@#$%^&*(),.?":{}|<>]/.test(password),
   };
 
-  // If password is empty, show all the suggestions
-  if (password === "") {
-    strength.guide =
-      "Password must be at least 6 characters long. Add lowercase letters. Add uppercase letters. Add numbers. Add special characters (e.g., !@#$%^&*).";
-    strength.message = "Your password is too weak.";
-    return strength;
-  }
+  const score = Object.values(criteria).filter(Boolean).length;
+  let message = "";
+  let guide = "";
 
-  // Check for minimum length
-  if (password.length >= 6) {
-    strength.score += 1;
+  // Overall strength message
+  if (score === 5) {
+    message = "Strong password";
+  } else if (score >= 3) {
+    message = "Your password is medium strength.";
   } else {
-    strength.guide += "Password must be at least 6 characters long. ";
+    message = "Your password is weak.";
   }
 
-  // Check for lowercase letters
-  if (/[a-z]/.test(password)) {
-    strength.score += 1;
-  } else {
-    strength.guide += "Add lowercase letters. ";
-  }
+  // Guide for unmet criteria
+  if (!criteria.length)
+    guide += "Password must be at least 6 characters long. ";
+  if (!criteria.lowercase) guide += "Add lowercase letters. ";
+  if (!criteria.uppercase) guide += "Add uppercase letters. ";
+  if (!criteria.number) guide += "Add numbers. ";
+  if (!criteria.specialCharacter)
+    guide += "Add special characters (e.g., !@#$%^&*). ";
 
-  // Check for uppercase letters
-  if (/[A-Z]/.test(password)) {
-    strength.score += 1;
-  } else {
-    strength.guide += "Add uppercase letters. ";
-  }
-
-  // Check for numbers
-  if (/\d/.test(password)) {
-    strength.score += 1;
-  } else {
-    strength.guide += "Add numbers. ";
-  }
-
-  // Check for special characters
-  if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-    strength.score += 1;
-  } else {
-    strength.guide += "Add special characters (e.g., !@#$%^&*). ";
-  }
-
-  // Overall strength
-  if (strength.score === 5) {
-    strength.message = "Strong password";
-  } else if (strength.score >= 3) {
-    strength.message = "Your password is medium strength.";
-  } else {
-    strength.message = "Your password is weak.";
-  }
-
-  return strength;
+  return { criteria, score, message, guide };
 }
