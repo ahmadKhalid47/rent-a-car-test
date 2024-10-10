@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { formatCreatedAtDate } from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -248,32 +249,55 @@ export default function ListViewchauffeurs({ data }: dataType) {
               ></div>
             </div>
             <div className="text-start w-[4%]">ID</div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[19%]">
-              Full Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              onClick={() => sort("name")}/>
+            <div className="text-start pe-3 flex justify-between items-center w-[17%]">
+              Full Name{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("name")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]">
-              Phone <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              onClick={() => sort("phone")}/>
+            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+              Phone{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("phone")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[15%]">
-              Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              onClick={() => sort("emailAddress")}/>
+            <div className="text-start pe-3 flex justify-between items-center w-[15%]">
+              Email{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("emailAddress")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]">
-              Gender <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              onClick={() => sort("gender")}/>
+            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+              Gender{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("gender")}
+              />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]">
-              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              onClick={() => sort("city")}/>
+            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+              City{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[8%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[15%]">
+              Created At{" "}
+              {/* <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              /> */}
+            </div>{" "}
+            <div className="text-end pe-3 flex justify-end items-center w-[8%]">
               Actions{" "}
             </div>
           </div>
@@ -308,11 +332,11 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
                   </h5>
-                  <h5 className="text-start pe-3 w-[19%]">
+                  <h5 className="text-start pe-3 w-[17%]">
                     {item?.data?.name}
                   </h5>
                   <h5
-                    className="text-start pe-3 w-[14%] truncate"
+                    className="text-start pe-3 w-[12%] truncate"
                     title={item?.data?.phone}
                   >
                     {item?.data?.phone}
@@ -327,11 +351,14 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   <h5 className="text-start pe-3 w-[12%]">
                     {item?.data?.gender}
                   </h5>
-                  <h5 className="text-start pe-3 w-[12%]">
+                  <h5 className="text-start pe-3 w-[10%]">
                     {item?.data?.city}
                   </h5>
+                  <h5 className="text-start pe-3 truncate w-[15%]">
+                    {formatCreatedAtDate(item?.createdAt)}
+                  </h5>
                   <div
-                    className="flex justify-start gap items-center w-[8%] h-full"
+                    className="flex justify-end pe-3 gap items-center w-[8%] h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
