@@ -11,18 +11,19 @@ import White from "@/public/DashboardLogo.svg";
 import axios from "axios";
 import { FormEvent } from "react";
 import Loader, { SmallLoader } from "@/app/Components/Loader";
-import expire404 from "@/public/404.svg";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import ExpiredPage from "./ExpiredPage";
+import { checkPasswordStrength } from "@/app/Components/functions/strengthChecker";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
-
   const [showPassword1, setShowPassword1] = useState(false);
+  const [password1, setPassword1] = useState("");
   const [showPassword2, setShowPassword2] = useState(false);
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(true);
   const [buttonLoading, setButtonLoading] = useState<any>(false);
+  const [strength, setStrength] = useState<any>("");
   const router = useRouter();
   let dispatch = useDispatch();
 
@@ -31,9 +32,6 @@ export default function ResetPassword() {
       try {
         setLoading(true);
         setIsVerified(undefined);
-        // await axios.get(`/api/verifyTokenForgotPassword`, {
-        //   headers: { token },
-        // });
         await axios.post(`/api/verifyTokenForgotPassword`, {
           token,
         });
@@ -61,6 +59,12 @@ export default function ResetPassword() {
 
     if (formDataObj?.password !== formDataObj?.confirmPassword) {
       dispatch(setAlert("Passwords did not matched"));
+      dispatch(setSeverity("error"));
+      return;
+    }
+    if (strength?.score === 5) {
+      dispatch(setAlert(strength?.message));
+      dispatch(setSeverity("error"));
       return;
     }
 
@@ -83,6 +87,13 @@ export default function ResetPassword() {
       setButtonLoading(false);
     }
   };
+
+  const handleChange = (e: any) => {
+    const pwd = e.target.value;
+    setPassword1(pwd);
+    setStrength(checkPasswordStrength(pwd));
+  };
+  console.log(strength);
 
   return (
     <>
@@ -141,6 +152,7 @@ export default function ResetPassword() {
                             minLength={6}
                             maxLength={30}
                             required
+                            onChange={handleChange}
                           />
                           {!showPassword1 ? (
                             <FaEyeSlash
@@ -181,7 +193,26 @@ export default function ResetPassword() {
                         </div>
                       </div>
 
-                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] pb-2 mb-2"></div>
+                      <div className="w-[100%] h-fit flex flex-col justify-center items-start gap-[13px] font-[500] text-[18px] leading-[12px] -mt-1">
+                        <div className="flex flex-col justify-start items-start">
+                          <span
+                            className={`${
+                              strength?.score < 3
+                                ? "text-red-600"
+                                : strength?.score === 5
+                                ? "text-yellow-500"
+                                : "text-green-600"
+                            } font-[400] text-[12px] -mt-1 mb-1`}
+                          >
+                            {password1 && strength?.message}
+                          </span>
+                          <span className="font-[400] text-[12px]">
+                            {strength
+                              ? strength?.guide
+                              : "Password must be at least 6 characters long. Add lowercase letters. Add uppercase letters. Add numbers. Add special characters (e.g., !@#$%^&*)."}
+                          </span>
+                        </div>
+                      </div>
 
                       <button
                         type="submit"
