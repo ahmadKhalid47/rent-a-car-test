@@ -26,6 +26,10 @@ import { Diversity1TwoTone } from "@mui/icons-material";
 import AdminProfile from "./AdminProfile";
 import UserProfile from "./UserProfile";
 import { FaAsterisk } from "react-icons/fa6";
+import {
+  checkPasswordStrength,
+  PasswordStrength,
+} from "@/app/Components/functions/strengthChecker";
 
 export default function Profile() {
   let global = useSelector((state: RootState) => state.Global);
@@ -41,6 +45,18 @@ export default function Profile() {
   const [newPassword, setNewPassword] = useState<any>("");
   const [editPopup, setEditPopup] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
+  const [strength, setStrength] = useState<PasswordStrength>({
+    criteria: {
+      length: false,
+      lowercase: false,
+      uppercase: false,
+      number: false,
+      specialCharacter: false,
+    },
+    score: 0,
+    message: "",
+    guide: "",
+  });
   const router = useRouter();
   async function editPassword(e: any) {
     e.preventDefault();
@@ -50,6 +66,11 @@ export default function Profile() {
       dispatch(
         setAlert("New password cannot be the same as the old password.")
       );
+      dispatch(setSeverity("error"));
+      return;
+    }
+    if (strength?.score < 5) {
+      dispatch(setAlert("Your password is weak"));
       dispatch(setSeverity("error"));
       return;
     }
@@ -124,6 +145,10 @@ export default function Profile() {
     if (file) {
       setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
     }
+  };
+  const handleChange = (e: any) => {
+    const pwd = e.target.value;
+    setStrength(checkPasswordStrength(pwd));
   };
 
   return (
@@ -242,7 +267,7 @@ export default function Profile() {
                     >
                       <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                         {"Old Password"}
-                        <FaAsterisk className="text-[6px]" />
+                        <FaAsterisk className="text-[6px] text-red-600" />
                       </label>
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
@@ -276,9 +301,34 @@ export default function Profile() {
                           placeholder={`Enter Text Here`}
                           onChange={(e) => {
                             setNewPassword(e.target.value);
+                            handleChange(e);
                           }}
                           value={newPassword}
                         />
+                      </div>
+                      <div className="w-full flex flex-col justify-start items-start mt-4">
+                        {Object.entries(strength.criteria).map(
+                          ([key, isMet]) => (
+                            <label key={key} className="flex items-center mb-1">
+                              <input
+                                type="checkbox"
+                                checked={isMet}
+                                readOnly
+                                className={
+                                  isMet ? "text-green-600" : "text-red-600"
+                                }
+                              />
+                              <span
+                                className={`ml-2 ${
+                                  isMet ? "text-green-600" : "text-red-600"
+                                }`}
+                              >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
+                                {/* {isMet ? "✔️" : "❌"} */}
+                              </span>
+                            </label>
+                          )
+                        )}
                       </div>
                     </div>
 
