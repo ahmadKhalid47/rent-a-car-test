@@ -50,7 +50,7 @@ export default function Feature() {
             Reference 1
             <Popover
               content={content}
-              title="Popover Title"
+              title="Reference 1"
               trigger={"click"}
               className="text-[16px]"
             >
@@ -98,7 +98,7 @@ export default function Feature() {
             Reference 2
             <Popover
               content={content}
-              title="Popover Title"
+              title="Reference 2"
               trigger={"click"}
               className="text-[16px]"
             >
