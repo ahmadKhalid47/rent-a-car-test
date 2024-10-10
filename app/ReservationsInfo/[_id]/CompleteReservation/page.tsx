@@ -14,6 +14,7 @@ import { SmallLoader } from "@/app/Components/Loader";
 import { setAllValues } from "@/app/store/reservations";
 import FirstPage from "./FirstPages";
 import SecondPage from "./SecondPage";
+import Link from "next/link";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -140,8 +141,7 @@ export default function reservationInfoMainPage() {
       if (action === "close") {
         router.push("/Reservations");
       }
-            dispatch(setAlert("Reservation Completed Successfully"));
-
+      dispatch(setAlert("Reservation Completed Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -160,8 +160,11 @@ export default function reservationInfoMainPage() {
           <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[100%]">
             Complete Reservation{" "}
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Reservations / All Reservations / {formatId(_id)} / Complete
-              Reservation
+              <Link href={"/Reservations"} className="hover:underline">
+                Reservations / All Reservations
+              </Link>
+              {" / "}
+              {formatId(_id)} / Complete Reservation
             </span>
           </span>
         </div>

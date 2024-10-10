@@ -18,6 +18,14 @@ export function MediumLoader() {
   );
 }
 
+export function LoaderOnSave() {
+  return (
+    <div className="w-fit h-fit md:h-[44px] flex justify-center items-center px-5">
+      <div className="loader"></div>
+    </div>
+  );
+}
+
 export function TextLoader() {
   return (
     <div className="w-full h-full flex justify-start items-center">

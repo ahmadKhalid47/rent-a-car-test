@@ -147,8 +147,7 @@ export default function reservationInfoMainPage() {
       await axios.post(`/api/updatereservationCancel/${_id}`, {
         status: "cancel",
       });
-            dispatch(setAlert("Reservation Canceled Successfully"));
-
+      dispatch(setAlert("Reservation Canceled Successfully"));
     } finally {
       setStatusLoading(false);
     }
@@ -165,7 +164,7 @@ export default function reservationInfoMainPage() {
     return diffDays;
   }
 
-  console.log(getDateDifference(currentDate, pickUpDate)); 
+  console.log(getDateDifference(currentDate, pickUpDate));
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
@@ -178,7 +177,11 @@ export default function reservationInfoMainPage() {
           <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
             ID: {formatId(_id)}
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-5 md:leading-[21px]">
-              Reservations / All Reservations / {formatId(_id)}
+              <Link href={"/Reservations"} className="hover:underline">
+                Reservations / All Reservations
+              </Link>
+              {" / "}
+              {formatId(_id)}
             </span>
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
