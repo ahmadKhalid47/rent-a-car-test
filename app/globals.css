@@ -67,11 +67,11 @@
 }
 
 .nav-width {
-  width: calc(100% - 300px);
+  width: calc(100% - 250px);
 }
 
 .nav-width-resp {
-  width: calc(100% - 300px);
+  width: calc(100% - 250px);
 }
 .filter-button {
   width: calc(100% - 54px);

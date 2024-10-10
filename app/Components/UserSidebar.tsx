@@ -82,7 +82,7 @@ export default function UserSidebar() {
     >
       <Link
         href="/Dashboard"
-        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
           global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white rounded-[10px] ${
           chevronState === "Dashboard" && global.sidebarShow
@@ -99,7 +99,7 @@ export default function UserSidebar() {
       </Link>
 
       <div
-        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
+        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
           global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white  ${
           chevronState === "Reservations" && global.sidebarShow
@@ -142,11 +142,11 @@ export default function UserSidebar() {
           <div className="flex justify-start items-center w-full">
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[27px]"></div>
             </div>
             <Link
               href="/Reservations"
-              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -166,10 +166,10 @@ export default function UserSidebar() {
           >
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[22.5px]"></div>
             </div>
             <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -186,7 +186,7 @@ export default function UserSidebar() {
       ) : null}
 
       <div
-        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
+        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
           global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white  ${
           chevronState === "Customers" && global.sidebarShow
@@ -222,11 +222,11 @@ export default function UserSidebar() {
           <div className="flex justify-start items-center w-full">
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[27px]"></div>
             </div>
             <Link
               href="/Customers"
-              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -245,10 +245,10 @@ export default function UserSidebar() {
           >
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[22.5px]"></div>
             </div>
             <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -264,7 +264,7 @@ export default function UserSidebar() {
         </div>
       ) : null}
       <div
-        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
+        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
           global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white  ${
           chevronState === "Chauffeurs" && global.sidebarShow
@@ -306,11 +306,11 @@ export default function UserSidebar() {
           <div className="flex justify-start items-center w-full">
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[27px]"></div>
             </div>
             <Link
               href="/Chauffeurs"
-              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -330,10 +330,10 @@ export default function UserSidebar() {
           >
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[22.5px]"></div>
             </div>
             <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -349,7 +349,7 @@ export default function UserSidebar() {
         </div>
       ) : null}
       <div
-        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
+        className={`w-full h-[49px] font-[500] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
           global.sidebarShow ? "justify-between ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white  ${
           chevronState === "Vehicles" && global.sidebarShow
@@ -391,11 +391,11 @@ export default function UserSidebar() {
           <div className="flex justify-start items-center w-full">
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[27px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[27px]"></div>
             </div>
             <Link
               href="/Vehicles"
-              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] mb-[6px] mt-[12px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -414,10 +414,10 @@ export default function UserSidebar() {
           >
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-full bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[22.5px]"></div>
             </div>
             <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -436,10 +436,10 @@ export default function UserSidebar() {
           >
             <div className="relative w-[20%] h-full">
               <div className="absolute w-[2px] h-[50%] bg-grey left-7"></div>
-              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[45.2%] rounded-full top-[22.5px]"></div>
+              <div className="absolute w-[8px] h-[8px] bg-grey left-[55%] sm:left-[55%] rounded-full top-[22.5px]"></div>
             </div>
             <div
-              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+              className={`w-[80%] h-[37px] my-[6px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
                 global.sidebarShow
                   ? "justify-start ps-5"
                   : "justify-center px-0"
@@ -456,7 +456,7 @@ export default function UserSidebar() {
       ) : null}
       <Link
         href="/Report"
-        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
           global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white rounded-[10px] ${
           chevronState === "Report" && global.sidebarShow
@@ -473,7 +473,7 @@ export default function UserSidebar() {
       </Link>
       <Link
         href="/Settings"
-        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[18px] leading-[27px] flex items-center gap-2 ${
+        className={`w-full h-[49px] font-[400] text-[14px] sm:text-[14px] leading-[27px] flex items-center gap-2 ${
           global.sidebarShow ? "justify-start ps-5" : "justify-center px-0"
         } bg-main-blue-hover hover:text-white rounded-[10px] ${
           chevronState === "Settings" && global.sidebarShow
