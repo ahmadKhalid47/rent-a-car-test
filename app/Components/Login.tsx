@@ -46,7 +46,6 @@ export default function Login() {
       setLoading(false);
     }
   };
-  console.log(rememberMe);
 
   return (
     <>
