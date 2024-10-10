@@ -14,7 +14,11 @@ import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios from "axios";
-import { SmallLoader } from "../../Components/Loader";
+import {
+  LoaderOnSave,
+  MediumLoader,
+  SmallLoader,
+} from "../../Components/Loader";
 import { useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
@@ -474,40 +478,52 @@ export default function Vehicles() {
               {currentPage === 5 ? (
                 <>
                   {vehicleUpdateAction !== "AddNew" ? (
-                    <div className="flex justify-start items-center gap-1 md:gap-3">
-                      <button
-                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                        disabled={loading}
-                        onClick={() => {
-                          updateData("close");
-                        }}
-                      >
-                        {loading ? <SmallLoader /> : "Update and Close"}
-                      </button>
-                      <div />
-                    </div>
+                    <>
+                      {loading ? (
+                        <LoaderOnSave />
+                      ) : (
+                        <div className="flex justify-start items-center gap-1 md:gap-3">
+                          <button
+                            className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                            disabled={loading}
+                            onClick={() => {
+                              updateData("close");
+                            }}
+                          >
+                            {loading ? <SmallLoader /> : "Update and Close"}
+                          </button>
+                          <div />
+                        </div>
+                      )}
+                    </>
                   ) : (
-                    <div className="flex justify-start items-center gap-1 md:gap-3">
-                      <button
-                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                        disabled={loading}
-                        onClick={() => {
-                          saveData("close");
-                        }}
-                      >
-                        {loading ? <SmallLoader /> : "Save and Close"}
-                      </button>
-                      <button
-                        className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
-                        disabled={loading}
-                        onClick={() => {
-                          saveData("new");
-                        }}
-                      >
-                        {loading ? <SmallLoader /> : "Save and New"}
-                      </button>
-                      <div />
-                    </div>
+                    <>
+                      {loading ? (
+                        <LoaderOnSave />
+                      ) : (
+                        <div className="flex justify-start items-center gap-1 md:gap-3">
+                          <button
+                            className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                            disabled={loading}
+                            onClick={() => {
+                              saveData("close");
+                            }}
+                          >
+                            {loading ? <SmallLoader /> : "Save and Close"}
+                          </button>
+                          <button
+                            className={`px-2 md:px-0 w-fit md:w-[206px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center`}
+                            disabled={loading}
+                            onClick={() => {
+                              saveData("new");
+                            }}
+                          >
+                            {loading ? <SmallLoader /> : "Save and New"}
+                          </button>
+                          <div />
+                        </div>
+                      )}
+                    </>
                   )}
                 </>
               ) : (
