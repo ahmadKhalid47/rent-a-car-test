@@ -77,32 +77,29 @@ export default function ResetPassword() {
       return;
     }
     if (strength?.score < 5) {
-      dispatch(setAlert(strength?.message));
+      dispatch(setAlert("Your password is weak"));
       dispatch(setSeverity("error"));
       return;
-    }
-    else {
-      
+    } else {
       try {
         setButtonLoading(true);
-      let result: any = await axios.post(`/api/resetPassword`, {
-        token,
-        ...formDataObj,
-      });
-      if (result?.data?.success) {
-        dispatch(setAlert(result?.data?.success));
-      } else {
-        dispatch(setAlert(result?.data?.error));
-        dispatch(setSeverity("error"));
+        let result: any = await axios.post(`/api/resetPassword`, {
+          token,
+          ...formDataObj,
+        });
+        if (result?.data?.success) {
+          dispatch(setAlert(result?.data?.success));
+        } else {
+          dispatch(setAlert(result?.data?.error));
+          dispatch(setSeverity("error"));
+        }
+        router.push("/");
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setButtonLoading(false);
       }
-      router.push("/");
-    } catch (error: any) {
-      console.log(error);
-    } finally {
-      setButtonLoading(false);
     }
-    
-  }
   };
 
   const handleChange = (e: any) => {
