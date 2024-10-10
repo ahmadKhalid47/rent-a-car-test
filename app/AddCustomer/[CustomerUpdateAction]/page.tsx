@@ -252,7 +252,7 @@ export default function Vehicles() {
         <form
           onSubmit={handleSubmit}
           onKeyDown={handleKeyDown} // Add the event handler here
-          className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
+          className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start mt-5"
         >
           <div className="w-full h-fit flex flex-col justify-start items-center">
             <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px] count-button">
