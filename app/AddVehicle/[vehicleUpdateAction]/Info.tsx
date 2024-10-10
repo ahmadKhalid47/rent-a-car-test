@@ -341,7 +341,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
         />
         <TempSelectInput
           setState={setfuelCapacity}
-          label={"Fuel Capacity"}
+          label={"Fuel Tank Capacity"}
           value={vehicle.fuelCapacity}
           required={false}
           options={Array.from({ length: 24 }, (_, i) =>

@@ -28,7 +28,6 @@ export default function Insurances() {
     if (customer.emergencyContactRelation === "Other") setPopUp(true);
   }, [customer.emergencyContactRelation]);
 
-  console.log(other, popUp, customer.emergencyContactRelation);
 
   return (
     <div className="w-full h-fit">
