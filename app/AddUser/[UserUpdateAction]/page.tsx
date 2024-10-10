@@ -13,6 +13,10 @@ import { resetState, setAllValues } from "@/app/store/userProfile";
 import { useParams, useRouter } from "next/navigation";
 import { SmallLoader } from "../../Components/Loader";
 import Link from "next/link";
+import {
+  checkPasswordStrength,
+  PasswordStrength,
+} from "@/app/Components/functions/strengthChecker";
 
 export default function AddUser() {
   const params = useParams();
@@ -25,6 +29,19 @@ export default function AddUser() {
   const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
+  
+  const [strength, setStrength] = useState<PasswordStrength>({
+    criteria: {
+      length: false,
+      lowercase: false,
+      uppercase: false,
+      number: false,
+      specialCharacter: false,
+    },
+    score: 0,
+    message: "",
+    guide: "",
+  });
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -48,7 +65,11 @@ export default function AddUser() {
       dispatch(setSeverity("error"));
       return;
     }
-
+    if (strength?.score < 5) {
+      dispatch(setAlert("Your password is weak"));
+      dispatch(setSeverity("error"));
+      return;
+    }
     try {
       setLoading(true);
       let res: AxiosResponse<any, any> | null = null;
@@ -76,8 +97,7 @@ export default function AddUser() {
         dispatch(setSeverity("error"));
         setShowSuccess(null);
       }
-            dispatch(setAlert("User Saved Successfully"));
-
+      dispatch(setAlert("User Saved Successfully"));
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -110,7 +130,8 @@ export default function AddUser() {
       if (UserUpdateAction !== "AddNew") {
         dispatch(resetState());
       }
-    };  }, []);
+    };
+  }, []);
 
   async function updateData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -133,14 +154,20 @@ export default function AddUser() {
         profilePic: res?.data?.message,
       });
       router.push("/Users");
-            dispatch(setAlert("User Updated Successfully"));
-
+      dispatch(setAlert("User Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
       setLoading(false);
     }
   }
+  
+  useEffect(() => {
+    const handleChange = () => {
+      setStrength(checkPasswordStrength(User.password));
+    };
+    handleChange();
+  }, [User.password]);
 
   return (
     <div

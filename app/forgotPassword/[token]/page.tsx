@@ -21,7 +21,6 @@ export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
   const [showPassword1, setShowPassword1] = useState(false);
-  const [password1, setPassword1] = useState("");
   const [showPassword2, setShowPassword2] = useState(false);
   const [isVerified, setIsVerified] = useState<any>(undefined);
   const [loading, setLoading] = useState<any>(true);
@@ -104,10 +103,8 @@ export default function ResetPassword() {
 
   const handleChange = (e: any) => {
     const pwd = e.target.value;
-    setPassword1(pwd);
     setStrength(checkPasswordStrength(pwd));
   };
-  console.log(strength?.score);
 
   return (
     <>

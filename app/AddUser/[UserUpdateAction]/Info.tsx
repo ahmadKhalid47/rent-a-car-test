@@ -38,7 +38,6 @@ export default function Info() {
   const [files, setFiles] = useState<any>(User.profilePic);
   const params = useParams();
   const { UserUpdateAction } = params;
-  console.log(User.profilePic[0]);
 
   useEffect(() => {
     setFiles(User.profilePic);
@@ -100,6 +99,7 @@ export default function Info() {
     setFiles([]);
   }
 
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
@@ -112,6 +112,7 @@ export default function Info() {
     User.country,
     User.state
   );
+
 
   return (
     <div className="w-full h-fit  ">
@@ -194,6 +195,7 @@ export default function Info() {
               minLength={6}
               maxLength={30}
             />
+
             <TempTypeInputLimit
               setState={setverifyPasswordR}
               label={"Verify Password"}
