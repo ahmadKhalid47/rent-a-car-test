@@ -179,7 +179,7 @@ export default function UserSidebar() {
                   : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New Reservation" : null}
+              {global.sidebarShow ? "New Reservation" : null}
             </div>{" "}
           </Link>
         </div>
@@ -258,7 +258,7 @@ export default function UserSidebar() {
                   : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New Customer" : null}
+              {global.sidebarShow ? "New Customer" : null}
             </div>{" "}
           </Link>
         </div>
@@ -343,7 +343,7 @@ export default function UserSidebar() {
                   : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New Chauffeur" : null}
+              {global.sidebarShow ? "New Chauffeur" : null}
             </div>{" "}
           </Link>
         </div>
@@ -427,7 +427,7 @@ export default function UserSidebar() {
                   : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New Vehicle" : null}
+              {global.sidebarShow ? "New Vehicle" : null}
             </div>{" "}
           </Link>
           <Link

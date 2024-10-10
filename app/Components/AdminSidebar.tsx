@@ -141,7 +141,7 @@ export default function AdminSidebar() {
                 pathName.includes("/AddUser") ? "bg-main-blue text-white" : ""
               } hover:text-white rounded-[10px]`}
             >
-              {global.sidebarShow ? "Add New User" : null}
+              {global.sidebarShow ? "New User" : null}
             </div>{" "}
           </Link>
         </div>
