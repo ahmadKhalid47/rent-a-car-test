@@ -21,6 +21,9 @@ import {
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import { GrCircleInformation } from "react-icons/gr";
+import { Popover } from "antd";
+import "antd/dist/reset.css";
 
 export default function Feature() {
   let customer = useSelector((state: RootState) => state.Customer);
@@ -37,15 +40,24 @@ export default function Feature() {
   useEffect(() => {
     if (customer.ref2Relation === "Other") setPopUp2(true);
   }, [customer.ref2Relation]);
-  console.log(customer.ref1Relation);
-  console.log(customer.ref2Relation);
+  const content = <div>Some content for the popover. </div>;
 
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
-          Reference 1
-        </h3>
+        <div className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+          <h3 className="w-fit flex justify-start items-center gap-5 font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black relative">
+            Reference 1
+            <Popover
+              content={content}
+              title="Popover Title"
+              trigger={"click"}
+              className="text-[16px]"
+            >
+              <GrCircleInformation />
+            </Popover>
+          </h3>
+        </div>
 
         <TempTypeInput
           setState={setref1NameR}
@@ -81,9 +93,19 @@ export default function Feature() {
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-        <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
-          Reference 2
-        </h3>
+        <div className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+          <h3 className="w-fit flex justify-start items-center gap-5 font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black relative">
+            Reference 2
+            <Popover
+              content={content}
+              title="Popover Title"
+              trigger={"click"}
+              className="text-[16px]"
+            >
+              <GrCircleInformation />
+            </Popover>
+          </h3>
+        </div>
 
         <TempTypeInput
           setState={setref2NameR}
