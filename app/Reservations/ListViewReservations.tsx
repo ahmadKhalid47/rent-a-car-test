@@ -189,7 +189,7 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("vehicleName")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
               Customer{" "}
               <img
                 src={arrows.src}
@@ -197,7 +197,7 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("customerName")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
               City{" "}
               <img
                 src={arrows.src}
@@ -263,10 +263,10 @@ export default function ListViewreservation({ data }: dataType) {
                     {item?.data?.vehicleName}
                   </div>
 
-                  <div className="text-start pe-3 truncate w-[10%]">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.data?.customerName}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%]">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.city}
                   </div>
                   <div className="text-start pe-3 truncate w-[12%]">
