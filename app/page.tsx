@@ -44,10 +44,12 @@ export default function Vehicles() {
             src={loginPage1.src}
             className="w-[100%] h-[50%] absolute bottom-0 left-0"
           />
-
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            <div className="w-[120px] sm:w-[191px] h-[55px]">
-              <img src={White.src} className="z-10 h-full w-full" />
+            <div className="w-fit h-[100vh] absolute top-0 z-[100] pt-10">
+              <img
+                src={White.src}
+                className="z-10 w-[120px] sm:w-[191px] h-[55px]"
+              />
             </div>
             <span className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
               {global.loginPage ? (

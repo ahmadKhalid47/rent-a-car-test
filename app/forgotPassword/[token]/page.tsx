@@ -128,10 +128,13 @@ export default function ResetPassword() {
                   />
 
                   <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-                    <img
-                      src={White.src}
-                      className="w-[120px] sm:w-[175px] z-10"
-                    />
+                    <div className="w-fit h-[100vh] absolute top-0 z-[100] pt-10">
+                      <img
+                        src={White.src}
+                        className="z-10 w-[120px] sm:w-[191px] h-[55px]"
+                      />
+                    </div>
+
                     <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">
                       Reset <br />
                       Your Password!
