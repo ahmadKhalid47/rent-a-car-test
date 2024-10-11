@@ -371,7 +371,7 @@ export default function ListView({ data, makeData }: dataType) {
                       <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                           Select Make
-                          <FaAsterisk className="text-[6px] text-red-600" />
+                          <FaAsterisk className="text-[6px]" />
                         </label>
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <select
@@ -403,7 +403,7 @@ export default function ListView({ data, makeData }: dataType) {
                       >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                           {"Update Model"}
-                          <FaAsterisk className="text-[6px] text-red-600" />
+                          <FaAsterisk className="text-[6px]" />
                         </label>
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <input

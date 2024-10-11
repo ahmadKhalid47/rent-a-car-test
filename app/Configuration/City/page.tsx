@@ -145,7 +145,7 @@ export default function Vehicles() {
                 <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Country
-                    <FaAsterisk className="text-[6px] text-red-600" />
+                    <FaAsterisk className="text-[6px]" />
                   </label>
                   <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                     <select
@@ -180,7 +180,7 @@ export default function Vehicles() {
                 >
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     {"Add New"}
-                    <FaAsterisk className="text-[6px] text-red-600" />
+                    <FaAsterisk className="text-[6px]" />
                   </label>
                   <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                     <select
