@@ -63,8 +63,10 @@ export default function Feature() {
                 }
                 alt=""
               />
+              <span className="w-[90%] truncate text-start">
 
               {item}
+              </span>
             </button>
           ))}
         </div>
