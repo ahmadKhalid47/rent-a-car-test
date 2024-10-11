@@ -1,3 +1,4 @@
+
 import connectDb from "@/app/models/connectDb";
 import TypeModel from "@/app/models/Type";
 import { NextResponse } from "next/server";

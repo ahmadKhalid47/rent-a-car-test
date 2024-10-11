@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const FeatureSchema = mongoose.Schema(
   {
     Feature: { type: String, required: true },
+    Icon: { type: String, required: false },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

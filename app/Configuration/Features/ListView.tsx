@@ -1,5 +1,6 @@
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
+import demyIcon from "@/public/features (1).png";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
@@ -30,6 +31,7 @@ export default function ListView({ data }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [Feature, setFeature] = useState("");
+  const [Icon, setIcon] = useState<any>("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -127,8 +129,20 @@ export default function ListView({ data }: dataType) {
   async function editItem(_id: any) {
     try {
       setEditLoading(true);
+      const formData2 = new FormData();
+      for (let i = 0; i < Icon.length; i++) {
+        formData2.append("files", Icon[i]);
+      }
+      const res2 = await axios.post("/api/upload", formData2, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res2);
+
       let result: any = await axios.post(`/api/updateFeature/${_id}`, {
         Feature,
+        Icon: res2?.data?.message,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -163,6 +177,7 @@ export default function ListView({ data }: dataType) {
   const userData = data.filter(
     (item: any) => item?.createdBy === myProfile._id
   );
+  console.log(Icon);
 
   return (
     <div className="w-full h-fit mt-4 relative">
@@ -250,7 +265,14 @@ export default function ListView({ data }: dataType) {
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}{" "}
                   </div>
-                  <div className="text-start pe-3 truncate w-[70%]">{item?.Feature}</div>
+                  <div className="text-start pe-3 truncate w-[70%] h-[100%] flex justify-start items-center gap-5">
+                    {item?.Feature}
+                    <img
+                      className="w-[20px] h-[20px]"
+                      src={item?.Icon || demyIcon.src}
+                      alt=""
+                    />
+                  </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
                     onClick={(event) => {
@@ -379,7 +401,27 @@ export default function ListView({ data }: dataType) {
                           />
                         </div>
                       </div>
-
+                      {myProfile.admin && (
+                        <div
+                          className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                        >
+                          <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                            {"Update Icon Image"}
+                            <FaAsterisk className="text-[6px]" />
+                          </label>
+                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                            <input
+                              required={true}
+                              type={"file"}
+                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                              placeholder={`Enter Text Here`}
+                              onChange={(e: any) => {
+                                setIcon(e.target?.files);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      )}
                       <div
                         className={`w-full flex justify-end gap-4 items-center pt-4`}
                       >
