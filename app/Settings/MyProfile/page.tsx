@@ -69,7 +69,7 @@ export default function Profile() {
       dispatch(setSeverity("error"));
       return;
     }
-    if (strength?.score < 5) {
+    if (strength?.score < 3) {
       dispatch(setAlert("Your password is weak"));
       dispatch(setSeverity("error"));
       return;
