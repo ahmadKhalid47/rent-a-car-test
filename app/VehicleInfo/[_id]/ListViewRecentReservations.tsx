@@ -107,32 +107,32 @@ export default function ListViewRecentReservations({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <h5 className="text-start w-[4%] ps-3">
+                  <div className="text-start w-[4%] ps-3">
                     {JSON.stringify(index).padStart(2, "0")}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[14%]">
+                  </div>
+                  <div className="text-start pe-3 w-[14%]">
                     {item.data?.customerName}
-                  </h5>
+                  </div>
                   <div className="flex justify-start item-center gap-5 text-start pe-3 w-[16%]">
                     {item.data?.chauffeurName}
                   </div>
-                  <h5 className="text-start pe-3 w-[12%]">{item.data?.city}</h5>
+                  <div className="text-start pe-3 w-[12%]">{item.data?.city}</div>
                   <div className="flex justify-start items-end w-[9%]">
                     {item.data?.PickUpDate}
                   </div>
                   <div className="flex justify-start items-end w-[9%]">
                     {item.data?.dropOffDate}
                   </div>
-                  <h5 className="text-start pe-3 w-[9%]">
+                  <div className="text-start pe-3 w-[9%]">
                     {item.data?.durationinDays ? (
                       <>{item.data?.duration.padStart(2, "0")} Days</>
                     ) : (
                       <>{item.data?.duration.padStart(2, "0")} Hours</>
                     )}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[9%]">
+                  </div>
+                  <div className="text-start pe-3 w-[9%]">
                     ${item.data?.amount}
-                  </h5>
+                  </div>
                   <div className="text-start pe-3 w-[10%]">
                     <div
                       className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]

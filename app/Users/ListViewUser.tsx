@@ -309,29 +309,29 @@ export default function ListViewUsers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start w-[4%]">
+                  <div className="text-start w-[4%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[14%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[14%]">
                     {item?.name}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[13%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[13%]">
                     {item?.username}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[15%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[15%]">
                     {item?.company}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[17%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[17%]">
                     {item?.email}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[12%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.city}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[12%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.plan}
-                  </h5>
+                  </div>
                   <div
                     className="flex justify-start gap items-center w-[8%] h-full"
                     onClick={(event) => {

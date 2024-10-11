@@ -327,36 +327,36 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start w-[4%]">
+                  <div className="text-start w-[4%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[17%]">
+                  </div>
+                  <div className="text-start pe-3 w-[17%]">
                     {item?.data?.name}
-                  </h5>
-                  <h5
+                  </div>
+                  <div
                     className="text-start pe-3 w-[12%] truncate"
                     title={item?.data?.phone}
                   >
                     {item?.data?.phone}
-                  </h5>
-                  <h5
+                  </div>
+                  <div
                     className="text-start pe-3 w-[15%] truncate"
                     title={item?.data?.emailAddress}
                   >
                     {item?.data?.emailAddress}
-                  </h5>
+                  </div>
 
-                  <h5 className="text-start pe-3 w-[12%]">
+                  <div className="text-start pe-3 w-[12%]">
                     {item?.data?.gender}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[10%]">
+                  </div>
+                  <div className="text-start pe-3 w-[10%]">
                     {item?.data?.city}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[15%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[15%]">
                     {formatCreatedAtDate(item?.createdAt)}
-                  </h5>
+                  </div>
                   <div
                     className="flex justify-end pe-3 gap items-center w-[8%] h-full"
                     onClick={(event) => {

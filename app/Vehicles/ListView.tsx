@@ -383,34 +383,34 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start truncate w-[4%]">
+                  <div className="text-start truncate w-[4%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[11%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[11%]">
                     {item?.data?.make} {item?.data?.model}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[13%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[13%]">
                     {item?.data?.registration}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[11%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[11%]">
                     {item?.data?.year}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[9%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {item?.data?.type}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[9%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {item?.data?.vinNo}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[7%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[7%]">
                     <div
                       className={`w-[23px] h-[12px] rounded-full`}
                       style={{
                         backgroundColor: item?.data?.color,
                       }}
                     ></div>
-                  </h5>
+                  </div>
                   <div className="text-start pe-3 truncate w-[12%]">
                     <span className="w-[100px] h-[19px] bg-gradient-to-b from-white to-[rgb(229,230,231)] border-[1px] border-[rgb(128,130,133)] text-black flex justify-center items-center">
                       {item?.data?.odometer
@@ -431,12 +431,12 @@ export default function ListView({ data }: dataType) {
                         ))}
                     </span>
                   </div>
-                  <h5 className="text-start pe-3 truncate w-[8%]">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.city}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[10%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[10%]">
                     {formatCreatedAtDate(item?.createdAt)}
-                  </h5>
+                  </div>
                   <div
                     className="flex justify-end pe-3 truncate gap items-center w-[7%] h-full"
                     onClick={(event) => {

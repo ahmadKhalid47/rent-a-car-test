@@ -362,21 +362,21 @@ export default function AdminDashboard() {
                                   : "dark:bg-dark1 bg-white"
                               } border-b-2 border-grey`}
                             >
-                              <h5 className="text-start pe-3 break-words w-[16%] 1 ps-5">
+                              <div className="text-start pe-3 break-words w-[16%] 1 ps-5">
                                 {item?.data?.name}
-                              </h5>
-                              <h5 className="text-start pe-3 break-words w-[16%] 2">
+                              </div>
+                              <div className="text-start pe-3 break-words w-[16%] 2">
                                 {item?.data?.username}
-                              </h5>
-                              <h5 className="text-start pe-3 break-words w-[20%] 3">
+                              </div>
+                              <div className="text-start pe-3 break-words w-[20%] 3">
                                 {item?.data?.email}
-                              </h5>
-                              <h5 className="text-start pe-3 break-words w-[18%] 4">
+                              </div>
+                              <div className="text-start pe-3 break-words w-[18%] 4">
                                 {item?.data?.companyDate}
-                              </h5>
-                              <h5 className="text-start pe-3 break-words w-[16%] 6">
+                              </div>
+                              <div className="text-start pe-3 break-words w-[16%] 6">
                                 {item?.data?.expiryDate}
-                              </h5>
+                              </div>
                               <div
                                 className="flex justify-center items-center w-[10%] pe-5 5 h-full"
                                 onClick={(event) => {

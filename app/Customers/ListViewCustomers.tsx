@@ -339,12 +339,12 @@ export default function ListViewCustomers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start w-[3%]">
+                  <div className="text-start w-[3%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[19%] flex justify-start items-center gap-4">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[19%] flex justify-start items-center gap-4">
                     {item?.data?.name}
                     {item?.data?.isVip && (
                       <img
@@ -352,29 +352,29 @@ export default function ListViewCustomers({ data }: dataType) {
                         className="w-[20px] h-[15px] -translate-y-[1px] dark:filter dark:brightness-[0] dark:invert"
                       />
                     )}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[12%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.data?.customerType}
-                  </h5>
-                  <h5
+                  </div>
+                  <div
                     className="text-start pe-3 truncate w-[10%]"
                     title={item?.data?.phone}
                   >
                     {item?.data?.phone}
-                  </h5>
-                  <h5
+                  </div>
+                  <div
                     className="text-start pe-3 truncate w-[12%]"
                     title={item?.data?.emailAddress}
                   >
                     {item?.data?.emailAddress}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[9%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {item?.data?.gender}
-                  </h5>
-                  <h5 className="text-start pe-3 truncate w-[9%]">{item?.data?.city}</h5>
-                  <h5 className="text-start pe-3 truncate w-[10%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">{item?.data?.city}</div>
+                  <div className="text-start pe-3 truncate w-[10%]">
                     {formatCreatedAtDate(item?.createdAt)}
-                  </h5>
+                  </div>
                   <div
                     className="flex justify-end pe-3 truncate gap items-center w-[8%] h-full"
                     onClick={(event) => {

@@ -246,11 +246,11 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <h5 className="text-start pe-5 w-[7%]">
+                  <div className="text-start pe-5 w-[7%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}{" "}
-                  </h5>
+                  </div>
                   <div className="text-start flex justify-start items-center gap-4 w-[70%]">
                     <div
                       className="w-[32px] h-[18px] rounded-[5px] "

@@ -242,13 +242,13 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <h5 className="text-start pe-5 w-[7%]">
+                  <div className="text-start pe-5 w-[7%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}{" "}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[10%]">{item?.make}</h5>
-                  <h5 className="text-start pe-3 w-[60%]">{item?.model}</h5>
+                  </div>
+                  <div className="text-start pe-3 w-[10%]">{item?.make}</div>
+                  <div className="text-start pe-3 w-[60%]">{item?.model}</div>
                   <div
                     className="flex justify-start pe-3 gap-4 items-center w-[13%] h-full"
                     onClick={(event) => {

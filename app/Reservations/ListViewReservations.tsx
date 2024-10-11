@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
-import { formatDuration } from "../Components/functions/formats";
+import { formatCreatedAtDate, formatDuration } from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -166,7 +166,7 @@ export default function ListViewreservation({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-center w-[3%] flex justify-center items-center ">
+            <div className="text-center truncate w-[3%] flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -180,29 +180,52 @@ export default function ListViewreservation({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start w-[4%]">ID</div>
-            <div className="text-start pe-3 flex justify-between items-center w-[13%]">
-              Vehicle <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("vehicleName")}/>
+            <div className="text-start truncate w-[4%]">ID</div>
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
+              Vehicle{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("vehicleName")}
+              />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[14%]">
-              Customer <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("customerName")}/>
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
+              Customer{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("customerName")}
+              />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
-              City <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200" onClick={() => sort("city")}/>
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
+              City{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
               Duration
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[9%]">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
               Amount
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
               Status
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[7%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[12%]">
+              Created At{" "}
+              {/* <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("city")}
+              /> */}
+            </div>{" "}
+            <div className="text-center pe- flex justify-center items-center truncate w-[7%]">
               Documents{" "}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[7%]">
+            <div className="text-start pe-3 flex justify-end items-center truncate w-[7%]">
               Actions{" "}
             </div>
           </div>
@@ -213,13 +236,13 @@ export default function ListViewreservation({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/ReservationsInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[0px text-center ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-center w-[3%] flex justify-center items-center ">
+                  <div className="text-center truncate w-[3%] flex justify-center items-center ">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -231,31 +254,32 @@ export default function ListViewreservation({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <h5 className="text-start w-[4%]">
+                  <div className="text-start truncate w-[4%]">
                     {JSON.stringify(
                       index + (page - 1) * itemsPerPage + 1
                     ).padStart(2, "0")}
-                  </h5>
-                  <div className="flex justify-start item-center gap-5 text-start pe-3 w-[13%]">
+                  </div>
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[12%]">
                     {item?.data?.vehicleName}
                   </div>
 
-                  <h5 className="text-start pe-3 w-[14%]">
+                  <div className="text-start pe-3 truncate w-[10%]">
                     {item?.data?.customerName}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[12%]">{item?.data?.city}</h5>
-
-                  <h5 className="text-start pe-3 w-[12%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[10%]">
+                    {item?.data?.city}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item.data?.durationinDays ? (
                       <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
                       <>{item?.data?.duration.padStart(2, "0")} Hours</>
                     )}
-                  </h5>
-                  <h5 className="text-start pe-3 w-[9%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[8%]">
                     ${item?.data?.amount}
-                  </h5>
-                  <div className="text-start pe-3 w-[10%]">
+                  </div>
+                  <div className="text-start pe-3 truncate w-[10%]">
                     <div
                       className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]
                    ${
@@ -274,8 +298,11 @@ export default function ListViewreservation({ data }: dataType) {
                         : "Incomplete"}
                     </div>
                   </div>
+                  <div className="text-start pe-3 truncate w-[12%]">
+                    {formatCreatedAtDate(item?.createdAt)}
+                  </div>
                   <div
-                    className="flex justify-start items-end w-[7%]"
+                    className="flex justify-center items-end truncate w-[7%]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -299,7 +326,7 @@ export default function ListViewreservation({ data }: dataType) {
                     />
                   </div>
                   <div
-                    className="flex justify-start ps-2 items-end w-[7%]"
+                    className="flex justify-end ps-2 pe-3 items-end truncate w-[7%]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -308,7 +335,7 @@ export default function ListViewreservation({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] "
+                      className="me-[5.8px] hover:scale-[1.3] z-[200]"
                       onClick={() => {
                         router.push(`/AddReservations/${item?._id}`);
                       }}
