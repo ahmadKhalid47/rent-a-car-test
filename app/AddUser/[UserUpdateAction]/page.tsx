@@ -246,6 +246,18 @@ export default function AddUser() {
                 setEditPopup(true);
                 setOldPassword("");
                 setNewPassword("");
+                setStrength({
+                  criteria: {
+                    length: false,
+                    lowercase: false,
+                    uppercase: false,
+                    number: false,
+                    specialCharacter: false,
+                  },
+                  score: 0,
+                  message: "",
+                  guide: "",
+                });
               }}
               className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
             >
