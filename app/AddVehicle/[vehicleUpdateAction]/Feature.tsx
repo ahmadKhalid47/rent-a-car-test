@@ -55,7 +55,7 @@ export default function Feature() {
               }}
             >
               <img
-                className="w-[20px] h-[20px]"
+                className="w-[20px] h-[20px] bg-white"
                 src={
                   iconsDisplayArray[index]
                     ? iconsDisplayArray[index]

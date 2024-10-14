@@ -224,8 +224,11 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[82%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
               Feature
+            </div>
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[62%]">
+              Icon
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -257,10 +260,12 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 truncate w-[82%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[62%] h-[100%] flex justify-start items-center gap-5">
                     <img
-                      className="w-[20px] h-[20px]"
+                      className="w-[20px] h-[20px] bg-white"
                       src={item?.Icon || demyIcon.src}
                       alt=""
                     />
