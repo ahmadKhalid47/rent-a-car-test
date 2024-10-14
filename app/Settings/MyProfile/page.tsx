@@ -143,13 +143,14 @@ export default function Profile() {
   const handleImageChange = (e: any) => {
     const file = e.target.files[0]; // get the first selected file
     if (file) {
-      setSelectedPic(URL.createObjectURL(file)); // create a URL for the selected image
+      setSelectedPic(URL.createObjectURL(file));
     }
   };
   const handleChange = (e: any) => {
     const pwd = e.target.value;
     setStrength(checkPasswordStrength(pwd));
   };
+  console.log(myProfile?.profilePic);
 
   return (
     <div

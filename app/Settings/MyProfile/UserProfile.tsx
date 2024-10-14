@@ -45,6 +45,7 @@ export default function UserProfile() {
       setSaveLoading(false);
     }
   }
+  console.log(myProfile?.profilePic);
 
   return (
     <div className="w-full flex flex-wrap justify-between items-start">
@@ -56,28 +57,30 @@ export default function UserProfile() {
       <TempTypeInfoShow label={"Expiry Date"} value={"dd-mm-yyyy"} />
       <TempTypeInfoShow label={"Phone"} value={myProfile.phone} />
       <TempTypeInfoShow label={"City"} value={myProfile.city} />
-      {myProfile?.profilePic && myProfile?.profilePic[0] instanceof File && (
-        <div
-          className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
-        >
-          <button
-            onClick={() => {
-              router.push("/Settings");
-            }}
-            className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+      {myProfile?.profilePic &&
+        (myProfile?.profilePic[0] instanceof File ||
+          myProfile?.profilePic.includes("blob:")) && (
+          <div
+            className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
           >
-            {loading ? <SmallLoader /> : "Cancel"}
-          </button>
-          <button
-            onClick={() => {
-              editItem(myProfile.user);
-            }}
-            className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-          >
-            {saveloading ? <SmallLoader /> : "Save"}
-          </button>
-        </div>
-      )}
+            <button
+              onClick={() => {
+                router.push("/Settings");
+              }}
+              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            >
+              {loading ? <SmallLoader /> : "Cancel"}
+            </button>
+            <button
+              onClick={() => {
+                editItem(myProfile.user);
+              }}
+              className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+            >
+              {saveloading ? <SmallLoader /> : "Save"}
+            </button>
+          </div>
+        )}
     </div>
   );
 }

@@ -215,6 +215,7 @@ export default function Nav() {
       clearTimeout(timer); // Clean up the timer
     };
   }, [global.alert, dispatch]);
+console.log(myProfile?.profilePic);
 
   return (
     <div
@@ -254,7 +255,9 @@ export default function Nav() {
           <img
             src={
               myProfile?.profilePic && myProfile?.profilePic !== "noProfile"
-                ? myProfile?.profilePic
+                ? myProfile?.profilePic[0] instanceof File
+                  ? URL.createObjectURL(myProfile?.profilePic[0])
+                  : myProfile?.profilePic
                 : account.src
             }
             className={`w-[100%] h-[100%] cursor-pointer`}
