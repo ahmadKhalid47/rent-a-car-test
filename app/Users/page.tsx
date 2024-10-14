@@ -58,7 +58,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setUsersData(result.data.data);
-          setFilteredUser(result.data.data); // Initialize with full data
+          setFilteredUser(result.data.data);
         } else {
           setShowError(result?.data?.error);
         }

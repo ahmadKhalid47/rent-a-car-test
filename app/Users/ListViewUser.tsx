@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { formatCreatedAtDate } from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -176,6 +177,7 @@ export default function ListViewUsers({ data }: dataType) {
     }
   }
 
+  console.log(paginatedData);
   return (
     <div className="w-full h-fit">
       <h3
@@ -219,7 +221,7 @@ export default function ListViewUsers({ data }: dataType) {
               ></div>
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("name")}
             >
               Full Name{" "}
@@ -229,7 +231,7 @@ export default function ListViewUsers({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[13%]"
+              className="text-start pe-3 flex justify-between items-center w-[10%]"
               onClick={() => sort("name")}
             >
               Username{" "}
@@ -239,7 +241,7 @@ export default function ListViewUsers({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[15%]"
+              className="text-start pe-3 flex justify-between items-center w-[12%]"
               onClick={() => sort("name")}
             >
               Company{" "}
@@ -249,7 +251,7 @@ export default function ListViewUsers({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[17%]"
+              className="text-start pe-3 flex justify-between items-center w-[13%]"
               onClick={() => sort("phone")}
             >
               Email{" "}
@@ -259,7 +261,7 @@ export default function ListViewUsers({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
+              className="text-start pe-3 flex justify-between items-center w-[6%]"
               onClick={() => sort("gender")}
             >
               City{" "}
@@ -269,7 +271,19 @@ export default function ListViewUsers({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              onClick={() => sort("gender")}
+            >
+              Started At{" "}
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              onClick={() => sort("gender")}
+            >
+              Expiry Date
+            </div>
+            <div
+              className="text-start pe-3 flex justify-between items-center w-[9%]"
               onClick={() => sort("city")}
             >
               Active Plan{" "}
@@ -308,22 +322,30 @@ export default function ListViewUsers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[14%]">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.name}
                   </div>
-                  <div className="text-start pe-3 truncate w-[13%]">
+                  <div className="text-start pe-3 truncate w-[10%]">
                     {item?.username}
                   </div>
-                  <div className="text-start pe-3 truncate w-[15%]">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.company}
                   </div>
-                  <div className="text-start pe-3 truncate w-[17%]">
+                  <div className="text-start pe-3 truncate w-[13%]">
                     {item?.email}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%]">
+                  <div className="text-start pe-3 truncate w-[6%]">
                     {item?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%]">
+                  <div className="text-start pe-3 truncate w-[9%]">
+                    {!formatCreatedAtDate(item?.createdAt).includes("NaN") &&
+                      formatCreatedAtDate(item?.createdAt)}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">
+                    {/* {!formatCreatedAtDate(item?.createdAt).includes("NaN") &&
+                      formatCreatedAtDate(item?.createdAt)} */}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {item?.plan}
                   </div>
                   <div

@@ -28,6 +28,8 @@ export async function POST(req: Request) {
       .find({ admin: false })
       .sort({ _id: -1 })
       .lean();
+    console.log(data);
+    
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error("Error processing request: ", err);
