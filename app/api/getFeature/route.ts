@@ -18,8 +18,9 @@ export async function POST(req: Request) {
     const data = await FeatureModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
-      .sort({ _id: -1 })
+      .sort({ Feature: 1 })
       .lean();
+
     return NextResponse.json({
       data,
     });

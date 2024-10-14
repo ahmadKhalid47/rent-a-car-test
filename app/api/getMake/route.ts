@@ -17,8 +17,9 @@ export async function POST(req: Request) {
     const data = await MakeModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
-      .sort({ _id: -1 })
+      .sort({ make: 1 })
       .lean();
+    
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error("Error processing request: ", err);
