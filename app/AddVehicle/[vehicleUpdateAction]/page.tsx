@@ -32,8 +32,6 @@ export default function Vehicles() {
   let { Configurations } = useSelector(
     (state: RootState) => state.Configurations
   );
-  console.log(Configurations);
-
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {
@@ -183,7 +181,6 @@ export default function Vehicles() {
     try {
       setLoading(true);
       const damageImages = vehicle.damages.map((damage: any) => damage.files);
-      console.log(damageImages);
 
       const formData = new FormData();
       for (let i = 0; i < vehicle.carImages.length; i++) {

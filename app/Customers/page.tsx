@@ -147,6 +147,8 @@ export default function Vehicles() {
     ]);
   }
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  console.log(customersData?.map((item: any) => item.data));
+  console.log(customersData);
 
   return (
     <div

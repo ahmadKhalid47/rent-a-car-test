@@ -215,7 +215,6 @@ export default function Nav() {
       clearTimeout(timer); // Clean up the timer
     };
   }, [global.alert, dispatch]);
-console.log(myProfile?.profilePic);
 
   return (
     <div

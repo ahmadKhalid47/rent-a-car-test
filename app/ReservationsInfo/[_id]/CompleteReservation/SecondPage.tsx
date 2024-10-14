@@ -32,7 +32,6 @@ export default function SecondPage() {
   let [damages, setDamages] = useState<any>(reservation?.damages);
   const [marks, setMarks] = useState<any>(reservation?.damages);
   let dispatch = useDispatch();
-  console.log(reservation?.damages);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 1 * 1024 * 1024; // 1MB in bytes
@@ -184,7 +183,6 @@ export default function SecondPage() {
     }
   }, [reservation.vehicle_id]);
 
-  console.log(reservation);
 
   let exteriorImg = Configurations
     ? Configurations.type?.find((item: any) => item.Type === vehicleInfo?.type)

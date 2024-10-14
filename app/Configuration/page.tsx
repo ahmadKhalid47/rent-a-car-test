@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -15,11 +15,18 @@ import configImg4 from "@/public/configImg (5).svg";
 import configImg5 from "@/public/configImg (1).svg";
 import configImg6 from "@/public/city.svg";
 import configImg7 from "@/public/country.svg";
+import { useHandleExport } from "../Components/functions/exportFunction";
+import { setConfigurations } from "../store/Configurations";
+import { SmallLoader } from "../Components/Loader";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  let Configurations = useSelector((state: RootState) => state.Configurations);
+  const [loading, setLoading] = useState<any>(false);
+  const [exportLoading, setExportLoading] = useState<any>(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -28,6 +35,39 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  const handleExport = useHandleExport();
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
+        dispatch(setConfigurations(result?.data?.wholeData));
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (myProfile._id) getData2();
+  }, [myProfile._id]);
+
+  const [exportData, setExportData] = useState<any>([]);
+
+  useEffect(() => {
+    setExportData([
+      Configurations?.Configurations?.color,
+      Configurations?.Configurations?.city,
+      Configurations?.Configurations?.country,
+      Configurations?.Configurations?.feature,
+      Configurations?.Configurations?.make,
+      Configurations?.Configurations?.model,
+      Configurations?.Configurations?.type,
+    ]);
+  }, [Configurations?.Configurations]);
+
+  let exportObj = exportData?.map((item: any) => item);
 
   return (
     <div
@@ -48,6 +88,28 @@ export default function Vehicles() {
           </span>
         </div>
         <div className="w-full h-fit">
+          <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+            {!myProfile.admin && Configurations?.Configurations && (
+              <button
+                className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
+                onClick={() => {
+                  async function exporting () {
+                    const flattenedData = exportObj?.flat();
+                    try {
+                      setExportLoading(true);
+                      await handleExport(flattenedData);
+                    } finally {
+                      setExportLoading(false);
+                    }
+                  };
+                  exporting()
+                }}
+              >
+                {exportLoading ? <SmallLoader /> : "Export Configurations"}
+              </button>
+            )}
+          </div>
+
           <div className="w-full h-fit mt-4">
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
               <Link
