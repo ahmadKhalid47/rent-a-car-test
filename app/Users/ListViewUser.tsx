@@ -218,7 +218,6 @@ export default function ListViewUsers({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start w-[4%]">ID</div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("name")}
@@ -279,7 +278,7 @@ export default function ListViewUsers({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[8%]">
+            <div className="pe-3 flex justify-end items-center w-[8%]">
               Actions{" "}
             </div>
           </div>
@@ -309,11 +308,6 @@ export default function ListViewUsers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start w-[4%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}
-                  </div>
                   <div className="text-start pe-3 truncate w-[14%]">
                     {item?.name}
                   </div>
@@ -333,7 +327,7 @@ export default function ListViewUsers({ data }: dataType) {
                     {item?.plan}
                   </div>
                   <div
-                    className="flex justify-start gap items-center w-[8%] h-full"
+                    className="flex justify-end pe-3 gap-3 items-center w-[8%] h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -343,7 +337,7 @@ export default function ListViewUsers({ data }: dataType) {
                       // src={item.active ? check.src : unCheck.src}
                       src={check.src}
                       title={item.active ? "Inactive" : "Active"}
-                      className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
+                      className="translate-y-[1px] hover:scale-[1.3]"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
@@ -351,12 +345,11 @@ export default function ListViewUsers({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
+                      className="hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         router.push(`/AddUser/${item?._id}`);
                       }}
                     />
-
                     <img
                       className="hover:scale-[1.3] cursor-pointer"
                       src={deleteIcon.src}

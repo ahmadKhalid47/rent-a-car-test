@@ -220,10 +220,7 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start items-center w-[7%] cursor-pointer">
-              ID
-            </div>{" "}
-            <div className="text-start pe-3 flex justify-between items-center w-[70%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[82%]">
               Color
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
@@ -256,12 +253,7 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-5 w-[7%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}{" "}
-                  </div>
-                  <div className="text-start flex justify-start items-center gap-4 w-[70%]">
+                  <div className="text-start flex justify-start items-center gap-4 w-[82%]">
                     <div
                       className="w-[32px] h-[18px] rounded-[5px] "
                       style={{

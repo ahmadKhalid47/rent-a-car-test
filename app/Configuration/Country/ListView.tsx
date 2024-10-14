@@ -185,7 +185,7 @@ export default function ListView({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-center w-[5%] flex justify-center items-center ">
+            <div className="text-center w-[5%]  flex justify-center items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -202,13 +202,10 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 truncate flex justify-start items-center w-[7%] cursor-pointer">
-              ID
-            </div>{" "}
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[70%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[82%] ">
               Country
             </div>
-            <div className="pe-5 flex justify-end items-center w-[13%]">
+            <div className="pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
             </div>
           </div>
@@ -224,7 +221,7 @@ export default function ListView({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="w-[5%] ps-5 flex justify-start items-center ">
+                  <div className="w-[5%]  flex justify-center items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
@@ -238,14 +235,9 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-5 w-[7%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}{" "}
-                  </div>
-                  <div className="text-start pe-3 truncate w-[70%]">{item?.country}</div>
+                  <div className="text-start pe-3 truncate w-[82%] ">{item?.country}</div>
                   <div
-                    className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
+                    className="flex justify-end pe-5 gap-[6px] items-center w-[13%]  h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -287,7 +279,7 @@ export default function ListView({ data }: dataType) {
                 </div>
                 {popup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
+                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                           Are you sure you want to delete this item ?
@@ -319,7 +311,7 @@ export default function ListView({ data }: dataType) {
                 ) : null}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
+                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                           Are you sure you want to delete these items
@@ -351,9 +343,9 @@ export default function ListView({ data }: dataType) {
                 ) : null}
                 {editPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div
-                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                        className={`w-[100%]  h-fit flex flex-col justify-start items-start gap-1`}
                       >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                           {"Update Country"}
@@ -362,7 +354,7 @@ export default function ListView({ data }: dataType) {
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <select
                             required={true}
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%]  h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                             onChange={(e) => {
                               setCountry(e.target.value);
                             }}

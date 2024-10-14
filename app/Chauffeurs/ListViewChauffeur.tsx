@@ -234,7 +234,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-center w-[3%] flex justify-center items-center ">
+            <div className="text-center w-[3%]  flex justify-center items-center ">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -248,8 +248,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start w-[4%]">ID</div>
-            <div className="text-start pe-3 flex justify-between items-center w-[17%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[17%] ">
               Full Name{" "}
               <img
                 src={arrows.src}
@@ -257,7 +256,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("name")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[12%] ">
               Phone{" "}
               <img
                 src={arrows.src}
@@ -265,7 +264,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("phone")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[15%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[15%] ">
               Email{" "}
               <img
                 src={arrows.src}
@@ -273,7 +272,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("emailAddress")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[12%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[12%] ">
               Gender{" "}
               <img
                 src={arrows.src}
@@ -281,7 +280,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("gender")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[10%] ">
               City{" "}
               <img
                 src={arrows.src}
@@ -289,7 +288,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[15%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[15%] ">
               Created At{" "}
               {/* <img
                 src={arrows.src}
@@ -297,7 +296,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 onClick={() => sort("city")}
               /> */}
             </div>{" "}
-            <div className="text-end pe-3 flex justify-end items-center w-[8%]">
+            <div className="text-end pe-3 flex justify-end items-center w-[8%] ">
               Actions{" "}
             </div>
           </div>
@@ -315,7 +314,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-center w-[3%] flex justify-center items-center ">
+                  <div className="text-center w-[3%]  flex justify-center items-center ">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -327,38 +326,33 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start w-[4%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}
-                  </div>
-                  <div className="text-start pe-3 w-[17%]">
+                  <div className="text-start pe-3 w-[17%] ">
                     {item?.data?.name}
                   </div>
                   <div
-                    className="text-start pe-3 w-[12%] truncate"
+                    className="text-start pe-3 w-[12%]  truncate"
                     title={item?.data?.phone}
                   >
                     {item?.data?.phone}
                   </div>
                   <div
-                    className="text-start pe-3 w-[15%] truncate"
+                    className="text-start pe-3 w-[15%]  truncate"
                     title={item?.data?.emailAddress}
                   >
                     {item?.data?.emailAddress}
                   </div>
 
-                  <div className="text-start pe-3 w-[12%]">
+                  <div className="text-start pe-3 w-[12%] ">
                     {item?.data?.gender}
                   </div>
-                  <div className="text-start pe-3 w-[10%]">
+                  <div className="text-start pe-3 w-[10%] ">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[15%]">
+                  <div className="text-start pe-3 truncate w-[15%] ">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
                   <div
-                    className="flex justify-end pe-3 gap items-center w-[8%] h-full"
+                    className="flex justify-end pe-3 gap items-center w-[8%]  h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -394,7 +388,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 </Link>
                 {popup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
+                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                           Are you sure you want to delete this item ?
@@ -426,7 +420,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 ) : null}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
+                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                           Are you sure you want to delete these items

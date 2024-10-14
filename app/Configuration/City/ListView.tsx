@@ -219,11 +219,10 @@ export default function ListView({ data, makeData }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start truncate w-[4%]">ID</div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[15%]">
               Country
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[55%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[67%]">
               City
             </div>
             <div className="pe-5 truncate flex justify-end items-center w-[13%]">
@@ -256,13 +255,8 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-5 w-[4%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}{" "}
-                  </div>
                   <div className="text-start pe-3 truncate w-[15%]">{item?.country}</div>
-                  <div className="text-start pe-3 truncate w-[55%]">{item?.city}</div>
+                  <div className="text-start pe-3 truncate w-[67%]">{item?.city}</div>
                   <div
                     className="flex justify-end pe-5 truncate gap-[6px] items-center w-[13%] h-full"
                     onClick={(event) => {

@@ -59,7 +59,6 @@ export default function ListViewRecentReservations({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey">
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-start w-[4%] ps-3">ID</div>
             <div
               className="text-start pe-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("customerName")}
@@ -107,9 +106,6 @@ export default function ListViewRecentReservations({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-start w-[4%] ps-3">
-                    {JSON.stringify(index).padStart(2, "0")}
-                  </div>
                   <div className="text-start pe-3 w-[14%]">
                     {item.data?.customerName}
                   </div>

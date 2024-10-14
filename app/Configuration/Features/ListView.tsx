@@ -224,10 +224,7 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 truncate flex justify-start items-center w-[7%] cursor-pointer">
-              ID
-            </div>{" "}
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[70%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[82%]">
               Feature
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
@@ -260,12 +257,7 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-5 w-[7%]">
-                    {JSON.stringify(
-                      index + (page - 1) * itemsPerPage + 1
-                    ).padStart(2, "0")}{" "}
-                  </div>
-                  <div className="text-start pe-3 truncate w-[70%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[82%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
                     <img
                       className="w-[20px] h-[20px]"
