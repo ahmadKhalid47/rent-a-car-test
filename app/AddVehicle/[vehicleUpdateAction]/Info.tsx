@@ -239,7 +239,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
         />
         <TempSelectInputLink
           setState={settypeR}
-          label={"Type"}
+          label={"Body Type"}
           value={vehicle.type}
           required={true}
           options={Configurations?.Configurations?.type?.map(

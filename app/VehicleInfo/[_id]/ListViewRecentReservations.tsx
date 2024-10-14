@@ -60,7 +60,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
             <div
-              className="text-start pe-3 flex justify-between items-center w-[14%]"
+              className="text-start ps-3 flex justify-between items-center w-[14%]"
               onClick={() => sort("customerName")}
             >
               Customer <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
@@ -106,7 +106,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-start pe-3 w-[14%]">
+                  <div className="text-start ps-3 w-[14%]">
                     {item.data?.customerName}
                   </div>
                   <div className="flex justify-start item-center gap-5 text-start pe-3 w-[16%]">

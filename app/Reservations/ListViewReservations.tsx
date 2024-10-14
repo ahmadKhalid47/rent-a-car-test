@@ -291,7 +291,7 @@ export default function ListViewreservation({ data }: dataType) {
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
                   <div
-                    className="flex justify-center items-end truncate w-[7%] "
+                    className="flex justify-center gap-3 items-end truncate w-[7%] "
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();

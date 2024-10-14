@@ -236,7 +236,7 @@ export default function ListView({ data }: dataType) {
               )}{" "}
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[82%]">
-              Type
+              Body Type
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -381,7 +381,7 @@ export default function ListView({ data }: dataType) {
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                          {"Update Type"}
+                          {"Update Body Type"}
                           <FaAsterisk className="text-[6px]" />
                         </label>
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">

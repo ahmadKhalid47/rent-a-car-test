@@ -89,7 +89,7 @@ export default function Vehicles() {
                   />
                 </div>
                 <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Type
+                  Body Type
                 </p>
               </Link>
               <Link

@@ -197,7 +197,7 @@ export default function CarInfoMainPage() {
                       <div className="flex flex-col justify-start items-start w-[160px] h-fit">
                         <div className="flex justify-start items-center w-[160px] h-[35px] bg-[#F6F6F6] border-[1px] border-black rounded-[5px] overflow-hidden">
                           <div className="w-[33px] h-[35px] bg-[#054B86]"></div>
-                          <span className="font-[600] flex justify-center items-center text-[14px] xs:text-[16px] md:text-[20px] dark:text-white text-black w-[100%]">
+                          <span className="font-[600] flex justify-center items-center text-[14px] xs:text-[16px] md:text-[20px] text-black w-[100%]">
                             {vehicleInfo?.registration}
                           </span>
                         </div>
@@ -260,12 +260,14 @@ export default function CarInfoMainPage() {
                           {vehicleInfo?.odometer
                             ?.padStart(6, "0")
                             .split("")
-                            .map((item: any) => (
+                            .map((item: any, index: any) => (
                               <>
                                 <span className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[13px]">
                                   {item}
                                 </span>
-                                <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%]"></div>
+                                {index !== 5 && (
+                                  <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%] "></div>
+                                )}
                               </>
                             ))}
                         </span>

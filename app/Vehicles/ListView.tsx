@@ -306,7 +306,7 @@ export default function ListView({ data }: dataType) {
               />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
-              Type{" "}
+              Body Type{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"

@@ -125,12 +125,12 @@ export default function Vehicles() {
       >
         <div className="w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-end">
           <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
-            Type
+            Body Type
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
               <Link href={"/Configuration"} className="hover:underline">
                 Configuration
               </Link>
-              {" / "}Type
+              {" / "}Body Type
             </span>
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
@@ -172,7 +172,7 @@ export default function Vehicles() {
                     />
                   </div>
                 </div>
-                
+
                 <div
                   className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
