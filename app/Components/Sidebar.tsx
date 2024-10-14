@@ -25,17 +25,19 @@ export default function Sidebar() {
       }
     >
       <div className="w-full h-[90px] dark:bg-dark1 bg-white flex justify-center border-b-[2px] transitions">
-        <Link
-          href={"/Dashboard"}
-          className="w-full h-full flex justify-center items-center"
-        >
-          <img
-            src={Logo.src}
-            className={`${
-              global.sidebarShow ? "w-[172px] h-[50px]" : "w-[60px] h-[25px]"
-            } mt-[30px `}
-          />
-        </Link>
+        <div className="w-full h-full flex justify-center items-center">
+          <Link
+            href={"/Dashboard"}
+            className="w-fit h-fit"
+          >
+            <img
+              src={Logo.src}
+              className={`${
+                global.sidebarShow ? "w-[172px] h-[50px]" : "w-[60px] h-[25px]"
+              }`}
+            />
+          </Link>
+        </div>
       </div>
 
       {myProfile.admin === true ? (
