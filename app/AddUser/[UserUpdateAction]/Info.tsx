@@ -31,13 +31,27 @@ import {
 } from "../../Components/InputComponents/TypeInput";
 import { useParams } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
+import { PasswordStrength } from "@/app/Components/functions/strengthChecker";
+import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
 
-export default function Info() {
+export default function Info({ score, message }: any) {
   let dispatch = useDispatch();
   let User = useSelector((state: RootState) => state.userProfile);
   const [files, setFiles] = useState<any>(User.profilePic);
   const params = useParams();
   const { UserUpdateAction } = params;
+  const [strength, setStrength] = useState<PasswordStrength>({
+    criteria: {
+      length: false,
+      lowercase: false,
+      uppercase: false,
+      number: false,
+      specialCharacter: false,
+    },
+    score: 0,
+    message: "",
+    guide: "",
+  });
 
   useEffect(() => {
     setFiles(User.profilePic);
@@ -99,7 +113,6 @@ export default function Info() {
     setFiles([]);
   }
 
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
@@ -113,6 +126,12 @@ export default function Info() {
     User.state
   );
 
+  // useEffect(() => {
+  //   const handleChange = () => {
+  //     setStrength(checkPasswordStrength(User.password));
+  //   };
+  //   UserUpdateAction === "AddNew" && handleChange();
+  // }, [User.password]);
 
   return (
     <div className="w-full h-fit  ">
@@ -186,16 +205,20 @@ export default function Info() {
         />
         {UserUpdateAction === "AddNew" ? (
           <>
-            <TempTypeInputLimit
-              setState={setpasswordR}
-              label={"Password"}
-              value={User.password}
-              required={true}
-              type={"password"}
-              minLength={6}
-              maxLength={30}
-            />
-
+            <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
+              <div className="sm:w-[208.3%] lg:w-[455%] h-fit flex flex-col justify-start items-start gap-1">
+                <TempTypeInputLimit
+                  setState={setpasswordR}
+                  label={"Password"}
+                  value={User.password}
+                  required={true}
+                  type={"password"}
+                  minLength={6}
+                  maxLength={30}
+                />
+              </div>
+              <PasswordStrengthShower score={score} message={message} />
+            </div>
             <TempTypeInputLimit
               setState={setverifyPasswordR}
               label={"Verify Password"}
