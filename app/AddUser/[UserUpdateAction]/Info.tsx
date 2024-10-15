@@ -205,7 +205,7 @@ export default function Info({ score, message }: any) {
         />
         {UserUpdateAction === "AddNew" ? (
           <>
-            <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
+            <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1 overflow-hidden">
               <div className="sm:w-[208.3%] lg:w-[455%] h-fit flex flex-col justify-start items-start gap-1">
                 <TempTypeInputLimit
                   setState={setpasswordR}
