@@ -35,12 +35,6 @@ export default function RootLayout({
       router.push("/Dashboard");
     }
   }, [isVerified, router]);
-  function theme() {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
-    }
-  }
   useEffect(() => {
     const [navigationEntry] = window.performance.getEntriesByType(
       "navigation"
@@ -63,7 +57,6 @@ export default function RootLayout({
     }
     if (isPageReload) {
       verifyTokenApi();
-      theme();
     }
   }, []);
 

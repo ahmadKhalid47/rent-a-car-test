@@ -78,9 +78,21 @@ export default function Nav() {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      dispatch(setTheme(storedTheme as "light" | "dark"));
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
+
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    const themeToApply = storedTheme === "system" ? systemTheme : storedTheme;
+
+    if (themeToApply) {
+      console.log("Nav", themeToApply as "light" | "dark");
+      dispatch(setTheme(themeToApply as "light" | "dark"));
+      document.documentElement.classList.toggle(
+        "dark",
+        themeToApply === "dark"
+      );
     }
   }, []);
 

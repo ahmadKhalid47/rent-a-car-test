@@ -102,24 +102,12 @@ export default function AddUser() {
       setSaveLoading(false);
     }
   }
-  // dark mode
-  // const [theme, setTheme] = useState<"light" | "dark">("light");
 
+  const [themeToShow, setThemeToShow] = useState<any>();
   useEffect(() => {
-    // Check user's previous theme preference
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      dispatch(setTheme(storedTheme as "light" | "dark"));
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = global.theme === "light" ? "dark" : "light";
-    dispatch(setTheme(newTheme));
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  };
+    setThemeToShow(storedTheme);
+  }, [global.theme]);
 
   return (
     <div
@@ -187,17 +175,48 @@ export default function AddUser() {
                     Dark Theme
                   </h3>
                   <span className="font-[400] text-[14px] leading-[17px]">
-                    Turn on dark mode.
+                    Turn on dark mode
                   </span>
                 </div>
                 <div className="w-[180px] h-[50px] flex justify-center items-center">
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                    <div className="w-full h-fit flex justify-end items-center relative overflow-hidden">
-                      <Switch
-                        disabled={darkModeLoading}
-                        checked={global.theme === "dark" ? true : false}
-                        onCheckedChange={toggleTheme}
-                      />
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <select
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                        value={themeToShow}
+                        onChange={(e) => {
+                          const selectedTheme = e.target.value;
+                          dispatch(
+                            setTheme(
+                              selectedTheme as "light" | "dark" | "system"
+                            )
+                          );
+                          localStorage.setItem("theme", selectedTheme);
+                          const systemTheme = window.matchMedia(
+                            "(prefers-color-scheme: dark)"
+                          ).matches
+                            ? "dark"
+                            : "light";
+                          const themeToApply =
+                            selectedTheme === "system"
+                              ? systemTheme
+                              : selectedTheme;
+                          document.documentElement.classList.toggle(
+                            "dark",
+                            themeToApply === "dark"
+                          );
+                        }}
+                      >
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="system">System</option>
+                      </select>
+                      <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                        <img
+                          src={shape.src}
+                          className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
