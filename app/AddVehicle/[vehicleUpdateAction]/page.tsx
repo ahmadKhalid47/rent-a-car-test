@@ -445,19 +445,6 @@ export default function Vehicles() {
                   Back
                 </button>
               ) : null}
-              {currentPage === 3 ? (
-                <div className="px-2 md:px-0 w-fit h-fit md:h-[44px] border-none flex justify-start items-end pb-2">
-                  <span className="text-[14px] w-full text-center">
-                    Feature Not found?{" "}
-                    <Link
-                      href={"/Configuration/Features"}
-                      className="text-[#3d84ff] no-underline hover:underline capitalize"
-                    >
-                      Add new
-                    </Link>
-                  </span>
-                </div>
-              ) : null}
             </div>
 
             <div className="w-[50%] flex justify-end item-center gap-1 md:gap-3">
