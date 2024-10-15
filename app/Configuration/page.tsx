@@ -89,7 +89,7 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            {!myProfile.admin && Configurations?.Configurations && (
+            {myProfile.admin && Configurations?.Configurations && (
               <button
                 className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
