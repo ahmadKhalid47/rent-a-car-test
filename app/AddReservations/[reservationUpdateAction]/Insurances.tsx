@@ -26,13 +26,40 @@ export default function Insurances() {
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-3 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
+        <span className="flex justify-start gap-1 items-center font-[600] text-[16px] leading-[17px] w-full mt-1">
+          Pick Up
+        </span>
         <TempTypeInputWidth
           setState={setreservationDate}
           label={"Reservation Date"}
           value={reservation.reservationDate}
           required={true}
           type={"date"}
+          widthProp="sm:w-[48%]"
+        />
+        <TempTypeInputWidth
+          setState={setPickUpDate}
+          label={"Pick Up Date"}
+          value={reservation.PickUpDate}
+          required={true}
+          type={"date"}
+          widthProp="sm:w-[48%]"
+        />
+        <TempTypeInputWidth
+          setState={setPickUpTime}
+          label={"Pick Up Time"}
+          value={reservation.PickUpTime}
+          type={"time"}
+          required={true}
+          widthProp="sm:w-[48%]"
+        />
+        <TempTypeInputWidth
+          setState={setPickUpAddress}
+          label={"Pick Up Address"}
+          value={reservation.PickUpAddress}
+          required={false}
+          type={"text"}
           widthProp="sm:w-[48%]"
         />
         <TempTypeInputWidth
@@ -75,38 +102,9 @@ export default function Insurances() {
           options={cities.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
-        <TempTypeInputWidth
-          setState={setPickUpAddress}
-          label={"Pick Up Address"}
-          value={reservation.PickUpAddress}
-          required={false}
-          type={"text"}
-          widthProp="sm:w-[48%]"
-        />
-        <TempTypeInputWidth
-          setState={setPickUpDate}
-          label={"Pick Up Date"}
-          value={reservation.PickUpDate}
-          required={true}
-          type={"date"}
-          widthProp="sm:w-[48%]"
-        />
-        <TempTypeInputWidth
-          setState={setPickUpTime}
-          label={"Pick Up Time"}
-          value={reservation.PickUpTime}
-          type={"time"}
-          required={true}
-          widthProp="sm:w-[48%]"
-        />
-        <TempTypeInputWidth
-          setState={setdropOffAddress}
-          label={"Drop Off Address"}
-          value={reservation.dropOffAddress}
-          required={false}
-          type={"text"}
-          widthProp="sm:w-[48%]"
-        />
+        <span className="flex justify-start gap-1 items-center font-[600] text-[16px] leading-[17px] w-full mt-1">
+          Drop Off
+        </span>
         <TempTypeInputWidth
           setState={setdropOffDate}
           label={"Drop Off Date"}
@@ -121,6 +119,14 @@ export default function Insurances() {
           value={reservation.dropOffTime}
           required={true}
           type={"time"}
+          widthProp="sm:w-[48%]"
+        />
+        <TempTypeInputWidth
+          setState={setdropOffAddress}
+          label={"Drop Off Address"}
+          value={reservation.dropOffAddress}
+          required={false}
+          type={"text"}
           widthProp="sm:w-[48%]"
         />
       </div>
