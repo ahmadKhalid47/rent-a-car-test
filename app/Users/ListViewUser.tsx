@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
-import { formatCreatedAtDate } from "../Components/functions/formats";
+import { formatDate } from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -338,12 +338,11 @@ export default function ListViewUsers({ data }: dataType) {
                     {item?.city}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {!formatCreatedAtDate(item?.createdAt).includes("NaN") &&
-                      formatCreatedAtDate(item?.createdAt)}
+                    {item?.createdAt && formatDate(item?.createdAt)}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {/* {!formatCreatedAtDate(item?.createdAt).includes("NaN") &&
-                      formatCreatedAtDate(item?.createdAt)} */}
+                    {/* {!formatDate(item?.createdAt).includes("NaN") &&
+                      formatDate(item?.createdAt)} */}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
                     {item?.plan}
