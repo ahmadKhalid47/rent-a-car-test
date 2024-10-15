@@ -242,7 +242,15 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Color
                         </span>
-                        <span className="">{vehicleInfo?.color}</span>
+                        <div className="flex justify-start items-center gap-2 capitalize">
+                          <div
+                            className="w-[32px] h-[18px] rounded-[5px] "
+                            style={{
+                              backgroundColor: vehicleInfo?.color,
+                            }}
+                          ></div>
+                          {vehicleInfo?.colorName}
+                        </div>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
@@ -291,6 +299,20 @@ export default function CarInfoMainPage() {
                           Country
                         </span>
                         <span className="">{vehicleInfo?.country}</span>
+                      </div>
+                    </div>
+                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                      <div className="w-[45%] flex justify-between items-center">
+                        <span className="dark:text-white text-[#555555]">
+                          Body Type
+                        </span>
+                        <span className="">{vehicleInfo?.type}</span>
+                      </div>
+                      <div className="w-[45%] flex justify-between items-center">
+                        <span className="dark:text-white text-[#555555]">
+                          Category Type
+                        </span>
+                        <span className="">{vehicleInfo?.category}</span>
                       </div>
                     </div>
                   </div>

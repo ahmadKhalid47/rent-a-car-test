@@ -32,6 +32,7 @@ import {
   setengineVolume,
   setvinNo,
   setfuelCapacity,
+  setcolorNameR,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -39,6 +40,7 @@ import { useDispatch } from "react-redux";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { ClassNames } from "@emotion/react";
+import Link from "next/link";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -134,12 +136,14 @@ export default function Info() {
   }, [files]);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(vehicle.color);
+  const [selectedOption, setSelectedOption] = useState(vehicle.colorName);
   const dropdownRef: any = useRef(null);
 
-  const handleOptionClick = (color: any) => {
-    setSelectedOption(color);
+  console.log(Configurations?.Configurations?.color);
+  const handleOptionClick = (color: any, colorName: any) => {
+    setSelectedOption(colorName);
     dispatch(setcolorR(color));
+    dispatch(setcolorNameR(colorName));
     setIsOpen(false);
   };
 
@@ -159,60 +163,11 @@ export default function Info() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  let ColorArray = [
-    { Color: "Red" },
-    { Color: "Blue" },
-    { Color: "Green" },
-    { Color: "Black" },
-    { Color: "White" },
-    { Color: "Silver" },
-    { Color: "Gray" },
-    { Color: "Yellow" },
-    { Color: "Orange" },
-    { Color: "Purple" },
-    { Color: "Brown" },
-    { Color: "Teal" },
-    { Color: "Magenta" },
-    { Color: "Navy" },
-    { Color: "Gold" },
-    { Color: "Maroon" },
-    { Color: "Olive" },
-    { Color: "Coral" },
-    { Color: "Indigo" },
-    { Color: "Violet" },
-    { Color: "Beige" },
-    { Color: "Ivory" },
-    { Color: "Cyan" },
-    { Color: "Turquoise" },
-    { Color: "Lavender" },
-    { Color: "Mint" },
-    { Color: "Chocolate" },
-    { Color: "Crimson" },
-    { Color: "Salmon" },
-    { Color: "Rose" },
-    { Color: "Amber" },
-    { Color: "SlateGray" },
-    { Color: "DarkRed" },
-    { Color: "ForestGreen" },
-    { Color: "MidnightBlue" },
-    { Color: "DarkSlateGray" },
-    { Color: "Sienna" },
-    { Color: "RoyalBlue" },
-    { Color: "SeaGreen" },
-    { Color: "SteelBlue" },
-    { Color: "LightGray" },
-    { Color: "PeachPuff" },
-    { Color: "Plum" },
-    { Color: "Khaki" },
-    { Color: "Tomato" },
-  ];
-console.log(Configurations?.Configurations?.country);
-const currentYear = new Date().getFullYear();
-const years = [];
-for (let i = currentYear +1; i >= 1995; i--) {
-  years.push(i.toString());
-}
-
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (let i = currentYear + 1; i >= 1995; i--) {
+    years.push(i.toString());
+  }
 
   return (
     <div className="w-full h-fit ">
@@ -262,9 +217,20 @@ for (let i = currentYear +1; i >= 1995; i--) {
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-            Color
+          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]"></label>
+          <label className="w-full flex justify-between gap-1 items-start font-[400] text-[14px] leading-[17px]">
+            <span className="flex justify-start gap-1 items-start">Color</span>
+            <span className="text-[12px]">
+              Not found?{" "}
+              <Link
+                href={"/Configuration/Color"}
+                className="text-[#3d84ff] no-underline hover:underline capitalize"
+              >
+                Add new
+              </Link>
+            </span>
           </label>
+
           <div className="w-full h-fit flex justify-between items-center relative circle-edit cursor-default">
             <div
               className="custom-select w-[100%] h-[43px] relative"
@@ -286,7 +252,7 @@ for (let i = currentYear +1; i >= 1995; i--) {
                 <div className="select-items absolute z-10 bg-white border border-grey rounded-xl w-full max-h-60 overflow-auto">
                   <div
                     className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
-                    onClick={() => handleOptionClick("")}
+                    onClick={() => handleOptionClick("", "")}
                   >
                     <div
                       className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
@@ -296,21 +262,25 @@ for (let i = currentYear +1; i >= 1995; i--) {
                     ></div>
                     Select
                   </div>
-                  {ColorArray.map((item: any, index: any) => (
-                    <div
-                      key={index}
-                      className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
-                      onClick={() => handleOptionClick(item.Color)}
-                    >
+                  {Configurations?.Configurations?.color?.map(
+                    (item: any, index: any) => (
                       <div
-                        className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
-                        style={{
-                          backgroundColor: item.Color,
-                        }}
-                      ></div>
-                      {item.Color}
-                    </div>
-                  ))}
+                        key={index}
+                        className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
+                        onClick={() =>
+                          handleOptionClick(item.Color, item.ColorName)
+                        }
+                      >
+                        <div
+                          className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
+                          style={{
+                            backgroundColor: item.Color,
+                          }}
+                        ></div>
+                        {item.ColorName}
+                      </div>
+                    )
+                  )}
                 </div>
               )}
             </div>

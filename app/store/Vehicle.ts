@@ -8,6 +8,7 @@ const initialState: any = {
   year: "",
   registration: "",
   color: "",
+  colorName: "",
   fuelType: "",
   transmission: "",
   odometer: "",
@@ -57,6 +58,9 @@ export const VehicleSlice = createSlice({
     },
     setcolorR: (state, action) => {
       state.color = action.payload;
+    },
+    setcolorNameR: (state, action) => {
+      state.colorName = action.payload;
     },
     setfuelTypeR: (state, action) => {
       state.fuelType = action.payload;
@@ -142,6 +146,7 @@ export const {
   setyearR,
   setregistrationR,
   setcolorR,
+  setcolorNameR,
   setfuelTypeR,
   settransmissionR,
   setodometerR,
