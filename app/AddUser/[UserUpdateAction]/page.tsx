@@ -163,8 +163,6 @@ export default function AddUser() {
   }
   async function editPassword(e: any) {
     e.preventDefault();
-    console.log(oldPassword);
-    console.log(newPassword);
     if (oldPassword === newPassword) {
       dispatch(
         setAlert("New password cannot be the same as the old password.")

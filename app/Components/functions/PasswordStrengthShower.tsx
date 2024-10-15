@@ -35,7 +35,7 @@ export default function PasswordStrengthShower({ score, message }: any) {
             : ""
         }`}
       >
-        {message}
+        {message||null}
       </span>
     </div>
   );
