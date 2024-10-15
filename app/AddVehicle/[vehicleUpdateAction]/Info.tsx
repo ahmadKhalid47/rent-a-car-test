@@ -137,6 +137,9 @@ export default function Info() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(vehicle.colorName);
+  useEffect(() => {
+    setSelectedOption(vehicle.colorName);
+  }, [vehicle.colorName]);
   const dropdownRef: any = useRef(null);
 
   console.log(Configurations?.Configurations?.color);
