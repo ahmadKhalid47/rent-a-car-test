@@ -14,7 +14,12 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
-import { formatDate } from "../Components/functions/formats";
+import {
+  addDayInDate,
+  addMonthInDate,
+  addYearInDate,
+  formatDate,
+} from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -341,11 +346,22 @@ export default function ListViewUsers({ data }: dataType) {
                     {item?.createdAt && formatDate(item?.createdAt)}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {/* {!formatDate(item?.createdAt).includes("NaN") &&
-                      formatDate(item?.createdAt)} */}
+                    {item?.plan}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {item?.plan}
+                    {item?.createdAt
+                      ? item?.plan === "3-Day Trial"
+                        ? formatDate(addDayInDate(item?.createdAt, 3))
+                        : item?.plan === "1 Month"
+                        ? formatDate(addMonthInDate(item?.createdAt, 1))
+                        : item?.plan === "3 Months"
+                        ? formatDate(addMonthInDate(item?.createdAt, 3))
+                        : item?.plan === "6 Months"
+                        ? formatDate(addMonthInDate(item?.createdAt, 6))
+                        : item?.plan === "1 Year"
+                        ? formatDate(addYearInDate(item?.createdAt, 1))
+                        : null
+                      : null}
                   </div>
                   <div
                     className="flex justify-end pe-3 gap-3 items-center w-[8%] h-full"

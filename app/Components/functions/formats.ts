@@ -36,37 +36,32 @@ export function formatId(id: any): any {
   return id.slice(-6);
 }
 export function formatListing(text: any) {
-    return text.split(/\d+\.\s/).filter(Boolean);
+  return text.split(/\d+\.\s/).filter(Boolean);
+}
+
+export const formatDuration = (days: any) => {
+  if (days >= 30) {
+    const months = Math.floor(days / 30);
+    const remainingDays = days % 30;
+    return `${months} month${months > 1 ? "s" : ""} ${
+      remainingDays > 0
+        ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
+        : ""
+    }`;
+  } else if (days >= 7) {
+    const weeks = Math.floor(days / 7);
+    const remainingDays = days % 7;
+    return `${weeks} week${weeks > 1 ? "s" : ""} ${
+      remainingDays > 0
+        ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
+        : ""
+    }`;
+  } else {
+    return `${days} day${days > 1 ? "s" : ""}`;
   }
-
-
-
-
- export const formatDuration = (days:any) => {
-    if (days >= 30) {
-      const months = Math.floor(days / 30);
-      const remainingDays = days % 30;
-      return `${months} month${months > 1 ? "s" : ""} ${
-        remainingDays > 0
-          ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
-          : ""
-      }`;
-    } else if (days >= 7) {
-      const weeks = Math.floor(days / 7);
-      const remainingDays = days % 7;
-      return `${weeks} week${weeks > 1 ? "s" : ""} ${
-        remainingDays > 0
-          ? `${remainingDays} day${remainingDays > 1 ? "s" : ""}`
-          : ""
-      }`;
-    } else {
-      return `${days} day${days > 1 ? "s" : ""}`;
-    }
 };
-  
 
-
-export function formatCreatedAtDate(timestamp:any) {
+export function formatCreatedAtDate(timestamp: any) {
   const date = new Date(timestamp);
 
   const day = String(date.getDate()).padStart(2, "0");
@@ -81,4 +76,25 @@ export function formatCreatedAtDate(timestamp:any) {
   const formattedTime = `${hours}:${minutes} ${ampm}`;
 
   return `${day}-${month}-${year}, ${formattedTime}`;
+}
+
+export function addDayInDate(baseDate: any, days: any) {
+  let date: any = new Date(baseDate);
+  date.setDate(date.getDate() + days);
+
+  return date;
+}
+
+export function addMonthInDate(baseDate: any, months: any) {
+  let date: any = new Date(baseDate);
+  date.setMonth(date.getMonth() + months);
+
+  return date;
+}
+
+export function addYearInDate(baseDate: any, years: any) {
+  let date: any = new Date(baseDate);
+  date.setFullYear(date.getFullYear() + years);
+
+  return date;
 }
