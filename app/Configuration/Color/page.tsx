@@ -25,6 +25,8 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Color, setColor] = useState("");
+  const [ColorName, setColorName] = useState("");
+  console.log(Color, ColorName);
 
   useEffect(() => {
     if (isMobile) {
@@ -60,10 +62,10 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Color.trim() === "") {
+    if (Color.trim() === "" || ColorName.trim() === "") {
       alert("Please fill the input");
       return;
-    } else if (vehiclesData.find((item) => item.Color === Color.trim())) {
+    } else if (vehiclesData.find((item) => item.ColorName === ColorName.trim())) {
       alert("This Item Already Exists");
       return;
     }
@@ -77,6 +79,7 @@ export default function Vehicles() {
       setLoading(action);
       await axios.post(`/api/saveColor`, {
         Color,
+        ColorName,
         createdBy: myProfile._id,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -84,6 +87,7 @@ export default function Vehicles() {
         setPopup(false);
       }
       setColor("");
+      setColorName("");
     } catch (err) {
       console.log(err);
     } finally {
@@ -143,7 +147,27 @@ export default function Vehicles() {
                     className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                   >
                     <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                      {"Add New"}
+                      {"Color Name"}
+                      <FaAsterisk className="text-[6px]" />
+                    </label>
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <input
+                        required={true}
+                        type={"text"}
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                        placeholder={`Enter Color Name`}
+                        onChange={(e) => {
+                          setColorName(e.target.value);
+                        }}
+                        value={ColorName}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                  >
+                    <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                      {"Color Code"}
                       <FaAsterisk className="text-[6px]" />
                     </label>
                     <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
@@ -159,7 +183,7 @@ export default function Vehicles() {
                         required={true}
                         type={"text"}
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-[45px] w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                        placeholder={`Enter Text Here`}
+                        placeholder={`Enter Color Code`}
                         onChange={(e) => {
                           setColor(e.target.value);
                         }}
@@ -175,6 +199,7 @@ export default function Vehicles() {
                       onClick={() => {
                         setPopup(false);
                         setColor("");
+                        setColorName("");
                       }}
                     >
                       <FaTimes />

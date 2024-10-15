@@ -31,8 +31,10 @@ export default function ListView({ data }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [Color, setColor] = useState("");
+  const [ColorName, setColorName] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+console.log(Color);
 
   useEffect(() => {
     // Create a copy of the data to avoid mutating the original array
@@ -134,6 +136,7 @@ export default function ListView({ data }: dataType) {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateColor/${_id}`, {
         Color,
+        ColorName,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Item Updated Successfully"));
@@ -220,8 +223,11 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[82%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[15%]">
               Color
+            </div>
+            <div className="text-start pe-3 flex justify-between items-center w-[67%]">
+              Color Name
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -253,7 +259,7 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start flex justify-start items-center gap-4 w-[82%]">
+                  <div className="text-start flex justify-start items-center gap-3 w-[15%]">
                     <div
                       className="w-[32px] h-[18px] rounded-[5px] "
                       style={{
@@ -261,6 +267,9 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                     {item?.Color}
+                  </div>
+                  <div className="text-start flex justify-start items-center gap-4 w-[67%]">
+                    {item?.ColorName}
                   </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
@@ -282,6 +291,7 @@ export default function ListView({ data }: dataType) {
                           setEditPopup(true);
                           setItemToEdit(item?._id);
                           setColor(item?.Color);
+                          setColorName(item?.ColorName);
                         }
                       }}
                     />
@@ -378,7 +388,27 @@ export default function ListView({ data }: dataType) {
                           className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                         >
                           <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                            {"Update Color"}
+                            {"Update Color Name"}
+                            <FaAsterisk className="text-[6px]" />
+                          </label>
+                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                            <input
+                              required={true}
+                              type={"text"}
+                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                              placeholder={`Enter Color Name`}
+                              onChange={(e) => {
+                                setColorName(e.target.value);
+                              }}
+                              value={ColorName}
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                        >
+                          <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                            {"Update Color Code"}
                             <FaAsterisk className="text-[6px]" />
                           </label>
                           <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
@@ -394,7 +424,7 @@ export default function ListView({ data }: dataType) {
                               required={true}
                               type={"text"}
                               className="pe-10 font-[400] text-[16px] leading-[19px] ps-[45px] w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                              placeholder={`Enter Text Here`}
+                              placeholder={`Enter Color Code`}
                               onChange={(e) => {
                                 setColor(e.target.value);
                               }}
@@ -410,6 +440,7 @@ export default function ListView({ data }: dataType) {
                             onClick={() => {
                               setEditPopup(false);
                               setColor("");
+                              setColorName("");
                             }}
                           >
                             <FaTimes />

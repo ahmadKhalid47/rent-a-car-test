@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const ColorSchema = mongoose.Schema(
   {
     Color: { type: String, required: true },
+    ColorName: { type: String, required: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

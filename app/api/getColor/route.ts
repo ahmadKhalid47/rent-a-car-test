@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const data = await ColorModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
-      .sort({ Color: 1 })
+      .sort({ ColorName: 1 })
       .lean();
 
     return NextResponse.json({

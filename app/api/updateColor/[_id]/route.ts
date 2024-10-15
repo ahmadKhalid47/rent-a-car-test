@@ -4,10 +4,18 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    let { Color } = await req.json();
+    let { Color, ColorName } = await req.json();
     let { _id } = await params.params;
     connectDb();
-    await ColorModel.updateOne({ _id: _id }, { $set: { Color: Color } });
+    await ColorModel.updateOne(
+      { _id: _id },
+      {
+        $set: {
+          Color: Color,
+          ColorName: ColorName,
+        },
+      }
+    );
     return NextResponse.json({
       success: "User Created",
     });
