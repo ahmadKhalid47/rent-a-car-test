@@ -69,6 +69,10 @@ export default function Rental({ data, loading }: dataType) {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8 overflow-auto scroll">
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
+          Select Chauffeur
+        </span>
+
         <div className="w-[100%] h-fit flex flex-wrap justify-center items-center bg-green-20 gap-y-2 gap-x-5 font-[500] text-[14px] md:text-[16px] leading-[19px] ">
           <button
             className={`pe-3 md:pe-0 w-fit md:w-[190px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-2 ps-3 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${

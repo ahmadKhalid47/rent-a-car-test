@@ -34,12 +34,15 @@ export default function Feature() {
       return newArray;
     });
   }
-  console.log(iconsDisplayArray);
 
   return (
     <div className="w-full h-fit  ">
       <div className="w-full h-fit">
         <div className="flex flex-wrap justify-start items-start gap-x-[4%] lg:gap-x-[6.66%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
+          <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
+            Feature
+          </span>
+
           {featuresDisplayArray?.map((item: any, index: any) => (
             <button
               className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] truncate px-3
@@ -63,10 +66,7 @@ export default function Feature() {
                 }
                 alt=""
               />
-              <span className="w-[90%] truncate text-start">
-
-              {item}
-              </span>
+              <span className="w-[90%] truncate text-start">{item}</span>
             </button>
           ))}
         </div>

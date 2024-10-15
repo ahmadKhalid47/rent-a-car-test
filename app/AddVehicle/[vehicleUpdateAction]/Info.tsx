@@ -175,6 +175,9 @@ export default function Info() {
   return (
     <div className="w-full h-fit ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
+          Vehicle Information
+        </span>
         <TempSelectInputLink
           setState={setmakeR}
           label={"Make"}
@@ -220,7 +223,6 @@ export default function Info() {
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
-          <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]"></label>
           <label className="w-full flex justify-between gap-1 items-start font-[400] text-[14px] leading-[17px]">
             <span className="flex justify-start gap-1 items-start">Color</span>
             <span className="text-[12px]">

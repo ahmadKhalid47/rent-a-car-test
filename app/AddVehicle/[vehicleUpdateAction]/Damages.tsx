@@ -51,7 +51,6 @@ export default function Damages() {
       ]);
     }
   }, []);
-  console.log(vehicle.damages);
 
   const thumbs: any = files.map((file: any) => (
     <div
@@ -65,11 +64,11 @@ export default function Damages() {
           className=" w-[64px] h-[64px]"
         />
       </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate text-center">
+      <span className="w-[64px] truncate font-[400] text-[10px] leading-[12px] text-grey text-center">
         {file.name}
       </span>
       <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
+        className="cursor-pointer truncate font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
         onClick={() => removing(file)}
       >
         <FaTimesCircle />
@@ -164,197 +163,201 @@ export default function Damages() {
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit  ">
-        <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 relative">
-          <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10 ">
-            <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
-              <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  exterior
-                    ? "bg-main-blue text-white"
-                    : "dark:bg-dark1 bg-white dark:text-white text-black"
-                }`}
-                onClick={() => setExterior(true)}
-              >
-                {exterior ? (
-                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
-                    <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
-                  </div>
-                ) : (
-                  <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
-                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
-                  </div>
-                )}
-                Exterior
-              </button>
-              <button
-                className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
-                  !exterior
-                    ? "bg-main-blue text-white"
-                    : "dark:bg-dark1 bg-white dark:text-white text-black"
-                }`}
-                onClick={() => setExterior(false)}
-              >
-                {!exterior ? (
-                  <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
-                    <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
-                  </div>
-                ) : (
-                  <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
-                    <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
-                  </div>
-                )}
-                Interior
-              </button>
-            </div>
-            <div className="w-fit mx-auto mt-10 h-full flex  justify-center items-center p-0">
-              <div className="w-[326px] h-fit sm:h-[408px]  relative Damage-Zooming">
-                {exterior ? (
-                  <div className="w-[326px] h-[408px] relative">
+        <div className="flex flex-wrap justify-start items-start gap-x-[4% w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- px-1 xs:px-3 md:px-11 py-8 relative">
+          <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
+            Damages
+          </span>
+          <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] pe- relative">
+            <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10 ">
+              <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
+                <button
+                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center truncate font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                    exterior
+                      ? "bg-main-blue text-white"
+                      : "dark:bg-dark1 bg-white dark:text-white text-black"
+                  }`}
+                  onClick={() => setExterior(true)}
+                >
+                  {exterior ? (
+                    <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                      <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
+                    </div>
+                  ) : (
+                    <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                      <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                    </div>
+                  )}
+                  Exterior
+                </button>
+                <button
+                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center truncate font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                    !exterior
+                      ? "bg-main-blue text-white"
+                      : "dark:bg-dark1 bg-white dark:text-white text-black"
+                  }`}
+                  onClick={() => setExterior(false)}
+                >
+                  {!exterior ? (
+                    <div className="w-[20px] h-[20px] bg-main-blue rounded-full flex justify-center items-center border-[2px] border-white">
+                      <div className="w-[10px] h-[10px] dark:bg-dark1 bg-white rounded-full"></div>
+                    </div>
+                  ) : (
+                    <div className="w-[20px] h-[20px] dark:bg-dark1 bg-white rounded-full flex justify-center items-center border-[2px] border-black">
+                      <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
+                    </div>
+                  )}
+                  Interior
+                </button>
+              </div>
+              <div className="w-fit mx-auto mt-10 h-full flex  justify-center items-center p-0">
+                <div className="w-[326px] h-fit sm:h-[408px]  relative Damage-Zooming">
+                  {exterior ? (
+                    <div className="w-[326px] h-[408px] relative">
+                      <img
+                        src={exteriorImg}
+                        className="w-[326px] h-[408px] cursor-pointer bg-white"
+                        onClick={(e) => {
+                          handleClick(e, true);
+                        }}
+                      />
+                    </div>
+                  ) : (
                     <img
-                      src={exteriorImg}
-                      className="w-[326px] h-[408px] cursor-pointer bg-white"
+                      src={interiorImg}
+                      className="w-[326px] h-[408px] bg-white"
                       onClick={(e) => {
-                        handleClick(e, true);
+                        handleClick(e, false);
                       }}
                     />
-                  </div>
-                ) : (
-                  <img
-                    src={interiorImg}
-                    className="w-[326px] h-[408px] bg-white"
-                    onClick={(e) => {
-                      handleClick(e, false);
-                    }}
-                  />
-                )}
-                {vehicle?.damages?.map((mark: any, index: any) => (
-                  <>
-                    {exterior ? (
-                      mark.exterior ? (
-                        <div
-                          className={`absolute w-[15px] h-[15px] rounded-full ${
-                            mark.degree === "Low"
-                              ? "bg-green-400 "
-                              : mark.degree === "Medium"
-                              ? "bg-yellow-300"
-                              : mark.degree === "High"
-                              ? "bg-orange-500"
-                              : mark.degree === "Very High"
-                              ? "bg-red-500"
-                              : ""
-                          } text-[8px] flex justify-center items-center font-[600]`}
-                          key={index}
-                          style={{
-                            top: `${mark.y}%`,
-                            left: `${mark.x}%`,
-                          }}
-                        >
-                          {index + 1}
-                        </div>
-                      ) : null
-                    ) : !exterior ? (
-                      !mark.exterior ? (
-                        <div
-                          className={`absolute w-[15px] h-[15px] rounded-full ${
-                            mark.degree === "Low"
-                              ? "bg-green-400 "
-                              : mark.degree === "Medium"
-                              ? "bg-yellow-300"
-                              : mark.degree === "High"
-                              ? "bg-orange-500"
-                              : mark.degree === "Very High"
-                              ? "bg-red-500"
-                              : ""
-                          } text-[8px] flex justify-center items-center font-[600]`}
-                          key={index}
-                          style={{
-                            top: `${mark.y}%`,
-                            left: `${mark.x}%`,
-                          }}
-                        >
-                          {index + 1}
-                        </div>
-                      ) : null
-                    ) : null}
-                  </>
-                ))}
+                  )}
+                  {vehicle?.damages?.map((mark: any, index: any) => (
+                    <>
+                      {exterior ? (
+                        mark.exterior ? (
+                          <div
+                            className={`absolute w-[15px] h-[15px] rounded-full ${
+                              mark.degree === "Low"
+                                ? "bg-green-400 "
+                                : mark.degree === "Medium"
+                                ? "bg-yellow-300"
+                                : mark.degree === "High"
+                                ? "bg-orange-500"
+                                : mark.degree === "Very High"
+                                ? "bg-red-500"
+                                : ""
+                            } text-[8px] flex justify-center items-center truncate font-[600]`}
+                            key={index}
+                            style={{
+                              top: `${mark.y}%`,
+                              left: `${mark.x}%`,
+                            }}
+                          >
+                            {index + 1}
+                          </div>
+                        ) : null
+                      ) : !exterior ? (
+                        !mark.exterior ? (
+                          <div
+                            className={`absolute w-[15px] h-[15px] rounded-full ${
+                              mark.degree === "Low"
+                                ? "bg-green-400 "
+                                : mark.degree === "Medium"
+                                ? "bg-yellow-300"
+                                : mark.degree === "High"
+                                ? "bg-orange-500"
+                                : mark.degree === "Very High"
+                                ? "bg-red-500"
+                                : ""
+                            } text-[8px] flex justify-center items-center truncate font-[600]`}
+                            key={index}
+                            style={{
+                              top: `${mark.y}%`,
+                              left: `${mark.x}%`,
+                            }}
+                          >
+                            {index + 1}
+                          </div>
+                        ) : null
+                      ) : null}
+                    </>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="w-[100%] 900:w-[60%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
-            <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
-              
-              <div className="w-full h-[60px] flex justify-between items-center py-[3px] border-b-[2px">
-                <span className="w-[80px] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                  Image
-                </span>
-                <span className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                  No
-                </span>
-                <span className="w-[20%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                  Damage Type
-                </span>
-                <span className="w-[15%] font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                  Position
-                </span>
-                <span className="w-[35%] md:w-[100px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                  Degree
-                </span>
-                <span className="text-transparent font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
-                  <FaTrash />
-                </span>
-              </div>
-
-              {vehicle?.damages?.map((item: any, key: number) => (
-                <div className="w-full h-[60px] mt-1 flex justify-between items-end border-b-[2px]">
-                  <img
-                    className="w-[80px] h-[50px] mb-2 font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none rounded-[5px]"
-                    src={
-                      item?.files[0] instanceof File
-                        ? URL.createObjectURL(item?.files[0])
-                        : item?.files[0]
-                    }
-                  />
-                  <span className="pb-2 w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
-                    {JSON.stringify(key + 1).padStart(2, "0")}{" "}
+            <div className="w-[100%] 900:w-[60%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+              <div className="w-[100%] h-fit flex flex-col justify-start items-start px-5">
+                <div className="w-full h-[60px] flex justify-between items-center py-[3px] border-b-[2px">
+                  <span className="w-[80px] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                    Image
                   </span>
-                  <span className="pb-2 w-[20%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
-                    {item?.damageType}
+                  <span className="w-[20%] md:w-[25px]  truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                    No
                   </span>
-                  <span className="pb-2 w-[15%] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
-                    {item?.exterior ? "Exterior" : "Interior"}
+                  <span className="w-[23%] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                    Damage Type
                   </span>
-                  <span className="pb-2 w-[35%] md:w-[100px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
-                    {item?.degree}
+                  <span className="w-[15%] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                    Position
                   </span>
-                  <span
-                    className="pb-2 font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end hover:scale-[1.3] cursor-pointer"
-                    onClick={() => handleDelete(key)}
-                  >
-                    <FaTrash className="text-red-600 " />
+                  <span className="w-[35%] md:w-[100px]  truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                    Degree
+                  </span>
+                  <span className="text-transparent truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                    <FaTrash />
                   </span>
                 </div>
-              ))}
-              {vehicle.damages.length === 0 ? (
-                <span className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
-                  Tap on the vehicle's part to add damage
-                </span>
-              ) : null}
+
+                {vehicle?.damages?.map((item: any, key: number) => (
+                  <div className="w-full h-[60px] mt-1 flex justify-between items-end border-b-[2px]">
+                    <img
+                      className="w-[80px] h-[50px] mb-2 truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none rounded-[5px]"
+                      src={
+                        item?.files[0] instanceof File
+                          ? URL.createObjectURL(item?.files[0])
+                          : item?.files[0]
+                      }
+                    />
+                    <span className="pb-2 w-[20%] md:w-[25px] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
+                      {JSON.stringify(key + 1).padStart(2, "0")}{" "}
+                    </span>
+                    <span className="pb-2 w-[23%] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
+                      {item?.damageType}
+                    </span>
+                    <span className="pb-2 w-[15%] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
+                      {item?.exterior ? "Exterior" : "Interior"}
+                    </span>
+                    <span className="pb-2 w-[35%] md:w-[100px] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
+                      {item?.degree}
+                    </span>
+                    <span
+                      className="pb-2 truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end hover:scale-[1.3] cursor-pointer"
+                      onClick={() => handleDelete(key)}
+                    >
+                      <FaTrash className="text-red-600 " />
+                    </span>
+                  </div>
+                ))}
+                {vehicle.damages.length === 0 ? (
+                  <span className="mx-auto mt-10 md:mt-[35%] truncate font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
+                    Tap on the vehicle's part to add damage
+                  </span>
+                ) : null}
+              </div>
             </div>
+            <div className="absolute left-[40%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
           </div>
-          <div className="absolute left-[40%] hidden 900:block border-e-2 top-0 border-grey h-full"></div>
         </div>
       </div>
       {popup ? (
         <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
           <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
             <div className="w-full sm:w-[181px] h-fit flex flex-col justify-start items-start gap-1">
-              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+              <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Damage Type
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                 <select
-                  className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                  className="pe-10 truncate font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   onChange={(e) => {
                     setDamageType(e.target.value);
                   }}
@@ -373,12 +376,12 @@ export default function Damages() {
               </div>
             </div>
             <div className="w-full sm:w-[181px] h-fit flex flex-col justify-start items-start gap-1">
-              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+              <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Degree
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                 <select
-                  className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                  className="pe-10 truncate font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   onChange={(e) => {
                     setDegree(e.target.value);
                   }}
@@ -398,12 +401,12 @@ export default function Damages() {
               </div>
             </div>
             {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+              <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Description
               </label>
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                 <textarea
-                  className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                  className="w-full pe-2 py-3 truncate font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   rows={3}
                   cols={6}
                   value={description}
@@ -415,7 +418,7 @@ export default function Damages() {
               </div>
             </div> */}
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit dark:bg-dark1 bg-white mt- p">
-              <h3 className="font-[400] text-[14px] leading-[17px] dark:text-white text-black w-[100%]">
+              <h3 className="truncate font-[400] text-[14px] leading-[17px] dark:text-white text-black w-[100%]">
                 Add Images
               </h3>
               <div
@@ -425,14 +428,14 @@ export default function Damages() {
                 <input {...getInputProps()} />
 
                 <img src={upload.src} />
-                <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
+                <h4 className="truncate font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
                   Drag & Drop or{" "}
                   <span className="text-link-blue cursor-pointer">
                     choose file
                   </span>{" "}
                   to upload
                 </h4>
-                <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
+                <h4 className="truncate font-[400] text-[14px] leading-[17px] text-[#515978]">
                   Select JPG or PNG
                 </h4>
               </div>
@@ -443,7 +446,7 @@ export default function Damages() {
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
               <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  truncate font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   setPopup(false);
                   cancelPop();
@@ -452,7 +455,7 @@ export default function Damages() {
                 Cancel
               </button>
               <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  truncate font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => save()}
               >
                 Save
