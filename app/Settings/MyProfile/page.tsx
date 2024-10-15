@@ -14,7 +14,7 @@ import {
   setSidebarShowR,
 } from "@/app/store/Global";
 import { useState } from "react";
-import { FaPlusCircle, FaTimes } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaPlusCircle, FaTimes } from "react-icons/fa";
 import axios, { AxiosResponse } from "axios";
 import { Alert } from "@mui/material";
 import { MediumLoader, SmallLoader } from "@/app/Components/Loader";
@@ -30,6 +30,7 @@ import {
   checkPasswordStrength,
   PasswordStrength,
 } from "@/app/Components/functions/strengthChecker";
+import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
 
 export default function Profile() {
   let global = useSelector((state: RootState) => state.Global);
@@ -45,6 +46,7 @@ export default function Profile() {
   const [newPassword, setNewPassword] = useState<any>("");
   const [editPopup, setEditPopup] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [strength, setStrength] = useState<PasswordStrength>({
     criteria: {
       length: false,
@@ -58,10 +60,9 @@ export default function Profile() {
     guide: "",
   });
   const router = useRouter();
+  console.log(newPassword, strength);
   async function editPassword(e: any) {
     e.preventDefault();
-    console.log(oldPassword);
-    console.log(newPassword);
     if (oldPassword === newPassword) {
       dispatch(
         setAlert("New password cannot be the same as the old password.")
@@ -150,7 +151,6 @@ export default function Profile() {
     const pwd = e.target.value;
     setStrength(checkPasswordStrength(pwd));
   };
-  console.log(myProfile?.profilePic);
 
   return (
     <div
@@ -273,7 +273,7 @@ export default function Profile() {
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
-                          type={"password"}
+                          type={!showPassword ? "Password" : "text"}
                           minLength={6}
                           maxLength={30}
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
@@ -283,6 +283,17 @@ export default function Profile() {
                           }}
                           value={oldPassword}
                         />
+                        {!showPassword ? (
+                          <FaEyeSlash
+                            className="absolute right-5 text-[20px] cursor-pointer"
+                            onClick={(e: any) => setShowPassword(!showPassword)}
+                          />
+                        ) : (
+                          <FaEye
+                            className="absolute right-5 text-[20px] cursor-pointer"
+                            onClick={(e: any) => setShowPassword(!showPassword)}
+                          />
+                        )}
                       </div>
                     </div>
                     <div
@@ -295,7 +306,6 @@ export default function Profile() {
                       <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                         <input
                           required={true}
-                          type={"password"}
                           minLength={6}
                           maxLength={30}
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
@@ -307,32 +317,11 @@ export default function Profile() {
                           value={newPassword}
                         />
                       </div>
-                      <div className="w-full flex flex-col justify-start items-start mt-4">
-                        {Object.entries(strength.criteria).map(
-                          ([key, isMet]) => (
-                            <label key={key} className="flex items-center mb-1">
-                              <input
-                                type="checkbox"
-                                checked={isMet}
-                                readOnly
-                                className={
-                                  isMet ? "text-green-600" : "text-red-600"
-                                }
-                              />
-                              <span
-                                className={`ml-2 ${
-                                  isMet ? "text-green-600" : "text-red-600"
-                                }`}
-                              >
-                                {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
-                                {/* {isMet ? "✔️" : "❌"} */}
-                              </span>
-                            </label>
-                          )
-                        )}
-                      </div>
+                      <PasswordStrengthShower
+                        score={strength?.score}
+                        message={strength?.message}
+                      />
                     </div>
-
                     <div
                       className={`w-full flex justify-end gap-4 items-center pt-4`}
                     >

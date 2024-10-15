@@ -17,6 +17,7 @@ import {
   checkPasswordStrength,
   PasswordStrength,
 } from "@/app/Components/functions/strengthChecker";
+import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
@@ -206,36 +207,10 @@ export default function ResetPassword() {
                           )}
                         </div>
                       </div>
-
-                      <div className="w-full flex flex-col justify-start items-start">
-                        <div className="flex flex-col">
-                          {Object.entries(strength.criteria).map(
-                            ([key, isMet]) => (
-                              <label
-                                key={key}
-                                className="flex items-center mb-1"
-                              >
-                                <input
-                                  type="checkbox"
-                                  checked={isMet}
-                                  readOnly
-                                  className={
-                                    isMet ? "text-green-600" : "text-red-600"
-                                  }
-                                />
-                                <span
-                                  className={`ml-2 ${
-                                    isMet ? "text-green-600" : "text-red-600"
-                                  }`}
-                                >
-                                  {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
-                                  {/* {isMet ? "✔️" : "❌"} */}
-                                </span>
-                              </label>
-                            )
-                          )}
-                        </div>
-                      </div>
+                      <PasswordStrengthShower
+                        score={strength?.score}
+                        message={strength?.message}
+                      />
 
                       <button
                         type="submit"

@@ -26,12 +26,16 @@ export function checkPasswordStrength(password: string): PasswordStrength {
   let guide = "";
 
   // Overall strength message
-  if (score === 5) {
-    message = "Strong password";
-  } else if (score >= 3) {
-    message = "Your password is medium strength.";
-  } else {
-    message = "Your password is weak.";
+  if (score ===1 ) {
+    message = "Very Weak";
+  } else if (score === 2) {
+    message = "Weak";
+  } else if (score === 3) {
+    message = "Medium";
+  } else if (score === 4) {
+    message = "Strong";
+  } else if (score === 5) {
+    message = "Very Strong";
   }
 
   // Guide for unmet criteria

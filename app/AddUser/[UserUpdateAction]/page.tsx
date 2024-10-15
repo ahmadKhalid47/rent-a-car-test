@@ -18,6 +18,7 @@ import {
   PasswordStrength,
 } from "@/app/Components/functions/strengthChecker";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
 
 export default function AddUser() {
   const params = useParams();
@@ -135,7 +136,6 @@ export default function AddUser() {
 
   async function updateData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(User.profilePic);
     try {
       setLoading(true);
 
@@ -362,26 +362,10 @@ export default function AddUser() {
                     value={newPassword}
                   />
                 </div>
-                <div className="w-full flex flex-col justify-start items-start mt-4">
-                  {Object.entries(strength.criteria).map(([key, isMet]) => (
-                    <label key={key} className="flex items-center mb-1">
-                      <input
-                        type="checkbox"
-                        checked={isMet}
-                        readOnly
-                        className={isMet ? "text-green-600" : "text-red-600"}
-                      />
-                      <span
-                        className={`ml-2 ${
-                          isMet ? "text-green-600" : "text-red-600"
-                        }`}
-                      >
-                        {key.charAt(0).toUpperCase() + key.slice(1)}{" "}
-                        {/* {isMet ? "✔️" : "❌"} */}
-                      </span>
-                    </label>
-                  ))}
-                </div>
+                <PasswordStrengthShower
+                  score={strength?.score}
+                  message={strength?.message}
+                />
               </div>
 
               <div
