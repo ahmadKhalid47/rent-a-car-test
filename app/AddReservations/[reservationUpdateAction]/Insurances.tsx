@@ -25,8 +25,9 @@ export default function Insurances() {
   let { countries, cities } = CountryCity(reservation.country);
 
   return (
-    <div className="w-full h-full">
-      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-3 w-full h-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
+    <div className="w-full h-full bg-red-40">
+      <div className="flex flex-col justify-between items-start gap-x-[4%] gap-y- w-full h-full dark:bg-dark1 bg-whit mt-5 bg-yellow-30 rounded-[10px] border- border-grey">
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-4 w-full h-fit dark:bg-dark1 bg-white mt- rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[16px] leading-[17px] w-full mt-1">
           Pick Up
         </span>
@@ -102,6 +103,9 @@ export default function Insurances() {
           options={cities.map((item: any) => item.label)}
           widthProp="sm:w-[48%]"
         />
+      </div>
+
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-4 w-full h-fit dark:bg-dark1 bg-white mt- rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[16px] leading-[17px] w-full mt-1">
           Drop Off
         </span>
@@ -129,6 +133,7 @@ export default function Insurances() {
           type={"text"}
           widthProp="sm:w-[48%]"
         />
+      </div>
       </div>
     </div>
   );
