@@ -209,11 +209,11 @@ export default function AddUser() {
                     VAT Percentage{" "}
                   </h3>
                   <span className="font-[400] text-[14px] leading-[17px]">
-                    You can VAT percentage (%){" "}
+                    You can change VAT percentage (%){" "}
                   </span>
                 </div>
                 <div className="w-[180px] h-[50px] flex justify-center items-center">
-                  <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                  <div className="w-[100%] h-fit flex flex-col justify-center items-center gap-1 relative">
                     <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                       <input
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
@@ -224,6 +224,7 @@ export default function AddUser() {
                         type="number"
                       />
                     </div>
+                    <div className="absolute right-3">%</div>
                   </div>
                 </div>
               </div>
