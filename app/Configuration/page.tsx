@@ -18,6 +18,7 @@ import configImg7 from "@/public/country.svg";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { setConfigurations } from "../store/Configurations";
 import { SmallLoader } from "../Components/Loader";
+import ExcelUploader from "../Components/functions/ImportData";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -89,11 +90,12 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            {myProfile.admin && Configurations?.Configurations && (
+            <ExcelUploader />
+            {Configurations?.Configurations && (
               <button
-                className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
+                className="hover:no-underline w-fit px-3 md:px-6 h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
-                  async function exporting () {
+                  async function exporting() {
                     const flattenedData = exportObj?.flat();
                     try {
                       setExportLoading(true);
@@ -101,8 +103,8 @@ export default function Vehicles() {
                     } finally {
                       setExportLoading(false);
                     }
-                  };
-                  exporting()
+                  }
+                  exporting();
                 }}
               >
                 {exportLoading ? <SmallLoader /> : "Export Configurations"}
