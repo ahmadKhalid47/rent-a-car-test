@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
+import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 
 interface dataType {
   data: Array<Object>;
@@ -200,19 +201,25 @@ export default function ListView({ data }: dataType) {
       >
         <span>
           {userData.length > 0 && (
-            <button
-              className={`${
-                itemToDeleteMany.length < 1
-                  ? ""
-                  : "cursor-pointer hover:underline"
-              }`}
-              onClick={() => {
-                setDeleteManyPopup(true);
-              }}
-              disabled={itemToDeleteMany.length < 1 ? true : false}
-            >
-              Delete Multiple
-            </button>
+            <>
+              <button
+                className={`${
+                  itemToDeleteMany.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+              <ActiveButtonMultiple
+                itemToDeleteMany={itemToDeleteMany}
+                model={"Type"}
+              />
+            </>
           )}{" "}
         </span>
       </h3>

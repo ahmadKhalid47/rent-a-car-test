@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
+import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 
 interface dataType {
   data: Array<Object>;
@@ -174,6 +175,7 @@ export default function ListView({ data, makeData }: dataType) {
     (item: any) => item?.createdBy === myProfile._id
   );
   let { countries, cities } = CountryCity(Make);
+  console.log(itemToDeleteMany);
 
   return (
     <div className="w-full h-fit mt-4 relative">
@@ -184,19 +186,26 @@ export default function ListView({ data, makeData }: dataType) {
       >
         <span>
           {userData.length > 0 && (
-            <button
-              className={`${
-                itemToDeleteMany.length < 1
-                  ? ""
-                  : "cursor-pointer hover:underline"
-              }`}
-              onClick={() => {
-                setDeleteManyPopup(true);
-              }}
-              disabled={itemToDeleteMany.length < 1 ? true : false}
-            >
-              Delete Multiple
-            </button>
+            <>
+              {" "}
+              <button
+                className={`${
+                  itemToDeleteMany.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+              <ActiveButtonMultiple
+                itemToDeleteMany={itemToDeleteMany}
+                model={"City"}
+              />
+            </>
           )}{" "}
         </span>
       </h3>
