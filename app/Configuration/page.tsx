@@ -93,7 +93,7 @@ export default function Vehicles() {
             <ExcelUploader />
             {Configurations?.Configurations && (
               <button
-                className="hover:no-underline w-fit px-3 md:px-6 h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]"
+                className="hover:no-underline w-[210px] h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
                   async function exporting() {
                     const flattenedData = exportObj?.flat();
