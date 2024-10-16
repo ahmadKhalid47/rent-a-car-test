@@ -283,7 +283,7 @@ function PrintCom({ data, id }: any) {
                         Discount:
                       </div>
                       <div className="w-[25%] h-fit flex justify-start items-center">
-                        ${Number(data.discount)}
+                        {Number(data.discount)}%
                       </div>
                     </div>
                   )}

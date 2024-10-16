@@ -45,7 +45,6 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
   let discount: any = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
-  console.log(discount);
 
   const Invoicing = useSelector((state: RootState) => state.Invoicing);
   const global = useSelector((state: RootState) => state.Global);
@@ -156,7 +155,15 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
   useEffect(() => {
     dispatch(
       setamount(
-        JSON.stringify(varTotalAmount(varPerNum, totalAmount) - discount)
+        JSON.stringify(
+          Number(varTotalAmount(varPerNum, totalAmount)) -
+            Number(
+              getDiscountedPrice(
+                Number(varTotalAmount(varPerNum, totalAmount)),
+                discount
+              )
+            )
+        )
       )
     );
   }, [
@@ -171,6 +178,8 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
     carRentPerHours,
     discount,
   ]);
+
+  console.log(reservation?.amount);
 
   useEffect(() => {
     async function getData() {
@@ -195,7 +204,6 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
     daysBetween || timeBetween
       ? reservation?.carTotal + reservation?.chauffeurTotal
       : 0;
-  console.log(reservation?.amount);
   function varTotalAmount(varPer: any, total: any) {
     let tempvar = (total * varPer) / 100;
     return tempvar + total;
