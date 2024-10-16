@@ -142,7 +142,6 @@ export default function Info() {
   }, [vehicle.colorName]);
   const dropdownRef: any = useRef(null);
 
-  console.log(Configurations?.Configurations?.color);
   const handleOptionClick = (color: any, colorName: any) => {
     setSelectedOption(colorName);
     dispatch(setcolorR(color));
