@@ -4,6 +4,7 @@ const ColorSchema = mongoose.Schema(
   {
     Color: { type: String, required: true },
     ColorName: { type: String, required: true },
+    active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

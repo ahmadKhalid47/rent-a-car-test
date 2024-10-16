@@ -4,6 +4,7 @@ const ModelSchema = mongoose.Schema(
   {
     model: { type: String, required: true },
     make: { type: String },
+    active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

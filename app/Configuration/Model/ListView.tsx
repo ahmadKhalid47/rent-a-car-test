@@ -12,6 +12,7 @@ import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import ActiveButton from "@/app/Components/functions/ActiveButton";
 
 interface dataType {
   data: Array<Object>;
@@ -249,7 +250,9 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[10%] truncate">{item?.make}</div>
+                  <div className="text-start pe-3 w-[10%] truncate">
+                    {item?.make}
+                  </div>
                   <div className="text-start pe-3 w-[72%]">{item?.model}</div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
@@ -258,6 +261,12 @@ export default function ListView({ data, makeData }: dataType) {
                       event.stopPropagation();
                     }}
                   >
+                    <ActiveButton
+                      active={item?.active}
+                      _id={item?._id}
+                      model={"Model"}
+                    />
+
                     <img
                       src={edit.src}
                       title="Edit"

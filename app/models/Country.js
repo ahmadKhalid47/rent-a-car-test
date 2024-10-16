@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const CountrySchema = mongoose.Schema(
   {
     country: { type: String, required: true },
+    active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

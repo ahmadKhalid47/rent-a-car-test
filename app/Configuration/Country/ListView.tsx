@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import { CountryCity } from "@/app/Components/functions/CountryStateCity";
+import ActiveButton from "@/app/Components/functions/ActiveButton";
 
 interface dataType {
   data: Array<Object>;
@@ -235,7 +236,9 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 truncate w-[82%] ">{item?.country}</div>
+                  <div className="text-start pe-3 truncate w-[82%] ">
+                    {item?.country}
+                  </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%]  h-full"
                     onClick={(event) => {
@@ -243,6 +246,12 @@ export default function ListView({ data }: dataType) {
                       event.stopPropagation();
                     }}
                   >
+                    <ActiveButton
+                      active={item?.active}
+                      _id={item?._id}
+                      model={"Country"}
+                    />
+
                     <img
                       src={edit.src}
                       title="Edit"

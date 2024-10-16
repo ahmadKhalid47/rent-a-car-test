@@ -11,6 +11,7 @@ import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import ActiveButton from "@/app/Components/functions/ActiveButton";
 
 interface dataType {
   data: Array<Object>;
@@ -276,6 +277,12 @@ export default function ListView({ data }: dataType) {
                       event.stopPropagation();
                     }}
                   >
+                    <ActiveButton
+                      active={item?.active}
+                      _id={item?._id}
+                      model={"Type"}
+                    />
+
                     <img
                       src={edit.src}
                       title="Edit"

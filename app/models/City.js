@@ -4,6 +4,7 @@ const CitySchema = mongoose.Schema(
   {
     city: { type: String, required: true },
     country: { type: String },
+    active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Registration",

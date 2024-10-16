@@ -12,6 +12,7 @@ import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import ActiveButton from "@/app/Components/functions/ActiveButton";
 
 interface dataType {
   data: Array<Object>;
@@ -278,6 +279,12 @@ console.log(Color);
                       event.stopPropagation();
                     }}
                   >
+                    <ActiveButton
+                      active={item?.active}
+                      _id={item?._id}
+                      model={"Color"}
+                    />
+
                     <img
                       src={edit.src}
                       title="Edit"
