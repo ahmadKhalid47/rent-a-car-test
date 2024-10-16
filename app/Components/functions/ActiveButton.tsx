@@ -36,7 +36,7 @@ export default function ActiveButton({ active, _id, model }: any) {
     <img
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
-      className="me-[8px] translate-y-[1px] hover:scale-[1.3]"
+      className="me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer"
       onClick={() => {
         updateActive(_id, active);
       }}
