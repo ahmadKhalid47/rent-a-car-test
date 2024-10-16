@@ -24,7 +24,12 @@ export async function POST(req: Request) {
 
     const queryData = async (model:any) => {
       return model
-        .find({ $or: [{ createdBy }, { createdBy: adminCheck._id }] })
+        .find({
+          $or: [
+            { createdBy, active: true },
+            { createdBy: adminCheck._id, active: true },
+          ],
+        })
         .sort({ _id: -1 })
         .lean();
     };
