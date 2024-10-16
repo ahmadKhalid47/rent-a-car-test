@@ -87,7 +87,6 @@ export default function Nav() {
     const themeToApply = storedTheme === "system" ? systemTheme : storedTheme;
 
     if (themeToApply) {
-      console.log("Nav", themeToApply as "light" | "dark");
       dispatch(setTheme(themeToApply as "light" | "dark"));
       document.documentElement.classList.toggle(
         "dark",
