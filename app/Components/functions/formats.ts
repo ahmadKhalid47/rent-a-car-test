@@ -98,3 +98,16 @@ export function addYearInDate(baseDate: any, years: any) {
 
   return date;
 }
+
+
+
+
+export function getDiscountedPrice(totalValue: any, discountValue: any) {
+  if (discountValue < 0 || discountValue > 100) {
+    return "Invalid discount value";
+  }
+
+  const discountAmount = (totalValue * discountValue) / 100;
+
+  return discountAmount;
+}

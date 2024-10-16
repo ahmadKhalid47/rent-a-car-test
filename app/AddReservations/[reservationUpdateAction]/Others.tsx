@@ -16,6 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
 import axios from "axios";
+import { getDiscountedPrice } from "@/app/Components/functions/formats";
 
 interface dataType {
   customerData: any;
@@ -41,9 +42,11 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
   let carRentPerMonths = isNaN(Number(vehicleData?.rentMonth))
     ? 0
     : Number(vehicleData?.rentMonth);
-  let discount = isNaN(Number(reservation.discount))
+  let discount: any = isNaN(Number(reservation.discount))
     ? 0
     : Number(reservation.discount);
+  console.log(discount);
+
   const Invoicing = useSelector((state: RootState) => state.Invoicing);
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
@@ -305,22 +308,25 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
             </>
           )}
 
-          <TempTypeInputWidth
-            setState={setdiscount}
-            label={"Any Discount"}
-            value={reservation.discount}
-            required={false}
-            type={"number"}
-            widthProp="sm:w-full"
-          />
+          <div className="w-full h-fit relative">
+            <TempTypeInputWidth
+              setState={setdiscount}
+              label={"Any Discount %"}
+              value={reservation.discount}
+              required={false}
+              type={"number"}
+              widthProp="sm:w-full"
+            />
+          </div>
+
           <div className="border-b-[1px] border-grey w-full "></div>
 
           {reservation?.discount ? (
             <div className="w-full flex justify-between items-center h-fit">
               <span>Discount</span>
               <span>
-                {global.currentCurrency}
-                {reservation?.discount.toLocaleString("en-US")}
+                {/* {global.currentCurrency} */}
+                {discount}%
               </span>
             </div>
           ) : null}
@@ -331,7 +337,13 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
               {isNaN(reservation?.carTotal)
                 ? 0
                 : (
-                    varTotalAmount(varPerNum, totalAmount) - discount
+                    Number(varTotalAmount(varPerNum, totalAmount)) -
+                    Number(
+                      getDiscountedPrice(
+                        Number(varTotalAmount(varPerNum, totalAmount)),
+                        discount
+                      )
+                    )
                   ).toLocaleString("en-US")}
             </span>
           </div>
