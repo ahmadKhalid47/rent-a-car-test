@@ -69,7 +69,6 @@ export default function Vehicles() {
   }, [Configurations?.Configurations]);
 
   let exportObj = exportData?.map((item: any) => item);
-  console.log(Configurations?.Configurations);
 
   return (
     <div
