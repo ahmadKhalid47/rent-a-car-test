@@ -312,7 +312,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Category Type
                         </span>
-                        <span className="">{vehicleInfo?.category}</span>
+                        <span className="">{vehicleInfo?.Category}</span>
                       </div>
                     </div>
                   </div>
