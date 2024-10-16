@@ -47,7 +47,7 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
       >
         Active
       </span>
-      <span className="ps-1"></span> / <span className="ps-1"></span>
+<span className="px-1">/</span>
       <span
         className={`${
           itemToDeleteMany?.length < 1 ? "" : "cursor-pointer hover:underline"
