@@ -90,7 +90,6 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            <ExcelUploader />
             {Configurations?.Configurations && (
               <button
                 className="hover:no-underline w-[210px] h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]"
@@ -110,6 +109,7 @@ export default function Vehicles() {
                 {exportLoading ? <SmallLoader /> : "Export Configurations"}
               </button>
             )}
+            <ExcelUploader />
           </div>
 
           <div className="w-full h-fit mt-4">
