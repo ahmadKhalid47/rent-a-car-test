@@ -12,7 +12,6 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
   const dispatch = useDispatch();
   const global = useSelector((state: RootState) => state.Global);
 
-
   async function UpdateActiveManyItem(active: boolean) {
     try {
       let result: any = await axios.post(`/api/updateManyActiveConfiguration`, {
@@ -43,11 +42,12 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
           itemToDeleteMany?.length < 1 ? "" : "cursor-pointer hover:underline"
         }`}
         onClick={() => {
-            UpdateActiveManyItem(true);
+          UpdateActiveManyItem(true);
         }}
       >
-        Active /
+        Active
       </span>
+      <span className="ps-1"></span> / <span className="ps-1"></span>
       <span
         className={`${
           itemToDeleteMany?.length < 1 ? "" : "cursor-pointer hover:underline"
