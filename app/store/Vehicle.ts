@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: any = {
   vehicleId: "",
   make: "",
+  Category: "",
   model: "",
   type: "",
   year: "",
@@ -43,6 +44,9 @@ export const VehicleSlice = createSlice({
     },
     setmakeR: (state, action) => {
       state.make = action.payload;
+    },
+    setCategoryR: (state, action) => {
+      state.Category = action.payload;
     },
     setmodelR: (state, action) => {
       state.model = action.payload;
@@ -141,6 +145,7 @@ export const VehicleSlice = createSlice({
 export const {
   setvehicleIdR,
   setmakeR,
+  setCategoryR,
   setmodelR,
   settypeR,
   setyearR,

@@ -1,6 +1,7 @@
 import connectDb from "@/app/models/connectDb";
 import ColorModel from "@/app/models/Color";
 import MakeModel from "@/app/models/Make";
+import CategoryModel from "@/app/models/Category";
 import ModelModel from "@/app/models/Model";
 import FeatureModel from "@/app/models/Feature";
 import TypeModel from "@/app/models/Type";
@@ -35,10 +36,11 @@ export async function POST(req: Request) {
     };
 
     // Parallelize the queries
-    const [color, make, model, feature, type, country, city] =
+    const [color, make, Category, model, feature, type, country, city] =
       await Promise.all([
         queryData(ColorModel),
         queryData(MakeModel),
+        queryData(CategoryModel),
         queryData(ModelModel),
         queryData(FeatureModel),
         queryData(TypeModel),
@@ -49,6 +51,7 @@ export async function POST(req: Request) {
     const wholeData = {
       color,
       make,
+      Category,
       model,
       feature,
       type,

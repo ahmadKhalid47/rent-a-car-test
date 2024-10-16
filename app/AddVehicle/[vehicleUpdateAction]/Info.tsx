@@ -33,6 +33,7 @@ import {
   setvinNo,
   setfuelCapacity,
   setcolorNameR,
+  setCategoryR,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -177,6 +178,16 @@ export default function Info() {
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
           Vehicle Information
         </span>
+        <TempSelectInputLink
+          setState={setCategoryR}
+          label={"Category"}
+          value={vehicle.Category}
+          required={true}
+          options={Configurations?.Configurations?.Category?.map(
+            (item: any) => item.Category
+          )}
+          link={"/Configuration/Category"}
+        />
         <TempSelectInputLink
           setState={setmakeR}
           label={"Make"}
