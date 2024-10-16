@@ -41,18 +41,14 @@ export async function POST(req: Request) {
     if (existingUser) {
       // Specify which field is already taken
       if (existingUser.username === username) {
-        return NextResponse.json(
-          {
-            error: `Username "${username}" already exists`,
-          }
-        );
+        return NextResponse.json({
+          error: `Username "${username}" already exists`,
+        });
       }
       if (existingUser.email === email) {
-        return NextResponse.json(
-          {
-            error: `Email "${email}" already exists`,
-          }
-        );
+        return NextResponse.json({
+          error: `Email "${email}" already exists`,
+        });
       }
     }
 
@@ -60,7 +56,7 @@ export async function POST(req: Request) {
       profilePic && Array.isArray(profilePic) ? profilePic[0] : "noProfile";
     let hashedPassword = await hashPassword(password);
 
-    await new registrationModel({
+    let savedData = await new registrationModel({
       profilePic: profilePicString,
       username,
       firstName: name,
@@ -76,7 +72,9 @@ export async function POST(req: Request) {
       password: hashedPassword,
       admin: false,
       address: "address",
+      expiryDate: "address",
     }).save();
+    console.log(savedData);
 
     return NextResponse.json({
       success: "User Created",

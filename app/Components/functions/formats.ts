@@ -111,3 +111,33 @@ export function getDiscountedPrice(totalValue: any, discountValue: any) {
 
   return discountAmount;
 }
+
+
+
+export function isPlanExpired(plan: string, createdAt: string): boolean {
+  const date = new Date(createdAt);
+  const currentDate = new Date();
+
+  switch (plan) {
+    case "3-Day Trial":
+      date.setDate(date.getDate() + 3);
+      break;
+    case "1 Month":
+      date.setMonth(date.getMonth() + 1);
+      break;
+    case "3 Months":
+      date.setMonth(date.getMonth() + 3);
+      break;
+    case "6 Months":
+      date.setMonth(date.getMonth() + 6);
+      break;
+    case "1 Year":
+      date.setFullYear(date.getFullYear() + 1);
+      break;
+    default:
+      throw new Error("Invalid plan selected");
+  }
+
+  // Check if the plan has expired by comparing the expiry date with the current date
+  return currentDate > date;
+}

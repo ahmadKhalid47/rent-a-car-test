@@ -3,6 +3,7 @@ import RegistrationModel from "@/app/models/registration";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { setTokenToCookies } from "@/app/registration/auth";
+import { isPlanExpired } from "@/app/Components/functions/formats";
 
 export async function POST(req: Request) {
   async function verifyPassword(inputPassword: any, hashedPassword: any) {
@@ -11,15 +12,20 @@ export async function POST(req: Request) {
   }
   try {
     let { username, password, rememberMe } = await req.json();
-    console.log("api_____", rememberMe);
     connectDb();
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: username }],
     });
+    console.log(loginData);
+    console.log(isPlanExpired(loginData.plan, loginData.createdAt));
 
     if (!loginData) {
       return NextResponse.json({
         error: "User not found",
+      });
+    } else if (isPlanExpired(loginData.plan, loginData.createdAt)) {
+      return NextResponse.json({
+        error: "Your account is deactivated, please contact support",
       });
     } else {
       if (!(await verifyPassword(password, loginData.password))) {

@@ -212,7 +212,6 @@ export default function AddUser() {
     const pwd = e.target.value;
     setStrength(checkPasswordStrength(pwd));
   };
-console.log(User.password, strength);
 
   return (
     <div
@@ -268,9 +267,7 @@ console.log(User.password, strength);
           onKeyDown={handleKeyDown}
           className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >
-          <Info
-                      score={strength?.score}
-            message={strength?.message}/>
+          <Info score={strength?.score} message={strength?.message} />
 
           <div
             className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-1 md:gap-3 justify-end items-center`}

@@ -19,6 +19,7 @@ const RegistrationSchema = new mongoose.Schema(
     state: { type: String, required: false, default: "" },
     city: { type: String, required: false, default: "" },
     plan: { type: String, required: true, default: "" },
+    expiryDate: { type: String, required: true, default: "" },
     password: { type: String, required: true, default: "" },
     admin: { type: Boolean, required: true, default: false },
     address: { type: String, required: false },
