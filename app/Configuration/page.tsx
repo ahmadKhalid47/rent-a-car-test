@@ -69,6 +69,7 @@ export default function Vehicles() {
   }, [Configurations?.Configurations]);
 
   let exportObj = exportData?.map((item: any) => item);
+  console.log(Configurations?.Configurations);
 
   return (
     <div
@@ -90,25 +91,28 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="h-fit w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            {Configurations?.Configurations && (
-              <button
-                className="hover:no-underline w-[210px] h-[44px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]"
-                onClick={() => {
-                  async function exporting() {
-                    const flattenedData = exportObj?.flat();
-                    try {
-                      setExportLoading(true);
-                      await handleExport(flattenedData);
-                    } finally {
-                      setExportLoading(false);
-                    }
+            <button
+              className={`hover:no-underline w-[210px] h-[44px] rounded-[10px] text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px] bg-main-blue`}
+              onClick={() => {
+                async function exporting() {
+                  const flattenedData = exportObj?.flat();
+                  try {
+                    setExportLoading(true);
+                    await handleExport(flattenedData);
+                  } finally {
+                    setExportLoading(false);
                   }
-                  exporting();
-                }}
-              >
-                {exportLoading ? <SmallLoader /> : "Export Configurations"}
-              </button>
-            )}
+                }
+                exporting();
+              }}
+              disabled={!Configurations?.Configurations}
+            >
+              {exportLoading || !Configurations?.Configurations ? (
+                <SmallLoader />
+              ) : (
+                "Export Configurations"
+              )}
+            </button>
             <ExcelUploader />
           </div>
 
