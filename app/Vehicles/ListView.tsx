@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { formatCreatedAtDate } from "../Components/functions/formats";
+import { PaginationComponent } from "../Components/functions/Pagination";
 
 interface dataType {
   data: Array<Object>;
@@ -89,35 +90,6 @@ export default function ListView({ data }: dataType) {
     setCurrentSortKey(key);
   };
 
-  function PaginationRounded() {
-    return (
-      <Stack spacing={2}>
-        <Pagination
-          count={totalPages}
-          shape="rounded"
-          page={page}
-          onChange={handleChange}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              "&.Mui-selected": {
-                backgroundColor: "#0094DA",
-                color: "white",
-                "&:hover": {
-                  opacity: 0.8,
-                },
-              },
-            },
-            "& .MuiPaginationItem-previousNext": {
-              color: "#878787",
-              "&:hover": {
-                opacity: 0.8,
-              },
-            },
-          }}
-        />
-      </Stack>
-    );
-  }
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
@@ -536,7 +508,11 @@ export default function ListView({ data }: dataType) {
           {Math.min(page * itemsPerPage, data.length)} of {data.length} data
         </div>
         <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <PaginationRounded />
+          <PaginationComponent
+            totalPages={totalPages}
+            page={page}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>

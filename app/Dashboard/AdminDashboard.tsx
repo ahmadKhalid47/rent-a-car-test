@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { Pagination, Stack } from "@mui/material";
 import { FaEllipsisH } from "react-icons/fa";
+import { PaginationComponent } from "../Components/functions/Pagination";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -214,35 +215,6 @@ export default function AdminDashboard() {
     setPage(value);
   };
 
-  function PaginationRounded() {
-    return (
-      <Stack spacing={2}>
-        <Pagination
-          count={totalPages}
-          shape="rounded"
-          page={page}
-          onChange={handleChange}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              "&.Mui-selected": {
-                backgroundColor: "#0094DA",
-                color: "white",
-                "&:hover": {
-                  opacity: 0.8,
-                },
-              },
-            },
-            "& .MuiPaginationItem-previousNext": {
-              color: "#878787",
-              "&:hover": {
-                opacity: 0.8,
-              },
-            },
-          }}
-        />
-      </Stack>
-    );
-  }
   return (
     <div
       className={`${
@@ -318,40 +290,58 @@ export default function AdminDashboard() {
                           className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
                           onClick={() => sort("make")}
                         >
-                          Name <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+                          Name{" "}
+                          <img
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 2 cursor-pointer"
                           onClick={() => sort("registration")}
                         >
-                          Username <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+                          Username{" "}
+                          <img
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[20%] 3 cursor-pointer"
                           onClick={() => sort("year")}
                         >
-                          Email <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+                          Email{" "}
+                          <img
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[18%] 4 cursor-pointer"
                           onClick={() => sort("type")}
                         >
-                          Company <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+                          Company{" "}
+                          <img
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 6 cursor-pointer"
                           onClick={() => sort("color")}
                         >
-                          Expiry Date <img src={arrows.src} className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"/>
+                          Expiry Date{" "}
+                          <img
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
                         </div>
                         <div className="text-center flex justify-center items-center w-[10%] pe-5 5">
                           Actions{" "}
                         </div>
                       </div>
                       {paginatedData.length < 1 ? (
-                        <span className="p-3">
-                          No Vehicles found.
-                        </span>
+                        <span className="p-3">No Vehicles found.</span>
                       ) : (
                         paginatedData.map((item: any, index: number) => (
                           <div key={index} className="w-full">
@@ -400,7 +390,11 @@ export default function AdminDashboard() {
                       {data.length} data
                     </div>
                     <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-                      <PaginationRounded />
+                      <PaginationComponent
+                        totalPages={totalPages}
+                        page={page}
+                        handleChange={handleChange}
+                      />
                     </div>
                   </div>
                 </div>

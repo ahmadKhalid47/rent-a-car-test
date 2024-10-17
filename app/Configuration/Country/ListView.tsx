@@ -15,6 +15,7 @@ import { FaAsterisk, FaTimes } from "react-icons/fa";
 import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
+import { PaginationComponent } from "@/app/Components/functions/Pagination";
 
 interface dataType {
   data: Array<Object>;
@@ -63,35 +64,6 @@ export default function ListView({ data }: dataType) {
     page * itemsPerPage
   );
 
-  function PaginationRounded() {
-    return (
-      <Stack spacing={2}>
-        <Pagination
-          count={totalPages}
-          shape="rounded"
-          page={page}
-          onChange={handleChange}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              "&.Mui-selected": {
-                backgroundColor: "#0094DA",
-                color: "white",
-                "&:hover": {
-                  opacity: 0.8,
-                },
-              },
-            },
-            "& .MuiPaginationItem-previousNext": {
-              color: "#878787",
-              "&:hover": {
-                opacity: 0.8,
-              },
-            },
-          }}
-        />
-      </Stack>
-    );
-  }
 
   async function deleteItem(_id: any) {
     try {
@@ -419,7 +391,11 @@ export default function ListView({ data }: dataType) {
           {Math.min(page * itemsPerPage, data.length)} of {data.length} data
         </div>
         <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <PaginationRounded />
+          <PaginationComponent
+            totalPages={totalPages}
+            page={page}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>

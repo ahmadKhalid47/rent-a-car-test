@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SmallLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import image404 from "@/public/image404.png";
+import { PaginationComponent } from "../Components/functions/Pagination";
 
 interface dataType {
   data: Array<Object>;
@@ -41,35 +42,6 @@ export default function GridView({ data }: dataType) {
   );
   const router = useRouter();
 
-  function PaginationRounded() {
-    return (
-      <Stack spacing={2}>
-        <Pagination
-          count={totalPages}
-          shape="rounded"
-          page={page}
-          onChange={handleChange}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              "&.Mui-selected": {
-                backgroundColor: "#0094DA",
-                color: "white",
-                "&:hover": {
-                  opacity: 0.8,
-                },
-              },
-            },
-            "& .MuiPaginationItem-previousNext": {
-              color: "#878787",
-              "&:hover": {
-                opacity: 0.8,
-              },
-            },
-          }}
-        />
-      </Stack>
-    );
-  }
   const content = (
     <div className="flex flex-col justify-start items-start">
       Delete Edit Active
@@ -271,7 +243,11 @@ export default function GridView({ data }: dataType) {
           Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
           {Math.min(page * itemsPerPage, data.length)} of {data.length} data
         </div>
-        <PaginationRounded />
+        <PaginationComponent
+          totalPages={totalPages}
+          page={page}
+          handleChange={handleChange}
+        />
       </div>
     </div>
   );
