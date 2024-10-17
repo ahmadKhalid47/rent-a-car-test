@@ -1,6 +1,7 @@
 import connectDb from "@/app/models/connectDb";
 import CityModel from "@/app/models/City";
 import MakeModel from "@/app/models/Make";
+import CategoryModel from "@/app/models/Category";
 import ModelModel from "@/app/models/Model";
 import CountryModel from "@/app/models/Country";
 import FeatureModel from "@/app/models/Feature";
@@ -25,6 +26,7 @@ async function ensureDbConnection() {
 // Utility to dynamically fetch the correct Mongoose model
 const modelsMap: { [key: string]: any } = {
   make: MakeModel,
+  category: CategoryModel,
   model: ModelModel,
   city: CityModel,
   country: CountryModel,
@@ -60,6 +62,9 @@ export async function POST(req: Request) {
       await req.json();
 
     const Model = modelsMap[modelName.toLowerCase()];
+
+    console.log(modelsMap);
+
     if (!Model) {
       return NextResponse.json(
         { error: "Invalid model name" },
