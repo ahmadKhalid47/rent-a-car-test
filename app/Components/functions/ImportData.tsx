@@ -1,5 +1,5 @@
 import { RootState } from "@/app/store";
-import { setVehicleDataReloader } from "@/app/store/Global";
+import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,7 @@ const ExcelUpload = ({ model }: any) => {
         modelName: model,
       });
       console.log(result);
+      dispatch(setAlert("Data Imported Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
       console.log(err);

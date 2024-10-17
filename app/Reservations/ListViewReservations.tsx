@@ -95,7 +95,7 @@ export default function ListViewreservation({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deletereservation/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Reservation Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -112,7 +112,7 @@ export default function ListViewreservation({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Reservations Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {

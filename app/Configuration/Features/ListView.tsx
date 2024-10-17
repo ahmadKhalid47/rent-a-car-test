@@ -71,7 +71,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.delete(`/api/deleteFeature/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Feature Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -89,7 +89,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Features Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -119,7 +119,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Updated Successfully"));
+      dispatch(setAlert("Selective Feature Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {

@@ -72,7 +72,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.delete(`/api/deleteColor/${_id}`);
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Color Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -89,7 +89,7 @@ export default function ListView({ data }: dataType) {
         _ids: itemToDeleteMany,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Colors Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -112,7 +112,7 @@ export default function ListView({ data }: dataType) {
         ColorName,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Updated Successfully"));
+      dispatch(setAlert("Selective Color Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {

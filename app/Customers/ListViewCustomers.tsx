@@ -94,7 +94,7 @@ export default function ListViewCustomers({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCustomer/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Customer Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -111,7 +111,7 @@ export default function ListViewCustomers({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Customers Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -145,12 +145,12 @@ export default function ListViewCustomers({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Updated Successfully"));
+      dispatch(setAlert("Selective Customer Updated Successfully"));
       dispatch(
         setAlert(
           !active
-            ? "Selective Item Activated Successfully"
-            : "Selective Item Deactivated Successfully"
+            ? "Selective Customer Activated Successfully"
+            : "Selective Customer Deactivated Successfully"
         )
       );
     } catch (err) {
@@ -172,8 +172,8 @@ export default function ListViewCustomers({ data }: dataType) {
       dispatch(
         setAlert(
           active
-            ? "Selective Items Activated Successfully"
-            : "Selective Items Deactivated Successfully"
+            ? "Selective Customers Activated Successfully"
+            : "Selective Customers Deactivated Successfully"
         )
       );
     } catch (err) {

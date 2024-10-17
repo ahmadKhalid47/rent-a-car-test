@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import axios from "axios";
 import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
@@ -84,7 +84,7 @@ export default function Vehicles() {
         createdBy: myProfile._id,
       });
       console.log(result);
-      // setModelReloader(ModelReloader + 1);
+      dispatch(setAlert("Model Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);

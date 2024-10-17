@@ -70,7 +70,7 @@ export default function ListView({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCountry/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Country Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -87,7 +87,7 @@ export default function ListView({ data }: dataType) {
         _ids: itemToDeleteMany,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Countries Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -104,7 +104,7 @@ export default function ListView({ data }: dataType) {
         country,
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Updated Successfully"));
+      dispatch(setAlert("Selective Country Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {

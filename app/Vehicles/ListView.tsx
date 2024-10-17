@@ -95,7 +95,7 @@ export default function ListView({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Item Deleted Successfully"));
+      dispatch(setAlert("Selective Vehicle Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -112,7 +112,7 @@ export default function ListView({ data }: dataType) {
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Items Deleted Successfully"));
+      dispatch(setAlert("Selective Vehicles Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
@@ -149,8 +149,8 @@ export default function ListView({ data }: dataType) {
       dispatch(
         setAlert(
           !active
-            ? "Selective Item Activated Successfully"
-            : "Selective Item Deactivated Successfully"
+            ? "Selective Vehicle Activated Successfully"
+            : "Selective Vehicle Deactivated Successfully"
         )
       );
     } catch (err) {
@@ -171,8 +171,8 @@ export default function ListView({ data }: dataType) {
       dispatch(
         setAlert(
           active
-            ? "Selective Items Activated Successfully"
-            : "Selective Items Deactivated Successfully"
+            ? "Selective Vehicles Activated Successfully"
+            : "Selective Vehicles Deactivated Successfully"
         )
       );
     } catch (err) {
