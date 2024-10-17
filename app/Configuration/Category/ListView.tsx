@@ -249,7 +249,9 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[82%] ">{item?.Category}</div>
+                  <div className="text-start pe-3 w-[82%] ">
+                    {item?.Category}
+                  </div>
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {
@@ -261,6 +263,7 @@ export default function ListView({ data }: dataType) {
                       active={item?.active}
                       _id={item?._id}
                       model={"Category"}
+                      admin={item?.createdBy === myProfile._id}
                     />
                     <img
                       src={edit.src}

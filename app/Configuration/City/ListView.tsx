@@ -282,6 +282,7 @@ export default function ListView({ data, makeData }: dataType) {
                       active={item?.active}
                       _id={item?._id}
                       model={"City"}
+                      admin={item?.createdBy === myProfile._id}
                     />
 
                     <img

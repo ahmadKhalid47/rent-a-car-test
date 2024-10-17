@@ -290,6 +290,7 @@ export default function ListView({ data }: dataType) {
                       active={item?.active}
                       _id={item?._id}
                       model={"Color"}
+                      admin={item?.createdBy === myProfile._id}
                     />
 
                     <img

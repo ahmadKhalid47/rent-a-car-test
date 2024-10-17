@@ -6,8 +6,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-export default function ActiveButton({ active, _id, model }: any) {
-  console.log(active, _id, model);
+export default function ActiveButton({ active, _id, model, admin }: any) {
+  console.log(admin);
   const dispatch = useDispatch();
   const global = useSelector((state: RootState) => state.Global);
 
@@ -17,7 +17,6 @@ export default function ActiveButton({ active, _id, model }: any) {
         active: !active,
         model,
       });
-      console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(
@@ -36,9 +35,13 @@ export default function ActiveButton({ active, _id, model }: any) {
     <img
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
-      className="me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer"
+      className={`me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer ${
+        admin ? "hover:scale-[1.3] cursor-pointer" : "grayscale opacity-50"
+      }`}
       onClick={() => {
-        updateActive(_id, active);
+        if (admin) {
+          updateActive(_id, active);
+        }
       }}
     />
   );
