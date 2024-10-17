@@ -5,7 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { setVehicleDataReloader } from "../store/Global";
+import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 // import { SmallLoader } from "../Loader";
@@ -62,6 +62,7 @@ export default function GridView({ data }: dataType) {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Selective Vehicle Deleted Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
