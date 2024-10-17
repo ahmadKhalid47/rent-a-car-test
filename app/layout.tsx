@@ -20,7 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-
+  let [c, setC] = useState(0);
+  console.log(c);
+  useEffect(() => {
+    setC(c + 1);
+  }, []);
   const pathName = usePathname();
   const [isVerified, setIsVerified] = useState<any>(undefined);
   // const [isVerified, setIsVerified] = useState<any>(true);
@@ -35,14 +39,8 @@ export default function RootLayout({
       router.push("/Dashboard");
     }
   }, [isVerified, router]);
+
   useEffect(() => {
-    const [navigationEntry] = window.performance.getEntriesByType(
-      "navigation"
-    ) as PerformanceNavigationTiming[];
-
-    const isPageReload =
-      navigationEntry?.type === "reload" || document.referrer === "";
-
     async function verifyTokenApi() {
       try {
         setLoading(true);
@@ -55,9 +53,7 @@ export default function RootLayout({
         setLoading(false);
       }
     }
-    if (isPageReload) {
-      verifyTokenApi();
-    }
+    verifyTokenApi();
   }, []);
 
   return (
