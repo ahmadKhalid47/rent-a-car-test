@@ -20,8 +20,8 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
       dispatch(
         setAlert(
           !active
-            ? "Selective Item Activated Successfully"
-            : "Selective Item Deactivated Successfully"
+            ? `Selective ${model==="Type"?"Body Type":model} Activated Successfully`
+            : `Selective ${model==="Type"?"Body Type":model} Deactivated Successfully`
         )
       );
     } catch (err) {
