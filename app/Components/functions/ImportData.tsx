@@ -1,23 +1,22 @@
 import { RootState } from "@/app/store";
 import { setVehicleDataReloader } from "@/app/store/Global";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as XLSX from "xlsx";
 import { SmallLoader } from "../Loader";
 
 const ExcelUpload = ({ model }: any) => {
-  const [data, setData] = useState<any>();
-  const [loading, setLoading] = useState<any>(false);
-  let dispatch = useDispatch();
-  let myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let global = useSelector((state: RootState) => state.Global);
+  const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  const global = useSelector((state: RootState) => state.Global);
 
-  async function saveImport() {
+  async function saveImport(jsonData: any) {
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/saveImport`, {
-        data: data,
+        data: jsonData,
         createdBy: myProfile._id,
         modelName: model,
       });
@@ -27,13 +26,13 @@ const ExcelUpload = ({ model }: any) => {
       console.log(err);
     } finally {
       setLoading(false);
-      setData(undefined);
     }
   }
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = (e) => {
       const data = new Uint8Array(e.target?.result as ArrayBuffer);
@@ -41,16 +40,16 @@ const ExcelUpload = ({ model }: any) => {
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
       console.log(jsonData);
-      setData(jsonData);
-    };
-    reader.readAsArrayBuffer(file);
-  };
 
-  useEffect(() => {
-    if (data) {
-      saveImport();
-    }
-  }, [data]);
+      // Call saveImport with jsonData
+      saveImport(jsonData);
+    };
+
+    reader.readAsArrayBuffer(file);
+
+    // Reset the file input after reading the file
+    event.target.value = "";
+  };
 
   return (
     <div className="w-fit relative cursor-pointer overflow-hidden rounded-[6px] bg-main-blue hover:opacity-[0.9] active:opacity-[0.9]">

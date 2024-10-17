@@ -35,17 +35,25 @@ const modelsMap: { [key: string]: any } = {
   type: TypeModel,
 };
 
+// Filter out unwanted fields from the data
+function filterData(data: DataItem) {
+  const { createdAt, createdBy, updatedAt, _id, __v, ...filteredData } = data;
+  return filteredData;
+}
+
 // Function to save data if not already existing based on `createdBy`
-async function saveIfNotExists(
-  Model: any,
-  query: any,
-  data: any,
-  createdBy: string
-) {
-  const existing = await Model.findOne({ ...query, createdBy });
-  if (!existing) {
-    const newData = new Model(data);
+async function saveData(Model: any, data: DataItem, createdBy: string) {
+  const filteredData = filterData(data); // Filter out unwanted fields
+
+  // Check if the data already exists for the same createdBy
+  const existingData = await Model.findOne({ ...filteredData, createdBy });
+
+  if (!existingData) {
+    const newData = new Model({ ...filteredData, createdBy });
     await newData.save();
+    console.log("data saved: ", filteredData);
+  } else {
+    console.log("data already exists, skipping: ", filteredData);
   }
 }
 
@@ -63,8 +71,6 @@ export async function POST(req: Request) {
 
     const Model = modelsMap[modelName.toLowerCase()];
 
-    console.log(modelsMap);
-
     if (!Model) {
       return NextResponse.json(
         { error: "Invalid model name" },
@@ -73,14 +79,13 @@ export async function POST(req: Request) {
     }
 
     const savePromises = data.map(async (item) => {
-      const query = buildQuery(item); // Create a dynamic query for the item
-      await saveIfNotExists(Model, query, { ...item, createdBy }, createdBy);
+      await saveData(Model, item, createdBy);
     });
 
     // Wait for all save operations to complete
     await Promise.all(savePromises);
 
-    return NextResponse.json({ success: "Data saved successfully!" });
+    return NextResponse.json({ success: "Data processed successfully!" });
   } catch (err) {
     console.error("Error processing request: ", err);
     return NextResponse.json(
@@ -92,9 +97,10 @@ export async function POST(req: Request) {
 
 // Helper function to build query dynamically based on data
 function buildQuery(item: DataItem) {
+  const filteredItem = filterData(item); // Filter out unwanted fields
   const query: any = {};
-  Object.keys(item).forEach((key) => {
-    query[key] = item[key];
+  Object.keys(filteredItem).forEach((key) => {
+    query[key] = filteredItem[key];
   });
   return query;
 }
