@@ -8,6 +8,7 @@ import FeatureModel from "@/app/models/Feature";
 import ColorModel from "@/app/models/Color";
 import TypeModel from "@/app/models/Type";
 import { NextResponse } from "next/server";
+import RegistrationModel from "@/app/models/registration";
 
 interface DataItem {
   [key: string]: any; // Generic structure to handle all types of data
@@ -41,19 +42,40 @@ function filterData(data: DataItem) {
   return filteredData;
 }
 
-// Function to save data if not already existing based on `createdBy`
-async function saveData(Model: any, data: DataItem, createdBy: string) {
+// Function to save data if conditions are met
+async function saveData(
+  Model: any,
+  data: DataItem,
+  createdBy: string,
+  isAdmin: boolean
+) {
   const filteredData = filterData(data); // Filter out unwanted fields
 
-  // Check if the data already exists for the same createdBy
-  const existingData = await Model.findOne({ ...filteredData, createdBy });
+  // Check if the data already exists for the same createdBy only if user is admin
+  if (isAdmin) {
+    const existingData = await Model.findOne({ ...filteredData, createdBy });
 
-  if (!existingData) {
-    const newData = new Model({ ...filteredData, createdBy });
-    await newData.save();
-    console.log("data saved: ", filteredData);
+    if (!existingData) {
+      const newData = new Model({ ...filteredData, createdBy });
+      await newData.save();
+      console.log("data saved: ", filteredData);
+    } else {
+      console.log("data already exists for admin, skipping: ", filteredData);
+    }
   } else {
-    console.log("data already exists, skipping: ", filteredData);
+    // If not admin, save only if it doesn't already exist
+    const existingData = await Model.findOne({ ...filteredData });
+
+    if (!existingData) {
+      const newData = new Model({ ...filteredData, createdBy });
+      await newData.save();
+      console.log("data saved: ", filteredData);
+    } else {
+      console.log(
+        "data already exists for non-admin, skipping: ",
+        filteredData
+      );
+    }
   }
 }
 
@@ -78,8 +100,12 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check if createdBy user is an admin
+    const registration = await RegistrationModel.findById(createdBy);
+    const isAdmin = registration ? registration.admin : false; // Assuming `admin` is a boolean field
+
     const savePromises = data.map(async (item) => {
-      await saveData(Model, item, createdBy);
+      await saveData(Model, item, createdBy, isAdmin);
     });
 
     // Wait for all save operations to complete
