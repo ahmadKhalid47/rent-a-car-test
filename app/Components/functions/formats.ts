@@ -99,9 +99,6 @@ export function addYearInDate(baseDate: any, years: any) {
   return date;
 }
 
-
-
-
 export function getDiscountedPrice(totalValue: any, discountValue: any) {
   if (discountValue < 0 || discountValue > 100) {
     return "Invalid discount value";
@@ -111,8 +108,6 @@ export function getDiscountedPrice(totalValue: any, discountValue: any) {
 
   return discountAmount;
 }
-
-
 
 export function isPlanExpired(plan: string, createdAt: string): boolean {
   const date = new Date(createdAt);
@@ -134,8 +129,6 @@ export function isPlanExpired(plan: string, createdAt: string): boolean {
     case "1 Year":
       date.setFullYear(date.getFullYear() + 1);
       break;
-    default:
-      throw new Error("Invalid plan selected");
   }
 
   // Check if the plan has expired by comparing the expiry date with the current date
