@@ -315,7 +315,7 @@ export default function ListViewCustomers({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/CustomerInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center ${
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
