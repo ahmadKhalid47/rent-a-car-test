@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as XLSX from "xlsx";
 import { SmallLoader } from "../Loader";
 
-const ExcelUpload: React.FC = () => {
+const ExcelUpload = ({ model }: any) => {
   const [data, setData] = useState<any>();
   const [loading, setLoading] = useState<any>(false);
   let dispatch = useDispatch();
@@ -19,6 +19,7 @@ const ExcelUpload: React.FC = () => {
       let result: any = await axios.post(`/api/saveImport`, {
         data: data,
         createdBy: myProfile._id,
+        model: model,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -52,7 +53,7 @@ const ExcelUpload: React.FC = () => {
   }, [data]);
 
   return (
-    <div className="w-fit relative cursor-pointer overflow-hidden rounded-[10px] bg-main-blue hover:opacity-[0.9] active:opacity-[0.9]">
+    <div className="w-fit relative cursor-pointer overflow-hidden rounded-[6px] bg-main-blue hover:opacity-[0.9] active:opacity-[0.9]">
       <input
         type="file"
         accept=".xlsx, .xls"
@@ -60,8 +61,8 @@ const ExcelUpload: React.FC = () => {
         className="opacity-0 absolute cursor-pointer z-[1] right-[0%] w-[300%] h-[100%]"
         title={""}
       />
-      <button className="z-[-1] hover:no-underline w-[220px] cursor-pointer h-[44px] text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px]">
-        {loading ? <SmallLoader /> : "Import Configurations"}
+      <button className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]">
+        {loading ? <SmallLoader /> : "Import"}
       </button>
     </div>
   );

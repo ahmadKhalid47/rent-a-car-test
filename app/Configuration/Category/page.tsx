@@ -12,6 +12,7 @@ import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
 import Link from "next/link";
+import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -119,7 +120,9 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit">
+        <div className="w-full h-fit mt-4">
+          <ImportExportButtons data={vehiclesData} model={"Category"} />
+
           {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
 
           {popup ? (
