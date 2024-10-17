@@ -19,7 +19,7 @@ const ExcelUpload = ({ model }: any) => {
       let result: any = await axios.post(`/api/saveImport`, {
         data: data,
         createdBy: myProfile._id,
-        model: model,
+        modelName: model,
       });
       console.log(result);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
