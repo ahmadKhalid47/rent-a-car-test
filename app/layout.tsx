@@ -40,10 +40,12 @@ export default function RootLayout({
       "navigation"
     ) as PerformanceNavigationTiming[];
 
-    const isPageReload =
-      navigationEntry?.type === "reload" || document.referrer === "";
+    const isPageReloadOrDirectEntry =
+      navigationEntry?.type === "reload" ||
+      navigationEntry?.type === "navigate" ||
+      document.referrer === "";
 
-    async function verifyTokenApi() {
+    const verifyTokenApi = async () => {
       try {
         setLoading(true);
         setIsVerified(undefined);
@@ -54,8 +56,9 @@ export default function RootLayout({
       } finally {
         setLoading(false);
       }
-    }
-    if (isPageReload) {
+    };
+
+    if (isPageReloadOrDirectEntry) {
       verifyTokenApi();
     }
   }, []);
