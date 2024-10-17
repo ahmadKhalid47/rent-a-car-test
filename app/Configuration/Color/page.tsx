@@ -27,7 +27,6 @@ export default function Vehicles() {
   const [popup, setPopup] = useState(false);
   const [Color, setColor] = useState("");
   const [ColorName, setColorName] = useState("");
-  console.log(Color, ColorName);
 
   useEffect(() => {
     if (isMobile) {

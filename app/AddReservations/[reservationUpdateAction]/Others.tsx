@@ -179,7 +179,6 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
     discount,
   ]);
 
-  console.log(reservation?.amount);
 
   useEffect(() => {
     async function getData() {
@@ -188,7 +187,6 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
           createdBy: myProfile._id,
         });
         dispatch(setAllInvoiceValues(result.data.data[0].data));
-        console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }

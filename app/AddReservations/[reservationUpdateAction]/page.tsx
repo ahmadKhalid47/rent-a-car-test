@@ -155,8 +155,6 @@ export default function Reservations() {
     };
   }, []);
 
-  console.log(reservation?.vehicle_id);
-
   async function saveData(action: string) {
     try {
       setLoading(true);

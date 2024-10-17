@@ -11,7 +11,6 @@ export async function POST(req) {
   try {
     const form = await req.formData();
     const files = form.getAll("files");
-    console.log("files_________________________", files);
 
     if (files.length > 0) {
       const uploadPromises = files.map(async (item) => {
@@ -30,7 +29,6 @@ export async function POST(req) {
       });
 
       const uploadedFiles = await Promise.all(uploadPromises);
-      console.log("uploadedFiles_________________________", uploadedFiles);
 
       return NextResponse.json({ message: uploadedFiles });
     } else {

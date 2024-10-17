@@ -187,7 +187,7 @@ export default function AddChauffeur() {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res2?.data?.message);
+
 
       const formData3 = new FormData();
       for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
@@ -198,7 +198,7 @@ export default function AddChauffeur() {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(res2?.data?.message);
+
 
       await axios.post(`/api/updatechauffeur/${chauffeurUpdateAction}`, {
         ...chauffeur,

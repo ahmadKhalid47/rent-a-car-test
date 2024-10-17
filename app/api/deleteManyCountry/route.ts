@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     let { _ids } = await req.json();
     await connectDb();
-    console.log(_ids);
+    ;
       const data = await CountryModel.deleteMany({ _id: { $in: _ids } });
     return NextResponse.json({
       acknowledged: "data.acknowledged",

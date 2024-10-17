@@ -203,7 +203,7 @@ export default function Vehicles() {
         },
       });
 
-      console.log(res2?.data?.message);
+
       await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
         ...customer,
         customerImage: res?.data?.message,
@@ -226,7 +226,6 @@ export default function Vehicles() {
       setLoading(false);
     }
   }
-  console.log(customer.passportImages);
 
   return (
     <div

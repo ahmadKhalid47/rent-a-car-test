@@ -52,7 +52,6 @@ export default function Info({ data, loading }: dataType) {
         behavior: "smooth", // Smooth scrolling
         block: "center", // Scroll to the center of the container
       });
-      console.log(customerRefs.current[selectedIndex]);
     }
   }, [reservation.customer_id, filteredCustomer]);
 

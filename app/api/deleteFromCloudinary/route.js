@@ -9,16 +9,13 @@ cloudinary.config({
 export async function DELETE(req) {
   try {
     const files = await req.json();
-    console.log("files", files);
     const publicIds = files.map((fileUrl) => {
       const splitUrl = fileUrl.split("/");
       const publicIdWithExtension = splitUrl[splitUrl.length - 1];
       const publicId = publicIdWithExtension.split(".")[0];
       return `uploads/${publicId}`;
     });
-    console.log(publicIds);
     const result = await cloudinary.v2.api.delete_resources(publicIds);
-    console.log("result", result);
     return NextResponse.json({ message: "Files deleted" });
   } catch (error) {
     console.log(error);

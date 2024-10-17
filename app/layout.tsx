@@ -21,7 +21,6 @@ export default function RootLayout({
 }>) {
   const router = useRouter();
   let [c, setC] = useState(0);
-  console.log(c);
   useEffect(() => {
     setC(c + 1);
   }, []);

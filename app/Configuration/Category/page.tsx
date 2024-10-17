@@ -25,7 +25,6 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Category, setCategory] = useState("");
-  console.log(vehiclesData);
 
   useEffect(() => {
     if (isMobile) {

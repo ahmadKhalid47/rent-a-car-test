@@ -213,7 +213,6 @@ export default function reservationInfoMainPage() {
                   disabled={loading}
                   onClick={() => {
                     updateData("close");
-                    console.log(reservation);
                   }}
                 >
                   {loading ? <SmallLoader /> : "Save"}
