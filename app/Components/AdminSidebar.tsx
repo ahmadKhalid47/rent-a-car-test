@@ -177,7 +177,7 @@ export default function AdminSidebar() {
       >
         <FaCar
           className={`${
-            global.sidebarShow ? "ml-[1px]" : "ml-[-12px] fixed"
+            global.sidebarShow ? "ml-[1px]" : "ml-[-2px] fixed"
           } text-[22px]`}
         />{" "}
         <span className="">{global.sidebarShow ? "Configuration" : null}</span>
