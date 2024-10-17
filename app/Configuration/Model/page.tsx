@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setAlert, setSidebarShowR } from "@/app/store/Global";
+import { setAlert, setSeverity, setSidebarShowR } from "@/app/store/Global";
 import axios from "axios";
 import ListView from "./ListView";
 import { SmallLoader, MediumLoader } from "../../Components/Loader";
@@ -69,10 +69,16 @@ export default function Vehicles() {
 
   async function save(action: string) {
     if (Model.trim() === "" || Make.trim() === "") {
-      alert("Please fill the input");
+      dispatch(setAlert("Please fill the input"));
+      dispatch(setSeverity("error"));
       return;
-    } else if (vehiclesData.find((item) => item.model === Model.trim())) {
-      alert("This Item Already Exists");
+    } else if (
+      vehiclesData.find(
+        (item) => item.model.toLowerCase() === Model.trim().toLowerCase()
+      )
+    ) {
+      dispatch(setAlert("This Item Already Exists"));
+      dispatch(setSeverity("error"));
       return;
     }
 

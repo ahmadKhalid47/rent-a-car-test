@@ -17,9 +17,10 @@ export async function POST(req: Request) {
     const data = await MakeModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
-      .sort({ make: 1 })
+      .collation({ locale: "en", strength: 2 }) // Case-insensitive collation
+      .sort({ make: 1 }) // Sort alphabetically by the 'make' field
       .lean();
-    
+
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error("Error processing request: ", err);

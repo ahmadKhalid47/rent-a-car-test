@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     const data = await FeatureModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
+      .collation({ locale: "en", strength: 2 }) // Case-insensitive collation
       .sort({ Feature: 1 })
       .lean();
 
