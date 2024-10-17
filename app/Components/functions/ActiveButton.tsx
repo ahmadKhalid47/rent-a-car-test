@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 export default function ActiveButton({ active, _id, model, admin }: any) {
-  console.log(admin);
   const dispatch = useDispatch();
   const global = useSelector((state: RootState) => state.Global);
 

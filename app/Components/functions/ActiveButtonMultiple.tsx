@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
-  console.log(itemToDeleteMany, model);
   const dispatch = useDispatch();
   const global = useSelector((state: RootState) => state.Global);
 
