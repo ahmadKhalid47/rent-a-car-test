@@ -19,7 +19,7 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
         active: active,
         model,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(

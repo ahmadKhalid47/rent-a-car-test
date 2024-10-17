@@ -109,7 +109,7 @@ export default function ListViewCustomers({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyCustomer`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Customers Deleted Successfully"));
     } catch (err) {
@@ -143,7 +143,7 @@ export default function ListViewCustomers({ data }: dataType) {
       let result: any = await axios.post(`/api/updateActiveCustomer/${_id}`, {
         active: !active,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Customer Updated Successfully"));
       dispatch(
@@ -167,7 +167,7 @@ export default function ListViewCustomers({ data }: dataType) {
         _ids: itemToDeleteMany,
         active: active,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(

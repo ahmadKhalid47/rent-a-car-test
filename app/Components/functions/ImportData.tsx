@@ -20,7 +20,7 @@ const ExcelUpload = ({ model }: any) => {
         createdBy: myProfile._id,
         modelName: model,
       });
-      console.log(result);
+      
       dispatch(setAlert("Data Imported Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {

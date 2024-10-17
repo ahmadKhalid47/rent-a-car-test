@@ -83,7 +83,7 @@ export default function Vehicles() {
         model: Model,
         createdBy: myProfile._id,
       });
-      console.log(result);
+      
       dispatch(setAlert("Model Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {

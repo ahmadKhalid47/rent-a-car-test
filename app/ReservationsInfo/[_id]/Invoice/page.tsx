@@ -116,7 +116,7 @@ function PrintCom({ data, id }: any) {
         const result = await axios.post(
           `/api/getCustomerInfo/${data?.customer_id}`
         );
-        console.log(result);
+        
         setCustomersData(result.data.data);
       } catch (error) {
         console.log(error);

@@ -77,7 +77,7 @@ export default function GridView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateActive/${_id}`, {
         active: !active,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
       console.log(err);

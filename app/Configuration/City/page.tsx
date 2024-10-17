@@ -84,7 +84,7 @@ export default function Vehicles() {
         city: city,
         createdBy: myProfile._id,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("City Saved Successfully"));
       if (action === "close") {

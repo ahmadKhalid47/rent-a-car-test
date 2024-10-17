@@ -66,7 +66,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteMake/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Make Deleted Successfully"));
     } catch (err) {
@@ -84,7 +84,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyMake`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Makes Deleted Successfully"));
     } catch (err) {
@@ -102,7 +102,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateMake/${_id}`, {
         make,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Make Updated Successfully"));
     } catch (err) {

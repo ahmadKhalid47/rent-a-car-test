@@ -75,7 +75,7 @@ export default function ListView({ data, makeData }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCity/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective City Deleted Successfully"));
     } catch (err) {
@@ -93,7 +93,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.post(`/api/deleteManyCity`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Cities Deleted Successfully"));
     } catch (err) {
@@ -112,7 +112,7 @@ export default function ListView({ data, makeData }: dataType) {
         country: Make,
         city,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective City Updated Successfully"));
     } catch (err) {

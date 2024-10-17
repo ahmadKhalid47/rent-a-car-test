@@ -129,7 +129,7 @@ export default function Profile() {
         ...myProfile,
         profilePic: res?.data?.message[0],
       });
-      console.log(result);
+      
       await axios.post(`/api/changeToken`, {
         username: myProfile.username,
         admin: myProfile.admin,

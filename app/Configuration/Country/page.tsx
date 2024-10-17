@@ -75,7 +75,7 @@ export default function Vehicles() {
         country,
         createdBy: myProfile._id,
       });
-      console.log(result);
+      
       // setCountryReloader(CountryReloader + 1);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Country Saved Successfully"));

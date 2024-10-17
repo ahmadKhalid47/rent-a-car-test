@@ -110,7 +110,7 @@ export default function ListViewreservation({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyreservation`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Reservations Deleted Successfully"));
     } catch (err) {

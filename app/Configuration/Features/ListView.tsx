@@ -69,7 +69,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteFeature/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Feature Deleted Successfully"));
     } catch (err) {
@@ -87,7 +87,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyFeature`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Features Deleted Successfully"));
     } catch (err) {
@@ -117,7 +117,7 @@ export default function ListView({ data }: dataType) {
         Feature,
         Icon: res2?.data?.message,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Feature Updated Successfully"));
     } catch (err) {

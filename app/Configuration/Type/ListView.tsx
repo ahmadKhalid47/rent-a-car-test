@@ -70,7 +70,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteType/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Body Type Deleted Successfully"));
     } catch (err) {
@@ -88,7 +88,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyType`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Body Types Deleted Successfully"));
     } catch (err) {
@@ -127,7 +127,7 @@ export default function ListView({ data }: dataType) {
         exterior: res?.data?.message,
         interior: res2?.data?.message,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Body Type Updated Successfully"));
     } catch (err) {

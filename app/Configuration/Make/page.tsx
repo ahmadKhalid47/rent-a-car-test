@@ -75,7 +75,7 @@ export default function Vehicles() {
         make,
         createdBy: myProfile._id,
       });
-      console.log(result);
+      
       dispatch(setAlert("Make Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {

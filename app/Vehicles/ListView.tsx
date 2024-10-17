@@ -110,7 +110,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyVehicle`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Vehicles Deleted Successfully"));
     } catch (err) {
@@ -144,7 +144,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateActive/${_id}`, {
         active: !active,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(
@@ -166,7 +166,7 @@ export default function ListView({ data }: dataType) {
         _ids: itemToDeleteMany,
         active: active,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(

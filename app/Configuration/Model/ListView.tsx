@@ -70,7 +70,7 @@ export default function ListView({ data, makeData }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteModel/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Model Deleted Successfully"));
     } catch (err) {
@@ -88,7 +88,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.post(`/api/deleteManyModel`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Models Deleted Successfully"));
     } catch (err) {
@@ -107,7 +107,7 @@ export default function ListView({ data, makeData }: dataType) {
         Model,
         Make,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Model Updated Successfully"));
     } catch (err) {

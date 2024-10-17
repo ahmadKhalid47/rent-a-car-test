@@ -66,7 +66,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCategory/${_id}`);
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Category Deleted Successfully"));
     } catch (err) {
@@ -84,7 +84,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyCategory`, {
         _ids: itemToDeleteMany,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Categories Deleted Successfully"));
     } catch (err) {
@@ -102,7 +102,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateCategory/${_id}`, {
         Category,
       });
-      console.log(result);
+      
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Category Updated Successfully"));
     } catch (err) {
