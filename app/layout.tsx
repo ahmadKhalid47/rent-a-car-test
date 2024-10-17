@@ -42,7 +42,7 @@ export default function RootLayout({
 
     const isPageReloadOrDirectEntry =
       navigationEntry?.type === "reload" ||
-      navigationEntry?.type === "navigate" ||
+      navigationEntry?.type !== "navigate" ||
       document.referrer === "";
 
     const verifyTokenApi = async () => {

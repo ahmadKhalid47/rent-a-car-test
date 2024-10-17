@@ -17,8 +17,6 @@ import configImg6 from "@/public/city.svg";
 import configImg7 from "@/public/country.svg";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { setConfigurations } from "../store/Configurations";
-import { SmallLoader } from "../Components/Loader";
-import ExcelUploader from "../Components/functions/ImportData";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -27,7 +25,6 @@ export default function Vehicles() {
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let Configurations = useSelector((state: RootState) => state.Configurations);
   const [loading, setLoading] = useState<any>(false);
-  const [exportLoading, setExportLoading] = useState<any>(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -36,7 +33,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  const handleExport = useHandleExport();
   useEffect(() => {
     async function getData2() {
       try {
@@ -89,31 +85,9 @@ export default function Vehicles() {
           </span>
         </div>
         <div className="w-full h-fit">
-          <div className="h-fit w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            <button
-              className={`hover:no-underline w-[210px] h-[44px] rounded-[10px] text-white font-[500] text-[12px] md:text-[16px] flex justify-center items-center leading-[0px] bg-main-blue`}
-              onClick={() => {
-                async function exporting() {
-                  const flattenedData = exportObj?.flat();
-                  try {
-                    setExportLoading(true);
-                    await handleExport(flattenedData);
-                  } finally {
-                    setExportLoading(false);
-                  }
-                }
-                exporting();
-              }}
-              disabled={!Configurations?.Configurations}
-            >
-              {exportLoading || !Configurations?.Configurations ? (
-                <SmallLoader />
-              ) : (
-                "Export Configurations"
-              )}
-            </button>
-            <ExcelUploader />
-          </div>
+
+
+
 
           <div className="w-full h-fit mt-4">
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
