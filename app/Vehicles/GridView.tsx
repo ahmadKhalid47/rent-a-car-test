@@ -77,8 +77,15 @@ export default function GridView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateActive/${_id}`, {
         active: !active,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(
+        setAlert(
+          !active
+            ? "Selective Vehicle Activated Successfully"
+            : "Selective Vehicle Deactivated Successfully"
+        )
+      );
     } catch (err) {
       console.log(err);
     } finally {

@@ -135,6 +135,7 @@ export default function Profile() {
         admin: myProfile.admin,
       });
       dispatch(setMyProfileReloader(global.myProfileReloader + 1));
+      dispatch(setAlert("Profile Updated Successfully"));
     } catch (err) {
       console.log(err);
     } finally {
