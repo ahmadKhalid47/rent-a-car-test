@@ -42,6 +42,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { ClassNames } from "@emotion/react";
 import Link from "next/link";
+import { setAlert, setSeverity } from "@/app/store/Global";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -67,13 +68,20 @@ export default function Info() {
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
-        alert(
-          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        dispatch(
+          setAlert(
+            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+          )
         );
+        dispatch(setSeverity("error"));
         return false;
       }
       if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is 1MB.`);
+        dispatch(
+          setAlert(`File ${file.name} is too large. Maximum size is 1MB.`)
+        );
+        dispatch(setSeverity("error"));
+
         return false;
       }
       return true;

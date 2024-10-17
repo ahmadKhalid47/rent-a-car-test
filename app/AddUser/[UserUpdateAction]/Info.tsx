@@ -33,6 +33,7 @@ import { useParams } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import { PasswordStrength } from "@/app/Components/functions/strengthChecker";
 import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
+import { setAlert, setSeverity } from "@/app/store/Global";
 
 export default function Info({ score, message }: any) {
   let dispatch = useDispatch();
@@ -61,13 +62,20 @@ export default function Info({ score, message }: any) {
     const allowedTypes = ["image/jpeg", "image/png"];
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
-        alert(
-          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        dispatch(
+          setAlert(
+            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+          )
         );
+        dispatch(setSeverity("error"));
         return false;
       }
       if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is 1MB.`);
+        dispatch(
+          setAlert(`File ${file.name} is too large. Maximum size is 1MB.`)
+        );
+        dispatch(setSeverity("error"));
+
         return false;
       }
       return true;

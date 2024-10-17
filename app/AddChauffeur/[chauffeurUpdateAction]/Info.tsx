@@ -5,7 +5,10 @@ import { useState } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
+import {
+  TempTypeInput,
+  TypeInput,
+} from "../../Components/InputComponents/TypeInput";
 import vip from "@/public/vip.svg";
 import {
   SelectInput,
@@ -32,6 +35,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
+import { setAlert, setSeverity } from "@/app/store/Global";
 
 export default function Info() {
   let dispatch = useDispatch();
@@ -39,7 +43,7 @@ export default function Info() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   const [files, setFiles] = useState<any>(chauffeur.chauffeurImage);
   useEffect(() => {
-    setFiles(chauffeur?.chauffeurImage); 
+    setFiles(chauffeur?.chauffeurImage);
   }, [chauffeur.chauffeurImage[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 1 * 1024 * 1024; // 1MB in bytes
@@ -47,13 +51,20 @@ export default function Info() {
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
-        alert(
-          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        dispatch(
+          setAlert(
+            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+          )
         );
+        dispatch(setSeverity("error"));
+
         return false;
       }
       if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is 1MB.`);
+        dispatch(
+          setAlert(`File ${file.name} is too large. Maximum size is 1MB.`)
+        );
+        dispatch(setSeverity("error"));
         return false;
       }
       return true;

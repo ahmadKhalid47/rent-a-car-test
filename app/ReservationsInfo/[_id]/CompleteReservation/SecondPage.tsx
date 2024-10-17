@@ -15,6 +15,7 @@ import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
 import { MediumLoader } from "@/app/Components/Loader";
+import { setAlert, setSeverity } from "@/app/store/Global";
 
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -39,13 +40,20 @@ export default function SecondPage() {
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
-        alert(
-          `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+        dispatch(
+          setAlert(
+            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+          )
         );
+        dispatch(setSeverity("error"));
         return false;
       }
       if (file.size > maxFileSize) {
-        alert(`File ${file.name} is too large. Maximum size is 1MB.`);
+        dispatch(
+          setAlert(`File ${file.name} is too large. Maximum size is 1MB.`)
+        );
+        dispatch(setSeverity("error"));
+
         return false;
       }
       return true;
