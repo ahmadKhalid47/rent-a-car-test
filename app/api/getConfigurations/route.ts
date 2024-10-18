@@ -1,6 +1,7 @@
 import connectDb from "@/app/models/connectDb";
 import ColorModel from "@/app/models/Color";
 import MakeModel from "@/app/models/Make";
+import OwnershipModel from "@/app/models/Ownership";
 import InsuranceModel from "@/app/models/Insurance";
 import CategoryModel from "@/app/models/Category";
 import ModelModel from "@/app/models/Model";
@@ -41,6 +42,7 @@ export async function POST(req: Request) {
       color,
       make,
       Insurance,
+      Ownership,
       Category,
       model,
       feature,
@@ -51,6 +53,7 @@ export async function POST(req: Request) {
       queryData(ColorModel),
       queryData(MakeModel),
       queryData(InsuranceModel),
+      queryData(OwnershipModel),
       queryData(CategoryModel),
       queryData(ModelModel),
       queryData(FeatureModel),
@@ -63,6 +66,7 @@ export async function POST(req: Request) {
       color,
       make,
       Insurance,
+      Ownership,
       Category,
       model,
       feature,
