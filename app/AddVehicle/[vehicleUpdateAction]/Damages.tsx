@@ -170,13 +170,13 @@ export default function Damages() {
 
   return (
     <div className="w-full h-fit">
-      <div className="w-full h-fit  ">
+      <div className="w-full h-fit">
         <div className="flex flex-wrap justify-start items-start gap-x-[4% w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- px-1 xs:px-3 md:px-11 py-8 relative">
           <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
             Damages
           </span>
           <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] pe- relative">
-            <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10 ">
+            <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10">
               <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
                 <button
                   className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center truncate font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
@@ -298,7 +298,7 @@ export default function Damages() {
                   <span className="w-[80px] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                     Image
                   </span>
-                  <span className="w-[20%] md:w-[25px]  truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
+                  <span className="w-[20%] md:w-[45px] text-start  truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                     No
                   </span>
                   <span className="w-[23%] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
@@ -325,7 +325,7 @@ export default function Damages() {
                           : item?.files[0]
                       }
                     />
-                    <span className="pb-2 w-[20%] md:w-[25px] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
+                    <span className="pb-2 w-[20%] md:w-[45px] text-start truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                       {JSON.stringify(key + 1).padStart(2, "0")}{" "}
                     </span>
                     <span className="pb-2 w-[23%] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
