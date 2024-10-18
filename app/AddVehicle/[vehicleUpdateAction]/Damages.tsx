@@ -408,7 +408,7 @@ export default function Damages() {
                 </div>
               </div>
             </div>
-            {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+            <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Description
               </label>
@@ -424,7 +424,7 @@ export default function Damages() {
                   placeholder="Enter Description"
                 ></textarea>
               </div>
-            </div> */}
+            </div>
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-1 w-full h-fit dark:bg-dark1 bg-white mt- p">
               <h3 className="truncate font-[400] text-[14px] leading-[17px] dark:text-white text-black w-[100%]">
                 Add Images
