@@ -8,6 +8,7 @@ import {
   setAlert,
   setSeverity,
   setcurrentCurrency,
+  setunit,
   setSidebarShowR,
   setSidebarShowTempR,
   setTheme,
@@ -195,6 +196,37 @@ export default function Nav() {
       getData();
     }
     dispatch(setcurrentCurrency(currencyInLS ? currencyInLS : "$"));
+  }, [myProfile._id]);
+
+  useEffect(() => {
+    let unitInLS: any = undefined;
+    async function getData() {
+      try {
+        const result = await axios.post("/api/getGeneralSettings", {
+          createdBy: myProfile._id,
+        });
+        dispatch(
+          setunit(
+            result.data.data[0].unit ? result.data.data[0].unit : "$"
+          )
+        );
+        if (typeof window !== "undefined") {
+          localStorage.setItem("unit", result.data.data[0].unit);
+          let value = localStorage.getItem("unit");
+          unitInLS = value;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (typeof window !== "undefined") {
+      let value = localStorage.getItem("unit");
+      unitInLS = value;
+    }
+    if (!unitInLS && myProfile._id) {
+      getData();
+    }
+    dispatch(setunit(unitInLS ? unitInLS : "$"));
   }, [myProfile._id]);
 
   async function logout() {

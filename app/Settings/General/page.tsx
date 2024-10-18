@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import {
   setAlert,
   setcurrentCurrency,
+  setunit,
   setSidebarShowR,
   setTheme,
 } from "@/app/store/Global";
@@ -57,6 +58,7 @@ export default function AddUser() {
     "R$",
     "د.إ",
   ];
+  const unitSymbols: any = ["KM", "Miles"];
 
   useEffect(() => {
     if (isMobile) {
@@ -82,6 +84,7 @@ export default function AddUser() {
 
   async function editItem() {
     let currency = global.currentCurrency;
+    let unit = global.unit;
     try {
       setSaveLoading(true);
       await axios.post(`/api/updateInvoicing`, {
@@ -90,10 +93,12 @@ export default function AddUser() {
       });
       await axios.post(`/api/updateGeneralSettings`, {
         currency,
+        unit,
         createdBy: myProfile._id,
       });
       if (typeof window !== "undefined") {
         localStorage.setItem("currency", global.currentCurrency);
+        localStorage.setItem("unit", global.unit);
       }
       dispatch(setAlert("Settings Updated Successfully!"));
     } catch (err) {
@@ -168,7 +173,43 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-
+              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
+                <div className="w-fit flex flex-col justify-start items-start">
+                  <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
+                    Unit
+                  </h3>
+                  <span className="font-[400] text-[14px] leading-[17px]">
+                    You can select default unit here{" "}
+                  </span>
+                </div>
+                <div className="w-[180px] h-[50px] flex justify-center items-center">
+                  <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <select
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                        onChange={(e) => {
+                          dispatch(setunit(e.target.value));
+                        }}
+                        value={global.unit}
+                      >
+                        <option value={""}>Select</option>
+                        {unitSymbols?.map((item: any, index: number) => (
+                          <option value={item} key={index}>
+                            {item}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                        <img
+                          src={shape.src}
+                          className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
@@ -221,7 +262,6 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">

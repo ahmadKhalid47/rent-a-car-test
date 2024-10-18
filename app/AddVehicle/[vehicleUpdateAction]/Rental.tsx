@@ -19,7 +19,6 @@ import {
 export default function Rental() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let global = useSelector((state: RootState) => state.Global);
- console.log(vehicle);
  
   return (
     <div className="w-full h-fit  ">
@@ -70,7 +69,7 @@ export default function Rental() {
           value={vehicle.mlDay}
           required={false}
           type={"number"}
-          sign={"KM"}
+          sign={global.unit}
         />
         <TempTypeInputSign
           setState={setmlWeek}
@@ -78,7 +77,7 @@ export default function Rental() {
           value={vehicle.mlWeek}
           required={false}
           type={"number"}
-          sign={"KM"}
+          sign={global.unit}
         />
         <TempTypeInputSign
           setState={setmlMonth}
@@ -86,7 +85,7 @@ export default function Rental() {
           value={vehicle.mlMonth}
           required={false}
           type={"number"}
-          sign={"KM"}
+          sign={global.unit}
         />
         <TempTypeInputSign
           setState={setmlFee}

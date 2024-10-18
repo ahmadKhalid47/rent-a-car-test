@@ -9,6 +9,7 @@ const initialState = {
   myProfileReloader: 0,
   companyProfileReloader: 0,
   currentCurrency: "",
+  unit: "",
   theme: "",
   alert: "",
   severity: "success",
@@ -39,6 +40,9 @@ export const GlobalSlice = createSlice({
     setcurrentCurrency: (state, action) => {
       state.currentCurrency = action.payload;
     },
+    setunit: (state, action) => {
+      state.unit = action.payload;
+    },
     setTheme: (state, action) => {
       state.theme = action.payload;
     },
@@ -63,6 +67,7 @@ export const {
   setMyProfileReloader,
   setcompanyProfileReloader,
   setcurrentCurrency,
+  setunit,
   setTheme,
   setAlert,
   setSeverity,
