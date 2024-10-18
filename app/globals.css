@@ -415,9 +415,10 @@ button:active {
   height: calc(100% - 0px);
 }
 .modal-position {
-position: fixed;
-  top: 50%;
-  transform: translateY(-50%);}
+  position: fixed;
+  top: 50vh;
+  transform: translateY(-50%);
+}
 
 .bg-check {
   padding: 0px;
