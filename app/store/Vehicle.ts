@@ -29,9 +29,16 @@ const initialState: any = {
   mlDay: "",
   mlWeek: "",
   mlMonth: "",
-  insuranceNo: "",
-  insuranceProvider: "",
-  insuranceExpiry: "",
+  insNo: "",
+  insCompany: "",
+  insStart: "",
+  insEnd: "",
+  insPayable: "",
+  insRecurringPeriod: "",
+  insRecurringDate: "",
+  insDeductible: "",
+  insRemarks: "",
+  insImage: [],
   fuelCapacity: "",
   engineVolume: "",
   vinNo: "",
@@ -131,14 +138,35 @@ export const VehicleSlice = createSlice({
     setmlMonth: (state, action) => {
       state.mlMonth = action.payload;
     },
-    setinsuranceNo: (state, action) => {
-      state.insuranceNo = action.payload;
+    setinsNo: (state, action) => {
+      state.insNo = action.payload;
     },
-    setinsuranceProvider: (state, action) => {
-      state.insuranceProvider = action.payload;
+    setinsCompany: (state, action) => {
+      state.insCompany = action.payload;
     },
-    setinsuranceExpiry: (state, action) => {
-      state.insuranceExpiry = action.payload;
+    setinsEnd: (state, action) => {
+      state.insEnd = action.payload;
+    },
+    setinsPayable: (state, action) => {
+      state.insPayable = action.payload;
+    },
+    setinsRecurringPeriod: (state, action) => {
+      state.insRecurringPeriod = action.payload;
+    },
+    setinsRecurringDate: (state, action) => {
+      state.insRecurringDate = action.payload;
+    },
+    setinsDeductible: (state, action) => {
+      state.insDeductible = action.payload;
+    },
+    setinsStart: (state, action) => {
+      state.insStart = action.payload;
+    },
+    setinsImage: (state, action) => {
+      state.insImage = action.payload;
+    },
+    setinsRemarks: (state, action) => {
+      state.insRemarks = action.payload;
     },
     setfeatures: (state, action) => {
       state.features = action.payload;
@@ -199,9 +227,10 @@ export const {
   setlateDay,
   setrentWeek,
   setrentMonth,
-  setinsuranceNo,
-  setinsuranceProvider,
-  setinsuranceExpiry,
+  setinsNo,
+  setinsCompany,
+  setinsEnd,
+  setinsStart,
   setfeatures,
   setotherNote,
   setdamages,
@@ -217,6 +246,12 @@ export const {
   setmlFee,
   setmlMonth,
   setmlWeek,
+  setinsPayable,
+  setinsDeductible,
+  setinsRecurringPeriod,
+  setinsRecurringDate,
+  setinsRemarks,
+  setinsImage,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;

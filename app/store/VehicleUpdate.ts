@@ -19,9 +19,9 @@ const initialState: any = {
   rentDay: "",
   rentWeek: "",
   rentMonth: "",
-  insuranceNo: "",
-  insuranceProvider: "",
-  insuranceExpiry: "",
+  insNo: "",
+  insCompany: "",
+  insEnd: "",
   features: [],
   otherNote: "",
   damages: [],
@@ -86,14 +86,14 @@ export const VehicleUpdateSlice = createSlice({
     setrentMonth: (state, action) => {
       state.rentMonth = action.payload;
     },
-    setinsuranceNo: (state, action) => {
-      state.insuranceNo = action.payload;
+    setinsNo: (state, action) => {
+      state.insNo = action.payload;
     },
-    setinsuranceProvider: (state, action) => {
-      state.insuranceProvider = action.payload;
+    setinsCompany: (state, action) => {
+      state.insCompany = action.payload;
     },
-    setinsuranceExpiry: (state, action) => {
-      state.insuranceExpiry = action.payload;
+    setinsEnd: (state, action) => {
+      state.insEnd = action.payload;
     },
     setfeatures: (state, action) => {
       state.features = action.payload;
@@ -132,9 +132,9 @@ export const {
   setrentDay,
   setrentWeek,
   setrentMonth,
-  setinsuranceNo,
-  setinsuranceProvider,
-  setinsuranceExpiry,
+  setinsNo,
+  setinsCompany,
+  setinsEnd,
   setfeatures,
   setotherNote,
   setdamages,
