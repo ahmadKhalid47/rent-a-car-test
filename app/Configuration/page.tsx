@@ -83,10 +83,10 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] bg-yellow-300 gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark bg-light-gre mt-2">
               <Link
                 href={`/Configuration/Category`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                 </div>
@@ -96,7 +96,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Make`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -110,7 +110,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Model`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -124,7 +124,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Type`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -138,7 +138,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Color`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -152,7 +152,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Features`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -166,7 +166,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Country`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -180,7 +180,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/City`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                   <img
@@ -194,7 +194,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Insurance`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                 </div>
@@ -204,7 +204,7 @@ export default function Vehicles() {
               </Link>
               <Link
                 href={`/Configuration/Ownership`}
-                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
                 </div>
