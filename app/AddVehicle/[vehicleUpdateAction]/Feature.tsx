@@ -11,18 +11,21 @@ import Link from "next/link";
 export default function Feature() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let Configurations = useSelector((state: RootState) => state.Configurations);
+console.log(Configurations);
 
-  let featuresDisplayArray: any = Configurations?.Configurations?.feature?.map(
-    (item: any) => item.Feature
-  );
-  let iconsDisplayArray: any = Configurations?.Configurations?.feature?.map(
-    (item: any) => item.Icon
-  );
-  let dispatch = useDispatch();
+let featuresDisplayArray: any = Configurations?.Configurations?.feature?.map(
+  (item: any) => item.Feature
+);
+console.log("featuresDisplayArray", featuresDisplayArray);
+let iconsDisplayArray: any = Configurations?.Configurations?.feature?.map(
+  (item: any) => item.Icon
+);
+let dispatch = useDispatch();
 
-  let [featuresSubmitArray, setFeaturesSubmitArray] = useState<any>(
-    vehicle.features
-  );
+let [featuresSubmitArray, setFeaturesSubmitArray] = useState<any>(
+  vehicle.features
+);
+console.log("featuresSubmitArray", featuresSubmitArray);
 
   function handleClick(name: string) {
     setFeaturesSubmitArray((prevArray: any) => {
@@ -69,7 +72,7 @@ export default function Feature() {
               }}
             >
               <img
-                className="w-[20px] h-[20px] bg-white"
+                className="w-[20px] h-[20px]"
                 src={
                   iconsDisplayArray[index]
                     ? iconsDisplayArray[index]
