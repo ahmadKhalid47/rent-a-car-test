@@ -15,6 +15,8 @@ const initialState: any = {
   odometer: "",
   passengers: "",
   country: "",
+  Ownership: "",
+  Drivetrain: "",
   city: "",
   postalCode: "",
   rentHour: "",
@@ -80,6 +82,12 @@ export const VehicleSlice = createSlice({
     },
     setcountryR: (state, action) => {
       state.country = action.payload;
+    },
+    setOwnershipR: (state, action) => {
+      state.Ownership = action.payload;
+    },
+    setDrivetrainR: (state, action) => {
+      state.Drivetrain = action.payload;
     },
     setcityR: (state, action) => {
       state.city = action.payload;
@@ -157,6 +165,8 @@ export const {
   setodometerR,
   setpassengersR,
   setcountryR,
+  setOwnershipR,
+  setDrivetrainR,
   setcityR,
   setpostalCodeR,
   setrentHour,

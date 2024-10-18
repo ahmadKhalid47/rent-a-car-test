@@ -34,6 +34,8 @@ import {
   setfuelCapacity,
   setcolorNameR,
   setCategoryR,
+  setOwnershipR,
+  setDrivetrainR,
 } from "@/app/store/Vehicle";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -393,6 +395,28 @@ export default function Info() {
             ?.map((item: any) => item.country)
             ?.sort((a: string, b: string) => a.localeCompare(b))}
           link={"/Configuration/Country"}
+        />
+        <TempSelectInput
+          setState={setDrivetrainR}
+          label={"Drivetrain"}
+          value={vehicle.Drivetrain}
+          required={false}
+          options={[
+            "AWD (All Wheel Drive)",
+            "RWD (Rear Wheel Drive)",
+            "FWD (Front Wheel Drive)",
+          ]}
+        />
+
+        <TempSelectInputLink
+          setState={setOwnershipR}
+          label={"Ownership"}
+          value={vehicle.Ownership}
+          required={false}
+          options={Configurations?.Configurations?.Ownership?.map(
+            (item: any) => item.Ownership
+          )?.sort((a: string, b: string) => a.localeCompare(b))}
+          link={"/Configuration/Ownership"}
         />
         <TempSelectInputLink
           setState={setcityR}
