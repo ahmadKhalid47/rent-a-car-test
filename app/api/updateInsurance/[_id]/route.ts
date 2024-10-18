@@ -1,24 +1,18 @@
 import connectDb from "@/app/models/connectDb";
+import InsuranceModel from "@/app/models/Insurance";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    const { model, active, _ids } = await req.json();
-
+    let { Insurance } = await req.json();
+    let { _id } = await params.params;
     connectDb();
-    const Model = await import(`@/app/models/${model}`).then(
-      (mod) => mod.default
-    );
-    await Model.updateMany(
-      { _id: { $in: _ids } },
-      { $set: { active: active } }
-    );
-
+    await InsuranceModel.updateOne({ _id: _id }, { $set: { Insurance: Insurance } });
     return NextResponse.json({
-      success: `${model} updated successfully`,
+      success: "User Created",
     });
   } catch (err) {
-    console.error("err: ", err);
+    console.log("err: ", err);
     return NextResponse.json({
       error: "Can't process your request at the moment",
     });

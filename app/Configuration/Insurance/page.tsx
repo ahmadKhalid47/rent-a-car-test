@@ -24,8 +24,7 @@ export default function Vehicles() {
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
-  const [make, setMake] = useState("");
-  console.log(vehiclesData);
+  const [Insurance, setInsurance] = useState("");
   
   useEffect(() => {
     if (isMobile) {
@@ -42,7 +41,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getMake", {
+        const result = await axios.post("/api/getInsurance", {
           createdBy: myProfile._id,
         });
 
@@ -61,13 +60,13 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (make.trim() === "") {
+    if (Insurance.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.make.toLowerCase() === make.trim().toLowerCase()
+        (item) => item.Insurance.toLowerCase() === Insurance.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -77,17 +76,17 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      await axios.post(`/api/saveMake`, {
-        make,
+      let result: any = await axios.post(`/api/saveInsurance`, {
+        Insurance,
         createdBy: myProfile._id,
       });
       
-      dispatch(setAlert("Make Saved Successfully"));
+      dispatch(setAlert("Insurance Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);
       }
-      setMake("");
+      setInsurance("");
     } catch (err) {
       console.log(err);
     } finally {
@@ -106,12 +105,12 @@ export default function Vehicles() {
       >
         <div className="w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-end">
           <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
-            Make
+            Insurance
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
               <Link href={"/Configuration"} className="hover:underline">
                 Configuration
               </Link>
-              {" / "}Make
+              {" / "}Insurance
             </span>
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
@@ -128,7 +127,7 @@ export default function Vehicles() {
         </div>
 
         <div className="w-full h-fit mt-4">
-          <ImportExportButtons data={vehiclesData} model={"Make"} />
+          <ImportExportButtons data={vehiclesData} model={"Insurance"} />
           {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
           {popup ? (
             <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
@@ -147,9 +146,9 @@ export default function Vehicles() {
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                       placeholder={`Enter Text Here`}
                       onChange={(e) => {
-                        setMake(e.target.value);
+                        setInsurance(e.target.value);
                       }}
-                      value={make}
+                      value={Insurance}
                     />
                   </div>
                 </div>
@@ -161,7 +160,7 @@ export default function Vehicles() {
                     className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
                     onClick={() => {
                       setPopup(false);
-                      setMake("");
+                      setInsurance("");
                     }}
                   >
                     <FaTimes />

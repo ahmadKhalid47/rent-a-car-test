@@ -1,9 +1,6 @@
 import { RootState } from "@/app/store";
 import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
-import check from "@/public/check.svg";
-import unCheck from "@/public/uncheck.svg";
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -13,12 +10,12 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
 
   async function UpdateActiveManyItem(active: boolean) {
     try {
-      let result: any = await axios.post(`/api/updateManyActiveConfiguration`, {
+      await axios.post(`/api/updateManyActiveConfiguration`, {
         _ids: itemToDeleteMany,
         active: active,
         model,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(
         setAlert(
@@ -46,7 +43,7 @@ export default function ActiveButtonMultiple({ itemToDeleteMany, model }: any) {
       >
         Active
       </span>
-<span className="px-1">/</span>
+      <span className="px-1">/</span>
       <span
         className={`${
           itemToDeleteMany?.length < 1 ? "" : "cursor-pointer hover:underline"

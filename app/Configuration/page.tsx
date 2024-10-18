@@ -15,7 +15,6 @@ import configImg4 from "@/public/configImg (5).svg";
 import configImg5 from "@/public/configImg (1).svg";
 import configImg6 from "@/public/city.svg";
 import configImg7 from "@/public/country.svg";
-import { useHandleExport } from "../Components/functions/exportFunction";
 import { setConfigurations } from "../store/Configurations";
 
 export default function Vehicles() {
@@ -64,8 +63,6 @@ export default function Vehicles() {
     ]);
   }, [Configurations?.Configurations]);
 
-  let exportObj = exportData?.map((item: any) => item);
-
   return (
     <div
       className={`${
@@ -85,10 +82,6 @@ export default function Vehicles() {
           </span>
         </div>
         <div className="w-full h-fit">
-
-
-
-
           <div className="w-full h-fit mt-4">
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
               <Link
@@ -201,6 +194,20 @@ export default function Vehicles() {
                 </div>
                 <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   City
+                </p>
+              </Link>
+              <Link
+                href={`/Configuration/Insurance`}
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+              >
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                  {/* <img
+                    src={configImg7.src}
+                    className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
+                  /> */}
+                </div>
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                  Insurance
                 </p>
               </Link>
             </div>
