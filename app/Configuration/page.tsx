@@ -89,10 +89,6 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img
-                    src={configImg1.src}
-                    className="dark:filter dark:brightness-[0] dark:invert"
-                  /> */}
                 </div>
                 <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Category
@@ -201,13 +197,19 @@ export default function Vehicles() {
                 className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
               >
                 <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  {/* <img
-                    src={configImg7.src}
-                    className="w-[37px] h-[37px] dark:filter dark:brightness-[0] dark:invert"
-                  /> */}
                 </div>
                 <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
                   Insurance
+                </p>
+              </Link>
+              <Link
+                href={`/Configuration/Ownership`}
+                className="w-[100%] lg:w-[200px] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+              >
+                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
+                </div>
+                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
+                  Ownership
                 </p>
               </Link>
             </div>

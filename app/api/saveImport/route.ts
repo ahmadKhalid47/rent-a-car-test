@@ -1,6 +1,7 @@
 import connectDb from "@/app/models/connectDb";
 import CityModel from "@/app/models/City";
 import MakeModel from "@/app/models/Make";
+import OwnershipModel from "@/app/models/Ownership";
 import InsuranceModel from "@/app/models/Insurance";
 import CategoryModel from "@/app/models/Category";
 import ModelModel from "@/app/models/Model";
@@ -28,6 +29,7 @@ async function ensureDbConnection() {
 // Utility to dynamically fetch the correct Mongoose model
 const modelsMap: { [key: string]: any } = {
   make: MakeModel,
+  ownership: OwnershipModel,
   insurance: InsuranceModel,
   category: CategoryModel,
   model: ModelModel,
