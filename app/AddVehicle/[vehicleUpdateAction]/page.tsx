@@ -116,7 +116,7 @@ export default function Vehicles() {
     try {
       setLoading(true);
       const formData = new FormData();
-      for (let i = 0; i < vehicle.carImages.length; i++) {
+      for (let i = 0; i < vehicle.carImages?.length; i++) {
         formData.append("files", vehicle.carImages[i]);
       }
       const res = await axios.post("/api/upload", formData, {
@@ -124,14 +124,23 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
+      const formData4 = new FormData();
+      for (let i = 0; i < vehicle.insImages?.length; i++) {
+        formData4.append("files", vehicle.insImages[i]);
+      }
+      const res4 = await axios.post("/api/upload", formData4, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       const formData2 = new FormData();
-      formData2.append("length1", vehicle.damages.length);
+      formData2.append("length1", vehicle.damages?.length);
 
-      for (let i = 0; i < vehicle.damages.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+      for (let i = 0; i < vehicle.damages?.length; i++) {
+        formData2.append("length2", vehicle.damages[i]?.files?.length); // append length2 outside inner loop
 
-        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+        for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
           formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
         }
       }
@@ -142,7 +151,7 @@ export default function Vehicles() {
         },
       });
       let tempArray = vehicle.damages;
-      for (let i = 0; i < vehicle.damages.length; i++) {}
+      for (let i = 0; i < vehicle.damages?.length; i++) {}
 
       const updatedObjects = tempArray.map((obj: any, index: any) => ({
         ...obj,
@@ -153,6 +162,7 @@ export default function Vehicles() {
         vehicle: {
           ...vehicle,
           carImages: res?.data?.message,
+          insImages: res4?.data?.message,
           damages: updatedObjects,
         },
         createdBy: myProfile._id,
@@ -183,7 +193,7 @@ export default function Vehicles() {
       const damageImages = vehicle.damages.map((damage: any) => damage.files);
 
       const formData = new FormData();
-      for (let i = 0; i < vehicle.carImages.length; i++) {
+      for (let i = 0; i < vehicle.carImages?.length; i++) {
         formData.append("files", vehicle.carImages[i]);
       }
       const res = await axios.post("/api/uploadWithCondition", formData, {
@@ -191,14 +201,23 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
+      const formData4 = new FormData();
+      for (let i = 0; i < vehicle.insImages?.length; i++) {
+        formData4.append("files", vehicle.insImages[i]);
+      }
+      const res4 = await axios.post("/api/uploadWithCondition", formData4, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       const formData2 = new FormData();
-      formData2.append("length1", vehicle.damages.length);
+      formData2.append("length1", vehicle.damages?.length);
 
-      for (let i = 0; i < vehicle.damages.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files.length); // append length2 outside inner loop
+      for (let i = 0; i < vehicle.damages?.length; i++) {
+        formData2.append("length2", vehicle.damages[i]?.files?.length); // append length2 outside inner loop
 
-        for (let j = 0; j < vehicle.damages[i]?.files.length; j++) {
+        for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
           formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
         }
       }
@@ -209,7 +228,7 @@ export default function Vehicles() {
         },
       });
       let tempArray = vehicle.damages;
-      for (let i = 0; i < vehicle.damages.length; i++) {}
+      for (let i = 0; i < vehicle.damages?.length; i++) {}
 
       const updatedObjects = tempArray.map((obj: any, index: any) => ({
         ...obj,
@@ -219,6 +238,7 @@ export default function Vehicles() {
       await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
         ...vehicle,
         carImages: res?.data?.message,
+        insImages: res4?.data?.message,
         damages: updatedObjects,
       });
 
