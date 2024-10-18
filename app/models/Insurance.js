@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const InsuranceSchema = mongoose.Schema(
   {
     Insurance: { type: String, required: true },
+    recurring: { type: String, required: true },
     active: { type: Boolean, default: true },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

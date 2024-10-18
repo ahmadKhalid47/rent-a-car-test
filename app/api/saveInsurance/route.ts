@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { Insurance, createdBy } = await req.json();
+    let { Insurance, recurring, createdBy } = await req.json();
     console.log(Insurance, createdBy);
 
     connectDb();
-    await new InsuranceModel({ Insurance, createdBy }).save();
+    await new InsuranceModel({ Insurance, recurring, createdBy }).save();
     return NextResponse.json({
       success: "User Created",
     });

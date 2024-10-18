@@ -187,8 +187,11 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[82%] ">
+            <div className="text-start pe-3 flex justify-between items-center w-[20%] ">
               Insurance
+            </div>
+            <div className="text-start pe-3 flex justify-between items-center w-[62%] ">
+              Recurring
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
@@ -220,7 +223,12 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[82%] ">{item?.Insurance}</div>
+                  <div className="text-start pe-3 w-[20%] ">
+                    {item?.Insurance}
+                  </div>
+                  <div className="text-start pe-3 w-[62%] ">
+                    {item?.recurring}
+                  </div>
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {

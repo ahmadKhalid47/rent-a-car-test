@@ -68,7 +68,7 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Insurance.trim() === "") {
+    if (Insurance.trim() === "" || recurring.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
@@ -87,6 +87,7 @@ export default function Vehicles() {
       setLoading(action);
       let result: any = await axios.post(`/api/saveInsurance`, {
         Insurance,
+        recurring,
         createdBy: myProfile._id,
       });
 
@@ -111,7 +112,6 @@ export default function Vehicles() {
     "Six Monthly",
     "Yearly",
   ];
-console.log(other);
 
   return (
     <div
