@@ -205,10 +205,10 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[20%] ">
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[15%] ">
               Insurance
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[62%] ">
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
               Recurring
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
@@ -241,10 +241,10 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[20%] ">
+                  <div className="text-start truncate pe-3 w-[15%] ">
                     {item?.Insurance}
                   </div>
-                  <div className="text-start pe-3 w-[62%] ">
+                  <div className="text-start truncate pe-3 w-[67%] ">
                     {item?.recurring}
                   </div>
                   <div
