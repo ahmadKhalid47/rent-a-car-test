@@ -8,11 +8,18 @@ import {
   setrentDay,
   setrentWeek,
   setrentMonth,
+  setmlDay,
+  setmlWeek,
+  setmlMonth,
+  setmlFee,
+  setlateHour,
+  setlateDay,
 } from "@/app/store/Vehicle";
 
 export default function Rental() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let global = useSelector((state: RootState) => state.Global);
+ console.log(vehicle);
  
   return (
     <div className="w-full h-fit  ">
@@ -58,33 +65,33 @@ export default function Rental() {
           Mileage Limit
         </span>
         <TempTypeInputSign
-          setState={setrentDay}
+          setState={setmlDay}
           label={"Per Day"}
-          value={vehicle.rentDay}
+          value={vehicle.mlDay}
           required={false}
           type={"number"}
           sign={"KM"}
         />
         <TempTypeInputSign
-          setState={setrentWeek}
+          setState={setmlWeek}
           label={"Per Week"}
-          value={vehicle.rentWeek}
+          value={vehicle.mlWeek}
           required={false}
           type={"number"}
           sign={"KM"}
         />
         <TempTypeInputSign
-          setState={setrentMonth}
+          setState={setmlMonth}
           label={"Per Month"}
-          value={vehicle.rentMonth}
+          value={vehicle.mlMonth}
           required={false}
           type={"number"}
           sign={"KM"}
         />
         <TempTypeInputSign
-          setState={setrentHour}
+          setState={setmlFee}
           label={"Excess Mileage Fee"}
-          value={vehicle.rentHour}
+          value={vehicle.mlFee}
           required={false}
           type={"number"}
           sign={global.currentCurrency}
@@ -95,17 +102,17 @@ export default function Rental() {
           Late Return Fee
         </span>
         <TempTypeInputSign
-          setState={setrentHour}
+          setState={setlateHour}
           label={"Per Hour"}
-          value={vehicle.rentHour}
+          value={vehicle.lateHour}
           required={false}
           type={"number"}
           sign={global.currentCurrency}
         />
         <TempTypeInputSign
-          setState={setrentDay}
+          setState={setlateDay}
           label={"Per Day"}
-          value={vehicle.rentDay}
+          value={vehicle.lateDay}
           required={false}
           type={"number"}
           sign={global.currentCurrency}

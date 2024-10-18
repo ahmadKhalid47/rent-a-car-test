@@ -19,10 +19,16 @@ const initialState: any = {
   Drivetrain: "",
   city: "",
   postalCode: "",
+  lateHour: "",
+  lateDay: "",
   rentHour: "",
   rentDay: "",
   rentWeek: "",
   rentMonth: "",
+  mlFee: "",
+  mlDay: "",
+  mlWeek: "",
+  mlMonth: "",
   insuranceNo: "",
   insuranceProvider: "",
   insuranceExpiry: "",
@@ -101,11 +107,29 @@ export const VehicleSlice = createSlice({
     setrentDay: (state, action) => {
       state.rentDay = action.payload;
     },
+    setlateHour: (state, action) => {
+      state.lateHour = action.payload;
+    },
+    setlateDay: (state, action) => {
+      state.lateDay = action.payload;
+    },
     setrentWeek: (state, action) => {
       state.rentWeek = action.payload;
     },
     setrentMonth: (state, action) => {
       state.rentMonth = action.payload;
+    },
+    setmlFee: (state, action) => {
+      state.mlFee = action.payload;
+    },
+    setmlDay: (state, action) => {
+      state.mlDay = action.payload;
+    },
+    setmlWeek: (state, action) => {
+      state.mlWeek = action.payload;
+    },
+    setmlMonth: (state, action) => {
+      state.mlMonth = action.payload;
     },
     setinsuranceNo: (state, action) => {
       state.insuranceNo = action.payload;
@@ -171,6 +195,8 @@ export const {
   setpostalCodeR,
   setrentHour,
   setrentDay,
+  setlateHour,
+  setlateDay,
   setrentWeek,
   setrentMonth,
   setinsuranceNo,
@@ -187,6 +213,10 @@ export const {
   resetState,
   setengineVolume,
   setfuelCapacity,
+  setmlDay,
+  setmlFee,
+  setmlMonth,
+  setmlWeek,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;
