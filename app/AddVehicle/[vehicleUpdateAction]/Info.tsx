@@ -390,29 +390,6 @@ export default function Info() {
           required={false}
           options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
-
-        <TempSelectInputLink
-          setState={setcountryR}
-          label={"Country"}
-          value={vehicle.country}
-          required={false}
-          options={Configurations?.Configurations?.country
-            ?.map((item: any) => item.country)
-            ?.sort((a: string, b: string) => a.localeCompare(b))}
-          link={"/Configuration/Country"}
-        />
-        <TempSelectInput
-          setState={setDrivetrainR}
-          label={"Drivetrain"}
-          value={vehicle.Drivetrain}
-          required={false}
-          options={[
-            "AWD (All Wheel Drive)",
-            "RWD (Rear Wheel Drive)",
-            "FWD (Front Wheel Drive)",
-          ]}
-        />
-
         <TempSelectInputLink
           setState={setOwnershipR}
           label={"Ownership"}
@@ -422,6 +399,27 @@ export default function Info() {
             (item: any) => item.Ownership
           )?.sort((a: string, b: string) => a.localeCompare(b))}
           link={"/Configuration/Ownership"}
+        />
+        <TempSelectInput
+          setState={setDrivetrainR}
+          label={"Drivetrain"}
+          value={vehicle.Drivetrain}
+          required={false}
+          options={[
+            "All Wheel Drive (AWD)",
+            "Front Wheel Drive (FWD)",
+            "Rear Wheel Drive (RWD)",
+          ]}
+        />
+        <TempSelectInputLink
+          setState={setcountryR}
+          label={"Country"}
+          value={vehicle.country}
+          required={false}
+          options={Configurations?.Configurations?.country
+            ?.map((item: any) => item.country)
+            ?.sort((a: string, b: string) => a.localeCompare(b))}
+          link={"/Configuration/Country"}
         />
         <TempSelectInputLink
           setState={setcityR}
@@ -433,14 +431,6 @@ export default function Info() {
             ?.map((item: any) => item.city)
             ?.sort((a: string, b: string) => a.localeCompare(b))}
           link={"/Configuration/City"}
-        />
-
-        <TempTypeInput
-          setState={setpostalCodeR}
-          label={"Postal/Zip Code"}
-          value={vehicle.postalCode}
-          required={false}
-          type={"text"}
         />
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
