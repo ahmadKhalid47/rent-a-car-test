@@ -261,15 +261,15 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[13%] ">
-              Registration No{" "}
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
+              Reg No{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() => sort("registration")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
               Making Year{" "}
               <img
                 src={arrows.src}
@@ -293,7 +293,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("type")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
               Color{" "}
               <img
                 src={arrows.src}
@@ -319,6 +319,9 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[14%] ">
               Created At{" "}
+            </div>
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
+              Status
             </div>
             <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
               Actions{" "}
@@ -352,19 +355,23 @@ export default function ListView({ data }: dataType) {
                   <div className="text-start pe-3 truncate w-[11%] ">
                     {item?.data?.make} {item?.data?.model}
                   </div>
-                  <div className="text-start pe-3 truncate w-[13%] ">
+                  <div className="text-start pe-3 truncate w-[7%] ">
                     {item?.data?.registration}
                   </div>
-                  <div className="text-start pe-3 truncate w-[11%] ">
+                  <div className="text-start pe-3 truncate w-[8%] ">
                     {item?.data?.year}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%] ">
-                    {item?.data?.type}
+                    <span
+                      className={`w-[92px] truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
+                    >
+                      {item?.data?.type}
+                    </span>
                   </div>
                   <div className="text-start pe-3 truncate w-[9%] ">
                     {item?.data?.vinNo}
                   </div>
-                  <div className="text-start pe-3 truncate w-[7%] ">
+                  <div className="text-start pe-3 truncate w-[6%] ">
                     <div
                       className={`w-[23px] h-[12px] rounded-full`}
                       style={{
@@ -397,6 +404,23 @@ export default function ListView({ data }: dataType) {
                   </div>
                   <div className="text-start pe-3 truncate w-[14%] ">
                     {formatCreatedAtDate(item?.createdAt)}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[6%] ">
+                    <span
+                      className={`border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] ${
+                        item?.active
+                          ? item?.rentOut
+                            ? "progress-status"
+                            : "complete-status"
+                          : "cancel-status"
+                      }`}
+                    >
+                      {item?.active
+                        ? item?.rentOut
+                          ? "On Trip"
+                          : "Available"
+                        : "Inactive"}
+                    </span>
                   </div>
                   <div
                     className="flex justify-end pe-3 truncate gap items-center w-[7%]  h-full"

@@ -144,8 +144,20 @@ export default function GridView({ data }: dataType) {
                 ) : null}
               </div>
               <div className="w-[100%] h-fit flex flex-col justify-between items-start gap-1 ">
-                <span className="complete-status border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] mb-1">
-                  Available
+                <span
+                  className={`border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] mb-1 ${
+                    item?.active
+                      ? item?.rentOut
+                        ? "progress-status"
+                        : "complete-status"
+                      : "cancel-status"
+                  }`}
+                >
+                  {item?.active
+                    ? item?.rentOut
+                      ? "On Trip"
+                      : "Available"
+                    : "Inactive"}
                 </span>
                 <div className="w-[100%] h-fit flex justify-between items-center">
                   <div className="flex justify-center items-center gap-2 w-fit ">

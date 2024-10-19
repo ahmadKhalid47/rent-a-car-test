@@ -23,7 +23,7 @@ export default function Vehicles() {
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [gridView, setGridView] = useState(true);
+  const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
