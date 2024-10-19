@@ -403,7 +403,7 @@ export default function Vehicles() {
                   currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
-                Rental Information
+                Features
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
@@ -417,7 +417,7 @@ export default function Vehicles() {
                   currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
-                Features
+                Rental Information
               </div>
               <div
                 className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
@@ -439,11 +439,11 @@ export default function Vehicles() {
           {currentPage === 0 ? (
             <Info />
           ) : currentPage === 1 ? (
-            <Rental />
+            <Feature />
           ) : currentPage === 2 ? (
             <Insurances />
           ) : currentPage === 3 ? (
-            <Feature />
+            <Rental />
           ) : currentPage === 4 ? (
             <Damages />
           ) : currentPage === 5 ? (
