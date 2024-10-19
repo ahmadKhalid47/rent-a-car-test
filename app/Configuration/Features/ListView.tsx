@@ -155,12 +155,12 @@ export default function ListView({ data }: dataType) {
     (item: any) => item?.createdBy === myProfile._id
   );
   console.log(Icon);
-const categories=[
-"",
-"Basic Comfort Features",
-"Safety Features",
-"Convenience Features",
-]
+  const categories = [
+    "",
+    "Basic Comfort Features",
+    "Safety Features",
+    "Convenience Features",
+  ];
   return (
     <div className="w-full h-fit mt-4 relative">
       <h3
@@ -262,7 +262,7 @@ const categories=[
                     />
                   </div>
                   <div className="text-start pe-3 truncate w-[52%] h-[100%] flex justify-start items-center gap-5">
-                    {categories[item?.Box]}
+                    {categories[item?.Box] || "Basic Comfort Features"}
                   </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
@@ -314,7 +314,7 @@ const categories=[
                   </div>
                 </div>
                 {popup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
@@ -346,7 +346,7 @@ const categories=[
                   </div>
                 ) : null}
                 {deleteManyPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-10 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
@@ -378,7 +378,7 @@ const categories=[
                   </div>
                 ) : null}
                 {editPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9)] rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
                       <div
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
