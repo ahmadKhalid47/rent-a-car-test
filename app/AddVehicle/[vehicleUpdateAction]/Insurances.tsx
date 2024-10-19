@@ -30,6 +30,7 @@ export default function Insurances() {
   let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
   const [insfiles, setinsFiles] = useState<any>(vehicle?.insImage);
+  let global = useSelector((state: RootState) => state.Global);
 
   useEffect(() => {
     setinsFiles(vehicle.insImage);
@@ -47,7 +48,6 @@ export default function Insurances() {
   } = useDropzone({
     onDrop: onDropPass,
   });
-console.log(vehicle);
 
   return (
     <div className="w-full h-fit  ">
@@ -78,7 +78,7 @@ console.log(vehicle);
           value={vehicle.insPayable}
           required={false}
           type={"number"}
-          sign={"$"}
+          sign={global.currentCurrency}
         />
         <TempTypeInputSign
           setState={setinsDeductible}
