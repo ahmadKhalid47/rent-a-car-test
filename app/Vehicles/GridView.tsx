@@ -94,125 +94,139 @@ export default function GridView({ data }: dataType) {
   }
   return (
     <div className="w-full h-fit">
-      <div className="w-full h-fit flex justify-between flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] bg-light-grey border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre px-3 border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
         {paginatedData.map((item: any, index: number) => (
-          <Link
-            key={index} // Added unique key prop
-            href={`/VehicleInfo/${item?._id}`}
-            className="w-[100%] lg:w-[47.5%] h-[183px dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-6 flex justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
-          >
+          <div className="lg:w-[33.33%] 3xl:w-[25%] bg-green-5 h-fit flex justify-center items-start">
             <div
-              className="absolute top-5 right-5 hover:cursor-pointer bg w-[30px] h-[30px] rounded-full flex justify-center items-center dark:hover:bg-slate-500 hover:bg-gray-200"
-              onClick={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-              }}
+              key={index}
+              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white mt-[5%] shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
             >
-              <FaEllipsisVertical
-                onClick={() => {
-                  toggleDropdown(item?._id);
-                }}
-              />
-              <div className="relative">
-                {isOpen === item._id && (
-                  <div className="w-[130px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute top-4 overflow-hidden right-0 text-md dark:text-white text-black flex flex-col justify-start items-center py-3">
-                    <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
-                      onClick={() => {
-                        router.push(`/AddVehicle/${item?._id}`);
-                      }}
-                    >
-                      Edit
-                    </button>
-                    <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
-                    <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
-                      onClick={() => {
-                        setPopup(true);
-                        setItemToDelete(item?._id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                    <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
-                    <button
-                      className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
-                      onClick={() => {
-                        updateActive(item?._id, item?.active);
-                      }}
-                    >
-                      {item.active ? "Inactive" : "Active"}
-                    </button>
+              <div className="w-[100%] h-fit flex justify-between items-center">
+                <div className="w-full h-fit flex justify-between items-start py-1 border-color">
+                  <span className="w-full font-[600] text-[20px] leading-none dark:text-white text-black mt-[3px]">
+                    {item?.data?.make} {item?.data?.model}
+                    <br />
+                    <span className="text-[10px] w-full font-[400] truncate">
+                      {item?.data?.type}
+                    </span>
+                  </span>
+                  <div className="flex flex-col justify-start items-start w-[111px] h-fit">
+                    <div className="flex justify-start items-center w-[111px] h-[24px] bg-[#F6F6F6] border-[1px] border-black rounded-[3px] overflow-hidden">
+                      <div className="w-[33px] h-[24px] bg-[#054B86]"></div>
+                      <span className="font-[600] flex justify-center items-center text-[12px] text-black w-[100%]">
+                        <span className="w-[80px] truncate">
+                          {item?.data?.registration}
+                        </span>
+                      </span>
+                    </div>
+                    <div className="w-full font-[400] text-[10px] truncate leading-none h-fit py-1">
+                      VIN: {item?.data?.vinNo}
+                    </div>
                   </div>
-                )}
-              </div>
-            </div>
-
-            <div className="w-[120px] xs:w-[170px] h-[139px] overflow-hidden rounded-[15px]">
-              {item?.data?.carImages ? (
-                <img
-                  src={
-                    item?.data?.carImages[item?.data?.thumbnailImage] ||
-                    image404.src
-                  }
-                  className="w-full h-full"
-                />
-              ) : null}
-            </div>
-            <div className="w-[80%] md:w-[40%] lg:w-[55%] h-fit flex justify-start flex-wrap items-center gap-1 ">
-              <div className="w-full flex justify-start items-center pe- -mb-1">
-                <p className="font-[500] text-[18px] xs:text-[24px] leading-[34px] xs:leading-0 truncate">
-                  {item?.data?.make} {item?.data?.model}
-                </p>
-              </div>
-              <div className="w-full flex justify-start items-center">
-                <p className="font-[400] text-[12px] xs-text-[14px] leading-5 xs:leading-[21px]">
-                  {item?.data?.registration}
-                </p>
-              </div>
-              <div className="w-full flex justify-start 1400:justify-between items-center">
-                <div className="flex justify-start items-center gap-2 w-[50%] pe-5">
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[70%]">
-                    Making Year:
-                  </p>
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
-                    {item?.data?.year}
-                  </p>
-                </div>
-                <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
-                    Type:
-                  </p>
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[70%]">
-                    {item?.data?.type}
-                  </p>
                 </div>
               </div>
-              <div className="w-full flex justify-start 1400:justify-between items-center">
-                <div className="flex justify-start items-start gap-2 w-[50%]">
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] h-[18px]">
-                    Color:
-                  </p>
-                  <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px] h-[18px] flex justify-center items-center">
+              <div className="w-[100%] h-[173px] flex justify-center items-center gap-1">
+                {item?.data?.carImages ? (
+                  <img
+                    src={
+                      item?.data?.carImages[item?.data?.thumbnailImage] ||
+                      image404.src
+                    }
+                    className="h-full"
+                  />
+                ) : null}
+              </div>
+              <div className="w-[100%] h-fit flex flex-col justify-between items-start gap-1 ">
+                <span className="complete-status border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] mb-1">
+                  Available
+                </span>
+                <div className="w-[100%] h-fit flex justify-between items-center">
+                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                    <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
+                      Color:
+                    </span>
+                    <div className="font-[400] text-[9px] xs:text-[12px] leading-[18px] h-[18px] flex justify-center items-center w-fit">
+                      <div
+                        className="w-[23px] h-[12px] rounded-full"
+                        style={{
+                          backgroundColor: item?.data?.color,
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                    <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
+                      Year:
+                    </span>
+                    <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
+                      {item?.data?.year}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                    <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
+                      City:
+                    </span>
+                    <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
+                      {item?.data?.city}
+                    </span>
+                  </div>
+                </div>
+                <div className="w-[100%] h-[44px] flex justify-between items-center">
+                  <Link
+                    href={`/VehicleInfo/${item?._id}`}
+                    className="bg-main-blue rounded-[5px] w-[84%] h-full flex justify-center items-center text-[18px] font-[500] text-white hover:opacity-[0.9]"
+                  >
+                    View More
+                  </Link>
+                  <div className="bg-white border-[1px] border-grey rounded-[5px] w-[15%] h-full flex justify-center items-center">
                     <div
-                      className="w-[23px] h-[12px] rounded-full"
-                      style={{
-                        backgroundColor: item?.data?.color,
+                      className="hover:cursor-pointer bg w-full h-full flex justify-center items-center rounded-[5px]"
+                      onClick={() => {
+                        toggleDropdown(item?._id);
                       }}
-                    ></div>
+                    >
+                      <div className="w-full h-full bg-hover-light-grey flex justify-center items-center rounded-[5px]">
+                        <FaEllipsisVertical />
+                      </div>
+                      <div className="relative">
+                        {isOpen === item._id && (
+                          <div className="w-[130px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute bottom-4 overflow-hidden -right-5 text-md dark:text-white text-black flex flex-col justify-start items-center py-3">
+                            <button
+                              className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
+                              onClick={() => {
+                                router.push(`/AddVehicle/${item?._id}`);
+                              }}
+                            >
+                              Edit
+                            </button>
+                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
+                            <button
+                              className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
+                              onClick={() => {
+                                setPopup(true);
+                                setItemToDelete(item?._id);
+                              }}
+                            >
+                              Delete
+                            </button>
+                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
+                            <button
+                              className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
+                              onClick={() => {
+                                updateActive(item?._id, item?.active);
+                              }}
+                            >
+                              {item.active ? "Inactive" : "Active"}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex justify-start items-center gap-2 1400:gap-0 w-[50%]">
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[30%]">
-                    City:
-                  </p>
-                  <p className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit 1400:w-[70%]">
-                    {item?.data?.city}
-                  </p>
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       {popup ? (

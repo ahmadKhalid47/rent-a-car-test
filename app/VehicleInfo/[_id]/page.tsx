@@ -192,7 +192,8 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
                       <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black mt-[3px]">
-                        {vehicleInfo?.make} {vehicleInfo?.model}
+                        {vehicleInfo?.make}
+                        {vehicleInfo?.model}
                       </span>
                       <div className="flex flex-col justify-start items-start w-[160px] h-fit">
                         <div className="flex justify-start items-center w-[160px] h-[35px] bg-[#F6F6F6] border-[1px] border-black rounded-[5px] overflow-hidden">

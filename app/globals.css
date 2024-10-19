@@ -478,3 +478,15 @@ button:active {
 .overscroll-behavior-block {
   overscroll-behavior-block: contain;
 }
+.hover-none{
+  opacity: 1;
+}
+.hover-none:hover{
+  opacity: 1;
+}
+.hover-none:active{
+  opacity: 1;
+}
+.hover-none:focus{
+  opacity: 1;
+}
