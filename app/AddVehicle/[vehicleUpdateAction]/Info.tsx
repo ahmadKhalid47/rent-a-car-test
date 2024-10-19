@@ -196,7 +196,6 @@ export default function Info() {
     { Color: "#FFD700", ColorName: "Gold" },
     { Color: "#800080", ColorName: "Purple" },
   ];
-  console.log(Configurations?.Configurations?.color, standardColors);
 
   return (
     <div className="w-full h-fit ">
