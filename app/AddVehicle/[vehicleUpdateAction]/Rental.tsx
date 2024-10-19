@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
-import { TypeInput, TempTypeInputSign } from "../../Components/InputComponents/TypeInput";
+import {
+  TypeInput,
+  TempTypeInputSign,
+} from "../../Components/InputComponents/TypeInput";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import {
@@ -19,7 +22,8 @@ import {
 export default function Rental() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let global = useSelector((state: RootState) => state.Global);
- 
+  console.log();
+
   return (
     <div className="w-full h-fit  ">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -69,7 +73,9 @@ export default function Rental() {
           value={vehicle.mlDay}
           required={false}
           type={"number"}
-          sign={global.unit?global.unit:global.unit==="undefined"?"KM":"KM"}
+          sign={
+            !global.unit || global.unit === "undefined" ? "KM" : global.unit
+          }
         />
         <TempTypeInputSign
           setState={setmlWeek}
@@ -77,7 +83,9 @@ export default function Rental() {
           value={vehicle.mlWeek}
           required={false}
           type={"number"}
-          sign={global.unit}
+          sign={
+            !global.unit || global.unit === "undefined" ? "KM" : global.unit
+          }
         />
         <TempTypeInputSign
           setState={setmlMonth}
@@ -85,7 +93,9 @@ export default function Rental() {
           value={vehicle.mlMonth}
           required={false}
           type={"number"}
-          sign={global.unit}
+          sign={
+            !global.unit || global.unit === "undefined" ? "KM" : global.unit
+          }
         />
         <TempTypeInputSign
           setState={setmlFee}

@@ -9,7 +9,7 @@ const initialState = {
   myProfileReloader: 0,
   companyProfileReloader: 0,
   currentCurrency: "",
-  unit: "",
+  unit: "KM",
   theme: "",
   alert: "",
   severity: "success",
