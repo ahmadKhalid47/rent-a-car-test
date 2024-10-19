@@ -14,7 +14,7 @@ export default function Feature() {
   let featuresDisplayArray: any = Configurations?.Configurations?.feature?.map(
     (item: any) => item.Feature
   );
-  console.log("featuresDisplayArray", featuresDisplayArray);
+  console.log("featuresDisplayArray", Configurations?.Configurations?.feature);
   let iconsDisplayArray: any = Configurations?.Configurations?.feature?.map(
     (item: any) => item.Icon
   );

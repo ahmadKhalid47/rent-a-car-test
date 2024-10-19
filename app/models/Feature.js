@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const FeatureSchema = mongoose.Schema(
   {
     Feature: { type: String, required: true },
+    Box: { type: Number, required: true, default: 1 },
     Icon: { type: String, required: false },
     active: { type: Boolean, default: true },
     createdBy: {
@@ -15,7 +16,7 @@ const FeatureSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-FeatureSchema.index({ createdBy: 1 });;
+FeatureSchema.index({ createdBy: 1 });
 const FeatureModel =
   mongoose.models.Feature || mongoose.model("Feature", FeatureSchema);
 

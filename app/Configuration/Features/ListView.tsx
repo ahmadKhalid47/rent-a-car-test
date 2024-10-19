@@ -1,3 +1,4 @@
+import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import demyIcon from "@/public/features (1).png";
@@ -37,6 +38,8 @@ export default function ListView({ data }: dataType) {
   const [Icon, setIcon] = useState<any>("");
   const dispatch = useDispatch();
   const router = useRouter();
+  const [Box, setBox] = useState("");
+  console.log(Box);
 
   useEffect(() => {
     // Create a copy of the data to avoid mutating the original array
@@ -69,7 +72,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteFeature/${_id}`);
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Feature Deleted Successfully"));
     } catch (err) {
@@ -87,7 +90,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyFeature`, {
         _ids: itemToDeleteMany,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Features Deleted Successfully"));
     } catch (err) {
@@ -115,9 +118,10 @@ export default function ListView({ data }: dataType) {
 
       let result: any = await axios.post(`/api/updateFeature/${_id}`, {
         Feature,
+        Box,
         Icon: res2?.data?.message,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Feature Updated Successfully"));
     } catch (err) {
@@ -151,7 +155,12 @@ export default function ListView({ data }: dataType) {
     (item: any) => item?.createdBy === myProfile._id
   );
   console.log(Icon);
-
+const categories=[
+"",
+"Basic Comfort Features",
+"Safety Features",
+"Convenience Features",
+]
   return (
     <div className="w-full h-fit mt-4 relative">
       <h3
@@ -206,8 +215,11 @@ export default function ListView({ data }: dataType) {
             <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
               Feature
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[62%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%]">
               Icon
+            </div>
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[52%]">
+              Category
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -242,12 +254,15 @@ export default function ListView({ data }: dataType) {
                   <div className="text-start pe-3 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
                   </div>
-                  <div className="text-start pe-3 truncate w-[62%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[10%] h-[100%] flex justify-start items-center gap-5">
                     <img
                       className="w-[20px] h-[20px] bg-white"
                       src={item?.Icon || demyIcon.src}
                       alt=""
                     />
+                  </div>
+                  <div className="text-start pe-3 truncate w-[52%] h-[100%] flex justify-start items-center gap-5">
+                    {categories[item?.Box]}
                   </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
@@ -276,6 +291,7 @@ export default function ListView({ data }: dataType) {
                           setEditPopup(true);
                           setItemToEdit(item?._id);
                           setFeature(item?.Feature);
+                          setBox(item?.Box);
                         }
                       }}
                     />
@@ -384,6 +400,34 @@ export default function ListView({ data }: dataType) {
                           />
                         </div>
                       </div>
+                      <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                          {"Select Category"}
+                          <FaAsterisk className="text-[6px]" />
+                        </label>
+                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <select
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                            required={true}
+                            onChange={(e) => {
+                              setBox(e.target.value);
+                            }}
+                            value={Box}
+                          >
+                            <option value={""}>Select</option>
+                            <option value={1}>Basic Comfort Features</option>
+                            <option value={2}>Safety Features</option>
+                            <option value={3}>Convenience Features</option>
+                          </select>
+                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                            <img
+                              src={shape.src}
+                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                       {myProfile.admin && (
                         <div
                           className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
@@ -413,6 +457,8 @@ export default function ListView({ data }: dataType) {
                           onClick={() => {
                             setEditPopup(false);
                             setFeature("");
+                            setBox("");
+                            setIcon("");
                           }}
                         >
                           <FaTimes />

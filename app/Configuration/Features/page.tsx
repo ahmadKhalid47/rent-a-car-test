@@ -1,4 +1,5 @@
 "use client";
+import shape from "@/public/ShapeBlack.svg";
 import React from "react";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -26,7 +27,8 @@ export default function Vehicles() {
   const [popup, setPopup] = useState(false);
   const [Feature, setFeature] = useState("");
   const [Icon, setIcon] = useState<any>("");
-  console.log(Icon);
+  const [Box, setBox] = useState("");
+  console.log(Box);
 
   useEffect(() => {
     if (isMobile) {
@@ -62,7 +64,7 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Feature.trim() === "") {
+    if (Feature.trim() === "" || Box.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
@@ -90,6 +92,7 @@ export default function Vehicles() {
 
       await axios.post(`/api/saveFeature`, {
         Feature,
+        Box,
         Icon: res?.data?.message,
         createdBy: myProfile._id,
       });
@@ -166,6 +169,34 @@ export default function Vehicles() {
                     />
                   </div>
                 </div>
+                <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                    {"Select Category"}
+                    <FaAsterisk className="text-[6px]" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <select
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                      required={true}
+                      onChange={(e) => {
+                        setBox(e.target.value);
+                      }}
+                      value={Box}
+                    >
+                      <option value={""}>Select</option>
+                      <option value={1}>Basic Comfort Features</option>
+                      <option value={2}>Safety Features</option>
+                      <option value={3}>Convenience Features</option>
+                    </select>
+                    <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                      <img
+                        src={shape.src}
+                        className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {myProfile.admin && (
                   <div
                     className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
