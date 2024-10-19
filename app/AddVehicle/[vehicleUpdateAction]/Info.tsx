@@ -192,8 +192,8 @@ export default function Info() {
           setState={setCategoryR}
           label={"Category"}
           value={vehicle.Category}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.Category?.map(
             (item: any) => item.Category
           )}
@@ -203,8 +203,8 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.make?.map(
             (item: any) => item.make
           )}
@@ -214,8 +214,8 @@ export default function Info() {
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make === makeSelected)
             .map((item: any) => item.model)}
@@ -225,8 +225,8 @@ export default function Info() {
           setState={settypeR}
           label={"Body Type"}
           value={vehicle.type}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
@@ -243,8 +243,8 @@ export default function Info() {
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
