@@ -93,19 +93,26 @@ export default function GridView({ data }: dataType) {
     }
   }
   return (
-    <div className="w-full h-fit">
-      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre px-3 border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+    <div className="w-full h-fit mt-4">
+      <h3
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] text-transparent `}
+      >
+        Delete Multiple
+      </h3>
+
+      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre pb-4 px-3 border-2 border-grey dark:bg-dark2 bg-light-grey">
         {paginatedData.map((item: any, index: number) => (
-          <div className="lg:w-[33.33%] 3xl:w-[25%] bg-green-5 h-fit flex justify-center items-start">
+          <div className="lg:w-[33.33%] 3xl:w-[25%] bg-green-5 h-fit flex justify-center items-start mt-4">
             <div
               key={index}
-              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white mt-[5%] shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
+              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
             >
               <div className="w-[100%] h-fit flex justify-between items-center">
                 <div className="w-full h-fit flex justify-between items-start py-1 border-color">
-                  <span className="w-full font-[600] text-[20px] leading-none dark:text-white text-black mt-[3px]">
-                    {item?.data?.make} {item?.data?.model}
-                    <br />
+                  <span className="w-full dark:text-white text-black mt-[3px] flex flex-col justify-center items-start">
+                    <span className="w-full font-[600] text-[20px] leading-none">
+                      {item?.data?.make} {item?.data?.model}
+                    </span>
                     <span className="text-[10px] w-full font-[400] truncate">
                       {item?.data?.type}
                     </span>
@@ -141,7 +148,7 @@ export default function GridView({ data }: dataType) {
                   Available
                 </span>
                 <div className="w-[100%] h-fit flex justify-between items-center">
-                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                  <div className="flex justify-center items-center gap-2 w-fit ">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       Color:
                     </span>
@@ -154,7 +161,7 @@ export default function GridView({ data }: dataType) {
                       ></div>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                  <div className="flex justify-center items-center gap-2 w-fit ">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       Year:
                     </span>
@@ -162,7 +169,7 @@ export default function GridView({ data }: dataType) {
                       {item?.data?.year}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center gap-2 1400:gap-0 w-[32%] ">
+                  <div className="flex justify-center items-center gap-2 w-fit ">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       City:
                     </span>
