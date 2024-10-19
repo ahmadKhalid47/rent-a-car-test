@@ -148,28 +148,8 @@ export default function Vehicles() {
 
     setFilteredVehicles(filtered);
   }
-  function advanceFilterVehiclesStatus() {
-    let filtered: any = vehiclesData;
 
-    const lowercasedQuery = searchQuery.toLowerCase();
-    filtered = vehiclesData.filter((vehicle) => {
-      const { data } = vehicle;
-      const { registration, city, make, model } = data;
-
-      const carName = `${make} ${model}`.toLowerCase();
-      return (
-        registration.toLowerCase().includes(lowercasedQuery) ||
-        city.toLowerCase().includes(lowercasedQuery) ||
-        carName.includes(lowercasedQuery)
-      );
-    });
-
-  console.log("filtered", filtered);
-
-    setFilteredVehicles(filtered);
-  }
   useEffect(() => {
-    // advanceFilterVehiclesStatus();
     advanceFilterVehicles();
     console.log(status);
   }, [advanceFilters, status]);
