@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const FeatureSchema = mongoose.Schema(
   {
     Feature: { type: String, required: true },
-    Box: { type: Number, required: true, default: 1 },
+    Box: { type: String, required: true },
     Icon: { type: String, required: false },
     active: { type: Boolean, default: true },
     createdBy: {

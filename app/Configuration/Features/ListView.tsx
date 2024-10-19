@@ -262,7 +262,7 @@ export default function ListView({ data }: dataType) {
                     />
                   </div>
                   <div className="text-start pe-3 truncate w-[52%] h-[100%] flex justify-start items-center gap-5">
-                    {categories[item?.Box] || "Basic Comfort Features"}
+                    {item?.Box}
                   </div>
                   <div
                     className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
@@ -415,9 +415,9 @@ export default function ListView({ data }: dataType) {
                             value={Box}
                           >
                             <option value={""}>Select</option>
-                            <option value={1}>Basic Comfort Features</option>
-                            <option value={2}>Safety Features</option>
-                            <option value={3}>Convenience Features</option>
+                            <option value={"Basic Comfort Features"}>Basic Comfort Features</option>
+                            <option value={"Safety Features"}>Safety Features</option>
+                            <option value={"Convenience Features"}>Convenience Features</option>
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                             <img
