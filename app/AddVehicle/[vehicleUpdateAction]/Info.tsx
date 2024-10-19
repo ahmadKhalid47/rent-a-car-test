@@ -438,19 +438,22 @@ export default function Info() {
           Add Vehicle Images
         </h3>
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
           {...getRootProps()}
         >
           <input {...getInputProps()} />
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] dark:text-white text-black mt-[5px]">
+          <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
-          </h4>
-          <h4 className="font-[400] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px] text-[#515978]">
-            Select JPG or PNG
-          </h4>
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Select JPG, PNG, or PDF{" "}
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Maximum size 1MB{" "}
+          </span>{" "}
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           {thumbs}

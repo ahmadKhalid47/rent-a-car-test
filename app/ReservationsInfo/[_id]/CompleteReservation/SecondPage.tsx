@@ -285,16 +285,16 @@ export default function SecondPage() {
                         mark.exterior ? (
                           <div
                             className={`absolute w-[15px] h-[15px] rounded-full ${
-                            mark.degree === "Low"
-                              ? "bg-green-400 "
-                              : mark.degree === "Medium"
-                              ? "bg-yellow-300"
-                              : mark.degree === "High"
-                              ? "bg-orange-500"
-                              : mark.degree === "Very High"
-                              ? "bg-red-500"
-                              : ""
-                          } text-[8px] flex justify-center items-center font-[600]`}
+                              mark.degree === "Low"
+                                ? "bg-green-400 "
+                                : mark.degree === "Medium"
+                                ? "bg-yellow-300"
+                                : mark.degree === "High"
+                                ? "bg-orange-500"
+                                : mark.degree === "Very High"
+                                ? "bg-red-500"
+                                : ""
+                            } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
                               top: `${mark.y}%`,
@@ -308,16 +308,16 @@ export default function SecondPage() {
                         !mark.exterior ? (
                           <div
                             className={`absolute w-[15px] h-[15px] rounded-full ${
-                            mark.degree === "Low"
-                              ? "bg-green-400 "
-                              : mark.degree === "Medium"
-                              ? "bg-yellow-300"
-                              : mark.degree === "High"
-                              ? "bg-orange-500"
-                              : mark.degree === "Very High"
-                              ? "bg-red-500"
-                              : ""
-                          } text-[8px] flex justify-center items-center font-[600]`}
+                              mark.degree === "Low"
+                                ? "bg-green-400 "
+                                : mark.degree === "Medium"
+                                ? "bg-yellow-300"
+                                : mark.degree === "High"
+                                ? "bg-orange-500"
+                                : mark.degree === "Very High"
+                                ? "bg-red-500"
+                                : ""
+                            } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
                               top: `${mark.y}%`,
@@ -462,15 +462,21 @@ export default function SecondPage() {
                   {...getRootProps()}
                 >
                   <input {...getInputProps()} />
-
                   <img src={upload.src} />
-                  <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
-                    Drag & Drop or{" "}
+                  <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
+                    Drag & Drop or
                     <span className="text-link-blue cursor-pointer">
-                      choose file
-                    </span>{" "}
+                      {" "}
+                      choose file{" "}
+                    </span>
                     to upload
-                  </h4>
+                  </span>
+                  <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+                    Select JPG, PNG, or PDF{" "}
+                  </span>
+                  <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+                    Maximum size 1MB{" "}
+                  </span>{" "}
                   <h4 className="font-[400] text-[14px] leading-[17px] text-[#515978]">
                     Select JPG or PNG
                   </h4>

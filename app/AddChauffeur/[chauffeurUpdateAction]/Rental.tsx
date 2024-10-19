@@ -105,17 +105,22 @@ export default function Rental() {
         />
 
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
-
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
+          <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
-          </h4>
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Select JPG, PNG, or PDF{" "}
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Maximum size 1MB{" "}
+          </span>{" "}
         </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload Passport / ID scans
@@ -152,17 +157,22 @@ export default function Rental() {
           options={countries.map((item: any) => item.label)}
         />
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px] cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
           {...getRootPropsLic()}
         >
           <input {...getInputPropsLic()} />
-
           <img src={upload.src} />
-          <h4 className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] leading-[17px]  dark:text-white text-black mt-[5px]">
+          <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
-          </h4>
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Select JPG, PNG, or PDF{" "}
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Maximum size 1MB{" "}
+          </span>{" "}
         </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload driving license scans
