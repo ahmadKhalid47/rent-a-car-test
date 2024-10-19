@@ -69,7 +69,7 @@ export default function Rental() {
           value={vehicle.mlDay}
           required={false}
           type={"number"}
-          sign={global.unit||"KM"}
+          sign={global.unit?global.unit:global.unit==="undefined"?"KM":"KM"}
         />
         <TempTypeInputSign
           setState={setmlWeek}
