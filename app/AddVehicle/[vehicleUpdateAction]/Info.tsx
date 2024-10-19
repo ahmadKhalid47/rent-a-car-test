@@ -181,6 +181,22 @@ export default function Info() {
   for (let i = currentYear + 1; i >= 1995; i--) {
     years.push(i.toString());
   }
+  const standardColors = [
+    { Color: "#000000", ColorName: "Black" },
+    { Color: "#808080", ColorName: "Gray" },
+    { Color: "#C0C0C0", ColorName: "Silver" },
+    { Color: "#FFFFFF", ColorName: "White" },
+    { Color: "#FF0000", ColorName: "Red" },
+    { Color: "#0000FF", ColorName: "Blue" },
+    { Color: "#008000", ColorName: "Green" },
+    { Color: "#FFFF00", ColorName: "Yellow" },
+    { Color: "#FFA500", ColorName: "Orange" },
+    { Color: "#A52A2A", ColorName: "Brown" },
+    { Color: "#F5F5DC", ColorName: "Beige" },
+    { Color: "#FFD700", ColorName: "Gold" },
+    { Color: "#800080", ColorName: "Purple" },
+  ];
+  console.log(Configurations?.Configurations?.color, standardColors);
 
   return (
     <div className="w-full h-fit ">
@@ -292,6 +308,23 @@ export default function Info() {
                     ></div>
                     Select
                   </div>
+                  {standardColors?.map((item: any, index: any) => (
+                    <div
+                      key={index}
+                      className="option p-2 hover:bg-[#007BFF] hover:text-white cursor-pointer flex justify-start items-center gap-2"
+                      onClick={() =>
+                        handleOptionClick(item.Color, item.ColorName)
+                      }
+                    >
+                      <div
+                        className="rounded-full w-[20px] h-[18px] dark:bg-dark1 bg-white border-[1px] border-black"
+                        style={{
+                          backgroundColor: item.Color,
+                        }}
+                      ></div>
+                      {item.ColorName}
+                    </div>
+                  ))}
                   {Configurations?.Configurations?.color?.map(
                     (item: any, index: any) => (
                       <div
