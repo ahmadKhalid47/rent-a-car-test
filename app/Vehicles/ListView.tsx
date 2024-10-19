@@ -184,57 +184,57 @@ export default function ListView({ data }: dataType) {
     }
   }
 
-  console.log(data);
-
   return (
     <div className="w-full h-fit">
       <div
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
-        <span>
+        {itemToDeleteMany.length >= 1 && (
           <span>
-            <button
+            <span>
+              <button
+                className={`${
+                  itemToDeleteMany.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+            </span>
+            <span className="ps-1"></span>|<span className="ps-1"></span>
+            <span
               className={`${
                 itemToDeleteMany.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                setDeleteManyPopup(true);
+                UpdateActiveManyItem(true);
               }}
-              disabled={itemToDeleteMany.length < 1 ? true : false}
             >
-              Delete Multiple
-            </button>
+              Active /
+            </span>
+            <span
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
+              onClick={() => {
+                UpdateActiveManyItem(false);
+              }}
+            >
+              Inactive Multiple
+            </span>
           </span>
-          <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(true);
-            }}
-          >
-            Active /
-          </span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(false);
-            }}
-          >
-            Inactive Multiple
-          </span>
-        </span>
+        )}
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
@@ -357,7 +357,7 @@ export default function ListView({ data }: dataType) {
                   </div>
                   <div className="text-start pe-3 truncate w-[9%] ">
                     <span
-                      className={`min- w-full px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
+                      className={`w-full px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
                       {item?.data?.type}
                     </span>
@@ -405,21 +405,22 @@ export default function ListView({ data }: dataType) {
                   <div className="text-start pe-3 truncate w-[12%] ">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
-                  <div className="text-start pe-3 truncate w-[6%] ">
+                  <div className="text-start pe-3  w-[6%] ">
                     <span
-                      className={`border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] ${
-                        item?.active
-                          ? item?.rentOut
+                      className={`w-full truncate border-[1px] px-1 rounded-[5px] h-[22px] text-center text-[12px]
+                        ${
+                          item?.rentOut
                             ? "progress-status"
+                            : !item?.active
+                            ? "cancel-status"
                             : "complete-status"
-                          : "cancel-status"
-                      }`}
+                        }`}
                     >
-                      {item?.active
-                        ? item?.rentOut
-                          ? "On Trip"
-                          : "Available"
-                        : "Inactive"}
+                      {item?.rentOut
+                        ? "On Trip"
+                        : !item?.active
+                        ? "Inactive"
+                        : "Available"}
                     </span>
                   </div>
                   <div

@@ -315,7 +315,7 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit mt-4">
+        <div className="w-full h-fit">
           {loading ? (
             <MediumLoader />
           ) : gridView ? (

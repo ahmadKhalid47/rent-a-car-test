@@ -27,6 +27,8 @@ export default function GridView({ data }: dataType) {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+  const [deleteManyPopup, setDeleteManyPopup] = useState(false);
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -92,24 +94,162 @@ export default function GridView({ data }: dataType) {
       // setEditLoading(false);
     }
   }
-  return (
-    <div className="w-full h-fit mt-4">
-      <h3
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] text-transparent `}
-      >
-        Delete Multiple
-      </h3>
 
-      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre pb-4 px-3 border-2 border-grey dark:bg-dark2 bg-light-grey">
+  async function deleteManyItem() {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/deleteManyVehicle`, {
+        _ids: itemToDeleteMany,
+      });
+
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(setAlert("Selective Vehicles Deleted Successfully"));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+  function handlePushItem(_id: any) {
+    setItemToDeleteMany((prevArray: any) => {
+      // Check if the item is already present in the array
+      const isPresent = prevArray.includes(_id);
+
+      // Return a new array with the item either added or removed
+      if (isPresent) {
+        // Remove the item
+        return prevArray.filter((item: any) => item !== _id);
+      } else {
+        // Add the item
+        return [...prevArray, _id];
+      }
+    });
+  }
+  const allIds = data.map((item: any) => item?._id);
+  async function UpdateActiveManyItem(active: boolean) {
+    try {
+      setDeleteLoading(true);
+      let result: any = await axios.post(`/api/updateManyActive`, {
+        _ids: itemToDeleteMany,
+        active: active,
+      });
+
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      dispatch(
+        setAlert(
+          active
+            ? "Selective Vehicles Activated Successfully"
+            : "Selective Vehicles Deactivated Successfully"
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDeleteLoading(false);
+      setPopup(false);
+      setItemToDelete(null);
+    }
+  }
+
+  return (
+    <div className="w-full h-fit">
+      <div
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
+          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
+        }  `}
+      >
+        {itemToDeleteMany.length >= 1 && (
+          <span>
+            <span>
+              <button
+                className={`${
+                  itemToDeleteMany.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+            </span>
+            <span className="ps-1"></span>|<span className="ps-1"></span>
+            <span
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
+              onClick={() => {
+                UpdateActiveManyItem(true);
+              }}
+            >
+              Active /
+            </span>
+            <span
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
+              onClick={() => {
+                UpdateActiveManyItem(false);
+              }}
+            >
+              Inactive Multiple
+            </span>
+          </span>
+        )}
+      </div>
+
+      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre pb-4 px-3 border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+        <div className="w-full h-fit flex justify-center items-start">
+          <div className="w-[33.33%] h-fit flex justify-center items-start">
+            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] flex justify-start gap-2 items-center mt-4">
+              <div
+                className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
+                  itemToDeleteMany.length === data.length && data.length !== 0
+                    ? "bg-check"
+                    : ""
+                } border-2 border-dark-grey`}
+                onClick={() => {
+                  setItemToDeleteMany(
+                    itemToDeleteMany.length !== data.length ? allIds : []
+                  );
+                }}
+              ></div>
+              <span
+                onClick={() => {
+                  setItemToDeleteMany(
+                    itemToDeleteMany.length !== data.length ? allIds : []
+                  );
+                }}
+                className="text-[14px] font-[600] cursor-pointer"
+              >
+                Select All
+              </span>
+            </div>
+          </div>
+          <div className="w-[33.33%] h-fit flex justify-center items-start">
+            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit shadow flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+          </div>
+          <div className="w-[33.33%] h-fit flex justify-center items-start">
+            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit shadow flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+          </div>
+        </div>
         {paginatedData.map((item: any, index: number) => (
-          <div className="lg:w-[33.33%] 3xl:w-[25%] bg-green-5 h-fit flex justify-center items-start mt-4">
+          <div className="lg:w-[33.33%] 3xl:w-[25%] h-fit flex justify-center items-start mt-4">
             <div
               key={index}
-              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
+              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-whit shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
             >
               <div className="w-[100%] h-fit flex justify-between items-center">
                 <div className="w-full h-fit flex justify-between items-start py-1 border-color">
-                  <span className="w-full dark:text-white text-black mt-[3px] flex flex-col justify-center items-start">
+                  <span className="w-fit dark:text-white text-black mt-[3px] flex flex-col justify-center items-start">
                     <span className="w-full font-[600] text-[20px] leading-none">
                       {item?.data?.make} {item?.data?.model}
                     </span>
@@ -117,17 +257,33 @@ export default function GridView({ data }: dataType) {
                       {item?.data?.type}
                     </span>
                   </span>
-                  <div className="flex flex-col justify-start items-start w-[111px] h-fit">
-                    <div className="flex justify-start items-center w-[111px] h-[24px] bg-[#F6F6F6] border-[1px] border-black rounded-[3px] overflow-hidden">
-                      <div className="w-[33px] h-[24px] bg-[#054B86]"></div>
-                      <span className="font-[600] flex justify-center items-center text-[12px] text-black w-[100%]">
-                        <span className="w-[80px] truncate">
-                          {item?.data?.registration}
+                  <div className="flex justify-start items-start w-fit h-fit gap-3">
+                    <div className="flex flex-col justify-start items-start w-[111px] h-fit">
+                      <div className="flex justify-start items-center w-[111px] h-[24px] bg-[#F6F6F6] border-[1px] border-black rounded-[3px] overflow-hidden">
+                        <div className="w-[33px] h-[24px] bg-[#054B86]"></div>
+                        <span className="font-[600] flex justify-center items-center text-[12px] text-black w-[100%]">
+                          <span className="w-[80px] truncate">
+                            {item?.data?.registration}
+                          </span>
                         </span>
-                      </span>
+                      </div>
+                      <div className="w-full font-[400] text-[10px] truncate leading-none h-fit py-1">
+                        VIN: {item?.data?.vinNo}
+                      </div>
                     </div>
-                    <div className="w-full font-[400] text-[10px] truncate leading-none h-fit py-1">
-                      VIN: {item?.data?.vinNo}
+                    <div className="text-center truncate w-[20px] h-[24px]  flex justify-center items-center ">
+                      <div
+                        className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
+                          itemToDeleteMany?.includes(item?._id)
+                            ? "bg-check"
+                            : ""
+                        } border-2 border-dark-grey`}
+                        onClick={(event) => {
+                          handlePushItem(item?._id);
+                          event.preventDefault();
+                          event.stopPropagation();
+                        }}
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -146,18 +302,18 @@ export default function GridView({ data }: dataType) {
               <div className="w-[100%] h-fit flex flex-col justify-between items-start gap-1 ">
                 <span
                   className={`border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] mb-1 ${
-                    item?.active
-                      ? item?.rentOut
-                        ? "progress-status"
-                        : "complete-status"
-                      : "cancel-status"
+                    item?.rentOut
+                      ? "progress-status"
+                      : !item?.active
+                      ? "cancel-status"
+                      : "complete-status"
                   }`}
                 >
-                  {item?.active
-                    ? item?.rentOut
-                      ? "On Trip"
-                      : "Available"
-                    : "Inactive"}
+                  {item?.rentOut
+                    ? "On Trip"
+                    : !item?.active
+                    ? "Inactive"
+                    : "Available"}
                 </span>
                 <div className="w-[100%] h-fit flex justify-between items-center">
                   <div className="flex justify-center items-center gap-2 w-fit ">
@@ -269,6 +425,36 @@ export default function GridView({ data }: dataType) {
                 className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
                   deleteItem(itemToDelete);
+                }}
+                disabled={deleteLoading}
+              >
+                {deleteLoading ? <SmallLoader /> : "Yes"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+      {deleteManyPopup ? (
+        <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+          <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position">
+            <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
+              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
+                Are you sure you want to delete these items
+              </label>
+            </div>
+            <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
+              <button
+                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => {
+                  setDeleteManyPopup(false);
+                }}
+              >
+                No
+              </button>
+              <button
+                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                onClick={() => {
+                  deleteManyItem();
                 }}
                 disabled={deleteLoading}
               >
