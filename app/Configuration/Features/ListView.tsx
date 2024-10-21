@@ -39,7 +39,6 @@ export default function ListView({ data }: dataType) {
   const dispatch = useDispatch();
   const router = useRouter();
   const [Box, setBox] = useState("");
-  console.log(Box);
 
   useEffect(() => {
     // Create a copy of the data to avoid mutating the original array
