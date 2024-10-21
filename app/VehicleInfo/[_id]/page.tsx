@@ -202,7 +202,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
                       <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black  mt-[3px]">
-                        {vehicleInfo?.make}
+                        {vehicleInfo?.make}{" "}
                         {vehicleInfo?.model}
                       </span>
                       <div className="flex flex-col justify-start items-start w-[160px] h-fit">
@@ -352,7 +352,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHieght={"h-[214px]"}
+                        partsHieght={"h-[216px]"}
                         accordionData={accordionItems}
                       />
                     </div>
@@ -363,7 +363,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHieght={"h-[275px]"}
+                        partsHieght={"h-[277px]"}
                         accordionData={accordionItems2}
                       />
                     </div>
