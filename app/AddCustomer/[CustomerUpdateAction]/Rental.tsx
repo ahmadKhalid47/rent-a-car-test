@@ -120,7 +120,7 @@ export default function Rental() {
             Select JPG, PNG {" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 1MB{" "}
+            Maximum size 5MB{" "}
           </span>        </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload Passport / ID scans
@@ -172,7 +172,7 @@ export default function Rental() {
             Select JPG, PNG {" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 1MB{" "}
+            Maximum size 5MB{" "}
           </span>        </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
           Here you can Upload driving license scans
