@@ -16,7 +16,9 @@ import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
-import { FaSearch } from "react-icons/fa";
+import { FaFilter, FaSearch } from "react-icons/fa";
+import { CiFilter } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -155,7 +157,7 @@ export default function Vehicles() {
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value);
     setAdvanceFilters([
       {
         key: "year",
@@ -175,7 +177,6 @@ export default function Vehicles() {
       },
     ]);
   }
-  console.log(vehiclesData);
 
   return (
     <div
@@ -208,25 +209,25 @@ export default function Vehicles() {
           <div className="h-[44px] w-fit flex justify-start gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
-                className="px-10 w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:"
-                placeholder="Search By Car Name, Reg No, City..."
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder: truncate"
+                placeholder="Search By Vehicle Name, Reg No, etc"
                 onChange={handleSearchQueryChange}
                 value={searchQuery}
               ></input>
               {searchQuery && (
                 <SearchEmpty
-                  classes={"left-[72%] md:left-[79%] w-[2%] text-[20px]"}
+                  classes={"right-2 text-[24px"}
                   setState={setSearchQuery}
                 />
               )}
-              <div className="absolute left-3 text-[#808080]">
-                <FaSearch />
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
               </div>
             </div>
-            <div className="w-[144px] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
+            <div className="w-[144px] h-fit ">
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                 <select
-                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
                   onChange={(e) => {
                     setAdvanceFilters((prevFilters: any) =>
                       prevFilters.map((filter: any) =>
@@ -256,12 +257,15 @@ export default function Vehicles() {
                     className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
                   />
                 </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
+                </div>
               </div>
             </div>
             <div className="w-[144px] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
               <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                 <select
-                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-1 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
                   onChange={(e) => {
                     setStatus(e.target.value);
                   }}
@@ -277,6 +281,9 @@ export default function Vehicles() {
                     src={shape.src}
                     className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
                   />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
                 </div>
               </div>
             </div>
