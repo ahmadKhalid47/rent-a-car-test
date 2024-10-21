@@ -235,17 +235,17 @@ export default function GridView({ data }: dataType) {
             </div>
           </div>
           <div className="w-[33.33%] h-fit flex justify-center items-start">
-            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit shadow flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
           </div>
           <div className="w-[33.33%] h-fit flex justify-center items-start">
-            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit shadow flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
           </div>
         </div>
         {paginatedData.map((item: any, index: number) => (
           <div className="lg:w-[33.33%] 3xl:w-[25%] h-fit flex justify-center items-start mt-4">
             <div
               key={index}
-              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-whit shadow p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
+              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white  p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
             >
               <div className="w-[100%] h-fit flex justify-between items-center">
                 <div className="w-full h-fit flex justify-between items-start py-1 border-color">
@@ -365,7 +365,7 @@ export default function GridView({ data }: dataType) {
                       </div>
                       <div className="relative">
                         {isOpen === item._id && (
-                          <div className="w-[130px] z-10 dark:bg-dark2 bg-light-grey rounded-lg shadow absolute bottom-4 overflow-hidden -right-5 text-md dark:text-white text-black flex flex-col justify-start items-center py-3">
+                          <div className="w-[130px] z-10 dark:bg-dark2 bg-light-grey rounded-lg  absolute bottom-4 overflow-hidden -right-5 text-md dark:text-white text-black flex flex-col justify-start items-center py-3">
                             <button
                               className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                               onClick={() => {
@@ -406,7 +406,7 @@ export default function GridView({ data }: dataType) {
       </div>
       {popup ? (
         <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position fixed modal-position">
+          <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white  z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position fixed modal-position">
             <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Are you sure you want to delete this item ?
@@ -436,7 +436,7 @@ export default function GridView({ data }: dataType) {
       ) : null}
       {deleteManyPopup ? (
         <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-          <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position">
+          <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white  z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position">
             <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
               <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                 Are you sure you want to delete these items

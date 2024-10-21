@@ -295,7 +295,7 @@ export default function Vehicles() {
                   gridView
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark2 bg-light-grey text-black border-[1px] border-grey"
-                } text-[16px]`}
+                } text-[20px]`}
                 onClick={() => setGridView(true)}
               >
                 <HiViewGrid />
@@ -305,7 +305,7 @@ export default function Vehicles() {
                   !gridView
                     ? "bg-main-blue text-white"
                     : "dark:bg-dark2 bg-light-grey text-black border-[1px] border-grey"
-                } text-[16px]`}
+                } text-[20px]`}
                 onClick={() => setGridView(false)}
               >
                 <FaList />
@@ -322,7 +322,7 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit">
+        <div className="w-full h-fit -mt-3">
           {loading ? (
             <MediumLoader />
           ) : gridView ? (
