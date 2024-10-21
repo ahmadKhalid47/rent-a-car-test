@@ -152,49 +152,51 @@ export default function CarInfoMainPage() {
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-5 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
               <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
                 <div className="w-full h-fit flex justify-between items-star rounded-[10px]">
-                  <div className="w-[41%] select-none flex flex-col justify-start items-start gap-1">
-                    <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
+                  <div className="w-[41%] select-none flex flex-col justify-start items-center gap-1">
+                    <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white">
                       <img
                         src={vehicleInfo?.carImages[imageIndex] || image404.src}
                         className="w-full h-full"
                       />
                     </div>
-                    <div className="w-[100%] h-[70px] relative flex justify-center">
-                      <div
-                        className="w-full-70px h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
-                        ref={containerRef}
-                      >
-                        <div className="w-[30px] h-full absolute left-0 top-0 flex items-center justify-center">
-                          <FaChevronLeft
-                            className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
-                            onClick={scrollLeft}
-                          />
-                        </div>
-                        <div className="flex justify-start items-center gap-[8px]">
-                          {vehicleInfo?.carImages.map(
-                            (item: string, index: number) =>
-                              index !== imageIndex && (
-                                <div
-                                  className="w-[67px] h-[67px] cursor-pointer flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
-                                  onClick={() => setImageIndex(index)}
-                                  key={index}
-                                >
-                                  <img
-                                    src={item}
-                                    className="w-[67px] h-[67px]"
-                                  />
-                                </div>
-                              )
-                          )}
-                        </div>
-                        <div className="w-[30px] h-full absolute right-0 top-0 flex items-center justify-center">
-                          <FaChevronRight
-                            className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
-                            onClick={scrollRight}
-                          />
+                    {vehicleInfo?.carImages.length > 1 && (
+                      <div className="w-[100%] h-[70px] relative flex justify-center">
+                        <div
+                          className="w-full-70px h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
+                          ref={containerRef}
+                        >
+                          <div className="w-[30px] h-full absolute left-0 top-0 flex items-center justify-center">
+                            <FaChevronLeft
+                              className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
+                              onClick={scrollLeft}
+                            />
+                          </div>
+                          <div className="flex justify-start items-center gap-[8px]">
+                            {vehicleInfo?.carImages.map(
+                              (item: string, index: number) =>
+                                index !== imageIndex && (
+                                  <div
+                                    className="w-[67px] h-[67px] cursor-pointer flex justify-center overflow-hidden items-center dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey"
+                                    onClick={() => setImageIndex(index)}
+                                    key={index}
+                                  >
+                                    <img
+                                      src={item}
+                                      className="w-[67px] h-[67px]"
+                                    />
+                                  </div>
+                                )
+                            )}
+                          </div>
+                          <div className="w-[30px] h-full absolute right-0 top-0 flex items-center justify-center">
+                            <FaChevronRight
+                              className="cursor-pointer w-[28px] h-[28px] p-[8px] border-[1px] border-grey bg-light-grey text-black rounded-full flex justify-center items-center"
+                              onClick={scrollRight}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                   <div className="w-[50%] flex justify-start flex-col items-start gap-3">
                     <span className="complete-status border-[1px] px-3 rounded-[5px]">
@@ -202,8 +204,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
                       <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black  mt-[3px]">
-                        {vehicleInfo?.make}{" "}
-                        {vehicleInfo?.model}
+                        {vehicleInfo?.make} {vehicleInfo?.model}
                       </span>
                       <div className="flex flex-col justify-start items-start w-[160px] h-fit">
                         <div className="flex justify-start items-center w-[160px] h-[35px] bg-[#F6F6F6] border-[1px] border-black rounded-[5px] overflow-hidden">
@@ -277,7 +278,7 @@ export default function CarInfoMainPage() {
                         <span className="w-[78px] h-[19px] bg-gradient-to-b from-white to-[rgb(229,230,231)] border-[1px] border-[rgb(128,130,133)] text-black flex justify-center items-center">
                           {vehicleInfo?.odometer
                             ?.padStart(6, "0")
-                            .split("")
+                            ?.split("")
                             .map((item: any, index: any) => (
                               <>
                                 <span className="border-[rgb(147,149,152)] text-center flex justify-center items-center w-[13px]">
@@ -318,7 +319,7 @@ export default function CarInfoMainPage() {
                         </span>
                         <span className="">
                           {"("}
-                          {vehicleInfo?.Drivetrain.split("(")[1]}
+                          {vehicleInfo?.Drivetrain?.split("(")[1]}
                         </span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
@@ -344,7 +345,7 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <Additional/>
+                <Additional />
                 <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
                   <div className="w-[48.4%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
