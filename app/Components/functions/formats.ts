@@ -75,7 +75,8 @@ export function formatCreatedAtDate(timestamp: any) {
   hours = hours % 12 || 12; // Convert to 12-hour format
   const formattedTime = `${hours}:${minutes} ${ampm}`;
 
-  return `${day}-${month}-${year}, ${formattedTime}`;
+  // return `${day}-${month}-${year}, ${formattedTime}`;
+  return `${day}-${month}-${year}`;
 }
 
 export function addDayInDate(baseDate: any, days: any) {

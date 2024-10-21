@@ -254,22 +254,15 @@ export default function ListView({ data }: dataType) {
               ></div>
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
-              Car Name{" "}
+              Vehicle Name{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
-              Body Type{" "}
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("type")}
-              />
-            </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%] "></div>
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
               Reg No{" "}
               <img
                 src={arrows.src}
@@ -277,20 +270,21 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("registration")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
-              <span className="w-full truncate">Making Year </span>
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("year")}
-              />
-            </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
               VIN No{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() => sort("type")}
+              />
+            </div>
+
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
+              <span className="w-full truncate">Year </span>
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("year")}
               />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
@@ -309,7 +303,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
               City{" "}
               <img
                 src={arrows.src}
@@ -317,11 +311,21 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[12%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
               Created At{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                // onClick={() => sort("city")}
+              />{" "}
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
               Status
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                // onClick={() => sort("city")}
+              />
             </div>
             <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
               Actions{" "}
@@ -352,24 +356,24 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[11%] ">
+                  <div className="text-start pe-3 truncate w-[9%] ">
                     {item?.data?.make} {item?.data?.model}
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%] ">
+                  <div className="text-start pe-3 truncate w-[12%] ">
                     <span
                       className={`w-full px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
                       {item?.data?.type}
                     </span>
                   </div>
-                  <div className="text-start pe-3 truncate w-[7%] ">
+                  <div className="text-start pe-3 truncate w-[8%] ">
                     {item?.data?.registration}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
-                    {item?.data?.year}
-                  </div>
-                  <div className="text-start pe-3 truncate w-[9%] ">
+                  <div className="text-start pe-3 truncate w-[11%] ">
                     {item?.data?.vinNo}
+                  </div>{" "}
+                  <div className="text-start pe-3 truncate w-[6%] ">
+                    {item?.data?.year}
                   </div>
                   <div className="text-start pe-3 truncate w-[6%] ">
                     <div
@@ -399,27 +403,27 @@ export default function ListView({ data }: dataType) {
                         ))}
                     </span>
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[7%] ">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%] ">
+                  <div className="text-start pe-3 truncate w-[9%] ">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
-                  <div className="text-start pe-3  w-[6%] ">
+                  <div className="text-start pe-3  w-[7%] ">
                     <span
                       className={`w-full truncate border-[1px] px-1 rounded-[5px] h-[22px] text-center text-[12px]
                         ${
                           item?.rentOut
                             ? "progress-status"
                             : !item?.active
-                            ? "cancel-status"
+                            ? "progress-status"
                             : "complete-status"
                         }`}
                     >
                       {item?.rentOut
                         ? "On Trip"
                         : !item?.active
-                        ? "Inactive"
+                        ? "In Active"
                         : "Available"}
                     </span>
                   </div>
