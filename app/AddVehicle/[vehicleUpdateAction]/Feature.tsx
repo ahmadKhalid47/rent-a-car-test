@@ -67,7 +67,7 @@ export default function Feature() {
                     className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] truncate px-3
                 ${
                   featuresSubmitArray?.includes(item)
-                    ? "bg-main-blue text-white font-[500]"
+                    ? "bg-main-blue text-white font-[500] border-2 border-transparent"
                     : "dark:bg-dark1 input-color border-2 border-grey font-[400]"
                 } 
                 font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center flex justify-start items-center gap-4`}
@@ -77,7 +77,11 @@ export default function Feature() {
                     }}
                   >
                     <img
-                      className="w-[20px] h-[20px]"
+                      className={`w-[20px] h-[20px] ${
+                        featuresSubmitArray?.includes(item)
+                          ? "filter brightness-[0] invert"
+                          : ""
+                      }`}
                       src={
                         iconsDisplayArray[index].Icon
                           ? iconsDisplayArray[index].Icon
