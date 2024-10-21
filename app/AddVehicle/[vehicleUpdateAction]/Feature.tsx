@@ -39,8 +39,6 @@ export default function Feature() {
     "Convenience Features",
   ];
 
-  console.log(featuresSubmitArray);
-
   return (
     <div className="w-full h-fit  ">
       <div className="w-full h-fit">

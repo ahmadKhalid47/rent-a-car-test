@@ -99,7 +99,7 @@ export default function Info() {
     ]);
   }, []);
 
-  const thumbs: any = files.map((file: any) => (
+  const thumbs: any = files?.map((file: any) => (
     <div
       key={file.name}
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"

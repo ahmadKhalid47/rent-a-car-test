@@ -20,9 +20,54 @@ import {
   SmallLoader,
 } from "../../Components/Loader";
 import { useRouter } from "next/navigation";
-import { resetState, setAllValues } from "@/app/store/Vehicle";
+import { resetState, setAllValues, setfeatures, setotherNote } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
 import Link from "next/link";
+import {
+  setmakeR,
+  setmodelR,
+  settypeR,
+  setyearR,
+  setregistrationR,
+  setcolorR,
+  setfuelTypeR,
+  settransmissionR,
+  setodometerR,
+  setpassengersR,
+  setcountryR,
+  setcityR,
+  setCarImages,
+  setthumbnailImage,
+  setengineVolume,
+  setvinNo,
+  setfuelCapacity,
+  setcolorNameR,
+  setCategoryR,
+  setOwnershipR,
+  setDrivetrainR,
+  setinsNo,
+  setinsCompany,
+  setinsEnd,
+  setinsStart,
+  setinsPayable,
+  setinsDeductible,
+  setinsRecurringPeriod,
+  setinsRecurringDate,
+  setinsRemarks,
+  setinsImage,
+  setrentHour,
+  setrentDay,
+  setrentWeek,
+  setrentMonth,
+  setmlDay,
+  setmlWeek,
+  setmlMonth,
+  setmlFee,
+  setlateHour,
+  setlateDay,
+  setdamages,
+  setdamageImagesToDelete,
+} from "@/app/store/Vehicle";
 
 export default function Vehicles() {
   const params = useParams();
@@ -259,6 +304,12 @@ export default function Vehicles() {
     }
   };
 
+  function resetting(resetableArray: any) {
+    for (let i = 0; i < resetableArray.length; i++) {
+      dispatch(resetableArray[i](""));
+    }
+  }
+
   return (
     <div
       className={`${
@@ -472,7 +523,69 @@ export default function Vehicles() {
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(resetState());
+                  // dispatch(resetState());
+                  resetting(
+                    currentPage === 0
+                      ? [
+                          setmakeR,
+                          setmodelR,
+                          settypeR,
+                          setyearR,
+                          setregistrationR,
+                          setcolorR,
+                          setfuelTypeR,
+                          settransmissionR,
+                          setodometerR,
+                          setpassengersR,
+                          setcountryR,
+                          setcityR,
+                          setCarImages,
+                          setthumbnailImage,
+                          setengineVolume,
+                          setvinNo,
+                          setfuelCapacity,
+                          setcolorNameR,
+                          setCategoryR,
+                          setOwnershipR,
+                          setDrivetrainR,
+                        ]
+                      : currentPage === 1
+                      ? [setfeatures]
+                      : currentPage === 2
+                      ? [
+                          setinsNo,
+                          setinsCompany,
+                          setinsEnd,
+                          setinsStart,
+                          setinsPayable,
+                          setinsDeductible,
+                          setinsRecurringPeriod,
+                          setinsRecurringDate,
+                          setinsRemarks,
+                          setinsImage,
+                        ]
+                      : currentPage === 3
+                      ? [
+                          setrentHour,
+                          setrentDay,
+                          setrentWeek,
+                          setrentMonth,
+                          setmlDay,
+                          setmlWeek,
+                          setmlMonth,
+                          setmlFee,
+                          setlateHour,
+                          setlateDay,
+                        ]
+                      : currentPage === 4
+                      ? [setdamages, setdamageImagesToDelete]
+                      : currentPage === 5
+                      ? [setotherNote]
+                      : null
+                  );
+
+          {}
+                  
                   setCurrentPage(0);
                 }}
               >
