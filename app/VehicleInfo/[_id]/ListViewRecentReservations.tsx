@@ -117,7 +117,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[9%]">
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
               Status
               <img
                 src={arrows.src}
