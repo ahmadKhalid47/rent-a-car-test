@@ -159,7 +159,7 @@ export default function Damages({ toggle }: any) {
           </div>
           {imagePopup && (
             <div
-              className="w-[100%] h-[100%] flex justify-center items-center scroll absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
+              className="w-[100%] h-[100%] flex justify-center items-start pt-24 scroll absolute top-0 left-0 bg-[rgba(0,0,0,0.2)]"
               onClick={() => {
                 setImagePopup(false);
                 setZoomed(false);
