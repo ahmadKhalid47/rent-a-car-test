@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import General from "./General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
-import Additional from "./Additional";
+import Additional from './Additional';
 import Other from "./Other";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -40,6 +40,7 @@ export default function CarInfoMainPage() {
   const [imageIndex, setImageIndex] = useState<any>(
     vehicleInfo?.thumbnailImage
   );
+  let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -121,12 +122,13 @@ export default function CarInfoMainPage() {
     { title: "Others", content: <Other /> },
   ];
   const accordionItems2 = [
-    { title: "Interior", content: <Rental /> },
-    { title: "Exterior", content: <Insurance /> },
+    { title: "Exterior", content: <Damages toggle={true} /> },
+    { title: "Interior", content: <Damages toggle={false} /> },
   ];
+
   return (
     <>
-      {!vehicleInfo ? null : (
+      {vehicleInfo && (
         <div className="w-fit h-fit mt-[90px] pt-5">
           <div
             className={`${
@@ -148,7 +150,7 @@ export default function CarInfoMainPage() {
               </div>
             </div>
             <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-5 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
-              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
                 <div className="w-full h-fit flex justify-between items-star rounded-[10px]">
                   <div className="w-[41%] select-none flex flex-col justify-start items-start gap-1">
                     <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
@@ -342,23 +344,24 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
+                <Additional/>
                 <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
-                  <div className="w-[48%] h-fit flex flex-col items-start gap-2">
+                  <div className="w-[48.4%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Additional Information
                     </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
                         partsHieght={"h-[214px]"}
                         accordionData={accordionItems}
                       />
                     </div>
                   </div>
-                  <div className="w-[48%] h-fit flex flex-col items-start gap-2">
+                  <div className="w-[48.4%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Damages
                     </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
                         partsHieght={"h-[275px]"}
                         accordionData={accordionItems2}
@@ -366,18 +369,8 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
-                  <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
-                      Damages
-                    </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[340px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
-                      <Damages />
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
                 <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
                   <div className="w-[100%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[24px] pb-2 dark:text-white text-black ">
@@ -393,7 +386,7 @@ export default function CarInfoMainPage() {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
                 <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
                   <div className="w-[100%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[24px] pb-2 dark:text-white text-black ">

@@ -36,6 +36,7 @@ import {
 import { Logout, Person2Outlined, Settings } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { Alert } from "@mui/material";
+import { setConfigurations } from "../store/Configurations";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -206,9 +207,7 @@ export default function Nav() {
           createdBy: myProfile._id,
         });
         dispatch(
-          setunit(
-            result.data.data[0].unit ? result.data.data[0].unit : "$"
-          )
+          setunit(result.data.data[0].unit ? result.data.data[0].unit : "$")
         );
         if (typeof window !== "undefined") {
           localStorage.setItem("unit", result.data.data[0].unit);
@@ -258,6 +257,24 @@ export default function Nav() {
       clearTimeout(timer); // Clean up the timer
     };
   }, [global.alert, dispatch]);
+
+  useEffect(() => {
+    async function getData2() {
+      try {
+        setLoading(true);
+        let result: any = await axios.post(`/api/getConfigurations`, {
+          createdBy: myProfile._id,
+        });
+        dispatch(setConfigurations(result?.data?.wholeData));
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (myProfile._id) getData2();
+  }, [myProfile._id]);
 
   return (
     <div
