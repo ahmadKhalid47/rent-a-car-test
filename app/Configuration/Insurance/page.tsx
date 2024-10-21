@@ -26,7 +26,7 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setOtherPopup] = useState(false);
   const [Insurance, setInsurance] = useState("");
-  const [recurring, setrecurring] = useState("");
+  const [recurring, setrecurring] = useState("_");
   let [other, setOther] = useState("");
   let [otherPopUp, setOtherPopUp] = useState(false);
 
@@ -171,7 +171,7 @@ export default function Vehicles() {
                     />
                   </div>
                 </div>
-                <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Recurring Period
                     <FaAsterisk className="text-[6px]" />
@@ -201,7 +201,7 @@ export default function Vehicles() {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div
                   className={`w-full flex justify-end gap-4 items-center pt-4`}

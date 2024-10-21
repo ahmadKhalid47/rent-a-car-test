@@ -36,7 +36,7 @@ export default function ListView({ data }: dataType) {
   const [Insurance, setInsurance] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
-  const [recurring, setrecurring] = useState("");
+  const [recurring, setrecurring] = useState("_");
   let [other, setOther] = useState("");
   let [otherPopUp, setOtherPopUp] = useState(false);
 
@@ -152,7 +152,6 @@ export default function ListView({ data }: dataType) {
     "Six Monthly",
     "Yearly",
   ];
-  console.log(recurring, other);
 
   return (
     <div className="w-full h-fit">
@@ -205,12 +204,12 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[15%] ">
-              Insurance
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[82%] ">
+              Company Name
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
+            {/* <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
               Recurring Period
-            </div>
+            </div> */}
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
             </div>
@@ -241,12 +240,12 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start truncate pe-3 w-[15%] ">
+                  <div className="text-start truncate pe-3 w-[82%] ">
                     {item?.Insurance}
                   </div>
-                  <div className="text-start truncate pe-3 w-[67%] ">
+                  {/* <div className="text-start truncate pe-3 w-[67%] ">
                     {item?.recurring}
-                  </div>
+                  </div> */}
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {
@@ -383,7 +382,7 @@ export default function ListView({ data }: dataType) {
                           />
                         </div>
                       </div>
-                      <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                      {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                           Select Recurring
                           <FaAsterisk className="text-[6px]" />
@@ -417,7 +416,7 @@ export default function ListView({ data }: dataType) {
                             />
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div
                         className={`w-full flex justify-end gap-4 items-center pt-4`}
