@@ -116,7 +116,7 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG, or PDF{" "}
+            Select JPG, PNG {" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 1MB{" "}
@@ -168,7 +168,7 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG, or PDF{" "}
+            Select JPG, PNG {" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 1MB{" "}

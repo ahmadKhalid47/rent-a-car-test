@@ -157,7 +157,7 @@ export default function Insurances() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG, or PDF{" "}
+            Select JPG, PNG or PDF{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 1MB{" "}
