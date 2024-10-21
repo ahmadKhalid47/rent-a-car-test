@@ -51,12 +51,12 @@ export default function Info() {
   let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
 
-  const [files, setFiles] = useState(vehicle.carImages);
+  const [files, setFiles] = useState(vehicle?.carImages);
   const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
   useEffect(() => {
-    // setFiles(vehicle.carImages);
-  }, [vehicle.carImages]);
+    setFiles(vehicle?.carImages);
+  }, [vehicle?.carImages]);
   useEffect(() => {
     setMakeSelected(vehicle.make);
   }, [vehicle.make]);
@@ -65,7 +65,7 @@ export default function Info() {
   }, [vehicle.country]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; 
+    const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
@@ -99,7 +99,7 @@ export default function Info() {
     ]);
   }, []);
 
-  const thumbs: any = files?.map((file: any) => (
+  const thumbs: any = vehicle?.carImages?.map((file: any) => (
     <div
       key={file.name}
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
@@ -143,8 +143,20 @@ export default function Info() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   useEffect(() => {
-    dispatch(setCarImages(files));
-  }, [files]);
+    const newFiles = files.filter(
+      (file: any) =>
+        !vehicle?.carImages.some((image: any) => image.path === file.path)
+    );
+
+    if (newFiles.length) {
+      dispatch(setCarImages([...vehicle?.carImages, ...newFiles]));
+    }
+
+    console.log("files", files);
+    console.log("carImages", vehicle?.carImages);
+  }, [files, vehicle?.carImages, dispatch]);
+
+  console.log("carImages", vehicle?.carImages);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(vehicle.colorName);
@@ -196,7 +208,6 @@ export default function Info() {
     { Color: "#FFD700", ColorName: "Gold" },
     { Color: "#800080", ColorName: "Purple" },
   ];
-  console.log(vehicle.color);
 
   return (
     <div className="w-full h-fit ">
@@ -283,7 +294,6 @@ export default function Info() {
                 value={vehicle.color}
                 onChange={(e) => {
                   dispatch(setcolorR(e.target.value));
-                  console.log(e.target.value);
                 }}
               >
                 <option value={""}></option>
@@ -500,7 +510,7 @@ export default function Info() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}
@@ -510,7 +520,7 @@ export default function Info() {
           {thumbs}
         </div>
       </div>
-      {files.length > 1 ? (
+      {vehicle?.carImages.length > 1 ? (
         <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
           <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
             Select Thumbnail Image
