@@ -98,6 +98,7 @@ export default function Info() {
       ),
     ]);
   }, []);
+  console.log("newFiles", files, vehicle?.carImages);
 
   const thumbs: any = vehicle?.carImages?.map((file: any) => (
     <div
@@ -139,6 +140,7 @@ export default function Info() {
     if (vehicle.thumbnailImage + 1 >= files.length) {
       dispatch(setthumbnailImage(files.length - 2));
     }
+    dispatch(setCarImages(array));
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -147,16 +149,12 @@ export default function Info() {
       (file: any) =>
         !vehicle?.carImages.some((image: any) => image.path === file.path)
     );
+console.log("newFiles", newFiles);
 
     if (newFiles.length) {
       dispatch(setCarImages([...vehicle?.carImages, ...newFiles]));
     }
-
-    console.log("files", files);
-    console.log("carImages", vehicle?.carImages);
   }, [files, vehicle?.carImages, dispatch]);
-
-  console.log("carImages", vehicle?.carImages);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(vehicle.colorName);
@@ -520,13 +518,13 @@ export default function Info() {
           {thumbs}
         </div>
       </div>
-      {vehicle?.carImages.length > 1 ? (
+      {vehicle?.carImages?.length > 1 ? (
         <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-8 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-10 pb-8 md:pb-10 pt-8 md:pt-8">
           <h3 className="font-[600] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] dark:text-white text-black w-[100%]">
             Select Thumbnail Image
           </h3>
           <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-            {files.map((file: any, index: number) => (
+            {vehicle?.carImages?.map((file: any, index: number) => (
               <div
                 key={file.name}
                 className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
