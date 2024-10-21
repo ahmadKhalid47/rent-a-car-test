@@ -115,7 +115,15 @@ export default function CarInfoMainPage() {
       });
     }
   };
-
+  const accordionItems = [
+    { title: "Rental Info", content: <Rental /> },
+    { title: "Insurance Info", content: <Insurance /> },
+    { title: "Others", content: <Other /> },
+  ];
+  const accordionItems2 = [
+    { title: "Interior", content: <Rental /> },
+    { title: "Exterior", content: <Insurance /> },
+  ];
   return (
     <>
       {!vehicleInfo ? null : (
@@ -207,7 +215,6 @@ export default function CarInfoMainPage() {
                         </div>
                       </div>
                     </div>
-
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
@@ -305,6 +312,23 @@ export default function CarInfoMainPage() {
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
+                          Drivetrain
+                        </span>
+                        <span className="">
+                          {"("}
+                          {vehicleInfo?.Drivetrain.split("(")[1]}
+                        </span>
+                      </div>
+                      <div className="w-[45%] flex justify-between items-center">
+                        <span className="dark:text-white text-[#555555]">
+                          Ownership
+                        </span>
+                        <span className="">{vehicleInfo?.Ownership}</span>
+                      </div>
+                    </div>
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
+                      <div className="w-[45%] flex justify-between items-center">
+                        <span className="dark:text-white text-[#555555]">
                           Body Type
                         </span>
                         <span className="">{vehicleInfo?.type}</span>
@@ -323,15 +347,23 @@ export default function CarInfoMainPage() {
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Additional Information
                     </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[340px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
-                      <General />
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                      <General
+                        partsHieght={"h-[214px]"}
+                        accordionData={accordionItems}
+                      />
                     </div>
                   </div>
                   <div className="w-[48%] h-fit flex flex-col items-start gap-2">
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
-                      Maintenance
+                      Damages
                     </span>
-                    <div className="w-[100%] rounded-[10px] border-2 border-grey h-[340px] flex flex-col justify-center items-start gap-8 overflow-auto scroll"></div>
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                      <General
+                        partsHieght={"h-[275px]"}
+                        accordionData={accordionItems2}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
