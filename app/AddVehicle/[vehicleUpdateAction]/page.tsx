@@ -20,7 +20,12 @@ import {
   SmallLoader,
 } from "../../Components/Loader";
 import { useRouter } from "next/navigation";
-import { resetState, setAllValues, setfeatures, setotherNote } from "@/app/store/Vehicle";
+import {
+  resetState,
+  setAllValues,
+  setfeatures,
+  setotherNote,
+} from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
 import Link from "next/link";
 import {
@@ -583,10 +588,6 @@ export default function Vehicles() {
                       ? [setotherNote]
                       : null
                   );
-
-          {}
-                  
-                  setCurrentPage(0);
                 }}
               >
                 Reset
