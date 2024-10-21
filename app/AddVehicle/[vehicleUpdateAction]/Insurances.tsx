@@ -57,7 +57,7 @@ export default function Insurances() {
         </span>
         <TempSelectInputLink
           setState={setinsCompany}
-          label={"Company"}
+          label={"Company Name"}
           value={vehicle.insCompany}
           required={false}
           options={Configurations?.Configurations?.Insurance?.map(
