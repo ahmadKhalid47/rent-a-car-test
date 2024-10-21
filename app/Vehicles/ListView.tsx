@@ -239,7 +239,7 @@ export default function ListView({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-center truncate w-[3%]  flex justify-center items-center">
+            <div className="truncate  w-[4%]  flex justify-start ps-3 items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -253,7 +253,7 @@ export default function ListView({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%] ">
               Vehicle Name{" "}
               <img
                 src={arrows.src}
@@ -261,7 +261,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%] "></div>
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] "></div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
               Reg No{" "}
               <img
@@ -303,7 +303,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%]  ">
               City{" "}
               <img
                 src={arrows.src}
@@ -319,7 +319,7 @@ export default function ListView({ data }: dataType) {
                 // onClick={() => sort("city")}
               />{" "}
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%]  ">
               Status
               <img
                 src={arrows.src}
@@ -327,7 +327,7 @@ export default function ListView({ data }: dataType) {
                 // onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
+            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%]  ">
               Actions{" "}
             </div>
           </div>
@@ -353,7 +353,7 @@ export default function ListView({ data }: dataType) {
                          }
                       `}
                 >
-                  <div className="text-center truncate w-[3%]  flex justify-center items-center ">
+                  <div className="truncate  w-[4%]  flex justify-start ps-3 items-center ">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -365,12 +365,12 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%] ">
+                  <div className="text-start pe-3 truncate w-[10%] ">
                     {item?.data?.make} {item?.data?.model}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%] ">
+                  <div className="text-start pe-3 truncate w-[11%] ">
                     <span
-                      className={`w-full px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
+                      className={`w-[93px] px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
                       {item?.data?.type}
                     </span>
@@ -412,13 +412,13 @@ export default function ListView({ data }: dataType) {
                         ))}
                     </span>
                   </div>
-                  <div className="text-start pe-3 truncate w-[7%] ">
+                  <div className="text-start pe-3 truncate w-[7%]  ">
                     {item?.data?.city}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%] ">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
-                  <div className="text-start pe-3  w-[7%] ">
+                  <div className="text-start pe-3  w-[7%]  ">
                     <span
                       className={`w-full truncate border-[1px] px-1 rounded-[5px] h-[22px] text-center text-[12px]
                         ${
@@ -437,7 +437,7 @@ export default function ListView({ data }: dataType) {
                     </span>
                   </div>
                   <div
-                    className="flex justify-end pe-3 truncate gap items-center w-[7%]  h-full"
+                    className="flex justify-end pe-3 truncate gap-2 items-center w-[7%]   h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -446,7 +446,7 @@ export default function ListView({ data }: dataType) {
                     <img
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
-                      className="me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer"
+                      className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
@@ -454,7 +454,7 @@ export default function ListView({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
+                      className="hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         router.push(`/AddVehicle/${item?._id}`);
                       }}
