@@ -126,7 +126,7 @@ export default function CarInfoMainPage() {
             } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
           >
             <div className="w-full h-[200px ">
-              <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
+              <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black ">
                 {vehicleInfo?.make} {vehicleInfo?.model}
               </span>
               <div className="flex justify-between items-start">
@@ -139,9 +139,9 @@ export default function CarInfoMainPage() {
                 </span>
               </div>
             </div>
-            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
-              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-2 border-grey dark:bg-dark1 bg-white">
-                <div className="w-full h-fit flex justify-between gap-[5% items-star px- rounded-[10px] px-6 ">
+            <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-5 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+                <div className="w-full h-fit flex justify-between items-star rounded-[10px]">
                   <div className="w-[41%] select-none flex flex-col justify-start items-start gap-1">
                     <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white ms-1">
                       <img
@@ -191,14 +191,14 @@ export default function CarInfoMainPage() {
                       active
                     </span>
                     <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
-                      <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black mt-[3px]">
+                      <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black  mt-[3px]">
                         {vehicleInfo?.make}
                         {vehicleInfo?.model}
                       </span>
                       <div className="flex flex-col justify-start items-start w-[160px] h-fit">
                         <div className="flex justify-start items-center w-[160px] h-[35px] bg-[#F6F6F6] border-[1px] border-black rounded-[5px] overflow-hidden">
-                          <div className="w-[33px] h-[35px] bg-[#054B86]"></div>
-                          <span className="font-[600] flex justify-center items-center text-[14px] xs:text-[16px] md:text-[20px] text-black w-[100%]">
+                          <div className="w-[35px] h-[35px] bg-[#054B86]"></div>
+                          <span className="font-[600] flex justify-center items-center text-center text-[14px] xs:text-[16px] md:text-[20px] text-black w-[100%]">
                             {vehicleInfo?.registration}
                           </span>
                         </div>
@@ -208,7 +208,7 @@ export default function CarInfoMainPage() {
                       </div>
                     </div>
 
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Making Year
@@ -222,7 +222,7 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.passengers}</span>
                       </div>
                     </div>
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Transmission
@@ -238,7 +238,7 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.engineVolume}</span>
                       </div>
                     </div>
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Color
@@ -250,7 +250,7 @@ export default function CarInfoMainPage() {
                               backgroundColor: vehicleInfo?.color,
                             }}
                           ></div>
-                          {vehicleInfo?.colorName}
+                          {/* {vehicleInfo?.colorName} */}
                         </div>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
@@ -260,7 +260,7 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.fuelType}</span>
                       </div>
                     </div>
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Odometer
@@ -288,7 +288,7 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.fuelCapacity}</span>
                       </div>
                     </div>
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           City
@@ -302,7 +302,7 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.country}</span>
                       </div>
                     </div>
-                    <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Body Type
@@ -318,9 +318,9 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-fit dark:bg-dark1 px-5 mt-5 flex justify-between items-center">
+                <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
                   <div className="w-[48%] h-fit flex flex-col items-start gap-2">
-                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Additional Information
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[340px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
@@ -328,15 +328,15 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                   <div className="w-[48%] h-fit flex flex-col items-start gap-2">
-                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Maintenance
                     </span>
                     <div className="w-[100%] rounded-[10px] border-2 border-grey h-[340px] flex flex-col justify-center items-start gap-8 overflow-auto scroll"></div>
                   </div>
                 </div>
-                <div className="w-full h-fit dark:bg-dark1 px-5 mt-5 flex justify-between items-center">
+                <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
                   <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Damages
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-2 border-grey h-[340px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
@@ -344,9 +344,11 @@ export default function CarInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-fit dark:bg-dark1 px-5 mt-5 flex justify-between items-center">
+              </div>
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+                <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
                   <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[24px] pb-2 dark:text-white text-black ">
                       Recent Reservations
                     </span>
                     <div className="w-[100%]">
@@ -356,6 +358,16 @@ export default function CarInfoMainPage() {
                         <ListViewRecentReservations data={reservationsData} />
                       )}
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 px-10">
+                <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
+                  <div className="w-[100%] h-fit flex flex-col items-start gap-2">
+                    <span className="font-[600] text-[15px] xs:text-[24px] leading-[24px] pb-2 dark:text-white text-black ">
+                      Maintenance{" "}
+                    </span>
+                    <div className="w-[100%]"></div>
                   </div>
                 </div>
               </div>
