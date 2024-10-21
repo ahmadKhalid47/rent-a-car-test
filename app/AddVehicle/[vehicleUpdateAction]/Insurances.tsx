@@ -104,7 +104,7 @@ export default function Insurances() {
         />
         <TempSelectInputLink
           setState={setinsRecurringPeriod}
-          label={"Recurring"}
+          label={"Recurring Period"}
           value={vehicle.insRecurringPeriod}
           required={false}
           options={Configurations?.Configurations?.Insurance?.map(

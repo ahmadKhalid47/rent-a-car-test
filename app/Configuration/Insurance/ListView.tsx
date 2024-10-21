@@ -209,7 +209,7 @@ export default function ListView({ data }: dataType) {
               Insurance
             </div>
             <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
-              Recurring
+              Recurring Period
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
@@ -403,12 +403,11 @@ export default function ListView({ data }: dataType) {
                                 {item ? item : "Select"}
                               </option>
                             ))}{" "}
-                            {other ||
-                              recurring ? (
-                                <option value={other ? other : recurring}>
-                                  {other ? other : recurring}
-                                </option>
-                              ):null}
+                            {other || recurring ? (
+                              <option value={other ? other : recurring}>
+                                {other ? other : recurring}
+                              </option>
+                            ) : null}
                             <option value={"Other"}>Other</option>
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
