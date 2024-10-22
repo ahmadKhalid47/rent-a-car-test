@@ -2,10 +2,13 @@ import demyIcon from "@/public/features (1).png";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { MediumLoader } from "@/app/Components/Loader";
+import { FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Additional() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   let Configurations = useSelector((state: RootState) => state.Configurations);
+  const [open, setOpen] = useState<any>(true);
   const categories = [
     "Basic Comfort Features",
     "Safety Features",
@@ -19,10 +22,16 @@ export default function Additional() {
     <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
       {Configurations?.Configurations?.feature ? (
         <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-          <span className="font-[600] text-[15px] xs:text-[24px] leading-[24px] pb-2 dark:text-white text-black ">
+          <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black ">
             Features{" "}
-          </span>
-          {Configurations?.Configurations?.feature && (
+            <FaChevronDown
+              className={`w-4 h-4 transition-transform cursor-pointer ${
+                open ? "rotate-180" : "rotate-0"
+              }`}
+              onClick={() => setOpen(!open)}
+            />
+          </div>
+          {open && (
             <div className="w-[100%] h-[150px] flex justify-between">
               {categories.map((categoryItem) => (
                 <div className="w-[33%] h-full bg-[#F7F7F7] border-[1px] border-grey rounded-[10px]">
