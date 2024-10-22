@@ -25,7 +25,6 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let Configurations = useSelector((state: RootState) => state.Configurations);
   const [loading, setLoading] = useState<any>(false);
 
   useEffect(() => {
@@ -52,19 +51,34 @@ export default function Vehicles() {
     if (myProfile._id) getData2();
   }, [myProfile._id]);
 
-  const [exportData, setExportData] = useState<any>([]);
-
-  useEffect(() => {
-    setExportData([
-      Configurations?.Configurations?.color,
-      Configurations?.Configurations?.city,
-      Configurations?.Configurations?.country,
-      Configurations?.Configurations?.feature,
-      Configurations?.Configurations?.make,
-      Configurations?.Configurations?.model,
-      Configurations?.Configurations?.type,
-    ]);
-  }, [Configurations?.Configurations]);
+  const configArray = [
+    {
+      href: "/Configuration/Category",
+      img: configImg10,
+      label: "Category",
+    },
+    { href: "/Configuration/Make", img: configImg1, label: "Make" },
+    { href: "/Configuration/Model", img: configImg2, label: "Model" },
+    {
+      href: "/Configuration/Type",
+      img: configImg3,
+      label: "Body Type",
+    },
+    { href: "/Configuration/Color", img: configImg4, label: "Color" },
+    {
+      href: "/Configuration/Features",
+      img: configImg5,
+      label: "Features",
+    },
+    {
+      href: "/Configuration/Country",
+      img: configImg7,
+      label: "Country",
+    },
+    { href: "/Configuration/City", img: configImg6, label: "City" },
+    { href: "/Configuration/Insurance", img: configImg8, label: "Insurance" },
+    { href: "/Configuration/Ownership", img: configImg9, label: "Ownership" },
+  ];
 
   return (
     <div
@@ -86,150 +100,23 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit">
           <div className="w-full h-fit mt-4">
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-[5%] gap-y-[5%] px-1 xs:px-3 md:px-11 pb-3 md:pb-12 pt-0 rounded-[10px] border-2 border-grey dark:bg-dark bg-light-gre mt-2">
-              <Link
-                href={`/Configuration/Category`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg10.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[35px] h-[35px]"
-                  />
-
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Category
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Make`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg1.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Make
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Model`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg2.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Model
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Type`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg3.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Body Type
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Color`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg4.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Color
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Features`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg5.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Add. Features
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Country`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg6.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Country
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/City`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg7.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  City
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Insurance`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg8.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Insurance
-                </p>
-              </Link>
-              <Link
-                href={`/Configuration/Ownership`}
-                className="w-[100%] lg:w-[21.25%] h-[200px] dark:bg-dark1 bg-white mt-[5%] rounded-[15px] shadow px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
-              >
-                <div className="dark:bg-main_blue bg-light-grey border-[1px] border-grey w-[80px] h-[80px] rounded-full flex justify-center items-center">
-                  <img
-                    src={configImg9.src}
-                    className="dark:filter dark:brightness-[0] dark:invert w-[37px] h-[37px]"
-                  />
-
-                </div>
-                <p className="font-[400] text-[18px] xs:text-[24px] leading-5 xs:leading-[36px]">
-                  Ownership
-                </p>
-              </Link>
+            <div className="w-full h-fit flex justify-between flex-wrap items-start gap-y-4 p-4 rounded-[10px] border-[1px] border-grey dark:bg-dark bg-light-grey mt-2">
+              {configArray.map((item) => (
+                <Link
+                  href={item.href}
+                  className="w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                >
+                  <div className="w-fit h-fit flex justify-center items-center">
+                    <img
+                      src={item.img.src}
+                      className="dark:filter dark:brightness-[0] dark:invert w-[30px] h-[30px]"
+                    />
+                  </div>
+                  <p className="font-[600] text-[18px] xs:text-[24px]">
+                    {item.label}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
