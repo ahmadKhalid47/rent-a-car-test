@@ -102,14 +102,14 @@ export default function Insurances() {
           required={false}
           type={"date"}
         />
-        <TempTypeInput
+        {/* <TempTypeInput
           setState={setinsRecurringPeriod}
           label={"Recurring Period"}
           value={vehicle.insRecurringPeriod}
           required={false}
           type={"text"}
-        />
-        {/* <TempSelectInputLink
+        /> */}
+        <TempSelectInputLink
           setState={setinsRecurringPeriod}
           label={"Recurring Period"}
           value={vehicle.insRecurringPeriod}
@@ -118,7 +118,7 @@ export default function Insurances() {
             (item: any) => item.recurring
           )}
           link={"/Configuration/Insurance"}
-        /> */}
+        />
         <TempTypeInput
           setState={setinsRecurringDate}
           label={"Recurring Date"}
