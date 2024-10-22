@@ -13,6 +13,8 @@ import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
 import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
+import SearchEmpty from "@/app/Components/functions/SearchEmpty";
+import { CiSearch } from "react-icons/ci";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -25,6 +27,8 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Category, setCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -47,6 +51,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
+          setFilteredVehicles(result.data.data); // Initialize with full data
         } else {
           setShowError(result?.data?.error);
         }
@@ -92,7 +97,24 @@ export default function Vehicles() {
       setLoading("");
     }
   }
+  useEffect(() => {
+    filterVehicles();
+  }, [searchQuery, vehiclesData]);
 
+  function filterVehicles() {
+    if (!searchQuery) {
+      setFilteredVehicles(vehiclesData);
+      return;
+    }
+
+    const lowercasedQuery = searchQuery.toLowerCase();
+    const filtered = vehiclesData.filter((vehicle) => {
+      const { Category } = vehicle;
+
+      return Category.toLowerCase().includes(lowercasedQuery);
+    });
+    setFilteredVehicles(filtered);
+  }
   return (
     <div
       className={`${
@@ -114,7 +136,7 @@ export default function Vehicles() {
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 handleClick();
               }}
@@ -125,10 +147,34 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit mt-4">
-          <ImportExportButtons data={vehiclesData} model={"Category"} />
-
-          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
+        <div className="w-full h-fit">
+          <div className="w-full h-fit my-3 flex justify-between items-center">
+            <div className="w-[320px] h-fit flex justify-between items-center relative">
+              <input
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
+                placeholder="Search By Category"
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
+                value={searchQuery}
+              ></input>
+              {searchQuery && (
+                <SearchEmpty
+                  classes={"right-2 text-[24px"}
+                  setState={setSearchQuery}
+                />
+              )}
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
+              </div>
+            </div>
+            <ImportExportButtons data={vehiclesData} model={"Category"} />
+          </div>
+          {dataLoading ? (
+            <MediumLoader />
+          ) : (
+            <ListView data={filteredVehicles} />
+          )}
 
           {popup ? (
             <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">

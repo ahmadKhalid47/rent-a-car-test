@@ -34,7 +34,7 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
     <img
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
-      className={`me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer ${
+      className={`translate-y-[1px] hover:scale-[1.3] cursor-pointer ${
         admin ? "hover:scale-[1.3] cursor-pointer" : "grayscale opacity-50"
       }`}
       onClick={() => {

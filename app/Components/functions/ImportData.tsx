@@ -61,7 +61,7 @@ const ExcelUpload = ({ model }: any) => {
         className="opacity-0 absolute cursor-pointer z-[1] right-[0%] w-[300%] h-[100%]"
         title={""}
       />
-      <button className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]">
+      <button className="hover:no-underline w-[112px] h-[43px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]">
         {loading ? <SmallLoader /> : "Import"}
       </button>
     </div>
