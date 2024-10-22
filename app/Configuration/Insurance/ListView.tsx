@@ -36,7 +36,7 @@ export default function ListView({ data }: dataType) {
   const [Insurance, setInsurance] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
-  const [recurring, setrecurring] = useState("_");
+  const [recurring, setrecurring] = useState("");
   let [other, setOther] = useState("");
   let [otherPopUp, setOtherPopUp] = useState(false);
 
@@ -204,12 +204,12 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[82%] ">
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[15%] ">
               Company Name
             </div>
-            {/* <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
+            <div className="text-start truncate pe-3 flex justify-between items-center w-[67%] ">
               Recurring Period
-            </div> */}
+            </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
             </div>
@@ -240,12 +240,12 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start truncate pe-3 w-[82%] ">
+                  <div className="text-start truncate pe-3 w-[15%] ">
                     {item?.Insurance}
                   </div>
-                  {/* <div className="text-start truncate pe-3 w-[67%] ">
+                  <div className="text-start truncate pe-3 w-[67%] ">
                     {item?.recurring}
-                  </div> */}
+                  </div>
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {
@@ -382,42 +382,26 @@ export default function ListView({ data }: dataType) {
                           />
                         </div>
                       </div>
-                      {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                      <div
+                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                      >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                          Select Recurring
+                          {"Add New"}
                           <FaAsterisk className="text-[6px]" />
                         </label>
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                          <select
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                          <input
+                            type={"text"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            placeholder={`Enter Text Here`}
                             required={true}
                             onChange={(e) => {
                               setrecurring(e.target.value);
                             }}
                             value={recurring}
-                          >
-                            <option value={""}>Select</option>
-                            {options?.map((item: any, key: number) => (
-                              <option value={item} key={key}>
-                                {item ? item : "Select"}
-                              </option>
-                            ))}{" "}
-                            {other || recurring ? (
-                              <option value={other ? other : recurring}>
-                                {other ? other : recurring}
-                              </option>
-                            ) : null}
-                            <option value={"Other"}>Other</option>
-                          </select>
-                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                            <img
-                              src={shape.src}
-                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                            />
-                          </div>
+                          />
                         </div>
-                      </div> */}
-
+                      </div>
                       <div
                         className={`w-full flex justify-end gap-4 items-center pt-4`}
                       >

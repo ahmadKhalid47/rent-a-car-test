@@ -171,6 +171,7 @@ export default function Vehicles() {
                     />
                   </div>
                 </div>
+
                 {/* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Recurring Period
@@ -202,6 +203,27 @@ export default function Vehicles() {
                     </div>
                   </div>
                 </div> */}
+
+                <div
+                  className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                >
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                    {"Add New"}
+                    <FaAsterisk className="text-[6px]" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <input
+                      type={"text"}
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                      placeholder={`Enter Text Here`}
+                      required={true}
+                      onChange={(e) => {
+                        setrecurring(e.target.value);
+                      }}
+                      value={recurring}
+                    />
+                  </div>
+                </div>
 
                 <div
                   className={`w-full flex justify-end gap-4 items-center pt-4`}
