@@ -1,3 +1,4 @@
+import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Pagination from "@mui/material/Pagination";
@@ -17,9 +18,10 @@ import { PaginationComponent } from "@/app/Components/functions/Pagination";
 
 interface dataType {
   data: Array<Object>;
+  CategoryData: Array<Object>;
 }
 
-export default function ListView({ data }: dataType) {
+export default function ListView({ data, CategoryData }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   const [popup, setPopup] = useState(false);
@@ -33,6 +35,7 @@ export default function ListView({ data }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [make, setMake] = useState("");
+  const [Category, setCategory] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -66,7 +69,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteMake/${_id}`);
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Make Deleted Successfully"));
     } catch (err) {
@@ -84,7 +87,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyMake`, {
         _ids: itemToDeleteMany,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Makes Deleted Successfully"));
     } catch (err) {
@@ -101,8 +104,9 @@ export default function ListView({ data }: dataType) {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateMake/${_id}`, {
         make,
+        Category,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Make Updated Successfully"));
     } catch (err) {
@@ -187,7 +191,10 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[82%] ">
+            <div className="text-start pe-3 flex justify-between items-center w-[15%] ">
+              Category
+            </div>
+            <div className="text-start pe-3 flex justify-between items-center w-[67%] ">
               Make
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
@@ -220,7 +227,10 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[82%] ">{item?.make}</div>
+                  <div className="text-start pe-3 w-[15%] ">
+                    {item?.Category}
+                  </div>
+                  <div className="text-start pe-3 w-[67%] ">{item?.make}</div>
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {
@@ -247,6 +257,7 @@ export default function ListView({ data }: dataType) {
                           setEditPopup(true);
                           setItemToEdit(item?._id);
                           setMake(item?.make);
+                          setCategory(item?.Category);
                         }
                       }}
                     />
@@ -336,6 +347,35 @@ export default function ListView({ data }: dataType) {
                 {editPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
                     <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                      <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                          Select Category
+                          <FaAsterisk className="text-[6px]" />
+                        </label>
+                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <select
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                            required={true}
+                            onChange={(e) => {
+                              setCategory(e.target.value);
+                            }}
+                            value={Category}
+                          >
+                            <option value={""}>Select</option>
+                            {CategoryData?.map((item: any, key: number) => (
+                              <option value={item?.Category} key={key}>
+                                {item?.Category}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                            <img
+                              src={shape.src}
+                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                            />
+                          </div>
+                        </div>
+                      </div>
                       <div
                         className={`w-[100%]  h-fit flex flex-col justify-start items-start gap-1`}
                       >
@@ -365,6 +405,7 @@ export default function ListView({ data }: dataType) {
                           onClick={() => {
                             setEditPopup(false);
                             setMake("");
+                            setCategory("");
                           }}
                         >
                           <FaTimes />

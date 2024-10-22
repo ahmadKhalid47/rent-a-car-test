@@ -4,11 +4,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    let { make, createdBy } = await req.json();
-    console.log(make, createdBy);
+    let { make, Category, createdBy } = await req.json();
+    console.log(make, createdBy, Category);
 
     connectDb();
-    await new MakeModel({ make, createdBy }).save();
+    await new MakeModel({ make, Category, createdBy }).save();
     return NextResponse.json({
       success: "User Created",
     });

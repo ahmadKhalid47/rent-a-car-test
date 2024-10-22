@@ -1,4 +1,5 @@
 "use client";
+import shape from "@/public/ShapeBlack.svg";
 import React from "react";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -25,8 +26,10 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [make, setMake] = useState("");
-  console.log(vehiclesData);
-  
+  const [Category, setCategory] = useState("");
+  const [CategoryData, setCategoryData] = useState<any>([]);
+  console.log(make, Category);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -45,6 +48,10 @@ export default function Vehicles() {
         const result = await axios.post("/api/getMake", {
           createdBy: myProfile._id,
         });
+      const result2 = await axios.post("/api/getCategory", {
+        createdBy: myProfile._id,
+      });
+      setCategoryData(result2.data.data);
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
@@ -61,7 +68,7 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (make.trim() === "") {
+    if (make.trim() === "" || Category.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
@@ -79,22 +86,24 @@ export default function Vehicles() {
       setLoading(action);
       await axios.post(`/api/saveMake`, {
         make,
+        Category,
         createdBy: myProfile._id,
       });
-      
+
       dispatch(setAlert("Make Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
         setPopup(false);
       }
       setMake("");
+      setCategory("");
     } catch (err) {
       console.log(err);
     } finally {
       setLoading("");
     }
   }
-
+  
   return (
     <div
       className={`${
@@ -129,10 +138,40 @@ export default function Vehicles() {
 
         <div className="w-full h-fit mt-4">
           <ImportExportButtons data={vehiclesData} model={"Make"} />
-          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
+          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} CategoryData={CategoryData} />}
           {popup ? (
             <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
+                <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                    Select Category
+                    <FaAsterisk className="text-[6px]" />
+                  </label>
+                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <select
+                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                      required={true}
+                      onChange={(e) => {
+                        setCategory(e.target.value);
+                      }}
+                      value={Category}
+                    >
+                      <option value={""}>Select</option>
+                      {CategoryData?.map((item: any, key: number) => (
+                        <option value={item?.Category} key={key}>
+                          {item?.Category}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                      <img
+                        src={shape.src}
+                        className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div
                   className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
@@ -162,6 +201,7 @@ export default function Vehicles() {
                     onClick={() => {
                       setPopup(false);
                       setMake("");
+                      setCategory("");
                     }}
                   >
                     <FaTimes />

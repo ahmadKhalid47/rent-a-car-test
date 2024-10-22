@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const MakeSchema = mongoose.Schema(
   {
+    Category: { type: String },
     make: { type: String, required: true },
     active: { type: Boolean, default: true },
     createdBy: {
