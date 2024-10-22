@@ -343,6 +343,16 @@ export default function CarInfoMainPage() {
                         <span className="">{vehicleInfo?.Category}</span>
                       </div>
                     </div>
+                    <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
+                      <div className="w-[45%] flex justify-between items-center">
+                        <span className="dark:text-white text-[#555555]">
+                          No. of Damages
+                        </span>
+                        <span className="w-[60px] h-[27px] flex justify-center items-center border-[1px] border-grey rounded-[3px] bg-light-grey">
+                          {vehicleInfo?.damages.length}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <Additional />
