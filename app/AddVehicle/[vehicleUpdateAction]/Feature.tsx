@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import demyIcon from "@/public/features (1).png";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
@@ -38,7 +38,11 @@ export default function Feature() {
     "Safety Features",
     "Convenience Features",
   ];
-
+  useEffect(() => {
+    if (vehicle.features === "") {
+      setFeaturesSubmitArray("");
+    }
+  }, [vehicle.features]);
   return (
     <div className="w-full h-fit  ">
       <div className="w-full h-fit">
