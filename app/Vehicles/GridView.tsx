@@ -245,7 +245,7 @@ export default function GridView({ data }: dataType) {
           <div className="lg:w-[33.33%] 3xl:w-[25%] h-fit flex justify-center items-start mt-4">
             <div
               key={index}
-              className="w-[100%] lg:w-[340px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white  p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
+              className="w-[100%] lg:w-[330px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
             >
               <div className="w-[100%] h-fit flex justify-between items-center">
                 <div className="w-full h-fit flex justify-between items-start py-1 border-color">
