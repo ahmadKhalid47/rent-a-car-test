@@ -54,9 +54,13 @@ export default function Info() {
   const [files, setFiles] = useState(vehicle?.carImages);
   const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
+  const [CategorySelected, setCategorySelected] = useState(vehicle.Category);
   useEffect(() => {
     setFiles(vehicle?.carImages);
   }, [vehicle?.carImages]);
+  useEffect(() => {
+    setCategorySelected(vehicle.Category);
+  }, [vehicle.Category]);
   useEffect(() => {
     setMakeSelected(vehicle.make);
   }, [vehicle.make]);
@@ -228,9 +232,9 @@ console.log("newFiles", newFiles);
           label={"Make"}
           value={vehicle.make}
           required={true}
-          options={Configurations?.Configurations?.make?.map(
-            (item: any) => item.make
-          )}
+          options={Configurations?.Configurations?.make
+            ?.filter((item: any) => item.Category === CategorySelected)
+            .map((item: any) => item.make)}
           link={"/Configuration/Make"}
         />
         <TempSelectInputLink
