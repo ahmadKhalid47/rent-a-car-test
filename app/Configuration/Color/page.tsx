@@ -210,7 +210,7 @@ export default function Vehicles() {
                   </div>
                   <div className="h-full w-[90%] sm:color-inputs-width h-fi mt-0 flex flex-wrap justify-between items-end gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  px-1 xs:px-3 md:px-4">
                     <div className="w-full h-fit flex flex-col justify-between items-center relative gap-3">
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="w-full h-fit flex justify-between items-center relative">
                         <input
                           required={true}
                           type={"text"}
@@ -225,7 +225,7 @@ export default function Vehicles() {
                       <div
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
-                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                        <div className="w-full h-fit flex justify-between items-center relative">
                           <div
                             className="w-[32px] h-[18px] rounded-[5px] absolute top-[12px] left-[8px]"
                             style={{

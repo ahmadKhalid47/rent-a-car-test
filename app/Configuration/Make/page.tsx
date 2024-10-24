@@ -203,7 +203,7 @@ export default function Vehicles() {
                 </div>
 
                 <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4">
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                  <div className="w-full h-fit flex justify-between items-center relative">
                     <select
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                       required={true}
@@ -230,7 +230,7 @@ export default function Vehicles() {
                   <div
                     className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                   >
-                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <div className="w-full h-fit flex justify-between items-center relative">
                       <input
                         required={true}
                         type={"text"}

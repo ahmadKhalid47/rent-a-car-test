@@ -1,3 +1,4 @@
+import upload from "@/public/Paper Upload blue.svg";
 import arrows from "@/public/arrows.svg";
 import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
@@ -466,7 +467,7 @@ export default function ListView({ data }: dataType) {
                         </div>
 
                         <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                          <div className="w-full h-fit flex justify-between items-center relative">
                             <select
                               className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                               required={true}
@@ -494,29 +495,30 @@ export default function ListView({ data }: dataType) {
                             </div>
                           </div>
                         </div>
+
+                        {myProfile.admin && (
+                          <div
+                            className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                          >
+                            <div className="w-full h-fit flex justify-between items-center relative">
+                              <input
+                                required={true}
+                                type={"file"}
+                                className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
+                                placeholder={`Enter Text Here`}
+                                onChange={(e: any) => {
+                                  setIcon(e.target?.files);
+                                }}
+                              />
+                              <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
+                                <img src={upload.src} />
+                                Upload Icon
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
-                      {myProfile.admin && (
-                        <div
-                          className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                        >
-                          <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                            {"Update Icon Image"}
-                            <FaAsterisk className="text-[6px]" />
-                          </label>
-                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                            <input
-                              required={true}
-                              type={"file"}
-                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                              placeholder={`Enter Text Here`}
-                              onChange={(e: any) => {
-                                setIcon(e.target?.files);
-                              }}
-                            />
-                          </div>
-                        </div>
-                      )}
                       <div
                         className={`w-full flex justify-end gap-4 items-center pt-4`}
                       >

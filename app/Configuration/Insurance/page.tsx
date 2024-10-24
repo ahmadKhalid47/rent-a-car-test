@@ -230,7 +230,7 @@ export default function Vehicles() {
                   <div
                     className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                   >
-                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <div className="w-full h-fit flex justify-between items-center relative">
                       <input
                         type={"text"}
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
@@ -276,9 +276,9 @@ export default function Vehicles() {
                 >
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     {"Add New"}
-                    <FaAsterisk className="text-[6px]" />
+                    <FaAsterisk className="text-[8px] text-red-500" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                  <div className="w-full h-fit flex justify-between items-center relative">
                     <input
                       required={true}
                       type={"text"}
@@ -328,9 +328,9 @@ export default function Vehicles() {
   /* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Recurring Period
-                    <FaAsterisk className="text-[6px]" />
+                    <FaAsterisk className="text-[8px] text-red-500" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                  <div className="w-full h-fit flex justify-between items-center relative">
                     <select
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                       required={true}

@@ -363,7 +363,7 @@ export default function Damages() {
               <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Damage Type
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="pe-10 truncate font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   onChange={(e) => {
@@ -387,7 +387,7 @@ export default function Damages() {
               <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Degree
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="pe-10 truncate font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   onChange={(e) => {
@@ -412,7 +412,7 @@ export default function Damages() {
               <label className="flex justify-start gap-1 items-start truncate font-[400] text-[14px] leading-[17px]">
                 Description
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <textarea
                   className="w-full pe-2 py-3 truncate font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                   rows={3}

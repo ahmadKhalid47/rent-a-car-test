@@ -115,7 +115,7 @@ export default function Feature() {
           Additional Notes
         </h3>
         <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+          <div className="w-full h-fit flex justify-between items-center relative">
             <textarea
               className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
               rows={6}
@@ -139,7 +139,7 @@ export default function Feature() {
                 {"Add New"}
                 <FaAsterisk className="text-[6px]" />
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <input
                   required={true}
                   type={"text"}
@@ -186,7 +186,7 @@ export default function Feature() {
                 {"Add New"}
                 <FaAsterisk className="text-[6px]" />
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <input
                   required={true}
                   type={"text"}

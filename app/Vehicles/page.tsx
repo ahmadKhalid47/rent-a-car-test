@@ -225,7 +225,7 @@ export default function Vehicles() {
               </div>
             </div>
             <div className="w-[144px] h-fit ">
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
                   onChange={(e) => {
@@ -263,7 +263,7 @@ export default function Vehicles() {
               </div>
             </div>
             <div className="w-[144px] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit ">
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
                   onChange={(e) => {

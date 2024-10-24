@@ -289,7 +289,7 @@ console.log("newFiles", newFiles);
           </label>
 
           <div className="w-full h-fit flex justify-between items-center relative circle-edit cursor-default">
-            <div className="w-full h-fit flex justify-between items-center absolute z-[-10] left-0 top-0 overflow-hidde">
+            <div className="w-full h-fit flex justify-between items-center absolute z-[-10] left-0 top-0">
               <select
                 className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                 required={true}

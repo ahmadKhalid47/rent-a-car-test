@@ -1,4 +1,5 @@
 "use client";
+import upload from "@/public/Paper Upload blue.svg";
 import shape from "@/public/ShapeBlack.svg";
 import React from "react";
 import { RootState } from "@/app/store";
@@ -127,10 +128,7 @@ export default function Vehicles() {
     const filtered = vehiclesData.filter((vehicle) => {
       const { Feature } = vehicle;
 
-      return (
-        Feature?.toLowerCase().includes(lowercasedQuery)
-      );
-
+      return Feature?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }
@@ -221,7 +219,7 @@ export default function Vehicles() {
                     />
                   </div>
                   <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                    <div className="w-full h-fit flex justify-between items-center relative">
                       <select
                         className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                         required={true}
@@ -252,17 +250,21 @@ export default function Vehicles() {
 
                   {myProfile.admin && (
                     <div
-                      className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                      className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1 relative`}
                     >
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="z-0 w-full h-fit flex justify-between items-center relative cursor-pointer hover:opacity-[0.8]">
                         <input
                           required={true}
                           type={"file"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
                           onChange={(e: any) => {
                             setIcon(e.target?.files);
                           }}
                         />
+                        <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
+                          <img src={upload.src} />
+                          Upload Icon
+                        </div>
                       </div>
                     </div>
                   )}

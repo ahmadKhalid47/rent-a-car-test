@@ -323,7 +323,7 @@ export default function AddUser() {
                   {"Admin Password"}
                   <FaAsterisk className="text-[6px]" />
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <input
                     required={true}
                     type={"password"}
@@ -345,7 +345,7 @@ export default function AddUser() {
                   {"User New Password"}
                   <FaAsterisk className="text-[6px]" />
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <input
                     required={true}
                     type={"password"}

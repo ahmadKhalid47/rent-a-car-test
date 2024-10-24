@@ -143,7 +143,7 @@ export default function AddUser() {
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   {"Payment Method"}
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                     placeholder={`Enter Payment Method`}
@@ -183,7 +183,7 @@ export default function AddUser() {
                     / 250
                   </span>
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                     placeholder={`Enter Additional information in invoice.`}
@@ -220,7 +220,7 @@ export default function AddUser() {
                   </span>
                 </label>
 
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <textarea
                     className="py-3 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                     placeholder={`Enter terms and conditions.`}

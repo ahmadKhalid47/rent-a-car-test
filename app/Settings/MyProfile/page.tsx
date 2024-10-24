@@ -271,7 +271,7 @@ export default function Profile() {
                         {"Old Password"}
                         <FaAsterisk className="text-[6px]" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="w-full h-fit flex justify-between items-center relative">
                         <input
                           required={true}
                           type={!showPassword ? "Password" : "text"}
@@ -304,7 +304,7 @@ export default function Profile() {
                         {"New Password"}
                         <FaAsterisk className="text-[6px]" />
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="w-full h-fit flex justify-between items-center relative">
                         <input
                           required={true}
                           minLength={6}

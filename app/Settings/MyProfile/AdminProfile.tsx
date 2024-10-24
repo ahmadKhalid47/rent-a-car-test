@@ -72,7 +72,7 @@ export default function AdminProfile() {
         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
           Username{" "}
         </label>
-        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+        <div className="w-full h-fit flex justify-between items-center relative">
           <input
             type={"text"}
             className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
@@ -117,7 +117,7 @@ export default function AdminProfile() {
         <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
           Email{" "}
         </label>
-        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+        <div className="w-full h-fit flex justify-between items-center relative">
           <input
             type={"email"}
             className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"

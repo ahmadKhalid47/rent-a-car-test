@@ -232,7 +232,7 @@ export default function Info() {
           <label className="flex justify-start gap-1 items-start font-[400] text-[0px] sm:text-[14px] leading-[0px] sm:leading-[17px] text-transparent">
             VIP Client
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+          <div className="w-full h-fit flex justify-between items-center relative">
             <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center dark:bg-dark1 bg-white ">
               <input
                 type="checkbox"

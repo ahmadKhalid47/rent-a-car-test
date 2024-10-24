@@ -405,8 +405,8 @@ export default function ListView({ data }: dataType) {
                           <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
                       </div>
-                      <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4 overflow-hidde">
-                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4">
+                        <div className="w-full h-fit flex justify-between items-center relative">
                           <input
                             required={true}
                             type={"text"}

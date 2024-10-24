@@ -226,7 +226,7 @@ export default function Vehicles() {
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Status
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <select
                     className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
                     onChange={(e) => {
@@ -265,7 +265,7 @@ export default function Vehicles() {
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   City
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <select
                     className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
                     onChange={(e) => {
@@ -304,7 +304,7 @@ export default function Vehicles() {
                 <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
                   Duration
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <select
                     className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
                     onChange={(e) => {

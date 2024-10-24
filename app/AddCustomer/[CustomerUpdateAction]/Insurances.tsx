@@ -78,7 +78,7 @@ export default function Insurances() {
                 {"Add New"}
                 <FaAsterisk className="text-[6px]" />
               </label>
-              <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+              <div className="w-full h-fit flex justify-between items-center relative">
                 <input
                   required={true}
                   type={"text"}

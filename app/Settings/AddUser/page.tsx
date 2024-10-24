@@ -107,7 +107,7 @@ export default function AddUser() {
                   Username
                   <FaAsterisk className="text-[6px]" />
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <input
                     required={true}
                     type={"text"}
@@ -126,7 +126,7 @@ export default function AddUser() {
                   Password
                   <FaAsterisk className="text-[6px]" />
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <input
                     required={true}
                     type={"text"}
@@ -145,7 +145,7 @@ export default function AddUser() {
                   Email
                   <FaAsterisk className="text-[6px]" />
                 </label>
-                <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                <div className="w-full h-fit flex justify-between items-center relative">
                   <input
                     required={true}
                     type={"email"}

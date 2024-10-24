@@ -13,6 +13,9 @@
 .border-main-blue {
   border-color: #0094da;
 }
+.border-main-dark-blue {
+  border-color: #054B86;
+}
 
 .border-main-red {
   border-color: rgb(235, 70, 67);
@@ -20,6 +23,9 @@
 
 .text-main-blue {
   color: #0094da;
+}
+.text-main-dark-blue {
+  color: #054B86;
 }
 
 .bg-main-blue-hover:hover {

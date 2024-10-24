@@ -20,7 +20,7 @@ export default function Others() {
           <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
             Any Additional Notes
           </label>
-          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+          <div className="w-full h-fit flex justify-between items-center relative">
             <textarea
               className="w-full pe-2 py-3 font-[400] text-[16px] leading-[19px] ps-2  flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
               rows={6}

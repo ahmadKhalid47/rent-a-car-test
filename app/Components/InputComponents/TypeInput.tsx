@@ -29,7 +29,7 @@ export const TypeInput: React.FC<TypeInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -70,7 +70,7 @@ export const TypeInputWidth: React.FC<TypeInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -118,7 +118,7 @@ export const TypeInputInfo: React.FC<TypeInputInfo> = ({
           <GrCircleInformation />
         </Popover>
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -157,7 +157,7 @@ export const TempTypeInput: React.FC<TempTypeInput> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -200,7 +200,7 @@ export const TempTypeInputSign: React.FC<TempTypeInputSign> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -247,7 +247,7 @@ export const TempTypeInputLimit: React.FC<TempTypeInputLimit> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}
@@ -292,7 +292,7 @@ export const TempTypeInputWidth: React.FC<TempTypeInputWidth> = ({
         {label}
         {required && <FaAsterisk className="text-[6px]" />}
       </label>
-      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+      <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
           type={type}

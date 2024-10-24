@@ -466,7 +466,7 @@ export default function UserDashboard() {
                       <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px] text-transparent">
                         {"label"}
                       </label>
-                      <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <div className="w-full h-fit flex justify-between items-center relative">
                         <input
                           type={"time"}
                           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
