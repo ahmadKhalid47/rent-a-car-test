@@ -235,7 +235,7 @@ export default function ListView({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className={`me-[5.8px] ${
+                      className={` ${
                         item?.createdBy === myProfile._id
                           ? "hover:scale-[1.3] cursor-pointer"
                           : "grayscale opacity-50"

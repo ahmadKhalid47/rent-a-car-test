@@ -369,7 +369,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] cursor-pointer"
+                      className=" hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         router.push(`/AddChauffeur/${item?._id}`);
                       }}

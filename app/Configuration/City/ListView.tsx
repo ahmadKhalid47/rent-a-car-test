@@ -75,7 +75,7 @@ export default function ListView({ data, makeData }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteCity/${_id}`);
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective City Deleted Successfully"));
     } catch (err) {
@@ -93,7 +93,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.post(`/api/deleteManyCity`, {
         _ids: itemToDeleteMany,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Cities Deleted Successfully"));
     } catch (err) {
@@ -112,7 +112,7 @@ export default function ListView({ data, makeData }: dataType) {
         country: Make,
         city,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective City Updated Successfully"));
     } catch (err) {
@@ -146,16 +146,54 @@ export default function ListView({ data, makeData }: dataType) {
     (item: any) => item?.createdBy === myProfile._id
   );
   let { countries, cities } = CountryCity(Make);
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [reverse, setReverse] = useState<any>(false);
+  const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
+    {}
+  );
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
 
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
+
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
+
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
+    });
+
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+    if (key === "ID") {
+      setReverse(!reverse);
+    }
+  };
   return (
-    <div className="w-full h-fit relative">
+    <div className="w-full h-fit">
       <h3
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          {userData.length > 0 && (
+          {userData.length > 0 && itemToDeleteMany.length >= 1 && (
             <>
               {" "}
               <button
@@ -199,11 +237,29 @@ export default function ListView({ data, makeData }: dataType) {
                 ></div>
               )}{" "}
             </div>
+            <div className="text-start ps-1 pe-3 flex justify-start gap-3 items-center w-[5%] ">
+              #
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("ID")}
+              />
+            </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[15%]">
               Country
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Country")}
+              />{" "}
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[67%]">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
               City
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("City")}
+              />{" "}
             </div>
             <div className="pe-5 truncate flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -235,10 +291,15 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
+                  <div className="text-start pe-3 w-[5%] ">
+                    {JSON.stringify(
+                      !reverse ? index + 1 : paginatedData.length - index
+                    ).padStart(2, "0")}{" "}
+                  </div>
                   <div className="text-start pe-3 truncate w-[15%]">
                     {item?.country}
                   </div>
-                  <div className="text-start pe-3 truncate w-[67%]">
+                  <div className="text-start pe-3 truncate w-[60%]">
                     {item?.city}
                   </div>
                   <div
@@ -258,7 +319,7 @@ export default function ListView({ data, makeData }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className={`me-[5.8px] ${
+                      className={` ${
                         item?.createdBy === myProfile._id
                           ? "hover:scale-[1.3] cursor-pointer"
                           : "grayscale opacity-50"

@@ -324,7 +324,7 @@ export default function ListViewreservation({ data }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className="me-[5.8px] hover:scale-[1.3] z-[200]"
+                      className=" hover:scale-[1.3] z-[200]"
                       onClick={() => {
                         router.push(`/AddReservations/${item?._id}`);
                       }}

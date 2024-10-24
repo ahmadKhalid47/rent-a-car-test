@@ -15,6 +15,8 @@ import { setVehicleDataReloader } from "@/app/store/Global";
 import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
+import { CiSearch } from "react-icons/ci";
+import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -30,6 +32,8 @@ export default function Vehicles() {
   const [city, setCity] = useState("");
   const [Make, setMake] = useState("");
   // const [CityReloader, setCityReloader] = useState(0);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -90,7 +94,7 @@ export default function Vehicles() {
         city: city,
         createdBy: myProfile._id,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("City Saved Successfully"));
       if (action === "close") {
@@ -126,9 +130,9 @@ export default function Vehicles() {
               City
             </span>
           </span>
-          <div className="flex justify-start md:justify-end gap- items-end w-[100%] md:w-[50%]">
+          <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 handleClick();
               }}
@@ -139,24 +143,50 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-[73vh] relative">
-          <ImportExportButtons data={vehiclesData} model={"City"} />
-
-          {dataLoading ? (
-            <MediumLoader />
-          ) : (
-            <ListView data={vehiclesData} makeData={makeData} />
-          )}
+        <div className="w-full h-fit">
+          <div className="w-full h-fit mt-4 flex justify-between items-center">
+            <div className="w-[320px] h-fit flex justify-between items-center relative">
+              <input
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
+                placeholder="Search By Category"
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
+                value={searchQuery}
+              ></input>
+              {searchQuery && (
+                <SearchEmpty
+                  classes={"right-2 text-[24px"}
+                  setState={setSearchQuery}
+                />
+              )}
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
+              </div>
+            </div>
+            <ImportExportButtons data={vehiclesData} model={"City"} />
+          </div>
+          <div className="w-full h-fit mt-2">
+            {dataLoading ? (
+              <MediumLoader />
+            ) : (
+              <ListView data={vehiclesData} makeData={makeData} />
+            )}
+          </div>
 
           {popup ? (
-            <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
-              <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
-                <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+            <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
+              <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow-lg z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
+                <div
+                  className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                >
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
                     Select Country
                     <FaAsterisk className="text-[6px]" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                </div>
+                <div className="w-full h-fit flex flex-col justify-between items-center relative gap-3">
+                  <div className="w-full h-fit flex justify-between items-center relative">
                     <select
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                       required={true}
@@ -182,29 +212,25 @@ export default function Vehicles() {
                       />
                     </div>
                   </div>
-                </div>
 
-                <div
-                  className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                >
-                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                    {"Add New"}
-                    <FaAsterisk className="text-[6px]" />
-                  </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                    <select
-                      required={true}
-                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                      onChange={(e) => {
-                        setCity(e.target.value);
-                      }}
-                      value={city}
-                    >
-                      <option value="">Select</option>
-                      {cities.map((item: any) => (
-                        <option value={item.label}>{item.label}</option>
-                      ))}
-                    </select>
+                  <div
+                    className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                  >
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <select
+                        required={true}
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                        onChange={(e) => {
+                          setCity(e.target.value);
+                        }}
+                        value={city}
+                      >
+                        <option value="">Select</option>
+                        {cities.map((item: any) => (
+                          <option value={item.label}>{item.label}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
 
