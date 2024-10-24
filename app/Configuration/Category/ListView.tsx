@@ -177,7 +177,7 @@ export default function ListView({ data }: dataType) {
   };
 
   return (
-    <div className="w-full h-fit mt-4">
+    <div className="w-full h-fit">
       <h3
         className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
@@ -210,7 +210,7 @@ export default function ListView({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="w-[5%]   flex justify-start items-center ">
+            <div className="w-[3%]   flex justify-start items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -265,7 +265,7 @@ export default function ListView({ data }: dataType) {
                       : "border-b-2"
                   } border-grey`}
                 >
-                  <div className="w-[5%]   flex justify-start items-center ">
+                  <div className="w-[3%]   flex justify-start items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${

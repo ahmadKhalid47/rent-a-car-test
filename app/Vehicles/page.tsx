@@ -205,7 +205,7 @@ export default function Vehicles() {
             </button>
           </div>
         </div>
-        <div className="h-[44px] w-full flex justify-between gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey mt-6">
+        <div className="h-[44px] w-full flex justify-between gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey mt-4">
           <div className="h-[44px] w-fit flex justify-start gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input

@@ -347,7 +347,7 @@ export default function ListView({ data }: dataType) {
                          ${
                            index ===
                              Math.min(page * itemsPerPage, data.length) - 1 ||
-                           index +12 === data.length - 1
+                           index + 12 === data.length - 1
                              ? ""
                              : "border-b-2"
                          }

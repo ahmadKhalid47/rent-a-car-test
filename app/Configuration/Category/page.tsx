@@ -148,7 +148,7 @@ export default function Vehicles() {
         </div>
 
         <div className="w-full h-fit">
-          <div className="w-full h-fit my-3 flex justify-between items-center">
+          <div className="w-full h-fit mt-4 flex justify-between items-center">
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
@@ -170,12 +170,13 @@ export default function Vehicles() {
             </div>
             <ImportExportButtons data={vehiclesData} model={"Category"} />
           </div>
-          {dataLoading ? (
-            <MediumLoader />
-          ) : (
-            <ListView data={filteredVehicles} />
-          )}
-
+          <div className="w-full h-fit mt-2">
+            {dataLoading ? (
+              <MediumLoader />
+            ) : (
+              <ListView data={filteredVehicles} />
+            )}
+          </div>
           {popup ? (
             <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
               <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
