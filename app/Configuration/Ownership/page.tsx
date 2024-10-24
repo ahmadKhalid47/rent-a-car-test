@@ -13,6 +13,8 @@ import { SmallLoader, MediumLoader } from "../../Components/Loader";
 import { setVehicleDataReloader } from "@/app/store/Global";
 import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
+import { CiSearch } from "react-icons/ci";
+import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -25,8 +27,9 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
   const [Ownership, setOwnership] = useState("");
-  console.log(vehiclesData);
-  
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSidebarShowR(false));
@@ -67,7 +70,8 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.Ownership.toLowerCase() === Ownership.trim().toLowerCase()
+        (item) =>
+          item.Ownership.toLowerCase() === Ownership.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -81,7 +85,7 @@ export default function Vehicles() {
         Ownership,
         createdBy: myProfile._id,
       });
-      
+
       dispatch(setAlert("Ownership Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {
@@ -93,6 +97,24 @@ export default function Vehicles() {
     } finally {
       setLoading("");
     }
+  }
+  useEffect(() => {
+    filterVehicles();
+  }, [searchQuery, vehiclesData]);
+
+  function filterVehicles() {
+    if (!searchQuery) {
+      setFilteredVehicles(vehiclesData);
+      return;
+    }
+
+    const lowercasedQuery = searchQuery.toLowerCase();
+    const filtered = vehiclesData.filter((vehicle) => {
+      const { Ownership } = vehicle;
+
+      return Ownership.toLowerCase().includes(lowercasedQuery);
+    });
+    setFilteredVehicles(filtered);
   }
 
   return (
@@ -116,7 +138,7 @@ export default function Vehicles() {
           </span>
           <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 handleClick();
               }}
@@ -127,20 +149,49 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit mt-4">
-          <ImportExportButtons data={vehiclesData} model={"Ownership"} />
-          {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
+        <div className="w-full h-fit">
+          <div className="w-full h-fit mt-4 flex justify-between items-center">
+            <div className="w-[320px] h-fit flex justify-between items-center relative">
+              <input
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
+                placeholder="Search By Ownership"
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
+                value={searchQuery}
+              ></input>
+              {searchQuery && (
+                <SearchEmpty
+                  classes={"right-2 text-[24px"}
+                  setState={setSearchQuery}
+                />
+              )}
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
+              </div>
+            </div>
+            <ImportExportButtons data={vehiclesData} model={"Ownership"} />
+          </div>
+          <div className="w-full h-fit mt-2">
+            {dataLoading ? (
+              <MediumLoader />
+            ) : (
+              <ListView data={filteredVehicles} />
+            )}
+          </div>
           {popup ? (
             <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
-              <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
+              <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow-lg z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
                 <div
                   className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
-                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                    {"Add New"}
-                    <FaAsterisk className="text-[6px]" />
+                  <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
+                    Add New Ownership{" "}
+                    <FaAsterisk className="text-[8px] text-red-500" />
                   </label>
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                </div>
+                <div className="w-full h-fit flex flex-col justify-between items-center relative gap-3">
+                  <div className="w-full h-fit flex justify-between items-center relative">
                     <input
                       required={true}
                       type={"text"}
@@ -167,18 +218,11 @@ export default function Vehicles() {
                     <FaTimes />
                   </button>
                   <button
-                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                    className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                     onClick={() => save("close")}
                     disabled={loading === "" ? false : true}
                   >
-                    {loading === "close" ? <SmallLoader /> : "Save and Close"}
-                  </button>
-                  <button
-                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => save("new")}
-                    disabled={loading === "" ? false : true}
-                  >
-                    {loading === "new" ? <SmallLoader /> : "Save and New"}
+                    {loading === "close" ? <SmallLoader /> : "Save"}
                   </button>
                 </div>
               </div>

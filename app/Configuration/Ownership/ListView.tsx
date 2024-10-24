@@ -1,3 +1,4 @@
+import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Pagination from "@mui/material/Pagination";
@@ -66,7 +67,7 @@ export default function ListView({ data }: dataType) {
     try {
       setDeleteLoading(true);
       let result: any = await axios.delete(`/api/deleteOwnership/${_id}`);
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Ownership Deleted Successfully"));
     } catch (err) {
@@ -84,7 +85,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyOwnership`, {
         _ids: itemToDeleteMany,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Ownerships Deleted Successfully"));
     } catch (err) {
@@ -102,7 +103,7 @@ export default function ListView({ data }: dataType) {
       let result: any = await axios.post(`/api/updateOwnership/${_id}`, {
         Ownership,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Ownership Updated Successfully"));
     } catch (err) {
@@ -135,16 +136,55 @@ export default function ListView({ data }: dataType) {
   const userData = data.filter(
     (item: any) => item?.createdBy === myProfile._id
   );
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [reverse, setReverse] = useState<any>(false);
+  const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
+    {}
+  );
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
+
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
+
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
+
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
+    });
+
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+    if (key === "ID") {
+      setReverse(!reverse);
+    }
+  };
 
   return (
     <div className="w-full h-fit">
       <h3
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          {userData.length > 0 && (
+          {userData.length > 0 && itemToDeleteMany.length >= 1 && (
             <>
               <button
                 className={`${
@@ -187,8 +227,21 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[82%] ">
+            <div className="text-start ps-1 pe-3 flex justify-start gap-3 items-center w-[5%] ">
+              #
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("ID")}
+              />
+            </div>
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[82%] ">
               Ownership
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Ownership")}
+              />
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}
@@ -220,7 +273,15 @@ export default function ListView({ data }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[82%] ">{item?.Ownership}</div>
+                  <div className="text-start pe-3 w-[5%] ">
+                    {JSON.stringify(
+                      !reverse ? index + 1 : paginatedData.length - index
+                    ).padStart(2, "0")}{" "}
+                  </div>
+
+                  <div className="text-start pe-3 w-[82%] ">
+                    {item?.Ownership}
+                  </div>
                   <div
                     className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
                     onClick={(event) => {
@@ -334,15 +395,17 @@ export default function ListView({ data }: dataType) {
                 ) : null}
 
                 {editPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
-                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
+                    <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow-lg z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
                       <div
-                        className={`w-[100%]  h-fit flex flex-col justify-start items-start gap-1`}
+                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
-                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
                           {"Update Ownership"}
-                          <FaAsterisk className="text-[6px]" />
+                          <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
+                      </div>
+                      <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4 overflow-hidde">
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <input
                             required={true}
@@ -370,11 +433,11 @@ export default function ListView({ data }: dataType) {
                           <FaTimes />
                         </button>
                         <button
-                          className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => editItem(itemToEdit)}
                           disabled={editLoading}
                         >
-                          {editLoading ? <SmallLoader /> : "Update and Close"}
+                          {editLoading ? <SmallLoader /> : "Update"}
                         </button>
                       </div>
                     </div>
