@@ -259,7 +259,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("Color")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[65%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
               Color Name
               <img
                 src={arrows.src}
@@ -312,7 +312,7 @@ export default function ListView({ data }: dataType) {
                     ></div>
                     {item?.Color}
                   </div>
-                  <div className="text-start flex justify-start items-center gap-4 w-[65%]">
+                  <div className="text-start flex justify-start items-center gap-4 w-[60%]">
                     {item?.ColorName}
                   </div>
                   <div
