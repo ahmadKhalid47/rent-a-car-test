@@ -439,7 +439,7 @@ export default function ListView({ data }: dataType) {
                             required={true}
                             type={"text"}
                             className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%]  h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            placeholder={`Enter Text Here`}
+                            placeholder={`Insurance Here`}
                             onChange={(e) => {
                               setInsurance(e.target.value);
                             }}
@@ -453,7 +453,7 @@ export default function ListView({ data }: dataType) {
                             <input
                               type={"text"}
                               className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                              placeholder={`Enter Text Here`}
+                              placeholder={`Recurring Here`}
                               required={true}
                               onChange={(e) => {
                                 setrecurring(e.target.value);

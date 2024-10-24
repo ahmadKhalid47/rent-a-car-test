@@ -410,7 +410,7 @@ export default function ListView({ data }: dataType) {
                           }}
                           value={country}
                         >
-                          <option value="">Select</option>
+                          <option value="">Select Country</option>
                           {countries.map((item: any) => (
                             <option value={item.label}>{item.label}</option>
                           ))}

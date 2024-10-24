@@ -215,7 +215,7 @@ export default function Vehicles() {
                       }}
                       value={Make}
                     >
-                      <option value={""}>Select</option>
+                      <option value={""}>Select Country</option>
                       {makeData
                         ?.map((item: any) => item.country)
                         ?.sort((a: string, b: string) => a.localeCompare(b))
@@ -245,7 +245,7 @@ export default function Vehicles() {
                         }}
                         value={city}
                       >
-                        <option value="">Select</option>
+                        <option value="">Select City</option>
                         {cities.map((item: any) => (
                           <option value={item.label}>{item.label}</option>
                         ))}

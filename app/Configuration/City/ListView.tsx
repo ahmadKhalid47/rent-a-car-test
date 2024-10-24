@@ -422,7 +422,7 @@ export default function ListView({ data, makeData }: dataType) {
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
-                          Update City 
+                          Update City
                           <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
                       </div>
@@ -436,7 +436,7 @@ export default function ListView({ data, makeData }: dataType) {
                             }}
                             value={Make}
                           >
-                            <option value={""}>Select</option>
+                            <option value={""}>Select Country</option>
                             {makeData?.map((item: any, key: number) => (
                               <option value={item?.country} key={key}>
                                 {item?.country}
@@ -463,7 +463,7 @@ export default function ListView({ data, makeData }: dataType) {
                               }}
                               value={city}
                             >
-                              <option value="">Select</option>
+                              <option value="">Select City</option>
                               {cities.map((item: any) => (
                                 <option value={item.label}>{item.label}</option>
                               ))}
