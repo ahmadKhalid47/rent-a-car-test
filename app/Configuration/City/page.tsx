@@ -201,7 +201,7 @@ export default function Vehicles() {
                   className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
                   <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
-                    Select Country
+                    Add New City
                     <FaAsterisk className="text-[6px]" />
                   </label>
                 </div>

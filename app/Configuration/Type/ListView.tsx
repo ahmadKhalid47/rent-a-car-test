@@ -425,7 +425,7 @@ export default function ListView({ data }: dataType) {
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
                         <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
-                          Add New Body Type{" "}
+                          Update Body Type{" "}
                           <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
                       </div>

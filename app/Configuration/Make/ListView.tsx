@@ -484,7 +484,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                           onClick={() => editItem(itemToEdit)}
                           disabled={editLoading}
                         >
-                          {editLoading ? <SmallLoader /> : "Update and Close"}
+                          {editLoading ? <SmallLoader /> : "Update"}
                         </button>
                       </div>
                     </div>
