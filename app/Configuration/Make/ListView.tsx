@@ -238,7 +238,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[15%] ">
+            <div className="text-start pe-3 flex justify-between items-center w-[12%] ">
               Category
               <img
                 src={arrows.src}
@@ -246,7 +246,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                 onClick={() => sort("Category")}
               />{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[65%] ">
               Make
               <img
                 src={arrows.src}
@@ -296,10 +296,10 @@ export default function ListView({ data, CategoryData }: dataType) {
                     ).padStart(2, "0")}{" "}
                   </div>
 
-                  <div className="text-start pe-3 w-[15%] ">
+                  <div className="text-start pe-3 w-[12%] ">
                     {item?.Category}
                   </div>
-                  <div className="text-start pe-3 w-[62%] ">{item?.make}</div>
+                  <div className="text-start pe-3 w-[65%] ">{item?.make}</div>
                   <div
                     className="flex justify-end items-center w-[13%]  h-full gap-2"
                     onClick={(event) => {
