@@ -1,3 +1,4 @@
+import arrows from "@/public/arrows.svg";
 import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -139,16 +140,54 @@ export default function ListView({ data, CategoryData }: dataType) {
   const userData = data.filter(
     (item: any) => item?.createdBy === myProfile._id
   );
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [reverse, setReverse] = useState<any>(false);
+  const [sortOrder, setSortOrder] = useState<{
+    [key: string]: "asc" | "desc";
+  }>({});
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
 
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
+
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
+
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
+    });
+
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+    if (key === "ID") {
+      setReverse(!reverse);
+    }
+  };
   return (
     <div className="w-full h-fit">
       <h3
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          {userData.length > 0 && (
+          {userData.length > 0 && itemToDeleteMany.length >= 1 && (
             <>
               <button
                 className={`${
@@ -173,8 +212,8 @@ export default function ListView({ data, CategoryData }: dataType) {
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="w-[5%]  ps-5 flex justify-start items-center ">
+          <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+            <div className="w-[3%]   flex justify-start items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -191,13 +230,31 @@ export default function ListView({ data, CategoryData }: dataType) {
                 ></div>
               )}
             </div>
+            <div className="text-start ps-1 pe-3 flex justify-start gap-3 items-center w-[5%] ">
+              #
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("ID")}
+              />
+            </div>
             <div className="text-start pe-3 flex justify-between items-center w-[15%] ">
               Category
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Category")}
+              />{" "}
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[67%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
               Make
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("make")}
+              />{" "}
             </div>
-            <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
+            <div className="text-center flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>
@@ -207,13 +264,19 @@ export default function ListView({ data, CategoryData }: dataType) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
+                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
-                  } border-b-2 border-grey`}
+                  } 
+                  ${
+                    index === Math.min(page * itemsPerPage, data.length) - 1 ||
+                    index + 12 === data.length - 1
+                      ? "border-b-2"
+                      : "border-b-2"
+                  } border-grey`}
                 >
-                  <div className="w-[5%]  ps-5 flex justify-start items-center ">
+                  <div className="w-[3%]   flex justify-start items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
@@ -227,12 +290,18 @@ export default function ListView({ data, CategoryData }: dataType) {
                       ></button>
                     )}
                   </div>
+                  <div className="text-start pe-3 w-[5%] ">
+                    {JSON.stringify(
+                      !reverse ? index + 1 : paginatedData.length - index
+                    ).padStart(2, "0")}{" "}
+                  </div>
+
                   <div className="text-start pe-3 w-[15%] ">
                     {item?.Category}
                   </div>
-                  <div className="text-start pe-3 w-[67%] ">{item?.make}</div>
+                  <div className="text-start pe-3 w-[60%] ">{item?.make}</div>
                   <div
-                    className="flex justify-end pe-5 items-center w-[13%]  h-full gap-[6px]"
+                    className="flex justify-end items-center w-[13%]  h-full gap-2"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -247,7 +316,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className={`me-[5.8px] ${
+                      className={`${
                         item?.createdBy === myProfile._id
                           ? "hover:scale-[1.3] cursor-pointer"
                           : "grayscale opacity-50"
