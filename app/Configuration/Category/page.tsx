@@ -229,13 +229,12 @@ export default function Vehicles() {
   );
 }
 
-
 {
   /* <button
-                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => save("new")}
-                    disabled={loading === "" ? false : true}
-                  >
-                    {loading === "new" ? <SmallLoader /> : "Save and New"}
-                  </button> */
+       className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+       onClick={() => save("new")}
+       disabled={loading === "" ? false : true}
+     >
+       {loading === "new" ? <SmallLoader /> : "Save and New"}
+     </button> */
 }
