@@ -262,6 +262,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate pe-3 flex justify-start gap-4 items-center w-[62%] ">
               Recurring Period
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("recurring")}
+              />
             </div>
             <div className="text-center pe-5 flex justify-end items-center w-[13%] ">
               Actions{" "}

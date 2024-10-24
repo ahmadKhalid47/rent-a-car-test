@@ -236,7 +236,7 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Country")}
+                onClick={() => sort("country")}
               />
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%] ">

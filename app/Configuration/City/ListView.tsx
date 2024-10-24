@@ -250,7 +250,7 @@ export default function ListView({ data, makeData }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Country")}
+                onClick={() => sort("country")}
               />{" "}
             </div>
             <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
@@ -258,7 +258,7 @@ export default function ListView({ data, makeData }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("City")}
+                onClick={() => sort("city")}
               />{" "}
             </div>
             <div className="pe-5 truncate flex justify-end items-center w-[13%]">
