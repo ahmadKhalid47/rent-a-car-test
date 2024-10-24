@@ -1,3 +1,4 @@
+import arrows from "@/public/arrows.svg";
 import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -160,15 +161,55 @@ export default function ListView({ data }: dataType) {
     "Safety Features",
     "Convenience Features",
   ];
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [reverse, setReverse] = useState<any>(false);
+  const [sortOrder, setSortOrder] = useState<{
+    [key: string]: "asc" | "desc";
+  }>({});
+  const sort = (key: string) => {
+    const newSortOrder =
+      currentSortKey === key
+        ? sortOrder[key] === "asc"
+          ? "desc"
+          : "asc" // Toggle sort order for the same key
+        : "asc"; // Default to "asc" for a new key
+
+    const sorted = [...sortedData].sort((a: any, b: any) => {
+      let fieldA =
+        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
+      let fieldB = b?.data?.[key];
+
+      if (typeof fieldA === "string") {
+        fieldA = fieldA.toLowerCase();
+      }
+      if (typeof fieldB === "string") {
+        fieldB = fieldB.toLowerCase();
+      }
+
+      if (newSortOrder === "asc") {
+        return fieldA > fieldB ? 1 : -1;
+      } else {
+        return fieldA < fieldB ? 1 : -1;
+      }
+    });
+
+    setSortedData(sorted);
+    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
+    setCurrentSortKey(key);
+    if (key === "ID") {
+      setReverse(!reverse);
+    }
+  };
+
   return (
-    <div className="w-full h-fit mt-4 relative">
+    <div className="w-full h-fit">
       <h3
-        className={`h-[24px] w-fit flex justify-between items-end font-[400] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          {userData.length > 0 && (
+          {userData.length > 0 && itemToDeleteMany.length >= 1 && (
             <>
               <button
                 className={`${
@@ -211,14 +252,37 @@ export default function ListView({ data }: dataType) {
                 ></div>
               )}
             </div>
+            <div className="text-start ps-1 pe-3 flex justify-start gap-3 items-center w-[5%] ">
+              #
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("ID")}
+              />
+            </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
               Feature
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Feature")}
+              />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[10%]">
               Icon
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Icon")}
+              />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[52%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[52%]">
               Category
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Category")}
+              />
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -249,6 +313,11 @@ export default function ListView({ data }: dataType) {
                         }}
                       ></button>
                     )}
+                  </div>
+                  <div className="text-start pe-3 w-[5%] ">
+                    {JSON.stringify(
+                      !reverse ? index + 1 : paginatedData.length - index
+                    ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-3 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
@@ -377,33 +446,31 @@ export default function ListView({ data }: dataType) {
                   </div>
                 ) : null}
                 {editPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
+                    <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow-lg z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
                       <div
                         className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                       >
-                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
                           {"Update Feature"}
-                          <FaAsterisk className="text-[6px]" />
+                          <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
-                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                          <input
-                            required={true}
-                            type={"text"}
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            placeholder={`Enter Text Here`}
-                            onChange={(e) => {
-                              setFeature(e.target.value);
-                            }}
-                            value={Feature}
-                          />
-                        </div>
                       </div>
+                      <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4">
+                      <div className="w-full h-fit flex justify-between items-center relative">
+                        <input
+                          required={true}
+                          type={"text"}
+                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                          placeholder={`Enter Text Here`}
+                          onChange={(e) => {
+                            setFeature(e.target.value);
+                          }}
+                          value={Feature}
+                        />
+                      </div>
+
                       <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                          {"Select Category"}
-                          <FaAsterisk className="text-[6px]" />
-                        </label>
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <select
                             className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
@@ -414,9 +481,15 @@ export default function ListView({ data }: dataType) {
                             value={Box}
                           >
                             <option value={""}>Select</option>
-                            <option value={"Basic Comfort Features"}>Basic Comfort Features</option>
-                            <option value={"Safety Features"}>Safety Features</option>
-                            <option value={"Convenience Features"}>Convenience Features</option>
+                            <option value={"Basic Comfort Features"}>
+                              Basic Comfort Features
+                            </option>
+                            <option value={"Safety Features"}>
+                              Safety Features
+                            </option>
+                            <option value={"Convenience Features"}>
+                              Convenience Features
+                            </option>
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                             <img
@@ -424,6 +497,7 @@ export default function ListView({ data }: dataType) {
                               className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
                             />
                           </div>
+                        </div>
                         </div>
                       </div>
 
