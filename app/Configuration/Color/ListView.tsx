@@ -151,11 +151,11 @@ export default function ListView({ data }: dataType) {
     s.color = color;
     return s.color !== "";
   };
-    const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
-    const [reverse, setReverse] = useState<any>(false);
-    const [sortOrder, setSortOrder] = useState<{
-      [key: string]: "asc" | "desc";
-    }>({});
+  const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
+  const [reverse, setReverse] = useState<any>(false);
+  const [sortOrder, setSortOrder] = useState<{
+    [key: string]: "asc" | "desc";
+  }>({});
 
   const sort = (key: string) => {
     const newSortOrder =
@@ -251,7 +251,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[15%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[13%]">
               Color
               <img
                 src={arrows.src}
@@ -259,14 +259,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("Color")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%] ">
-              Color Name
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("ColorName")}
-              />
-            </div>
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[64%] "></div>
             <div className=" flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
@@ -303,17 +296,16 @@ export default function ListView({ data }: dataType) {
                     ).padStart(2, "0")}{" "}
                   </div>
 
-                  <div className="text-start flex justify-start items-center gap-3 w-[15%]">
+                  <div className="text-start flex justify-start items-center gap-3 w-[13%]">
+                    {item?.ColorName}
+                  </div>
+                  <div className="text-start flex justify-start items-center gap-4 w-[64%]">
                     <div
                       className="w-[32px] h-[18px] rounded-[5px] "
                       style={{
                         backgroundColor: item?.Color,
                       }}
                     ></div>
-                    {item?.Color}
-                  </div>
-                  <div className="text-start flex justify-start items-center gap-4 w-[62%]">
-                    {item?.ColorName}
                   </div>
                   <div
                     className="flex justify-end  gap-[6px] items-center w-[13%] h-full"
