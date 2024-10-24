@@ -36,6 +36,7 @@ export default function ListView({ data, makeData }: dataType) {
   const [page, setPage] = useState(1);
   const [sortedData, setSortedData] = useState(data);
   const [Model, setModel] = useState("");
+  const [Category, setCategory] = useState("");
   const [Make, setMake] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
@@ -53,7 +54,7 @@ export default function ListView({ data, makeData }: dataType) {
 
     setSortedData(sorted);
   }, [data, myProfile._id]); // Added myProfile._id as a dependency
-  const itemsPerPage = 5;
+  const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -107,6 +108,7 @@ export default function ListView({ data, makeData }: dataType) {
       let result: any = await axios.post(`/api/updateModel/${_id}`, {
         Model,
         Make,
+        Category,
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -241,6 +243,14 @@ export default function ListView({ data, makeData }: dataType) {
               />
             </div>
             <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+              Category
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Category")}
+              />
+            </div>
+            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
               Make
               <img
                 src={arrows.src}
@@ -248,7 +258,7 @@ export default function ListView({ data, makeData }: dataType) {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[67%]">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[57%]">
               Model
               <img
                 src={arrows.src}
@@ -292,9 +302,12 @@ export default function ListView({ data, makeData }: dataType) {
                     ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-3 w-[10%] truncate">
+                    {item?.Category}
+                  </div>
+                  <div className="text-start pe-3 w-[10%] truncate">
                     {item?.make}
                   </div>
-                  <div className="text-start pe-3 w-[67%]">{item?.model}</div>
+                  <div className="text-start pe-3 w-[57%]">{item?.model}</div>
                   <div
                     className="flex justify-end  gap-[6px] items-center w-[13%] h-full"
                     onClick={(event) => {
@@ -321,6 +334,7 @@ export default function ListView({ data, makeData }: dataType) {
                         if (item?.createdBy === myProfile._id) {
                           setEditPopup(true);
                           setItemToEdit(item?._id);
+                          setCategory(item?.Category);
                           setMake(item?.make);
                           setModel(item?.model);
                         }
@@ -425,16 +439,46 @@ export default function ListView({ data, makeData }: dataType) {
                             className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
                             required={true}
                             onChange={(e) => {
+                              setCategory(e.target.value);
+                            }}
+                            value={Category}
+                          >
+                            <option value={""}>Select Category</option>
+                            {makeData?.map(
+                              (item: any, key: number) =>
+                                item?.Category && (
+                                  <option value={item?.Category} key={key}>
+                                    {item?.Category}
+                                  </option>
+                                )
+                            )}
+                          </select>
+                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                            <img
+                              src={shape.src}
+                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                            />
+                          </div>
+                        </div>
+                        <div className="w-full h-fit flex justify-between items-center relative">
+                          <select
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                            required={true}
+                            onChange={(e) => {
                               setMake(e.target.value);
                             }}
                             value={Make}
                           >
-                            <option value={""}>Select</option>
-                            {makeData?.map((item: any, key: number) => (
-                              <option value={item?.make} key={key}>
-                                {item?.make}
-                              </option>
-                            ))}
+                            <option value={""}>Select Make</option>
+                            {makeData
+                              ?.filter(
+                                (item: any) => item.Category === Category
+                              )
+                              ?.map((item: any, key: number) => (
+                                <option value={item?.make} key={key}>
+                                  {item?.make}
+                                </option>
+                              ))}
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                             <img
@@ -444,21 +488,21 @@ export default function ListView({ data, makeData }: dataType) {
                           </div>
                         </div>
 
-                      <div
-                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                      >
-                        <div className="w-full h-fit flex justify-between items-center relative">
-                          <input
-                            required={true}
-                            type={"text"}
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            placeholder={`Model Here`}
-                            onChange={(e) => {
-                              setModel(e.target.value);
-                            }}
-                            value={Model}
-                          />
-                        </div>
+                        <div
+                          className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                        >
+                          <div className="w-full h-fit flex justify-between items-center relative">
+                            <input
+                              required={true}
+                              type={"text"}
+                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                              placeholder={`Model Here`}
+                              onChange={(e) => {
+                                setModel(e.target.value);
+                              }}
+                              value={Model}
+                            />
+                          </div>
                         </div>
                       </div>
 

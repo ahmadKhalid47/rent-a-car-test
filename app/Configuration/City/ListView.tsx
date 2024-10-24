@@ -57,7 +57,7 @@ export default function ListView({ data, makeData }: dataType) {
 
     setSortedData(sorted);
   }, [data, myProfile._id]); // Added myProfile._id as a dependency
-  const itemsPerPage = 5;
+  const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);

@@ -22,7 +22,7 @@ interface dataType {
 export default function GridView({ data }: dataType) {
   let global = useSelector((state: RootState) => state.Global);
   const [page, setPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 12;
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
