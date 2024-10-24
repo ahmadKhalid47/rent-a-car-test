@@ -416,13 +416,17 @@ export default function ListView({ data, makeData }: dataType) {
                   </div>
                 ) : null}
                 {editPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] mt-0 flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 fixed modal-position">
-                      <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
+                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
+                    <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white shadow-lg z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position">
+                      <div
+                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                      >
+                        <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
                           Select Country
-                          <FaAsterisk className="text-[6px]" />
+                          <FaAsterisk className="text-[8px] text-red-500" />
                         </label>
+                      </div>
+                      <div className="w-full h-fit flex flex-col justify-between items-center relative gap-3">
                         <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
                           <select
                             className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
@@ -446,29 +450,25 @@ export default function ListView({ data, makeData }: dataType) {
                             />
                           </div>
                         </div>
-                      </div>
 
-                      <div
-                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                      >
-                        <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                          {"Update City"}
-                          <FaAsterisk className="text-[6px]" />
-                        </label>
-                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                          <select
-                            required={true}
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            onChange={(e) => {
-                              setCity(e.target.value);
-                            }}
-                            value={city}
-                          >
-                            <option value="">Select</option>
-                            {cities.map((item: any) => (
-                              <option value={item.label}>{item.label}</option>
-                            ))}
-                          </select>
+                        <div
+                          className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                        >
+                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                            <select
+                              required={true}
+                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                              onChange={(e) => {
+                                setCity(e.target.value);
+                              }}
+                              value={city}
+                            >
+                              <option value="">Select</option>
+                              {cities.map((item: any) => (
+                                <option value={item.label}>{item.label}</option>
+                              ))}
+                            </select>
+                          </div>
                         </div>
                       </div>
 
@@ -485,11 +485,11 @@ export default function ListView({ data, makeData }: dataType) {
                           <FaTimes />
                         </button>
                         <button
-                          className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                          className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => editItem(itemToEdit)}
                           disabled={editLoading}
                         >
-                          {editLoading ? <SmallLoader /> : "Update and Close"}
+                          {editLoading ? <SmallLoader /> : "Update"}
                         </button>
                       </div>
                     </div>
