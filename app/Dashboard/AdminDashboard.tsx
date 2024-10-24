@@ -79,7 +79,7 @@ export default function AdminDashboard() {
   }, []);
   // }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);

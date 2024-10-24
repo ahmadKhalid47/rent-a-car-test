@@ -54,7 +54,7 @@ export default function ListView({ data }: dataType) {
 
     setSortedData(sorted);
   }, [data, myProfile._id]); // Added myProfile._id as a dependency
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -234,8 +234,8 @@ export default function ListView({ data }: dataType) {
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="w-[5%] flex justify-start ps-5 items-center ">
+          <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+            <div className="w-[3%] flex justify-start  items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -271,7 +271,7 @@ export default function ListView({ data }: dataType) {
             <div className="text-start pe-3 truncate flex justify-between items-center w-[10%]">
               Icon
             </div>
-            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[45%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[47%]">
               Category
               <img
                 src={arrows.src}
@@ -279,7 +279,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("Box")}
               />
             </div>
-            <div className="pe-5 flex justify-end items-center w-[13%]">
+            <div className=" flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>
@@ -289,13 +289,13 @@ export default function ListView({ data }: dataType) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
+                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="w-[5%] flex justify-start ps-5 items-center ">
+                  <div className="w-[3%] flex justify-start  items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
@@ -324,11 +324,11 @@ export default function ListView({ data }: dataType) {
                       alt=""
                     />
                   </div>
-                  <div className="text-start pe-3 truncate w-[45%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[47%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Box}
                   </div>
                   <div
-                    className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
+                    className="flex justify-end  gap-[6px] items-center w-[13%] h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -452,47 +452,47 @@ export default function ListView({ data }: dataType) {
                         </label>
                       </div>
                       <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4">
-                      <div className="w-full h-fit flex justify-between items-center relative">
-                        <input
-                          required={true}
-                          type={"text"}
-                          className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                          placeholder={`Enter Text Here`}
-                          onChange={(e) => {
-                            setFeature(e.target.value);
-                          }}
-                          value={Feature}
-                        />
-                      </div>
-
-                      <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                        <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                          <select
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                        <div className="w-full h-fit flex justify-between items-center relative">
+                          <input
                             required={true}
+                            type={"text"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            placeholder={`Enter Text Here`}
                             onChange={(e) => {
-                              setBox(e.target.value);
+                              setFeature(e.target.value);
                             }}
-                            value={Box}
-                          >
-                            <option value={""}>Select</option>
-                            <option value={"Basic Comfort Features"}>
-                              Basic Comfort Features
-                            </option>
-                            <option value={"Safety Features"}>
-                              Safety Features
-                            </option>
-                            <option value={"Convenience Features"}>
-                              Convenience Features
-                            </option>
-                          </select>
-                          <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                            <img
-                              src={shape.src}
-                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                            />
-                          </div>
+                            value={Feature}
+                          />
                         </div>
+
+                        <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+                          <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                            <select
+                              className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
+                              required={true}
+                              onChange={(e) => {
+                                setBox(e.target.value);
+                              }}
+                              value={Box}
+                            >
+                              <option value={""}>Select</option>
+                              <option value={"Basic Comfort Features"}>
+                                Basic Comfort Features
+                              </option>
+                              <option value={"Safety Features"}>
+                                Safety Features
+                              </option>
+                              <option value={"Convenience Features"}>
+                                Convenience Features
+                              </option>
+                            </select>
+                            <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                              <img
+                                src={shape.src}
+                                className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
 

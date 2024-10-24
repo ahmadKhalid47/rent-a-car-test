@@ -53,7 +53,7 @@ export default function ListView({ data }: dataType) {
 
     setSortedData(sorted);
   }, [data, myProfile._id]); // Added myProfile._id as a dependency
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -225,8 +225,8 @@ export default function ListView({ data }: dataType) {
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="w-[5%] ps-5 flex justify-start items-center ">
+          <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+            <div className="w-[3%] flex justify-start items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -259,7 +259,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("Color")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%] ">
               Color Name
               <img
                 src={arrows.src}
@@ -267,7 +267,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("ColorName")}
               />
             </div>
-            <div className="pe-5 flex justify-end items-center w-[13%]">
+            <div className=" flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>
@@ -277,13 +277,13 @@ export default function ListView({ data }: dataType) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
+                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="w-[5%] ps-5 flex justify-start items-center ">
+                  <div className="w-[3%]  flex justify-start items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
@@ -312,11 +312,11 @@ export default function ListView({ data }: dataType) {
                     ></div>
                     {item?.Color}
                   </div>
-                  <div className="text-start flex justify-start items-center gap-4 w-[60%]">
+                  <div className="text-start flex justify-start items-center gap-4 w-[62%]">
                     {item?.ColorName}
                   </div>
                   <div
-                    className="flex justify-end pe-5 gap-[6px] items-center w-[13%] h-full"
+                    className="flex justify-end  gap-[6px] items-center w-[13%] h-full"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();

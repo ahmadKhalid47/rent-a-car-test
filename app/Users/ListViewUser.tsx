@@ -47,7 +47,7 @@ export default function ListViewUsers({ data }: dataType) {
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);

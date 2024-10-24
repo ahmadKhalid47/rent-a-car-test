@@ -53,7 +53,7 @@ export default function ListView({ data, CategoryData }: dataType) {
 
     setSortedData(sorted);
   }, [data, myProfile._id]); // Added myProfile._id as a dependency
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -246,7 +246,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                 onClick={() => sort("Category")}
               />{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[60%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%] ">
               Make
               <img
                 src={arrows.src}
@@ -299,7 +299,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                   <div className="text-start pe-3 w-[15%] ">
                     {item?.Category}
                   </div>
-                  <div className="text-start pe-3 w-[60%] ">{item?.make}</div>
+                  <div className="text-start pe-3 w-[62%] ">{item?.make}</div>
                   <div
                     className="flex justify-end items-center w-[13%]  h-full gap-2"
                     onClick={(event) => {
