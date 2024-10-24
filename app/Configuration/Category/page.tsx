@@ -194,7 +194,7 @@ export default function Vehicles() {
                       required={true}
                       type={"text"}
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[54px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Enter Text Here`}
+                      placeholder={`Category Here`}
                       onChange={(e) => {
                         setCategory(e.target.value);
                       }}

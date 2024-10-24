@@ -426,7 +426,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                             }}
                             value={Category}
                           >
-                            <option value={""}>Select</option>
+                            <option value={""}>Select Category</option>
                             {CategoryData?.map((item: any, key: number) => (
                               <option value={item?.Category} key={key}>
                                 {item?.Category}
@@ -449,7 +449,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                             required={true}
                             type={"text"}
                             className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%]  h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            placeholder={`Enter Text Here`}
+                            placeholder={`Make Here`}
                             onChange={(e) => {
                               setMake(e.target.value);
                             }}

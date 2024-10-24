@@ -451,7 +451,7 @@ export default function ListView({ data }: dataType) {
                                 className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[54px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                                 required={true}
                                 type={"text"}
-                                placeholder={`Enter Color Name`}
+                                placeholder={`Color Name Here`}
                                 onChange={(e) => {
                                   setColorName(e.target.value);
                                 }}
@@ -463,7 +463,7 @@ export default function ListView({ data }: dataType) {
                             >
                               <div className="w-full h-fit flex justify-between items-center relative">
                                 <div
-                                  className="w-[32px] h-[18px] rounded-[5px] absolute top-[12px] left-[8px]"
+                                  className="w-[32px] h-[18px] rounded-[5px] absolute top-[50%] translate-y-[-50%] left-[8px] border-2 border-grey"
                                   style={{
                                     backgroundColor: isValidColor(Color)
                                       ? Color
@@ -474,7 +474,7 @@ export default function ListView({ data }: dataType) {
                                   className="pe-10 font-[400] text-[16px] leading-[19px] ps-[45px] w-[100%] h-[54px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
                                   required={true}
                                   type={"text"}
-                                  placeholder={`Enter Color Code`}
+                                  placeholder={`Color Code Here`}
                                   onChange={(e) => {
                                     setColor(e.target.value);
                                   }}
