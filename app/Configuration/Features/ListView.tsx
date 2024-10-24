@@ -262,6 +262,14 @@ export default function ListView({ data }: dataType) {
               />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
+              Feature Type
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("Box")}
+              />
+            </div>{" "}
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
               Feature
               <img
                 src={arrows.src}
@@ -269,16 +277,8 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("Feature")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[37%]">
               Icon
-            </div>
-            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[47%]">
-              Category
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Box")}
-              />
             </div>
             <div className=" flex justify-end items-center w-[13%]">
               Actions{" "}
@@ -316,17 +316,17 @@ export default function ListView({ data }: dataType) {
                     ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-8 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
+                    {item?.Box}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[37%] h-[100%] flex justify-start items-center gap-5">
                     <img
                       className="w-[20px] h-[20px] bg-white"
                       src={item?.Icon || demyIcon.src}
                       alt=""
                     />
-                  </div>
-                  <div className="text-start pe-3 truncate w-[47%] h-[100%] flex justify-start items-center gap-5">
-                    {item?.Box}
                   </div>
                   <div
                     className="flex justify-end  gap-[6px] items-center w-[13%] h-full"

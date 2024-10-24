@@ -206,7 +206,7 @@ export default function ListView({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
-            <div className="text-center w-[5%]  flex justify-center items-center ">
+            <div className="text-center w-[3%]  flex justify-center items-center ">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -255,7 +255,7 @@ export default function ListView({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="w-[5%]  flex justify-center items-center ">
+                  <div className="w-[3%]  flex justify-center items-center ">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
