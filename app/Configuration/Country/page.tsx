@@ -211,28 +211,28 @@ export default function Vehicles() {
                       ))}
                     </select>
                   </div>
-                  </div>
+                </div>
 
-                  <div
-                    className={`w-full flex justify-end gap-4 items-center pt-4`}
+                <div
+                  className={`w-full flex justify-end gap-4 items-center pt-4`}
+                >
+                  <button
+                    className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
+                    onClick={() => {
+                      setPopup(false);
+                      setCountry("");
+                    }}
                   >
-                    <button
-                      className="px-2 md:px-0 w-fit py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color  text-gray-500 font-[400] text-[12px] md:text-[18px] leading-[21px] absolute top-2 right-"
-                      onClick={() => {
-                        setPopup(false);
-                        setCountry("");
-                      }}
-                    >
-                      <FaTimes />
-                    </button>
-                    <button
-                      className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                      onClick={() => save("close")}
-                      disabled={loading === "" ? false : true}
-                    >
-                      {loading === "close" ? <SmallLoader /> : "Save"}
-                    </button>
-                  </div>
+                    <FaTimes />
+                  </button>
+                  <button
+                    className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                    onClick={() => save("close")}
+                    disabled={loading === "" ? false : true}
+                  >
+                    {loading === "close" ? <SmallLoader /> : "Save"}
+                  </button>
+                </div>
               </div>
             </div>
           ) : null}
