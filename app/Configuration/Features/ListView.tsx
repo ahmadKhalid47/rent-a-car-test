@@ -270,18 +270,13 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[10%]">
               Icon
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Icon")}
-              />
             </div>
-            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[52%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[45%]">
               Category
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Category")}
+                onClick={() => sort("Box")}
               />
             </div>
             <div className="pe-5 flex justify-end items-center w-[13%]">
@@ -319,7 +314,7 @@ export default function ListView({ data }: dataType) {
                       !reverse ? index + 1 : paginatedData.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
-                  <div className="text-start pe-3 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-8 truncate w-[20%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Feature}
                   </div>
                   <div className="text-start pe-3 truncate w-[10%] h-[100%] flex justify-start items-center gap-5">
@@ -329,7 +324,7 @@ export default function ListView({ data }: dataType) {
                       alt=""
                     />
                   </div>
-                  <div className="text-start pe-3 truncate w-[52%] h-[100%] flex justify-start items-center gap-5">
+                  <div className="text-start pe-3 truncate w-[45%] h-[100%] flex justify-start items-center gap-5">
                     {item?.Box}
                   </div>
                   <div
