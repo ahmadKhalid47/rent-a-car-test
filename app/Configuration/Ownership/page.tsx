@@ -71,7 +71,7 @@ export default function Vehicles() {
     } else if (
       vehiclesData.find(
         (item) =>
-          item.Ownership.toLowerCase() === Ownership.trim().toLowerCase()
+          item.Ownership?.toLowerCase() === Ownership.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -108,11 +108,11 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = vehiclesData.filter((vehicle) => {
       const { Ownership } = vehicle;
 
-      return Ownership.toLowerCase().includes(lowercasedQuery);
+      return Ownership?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

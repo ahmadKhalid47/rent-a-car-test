@@ -28,12 +28,12 @@ export default function Info({ data, loading }: dataType) {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = customersData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { name } = data;
 
-      return name.toLowerCase().includes(lowercasedQuery);
+      return name?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredCustomer(filtered);
   }

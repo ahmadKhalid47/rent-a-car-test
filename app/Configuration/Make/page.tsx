@@ -77,7 +77,7 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.make.toLowerCase() === make.trim().toLowerCase()
+        (item) => item.make?.toLowerCase() === make.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -105,6 +105,27 @@ export default function Vehicles() {
     } finally {
       setLoading("");
     }
+  }
+  useEffect(() => {
+    filterVehicles();
+  }, [searchQuery, vehiclesData]);
+
+  function filterVehicles() {
+    if (!searchQuery) {
+      setFilteredVehicles(vehiclesData);
+      return;
+    }
+
+    const lowercasedQuery = searchQuery?.toLowerCase();
+    const filtered = vehiclesData.filter((vehicle) => {
+      const { Category, make } = vehicle;
+
+      return (
+        Category?.toLowerCase().includes(lowercasedQuery) ||
+        make?.toLowerCase().includes(lowercasedQuery)
+      );
+    });
+    setFilteredVehicles(filtered);
   }
 
   return (
@@ -144,7 +165,7 @@ export default function Vehicles() {
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Category"
+                placeholder="Search By Make"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
@@ -166,7 +187,7 @@ export default function Vehicles() {
             {dataLoading ? (
               <MediumLoader />
             ) : (
-              <ListView data={vehiclesData} CategoryData={CategoryData} />
+              <ListView data={filteredVehicles} CategoryData={CategoryData} />
             )}
           </div>
           {popup ? (

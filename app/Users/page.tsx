@@ -81,17 +81,17 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = UsersData.filter((vehicle) => {
       const { name, username, email, city, company } = vehicle;
 
       return (
-        name.toLowerCase().includes(lowercasedQuery) ||
-        username.toLowerCase().includes(lowercasedQuery) ||
-        email.toLowerCase().includes(lowercasedQuery) ||
-        city.toLowerCase().includes(lowercasedQuery) ||
-        company.toLowerCase().includes(lowercasedQuery) ||
-        username.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase().includes(lowercasedQuery) ||
+        username?.toLowerCase().includes(lowercasedQuery) ||
+        email?.toLowerCase().includes(lowercasedQuery) ||
+        city?.toLowerCase().includes(lowercasedQuery) ||
+        company?.toLowerCase().includes(lowercasedQuery) ||
+        username?.toLowerCase().includes(lowercasedQuery)
       );
     });
     setFilteredUser(filtered);
@@ -100,19 +100,19 @@ export default function Vehicles() {
   function advanceFilterVehicles() {
     let filtered: any = UsersData;
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     filtered = UsersData.filter((vehicle) => {
       const { name, phone } = vehicle;
 
       return (
-        name.toLowerCase().includes(lowercasedQuery) ||
-        phone.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase().includes(lowercasedQuery) ||
+        phone?.toLowerCase().includes(lowercasedQuery)
       );
     });
 
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
-        const lowercasedQuery = keyValue.toLowerCase();
+        const lowercasedQuery = keyValue?.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 

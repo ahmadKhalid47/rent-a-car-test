@@ -29,7 +29,6 @@ export default function Vehicles() {
   const [popup, setPopup] = useState(false);
   const [Color, setColor] = useState("");
   const [ColorName, setColorName] = useState("");
-  const [Category, setCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
@@ -74,7 +73,7 @@ export default function Vehicles() {
     } else if (
       vehiclesData.find(
         (item) =>
-          item.ColorName.toLowerCase() === ColorName.trim().toLowerCase()
+          item.ColorName?.toLowerCase() === ColorName.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -122,11 +121,11 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = vehiclesData.filter((vehicle) => {
-      const { Category } = vehicle;
+      const { ColorName } = vehicle;
 
-      return Category.toLowerCase().includes(lowercasedQuery);
+      return ColorName?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }
@@ -168,7 +167,7 @@ export default function Vehicles() {
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Category"
+                placeholder="Search By Color"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
@@ -187,7 +186,11 @@ export default function Vehicles() {
             <ImportExportButtons data={vehiclesData} model={"Color"} />
           </div>
           <div className="w-full h-fit mt-2">
-            {dataLoading ? <MediumLoader /> : <ListView data={vehiclesData} />}
+            {dataLoading ? (
+              <MediumLoader />
+            ) : (
+              <ListView data={filteredVehicles} />
+            )}
           </div>
           {popup ? (
             <div className="items-center w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-center sm:items-center z-[10] ">
@@ -196,7 +199,7 @@ export default function Vehicles() {
                   className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
                 >
                   <label className="flex justify-start gap-1 items-start font-[600] text-[24px] leading-[17px]">
-                    Add New Category{" "}
+                    Add New Color{" "}
                     <FaAsterisk className="text-[8px] text-red-500" />
                   </label>
                 </div>

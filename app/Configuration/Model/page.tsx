@@ -79,7 +79,7 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.model.toLowerCase() === Model.trim().toLowerCase()
+        (item) => item.model?.toLowerCase() === Model.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -118,12 +118,14 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = vehiclesData.filter((vehicle) => {
-      const { make } = vehicle;
-console.log(make);
+      const { make, model } = vehicle;
 
-      return make.toLowerCase().includes(lowercasedQuery);
+      return(
+        make?.toLowerCase().includes(lowercasedQuery)
+      ||  model?.toLowerCase().includes(lowercasedQuery)
+      );
     });
     setFilteredVehicles(filtered);
   }
@@ -163,7 +165,7 @@ console.log(make);
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Make"
+                placeholder="Search By Model"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}

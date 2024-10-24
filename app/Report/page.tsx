@@ -80,7 +80,7 @@ export default function Vehicles() {
     let filtered: any = VehiclesData;
 
     if (make) {
-      const lowercasedQuery = make.toLowerCase();
+      const lowercasedQuery = make?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.make?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
@@ -88,7 +88,7 @@ export default function Vehicles() {
     }
 
     if (model) {
-      const lowercasedQuery = model.toLowerCase();
+      const lowercasedQuery = model?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.model?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
@@ -173,7 +173,7 @@ export default function Vehicles() {
     let filtered: any = VehiclesData;
 
     if (make) {
-      const lowercasedQuery = make.toLowerCase();
+      const lowercasedQuery = make?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.make?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
@@ -181,7 +181,7 @@ export default function Vehicles() {
     }
 
     if (model) {
-      const lowercasedQuery = model.toLowerCase();
+      const lowercasedQuery = model?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.model?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);

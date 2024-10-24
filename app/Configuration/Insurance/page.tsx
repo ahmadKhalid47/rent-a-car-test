@@ -81,7 +81,7 @@ export default function Vehicles() {
     } else if (
       vehiclesData.find(
         (item) =>
-          item.Insurance.toLowerCase() === Insurance.trim().toLowerCase()
+          item.Insurance?.toLowerCase() === Insurance.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -118,6 +118,27 @@ export default function Vehicles() {
     "Six Monthly",
     "Yearly",
   ];
+  useEffect(() => {
+    filterVehicles();
+  }, [searchQuery, vehiclesData]);
+
+  function filterVehicles() {
+    if (!searchQuery) {
+      setFilteredVehicles(vehiclesData);
+      return;
+    }
+
+    const lowercasedQuery = searchQuery?.toLowerCase();
+    const filtered = vehiclesData.filter((vehicle) => {
+      const { Insurance, recurring } = vehicle;
+
+      return (
+        Insurance?.toLowerCase().includes(lowercasedQuery) ||
+        recurring.toLowerCase().includes(lowercasedQuery)
+      );
+    });
+    setFilteredVehicles(filtered);
+  }
 
   return (
     <div
@@ -156,7 +177,7 @@ export default function Vehicles() {
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Category"
+                placeholder="Search By Insurance"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}
@@ -206,22 +227,22 @@ export default function Vehicles() {
                       value={Insurance}
                     />
                   </div>
-                <div
-                  className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                >
-                  <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
-                    <input
-                      type={"text"}
-                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Enter Text Here`}
-                      required={true}
-                      onChange={(e) => {
-                        setrecurring(e.target.value);
-                      }}
-                      value={recurring}
-                    />
+                  <div
+                    className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                  >
+                    <div className="w-full h-fit flex justify-between items-center relative overflow-hidde">
+                      <input
+                        type={"text"}
+                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                        placeholder={`Enter Text Here`}
+                        required={true}
+                        onChange={(e) => {
+                          setrecurring(e.target.value);
+                        }}
+                        value={recurring}
+                      />
+                    </div>
                   </div>
-                </div>
                 </div>
 
                 <div
@@ -303,8 +324,8 @@ export default function Vehicles() {
   );
 }
 
-                {
-                  /* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
+{
+  /* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                   <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
                     Select Recurring Period
                     <FaAsterisk className="text-[6px]" />
@@ -335,5 +356,4 @@ export default function Vehicles() {
                     </div>
                   </div>
                 </div> */
-                }
-
+}

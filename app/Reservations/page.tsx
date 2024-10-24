@@ -128,7 +128,7 @@ export default function Vehicles() {
     });
     advanceFilters.forEach(({ key, keyValue }: any) => {
       if (keyValue) {
-        const lowercasedQuery = keyValue.toLowerCase();
+        const lowercasedQuery = keyValue?.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 

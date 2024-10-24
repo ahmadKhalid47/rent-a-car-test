@@ -95,7 +95,7 @@ export async function POST(req: Request) {
     }: { modelName: string; data: DataItem[]; createdBy: string } =
       await req.json();
 
-    const Model = modelsMap[modelName.toLowerCase()];
+    const Model = modelsMap[modelName?.toLowerCase()];
 
     if (!Model) {
       return NextResponse.json(

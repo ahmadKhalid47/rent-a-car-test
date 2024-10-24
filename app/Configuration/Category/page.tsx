@@ -71,7 +71,7 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.Category.toLowerCase() === Category.trim().toLowerCase()
+        (item) => item.Category?.toLowerCase() === Category.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -107,11 +107,11 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = vehiclesData.filter((vehicle) => {
       const { Category } = vehicle;
 
-      return Category.toLowerCase().includes(lowercasedQuery);
+      return Category?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

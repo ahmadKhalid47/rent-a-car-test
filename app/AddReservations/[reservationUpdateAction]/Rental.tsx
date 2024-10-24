@@ -35,12 +35,12 @@ export default function Rental({ data, loading }: dataType) {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = chauffeursData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { name } = data;
 
-      return name.toLowerCase().includes(lowercasedQuery);
+      return name?.toLowerCase().includes(lowercasedQuery);
     });
     setFilteredchauffeur(filtered);
   }

@@ -74,7 +74,7 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.Feature.toLowerCase() === Feature.trim().toLowerCase()
+        (item) => item.Feature?.toLowerCase() === Feature.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -123,17 +123,18 @@ export default function Vehicles() {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase();
+    const lowercasedQuery = searchQuery?.toLowerCase();
     const filtered = vehiclesData.filter((vehicle) => {
       const { Feature } = vehicle;
 
       return (
-        Feature.toLowerCase().includes(lowercasedQuery)
+        Feature?.toLowerCase().includes(lowercasedQuery)
       );
 
     });
     setFilteredVehicles(filtered);
   }
+
   return (
     <div
       className={`${
@@ -170,7 +171,7 @@ export default function Vehicles() {
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Box"
+                placeholder="Search By Feature"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                 }}

@@ -29,14 +29,14 @@ export default function Feature({ data, loading }: dataType) {
       return;
     }
 
-    const lowercasedQuery = searchQuery.toLowerCase().trim();
+    const lowercasedQuery = searchQuery?.toLowerCase().trim();
     const filtered = VehiclesData.filter((vehicle: any) => {
       const { data } = vehicle;
       const { make, model } = data;
 
       return (
-        make.toLowerCase().includes(lowercasedQuery) ||
-        model.toLowerCase().includes(lowercasedQuery)
+        make?.toLowerCase().includes(lowercasedQuery) ||
+        model?.toLowerCase().includes(lowercasedQuery)
       );
     });
     setFilteredVehicle(filtered);
