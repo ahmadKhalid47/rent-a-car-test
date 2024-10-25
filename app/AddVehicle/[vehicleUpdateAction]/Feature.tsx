@@ -43,6 +43,8 @@ export default function Feature() {
       setFeaturesSubmitArray("");
     }
   }, [vehicle.features]);
+console.log(vehicle.features);
+
   return (
     <div className="w-full h-fit  ">
       <div className="w-full h-fit">
