@@ -98,7 +98,6 @@ export default function AddUser() {
         dispatch(setSeverity("error"));
         setShowSuccess(null);
       }
-      dispatch(setAlert("User Saved Successfully"));
     } catch (error: any) {
       console.log(error);
     } finally {
