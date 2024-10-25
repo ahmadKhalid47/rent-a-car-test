@@ -289,7 +289,7 @@ export default function Vehicles() {
             </div>
           </div>
           <div className="h-[44px] w-fit flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            <div className="w-fit h-fit flex justify-end items-end gap-1">
+            <div className="w-fit h-fit flex justify-end items-end gap-2">
               <button
                 className={`w-[44px] flex justify-center items-center h-[44px] rounded-[6px] ${
                   gridView
