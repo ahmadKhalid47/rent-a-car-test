@@ -155,7 +155,6 @@ export default function ListView({ data }: dataType) {
   const userData = data.filter(
     (item: any) => item?.createdBy === myProfile._id
   );
-  console.log(Icon);
   const categories = [
     "",
     "Basic Comfort Features",
@@ -201,6 +200,7 @@ export default function ListView({ data }: dataType) {
       setReverse(!reverse);
     }
   };
+console.log(Icon[0]?.name);
 
   return (
     <div className="w-full h-fit">
@@ -453,19 +453,6 @@ export default function ListView({ data }: dataType) {
                         </label>
                       </div>
                       <div className="w-full h-fit flex flex-col justify-between items-center relative gap-4">
-                        <div className="w-full h-fit flex justify-between items-center relative">
-                          <input
-                            required={true}
-                            type={"text"}
-                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                            placeholder={`Feature Here`}
-                            onChange={(e) => {
-                              setFeature(e.target.value);
-                            }}
-                            value={Feature}
-                          />
-                        </div>
-
                         <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
                           <div className="w-full h-fit flex justify-between items-center relative">
                             <select
@@ -495,6 +482,18 @@ export default function ListView({ data }: dataType) {
                             </div>
                           </div>
                         </div>
+                        <div className="w-full h-fit flex justify-between items-center relative">
+                          <input
+                            required={true}
+                            type={"text"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
+                            placeholder={`Feature Here`}
+                            onChange={(e) => {
+                              setFeature(e.target.value);
+                            }}
+                            value={Feature}
+                          />
+                        </div>
 
                         {myProfile.admin && (
                           <div
@@ -511,7 +510,9 @@ export default function ListView({ data }: dataType) {
                               />
                               <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
                                 <img src={upload.src} />
-                                Upload Icon
+                                <span className="w-[70&] truncate bg-red500 leading-[24px]">
+                                  {Icon[0]?.name || "Upload Icon"}
+                                </span>
                               </div>
                             </div>
                           </div>

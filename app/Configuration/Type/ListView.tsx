@@ -457,7 +457,9 @@ export default function ListView({ data }: dataType) {
                             />
                             <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
                               <img src={upload.src} />
-                              Upload Exterior Image
+                              <span className="w-[70&] truncate bg-red500 leading-[24px]">
+                                {exterior[0]?.name || "Upload Exterior Image"}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -475,7 +477,9 @@ export default function ListView({ data }: dataType) {
                             />
                             <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
                               <img src={upload.src} />
-                              Upload Interior Image
+                              <span className="w-[70&] truncate bg-red500 leading-[24px]">
+                                {interior[0]?.name || "Upload Interior Image"}
+                              </span>
                             </div>
                           </div>
                         </div>
