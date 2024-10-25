@@ -206,10 +206,10 @@ export default function GridView({ data }: dataType) {
         )}
       </div>
 
-      <div className="w-full h-fit flex justify-start flex-wrap items-start rounded-[10px] bg-light-gre pb-4 px-3 border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
+      <div className="w-full h-fit flex justify-start gap-[2%] 1400:gap-0 flex-wrap items-start rounded-[10px] bg-light-gre pb-4 px-3 border-2 border-grey dark:bg-dark2 bg-light-grey mt-2">
         <div className="w-full h-fit flex justify-center items-start">
           <div className="w-[33.33%] h-fit flex justify-center items-start">
-            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] flex justify-start gap-2 items-center mt-4">
+            <div className="w-[100%] sm:w-[330px] 1400:w-[340px] 2xl:w-[90%] flex justify-start gap-2 items-center mt-4">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -235,14 +235,14 @@ export default function GridView({ data }: dataType) {
             </div>
           </div>
           <div className="w-[33.33%] h-fit flex justify-center items-start">
-            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+            <div className="w-[100%] sm:w-[330px] 1400:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
           </div>
           <div className="w-[33.33%] h-fit flex justify-center items-start">
-            <div className="w-[100%] lg:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
+            <div className="w-[100%] sm:w-[330px] 1400:w-[340px] 2xl:w-[90%] dark:bg-dark1 bg-whit  flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"></div>
           </div>
         </div>
         {paginatedData.map((item: any, index: number) => (
-          <div className="lg:w-[33.33%] 3xl:w-[25%] h-fit flex justify-center items-start mt-4">
+          <div className="w-[100%] sm:w-[32%] 1400:w-[33.33%] 3xl:w-[25%] h-fit flex justify-center items-start mt-4">
             <div
               key={index}
               className="w-[100%] lg:w-[330px] 2xl:w-[90%] h-[375px] dark:bg-dark1 bg-white p-3 flex flex-col justify-start gap-2 md:gap-8 lg:gap-0 lg:justify-between items-center relative"
