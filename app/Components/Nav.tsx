@@ -1,4 +1,6 @@
 "use client";
+import { toast, ToastContainer, ToastOptions } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import bar from "@/public/Layer_1 bar.svg";
 import account from "@/public/account.svg";
@@ -244,19 +246,6 @@ export default function Nav() {
   async function pushToSettings(e: any) {
     router.push("/Settings");
   }
-  useEffect(() => {
-    let timer: any;
-    if (global.alert) {
-      timer = setTimeout(() => {
-        dispatch(setAlert(null));
-        dispatch(setSeverity("success"));
-      }, 4000); // Hide after 3 seconds
-    }
-
-    return () => {
-      clearTimeout(timer); // Clean up the timer
-    };
-  }, [global.alert, dispatch]);
 
   useEffect(() => {
     async function getData2() {
@@ -276,13 +265,45 @@ export default function Nav() {
     if (myProfile._id) getData2();
   }, [myProfile._id]);
 
+  const showToast = () => {
+    const options: ToastOptions = {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      pauseOnFocusLoss: true,
+    };
+    if (global.severity === "success") {
+      toast.success(global.alert, options);
+    } else {
+      toast.error(global.alert, options);
+    }
+  };
+  useEffect(() => {
+    let timer: any;
+    if (global.alert) {
+      showToast();
+      timer = setTimeout(() => {
+        dispatch(setAlert(null));
+        dispatch(setSeverity("success"));
+      }, 4000); // Hide after 3 seconds
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [global.alert, dispatch]);
+
   return (
     <div
       className={`${
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
       } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed dark:bg-dark1 bg-white right-0 transitions`}
     >
-      {global.alert ? (
+      <ToastContainer />
+      {/* {global.alert ? (
         <Alert
           variant="filled"
           severity={global.severity as "success" | "error" | "info" | "warning"}
@@ -290,7 +311,7 @@ export default function Nav() {
         >
           {global.alert}
         </Alert>
-      ) : null}
+      ) : null} */}
 
       <button
         onClick={() => {
