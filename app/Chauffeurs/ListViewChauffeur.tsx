@@ -296,7 +296,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                // onClick={() => sort("city")}
+                onClick={() => sort("rentPerDay")}
               />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
