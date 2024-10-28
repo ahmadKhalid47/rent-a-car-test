@@ -437,7 +437,7 @@ export default function ListView({ data }: dataType) {
                     </span>
                   </div>
                   <div
-                    className="flex justify-end pe-3 truncate gap-2 items-center w-[7%]   h-full"
+                    className="flex justify-end pe-3 truncate gap-1 items-center w-[7%] h-[43px]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
