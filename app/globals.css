@@ -502,3 +502,15 @@ button:active {
 .hover-none:focus{
   opacity: 1;
 }
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom {
+  animation: zoom 0.6s;
+}

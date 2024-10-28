@@ -313,19 +313,9 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[9%] ">
               Created At{" "}
-              {/* <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
-              />{" "} */}
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[7%]  ">
               Status
-              {/* <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
-              /> */}
             </div>
             <div className="text-start flex justify-end pe-3 truncate items-center w-[7%]  ">
               Actions{" "}

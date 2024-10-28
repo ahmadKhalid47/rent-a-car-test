@@ -182,6 +182,21 @@ export default function ListViewchauffeurs({ data }: dataType) {
     }
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openModal = (index: any, images:any) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+    setImages(images);
+  };
+
+  const closeModal = () => setIsOpen(false);
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   return (
     <div className="w-full h-fit">
       <div
@@ -364,14 +379,30 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   <div className="text-start pe-3 truncate w-[9%] ">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
-                  <div className="pe-3 w-[11%] flex flex-col justify-center items-start text-[12px]">
-                    <button className="w-fit flex justify-start items-center gap-1">
+                  <div
+                    className="pe-3 w-[11%] flex flex-col justify-center items-start text-[12px]"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }}
+                  >
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
+                      onClick={() => {
+                        openModal(0, item?.data?.passportImages);
+                      }}
+                    >
                       <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
                         <IoDocumentTextOutline className="text-[11px]" />
                       </div>
                       Passport / ID
                     </button>
-                    <button className="w-fit flex justify-start items-center gap-1">
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
+                      onClick={() => {
+                        openModal(0, item?.data?.licenseImages);
+                      }}
+                    >
                       <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
                         <IoDocumentTextOutline className="text-[11px]" />
                       </div>
@@ -483,6 +514,33 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     </div>
                   </div>
                 ) : null}
+                {isOpen && (
+                  <div className="w-[100vw] h-[100vh] fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.6)] bg-opacity-80">
+                    <span
+                      className="absolute top-4 right-6 text-white text-3xl cursor-pointer"
+                      onClick={closeModal}
+                    >
+                      &times;
+                    </span>
+                    <div className="relative max-w-3xl w-full animate-zoom">
+                      <div className="relative">
+                        <img src={images[currentIndex]} className="w-full" />
+                      </div>
+                      <button
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-2xl p-2"
+                        onClick={prevSlide}
+                      >
+                        &#10094;
+                      </button>
+                      <button
+                        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-2xl p-2"
+                        onClick={nextSlide}
+                      >
+                        &#10095;
+                      </button>
+                    </div>
+                  </div>
+                )}{" "}
               </div>
             ))
           )}
