@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
-export default function General({ partsHieght, accordionData }: any) {
+export default function General({ partsHeight, accordionData }: any) {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {
@@ -34,7 +34,7 @@ export default function General({ partsHieght, accordionData }: any) {
                 id={`accordion-collapse-body-${index + 1}`}
                 className={`${
                   activeIndex === index ? "block" : "hidden"
-                } w-[100%] ${partsHieght} border-b-[1px] border-grey`}
+                } w-[100%] ${partsHeight} border-b-[1px] border-grey`}
                 aria-labelledby={`accordion-collapse-heading-${index + 1}`}
               >
                 {item.content}

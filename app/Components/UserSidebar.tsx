@@ -95,7 +95,7 @@ export default function UserSidebar() {
         <TbLayoutDashboardFilled
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
+        <span >{global.sidebarShow ? "Dashboard" : null}</span>
       </Link>
 
       <div
@@ -469,7 +469,7 @@ export default function UserSidebar() {
         <TbTargetArrow
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span className="">{global.sidebarShow ? "Report" : null}</span>
+        <span >{global.sidebarShow ? "Report" : null}</span>
       </Link>
       <Link
         href="/Settings"
@@ -486,7 +486,7 @@ export default function UserSidebar() {
         <RiSettings4Fill
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span className="">{global.sidebarShow ? "Settings" : null}</span>
+        <span >{global.sidebarShow ? "Settings" : null}</span>
       </Link>
     </div>
   );

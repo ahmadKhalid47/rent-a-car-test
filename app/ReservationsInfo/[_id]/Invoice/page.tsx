@@ -167,17 +167,17 @@ function PrintCom({ data, id }: any) {
                 <span className=" text-[17px] font-[700] leading-[20px] text-main-blue">
                   Invoice To:
                 </span>
-                <span className="">
+                <span >
                   {customersData?.data?.name
                     ? customersData?.data?.name
                     : "---"}
                 </span>
-                <span className="">
+                <span >
                   {customersData?.data?.streetAddress
                     ? customersData?.data?.streetAddress
                     : "---"}
                 </span>
-                <span className="">
+                <span >
                   {customersData?.data?.city
                     ? customersData?.data?.city
                     : "---"}
@@ -186,12 +186,12 @@ function PrintCom({ data, id }: any) {
                     ? customersData?.data?.country
                     : "---"}
                 </span>
-                <span className="">
+                <span >
                   {customersData?.data?.phone
                     ? customersData?.data?.phone
                     : "---"}
                 </span>
-                <span className="">
+                <span >
                   {customersData?.data?.emailAddress
                     ? customersData?.data?.emailAddress
                     : "---"}
@@ -202,9 +202,9 @@ function PrintCom({ data, id }: any) {
                   Rapid Rent a Car
                 </span>
                 <span className="text-transparent">transparent</span>
-                <span className="">{myProfile?.address}</span>
-                <span className="">{myProfile?.phone}</span>
-                <span className="">{myProfile?.email}</span>
+                <span >{myProfile?.address}</span>
+                <span >{myProfile?.phone}</span>
+                <span >{myProfile?.email}</span>
               </div>
             </div>
             <div className="w-full h-fit flex flex-col justify-between items-center mt-6">

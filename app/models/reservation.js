@@ -14,6 +14,16 @@ const reservationSchema = mongoose.Schema(
       ref: "Vehicle",
       required: false,
     },
+    chauffeur_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "chauffeur",
+      required: false,
+    },
+    customer_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
+      required: false,
+    },
   },
   {
     timestamps: true,

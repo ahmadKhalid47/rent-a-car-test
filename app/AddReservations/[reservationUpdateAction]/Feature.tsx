@@ -45,6 +45,7 @@ export default function Feature({ data, loading }: dataType) {
   useEffect(() => {
     filterVehicle();
   }, [searchQuery, VehiclesData]);
+console.log(reservation?.vehicle_id);
 
   // Scroll to the selected vehicle when it changes
   useEffect(() => {

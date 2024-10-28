@@ -10,6 +10,8 @@ export async function POST(req: Request) {
       data: data.reservation,
       createdBy: data.createdBy,
       vehicle_id: data.vehicle_id,
+      chauffeur_id: data.chauffeur_id,
+      customer_id: data.customer_id,
     }).save();
     return NextResponse.json({
       success: "User Created",

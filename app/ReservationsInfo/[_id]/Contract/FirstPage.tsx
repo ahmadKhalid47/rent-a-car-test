@@ -57,9 +57,9 @@ export default function FirstPage({
               Rapid Rent a Car
             </span>
             <span className="text-transparent">transparent</span>
-            <span className="">{myProfile?.address}</span>
-            <span className="">{myProfile?.phone}</span>
-            <span className="">{myProfile?.email}</span>
+            <span >{myProfile?.address}</span>
+            <span >{myProfile?.phone}</span>
+            <span >{myProfile?.email}</span>
           </div>
         </div>
         <div className="w-full h-fit flex flex-col justify-between items-center">

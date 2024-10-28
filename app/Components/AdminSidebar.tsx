@@ -70,7 +70,7 @@ export default function AdminSidebar() {
         <TbLayoutDashboardFilled
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span className="">{global.sidebarShow ? "Dashboard" : null}</span>
+        <span >{global.sidebarShow ? "Dashboard" : null}</span>
       </Link>
       <div
         className={`w-full h-[49px] font-[500] text-[13px] sm:text-[16px] leading-[27px] flex items-center gap-2 z-10 cursor-pointer ${
@@ -161,7 +161,7 @@ export default function AdminSidebar() {
         <PaidIcon
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span className="">{global.sidebarShow ? "Subscriptions" : null}</span>
+        <span >{global.sidebarShow ? "Subscriptions" : null}</span>
       </Link>
       <Link
         href="/Configuration"
@@ -180,7 +180,7 @@ export default function AdminSidebar() {
             global.sidebarShow ? "ml-[1px]" : "ml-[-2px] fixed"
           } text-[22px]`}
         />{" "}
-        <span className="">{global.sidebarShow ? "Configuration" : null}</span>
+        <span >{global.sidebarShow ? "Configuration" : null}</span>
       </Link>
     </div>
   );

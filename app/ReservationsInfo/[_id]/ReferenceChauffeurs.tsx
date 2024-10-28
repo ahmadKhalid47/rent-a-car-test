@@ -40,7 +40,7 @@ export default function Referencereservations({ data, loading }: dataType) {
             <div className="font-[400] text-[18px]">{data?.data?.country}</div>
           </div>
         </div>
-        <div className="">
+        <div >
           <Link
             href={`/ChauffeursInfo/${data?._id}`}
             className="w-fit px-3 md:px-6 py-4 h-fit md:h-[44px] rounded-[10px] bg-[#F9F9F9] text-main-blue border border-gray-200 font-[600] text-[12px] md:text-[18px] leading-[21px] text-center"

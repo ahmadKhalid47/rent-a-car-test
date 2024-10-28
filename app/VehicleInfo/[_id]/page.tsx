@@ -226,13 +226,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Making Year
                         </span>
-                        <span className="">{vehicleInfo?.year}</span>
+                        <span >{vehicleInfo?.year}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           No. Of Seats
                         </span>
-                        <span className="">{vehicleInfo?.passengers}</span>
+                        <span >{vehicleInfo?.passengers}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -240,7 +240,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Transmission
                         </span>
-                        <span className="">
+                        <span >
                           {vehicleInfo?.transmission?.split(" ")[0]}
                         </span>
                       </div>
@@ -248,7 +248,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Engine Volume
                         </span>
-                        <span className="">{vehicleInfo?.engineVolume}</span>
+                        <span >{vehicleInfo?.engineVolume}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -270,7 +270,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Fuel Type
                         </span>
-                        <span className="">{vehicleInfo?.fuelType}</span>
+                        <span >{vehicleInfo?.fuelType}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -298,7 +298,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Fuel Capacity
                         </span>
-                        <span className="">{vehicleInfo?.fuelCapacity}</span>
+                        <span >{vehicleInfo?.fuelCapacity}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -306,13 +306,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           City
                         </span>
-                        <span className="">{vehicleInfo?.city}</span>
+                        <span >{vehicleInfo?.city}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Country
                         </span>
-                        <span className="">{vehicleInfo?.country}</span>
+                        <span >{vehicleInfo?.country}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -320,7 +320,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Drivetrain
                         </span>
-                        <span className="">
+                        <span >
                           {"("}
                           {vehicleInfo?.Drivetrain?.split("(")[1]}
                         </span>
@@ -329,7 +329,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Ownership
                         </span>
-                        <span className="">{vehicleInfo?.Ownership}</span>
+                        <span >{vehicleInfo?.Ownership}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -337,13 +337,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Body Type
                         </span>
-                        <span className="">{vehicleInfo?.type}</span>
+                        <span >{vehicleInfo?.type}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Category Type
                         </span>
-                        <span className="">{vehicleInfo?.Category}</span>
+                        <span >{vehicleInfo?.Category}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -366,7 +366,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHieght={"h-[216px]"}
+                        partsHeight={"h-[216px]"}
                         accordionData={accordionItems}
                       />
                     </div>
@@ -377,7 +377,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHieght={"h-[277px]"}
+                        partsHeight={"h-[277px]"}
                         accordionData={accordionItems2}
                       />
                     </div>

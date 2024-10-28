@@ -13,6 +13,8 @@ export async function POST(req: Request, params: any) {
         $set: {
           data: data.reservation,
           vehicle_id: data.vehicle_id,
+          chauffeur_id: data.chauffeur_id,
+          customer_id: data.customer_id,
         },
       }
     );

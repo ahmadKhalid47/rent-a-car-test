@@ -11,7 +11,7 @@ export default function Insurance() {
           <span className="dark:text-white text-[#555555]">
             Insurance Policy No
           </span>
-          <span className="">
+          <span >
             {vehicleInfo.insNo ? vehicleInfo.insNo : "---"}
           </span>
         </div>
@@ -21,7 +21,7 @@ export default function Insurance() {
           <span className="dark:text-white text-[#555555]">
             Insurance Expiry Date
           </span>
-          <span className="">
+          <span >
             {vehicleInfo.insEnd ? vehicleInfo.insEnd : "---"}
           </span>
         </div>
@@ -31,7 +31,7 @@ export default function Insurance() {
           <span className="dark:text-white text-[#555555]">
             Insurance Provider
           </span>
-          <span className="">
+          <span >
             {vehicleInfo.insCompany
               ? vehicleInfo.insCompany
               : "---"}

@@ -10,7 +10,7 @@ export default function Rental() {
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-[45%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Hour</span>
-          <span className="">
+          <span >
             {vehicleInfo.rentHour
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentHour.toLocaleString("en-US")
@@ -19,7 +19,7 @@ export default function Rental() {
         </div>
         <div className="w-[45%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Day</span>
-          <span className="">
+          <span >
             {vehicleInfo.rentDay
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentDay.toLocaleString("en-US")
@@ -30,7 +30,7 @@ export default function Rental() {
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-[45%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Week</span>
-          <span className="">
+          <span >
             {vehicleInfo.rentWeek
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentWeek.toLocaleString("en-US")
@@ -39,7 +39,7 @@ export default function Rental() {
         </div>
         <div className="w-[45%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Month</span>
-          <span className="">
+          <span >
             {vehicleInfo.rentMonth
               ? `${global.currentCurrency} ` +
                 vehicleInfo.rentMonth.toLocaleString("en-US")

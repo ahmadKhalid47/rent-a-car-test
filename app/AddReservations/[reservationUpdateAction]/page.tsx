@@ -162,6 +162,8 @@ export default function Reservations() {
         reservation,
         createdBy: myProfile._id,
         vehicle_id: reservation?.vehicle_id,
+        chauffeur_id: reservation?.chauffeur_id,
+        customer_id: reservation?.customer_id,
       });
       await axios.post(`/api/updateRentOut/${reservation?.vehicle_id}`, {
         rentOut: true,
@@ -190,11 +192,13 @@ export default function Reservations() {
   async function updateData(action: string) {
     try {
       setLoading(true);
-      await axios.post(
-        `/api/updatereservation/${reservationUpdateAction}`,
-        reservation
-        // vehicle_id: reservation?.vehicle_id,
-      );
+      await axios.post(`/api/updatereservation/${reservationUpdateAction}`, {
+        reservation,
+        createdBy: myProfile._id,
+        vehicle_id: reservation?.vehicle_id,
+        chauffeur_id: reservation?.chauffeur_id,
+        customer_id: reservation?.customer_id,
+      });
       if (action === "close") {
         router.push("/Reservations");
       }
