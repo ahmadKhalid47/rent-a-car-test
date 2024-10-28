@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import Identitychauffeur from "./IdentityChauffeurs";
+import PassportChauffeurs from "./PassportChauffeurs";
+import LicenseChauffeurs from "./LicenseChauffeurs";
+import EmergencyChauffeurs from "./EmergencyChauffeurs";
+import ReferenceChauffeurs from "./ReferenceChauffeurs";
+import OtherChauffeurs from "./OtherChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -11,7 +15,6 @@ import axios from "axios";
 import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
 import { useParams } from "next/navigation";
 import GeneralChauffeurs from "./GeneralChauffeurs";
-import EmergencyChauffeurs from "./EmergencyChauffeurs";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { formatCreatedAtDate } from "@/app/Components/functions/formats";
@@ -72,14 +75,14 @@ export default function chauffeurInfoMainPage() {
   }, []);
   console.log(chauffeurInfo);
   const accordionItems = [
-    { title: "Passport", content: <>Rental Info</> },
-    { title: "Driving License", content: <>Insurance Info</> },
-    { title: "Others", content: <>Others</> },
+    { title: "Passport", content: <PassportChauffeurs /> },
+    { title: "Driving License", content: <LicenseChauffeurs /> },
+    { title: "Others", content: <div className="py-4 px-5">Others</div> },
   ];
   const accordionItems2 = [
-    { title: "Emergency Information", content: <>Rental Info</> },
-    { title: "Reference Information", content: <>Insurance Info</> },
-    { title: "Additional Notes", content: <>Others</> },
+    { title: "Emergency Information", content: <EmergencyChauffeurs /> },
+    { title: "Reference Information", content: <ReferenceChauffeurs /> },
+    { title: "Additional Notes", content: <OtherChauffeurs /> },
   ];
  useEffect(() => {
    async function getData() {
@@ -128,7 +131,7 @@ export default function chauffeurInfoMainPage() {
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-5 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative overflow-hidden">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
             <div className="w-full h-fit flex justify-between items-star rounded-[10px]">
-              <div className="w-[40%] flex justify-center items-center">
+              <div className="w-[36%] flex justify-center items-center">
                 <div className="w-[267px] h-[267px] flex justify-between items-start rounded-full overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white">
                   <img
                     src={chauffeurInfo?.chauffeurImage || image404.src}
@@ -136,7 +139,7 @@ export default function chauffeurInfoMainPage() {
                   />
                 </div>
               </div>
-              <div className="w-[60%] flex justify-start flex-col items-start gap-3">
+              <div className="w-[64%] flex justify-start flex-col items-start gap-3">
                 <span
                   className={`border-[1px] px-3 rounded-[5px] -mb-2 ${
                     chauffeurInfo?.active ? "complete-status" : "cancel-status"
@@ -264,7 +267,7 @@ export default function chauffeurInfoMainPage() {
                 </span>
                 <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                   <General
-                    partsHeight={"h-[216px]"}
+                    partsHeight={"h-[234px]"}
                     accordionData={accordionItems}
                   />
                 </div>
@@ -275,7 +278,7 @@ export default function chauffeurInfoMainPage() {
                 </span>
                 <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                   <General
-                    partsHeight={"h-[216px]"}
+                    partsHeight={"h-[234px]"}
                     accordionData={accordionItems2}
                   />
                 </div>

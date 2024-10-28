@@ -1,51 +1,25 @@
-import { FaEye } from "react-icons/fa";
-export default function ReferenceChauffeurs() {
-  return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center ">
-        <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
-          Reference Info
-        </span>
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
 
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Full Name
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Address
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px]">
-            Relation
-          </p>
+export default function ReferenceChauffeurs() {
+  let { chauffeurInfo } = useSelector(
+    (state: RootState) => state.chauffeurInfo
+  );
+
+  return (
+    <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
+      <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Contact Number</span>
+          <span className="w-full">{chauffeurInfo?.refName}</span>
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            John Smith
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Father
-          </p>
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Relation</span>
+          <span className="w-full">{chauffeurInfo?.refRelation}</span>
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Lina Smith
-          </p>
-          <p className="w-[23%] text-start text-[18px] leading-[27px]">
-            438 397 3075
-          </p>
-          <p className="w-[22%] text-start text-[18px] leading-[27px]">
-            Abc 23456
-          </p>
-          <p className="w-[16%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            Mother
-          </p>
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Emergency Phone</span>
+          <span className="w-full">{chauffeurInfo?.refPhone}</span>
         </div>
       </div>
     </div>

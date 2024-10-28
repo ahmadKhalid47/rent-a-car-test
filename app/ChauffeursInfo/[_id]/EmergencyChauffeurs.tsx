@@ -7,81 +7,21 @@ export default function EmergencyChauffeurs() {
   );
 
   return (
-    <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-8 pt-6 pb-8 px-6 border-grey mt- ">
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center ">
-        <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
-          Emergency Info
-        </span>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[30%] text-start text-[18px] leading-[27px]">
-            Emergency Contact Name
-          </p>
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Emergency Phone
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            Relationship
-          </p>
+    <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
+      <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Contact Number</span>
+          <span className="w-full">{chauffeurInfo?.emergencyContactName}</span>
         </div>
-
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
-          <p className="w-[30%] text-start text-[18px] leading-[27px]">
-            {chauffeurInfo?.emergencyContactName
-              ? chauffeurInfo?.emergencyContactName
-              : "---"}
-          </p>
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {chauffeurInfo?.emergencyContactPhone
-              ? chauffeurInfo?.emergencyContactPhone
-              : "---"}
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {chauffeurInfo?.emergencyContactRelation
-              ? chauffeurInfo?.emergencyContactRelation
-              : "---"}
-          </p>
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Relation</span>
+          <span className="w-full">
+            {chauffeurInfo?.emergencyContactRelation}
+          </span>
         </div>
-      </div>
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center ">
-        <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
-          Reference Info
-        </span>
-
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[600]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            Full Name
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px]">Phone</p>
-          <p className="w-[40%] text-start text-[18px] leading-[27px]">
-            Address
-          </p>
-          <p className="w-[15%] text-start text-[18px] leading-[27px]">
-            Relation
-          </p>
-        </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px] font-[400]">
-          <p className="w-[20%] text-start text-[18px] leading-[27px]">
-            {chauffeurInfo?.refName ? chauffeurInfo?.refName : "---"}
-          </p>
-          <p className="w-[25%] text-start text-[18px] leading-[27px]">
-            {chauffeurInfo?.refPhone ? chauffeurInfo?.refPhone : "---"}
-          </p>
-          <p className="w-[40%] text-start text-[18px] leading-[27px]">
-            {chauffeurInfo?.refAddress ? chauffeurInfo?.refAddress : "---"}
-          </p>
-          <p className="w-[15%] text-start text-[18px] leading-[27px] flex justify-between items-center">
-            {chauffeurInfo?.refRelation ? chauffeurInfo?.refRelation : "---"}
-          </p>
-        </div>
-      </div>
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center ">
-        <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
-          Additional Notes
-        </span>
-        <div className="w-[100%] h-fit font-[400] text-[18px] leading-[27px]">
-          {chauffeurInfo?.additional
-            ? chauffeurInfo?.additional
-            : "No Additional Note Added"}
+        <div className="w-fit flex flex-col justify-start item-start">
+          <span className="w-full text-[#555555]">Emergency Phone</span>
+          <span className="w-full">{chauffeurInfo?.emergencyContactPhone}</span>
         </div>
       </div>
     </div>

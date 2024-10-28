@@ -209,7 +209,7 @@ export default function FirstPage({
                 </div>
                 <div className="w-[100%] h-fit flex justify-start gap-1 items-start py-3">
                   <div className="w-fit text-start font-[600] ">
-                    Driving Licence:{" "}
+                    Driving License:{" "}
                   </div>
                   <div className="w-fit text-start font-[400] ">
                     {chauffeursData?.data?.licenseNumber
