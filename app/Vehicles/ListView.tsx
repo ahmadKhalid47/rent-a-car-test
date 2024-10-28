@@ -253,7 +253,7 @@ export default function ListView({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[10%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%] ">
               Vehicle Name{" "}
               <img
                 src={arrows.src}
@@ -261,8 +261,8 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] "></div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%] "></div>
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[8%] ">
               Reg No{" "}
               <img
                 src={arrows.src}
@@ -270,7 +270,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("registration")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%] ">
               VIN No{" "}
               <img
                 src={arrows.src}
@@ -279,7 +279,7 @@ export default function ListView({ data }: dataType) {
               />
             </div>
 
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%] ">
               <span className="w-full truncate">Year </span>
               <img
                 src={arrows.src}
@@ -287,7 +287,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("year")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[6%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%] ">
               Color{" "}
               <img
                 src={arrows.src}
@@ -295,7 +295,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("color")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[12%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[12%] ">
               Odometer{" "}
               <img
                 src={arrows.src}
@@ -303,7 +303,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%]  ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%]  ">
               City{" "}
               <img
                 src={arrows.src}
@@ -311,21 +311,21 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[9%] ">
               Created At{" "}
-              <img
+              {/* <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                // onClick={() => sort("city")}
-              />{" "}
+                onClick={() => sort("city")}
+              />{" "} */}
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[7%]  ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%]  ">
               Status
-              <img
+              {/* <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                // onClick={() => sort("city")}
-              />
+                onClick={() => sort("city")}
+              /> */}
             </div>
             <div className="text-start flex justify-end pe-3 truncate items-center w-[7%]  ">
               Actions{" "}
