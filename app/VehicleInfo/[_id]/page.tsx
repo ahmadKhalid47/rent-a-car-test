@@ -366,7 +366,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHeight={"h-[216px]"}
+                        partsHeight={"h-[234px]"}
                         accordionData={accordionItems}
                       />
                     </div>
@@ -377,7 +377,7 @@ export default function CarInfoMainPage() {
                     </span>
                     <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
-                        partsHeight={"h-[277px]"}
+                        partsHeight={"h-[289px]"}
                         accordionData={accordionItems2}
                       />
                     </div>
