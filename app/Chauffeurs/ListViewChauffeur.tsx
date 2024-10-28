@@ -515,7 +515,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   </div>
                 ) : null}
                 {isOpen && (
-                  <div className="w-[100vw] h-[100vh] fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.6)] bg-opacity-80">
+                  <div className="w-[100vw] h-[100vh] fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.5)] bg-opacity-80">
                     <span
                       className="absolute top-4 right-6 text-white text-3xl cursor-pointer"
                       onClick={closeModal}
