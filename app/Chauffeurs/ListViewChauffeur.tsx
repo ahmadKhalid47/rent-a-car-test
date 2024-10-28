@@ -16,6 +16,7 @@ import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 
 interface dataType {
   data: Array<Object>;
@@ -520,23 +521,23 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       className="absolute top-4 right-6 text-white text-3xl cursor-pointer"
                       onClick={closeModal}
                     >
-                      &times;
+                      <FaTimes />
                     </span>
                     <div className="relative max-w-3xl w-full animate-zoom">
                       <div className="relative">
                         <img src={images[currentIndex]} className="w-full" />
                       </div>
                       <button
-                        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-2xl p-2"
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-3xl p-2"
                         onClick={prevSlide}
                       >
-                        &#10094;
+                        <FaChevronLeft/>
                       </button>
                       <button
-                        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-2xl p-2"
+                        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-3xl p-2"
                         onClick={nextSlide}
-                      >
-                        &#10095;
+                        >
+                        <FaChevronRight/>
                       </button>
                     </div>
                   </div>
