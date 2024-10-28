@@ -72,13 +72,14 @@ export default function chauffeurInfoMainPage() {
   }, []);
   console.log(chauffeurInfo);
   const accordionItems = [
-    { title: "Rental Info", content: <>Rental Info</> },
-    { title: "Insurance Info", content: <>Insurance Info</> },
+    { title: "Passport", content: <>Rental Info</> },
+    { title: "Driving License", content: <>Insurance Info</> },
     { title: "Others", content: <>Others</> },
   ];
   const accordionItems2 = [
-    { title: "Exterior", content:  <>Exterior</> },
-    { title: "Interior", content:  <>Interior</> },
+    { title: "Emergency Information", content: <>Rental Info</> },
+    { title: "Reference Information", content: <>Insurance Info</> },
+    { title: "Additional Notes", content: <>Others</> },
   ];
  useEffect(() => {
    async function getData() {
@@ -261,7 +262,7 @@ export default function chauffeurInfoMainPage() {
                 <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                   Identity Information
                 </span>
-                <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                   <General
                     partsHeight={"h-[216px]"}
                     accordionData={accordionItems}
@@ -272,9 +273,9 @@ export default function chauffeurInfoMainPage() {
                 <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                   Additional Information
                 </span>
-                <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                   <General
-                    partsHeight={"h-[277px]"}
+                    partsHeight={"h-[216px]"}
                     accordionData={accordionItems2}
                   />
                 </div>

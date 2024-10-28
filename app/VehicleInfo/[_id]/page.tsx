@@ -364,7 +364,7 @@ export default function CarInfoMainPage() {
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Additional Information
                     </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
                         partsHeight={"h-[216px]"}
                         accordionData={accordionItems}
@@ -375,7 +375,7 @@ export default function CarInfoMainPage() {
                     <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
                       Damages
                     </span>
-                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] 47px flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
+                    <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
                       <General
                         partsHeight={"h-[277px]"}
                         accordionData={accordionItems2}
