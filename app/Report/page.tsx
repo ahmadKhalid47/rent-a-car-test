@@ -474,7 +474,7 @@ export default function Vehicles() {
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
             <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
               <div className="w-[100%] 1200:w-[100%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
-                <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Total Revenue
                   </div>
@@ -482,7 +482,7 @@ export default function Vehicles() {
                     {!reservationLoading ? "$" + totalAmount : <TextLoader />}{" "}
                   </div>
                 </div>
-                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Total Reservations
                   </div>
@@ -494,7 +494,7 @@ export default function Vehicles() {
                     )}
                   </div>
                 </div>
-                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Complete Reservations
                   </div>
@@ -506,7 +506,7 @@ export default function Vehicles() {
                     )}
                   </div>
                 </div>
-                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Cancel Reservations
                   </div>
@@ -518,7 +518,7 @@ export default function Vehicles() {
                     )}
                   </div>
                 </div>
-                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-b-[2px] border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Pending Reservations
                   </div>
@@ -530,7 +530,7 @@ export default function Vehicles() {
                     )}
                   </div>
                 </div>
-                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] leading-[17px text-center border-r-2 border-grey">
+                <div className="w-full h-[60px] flex justify-between items-center font-[400] text-[12px] sm:text-[18px] text-center border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">
                     Upcoming Reservations
                   </div>

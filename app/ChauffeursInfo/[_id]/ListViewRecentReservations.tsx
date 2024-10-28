@@ -58,9 +58,19 @@ export default function ListViewRecentReservations({ data }: dataType) {
       ></h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey">
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div
-              className="text-start truncate ps-3 flex justify-between items-center w-[16%]"
+              className="text-start truncate ps-3 flex justify-start gap-2 items-center w-[16%]"
+              onClick={() => sort("vehicleName")}
+            >
+              Vehicle Name{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
+            </div>{" "}
+            <div
+              className="text-start truncate flex justify-start gap-2 items-center w-[16%]"
               onClick={() => sort("customerName")}
             >
               Customer Name{" "}
@@ -70,17 +80,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start truncate pe-3 flex justify-between items-center w-[16%]"
-              onClick={() => sort("vehicleName")}
-            >
-              Vehicle Name{" "}
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              />
-            </div>
-            <div
-              className="text-start truncate pe-3 flex justify-between items-center w-[10%]"
+              className="text-start truncate flex justify-start gap-2 items-center w-[10%]"
               onClick={() => sort("city")}
             >
               City{" "}
@@ -89,35 +89,35 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Start Date{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               End Date{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Duration
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Amount
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[10%]">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Status
               <img
                 src={arrows.src}
@@ -132,17 +132,17 @@ export default function ListViewRecentReservations({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/ReservationsInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
                   <div className="text-start truncate ps-3 w-[16%]">
-                    {item.data?.customerName}
+                    {item.data?.vehicleName}
                   </div>
                   <div className="flex justify-start item-center gap-5 text-start truncate pe-3 w-[16%]">
-                    {item.data?.vehicleName}
+                    {item.data?.customerName}
                   </div>
                   <div className="text-start truncate pe-3 w-[10%]">
                     {item.data?.city}

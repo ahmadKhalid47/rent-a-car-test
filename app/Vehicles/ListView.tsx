@@ -238,7 +238,7 @@ export default function ListView({ data }: dataType) {
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
         <div className="w-[1100px] 1400:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
-          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+          <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="truncate  w-[4%]  flex justify-start ps-3 items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -328,7 +328,7 @@ export default function ListView({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/VehicleInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize border-grey
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize border-grey
                      ${
                        index % 2 !== 0
                          ? "dark:bg-dark2 bg-light-gre"

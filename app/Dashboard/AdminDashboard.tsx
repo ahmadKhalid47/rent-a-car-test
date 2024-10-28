@@ -285,7 +285,7 @@ export default function AdminDashboard() {
                 <div className="w-full h-fit mt-2">
                   <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey relative">
                     <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
-                      <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] leading-[17px text-center border-b-2 border-grey">
+                      <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
                           onClick={() => sort("make")}
@@ -346,7 +346,7 @@ export default function AdminDashboard() {
                         paginatedData.map((item: any, index: number) => (
                           <div key={index} className="w-full">
                             <div
-                              className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] leading-[17px text-center capitalize ${
+                              className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
                                 index % 2 !== 0
                                   ? "dark:bg-dark2 bg-light-grey"
                                   : "dark:bg-dark1 bg-white"
