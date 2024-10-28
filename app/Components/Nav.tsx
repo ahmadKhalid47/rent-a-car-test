@@ -302,7 +302,10 @@ export default function Nav() {
         global.sidebarShow ? "nav-width-resp xl:nav-width" : "nav-closed-width"
       } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed dark:bg-dark1 bg-white right-0 transitions`}
     >
+      <div className="absolute">
+
       <ToastContainer />
+      </div>
       {/* {global.alert ? (
         <Alert
           variant="filled"
