@@ -230,8 +230,8 @@ export default function ListView({ data, CategoryData }: dataType) {
                 ></div>
               )}
             </div>
-            <div className="text-start ps-1 pe-3 flex justify-start gap-3 items-center w-[5%] ">
-              #
+            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%] ">
+              Sr.
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
