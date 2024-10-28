@@ -184,52 +184,54 @@ export default function ListViewchauffeurs({ data }: dataType) {
   return (
     <div className="w-full h-fit">
       <div
-        className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
-        <span>
-          <span className="cursor-pointer">
-            <button
+        {itemToDeleteMany.length >= 1 && (
+          <span>
+            <span className="cursor-pointer">
+              <button
+                className={`${
+                  itemToDeleteMany.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+            </span>
+            <span className="ps-1"></span>|<span className="ps-1"></span>
+            <span
               className={`${
                 itemToDeleteMany.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                setDeleteManyPopup(true);
+                UpdateActiveManyItem(true);
               }}
-              disabled={itemToDeleteMany.length < 1 ? true : false}
             >
-              Delete Multiple
-            </button>
+              Active /
+            </span>
+            <span
+              className={`${
+                itemToDeleteMany.length < 1
+                  ? ""
+                  : "cursor-pointer hover:underline"
+              }`}
+              onClick={() => {
+                UpdateActiveManyItem(false);
+              }}
+            >
+              Inactive Multiple
+            </span>
           </span>
-          <span className="ps-1"></span>|<span className="ps-1"></span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(true);
-            }}
-          >
-            Active /
-          </span>
-          <span
-            className={`${
-              itemToDeleteMany.length < 1
-                ? ""
-                : "cursor-pointer hover:underline"
-            }`}
-            onClick={() => {
-              UpdateActiveManyItem(false);
-            }}
-          >
-            Inactive Multiple
-          </span>
-        </span>
+        )}
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
@@ -361,7 +363,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     <img
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
-                      className="me-[8px] translate-y-[1px] hover:scale-[1.3] cursor-pointer"
+                      className=" translate-y-[1px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
