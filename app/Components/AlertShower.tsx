@@ -31,8 +31,8 @@ export default function AlertShower() {
 
   useEffect(() => {
     let timer: any;
-    showToast();
     if (global.alert) {
+      showToast();
       timer = setTimeout(() => {
         dispatch(setAlert(null));
         dispatch(setSeverity("success"));
