@@ -159,7 +159,7 @@ export default function CarInfoMainPage() {
                     <div className="w-[100%] h-[300px] flex justify-between items-start rounded-[10px] overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white">
                       <img
                         src={vehicleInfo?.carImages[imageIndex] || image404.src}
-                        className="w-full h-full"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     {vehicleInfo?.carImages.length > 1 && (
