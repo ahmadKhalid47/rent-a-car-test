@@ -18,7 +18,7 @@ export default function ReferenceChauffeurs() {
           <span className="w-full">{chauffeurInfo?.refRelation}</span>
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
-          <span className="w-full text-[#555555]">Emergency Phone</span>
+          <span className="w-full text-[#555555]">Reference Phone</span>
           <span className="w-full">{chauffeurInfo?.refPhone}</span>
         </div>
       </div>
