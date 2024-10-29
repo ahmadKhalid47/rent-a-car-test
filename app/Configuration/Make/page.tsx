@@ -77,7 +77,9 @@ export default function Vehicles() {
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.make?.toLowerCase() === make.trim().toLowerCase()
+        (item) =>
+          item.make?.toLowerCase() === make.trim().toLowerCase() &&
+          item.Category?.toLowerCase() === Category.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
