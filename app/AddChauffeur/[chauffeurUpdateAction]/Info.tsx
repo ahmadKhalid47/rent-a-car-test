@@ -123,7 +123,6 @@ export default function Info() {
     chauffeur.country,
     chauffeur.state
   );
-console.log(chauffeur);
 
   return (
     <div className="w-full h-fit  ">
