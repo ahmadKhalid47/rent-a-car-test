@@ -4,7 +4,7 @@ import PassportChauffeurs from "./PassportChauffeurs";
 import LicenseChauffeurs from "./LicenseChauffeurs";
 import EmergencyChauffeurs from "./EmergencyChauffeurs";
 import ReferenceChauffeurs from "./ReferenceChauffeurs";
-import OtherChauffeurs from "./OtherChauffeurs";
+import AdditionalChauffeurs from "./AdditionalChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -22,6 +22,7 @@ import General from "@/app/VehicleInfo/[_id]/General";
 import { FaChevronDown } from "react-icons/fa";
 import { MediumLoader } from "@/app/Components/Loader";
 import ListViewRecentReservations from "./ListViewRecentReservations";
+import OtherChauffeurs from "./OtherChauffeurs";
 
 export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -77,12 +78,12 @@ export default function chauffeurInfoMainPage() {
   const accordionItems = [
     { title: "Passport", content: <PassportChauffeurs /> },
     { title: "Driving License", content: <LicenseChauffeurs /> },
-    { title: "Others", content: <div className="py-4 px-5">Others</div> },
+    { title: "Others", content: <OtherChauffeurs /> },
   ];
   const accordionItems2 = [
     { title: "Emergency Information", content: <EmergencyChauffeurs /> },
     { title: "Reference Information", content: <ReferenceChauffeurs /> },
-    { title: "Additional Notes", content: <OtherChauffeurs /> },
+    { title: "Additional Notes", content: <AdditionalChauffeurs /> },
   ];
  useEffect(() => {
    async function getData() {
