@@ -23,6 +23,11 @@ import {
   setlicenseCountryR,
   setlicenseImagesR,
   setidCardR,
+  setotherNumberR,
+  setotherValidR,
+  setotherCountryR,
+  setotherImagesR,
+  setotherR,
 } from "@/app/store/chauffeur";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,6 +40,7 @@ export default function Rental() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   const [passfiles, setPassFiles] = useState<any>(chauffeur?.passportImages);
   const [licfiles, setLicFiles] = useState<any>(chauffeur?.licenseImages);
+  const [otherfiles, setOtherFiles] = useState<any>(chauffeur?.otherImages);
   let dispatch = useDispatch();
   useEffect(() => {
     setPassFiles(chauffeur.passportImages);
@@ -44,16 +50,17 @@ export default function Rental() {
     setLicFiles(chauffeur.licenseImages);
   }, [chauffeur.licenseImages]);
 
+  useEffect(() => {
+    setOtherFiles(chauffeur.otherImages);
+  }, [chauffeur.otherImages]);
+
   const onDropPass = useFileDrop(
     (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
   );
-  const {
-    getRootProps: getRootPropsPass,
-    getInputProps: getInputPropsPass,
-    // isDragActive,
-  } = useDropzone({
-    onDrop: onDropPass,
-  });
+  const { getRootProps: getRootPropsPass, getInputProps: getInputPropsPass } =
+    useDropzone({
+      onDrop: onDropPass,
+    });
   useEffect(() => {
     dispatch(setpassportImagesR(passfiles));
   }, [passfiles]);
@@ -61,16 +68,25 @@ export default function Rental() {
   const onDropLic = useFileDrop(
     (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
   );
-  const {
-    getRootProps: getRootPropsLic,
-    getInputProps: getInputPropsLic,
-    // isDragActive,
-  } = useDropzone({
-    onDrop: onDropLic,
-  });
+  const { getRootProps: getRootPropsLic, getInputProps: getInputPropsLic } =
+    useDropzone({
+      onDrop: onDropLic,
+    });
   useEffect(() => {
     dispatch(setlicenseImagesR(licfiles));
   }, [licfiles]);
+
+  const onDropOther = useFileDrop(
+    (files: any[]) =>
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+  );
+  const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
+    useDropzone({
+      onDrop: onDropOther,
+    });
+  useEffect(() => {
+    dispatch(setotherImagesR(otherfiles));
+  }, [otherfiles]);
 
   const countries: any = Country.getAllCountries().map((country: any) => ({
     value: country.isoCode,
@@ -139,7 +155,7 @@ export default function Rental() {
         />
 
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
-          Upload {chauffeur.idCard ? "ID Card" : "Passport"}*{" "}
+          Upload {chauffeur.idCard ? "ID Card" : "Passport"}*
         </span>
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
@@ -153,11 +169,11 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG{" "}
+            Select JPG, PNG
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
-          </span>{" "}
+            Maximum size 5MB
+          </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={passfiles} setFiles={setPassFiles} />
@@ -165,7 +181,7 @@ export default function Rental() {
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
-          Driving License Information{" "}
+          Driving License Information
         </span>
         <TempTypeInput
           setState={setlicenseNumberR}
@@ -191,7 +207,7 @@ export default function Rental() {
           options={countries.map((item: any) => item.label)}
         />
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
-          Upload Driving License*{" "}
+          Upload Driving License*
         </span>
 
         <div
@@ -206,14 +222,68 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG{" "}
+            Select JPG, PNG
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
-          </span>{" "}
+            Maximum size 5MB
+          </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={licfiles} setFiles={setLicFiles} />
+        </div>
+      </div>
+      <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+        <span className="flex justify-start gap-4 items-center font-[600] text-[20px] w-full my-1 c">
+          Other Information
+          {/* <span className="font-[400] text-[14px]">Name this field</span> */}
+        </span>
+        <TempTypeInput
+          setState={setotherNumberR}
+          label={"Number"}
+          value={chauffeur.otherNumber}
+          required={false}
+          type={"number"}
+        />
+
+        <TempTypeInput
+          setState={setotherValidR}
+          label={"Valid Until"}
+          value={chauffeur.otherValid}
+          required={false}
+          type={"date"}
+        />
+
+        <TempSelectInput
+          setState={setotherCountryR}
+          label={"Issuing Country/State"}
+          value={chauffeur.otherCountry}
+          required={false}
+          options={countries.map((item: any) => item.label)}
+        />
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+          Upload Image*
+        </span>
+
+        <div
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          {...getRootPropsOther()}
+        >
+          <input {...getInputPropsOther()} />
+          <img src={upload.src} />
+          <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
+            Drag & Drop or
+            <span className="text-link-blue cursor-pointer"> choose file </span>
+            to upload
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Select JPG, PNG
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Maximum size 5MB
+          </span>
+        </div>
+        <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+          <Thumbs files={otherfiles} setFiles={setOtherFiles} />
         </div>
       </div>
     </div>
