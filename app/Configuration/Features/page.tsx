@@ -216,7 +216,7 @@ export default function Vehicles() {
                         }}
                         value={Box}
                       >
-                        <option value={""}>Select</option>
+                        <option value={""}>Select Type</option>
                         <option value={"Basic Comfort Features"}>
                           Basic Comfort Features
                         </option>
