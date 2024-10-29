@@ -84,12 +84,13 @@ export default function Rental() {
           Passport or ID Card Info
         </span>
         <div className="w-[100%] h-fit flex justify-start items-start gap-6 text-[14px]">
-          <div className="w-fit h-fit flex justify-start items-start gap-1">
+          <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
               type="radio"
               id="document1"
               name="document"
               value="Passport"
+              className="w-[18px] h-[18px]"
               checked={!chauffeur.idCard}
               onChange={(e) => {
                 dispatch(setidCardR(e.target.value === "ID Card"));
@@ -97,12 +98,13 @@ export default function Rental() {
             />
             <label htmlFor="document1">Passport</label>
           </div>
-          <div className="w-fit h-fit flex justify-start items-start gap-1">
+          <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
               type="radio"
               id="document2"
               name="document"
               value="ID Card"
+              className="w-[18px] h-[18px]"
               checked={chauffeur.idCard}
               onChange={(e) => {
                 dispatch(setidCardR(e.target.value === "ID Card"));
