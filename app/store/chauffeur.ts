@@ -22,9 +22,13 @@ const initialState: any = {
   refPhone: "",
   refAddress: "",
   refRelation: "",
-  emergencyName: "",
-  emergencyPhone: "",
-  emergencyRelation: "",
+  emergency: [
+    {
+      emergencyName: "",
+      emergencyPhone: "",
+      emergencyRelation: "",
+    },
+  ],
   additional: "",
   passportNumber: "",
   passportValid: "",
@@ -175,11 +179,24 @@ export const chauffeurSlice = createSlice({
     setidCardR: (state, action) => {
       state.idCard = action.payload;
     },
-
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
     resetState: () => initialState,
+    addContact: (state) => {
+      state.emergency.push({
+        emergencyName: "",
+        emergencyPhone: "",
+        emergencyRelation: "",
+      });
+    },
+    updateContact: (state, action) => {
+      const { index, contact } = action.payload;
+      state.emergency[index] = contact;
+    },
+    removeContact: (state, action) => {
+      state.emergency.splice(action.payload, 1);
+    },
   },
 });
 
@@ -228,6 +245,9 @@ export const {
   setotherCountryR,
   setotherImagesR,
   setotherR,
+  addContact,
+  updateContact,
+  removeContact,
 } = chauffeurSlice.actions;
 
 export default chauffeurSlice.reducer;

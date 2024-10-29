@@ -17,6 +17,9 @@
   border-color: #054B86;
 }
 
+.bg-main-red {
+  background-color: rgb(235, 70, 67);
+}
 .border-main-red {
   border-color: rgb(235, 70, 67);
 }
