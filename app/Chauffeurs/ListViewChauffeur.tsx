@@ -413,7 +413,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       </div>
                       License
                     </button>
-                    {item?.data?.otherImages?.length && (
+                    {item?.data?.otherImages?.length>0 && (
                       <button
                         className="w-fit flex justify-start items-center gap-1"
                         onClick={() => {
