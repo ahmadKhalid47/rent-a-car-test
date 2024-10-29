@@ -187,7 +187,11 @@ export default function ListViewchauffeurs({ data }: dataType) {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const openModal = (index: any, images:any) => {
+  const openModal = (index: any, images: any) => {
+    if (!images?.length) {
+      return;
+    }
+
     setCurrentIndex(index);
     setIsOpen(true);
     setImages(images);
@@ -409,12 +413,19 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       </div>
                       License
                     </button>
-                    <button className="w-fit flex justify-start items-center gap-1">
-                      <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
-                        <IoDocumentTextOutline className="text-[11px]" />
-                      </div>
-                      Other
-                    </button>
+                    {item?.data?.otherImages?.length && (
+                      <button
+                        className="w-fit flex justify-start items-center gap-1"
+                        onClick={() => {
+                          openModal(0, item?.data?.otherImages);
+                        }}
+                      >
+                        <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                          <IoDocumentTextOutline className="text-[11px]" />
+                        </div>
+                        Other
+                      </button>
+                    )}
                   </div>
                   <div
                     className="flex justify-end pe-3 truncate gap-1 items-center w-[7%] h-[43px]"
@@ -531,13 +542,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
                         className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-3xl p-2"
                         onClick={prevSlide}
                       >
-                        <FaChevronLeft/>
+                        <FaChevronLeft />
                       </button>
                       <button
                         className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-3xl p-2"
                         onClick={nextSlide}
-                        >
-                        <FaChevronRight/>
+                      >
+                        <FaChevronRight />
                       </button>
                     </div>
                   </div>
