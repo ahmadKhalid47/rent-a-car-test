@@ -19,6 +19,7 @@ import {
   SmallLoader,
 } from "../../Components/Loader";
 import Link from "next/link";
+import Reference from "./Reference";
 
 export default function AddChauffeur() {
   const params = useParams();
@@ -249,10 +250,10 @@ export default function AddChauffeur() {
               <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey dark:bg-dark1 bg-white z-[0]">
                 <div
                   className={` h-full flex justify-start items-center bg-main-blue z-[0] transitions2 rounded-full`}
-                  style={{ width: `${currentPage * 50}%` }}
+                  style={{ width: `${currentPage * 34}%` }}
                 ></div>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(0);
@@ -267,7 +268,7 @@ export default function AddChauffeur() {
                   <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(1);
@@ -282,7 +283,7 @@ export default function AddChauffeur() {
                   2
                 </button>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(2);
@@ -298,28 +299,51 @@ export default function AddChauffeur() {
                   3
                 </button>
               </div>
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
+                <button
+                  onClick={() => {
+                    setGoToPage(3);
+                    submitButton();
+                  }}
+                  className={` w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                    currentPage >= 3
+                      ? "transitions2 bg-main-blue text-white"
+                      : "dark:bg-dark1 bg-white border-[1px] border-grey"
+                  }
+                     flex justify-center items-center rounded-full z-[5]`}
+                >
+                  4
+                </button>
+              </div>
             </div>
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
-                className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
-                className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
-                className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
-                Additional Information
+                Emergency Information
+              </div>
+              <div
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
+                  currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
+                }`}
+              >
+                Reference Information
               </div>
             </div>
           </div>
@@ -330,12 +354,14 @@ export default function AddChauffeur() {
             <Rental />
           ) : currentPage === 2 ? (
             <Feature />
+          ) : currentPage === 3 ? (
+            <Reference />
           ) : null}
 
           <div
             className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 justify-between items-center`}
           >
-            <div className="w-[50%] flex justify-start item-center gap-1 md:gap-3">
+            <div className="w-[40%] flex justify-start item-center gap-1 md:gap-3">
               {currentPage !== 0 ? (
                 <button
                   className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
@@ -349,9 +375,9 @@ export default function AddChauffeur() {
               ) : null}
             </div>
 
-            <div className="w-[50%] flex justify-end item-center gap-1 md:gap-3">
+            <div className="w-[60%] flex justify-end item-center gap-1 md:gap-3">
               <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+                className="px-2 md:px-0 w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(resetState());
@@ -361,7 +387,7 @@ export default function AddChauffeur() {
                 Reset
               </button>
 
-              {currentPage === 2 ? (
+              {currentPage === 3 ? (
                 <>
                   {chauffeurUpdateAction !== "AddNew" ? (
                     <>
