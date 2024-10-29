@@ -219,12 +219,14 @@ export default function Vehicles() {
                       }}
                       value={Category}
                     >
-                      <option value={""}>Select</option>
-                      {makeData?.map(
-                        (item: any, key: number) =>
-                          item?.Category && (
-                            <option value={item?.Category} key={key}>
-                              {item?.Category}
+                      <option value={""}>Select Category</option>
+                      {Array.from(
+                        new Set(makeData?.map((item: any) => item?.Category))
+                      ).map(
+                        (category, key) =>
+                          category && (
+                            <option value={category} key={key}>
+                              {category}
                             </option>
                           )
                       )}
@@ -245,7 +247,7 @@ export default function Vehicles() {
                       }}
                       value={Make}
                     >
-                      <option value={""}>Select</option>
+                      <option value={""}>Select Make</option>
                       {makeData
                         ?.filter((item: any) => item.Category === Category)
                         ?.map((item: any, key: number) => (
