@@ -28,7 +28,7 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setOtherPopup] = useState(false);
   const [Insurance, setInsurance] = useState("");
-  const [recurring, setrecurring] = useState("_");
+  const [recurring, setrecurring] = useState("");
   let [other, setOther] = useState("");
   let [otherPopUp, setOtherPopUp] = useState(false);
   const [Category, setCategory] = useState("");
@@ -220,7 +220,7 @@ export default function Vehicles() {
                       required={true}
                       type={"text"}
                       className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                      placeholder={`Insurance Here`}
+                      placeholder={`Company Name Here`}
                       onChange={(e) => {
                         setInsurance(e.target.value);
                       }}
