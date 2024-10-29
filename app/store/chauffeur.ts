@@ -37,6 +37,7 @@ const initialState: any = {
   employmentType: "",
   drivingExp: "",
   availability: "",
+  idCard: false,
 };
 
 export const chauffeurSlice = createSlice({
@@ -79,6 +80,7 @@ export const chauffeurSlice = createSlice({
     setemploymentTypeR: (state, action) => {state.employmentType = action.payload},
     setdrivingExpR: (state, action) => {state.drivingExp = action.payload},
     setavailabilityR: (state, action) => {state.availability = action.payload},
+    setidCardR: (state, action) => {state.idCard = action.payload;},
 
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
@@ -126,6 +128,7 @@ export const {
   setemploymentTypeR,
   setdrivingExpR,
   setavailabilityR,
+  setidCardR,
 } = chauffeurSlice.actions;
 
 export default chauffeurSlice.reducer;
