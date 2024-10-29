@@ -29,6 +29,9 @@ import {
   setstateR,
   setstreetAddressR,
   setrentPerDayR,
+  setemploymentTypeR,
+  setdrivingExpR,
+  setavailabilityR,
 } from "@/app/store/chauffeur";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -46,7 +49,7 @@ export default function Info() {
     setFiles(chauffeur?.chauffeurImage);
   }, [chauffeur.chauffeurImage[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; 
+    const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
@@ -120,6 +123,7 @@ export default function Info() {
     chauffeur.country,
     chauffeur.state
   );
+console.log(chauffeur);
 
   return (
     <div className="w-full h-fit  ">
@@ -142,7 +146,6 @@ export default function Info() {
           required={false}
           options={["Male", "Female", "Custom"]}
         />
-
         <TempTypeInput
           setState={setdateOfBirthR}
           label={"Date of Birth"}
@@ -185,6 +188,43 @@ export default function Info() {
           value={chauffeur.rentPerDay}
           required={true}
           type={"number"}
+        />
+        <TempSelectInput
+          setState={setemploymentTypeR}
+          label={"Employment Type"}
+          value={chauffeur.employmentType}
+          required={false}
+          options={[
+            "Part-time",
+            "Full-time",
+            "Contract (or Temporary)",
+            "Freelance",
+            "Internship",
+            "Seasonal",
+            "Self-employed",
+          ]}
+        />
+        <TempSelectInput
+          setState={setdrivingExpR}
+          label={"Driving Experience"}
+          value={chauffeur.drivingExp}
+          required={false}
+          options={["2 Years", "5 Years", "10 Years", "10+ Years"]}
+        />
+        <TempSelectInput
+          setState={setavailabilityR}
+          label={"Availability"}
+          value={chauffeur.availability}
+          required={false}
+          options={[
+            "Daytime",
+            "Nighttime",
+            "Weekends",
+            "On-call",
+            "Overnight",
+            "Flexible",
+            "Shift-based",
+          ]}
         />
         <TempTypeInput
           setState={setstreetAddressR}
@@ -238,7 +278,7 @@ export default function Info() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}

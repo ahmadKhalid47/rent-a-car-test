@@ -34,6 +34,9 @@ const initialState: any = {
   licenseValid: "",
   licenseCountry: "",
   licenseImages: [],
+  employmentType: "",
+  drivingExp: "",
+  availability: "",
 };
 
 export const chauffeurSlice = createSlice({
@@ -73,6 +76,9 @@ export const chauffeurSlice = createSlice({
     setlicenseValidR: (state, action) => {state.licenseValid = action.payload},
     setlicenseCountryR: (state, action) => {state.licenseCountry = action.payload},
     setlicenseImagesR: (state, action) => {state.licenseImages = action.payload},
+    setemploymentTypeR: (state, action) => {state.employmentType = action.payload},
+    setdrivingExpR: (state, action) => {state.drivingExp = action.payload},
+    setavailabilityR: (state, action) => {state.availability = action.payload},
 
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
@@ -117,6 +123,9 @@ export const {
   setlicenseImagesR,
   setAllValues,
   resetState,
+  setemploymentTypeR,
+  setdrivingExpR,
+  setavailabilityR,
 } = chauffeurSlice.actions;
 
 export default chauffeurSlice.reducer;
