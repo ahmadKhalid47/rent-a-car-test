@@ -105,7 +105,6 @@ export default function ListView({ data, makeData }: dataType) {
       setItemToDelete(null);
     }
   }
-  console.log(Make, Category);
 
   async function editItem(_id: any) {
     if (Model.trim() === "" || Make.trim() === "" || Category.trim() === "") {
@@ -120,7 +119,6 @@ export default function ListView({ data, makeData }: dataType) {
           item.Category?.toLowerCase() === Category.trim().toLowerCase()
       )
     ) {
-      console.log("hello");
       dispatch(setAlert("This Item Already Exists"));
       dispatch(setSeverity("error"));
       return;
