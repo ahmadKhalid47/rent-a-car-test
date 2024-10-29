@@ -273,7 +273,7 @@ export default function Nav() {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      pauseOnFocusLoss: true,
+      pauseOnFocusLoss: false,
     };
     if (global.severity === "success") {
       toast.success(global.alert, options);

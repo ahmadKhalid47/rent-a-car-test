@@ -9,7 +9,7 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
+import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -103,6 +103,20 @@ export default function ListView({ data }: dataType) {
   }
 
   async function editItem(_id: any) {
+    if (Type.trim() === "" || interior === "" || exterior === "") {
+      dispatch(setAlert("Please fill the input"));
+      dispatch(setSeverity("error"));
+      return;
+    } else if (
+      data.find(
+        (item:any) => item.Type?.toLowerCase() === Type.trim().toLowerCase()
+      )
+    ) {
+      dispatch(setAlert("This Item Already Exists"));
+      dispatch(setSeverity("error"));
+      return;
+    }
+
     try {
       setEditLoading(true);
       const formData = new FormData();
@@ -236,7 +250,7 @@ export default function ListView({ data }: dataType) {
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
+        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="w-[3%] flex justify-start  items-center ">
               {userData.length > 0 && (
@@ -283,7 +297,7 @@ export default function ListView({ data }: dataType) {
                 <div
                   className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
                     index % 2 !== 0
-                      ? "dark:bg-dark2 bg-light-grey"
+                      ? "dark:bg-dark2 bg-white"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >

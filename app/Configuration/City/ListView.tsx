@@ -11,7 +11,7 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
+import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
 import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -106,6 +106,20 @@ export default function ListView({ data, makeData }: dataType) {
   }
 
   async function editItem(_id: any) {
+    if (city.trim() === "") {
+      dispatch(setAlert("Please fill the input"));
+      dispatch(setSeverity("error"));
+      return;
+    } else if (
+      data.find(
+        (item: any) => item.city?.toLowerCase() === city.trim().toLowerCase()
+      )
+    ) {
+      dispatch(setAlert("This Item Already Exists"));
+      dispatch(setSeverity("error"));
+      return;
+    }
+
     try {
       setEditLoading(true);
       let result: any = await axios.post(`/api/updateCity/${_id}`, {
@@ -218,7 +232,7 @@ export default function ListView({ data, makeData }: dataType) {
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
+        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="flex justify-start items-center w-[3%]">
               {userData.length > 0 && (
@@ -273,7 +287,7 @@ export default function ListView({ data, makeData }: dataType) {
                 <div
                   className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
                     index % 2 !== 0
-                      ? "dark:bg-dark2 bg-light-grey"
+                      ? "dark:bg-dark2 bg-white"
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
