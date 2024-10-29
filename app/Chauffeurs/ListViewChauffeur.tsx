@@ -355,29 +355,29 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 w-[14%] ">
+                  <div className="text-start pe-3 truncate w-[14%] ">
                     {item?.data?.name}
                   </div>
                   <div
-                    className="text-start pe-3 w-[12%]  truncate"
+                    className="text-start pe-3 truncate w-[12%]"
                     title={item?.data?.phone}
                   >
                     {item?.data?.phone}
                   </div>
                   <div
-                    className="text-start pe-3 w-[17%]  truncate"
+                    className="text-start pe-3 truncate w-[17%]"
                     title={item?.data?.emailAddress}
                   >
                     {item?.data?.emailAddress}
                   </div>
 
-                  <div className="text-start pe-3 w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%] ">
                     {item?.data?.gender}
                   </div>
-                  <div className="text-start pe-3 w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%] ">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 w-[10%] ">
+                  <div className="text-start pe-3 truncate w-[10%] ">
                     {global.currentCurrency}
                     {item?.data?.rentPerDay}
                   </div>
