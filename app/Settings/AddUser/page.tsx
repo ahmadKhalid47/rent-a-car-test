@@ -98,7 +98,7 @@ export default function AddUser() {
           onSubmit={addAgent}
           className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >
-          <div className="w-full h-fit  ">
+          <div className="w-full h-fit">
             <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
               <div
                 className={`w-[100%] sm:w-[48%] h-fit flex flex-col justify-start items-start gap-1`}
