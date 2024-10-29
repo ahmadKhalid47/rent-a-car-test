@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import upload from "@/public/Paper Upload.svg";
+import React, { useCallback, useEffect, useState } from "react";
 import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
 import {
   SelectInput,
@@ -18,6 +19,9 @@ import {
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import { useDropzone } from "react-dropzone";
+import { setAlert, setSeverity } from "@/app/store/Global";
 
 export default function Reference() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
@@ -34,7 +38,46 @@ export default function Reference() {
   useEffect(() => {
     if (chauffeur.emergencyContactRelation === "Other") setPopUp2(true);
   }, [chauffeur.emergencyContactRelation]);
+    const onDrop = useCallback((acceptedFiles: any) => {
+      const maxFileSize = 5 * 1024 * 1024;
+      const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
+      const filteredFiles = acceptedFiles.filter((file: any) => {
+        if (!allowedTypes.includes(file.type)) {
+          dispatch(
+            setAlert(
+              `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+            )
+          );
+          dispatch(setSeverity("error"));
+
+          return false;
+        }
+        if (file.size > maxFileSize) {
+          dispatch(
+            setAlert(`File ${file.name} is too large. Maximum size is 5MB.`)
+          );
+          dispatch(setSeverity("error"));
+          return false;
+        }
+        return true;
+      });
+
+      if (filteredFiles.length > 0) {
+        // Replace the current file with the new one
+        // setFiles([
+        //   Object.assign(filteredFiles[0], {
+        //     preview: URL.createObjectURL(filteredFiles[0]),
+        //   }),
+        // ]);
+      }
+    }, []);
+
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    multiple: false,
+  });
   return (
     <div className="w-full h-fit">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -73,7 +116,49 @@ export default function Reference() {
               : ["Father", "Mother", "Brother", chauffeur.refRelation, "Other"]
           }
         />
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+          Upload {chauffeur.idCard ? "ID Card" : "Passport"}*
+        </span>
+        <div
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          {...getRootProps()}
+        >
+          <input {...getInputProps()} />
+          <img src={upload.src} />
+          <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
+            Drag & Drop or
+            <span className="text-link-blue cursor-pointer"> choose file </span>
+            to upload
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Select JPG, PNG
+          </span>
+          <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+            Maximum size 5MB
+          </span>
+        </div>
       </div>
+      <div className="flex justify-start gap-3 items-center w-[100%] mt-5">
+        <button
+          className="flex justify-center gap-3 items-center w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+          // onClick={() => {
+          //   dispatch(setotherR(!chauffeur.other));
+          // }}
+        >
+          {chauffeur.other ? (
+            <>
+              <FiMinusCircle className="text-[25px]" />
+              Cancel
+            </>
+          ) : (
+            <>
+              <FiPlusCircle className="text-[25px]" />
+              Add More
+            </>
+          )}
+        </button>
+      </div>
+
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
           Any Additional Notes{" "}
