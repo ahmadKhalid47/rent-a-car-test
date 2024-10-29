@@ -76,7 +76,7 @@ export default function chauffeurInfoMainPage() {
   }, []);
   console.log(chauffeurInfo);
   const accordionItems = [
-    { title: "Passport", content: <PassportChauffeurs /> },
+    { title: `${chauffeurInfo?.idCard ? "ID Card" : "Passport"}`, content: <PassportChauffeurs /> },
     { title: "Driving License", content: <LicenseChauffeurs /> },
     { title: "Others", content: <OtherChauffeurs /> },
   ];

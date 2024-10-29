@@ -14,7 +14,9 @@ export default function PassportChauffeurs() {
     <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-fit flex flex-col justify-start item-start">
-          <span className="w-full text-[#555555]">Passport Number </span>
+          <span className="w-full text-[#555555]">
+            {chauffeurInfo?.idCard ? "ID Card" : "Passport"} Number{" "}
+          </span>
           <span className="w-full">{chauffeurInfo?.passportNumber}</span>
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
