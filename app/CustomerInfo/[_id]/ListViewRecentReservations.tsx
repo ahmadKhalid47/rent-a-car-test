@@ -71,9 +71,9 @@ export default function ListViewRecentReservations({ data }: dataType) {
             </div>{" "}
             <div
               className="text-start truncate flex justify-start gap-2 items-center w-[16%]"
-              onClick={() => sort("customerName")}
+              onClick={() => sort("chauffeurName")}
             >
-              Customer Name{" "}
+              Chauffeur Name{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
@@ -142,7 +142,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                     {item.data?.vehicleName}
                   </div>
                   <div className="flex justify-start item-center gap-5 text-start truncate pe-3 w-[16%]">
-                    {item.data?.customerName}
+                    {item.data?.chauffeurName}
                   </div>
                   <div className="text-start truncate pe-3 w-[10%]">
                     {item.data?.city}
