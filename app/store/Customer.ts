@@ -37,6 +37,7 @@ const initialState: any = {
   licenseValid: "",
   licenseCountry: "",
   licenseImages: [],
+  idCard: false,
 };
 
 export const CustomerSlice = createSlice({
@@ -151,6 +152,9 @@ export const CustomerSlice = createSlice({
     setlicenseImagesR: (state, action) => {
       state.licenseImages = action.payload;
     },
+    setidCardR: (state, action) => {
+      state.idCard = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -197,6 +201,7 @@ export const {
   setlicenseValidR,
   setlicenseCountryR,
   setlicenseImagesR,
+  setidCardR
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;

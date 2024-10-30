@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
-import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
+import {
+  TempTypeInput,
+  TypeInput,
+} from "../../Components/InputComponents/TypeInput";
 import {
   SelectInput,
   TempSelectInput,
@@ -19,6 +22,7 @@ import {
   setlicenseValidR,
   setlicenseCountryR,
   setlicenseImagesR,
+  setidCardR,
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -77,12 +81,42 @@ export default function Rental() {
     <div className="w-full h-fit">
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
-          Passport Information
+          Passport or ID Card Info
         </span>
+        <div className="w-[100%] h-fit flex justify-start items-start gap-6 text-[14px]">
+          <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
+            <input
+              type="radio"
+              id="document1"
+              name="document"
+              value="Passport"
+              className="w-[18px] h-[18px]"
+              checked={!customer.idCard}
+              onChange={(e) => {
+                dispatch(setidCardR(e.target.value === "ID Card"));
+              }}
+            />
+            <label htmlFor="document1">Passport</label>
+          </div>
+          <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
+            <input
+              type="radio"
+              id="document2"
+              name="document"
+              value="ID Card"
+              className="w-[18px] h-[18px]"
+              checked={customer.idCard}
+              onChange={(e) => {
+                dispatch(setidCardR(e.target.value === "ID Card"));
+              }}
+            />
+            <label htmlFor="document2">ID Card</label>
+          </div>
+        </div>
 
         <TempTypeInput
           setState={setpassportNumberR}
-          label={"Passport / ID Number"}
+          label={`${customer.idCard ? "ID" : "Passport"} Number`}
           value={customer.passportNumber}
           required={false}
           type={"number"}
@@ -103,13 +137,15 @@ export default function Rental() {
           required={false}
           options={countries.map((item: any) => item.label)}
         />
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+          Upload {customer.idCard ? "ID Card" : "Passport"}*
+        </span>
 
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
-
           <img src={upload.src} />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
@@ -117,21 +153,19 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
-          </span>        </div>
-        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
-          Here you can Upload Passport / ID scans
-        </span>
+            Maximum size 5MB
+          </span>
+        </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={passfiles} setFiles={setPassFiles} />
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
         <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full my-1 c">
-          License Information
+          Driving License Information
         </span>
         <TempTypeInput
           setState={setlicenseNumberR}
@@ -140,7 +174,6 @@ export default function Rental() {
           required={false}
           type={"number"}
         />
-
         <TempTypeInput
           setState={setlicenseValidR}
           label={"Valid Until"}
@@ -148,7 +181,6 @@ export default function Rental() {
           required={false}
           type={"date"}
         />
-
         <TempSelectInput
           setState={setlicenseCountryR}
           label={"Issuing Country/State"}
@@ -156,7 +188,9 @@ export default function Rental() {
           required={false}
           options={countries.map((item: any) => item.label)}
         />
-
+        <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+          Upload Driving License*
+        </span>
         <div
           className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
           {...getRootPropsLic()}
@@ -169,14 +203,12 @@ export default function Rental() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
-          </span>        </div>
-        <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
-          Here you can Upload driving license scans
-        </span>
+            Maximum size 5MB
+          </span>
+        </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
           <Thumbs files={licfiles} setFiles={setLicFiles} />
         </div>
