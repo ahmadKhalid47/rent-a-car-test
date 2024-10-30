@@ -110,7 +110,7 @@ export default function Feature() {
   );
 }
 
-function Relation({ value, action, index }: any) {
+export function Relation({ value, action, index }: any) {
   let [other2, setOther2] = useState("");
   let [popUp2, setPopUp2] = useState(false);
   let [options, setoptions] = useState(

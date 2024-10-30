@@ -386,9 +386,9 @@ export default function Vehicles() {
           ) : currentPage === 1 ? (
             <Rental />
           ) : currentPage === 2 ? (
-            <Insurances />
-          ) : currentPage === 3 ? (
             <Feature />
+          ) : currentPage === 3 ? (
+            <Insurances />
           ) : null}
 
           <div

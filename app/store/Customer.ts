@@ -43,6 +43,13 @@ const initialState: any = {
   otherValid: "",
   otherCountry: "",
   otherImages: [],
+  emergency: [
+    {
+      emergencyName: "",
+      emergencyPhone: "",
+      emergencyRelation: "",
+    },
+  ],
 };
 
 export const CustomerSlice = createSlice({
@@ -175,6 +182,20 @@ export const CustomerSlice = createSlice({
     setotherImagesR: (state, action) => {
       state.otherImages = action.payload;
     },
+    addContact: (state) => {
+      state.emergency.push({
+        emergencyName: "",
+        emergencyPhone: "",
+        emergencyRelation: "",
+      });
+    },
+    updateContact: (state, action) => {
+      const { index, contact } = action.payload;
+      state.emergency[index] = contact;
+    },
+    removeContact: (state, action) => {
+      state.emergency.splice(action.payload, 1);
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -227,6 +248,9 @@ export const {
   setotherCountryR,
   setotherImagesR,
   setotherR,
+  addContact,
+  removeContact,
+  updateContact,
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;
