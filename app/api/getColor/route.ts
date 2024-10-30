@@ -12,7 +12,6 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-
     await connectDb();
     const adminCheck = await RegistrationModel.findOne({ admin: true });
 

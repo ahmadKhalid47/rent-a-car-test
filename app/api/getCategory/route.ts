@@ -14,14 +14,17 @@ export async function POST(req: Request) {
     }
     await connectDb();
     const adminCheck = await RegistrationModel.findOne({ admin: true });
+
     const data = await CategoryModel.find({
       $or: [{ createdBy }, { createdBy: adminCheck._id }],
     })
       .collation({ locale: "en", strength: 2 }) // Case-insensitive collation
       .sort({ Category: 1 })
       .lean();
-    
-    return NextResponse.json({ success: true, data });
+
+    return NextResponse.json({
+      data,
+    });
   } catch (err) {
     console.error("Error processing request: ", err);
     return NextResponse.json(
