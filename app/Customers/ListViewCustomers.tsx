@@ -93,7 +93,7 @@ export default function ListViewcustomers({ data }: dataType) {
       setDeleteLoading(true);
 await axios.delete(`/api/deleteSingleItem/${_id}`, {
   data: {
-    model: "Customer",
+    model: "customer",
   },
 });      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Customer Deleted Successfully"));

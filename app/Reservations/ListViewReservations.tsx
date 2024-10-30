@@ -98,7 +98,7 @@ export default function ListViewreservation({ data }: dataType) {
       setDeleteLoading(true);
       await axios.delete(`/api/deleteSingleItem/${_id}`, {
         data: {
-          model: "Reservation",
+          model: "reservation",
         },
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
