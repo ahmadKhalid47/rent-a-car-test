@@ -15,10 +15,15 @@ const initialState: any = {
   city: "",
   postalCode: "",
   chauffeurImage: [],
-  refName: "",
-  refPhone: "",
-  refAddress: "",
-  refRelation: "",
+  reference: [
+    {
+      refName: "",
+      refPhone: "",
+      refAddress: "",
+      refRelation: "",
+      refImages: [],
+    },
+  ],
   emergency: [
     {
       emergencyName: "",
@@ -185,6 +190,22 @@ export const chauffeurSlice = createSlice({
     removeContact: (state, action) => {
       state.emergency.splice(action.payload, 1);
     },
+    addReference: (state) => {
+      state.reference.push({
+        refName: "",
+        refPhone: "",
+        refAddress: "",
+        refRelation: "",
+        refImages: [],
+      });
+    },
+    updateReference: (state, action) => {
+      const { index, contact } = action.payload;
+      state.reference[index] = contact;
+    },
+    removeReference: (state, action) => {
+      state.reference.splice(action.payload, 1);
+    },
   },
 });
 
@@ -233,6 +254,9 @@ export const {
   addContact,
   updateContact,
   removeContact,
+  addReference,
+  removeReference,
+  updateReference,
 } = chauffeurSlice.actions;
 
 export default chauffeurSlice.reducer;

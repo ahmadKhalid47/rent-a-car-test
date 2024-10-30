@@ -1,7 +1,10 @@
 "use client";
 import upload from "@/public/Paper Upload.svg";
 import React, { useCallback, useEffect, useState } from "react";
-import { TempTypeInput, TypeInput } from "../../Components/InputComponents/TypeInput";
+import {
+  TempTypeInput,
+  TypeInput,
+} from "../../Components/InputComponents/TypeInput";
 import {
   SelectInput,
   TempSelectInput,
@@ -27,6 +30,7 @@ export default function Reference() {
   let [other2, setOther2] = useState("");
   let [popUp, setPopUp] = useState(false);
   let [popUp2, setPopUp2] = useState(false);
+  console.log(chauffeur);
 
   useEffect(() => {
     if (chauffeur.refRelation === "Other") setPopUp(true);
@@ -35,41 +39,40 @@ export default function Reference() {
   useEffect(() => {
     if (chauffeur.emergencyContactRelation === "Other") setPopUp2(true);
   }, [chauffeur.emergencyContactRelation]);
-    const onDrop = useCallback((acceptedFiles: any) => {
-      const maxFileSize = 5 * 1024 * 1024;
-      const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+  const onDrop = useCallback((acceptedFiles: any) => {
+    const maxFileSize = 5 * 1024 * 1024;
+    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
-      const filteredFiles = acceptedFiles.filter((file: any) => {
-        if (!allowedTypes.includes(file.type)) {
-          dispatch(
-            setAlert(
-              `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
-            )
-          );
-          dispatch(setSeverity("error"));
+    const filteredFiles = acceptedFiles.filter((file: any) => {
+      if (!allowedTypes.includes(file.type)) {
+        dispatch(
+          setAlert(
+            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
+          )
+        );
+        dispatch(setSeverity("error"));
 
-          return false;
-        }
-        if (file.size > maxFileSize) {
-          dispatch(
-            setAlert(`File ${file.name} is too large. Maximum size is 5MB.`)
-          );
-          dispatch(setSeverity("error"));
-          return false;
-        }
-        return true;
-      });
-
-      if (filteredFiles.length > 0) {
-        // Replace the current file with the new one
-        // setFiles([
-        //   Object.assign(filteredFiles[0], {
-        //     preview: URL.createObjectURL(filteredFiles[0]),
-        //   }),
-        // ]);
+        return false;
       }
-    }, []);
+      if (file.size > maxFileSize) {
+        dispatch(
+          setAlert(`File ${file.name} is too large. Maximum size is 5MB.`)
+        );
+        dispatch(setSeverity("error"));
+        return false;
+      }
+      return true;
+    });
 
+    if (filteredFiles.length > 0) {
+      // Replace the current file with the new one
+      // setFiles([
+      //   Object.assign(filteredFiles[0], {
+      //     preview: URL.createObjectURL(filteredFiles[0]),
+      //   }),
+      // ]);
+    }
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
