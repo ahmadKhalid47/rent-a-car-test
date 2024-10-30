@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { make, Category, createdBy } = await req.json();
-    console.log(make, createdBy, Category);
 
     connectDb();
     await new MakeModel({ make, Category, createdBy }).save();

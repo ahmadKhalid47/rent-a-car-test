@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { Insurance, recurring, createdBy } = await req.json();
-    console.log(Insurance, createdBy);
 
     connectDb();
     await new InsuranceModel({ Insurance, recurring, createdBy }).save();

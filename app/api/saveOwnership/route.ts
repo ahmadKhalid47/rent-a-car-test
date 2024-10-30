@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { Ownership, createdBy } = await req.json();
-    console.log(Ownership, createdBy);
 
     connectDb();
     await new OwnershipModel({ Ownership, createdBy }).save();

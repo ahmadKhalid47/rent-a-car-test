@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { Category, createdBy } = await req.json();
-    console.log(Category, createdBy);
 
     connectDb();
     await new CategoryModel({ Category, createdBy }).save();
