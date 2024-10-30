@@ -219,7 +219,7 @@ export default function customers() {
                     )?.keyValue || ""
                   }
                 >
-                  <option value="">Rent</option>
+                  <option value="">Type</option>
                   {Array.from(
                     new Set(customersData.map((item) => item.data.customerType))
                   ).map((customerType) => (

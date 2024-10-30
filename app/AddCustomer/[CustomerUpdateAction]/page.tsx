@@ -37,6 +37,7 @@ export default function Vehicles() {
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
+  console.log(customer);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -227,7 +228,6 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
-
 
       await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
         ...customer,
