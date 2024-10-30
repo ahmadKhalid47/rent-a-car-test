@@ -50,12 +50,12 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getCity", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "City",
           sortField: "City",
         });
-        const result2 = await axios.post("/api/getCountry", {
+        const result2 = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Country",
           sortField: "Country",
@@ -93,10 +93,13 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveCity`, {
-        country: Make,
-        city: city,
-        createdBy: myProfile._id,
+      await axios.post("/api/saveSingleConfiguration", {
+        model: "City", // Specify the model name
+        data: {
+          country: Make,
+          city: city,
+          createdBy: myProfile._id,
+        },
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

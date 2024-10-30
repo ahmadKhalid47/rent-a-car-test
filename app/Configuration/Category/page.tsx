@@ -45,7 +45,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getCategory", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Category",
           sortField: "Category",
@@ -83,10 +83,13 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveCategory`, {
-        Category,
-        createdBy: myProfile._id,
-      });
+await axios.post("/api/saveSingleConfiguration", {
+  model: "Category", // Specify the model name
+  data: {
+    Category, // The category data
+    createdBy: myProfile._id, // The ID of the user creating the category
+  },
+});
       dispatch(setAlert("Category Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {

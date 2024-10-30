@@ -45,7 +45,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getOwnership", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Ownership",
           sortField: "Ownership",
@@ -83,11 +83,13 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      await axios.post(`/api/saveOwnership`, {
-        Ownership,
-        createdBy: myProfile._id,
+      await axios.post("/api/saveSingleConfiguration", {
+        model: "Ownership",
+        data: {
+          Ownership: Ownership,
+          createdBy: myProfile._id,
+        },
       });
-
       dispatch(setAlert("Ownership Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       if (action === "close") {

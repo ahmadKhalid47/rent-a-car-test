@@ -47,7 +47,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getColor", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Color",
           sortField: "ColorName",
@@ -90,11 +90,15 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      await axios.post(`/api/saveColor`, {
-        Color,
-        ColorName,
-        createdBy: myProfile._id,
-      });
+await axios.post("/api/saveSingleConfiguration", {
+  model: "Color", // Specify the model name
+  data: {
+    Color,
+    ColorName,
+    createdBy: myProfile._id,
+  },
+});
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Color Saved Successfully"));
       if (action === "close") {

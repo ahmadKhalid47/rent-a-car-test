@@ -48,12 +48,12 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getMake", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Make",
           sortField: "Make",
         });
-        const result2 = await axios.post("/api/getCategory", {
+        const result2 = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Category",
           sortField: "Category",
@@ -93,11 +93,14 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      await axios.post(`/api/saveMake`, {
-        make,
-        Category,
-        createdBy: myProfile._id,
-      });
+await axios.post("/api/saveSingleConfiguration", {
+  model: "Make", // Specify the model name
+  data: {
+    make,
+    Category,
+    createdBy: myProfile._id,
+  },
+});
 
       dispatch(setAlert("Make Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

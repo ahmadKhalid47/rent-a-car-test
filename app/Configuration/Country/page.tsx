@@ -47,7 +47,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getCountry", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Country",
           sortField: "Country",
@@ -84,9 +84,12 @@ export default function Vehicles() {
     }
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveCountry`, {
-        country,
-        createdBy: myProfile._id,
+      await axios.post("/api/saveSingleConfiguration", {
+        model: "Country", // Specify the model name
+        data: {
+          country,
+          createdBy: myProfile._id,
+        },
       });
 
       // setCountryReloader(CountryReloader + 1);

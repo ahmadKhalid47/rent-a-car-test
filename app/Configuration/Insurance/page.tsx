@@ -54,7 +54,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getInsurance", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Insurance",
           sortField: "Insurance",
@@ -93,11 +93,14 @@ export default function Vehicles() {
 
     try {
       setLoading(action);
-      let result: any = await axios.post(`/api/saveInsurance`, {
-        Insurance,
-        recurring,
-        createdBy: myProfile._id,
-      });
+await axios.post("/api/saveSingleConfiguration", {
+  model: "Insurance", // Specify the model name
+  data: {
+    Insurance,
+    recurring,
+    createdBy: myProfile._id,
+  },
+});
 
       dispatch(setAlert("Insurance Saved Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
