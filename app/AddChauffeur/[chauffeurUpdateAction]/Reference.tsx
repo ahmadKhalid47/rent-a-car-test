@@ -11,9 +11,6 @@ import {
   setrefPhoneR,
   setrefAddressR,
   setrefRelationR,
-  setemergencyContactNameR,
-  setemergencyContactPhoneR,
-  setemergencyContactRelationR,
   setadditionalR,
 } from "@/app/store/chauffeur";
 import { RootState } from "@/app/store";
@@ -262,7 +259,6 @@ export default function Reference() {
               <button
                 className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
-                  dispatch(setemergencyContactRelationR(other2));
                   setPopUp2(false);
                 }}
               >

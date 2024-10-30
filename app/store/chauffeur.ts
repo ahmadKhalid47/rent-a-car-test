@@ -15,9 +15,6 @@ const initialState: any = {
   city: "",
   postalCode: "",
   chauffeurImage: [],
-  emergencyContactName: "",
-  emergencyContactPhone: "",
-  emergencyContactRelation: "",
   refName: "",
   refPhone: "",
   refAddress: "",
@@ -94,15 +91,6 @@ export const chauffeurSlice = createSlice({
     },
     setchauffeurImageR: (state, action) => {
       state.chauffeurImage = action.payload;
-    },
-    setemergencyContactNameR: (state, action) => {
-      state.emergencyContactName = action.payload;
-    },
-    setemergencyContactPhoneR: (state, action) => {
-      state.emergencyContactPhone = action.payload;
-    },
-    setemergencyContactRelationR: (state, action) => {
-      state.emergencyContactRelation = action.payload;
     },
     setrefNameR: (state, action) => {
       state.refName = action.payload;
@@ -215,9 +203,6 @@ export const {
   setcityR,
   setpostalCodeR,
   setchauffeurImageR,
-  setemergencyContactNameR,
-  setemergencyContactPhoneR,
-  setemergencyContactRelationR,
   setrefNameR,
   setrefPhoneR,
   setrefAddressR,

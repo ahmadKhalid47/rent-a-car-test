@@ -18,9 +18,6 @@ const initialState: any = {
   isVip: "",
   customerImage: [],
   state: "",
-  emergencyContactName: "",
-  emergencyContactPhone: "",
-  emergencyContactRelation: "",
   ref1Name: "",
   ref1Phone: "",
   ref1Address: "",
@@ -107,15 +104,6 @@ export const CustomerSlice = createSlice({
     },
     setstateR: (state, action) => {
       state.state = action.payload;
-    },
-    setemergencyContactNameR: (state, action) => {
-      state.emergencyContactName = action.payload;
-    },
-    setemergencyContactPhoneR: (state, action) => {
-      state.emergencyContactPhone = action.payload;
-    },
-    setemergencyContactRelationR: (state, action) => {
-      state.emergencyContactRelation = action.payload;
     },
     setref1NameR: (state, action) => {
       state.ref1Name = action.payload;
@@ -227,9 +215,6 @@ export const {
   setAllValues,
   resetState,
   setstateR,
-  setemergencyContactNameR,
-  setemergencyContactPhoneR,
-  setemergencyContactRelationR,
   setref1NameR,
   setref1PhoneR,
   setref1AddressR,
