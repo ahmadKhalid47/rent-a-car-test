@@ -1,4 +1,5 @@
 "use client";
+import upload from "@/public/Paper Upload.svg";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import shape from "@/public/ShapeBlack.svg";
 import React, { useEffect, useState } from "react";
@@ -10,6 +11,9 @@ import {
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import { useDropzone } from "react-dropzone";
+import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
 
 export default function ReferenceComp() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
@@ -92,6 +96,11 @@ export default function ReferenceComp() {
                 />
               </div>
             </div>
+            <ImageUpload
+              value={reference?.refImages}
+              action={handleInputChange}
+              index={index}
+            />
           </div>
           {chauffeur?.reference?.length - 1 !== index && (
             <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1 mt-5">
@@ -126,6 +135,55 @@ export default function ReferenceComp() {
 }
 
 
+
+function ImageUpload({ value, action, index }: any) {
+  const [otherfiles, setOtherFiles] = useState<any>(value);
+  useEffect(() => {
+    setOtherFiles(value);
+  }, [value]);
+
+  const onDropOther = useFileDrop(
+    (files: any[]) =>
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+  );
+  const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
+    useDropzone({
+      onDrop: onDropOther,
+    });
+  useEffect(() => {
+    action(otherfiles, index, "refImages");
+  }, [otherfiles]);
+
+  return (
+    <>
+      <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+        Upload Image*
+      </span>
+
+      <div
+        className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+        {...getRootPropsOther()}
+      >
+        <input {...getInputPropsOther()} />
+        <img src={upload.src} />
+        <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
+          Drag & Drop or
+          <span className="text-link-blue cursor-pointer"> choose file </span>
+          to upload
+        </span>
+        <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+          Select JPG, PNG
+        </span>
+        <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+          Maximum size 5MB
+        </span>
+      </div>
+      <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+        <Thumbs files={otherfiles} setFiles={setOtherFiles} />
+      </div>
+    </>
+  );
+}
 
 
 export function Relation({ value, action, index }: any) {
