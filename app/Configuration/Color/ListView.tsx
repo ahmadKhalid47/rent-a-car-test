@@ -70,8 +70,11 @@ export default function ListView({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteColor/${_id}`);
-
+await axios.delete(`/api/deleteSingleItem/${_id}`, {
+  data: {
+    model: "Color",
+  },
+});
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Color Deleted Successfully"));
     } catch (err) {

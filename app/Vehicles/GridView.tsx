@@ -62,8 +62,11 @@ export default function GridView({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteVehicle/${_id}`);
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+await axios.delete(`/api/deleteSingleItem/${_id}`, {
+  data: {
+    model: "vehicle",
+  },
+});      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Vehicle Deleted Successfully"));
     } catch (err) {
       console.log(err);

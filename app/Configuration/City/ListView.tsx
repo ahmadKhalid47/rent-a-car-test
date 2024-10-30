@@ -11,7 +11,11 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
+import {
+  setAlert,
+  setSeverity,
+  setVehicleDataReloader,
+} from "@/app/store/Global";
 import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -74,7 +78,11 @@ export default function ListView({ data, makeData }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteCity/${_id}`);
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "City",
+        },
+      });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective City Deleted Successfully"));

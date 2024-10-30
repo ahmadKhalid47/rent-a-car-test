@@ -69,8 +69,11 @@ export default function ListView({ data, CategoryData }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteMake/${_id}`);
-
+await axios.delete(`/api/deleteSingleItem/${_id}`, {
+  data: {
+    model: "Make",
+  },
+});
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Make Deleted Successfully"));
     } catch (err) {

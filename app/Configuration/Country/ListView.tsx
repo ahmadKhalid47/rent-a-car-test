@@ -68,7 +68,11 @@ export default function ListView({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteCountry/${_id}`);
+await axios.delete(`/api/deleteSingleItem/${_id}`, {
+  data: {
+    model: "Country",
+  },
+});
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Country Deleted Successfully"));
     } catch (err) {

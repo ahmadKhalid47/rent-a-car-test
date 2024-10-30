@@ -8,7 +8,11 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
+import {
+  setAlert,
+  setSeverity,
+  setVehicleDataReloader,
+} from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -62,8 +66,11 @@ export default function ListView({ data }: any) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteCategory/${_id}`);
-
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "Category",
+        },
+      });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Category Deleted Successfully"));
     } catch (err) {

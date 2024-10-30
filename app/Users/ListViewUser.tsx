@@ -97,7 +97,11 @@ export default function ListViewUsers({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deleteUser/${_id}`);
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "registration",
+        },
+      });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective User Deleted Successfully"));
     } catch (err) {

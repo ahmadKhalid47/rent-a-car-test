@@ -15,7 +15,10 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
-import { formatCreatedAtDate, formatDuration } from "../Components/functions/formats";
+import {
+  formatCreatedAtDate,
+  formatDuration,
+} from "../Components/functions/formats";
 
 interface dataType {
   data: Array<Object>;
@@ -93,7 +96,11 @@ export default function ListViewreservation({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.delete(`/api/deletereservation/${_id}`);
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "Reservation",
+        },
+      });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Reservation Deleted Successfully"));
     } catch (err) {
@@ -110,7 +117,7 @@ export default function ListViewreservation({ data }: dataType) {
       let result: any = await axios.post(`/api/deleteManyreservation`, {
         _ids: itemToDeleteMany,
       });
-      
+
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Reservations Deleted Successfully"));
     } catch (err) {
