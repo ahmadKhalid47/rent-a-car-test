@@ -8,7 +8,7 @@ export default function AdditionalCustomers() {
 
   return (
     <div className="w-[100%] h-full overflow-auto py-4 px-5 scroll2">
-      <div className="w-[100%] h-fit font-[400] text-[14px] leading-[27px] text-justify">
+      <div className="w-[100%] h-fit font-[400] text-[14px] text-justify">
         {CustomerInfo?.additional
           ? CustomerInfo?.additional
           : "No Additional Note Added"}
