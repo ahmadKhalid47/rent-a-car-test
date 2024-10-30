@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -33,10 +32,8 @@ export default function ListViewcustomers({ data }: dataType) {
     [key: string]: "asc" | "desc";
   }>({});
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
 
   useEffect(() => {
     setSortedData(data);

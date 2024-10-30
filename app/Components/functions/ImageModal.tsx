@@ -1,4 +1,4 @@
-"use client"; // Only needed for app directory
+"use client"; 
 import { useState } from "react";
 
 export default function ImageModal({ src, classes }: any) {

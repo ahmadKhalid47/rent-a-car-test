@@ -1,37 +1,21 @@
 "use client";
 import React from "react";
-import { FaEye, FaTimes } from "react-icons/fa";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { setConfigurations } from "@/app/store/Configurations";
 import axios from "axios";
-import image404 from "@/public/image404.png";
-import { SwitchDamage } from "@/components/ui/switch";
 import ImageModal from "@/app/Components/functions/ImageModal";
 
 export default function Damages({ toggle }: any) {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   let Configurations = useSelector((state: RootState) => state.Configurations);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  const [damageIndex, setdamageIndex] = useState<any>(0);
-  const [imagePopup, setImagePopup] = useState<boolean>(false);
-  const [zoomed, setZoomed] = useState<boolean>(false);
-  const [imageLength, setImageLength] = useState<any>(
-    vehicleInfo.damages[damageIndex]?.files?.length
-  );
-  const [loading, setLoading] = useState<any>(false);
-
   let dispatch = useDispatch();
-
-  useEffect(() => {
-    setImageLength(vehicleInfo.damages[damageIndex]?.files?.length);
-  }, [damageIndex]);
 
   useEffect(() => {
     async function getData2() {
       try {
-        setLoading(true);
         let result: any = await axios.post(`/api/getConfigurations`, {
           createdBy: myProfile._id,
         });
@@ -39,7 +23,6 @@ export default function Damages({ toggle }: any) {
       } catch (error: any) {
         console.log(error);
       } finally {
-        setLoading(false);
       }
     }
     if (myProfile._id) getData2();
