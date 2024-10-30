@@ -108,8 +108,9 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyCustomer`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "customer",
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Customers Deleted Successfully"));

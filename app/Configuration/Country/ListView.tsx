@@ -87,8 +87,9 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyCountry`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "Country",
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Countries Deleted Successfully"));

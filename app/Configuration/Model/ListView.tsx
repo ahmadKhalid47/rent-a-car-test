@@ -94,8 +94,9 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyModel`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "Model",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

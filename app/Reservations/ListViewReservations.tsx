@@ -114,8 +114,9 @@ export default function ListViewreservation({ data }: dataType) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyreservation`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "reservation",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

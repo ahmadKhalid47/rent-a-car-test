@@ -112,8 +112,9 @@ export default function ListViewchauffeurs({ data }: dataType) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManychauffeur`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "chauffeur",
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Chauffeurs Deleted Successfully"));

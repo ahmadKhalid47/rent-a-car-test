@@ -102,8 +102,9 @@ export default function GridView({ data }: dataType) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/deleteManyVehicle`, {
+      await axios.post(`/api/deleteManyItem`, {
         _ids: itemToDeleteMany,
+        model: "vehicle",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
