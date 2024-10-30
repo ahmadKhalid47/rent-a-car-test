@@ -15,8 +15,6 @@ export default function Feature() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   let dispatch = useDispatch();
 
-  console.log(chauffeur?.emergency);
-
   const handleInputChange = (e: any, index: any, field: any) => {
     const updatedContact = {
       ...chauffeur?.emergency[index],

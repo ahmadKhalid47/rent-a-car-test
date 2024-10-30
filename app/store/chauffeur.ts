@@ -200,8 +200,8 @@ export const chauffeurSlice = createSlice({
       });
     },
     updateReference: (state, action) => {
-      const { index, contact } = action.payload;
-      state.reference[index] = contact;
+      const { index, reference } = action.payload;
+      state.reference[index] = reference;
     },
     removeReference: (state, action) => {
       state.reference.splice(action.payload, 1);
