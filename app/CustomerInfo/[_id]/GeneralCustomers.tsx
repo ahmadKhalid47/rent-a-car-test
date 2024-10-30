@@ -1,9 +1,9 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
-export default function GeneralChauffeurs() {
-  let { chauffeurInfo } = useSelector(
-    (state: RootState) => state.chauffeurInfo
+export default function GeneralCustomers() {
+  let { CustomerInfo } = useSelector(
+    (state: RootState) => state.CustomerInfo
   );
 
   return (
@@ -12,44 +12,44 @@ export default function GeneralChauffeurs() {
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Full Name: </p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.name ? chauffeurInfo?.name : "---"}
+            {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Gender:</p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.gender ? chauffeurInfo?.gender : "---"}
+            {CustomerInfo?.gender ? CustomerInfo?.gender : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Nationality:</p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.nationality ? chauffeurInfo?.nationality : "---"}
+            {CustomerInfo?.nationality ? CustomerInfo?.nationality : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Phone:</p>
           <div className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px] flex justify-start gap-3 items-center">
-            {chauffeurInfo?.phone ? chauffeurInfo?.phone : "---"}
+            {CustomerInfo?.phone ? CustomerInfo?.phone : "---"}
           </div>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Rent Per Day:</p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            ${chauffeurInfo?.rentPerDay ? chauffeurInfo?.rentPerDay : "---"}
+            ${CustomerInfo?.rentPerDay ? CustomerInfo?.rentPerDay : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Country:</p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.country ? chauffeurInfo?.country : "---"}
+            {CustomerInfo?.country ? CustomerInfo?.country : "---"}
           </p>
         </div>
 
         <div className="w-full h-fit flex justify-between items-start py-[3px]">
           <p className="font-[400] text-[18px] leading-[27px]">City:</p>
           <p className="w-[35%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.city ? chauffeurInfo?.city : "---"}
+            {CustomerInfo?.city ? CustomerInfo?.city : "---"}
           </p>
         </div>
       </div>
@@ -59,13 +59,13 @@ export default function GeneralChauffeurs() {
             Date Of Birth:
           </p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.dateOfBirth ? chauffeurInfo?.dateOfBirth : "---"}
+            {CustomerInfo?.dateOfBirth ? CustomerInfo?.dateOfBirth : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px]">
           <p className="font-[400] text-[18px] leading-[27px]">Email:</p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.emailAddress ? chauffeurInfo?.emailAddress : "---"}
+            {CustomerInfo?.emailAddress ? CustomerInfo?.emailAddress : "---"}
           </p>
         </div>
 
@@ -74,8 +74,8 @@ export default function GeneralChauffeurs() {
             Alternative Phone:
           </p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.alternativePhone
-              ? chauffeurInfo?.alternativePhone
+            {CustomerInfo?.alternativePhone
+              ? CustomerInfo?.alternativePhone
               : "---"}
           </p>
         </div>
@@ -84,8 +84,8 @@ export default function GeneralChauffeurs() {
             Street Address:
           </p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.streetAddress
-              ? chauffeurInfo?.streetAddress
+            {CustomerInfo?.streetAddress
+              ? CustomerInfo?.streetAddress
               : "---"}
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function GeneralChauffeurs() {
             State/Provinces:
           </p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.state ? chauffeurInfo?.state : "---"}
+            {CustomerInfo?.state ? CustomerInfo?.state : "---"}
           </p>
         </div>
         <div className="w-full h-fit flex justify-between items-start py-[3px]">
@@ -103,7 +103,7 @@ export default function GeneralChauffeurs() {
             Postal/Zip Code:
           </p>
           <p className="w-[45%] text-start break-words font-[400] text-[18px] leading-[27px]">
-            {chauffeurInfo?.postalCode ? chauffeurInfo?.postalCode : "---"}
+            {CustomerInfo?.postalCode ? CustomerInfo?.postalCode : "---"}
           </p>
         </div>
       </div>

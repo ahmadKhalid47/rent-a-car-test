@@ -1,9 +1,9 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
-export default function ReferenceChauffeurs() {
-  let { chauffeurInfo } = useSelector(
-    (state: RootState) => state.chauffeurInfo
+export default function ReferenceCustomers() {
+  let { CustomerInfo } = useSelector(
+    (state: RootState) => state.CustomerInfo
   );
 
   return (
@@ -11,15 +11,15 @@ export default function ReferenceChauffeurs() {
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-fit flex flex-col justify-start item-start">
           <span className="w-full text-[#555555]">Contact Number</span>
-          <span className="w-full">{chauffeurInfo?.refName}</span>
+          <span className="w-full">{CustomerInfo?.refName}</span>
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
           <span className="w-full text-[#555555]">Relation</span>
-          <span className="w-full">{chauffeurInfo?.refRelation}</span>
+          <span className="w-full">{CustomerInfo?.refRelation}</span>
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
           <span className="w-full text-[#555555]">Reference Phone</span>
-          <span className="w-full">{chauffeurInfo?.refPhone}</span>
+          <span className="w-full">{CustomerInfo?.refPhone}</span>
         </div>
       </div>
     </div>

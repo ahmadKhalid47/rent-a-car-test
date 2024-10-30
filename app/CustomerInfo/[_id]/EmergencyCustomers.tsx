@@ -1,9 +1,9 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
-export default function EmergencyChauffeurs() {
-  let { chauffeurInfo } = useSelector(
-    (state: RootState) => state.chauffeurInfo
+export default function EmergencyCustomers() {
+  let { CustomerInfo } = useSelector(
+    (state: RootState) => state.CustomerInfo
   );
 
   return (
@@ -13,13 +13,13 @@ export default function EmergencyChauffeurs() {
           <span className="w-full text-[#555555]">
             Contact Number
           </span>
-          {chauffeurInfo?.emergency?.map((item: any, index: any) => (
+          {CustomerInfo?.emergency?.map((item: any, index: any) => (
             <span className="w-full">{item?.emergencyName}</span>
           ))}
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
           <span className="w-full text-[#555555]">Relation</span>
-          {chauffeurInfo?.emergency?.map((item: any, index: any) => (
+          {CustomerInfo?.emergency?.map((item: any, index: any) => (
             <span className="w-full">
               {item?.emergencyRelation}
             </span>
@@ -29,7 +29,7 @@ export default function EmergencyChauffeurs() {
           <span className="w-full text-[#555555]">
             Emergency Phone
           </span>
-          {chauffeurInfo?.emergency?.map((item: any, index: any) => (
+          {CustomerInfo?.emergency?.map((item: any, index: any) => (
             <span className="w-full">{item?.emergencyPhone}</span>
           ))}
         </div>
