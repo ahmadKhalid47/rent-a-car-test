@@ -47,6 +47,8 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getOwnership", {
           createdBy: myProfile._id,
+          model: "Ownership",
+          sortField: "Ownership",
         });
 
         if (result?.data?.data) {

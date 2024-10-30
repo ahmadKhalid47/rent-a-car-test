@@ -47,6 +47,8 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getCategory", {
           createdBy: myProfile._id,
+          model: "Category",
+          sortField: "Category",
         });
 
         if (result?.data?.data) {

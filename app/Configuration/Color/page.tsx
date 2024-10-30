@@ -49,6 +49,8 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getColor", {
           createdBy: myProfile._id,
+          model: "Color",
+          sortField: "ColorName",
         });
 
         if (result?.data?.data) {

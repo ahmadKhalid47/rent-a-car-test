@@ -51,6 +51,8 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getFeature", {
           createdBy: myProfile._id,
+          model: "Feature",
+          sortField: "Feature",
         });
 
         if (result?.data?.data) {

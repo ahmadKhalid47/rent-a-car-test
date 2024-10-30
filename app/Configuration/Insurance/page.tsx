@@ -56,6 +56,8 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getInsurance", {
           createdBy: myProfile._id,
+          model: "Insurance",
+          sortField: "Insurance",
         });
 
         if (result?.data?.data) {

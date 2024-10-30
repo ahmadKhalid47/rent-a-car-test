@@ -52,9 +52,13 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getCity", {
           createdBy: myProfile._id,
+          model: "City",
+          sortField: "City",
         });
         const result2 = await axios.post("/api/getCountry", {
           createdBy: myProfile._id,
+          model: "Country",
+          sortField: "Country",
         });
         setMakeData(result2?.data?.data);
 

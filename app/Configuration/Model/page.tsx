@@ -52,9 +52,13 @@ export default function Vehicles() {
         setDataLoading(true);
         const result = await axios.post("/api/getModel", {
           createdBy: myProfile._id,
+          model: "Model",
+          sortField: "Model",
         });
         const result2 = await axios.post("/api/getMake", {
           createdBy: myProfile._id,
+          model: "Make",
+          sortField: "Make",
         });
         setMakeData(result2?.data?.data);
 
