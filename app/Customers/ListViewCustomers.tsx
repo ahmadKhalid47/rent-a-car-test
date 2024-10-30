@@ -332,7 +332,7 @@ export default function ListViewcustomers({ data }: dataType) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <Link
-                  href={`/CustomersInfo/${item?._id}`}
+                  href={`/CustomerInfo/${item?._id}`}
                   className={`w-full h-fit flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"

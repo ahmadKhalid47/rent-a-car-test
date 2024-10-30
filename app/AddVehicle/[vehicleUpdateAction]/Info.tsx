@@ -233,7 +233,7 @@ console.log("newFiles", newFiles);
           value={vehicle.make}
           required={true}
           options={Configurations?.Configurations?.make
-            ?.filter((item: any) => item.Category === CategorySelected)
+            ?.filter((item: any) => item.Category.trim() === CategorySelected)
             .map((item: any) => item.make)}
           link={"/Configuration/Make"}
         />
@@ -243,7 +243,7 @@ console.log("newFiles", newFiles);
           value={vehicle.model}
           required={true}
           options={Configurations?.Configurations?.model
-            ?.filter((item: any) => item.make === makeSelected)
+            ?.filter((item: any) => item.make.trim() === makeSelected)
             .map((item: any) => item.model)}
           link={"/Configuration/Model"}
         />
