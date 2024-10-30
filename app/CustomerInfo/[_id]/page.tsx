@@ -74,7 +74,7 @@ export default function CustomerInfoMainPage() {
     }
     getData();
   }, []);
-  console.log(CustomerInfo);
+  console.log(reservationsData);
   const accordionItems = [
     { title: `${CustomerInfo?.idCard ? "ID Card" : "Passport"}`, content: <PassportCustomers /> },
     { title: "Driving License", content: <LicenseCustomers /> },

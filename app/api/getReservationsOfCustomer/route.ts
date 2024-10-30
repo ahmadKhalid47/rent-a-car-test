@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { createdBy, chauffeur_id } = await req.json();
+    const { createdBy, customer_id } = await req.json();
     if (!createdBy) {
       return NextResponse.json(
         { error: "createdBy is required" },
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     }
     await connectDb();
     const data = await reservationModel
-      .find({ $and: [{ createdBy }, { chauffeur_id: chauffeur_id }] })
+      .find({ $and: [{ createdBy }, { customer_id: customer_id }] })
       .sort({ _id: -1 })
       .limit(6)
       .lean();
