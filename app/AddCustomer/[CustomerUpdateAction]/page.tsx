@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setAlert, setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import Rental from "./Rental";
-import Insurances from "./Insurances";
+import Reference from "./Reference";
 import Feature from "./Feature";
 import Info from "./Info";
 import { useRouter } from "next/navigation";
@@ -388,7 +388,7 @@ export default function Vehicles() {
           ) : currentPage === 2 ? (
             <Feature />
           ) : currentPage === 3 ? (
-            <Insurances />
+            <Reference />
           ) : null}
 
           <div

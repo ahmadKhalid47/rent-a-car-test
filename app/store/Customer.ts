@@ -50,6 +50,7 @@ const initialState: any = {
       emergencyRelation: "",
     },
   ],
+  additional: "",
 };
 
 export const CustomerSlice = createSlice({
@@ -196,6 +197,9 @@ export const CustomerSlice = createSlice({
     removeContact: (state, action) => {
       state.emergency.splice(action.payload, 1);
     },
+    setadditionalR: (state, action) => {
+      state.additional = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -251,6 +255,7 @@ export const {
   addContact,
   removeContact,
   updateContact,
+  setadditionalR
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;
