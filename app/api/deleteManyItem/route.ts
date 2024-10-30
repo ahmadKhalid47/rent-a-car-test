@@ -6,6 +6,7 @@ export async function POST(req: Request) {
     // Get model name and ids from the request body
     const { model, _ids } = await req.json();
     await connectDb(); // Ensure the database is connected
+console.log(model, _ids);
 
     // Dynamically import the model based on the model name provided
     const Model = await import(`@/app/models/${model}`).then(
