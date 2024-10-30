@@ -84,10 +84,10 @@ export default function ReferenceComp() {
                   type={"text"}
                   autoComplete="new-password"
                   className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
-                  placeholder={`Enter Reference Name`}
-                  value={reference?.refName}
+                  placeholder={`Enter Reference Address`}
+                  value={reference?.refAddress}
                   onChange={(e) =>
-                    handleInputChange(e.target.value, index, "refName")
+                    handleInputChange(e.target.value, index, "refAddress")
                   }
                 />
               </div>
