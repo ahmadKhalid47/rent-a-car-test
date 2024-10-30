@@ -38,6 +38,11 @@ const initialState: any = {
   licenseCountry: "",
   licenseImages: [],
   idCard: false,
+  other: false,
+  otherNumber: "",
+  otherValid: "",
+  otherCountry: "",
+  otherImages: [],
 };
 
 export const CustomerSlice = createSlice({
@@ -155,6 +160,21 @@ export const CustomerSlice = createSlice({
     setidCardR: (state, action) => {
       state.idCard = action.payload;
     },
+    setotherNumberR: (state, action) => {
+      state.otherNumber = action.payload;
+    },
+    setotherValidR: (state, action) => {
+      state.otherValid = action.payload;
+    },
+    setotherCountryR: (state, action) => {
+      state.otherCountry = action.payload;
+    },
+    setotherR: (state, action) => {
+      state.other = action.payload;
+    },
+    setotherImagesR: (state, action) => {
+      state.otherImages = action.payload;
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -201,7 +221,12 @@ export const {
   setlicenseValidR,
   setlicenseCountryR,
   setlicenseImagesR,
-  setidCardR
+  setidCardR,
+  setotherNumberR,
+  setotherValidR,
+  setotherCountryR,
+  setotherImagesR,
+  setotherR,
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;

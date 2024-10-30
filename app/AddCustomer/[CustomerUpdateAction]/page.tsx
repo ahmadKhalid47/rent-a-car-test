@@ -106,12 +106,27 @@ export default function Vehicles() {
         },
       });
 
+      const formData4 = new FormData();
+      for (let i = 0; i < customer?.otherImages.length; i++) {
+        if (customer?.otherImages[i] instanceof File) {
+          formData4.append("files", customer?.otherImages[i]);
+        } else {
+          // alreadyUploadedFiles.push(customer?.otherImages[i]);
+        }
+      }
+      const res4 = await axios.post("/api/upload", formData4, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       let result: any = await axios.post(`/api/saveCustomer`, {
         customer: {
           ...customer,
           customerImage: res?.data?.message,
           passportImages: res2?.data?.message,
           licenseImages: res3?.data?.message,
+          otherImages: res4?.data?.message,
         },
         createdBy: myProfile._id,
       });
@@ -203,12 +218,23 @@ export default function Vehicles() {
         },
       });
 
+      const formData4 = new FormData();
+      for (let i = 0; i < customer?.otherImages.length; i++) {
+        formData4.append("files", customer?.otherImages[i]);
+      }
+      const res4 = await axios.post("/api/uploadWithCondition", formData4, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
 
       await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
         ...customer,
         customerImage: res?.data?.message,
         passportImages: res2?.data?.message,
         licenseImages: res3?.data?.message,
+        otherImages: res4?.data?.message,
       });
       // } else {
       // await axios.post(

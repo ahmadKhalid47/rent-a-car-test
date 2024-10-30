@@ -23,6 +23,11 @@ import {
   setlicenseCountryR,
   setlicenseImagesR,
   setidCardR,
+  setotherNumberR,
+  setotherValidR,
+  setotherCountryR,
+  setotherImagesR,
+  setotherR,
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,11 +35,13 @@ import { removing } from "../../Components/functions/removingFileFromDrag";
 import { Thumbs } from "../../Components/functions/thumbsFromDrag";
 import { useFileDrop } from "../../Components/functions/onDragFromDrag";
 import { Country, State, City } from "country-state-city";
+import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);
   const [passfiles, setPassFiles] = useState<any>(customer?.passportImages);
   const [licfiles, setLicFiles] = useState<any>(customer?.licenseImages);
+  const [otherfiles, setOtherFiles] = useState<any>(customer?.otherImages);
   let dispatch = useDispatch();
   useEffect(() => {
     setPassFiles(customer.passportImages);
@@ -43,6 +50,11 @@ export default function Rental() {
   useEffect(() => {
     setLicFiles(customer.licenseImages);
   }, [customer.licenseImages]);
+
+  useEffect(() => {
+    setOtherFiles(customer.otherImages);
+  }, [customer.otherImages]);
+
 
   const onDropPass = useFileDrop(
     (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
@@ -76,6 +88,18 @@ export default function Rental() {
     value: country.isoCode,
     label: country.name,
   }));
+  const onDropOther = useFileDrop(
+    (files: any[]) =>
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+  );
+  const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
+    useDropzone({
+      onDrop: onDropOther,
+    });
+  useEffect(() => {
+    dispatch(setotherImagesR(otherfiles));
+  }, [otherfiles]);
+
 
   return (
     <div className="w-full h-fit">
@@ -213,6 +237,86 @@ export default function Rental() {
           <Thumbs files={licfiles} setFiles={setLicFiles} />
         </div>
       </div>
+
+      <div className="flex justify-start gap-3 items-center w-[100%] mt-5">
+        <button
+          className="flex justify-center gap-3 items-center w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+          onClick={() => {
+            dispatch(setotherR(!customer.other));
+          }}
+        >
+          {customer.other ? (
+            <>
+              <FiMinusCircle className="text-[25px]" />
+              Cancel
+            </>
+          ) : (
+            <>
+              <FiPlusCircle className="text-[25px]" />
+              Add Other
+            </>
+          )}
+        </button>
+      </div>
+      {customer.other && (
+        <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
+          <span className="flex justify-start gap-4 items-center font-[600] text-[20px] w-full my-1 c">
+            Other Information
+            {/* <span className="font-[400] text-[14px]">Name this field</span> */}
+          </span>
+          <TempTypeInput
+            setState={setotherNumberR}
+            label={"Number"}
+            value={customer.otherNumber}
+            required={false}
+            type={"number"}
+          />
+
+          <TempTypeInput
+            setState={setotherValidR}
+            label={"Valid Until"}
+            value={customer.otherValid}
+            required={false}
+            type={"date"}
+          />
+
+          <TempSelectInput
+            setState={setotherCountryR}
+            label={"Issuing Country/State"}
+            value={customer.otherCountry}
+            required={false}
+            options={countries.map((item: any) => item.label)}
+          />
+          <span className="flex justify-start gap-1 items-center font-[600] text-[20px] w-full mt-1 -mb-2 b">
+            Upload Image*
+          </span>
+
+          <div
+            className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+            {...getRootPropsOther()}
+          >
+            <input {...getInputPropsOther()} />
+            <img src={upload.src} />
+            <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
+              Drag & Drop or
+              <span className="text-link-blue cursor-pointer">
+                {" "}
+                choose file{" "}
+              </span>
+              to upload
+            </span>
+            <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+              Select JPG, PNG
+            </span>
+            <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
+              Maximum size 5MB
+            </span>
+          </div>
+          <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
+            <Thumbs files={otherfiles} setFiles={setOtherFiles} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
