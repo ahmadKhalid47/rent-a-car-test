@@ -261,7 +261,7 @@ export default function Vehicles() {
                   style={{ width: `${currentPage * 34}%` }}
                 ></div>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(0);
@@ -276,7 +276,7 @@ export default function Vehicles() {
                   <span className="text-center -translate-x-[2px]">1</span>
                 </button>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(1);
@@ -291,7 +291,7 @@ export default function Vehicles() {
                   2
                 </button>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(2);
@@ -307,7 +307,7 @@ export default function Vehicles() {
                   3
                 </button>
               </div>
-              <div className="w-[15%] h-[50px]  flex justify-center items-center z-[5]">
+              <div className="w-[20%] h-[50px]  flex justify-center items-center z-[5]">
                 <button
                   onClick={() => {
                     setGoToPage(3);
@@ -325,28 +325,28 @@ export default function Vehicles() {
             </div>
             <div className="w-full h-[50px] flex justify-between items-center relative text-[10px] sm:text-[12px] md:text-[16px] leading-[14px] md:leading-[19px] text-shadow">
               <div
-                className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 0 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 General Information
               </div>
               <div
-                className={`w-[15%] h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 1 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Identity Information
               </div>
               <div
-                className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 2 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
                 Emergency Information
               </div>
               <div
-                className={`w-[15%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
+                className={`w-[20%] xl:w-fi h-[50px]  flex justify-center text-center items-center ${
                   currentPage >= 3 ? "text-main-blue font-[600]" : " font-[400]"
                 }`}
               >
