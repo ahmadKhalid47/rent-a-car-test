@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import General from "./General";
+import General from "../../Components/InfoComponents/General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
 import Additional from './Additional';

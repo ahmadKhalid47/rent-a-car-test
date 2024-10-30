@@ -1,10 +1,11 @@
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 
-export default function EmergencyCustomers() {
-  let { CustomerInfo } = useSelector(
-    (state: RootState) => state.CustomerInfo
-  );
+type InfoComponentProps = {
+  infoKey: "chauffeurInfo" | "CustomerInfo";
+};
+export const EmergencyCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
+  const info = useSelector((state: RootState) => state[infoKey][infoKey]);
 
   return (
     <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
@@ -13,13 +14,13 @@ export default function EmergencyCustomers() {
           <span className="w-full text-[#555555]">
             Contact Number
           </span>
-          {CustomerInfo?.emergency?.map((item: any, index: any) => (
+          {info?.emergency?.map((item: any, index: any) => (
             <span className="w-full">{item?.emergencyName}</span>
           ))}
         </div>
         <div className="w-fit flex flex-col justify-start item-start">
           <span className="w-full text-[#555555]">Relation</span>
-          {CustomerInfo?.emergency?.map((item: any, index: any) => (
+          {info?.emergency?.map((item: any, index: any) => (
             <span className="w-full">
               {item?.emergencyRelation}
             </span>
@@ -29,7 +30,7 @@ export default function EmergencyCustomers() {
           <span className="w-full text-[#555555]">
             Emergency Phone
           </span>
-          {CustomerInfo?.emergency?.map((item: any, index: any) => (
+          {info?.emergency?.map((item: any, index: any) => (
             <span className="w-full">{item?.emergencyPhone}</span>
           ))}
         </div>

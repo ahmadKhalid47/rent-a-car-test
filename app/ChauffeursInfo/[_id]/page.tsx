@@ -1,10 +1,5 @@
 "use client";
 import React from "react";
-import PassportChauffeurs from "./PassportChauffeurs";
-import LicenseChauffeurs from "./LicenseChauffeurs";
-import EmergencyChauffeurs from "./EmergencyChauffeurs";
-import ReferenceChauffeurs from "./ReferenceChauffeurs";
-import AdditionalChauffeurs from "./AdditionalChauffeurs";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -14,15 +9,19 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { setchauffeurInfo } from "@/app/store/chauffeurInfo";
 import { useParams } from "next/navigation";
-import GeneralChauffeurs from "./GeneralChauffeurs";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { formatCreatedAtDate } from "@/app/Components/functions/formats";
-import General from "@/app/VehicleInfo/[_id]/General";
+import General from "@/app/Components/InfoComponents/General";
 import { FaChevronDown } from "react-icons/fa";
 import { MediumLoader } from "@/app/Components/Loader";
 import ListViewRecentReservations from "./ListViewRecentReservations";
-import OtherChauffeurs from "./OtherChauffeurs";
+import { PassportCustomers } from "@/app/Components/InfoComponents/PassportCustomers";
+import { LicenseCustomers } from "@/app/Components/InfoComponents/LicenseCustomers";
+import { EmergencyCustomers } from "@/app/Components/InfoComponents/EmergencyCustomers";
+import { ReferenceCustomers } from "@/app/Components/InfoComponents/ReferenceCustomers";
+import { AdditionalCustomers } from "@/app/Components/InfoComponents/AdditionalCustomers";
+import { OtherCustomers } from "@/app/Components/InfoComponents/OtherCustomers";
 
 export default function chauffeurInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -76,16 +75,32 @@ export default function chauffeurInfoMainPage() {
   }, []);
   console.log(chauffeurInfo);
   const accordionItems = [
-    { title: `${chauffeurInfo?.idCard ? "ID Card" : "Passport"}`, content: <PassportChauffeurs /> },
-    { title: "Driving License", content: <LicenseChauffeurs /> },
-    { title: "Others", content: <OtherChauffeurs /> },
+    {
+      title: `${chauffeurInfo?.idCard ? "ID Card" : "Passport"}`,
+      content: <PassportCustomers infoKey="chauffeurInfo" />,
+    },
+    {
+      title: "Driving License",
+      content: <LicenseCustomers infoKey="chauffeurInfo" />,
+    },
+    { title: "Others", content: <OtherCustomers infoKey="chauffeurInfo" /> },
   ];
   const accordionItems2 = [
-    { title: "Emergency Information", content: <EmergencyChauffeurs /> },
-    { title: "Reference Information", content: <ReferenceChauffeurs /> },
-    { title: "Additional Notes", content: <AdditionalChauffeurs /> },
+    {
+      title: "Emergency Information",
+      content: <EmergencyCustomers infoKey="chauffeurInfo" />,
+    },
+    {
+      title: "Reference Information",
+      content: <ReferenceCustomers infoKey="chauffeurInfo" />,
+    },
+    {
+      title: "Additional Notes",
+      content: <AdditionalCustomers infoKey="chauffeurInfo" />,
+    },
   ];
- useEffect(() => {
+
+  useEffect(() => {
    async function getData() {
      try {
        setLoading(true);

@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
-import PassportCustomers from "./PassportCustomers";
-import LicenseCustomers from "./LicenseCustomers";
-import EmergencyCustomers from "./EmergencyCustomers";
-import ReferenceCustomers from "./ReferenceCustomers";
-import AdditionalCustomers from "./AdditionalCustomers";
+import {PassportCustomers} from "../../Components/InfoComponents/PassportCustomers";
+import {LicenseCustomers} from "../../Components/InfoComponents/LicenseCustomers";
+import {EmergencyCustomers} from "../../Components/InfoComponents/EmergencyCustomers";
+import {ReferenceCustomers} from "../../Components/InfoComponents/ReferenceCustomers";
+import {AdditionalCustomers} from "../../Components/InfoComponents/AdditionalCustomers";
+import {OtherCustomers} from "../../Components/InfoComponents/OtherCustomers";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -14,15 +15,13 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { setCustomerInfo } from "@/app/store/Customerinfo";
 import { useParams } from "next/navigation";
-import GeneralCustomers from "./GeneralCustomers";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { formatCreatedAtDate } from "@/app/Components/functions/formats";
-import General from "@/app/VehicleInfo/[_id]/General";
+import General from "@/app/Components/InfoComponents/General";
 import { FaChevronDown } from "react-icons/fa";
 import { MediumLoader } from "@/app/Components/Loader";
 import ListViewRecentReservations from "./ListViewRecentReservations";
-import OtherCustomers from "./OtherCustomers";
 
 export default function CustomerInfoMainPage() {
   let [activeButton, setActiveButton] = useState("General");
@@ -76,14 +75,29 @@ export default function CustomerInfoMainPage() {
   }, []);
   console.log(reservationsData);
   const accordionItems = [
-    { title: `${CustomerInfo?.idCard ? "ID Card" : "Passport"}`, content: <PassportCustomers /> },
-    { title: "Driving License", content: <LicenseCustomers /> },
-    { title: "Others", content: <OtherCustomers /> },
+    {
+      title: `${CustomerInfo?.idCard ? "ID Card" : "Passport"}`,
+      content: <PassportCustomers infoKey="CustomerInfo" />,
+    },
+    {
+      title: "Driving License",
+      content: <LicenseCustomers infoKey="CustomerInfo" />,
+    },
+    { title: "Others", content: <OtherCustomers infoKey="CustomerInfo" /> },
   ];
   const accordionItems2 = [
-    { title: "Emergency Information", content: <EmergencyCustomers /> },
-    { title: "Reference Information", content: <ReferenceCustomers /> },
-    { title: "Additional Notes", content: <AdditionalCustomers /> },
+    {
+      title: "Emergency Information",
+      content: <EmergencyCustomers infoKey="CustomerInfo" />,
+    },
+    {
+      title: "Reference Information",
+      content: <ReferenceCustomers infoKey="CustomerInfo" />,
+    },
+    {
+      title: "Additional Notes",
+      content: <AdditionalCustomers infoKey="CustomerInfo" />,
+    },
   ];
  useEffect(() => {
    async function getData() {
