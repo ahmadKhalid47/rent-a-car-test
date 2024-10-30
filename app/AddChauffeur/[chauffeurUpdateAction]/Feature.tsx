@@ -2,7 +2,6 @@
 import shape from "@/public/ShapeBlack.svg";
 import React, { useEffect, useState } from "react";
 import {
-  setemergencyContactRelationR,
   updateContact,
   removeContact,
   addContact,
