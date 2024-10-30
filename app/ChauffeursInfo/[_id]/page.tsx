@@ -73,7 +73,6 @@ export default function chauffeurInfoMainPage() {
     }
     getData();
   }, []);
-  console.log(chauffeurInfo);
   const accordionItems = [
     {
       title: `${chauffeurInfo?.idCard ? "ID Card" : "Passport"}`,
