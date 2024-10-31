@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import General from "../../Components/InfoComponents/General";
 import Rental from "./Rental";
 import Insurance from "./Insurance";
-import Additional from './Additional';
+import Additional from "./Additional";
 import Other from "./Other";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -66,7 +66,15 @@ export default function CarInfoMainPage() {
         setLoading(true);
         let result: any = await axios.post(`/api/getVehicleInfo/${_id}`);
         if (result?.data?.data) {
-          dispatch(setVehicleInfo(result?.data?.data?.data));
+          console.log("result: ", result?.data?.data);
+
+          dispatch(
+            setVehicleInfo({
+              ...result?.data?.data?.data,
+              active: result?.data?.data?.active,
+              rentOut: result?.data?.data?.rentOut,
+            })
+          );
         } else {
           setShowError(result?.data?.error);
         }
@@ -202,8 +210,21 @@ export default function CarInfoMainPage() {
                     )}
                   </div>
                   <div className="w-[50%] flex justify-start flex-col items-start gap-3">
-                    <span className="complete-status border-[1px] px-3 rounded-[5px]">
-                      active
+                    <span
+                      className={`w-[60px] truncate border-[1px] px-1 rounded-[5px] h-[22px] text-center text-[12px] leading-none flex justify-center items-center
+                        ${
+                          vehicleInfo?.rentOut
+                            ? "progress-status"
+                            : !vehicleInfo?.active
+                            ? "progress-status"
+                            : "complete-status"
+                        }`}
+                    >
+                      {vehicleInfo?.rentOut
+                        ? "On Trip"
+                        : !vehicleInfo?.active
+                        ? "In Active"
+                        : "Available"}
                     </span>
                     <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
                       <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black  mt-[3px]">
@@ -226,13 +247,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Making Year
                         </span>
-                        <span >{vehicleInfo?.year}</span>
+                        <span>{vehicleInfo?.year}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           No. Of Seats
                         </span>
-                        <span >{vehicleInfo?.passengers}</span>
+                        <span>{vehicleInfo?.passengers}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -240,15 +261,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Transmission
                         </span>
-                        <span >
-                          {vehicleInfo?.transmission?.split(" ")[0]}
-                        </span>
+                        <span>{vehicleInfo?.transmission?.split(" ")[0]}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Engine Volume
                         </span>
-                        <span >{vehicleInfo?.engineVolume}</span>
+                        <span>{vehicleInfo?.engineVolume}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -270,7 +289,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Fuel Type
                         </span>
-                        <span >{vehicleInfo?.fuelType}</span>
+                        <span>{vehicleInfo?.fuelType}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -298,7 +317,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Fuel Capacity
                         </span>
-                        <span >{vehicleInfo?.fuelCapacity}</span>
+                        <span>{vehicleInfo?.fuelCapacity}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -306,13 +325,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           City
                         </span>
-                        <span >{vehicleInfo?.city}</span>
+                        <span>{vehicleInfo?.city}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Country
                         </span>
-                        <span >{vehicleInfo?.country}</span>
+                        <span>{vehicleInfo?.country}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -320,7 +339,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Drivetrain
                         </span>
-                        <span >
+                        <span>
                           {"("}
                           {vehicleInfo?.Drivetrain?.split("(")[1]}
                         </span>
@@ -329,7 +348,7 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Ownership
                         </span>
-                        <span >{vehicleInfo?.Ownership}</span>
+                        <span>{vehicleInfo?.Ownership}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -337,13 +356,13 @@ export default function CarInfoMainPage() {
                         <span className="dark:text-white text-[#555555]">
                           Body Type
                         </span>
-                        <span >{vehicleInfo?.type}</span>
+                        <span>{vehicleInfo?.type}</span>
                       </div>
                       <div className="w-[45%] flex justify-between items-center">
                         <span className="dark:text-white text-[#555555]">
                           Category Type
                         </span>
-                        <span >{vehicleInfo?.Category}</span>
+                        <span>{vehicleInfo?.Category}</span>
                       </div>
                     </div>
                     <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
