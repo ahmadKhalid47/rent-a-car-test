@@ -260,11 +260,11 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
-              <img
+              {/* <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() => sort("ID")}
-              />
+              /> */}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[10%]">
               Category
@@ -322,7 +322,9 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                   </div>
                   <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
-                      !reverse ? index + 1 : paginatedData.length - index
+                      !reverse
+                        ? (page - 1) * itemsPerPage + 1 + index
+                        : paginatedData.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-3 w-[10%] truncate">

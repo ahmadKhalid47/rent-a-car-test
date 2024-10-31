@@ -244,11 +244,11 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
-              <img
+              {/* <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() => sort("ID")}
-              />
+              /> */}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[75%]">
               Country
