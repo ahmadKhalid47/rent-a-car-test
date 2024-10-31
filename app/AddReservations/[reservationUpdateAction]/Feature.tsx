@@ -97,7 +97,7 @@ console.log(reservation?.vehicle_id);
             <div
               key={item._id}
               ref={(el: any) => (vehicleRefs.current[index] = el)} // Store ref for each vehicle
-              className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
+              className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] h-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <img

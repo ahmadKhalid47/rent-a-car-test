@@ -145,7 +145,7 @@ export default function Rental({ data, loading }: dataType) {
             <div
               key={item._id}
               ref={(el: any) => (chauffeurRefs.current[index] = el)} // Store ref for each item
-              className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
+              className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">

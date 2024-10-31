@@ -93,7 +93,7 @@ export default function Info({ data, loading }: dataType) {
             <div
               key={item._id}
               ref={(el: any) => (customerRefs.current[index] = el)} // Assign ref to each customer div
-              className="w-[100%] rounded-[15px] shadow px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
+              className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">
                 <img
