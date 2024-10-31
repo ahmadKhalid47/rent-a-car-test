@@ -233,7 +233,7 @@ export default function Info() {
             VIP Client
           </label>
           <div className="w-full h-fit flex justify-between items-center relative">
-            <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center dark:bg-dark1 bg-white ">
+            <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center dark:bg-dark1 bg-white">
               <input
                 type="checkbox"
                 checked={customer.isVip}

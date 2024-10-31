@@ -2,7 +2,7 @@ import { FaEye } from "react-icons/fa";
 export default function ReferenceChauffeurs() {
   return (
     <div className="w-[100%] h-fit flex justify-between flex-wrap items-center gap-x-[5%] gap-y-[5%] pt-6 pb-8 px-6 border-grey mt-">
-      <div className="w-[100%] h-fit flex flex-col justify-between items-center ">
+      <div className="w-[100%] h-fit flex flex-col justify-between items-center">
         <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black w-full">
           Reference Info
         </span>

@@ -207,7 +207,7 @@ export default function SecondPage() {
       <div className="w-full p-0 h-fit">
         <div className="w-full h-fit p-0">
           <div className="flex flex-wrap justify-start items-start gap-x-[4% gap-y-0 md:gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey pe- py-8 relative">
-            <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10 ">
+            <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-start pb-10">
               <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
                 <button
                   className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
@@ -334,7 +334,7 @@ export default function SecondPage() {
               </div>
             </div>
             <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center">
-              <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
+              <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5">
                 <div className="w-full h-fit flex justify-between items-start py-[3px]">
                   <p className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     No

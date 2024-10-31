@@ -276,7 +276,7 @@ export default function GridView({ data }: dataType) {
                         VIN: {item?.data?.vinNo}
                       </div>
                     </div>
-                    <div className="text-center truncate w-[20px] h-[24px]  flex justify-center items-center ">
+                    <div className="text-center truncate w-[20px] h-[24px]  flex justify-center items-center">
                       <div
                         className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                           itemToDeleteMany?.includes(item?._id)
@@ -304,7 +304,7 @@ export default function GridView({ data }: dataType) {
                   />
                 ) : null}
               </div>
-              <div className="w-[100%] h-fit flex flex-col justify-between items-start gap-1 ">
+              <div className="w-[100%] h-fit flex flex-col justify-between items-start gap-1">
                 <span
                   className={`border-[1px] px-3 rounded-[5px] h-[22px] flex justify-center items-center text-[12px] mb-1 ${
                     item?.rentOut
@@ -321,7 +321,7 @@ export default function GridView({ data }: dataType) {
                     : "Available"}
                 </span>
                 <div className="w-[100%] h-fit flex justify-between items-center">
-                  <div className="flex justify-center items-center gap-2 w-fit ">
+                  <div className="flex justify-center items-center gap-2 w-fit">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       Color:
                     </span>
@@ -334,7 +334,7 @@ export default function GridView({ data }: dataType) {
                       ></div>
                     </div>
                   </div>
-                  <div className="flex justify-center items-center gap-2 w-fit ">
+                  <div className="flex justify-center items-center gap-2 w-fit">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       Year:
                     </span>
@@ -342,7 +342,7 @@ export default function GridView({ data }: dataType) {
                       {item?.data?.year}
                     </span>
                   </div>
-                  <div className="flex justify-center items-center gap-2 w-fit ">
+                  <div className="flex justify-center items-center gap-2 w-fit">
                     <span className="font-[400] text-[9px] xs:text-[12px] leading-[18px] w-fit">
                       City:
                     </span>

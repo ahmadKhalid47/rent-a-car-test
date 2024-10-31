@@ -219,7 +219,7 @@ export default function reservationInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
             <div className=" dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] text-main-blue text-[18px]  ">
+                <div className="font-[600] text-main-blue text-[18px] ">
                   Pick-Up:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
@@ -246,7 +246,7 @@ export default function reservationInfoMainPage() {
               </div>
               {/* 2nd */}
               <div className="w-[40%] h-[150px]">
-                <div className="font-[600] text-main-blue text-[18px]  ">
+                <div className="font-[600] text-main-blue text-[18px] ">
                   Drop-off:
                 </div>
                 <div className="flex justify-start items-center relative mt-1">
@@ -272,7 +272,7 @@ export default function reservationInfoMainPage() {
                 </div>
               </div>
               {/* 3rd */}
-              <div className=" rounded-xl border border-gray-200 p-6 ">
+              <div className=" rounded-xl border border-gray-200 p-6">
                 <div className="text-main-blue font-[600] text-[24px]">
                   {reservationInfo?.duration
                     ? reservationInfo?.duration
@@ -343,7 +343,7 @@ export default function reservationInfoMainPage() {
                   />
                 ) : activeButton === "Chauffeur" ? (
                   !reservationInfo?.withChauffeur ? (
-                    <div className="w-full flex justify-between items-center  px-[70px] py-[20px] ">
+                    <div className="w-full flex justify-between items-center  px-[70px] py-[20px]">
                       No Chauffeur Was Selected In This Reservation
                     </div>
                   ) : (

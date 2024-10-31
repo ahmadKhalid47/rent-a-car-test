@@ -414,7 +414,7 @@ export default function UserDashboard() {
                 </h1>
               </div>
               {configurationsLoading ? (
-                <div className="pt-5 w-full ">
+                <div className="pt-5 w-full">
                   <MediumLoader />
                 </div>
               ) : (
@@ -509,7 +509,7 @@ export default function UserDashboard() {
                 </div>
                 {reservationLoading ? (
                   <>
-                    <div className="pt-5 w-full ">
+                    <div className="pt-5 w-full">
                       <MediumLoader />
                     </div>
                   </>

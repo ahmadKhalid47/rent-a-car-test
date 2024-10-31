@@ -240,7 +240,7 @@ export default function ListView({ data, makeData }: dataType) {
           )}{" "}
         </span>
       </h3>
-      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
+      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="flex justify-start items-center w-[3%]">
@@ -260,8 +260,8 @@ export default function ListView({ data, makeData }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%] ">
-              Sr.
+            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+              Sr#
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
@@ -276,7 +276,7 @@ export default function ListView({ data, makeData }: dataType) {
                 onClick={() => sort("country")}
               />{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%] ">
+            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%]">
               City
               <img
                 src={arrows.src}
@@ -314,7 +314,7 @@ export default function ListView({ data, makeData }: dataType) {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[5%] ">
+                  <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
                       !reverse ? index + 1 : paginatedData.length - index
                     ).padStart(2, "0")}{" "}

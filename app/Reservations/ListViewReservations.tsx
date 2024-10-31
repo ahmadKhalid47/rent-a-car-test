@@ -174,7 +174,7 @@ export default function ListViewreservation({ data }: dataType) {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
-            <div className="text-center truncate w-[3%]  flex justify-center items-center ">
+            <div className="text-center truncate w-[3%]  flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -188,7 +188,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
               Vehicle{" "}
               <img
                 src={arrows.src}
@@ -196,7 +196,7 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("vehicleName")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
               Customer{" "}
               <img
                 src={arrows.src}
@@ -204,7 +204,7 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("customerName")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
               City{" "}
               <img
                 src={arrows.src}
@@ -212,22 +212,22 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
               Duration
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
               Amount
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%] ">
+            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
               Status
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[14%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[14%]">
               Created At{" "}
             </div>{" "}
-            <div className="text-center pe- flex justify-center items-center truncate w-[7%] ">
+            <div className="text-center pe- flex justify-center items-center truncate w-[7%]">
               Documents{" "}
             </div>
-            <div className="text-start pe-3 flex justify-end items-center truncate w-[7%] ">
+            <div className="text-start pe-3 flex justify-end items-center truncate w-[7%]">
               Actions{" "}
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function ListViewreservation({ data }: dataType) {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-center truncate w-[3%]  flex justify-center items-center ">
+                  <div className="text-center truncate w-[3%]  flex justify-center items-center">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -256,27 +256,27 @@ export default function ListViewreservation({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[12%] ">
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[12%]">
                     {item?.data?.vehicleName}
                   </div>
 
-                  <div className="text-start pe-3 truncate w-[12%] ">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.data?.customerName}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%] ">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item.data?.durationinDays ? (
                       <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
                       <>{item?.data?.duration.padStart(2, "0")} Hours</>
                     )}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     ${item?.data?.amount}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] ">
+                  <div className="text-start pe-3 truncate w-[10%]">
                     <div
                       className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]
                    ${
@@ -295,7 +295,7 @@ export default function ListViewreservation({ data }: dataType) {
                         : "Incomplete"}
                     </div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[14%] ">
+                  <div className="text-start pe-3 truncate w-[14%]">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
                   <div

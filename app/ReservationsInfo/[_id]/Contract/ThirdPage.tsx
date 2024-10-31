@@ -25,7 +25,7 @@ export default function ThirdPage({ customersName, id }: any) {
               Contract Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
-            <span className=" font-[600] text-[18px] leading-[21px] ">
+            <span className=" font-[600] text-[18px] leading-[21px]">
               Issue Date:{" "}
               <span className="font-[400]">{formatDate(todayDate)}</span>
             </span>

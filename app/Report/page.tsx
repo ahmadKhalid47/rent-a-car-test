@@ -361,7 +361,7 @@ export default function Vehicles() {
         </div>
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           {configurationsLoading ? (
-            <div className="pt-5 w-full ">
+            <div className="pt-5 w-full">
               <MediumLoader />
             </div>
           ) : (

@@ -261,7 +261,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
-            <div className="text-center w-[4%]  flex justify-center items-center ">
+            <div className="text-center w-[4%]  flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                   itemToDeleteMany.length === data.length && data.length !== 0
@@ -275,7 +275,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 }}
               ></div>
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[14%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[14%]">
               Customer Name{" "}
               <img
                 src={arrows.src}
@@ -283,8 +283,8 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("name")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[10%] "></div>
-            <div className="text-start flex justify-start gap-2 items-center w-[12%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]"></div>
+            <div className="text-start flex justify-start gap-2 items-center w-[12%]">
               Phone{" "}
               <img
                 src={arrows.src}
@@ -292,7 +292,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("phone")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[17%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[17%]">
               Email{" "}
               <img
                 src={arrows.src}
@@ -300,7 +300,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("emailAddress")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[8%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[8%]">
               Gender{" "}
               <img
                 src={arrows.src}
@@ -308,7 +308,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("gender")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[8%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[8%]">
               City{" "}
               <img
                 src={arrows.src}
@@ -316,13 +316,13 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%]">
               Created At{" "}
             </div>{" "}
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%] ">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[11%]">
               Documents{" "}
             </div>{" "}
-            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%]  ">
+            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
               Actions{" "}
             </div>
           </div>
@@ -340,7 +340,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="text-center w-[4%]  flex justify-center items-center ">
+                  <div className="text-center w-[4%]  flex justify-center items-center">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -352,10 +352,10 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[14%] ">
+                  <div className="text-start pe-3 truncate w-[14%]">
                     {item?.data?.name}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] ">
+                  <div className="text-start pe-3 truncate w-[10%]">
                     <span
                       className={`w-[93px] px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
@@ -374,13 +374,13 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                   >
                     {item?.data?.emailAddress}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.gender}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%] ">
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
                   <div

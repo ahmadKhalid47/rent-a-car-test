@@ -258,7 +258,7 @@ export default function ListView({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Vehicle Name{" "}
               <img
                 src={arrows.src}
@@ -266,8 +266,8 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%] "></div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[8%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]"></div>
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[8%]">
               Reg No{" "}
               <img
                 src={arrows.src}
@@ -275,7 +275,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("registration")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]">
               VIN No{" "}
               <img
                 src={arrows.src}
@@ -284,7 +284,7 @@ export default function ListView({ data }: dataType) {
               />
             </div>
 
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
               Year{" "}
               <img
                 src={arrows.src}
@@ -292,7 +292,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("year")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
               Color{" "}
               <img
                 src={arrows.src}
@@ -300,7 +300,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("color")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[12%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[12%]">
               Odometer{" "}
               <img
                 src={arrows.src}
@@ -308,7 +308,7 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%]  ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
               City{" "}
               <img
                 src={arrows.src}
@@ -316,13 +316,13 @@ export default function ListView({ data }: dataType) {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[9%] ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[9%]">
               Created At{" "}
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%]  ">
+            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
               Status
             </div>
-            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%]  ">
+            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
               Actions{" "}
             </div>
           </div>
@@ -348,7 +348,7 @@ export default function ListView({ data }: dataType) {
                          }
                       `}
                 >
-                  <div className="truncate  w-[4%]  flex justify-start ps-3 items-center ">
+                  <div className="truncate  w-[4%]  flex justify-start ps-3 items-center">
                     <div
                       className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
                         itemToDeleteMany?.includes(item?._id) ? "bg-check" : ""
@@ -360,26 +360,26 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] ">
+                  <div className="text-start pe-3 truncate w-[10%]">
                     {item?.data?.make} {item?.data?.model}
                   </div>
-                  <div className="text-start pe-3 truncate w-[11%] ">
+                  <div className="text-start pe-3 truncate w-[11%]">
                     <span
                       className={`w-[93px] px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
                       {item?.data?.type}
                     </span>
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] ">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.registration}
                   </div>
-                  <div className="text-start pe-3 truncate w-[11%] ">
+                  <div className="text-start pe-3 truncate w-[11%]">
                     {item?.data?.vinNo}
                   </div>{" "}
-                  <div className="text-start pe-3 truncate w-[6%] ">
+                  <div className="text-start pe-3 truncate w-[6%]">
                     {item?.data?.year}
                   </div>
-                  <div className="text-start pe-3 truncate w-[6%] ">
+                  <div className="text-start pe-3 truncate w-[6%]">
                     <div
                       className={`w-[23px] h-[12px] rounded-full`}
                       style={{
@@ -387,7 +387,7 @@ export default function ListView({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%] ">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     <span className="w-[100px] h-[19px] bg-gradient-to-b from-white to-[rgb(229,230,231)] border-[1px] border-[rgb(128,130,133)] text-black flex justify-center items-center">
                       {item?.data?.odometer
                         ?.padStart(6, "0")
@@ -401,19 +401,19 @@ export default function ListView({ data }: dataType) {
                               {item}
                             </span>
                             {index !== 5 && (
-                              <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%] "></div>
+                              <div className="h-[19px] w-[1px] bg-[rgb(147,149,152)] rounded-[100%]"></div>
                             )}
                           </>
                         ))}
                     </span>
                   </div>
-                  <div className="text-start pe-3 truncate w-[7%]  ">
+                  <div className="text-start pe-3 truncate w-[7%] ">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%] ">
+                  <div className="text-start pe-3 truncate w-[9%]">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
-                  <div className="text-start pe-3  w-[7%]  ">
+                  <div className="text-start pe-3  w-[7%] ">
                     <span
                       className={`w-full truncate border-[1px] px-1 rounded-[5px] h-[22px] text-center text-[12px]
                         ${

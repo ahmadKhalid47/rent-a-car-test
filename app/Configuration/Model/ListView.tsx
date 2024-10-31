@@ -238,10 +238,10 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
           )}
         </span>
       </h3>
-      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 ">
+      <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
-            <div className="w-[3%] flex justify-start  items-center ">
+            <div className="w-[3%] flex justify-start  items-center">
               {userData.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
@@ -258,8 +258,8 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%] ">
-              Sr.
+            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+              Sr#
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
@@ -306,7 +306,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                       : "dark:bg-dark1 bg-white"
                   } border-b-2 border-grey`}
                 >
-                  <div className="w-[3%] flex justify-start  items-center ">
+                  <div className="w-[3%] flex justify-start  items-center">
                     {item?.createdBy === myProfile._id && (
                       <button
                         className={`w-[15px] h-[15px] rounded-[1px] ${
@@ -320,7 +320,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                       ></button>
                     )}
                   </div>
-                  <div className="text-start pe-3 w-[5%] ">
+                  <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
                       !reverse ? index + 1 : paginatedData.length - index
                     ).padStart(2, "0")}{" "}

@@ -128,7 +128,7 @@ export default function AddUser() {
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-6 px-1 xs:px-3 md:px-6 flex flex-col justify-start items-start relative mt-5">
           <div className="w-full h-fit">
             <div className="flex flex-wrap justify-start items-start gap-x-8 gap-y-5 w-full h-fit dark:bg-dark1 bg-white rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
-              <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
+              <h3 className="w-full font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
                 Update Brand Logos
               </h3>
               <div className="w-[250px] h-[250px] flex justify-center items-center dark:bg-dark1 bg-white rounded-ful relative">

@@ -129,7 +129,7 @@ export default function CustomerInfoMainPage() {
           global.sidebarShow ? "nav-width" : "nav-closed-width"
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
-        <div className="w-full h-[200px ">
+        <div className="w-full h-[200px">
           <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black">
             {CustomerInfo?.name ? CustomerInfo?.name : "---"}
           </span>
@@ -264,7 +264,7 @@ export default function CustomerInfoMainPage() {
             </div>
             <div className="w-full h-fit dark:bg-dark1 mt-5 flex justify-between items-center">
               <div className="w-[48.4%] h-fit flex flex-col items-start gap-2">
-                <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
+                <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
                   Identity Information
                 </span>
                 <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
@@ -275,7 +275,7 @@ export default function CustomerInfoMainPage() {
                 </div>
               </div>
               <div className="w-[48.4%] h-fit flex flex-col items-start gap-2">
-                <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black ">
+                <span className="font-[600] text-[15px] xs:text-[24px] leading-[36px] dark:text-white text-black">
                   Additional Information
                 </span>
                 <div className="w-[100%]  bg-green-00 rounded-[10px] border-[1px] border-grey h-[400px] flex flex-col justify-start items-start gap-8 overflow-hidden scroll">
@@ -290,7 +290,7 @@ export default function CustomerInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
             <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
               <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black ">
+                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black">
                   Recent Reservations
                   <FaChevronDown
                     className={`w-4 h-4 transition-transform cursor-pointer ${
@@ -314,7 +314,7 @@ export default function CustomerInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
             <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
               <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black ">
+                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black">
                   Violations{" "}
                   <FaChevronDown
                     className={`w-4 h-4 transition-transform cursor-pointer ${

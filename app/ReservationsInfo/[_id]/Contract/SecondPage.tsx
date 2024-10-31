@@ -39,7 +39,7 @@ export default function SecondPage({
               Contract Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
-            <span className=" font-[600] text-[18px] leading-[21px] ">
+            <span className=" font-[600] text-[18px] leading-[21px]">
               Issue Date:{" "}
               <span className="font-[400]">{formatDate(todayDate)}</span>
             </span>
@@ -54,32 +54,32 @@ export default function SecondPage({
             </div>
             <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
               <div className="w-fit h-fit flex justify-start items-center gap-2">
-                <div className="w-fit text-start font-[600] ">Customer:</div>
-                <div className="w-fit text-start font-[400] ">
+                <div className="w-fit text-start font-[600]">Customer:</div>
+                <div className="w-fit text-start font-[400]">
                   {customersData?.data?.name
                     ? customersData?.data?.name
                     : "---"}
                 </div>
               </div>
               <div className="w-fit h-fit flex justify-between items-center gap-2">
-                <div className="w-fit text-start font-[600] ">Make: </div>
-                <div className="w-fit text-start font-[400] ">
+                <div className="w-fit text-start font-[600]">Make: </div>
+                <div className="w-fit text-start font-[400]">
                   {VehiclesData?.data?.make ? VehiclesData?.data?.make : "---"}
                 </div>
               </div>
               <div className="w-fit h-fit flex justify-between items-center gap-2">
-                <div className="w-fit text-start font-[600] ">Model: </div>
-                <div className="w-fit text-start font-[400] ">
+                <div className="w-fit text-start font-[600]">Model: </div>
+                <div className="w-fit text-start font-[400]">
                   {VehiclesData?.data?.model
                     ? VehiclesData?.data?.model
                     : "---"}
                 </div>
               </div>
               <div className="w-fit h-fit flex justify-between items-center gap-2">
-                <div className="w-fit text-start font-[600] ">
+                <div className="w-fit text-start font-[600]">
                   Registration NO:
                 </div>
-                <div className="w-fit text-start font-[400] ">
+                <div className="w-fit text-start font-[400]">
                   {VehiclesData?.data?.registration
                     ? VehiclesData?.data?.registration
                     : "---"}
@@ -196,7 +196,7 @@ export default function SecondPage({
             </div>
             <div className="w-full h-fit flex justify-between items-start py-3 px-4 text-[14px]">
               <div className="w-full h-fit flex justify-start items-center gap-2">
-                <span className="w-full text-justify font-[400] ">
+                <span className="w-full text-justify font-[400]">
                   {VehiclesData?.data?.otherNote}{" "}
                 </span>
               </div>

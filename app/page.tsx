@@ -62,7 +62,7 @@ export default function Vehicles() {
                 </>
               )}
             </span>
-            <span className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
+            <span className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10">
               Take control of your fleet like never before with our cutting-edge
               <br className="hidden sm:block" />
               rental management CRM. Streamline operations, optimize

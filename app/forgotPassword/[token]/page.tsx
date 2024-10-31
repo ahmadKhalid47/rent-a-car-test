@@ -140,7 +140,7 @@ export default function ResetPassword() {
                       Reset <br />
                       Your Password!
                     </h1>
-                    <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10 ">
+                    <p className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[22px] text-white z-10">
                       Are you ready to efficiently manage your fleet and
                       <br className="hidden sm:block" />
                       reservations? Let's work together to ensure everything

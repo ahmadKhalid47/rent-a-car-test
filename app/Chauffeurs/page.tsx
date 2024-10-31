@@ -200,7 +200,7 @@ export default function chauffeurs() {
                 <CiSearch />
               </div>
             </div>
-            <div className="w-[144px] h-fit ">
+            <div className="w-[144px] h-fit">
               <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
@@ -240,7 +240,7 @@ export default function chauffeurs() {
                 </div>
               </div>
             </div>
-            <div className="w-[144px] h-fit ">
+            <div className="w-[144px] h-fit">
               <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "

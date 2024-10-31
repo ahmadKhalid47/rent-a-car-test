@@ -121,7 +121,7 @@ console.log(reservation?.vehicle_id);
                   </span>
                 </div>
 
-                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt- ">
+                <div className="w-full flex justify-center sm:justify-start gap-0 items-center font-[400] text-[14px] leading-[21px] -mt-">
                   <div className="flex justify-center sm:justify-start items-center gap-2 w-[50%] sm:w-[50%] pe-5">
                     <span className="leading-4 w-[50%] sm:w-[70%]">
                       Making Year:
