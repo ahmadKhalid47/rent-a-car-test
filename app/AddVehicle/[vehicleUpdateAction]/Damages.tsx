@@ -292,9 +292,9 @@ export default function Damages() {
                 </div>
               </div>
             </div>
-            <div className="w-[100%] 900:w-[60%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+            <div className="w-[100%] 900:w-[60%] h-full flex flex-col justify-start items-center">
               <div className="w-[100%] h-fit flex flex-col justify-start items-start px-5">
-                <div className="w-full h-[60px] flex justify-between items-center py-[3px] border-b-[2px">
+                <div className="w-full h-[60px] flex justify-between items-center py-[3px]">
                   <span className="w-[80px] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                     Image
                   </span>
@@ -304,13 +304,10 @@ export default function Damages() {
                   <span className="w-[23%] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                     Damage Type
                   </span>
-                  <span className="w-[15%] truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
-                    Position
-                  </span>
                   <span className="w-[35%] md:w-[100px]  truncate font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px]">
                     Degree
                   </span>
-                  <span className="text-transparent truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
+                  <span className="text-transparen truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-end">
                     <FaTrash />
                   </span>
                 </div>
@@ -330,9 +327,6 @@ export default function Damages() {
                     </span>
                     <span className="pb-2 w-[23%] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                       {item?.damageType}
-                    </span>
-                    <span className="pb-2 w-[15%] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
-                      {item?.exterior ? "Exterior" : "Interior"}
                     </span>
                     <span className="pb-2 w-[35%] md:w-[100px] truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none">
                       {item?.degree}

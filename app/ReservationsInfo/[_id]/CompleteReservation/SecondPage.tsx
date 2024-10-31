@@ -333,9 +333,9 @@ export default function SecondPage() {
                 </div>
               </div>
             </div>
-            <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center bg-blue-30 ps-">
+            <div className="w-[100%] 900:w-[50%] h-full flex flex-col justify-start items-center">
               <div className="w-[90%] h-fit flex flex-col justify-start items-start px-5 ">
-                <div className="w-full h-fit flex justify-between items-start py-[3px] border-b-[2px">
+                <div className="w-full h-fit flex justify-between items-start py-[3px]">
                   <p className="w-[20%] md:w-[25px]  font-[600] text-[12px] xs:text-[14px] md:text-[18px] leading-[27px] text-start">
                     No
                   </p>
@@ -353,7 +353,7 @@ export default function SecondPage() {
                   </p>
                 </div>
                 {reservation?.damages?.map((item: any, key: number) => (
-                  <div className="w-full h-fit flex justify-between items-start border-b-[2px">
+                  <div className="w-full h-fit flex justify-between items-start">
                     <p className="w-[20%] md:w-[25px] font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none text-start">
                       {JSON.stringify(key + 1).padStart(2, "0")}{" "}
                     </p>
