@@ -24,14 +24,14 @@ export function PaginationComponent({
               backgroundColor: "#054B86",
               color: "white",
               "&:hover": {
-                opacity: 0.8,
+                opacity: 0.9,
               },
             },
           },
           "& .MuiPaginationItem-previousNext": {
             color: "#878787",
             "&:hover": {
-              opacity: 0.8,
+              opacity: 0.9,
             },
           },
         }}
