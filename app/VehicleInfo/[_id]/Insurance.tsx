@@ -5,7 +5,7 @@ export default function Insurance() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
 
   return (
-    <div className="w-full h-full py-4 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
+    <div className="w-full h-full py-4 px-5 flex justify-start flex-col items-start gap-4 overflow-auto">
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-[100%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">
