@@ -58,7 +58,7 @@ export default function Damages({ toggle }: any) {
                             ? "bg-orange-500"
                             : item.degree === "Very High"
                             ? "bg-red-500"
-                            : ""
+                            : "bg-gray-400"
                         } text-black text-[8px] flex justify-center items-center font-[600]`}
                         key={index}
                         style={{
@@ -81,7 +81,7 @@ export default function Damages({ toggle }: any) {
                             ? "bg-orange-500"
                             : item.degree === "Very High"
                             ? "bg-red-500"
-                            : ""
+                            : "bg-gray-400"
                         } text-black text-[8px] flex justify-center items-center font-[600]`}
                         key={index}
                         style={{
