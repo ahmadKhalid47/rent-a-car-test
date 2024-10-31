@@ -112,9 +112,9 @@ export default function Vehicles() {
                       className="dark:filter dark:brightness-[0] dark:invert w-[30px] h-[30px]"
                     />
                   </div>
-                  <p className="font-[600] text-[18px] xs:text-[24px]">
+                  <span className="font-[600] text-[18px] xs:text-[24px]">
                     {item.label}
-                  </p>
+                  </span>
                 </Link>
               ))}
             </div>
