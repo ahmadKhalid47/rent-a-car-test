@@ -126,7 +126,7 @@ export default function AddUser() {
         <div className="w-[100%] flex justify-start items-end">
           <span className="font-[600] flex flex-col text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] w-[100%] md:w-[50%]">
             General
-            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Settings"} className="hover:underline">
                 Settings
               </Link>{" "}

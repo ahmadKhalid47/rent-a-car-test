@@ -129,17 +129,17 @@ await axios.post("/api/saveSingleConfiguration", {
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
-        <div className="w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-end">
-          <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
+        <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
+                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Category
-            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Configuration"} className="hover:underline">
                 Configuration
               </Link>
               {" / "}Category
             </span>
           </span>
-          <div className="flex justify-start md:justify-end gap-3 items-end w-[100%] md:w-[50%]">
+          <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
             <button
               className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {

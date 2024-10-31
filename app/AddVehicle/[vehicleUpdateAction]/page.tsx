@@ -325,11 +325,11 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-          <span className="flex flex-col font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-5 md:leading-[38px] dark:text-white text-black w-[100%] md:w-[50%]">
+                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             {vehicleUpdateAction !== "AddNew"
               ? "Update Vehicle " + vehicle.vehicleId
               : "Add New Vehicle"}
-            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-5 md:leading-[21px]">
+            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               {" "}
               <Link href={"/Vehicles"} className="hover:underline">
                 Vehicles
