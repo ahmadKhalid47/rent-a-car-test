@@ -175,8 +175,8 @@ export default function Vehicles() {
         },
       });
       const formData4 = new FormData();
-      for (let i = 0; i < vehicle.insImages?.length; i++) {
-        formData4.append("files", vehicle.insImages[i]);
+      for (let i = 0; i < vehicle.insImage?.length; i++) {
+        formData4.append("files", vehicle.insImage[i]);
       }
       const res4 = await axios.post("/api/upload", formData4, {
         headers: {
@@ -194,6 +194,8 @@ export default function Vehicles() {
           formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
         }
       }
+      console.log(vehicle);
+      console.log("res4?.data?.message", res4?.data?.message);
 
       const res2 = await axios.post("/api/uploadNested", formData2, {
         headers: {
@@ -252,8 +254,8 @@ export default function Vehicles() {
         },
       });
       const formData4 = new FormData();
-      for (let i = 0; i < vehicle.insImages?.length; i++) {
-        formData4.append("files", vehicle.insImages[i]);
+      for (let i = 0; i < vehicle.insImage?.length; i++) {
+        formData4.append("files", vehicle.insImage[i]);
       }
       const res4 = await axios.post("/api/uploadWithCondition", formData4, {
         headers: {
@@ -325,7 +327,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             {vehicleUpdateAction !== "AddNew"
               ? "Update Vehicle " + vehicle.vehicleId
               : "Add New Vehicle"}
