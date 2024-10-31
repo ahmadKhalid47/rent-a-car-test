@@ -230,13 +230,13 @@ export const TempSelectInputLink: React.FC<TempSelectInputLink> = ({
           {label}
           {required && <FaAsterisk className="text-[6px]" />}
         </span>
-        <span className="text-[12px]">
+        <span className="text-[8px]">
           Not found?{" "}
           <Link
             href={link}
             className="text-[#3d84ff] no-underline hover:underline capitalize"
           >
-            Add new
+            Add new!!
           </Link>
         </span>
       </label>

@@ -43,25 +43,23 @@ export default function Feature() {
       setFeaturesSubmitArray("");
     }
   }, [vehicle.features]);
-console.log(vehicle.features);
+  console.log(vehicle.features);
 
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit">
         {categories.map((categoryItem) => (
           <div className="flex flex-wrap justify-start items-start gap-x-[4%] lg:gap-x-[6.66%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey  px-1 xs:px-3 md:px-11 py-8">
-            <span className="flex justify-start gap-4 items-end font-[600] text-[20px] w-full my-1 c">
+            <span className="flex justify-between gap-4 items-end font-[600] text-[20px] w-full my-1 c">
               {categoryItem}
-              <span className="px-2 md:px-0 w-fit flex justify-start items-end mb-[3px]">
-                <span className="text-[12px] w-full text-center font-[400]">
-                  Feature Not found?{" "}
-                  <Link
-                    href={"/Configuration/Features"}
-                    className="text-[#3d84ff] no-underline hover:underline capitalize"
-                  >
-                    Add new
-                  </Link>
-                </span>
+              <span className="text-[16px] w-fit text-center font-[400]">
+                Not found?{" "}
+                <Link
+                  href={"/Configuration/Features"}
+                  className="text-[#3d84ff] no-underline hover:underline capitalize"
+                >
+                  Add new!
+                </Link>
               </span>
             </span>
             {featuresDisplayArray?.map(
