@@ -257,6 +257,12 @@ export default function Vehicles() {
                           <option value={item.label}>{item.label}</option>
                         ))}
                       </select>
+                      <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                        <img
+                          src={shape.src}
+                          className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -275,18 +281,11 @@ export default function Vehicles() {
                     <FaTimes />
                   </button>
                   <button
-                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
+                    className="w-[200px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                     onClick={() => save("close")}
                     disabled={loading === "" ? false : true}
                   >
-                    {loading === "close" ? <SmallLoader /> : "Save and Close"}
-                  </button>
-                  <button
-                    className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                    onClick={() => save("new")}
-                    disabled={loading === "" ? false : true}
-                  >
-                    {loading === "new" ? <SmallLoader /> : "Save and New"}
+                    {loading === "close" ? <SmallLoader /> : "Save"}
                   </button>
                 </div>
               </div>
