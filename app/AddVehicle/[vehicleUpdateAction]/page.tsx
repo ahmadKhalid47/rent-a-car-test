@@ -210,7 +210,7 @@ export default function Vehicles() {
         vehicle: {
           ...vehicle,
           carImages: res?.data?.message,
-          insImages: res4?.data?.message,
+          insImage: res4?.data?.message,
           damages: updatedObjects,
         },
         createdBy: myProfile._id,
@@ -286,7 +286,7 @@ export default function Vehicles() {
       await axios.post(`/api/updateVehicle/${vehicleUpdateAction}`, {
         ...vehicle,
         carImages: res?.data?.message,
-        insImages: res4?.data?.message,
+        insImage: res4?.data?.message,
         damages: updatedObjects,
       });
 
