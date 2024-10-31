@@ -16,7 +16,6 @@ import Info from "./Info";
 import axios from "axios";
 import {
   LoaderOnSave,
-  MediumLoader,
   SmallLoader,
 } from "../../Components/Loader";
 import { useRouter } from "next/navigation";
@@ -79,9 +78,6 @@ export default function Vehicles() {
   const { vehicleUpdateAction } = params;
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let { Configurations } = useSelector(
-    (state: RootState) => state.Configurations
-  );
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   useEffect(() => {

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { FaEllipsisVertical } from "react-icons/fa6";
 import arrows from "@/public/arrows.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -13,9 +12,7 @@ import d2 from "@/public/ad (2).svg";
 import d3 from "@/public/ad (3).svg";
 import axios from "axios";
 import { TextLoader } from "../Components/Loader";
-import Link from "next/link";
-import { useHandleExport } from "../Components/functions/exportFunction";
-import { Pagination, Stack } from "@mui/material";
+
 import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
 
