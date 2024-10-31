@@ -436,7 +436,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                     <img
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
-                      className=" translate-y-[1px] hover:scale-[1.3] cursor-pointer"
+                      className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         updateActive(item?._id, item?.active);
                       }}
@@ -444,7 +444,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                     <img
                       src={edit.src}
                       title="Edit"
-                      className=" hover:scale-[1.3] cursor-pointer"
+                      className="hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
                         router.push(`/AddCustomer/${item?._id}`);
                       }}

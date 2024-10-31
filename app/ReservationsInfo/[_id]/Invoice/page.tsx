@@ -164,7 +164,7 @@ function PrintCom({ data, id }: any) {
             </div>
             <div className="w-full h-fit flex justify-between items-center mt-1">
               <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
-                <span className=" text-[17px] font-[700] leading-[20px] text-main-blue">
+                <span className="text-[17px] font-[700] leading-[20px] text-main-blue">
                   Invoice To:
                 </span>
                 <span >
@@ -198,7 +198,7 @@ function PrintCom({ data, id }: any) {
                 </span>
               </div>
               <div className="w-[50%] h-fit flex flex-col justify-start items-end text-[14px] font-[400] leading-[17px] text-black">
-                <span className=" text-[18px] font-[600] leading-[20px] text-black">
+                <span className="text-[18px] font-[600] leading-[20px] text-black">
                   Rapid Rent a Car
                 </span>
                 <span className="text-transparent">transparent</span>

@@ -69,7 +69,7 @@ export default function Damages() {
         <img
           src={file.preview}
           alt={file.name}
-          className=" w-[64px] h-[64px]"
+          className="w-[64px] h-[64px]"
         />
       </div>
       <span className="w-[64px] truncate font-[400] text-[10px] leading-[12px] text-grey text-center">

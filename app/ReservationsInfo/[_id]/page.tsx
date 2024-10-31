@@ -217,7 +217,7 @@ export default function reservationInfoMainPage() {
         </div>
         <div className="w-full h-fit flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-[5%]  rounded-[10px] bg-">
-            <div className=" dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
+            <div className="dark:bg-dark1 bg-white w-full flex justify-between items-center p-[50px] border border-1 border-gray-300 rounded-xl">
               <div className="w-[40%] h-[150px]">
                 <div className="font-[600] text-main-blue text-[18px] ">
                   Pick-Up:
@@ -272,7 +272,7 @@ export default function reservationInfoMainPage() {
                 </div>
               </div>
               {/* 3rd */}
-              <div className=" rounded-xl border border-gray-200 p-6">
+              <div className="rounded-xl border border-gray-200 p-6">
                 <div className="text-main-blue font-[600] text-[24px]">
                   {reservationInfo?.duration
                     ? reservationInfo?.duration

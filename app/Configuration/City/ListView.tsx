@@ -260,7 +260,7 @@ export default function ListView({ data, makeData }: dataType) {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
               <img
                 src={arrows.src}
@@ -268,7 +268,7 @@ export default function ListView({ data, makeData }: dataType) {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[15%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[15%]">
               Country
               <img
                 src={arrows.src}
@@ -276,7 +276,7 @@ export default function ListView({ data, makeData }: dataType) {
                 onClick={() => sort("country")}
               />{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[62%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[62%]">
               City
               <img
                 src={arrows.src}

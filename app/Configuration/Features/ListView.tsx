@@ -270,7 +270,7 @@ console.log(Icon[0]?.name);
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
               <img
                 src={arrows.src}
@@ -278,7 +278,7 @@ console.log(Icon[0]?.name);
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
               Feature Type
               <img
                 src={arrows.src}
@@ -286,7 +286,7 @@ console.log(Icon[0]?.name);
                 onClick={() => sort("Box")}
               />
             </div>{" "}
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[20%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
               Feature
               <img
                 src={arrows.src}
@@ -294,10 +294,10 @@ console.log(Icon[0]?.name);
                 onClick={() => sort("Feature")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-start gap-4 items-center w-[37%]">
+            <div className="truncate flex justify-start gap-4 items-center w-[37%]">
               Icon
             </div>
-            <div className=" flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>

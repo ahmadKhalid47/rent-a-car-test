@@ -258,7 +258,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
               <img
                 src={arrows.src}
@@ -266,7 +266,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[10%]">
               Category
               <img
                 src={arrows.src}
@@ -274,7 +274,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("Category")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center w-[10%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[10%]">
               Make
               <img
                 src={arrows.src}
@@ -282,7 +282,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("make")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[57%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[57%]">
               Model
               <img
                 src={arrows.src}
@@ -290,7 +290,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("model")}
               />
             </div>
-            <div className=" flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>

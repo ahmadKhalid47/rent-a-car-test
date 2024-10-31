@@ -101,7 +101,7 @@ export default function Info({ score, message }: any) {
             <img
               src={file?.preview ? file.preview : file}
               alt={file?.name}
-              className=" w-[64px] h-[64px]"
+              className="w-[64px] h-[64px]"
             />
           </div>
           <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">

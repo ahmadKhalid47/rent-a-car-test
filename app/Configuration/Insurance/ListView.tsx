@@ -262,7 +262,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 ></div>
               )}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
               <img
                 src={arrows.src}
@@ -270,7 +270,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-between items-center w-[15%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[15%]">
               Company Name
               <img
                 src={arrows.src}
@@ -278,7 +278,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("Insurance")}
               />
             </div>
-            <div className="text-start truncate pe-3 flex justify-start gap-4 items-center w-[62%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[62%]">
               Recurring Period
               <img
                 src={arrows.src}

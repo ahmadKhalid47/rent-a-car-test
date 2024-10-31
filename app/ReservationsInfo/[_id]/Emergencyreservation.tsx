@@ -22,24 +22,24 @@ console.log(data?.data?.carImages[data?.data.thumbnailImage]);
         </div>
       </div>
       <div className="w-1/2">
-        <div className=" w-full flex justify-between">
+        <div className="w-full flex justify-between">
           <div className="font-[400] text-[18px]">Make:</div>
           <div className="font-[400] text-[18px]">{data?.data?.make}</div>
         </div>
         <div className="border border-t mt-2 mb-2"></div>
 
-        <div className=" w-full flex justify-between">
+        <div className="w-full flex justify-between">
           <div className="font-[400] text-[18px]">Model:</div>
 
           <div className="font-[400] text-[18px]">{data?.data?.model}</div>
         </div>
         <div className="border border-t mt-2 mb-2"></div>
-        <div className=" w-full flex justify-between">
+        <div className="w-full flex justify-between">
           <div className="font-[400] text-[18px]">City:</div>
           <div className="font-[400] text-[18px]">{data?.data?.city}</div>
         </div>
         <div className="border border-t mt-2 mb-2"></div>
-        <div className=" w-full flex justify-between">
+        <div className="w-full flex justify-between">
           <div className="font-[400] text-[18px]">Country:</div>
           <div className="font-[400] text-[18px]">{data?.data?.country}</div>
         </div>

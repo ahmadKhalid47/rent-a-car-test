@@ -185,7 +185,7 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-[80%] flex justify-between items-center">
                   <div className="w-[47%]">
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Full Name:</div>
                       <div className="font-[400] text-[18px]">
                         {UserInfo?.name}
@@ -193,7 +193,7 @@ export default function UserInfoMainPage() {
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
 
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Company:</div>
 
                       <div className="font-[400] text-[18px]">
@@ -201,14 +201,14 @@ export default function UserInfoMainPage() {
                       </div>
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">City:</div>
                       <div className="font-[400] text-[18px]">
                         {UserInfo?.city}
                       </div>
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Phone:</div>
                       <div className="font-[400] text-[18px]">
                         {UserInfo?.phone}
@@ -216,7 +216,7 @@ export default function UserInfoMainPage() {
                     </div>
                   </div>
                   <div className="w-[47%]">
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Username:</div>
                       <div className="font-[400] text-[18px]">
                         {UserInfo?.username}
@@ -224,7 +224,7 @@ export default function UserInfoMainPage() {
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
 
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Country:</div>
 
                       <div className="font-[400] text-[18px]">
@@ -232,14 +232,14 @@ export default function UserInfoMainPage() {
                       </div>
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">Email:</div>
                       <div className="font-[400] text-[18px]">
                         {UserInfo?.email}
                       </div>
                     </div>
                     <div className="border border-t mt-2 mb-2"></div>
-                    <div className=" w-full flex justify-between">
+                    <div className="w-full flex justify-between">
                       <div className="font-[400] text-[18px]">
                         Plan Validity:
                       </div>

@@ -273,7 +273,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 ></div>
               )}{" "}
             </div>
-            <div className="text-start pe-3 flex justify-start gap-3 items-center w-[5%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
               <img
                 src={arrows.src}
@@ -281,7 +281,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("ID")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-4 items-center w-[77%]">
+            <div className="pe-3 flex justify-start gap-3 items-center w-[77%]">
               Body Type
               <img
                 src={arrows.src}
@@ -289,7 +289,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("Type")}
               />
             </div>
-            <div className=" flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%]">
               Actions{" "}
             </div>
           </div>

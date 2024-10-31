@@ -14,7 +14,7 @@ export default function ThirdPage({ customersName, id }: any) {
       <div className="w-full h-fit  rounded-[10px] flex flex-col justify-start items-center">
         <div className="w-full h-fit flex justify-between items-center mt-1">
           <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] ext-white text-black">
-            <span className=" text-[17px] font-[700] leading-[20px] text-transparent">
+            <span className="text-[17px] font-[700] leading-[20px] text-transparent">
               Contract To:
             </span>
             <span className="text-transparent">
@@ -25,7 +25,7 @@ export default function ThirdPage({ customersName, id }: any) {
               Contract Number:
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
-            <span className=" font-[600] text-[18px] leading-[21px]">
+            <span className="font-[600] text-[18px] leading-[21px]">
               Issue Date:{" "}
               <span className="font-[400]">{formatDate(todayDate)}</span>
             </span>

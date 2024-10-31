@@ -113,7 +113,7 @@ export default function Info() {
         <img
           src={file.preview ? file.preview : file}
           alt={file.name}
-          className=" w-[64px] h-[64px]"
+          className="w-[64px] h-[64px]"
         />
       </div>
       <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
@@ -320,7 +320,7 @@ console.log("newFiles", newFiles);
               ref={dropdownRef}
             >
               <div
-                className=" h-full px-2 rounded-xl leading-none border-2 border-grey dark:bg-dark1 input-color flex justify-start items-center gap-2"
+                className="h-full px-2 rounded-xl leading-none border-2 border-grey dark:bg-dark1 input-color flex justify-start items-center gap-2"
                 onClick={toggleDropdown}
               >
                 <div
