@@ -48,6 +48,15 @@ const initialState: any = {
     },
   ],
   additional: "",
+  reference: [
+    {
+      refName: "",
+      refPhone: "",
+      refAddress: "",
+      refRelation: "",
+      refImages: [],
+    },
+  ],
 };
 
 export const CustomerSlice = createSlice({
@@ -188,6 +197,22 @@ export const CustomerSlice = createSlice({
     setadditionalR: (state, action) => {
       state.additional = action.payload;
     },
+    addReference: (state) => {
+      state.reference.push({
+        refName: "",
+        refPhone: "",
+        refAddress: "",
+        refRelation: "",
+        refImages: [],
+      });
+    },
+    updateReference: (state, action) => {
+      const { index, reference } = action.payload;
+      state.reference[index] = reference;
+    },
+    removeReference: (state, action) => {
+      state.reference.splice(action.payload, 1);
+    },
     setAllValues: (state, action) => {
       return { ...state, ...action.payload };
     },
@@ -240,7 +265,10 @@ export const {
   addContact,
   removeContact,
   updateContact,
-  setadditionalR
+  setadditionalR,
+  addReference,
+  removeReference,
+  updateReference,
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;
