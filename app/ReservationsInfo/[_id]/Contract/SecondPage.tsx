@@ -103,7 +103,7 @@ export default function SecondPage({
                               ? "bg-orange-500"
                               : item.degree === "Very High"
                               ? "bg-red-500"
-                              : ""
+                            : "bg-gray-400"
                           } text-[8px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{
@@ -131,7 +131,7 @@ export default function SecondPage({
                               ? "bg-orange-500"
                               : item.degree === "Very High"
                               ? "bg-red-500"
-                              : ""
+                            : "bg-gray-400"
                           } text-[8px] flex justify-center items-center font-[600]`}
                       key={index}
                       style={{

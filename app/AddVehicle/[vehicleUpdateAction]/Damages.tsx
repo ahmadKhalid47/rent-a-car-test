@@ -66,11 +66,7 @@ export default function Damages() {
       className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
     >
       <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file.preview}
-          alt={file.name}
-          className="w-[64px] h-[64px]"
-        />
+        <img src={file.preview} alt={file.name} className="w-[64px] h-[64px]" />
       </div>
       <span className="w-[64px] truncate font-[400] text-[10px] leading-[12px] text-grey text-center">
         {file.name}
@@ -252,7 +248,7 @@ export default function Damages() {
                                 ? "bg-orange-500"
                                 : mark.degree === "Very High"
                                 ? "bg-red-500"
-                                : ""
+                                : "bg-gray-400"
                             } text-[8px] flex justify-center items-center truncate font-[600]`}
                             key={index}
                             style={{
@@ -275,7 +271,7 @@ export default function Damages() {
                                 ? "bg-orange-500"
                                 : mark.degree === "Very High"
                                 ? "bg-red-500"
-                                : ""
+                                : "bg-gray-400"
                             } text-[8px] flex justify-center items-center truncate font-[600]`}
                             key={index}
                             style={{
