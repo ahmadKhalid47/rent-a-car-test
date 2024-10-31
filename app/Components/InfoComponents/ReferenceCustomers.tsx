@@ -67,7 +67,7 @@ export const ReferenceCustomers: React.FC<InfoComponentProps> = ({
 
           {/* reference numbering  */}
           <button
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-3xl p-2"
             onClick={() => {
               setRefIndex(
                 (prev) =>
@@ -79,7 +79,7 @@ export const ReferenceCustomers: React.FC<InfoComponentProps> = ({
             <FaChevronLeft />
           </button>
           <button
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-3xl p-2"
             onClick={() => {
               setRefIndex((prev) => (prev + 1) % info?.reference?.length);
             }}
