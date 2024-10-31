@@ -104,7 +104,7 @@ export default function Vehicles() {
               {configArray.map((item) => (
                 <Link
                   href={item.href}
-                  className="w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-start gap-3 md:gap-3 lg:gap-4 lg:justify-center items-center relative flex-col hover:opacity-[0.9]"
+                  className="w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-center gap-3 md:gap-3 lg:gap-4 items-center relative flex-col hover:opacity-[0.9]"
                 >
                   <div className="w-fit h-fit flex justify-center items-center">
                     <img
@@ -112,7 +112,7 @@ export default function Vehicles() {
                       className="dark:filter dark:brightness-[0] dark:invert w-[30px] h-[30px]"
                     />
                   </div>
-                  <span className="font-[600] text-[18px] xs:text-[24px]">
+                  <span className="font-[600] text-[18px] xs:text-[24px] leading-none">
                     {item.label}
                   </span>
                 </Link>
