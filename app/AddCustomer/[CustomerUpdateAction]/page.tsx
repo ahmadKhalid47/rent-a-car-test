@@ -120,6 +120,29 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
+      const formData5 = new FormData();
+      formData5.append("length1", customer.reference?.length);
+
+      for (let i = 0; i < customer.reference?.length; i++) {
+        formData5.append("length2", customer.reference[i]?.refImages?.length); // append length2 outside inner loop
+
+        for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
+          formData5.append("files", customer.reference[i]?.refImages[j]); // correct file reference
+        }
+      }
+
+      const res5 = await axios.post("/api/uploadNested", formData5, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = customer.reference;
+      for (let i = 0; i < customer.reference?.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        refImages: res5?.data?.message[index].map((url: any) => url),
+      }));
 
       let result: any = await axios.post(`/api/saveCustomer`, {
         customer: {
@@ -128,6 +151,7 @@ export default function Vehicles() {
           passportImages: res2?.data?.message,
           licenseImages: res3?.data?.message,
           otherImages: res4?.data?.message,
+          reference: updatedObjects,
         },
         createdBy: myProfile._id,
       });
@@ -228,6 +252,29 @@ export default function Vehicles() {
           "Content-Type": "multipart/form-data",
         },
       });
+      const formData5 = new FormData();
+      formData5.append("length1", customer.reference?.length);
+
+      for (let i = 0; i < customer.reference?.length; i++) {
+        formData5.append("length2", customer.reference[i]?.refImages?.length); // append length2 outside inner loop
+
+        for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
+          formData5.append("files", customer.reference[i]?.refImages[j]); // correct file reference
+        }
+      }
+
+      const res5 = await axios.post("/api/uploadNested", formData5, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = customer.reference;
+      for (let i = 0; i < customer.reference?.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        refImages: res5?.data?.message[index].map((url: any) => url),
+      }));
 
       await axios.post(`/api/updateCustomer/${CustomerUpdateAction}`, {
         ...customer,
@@ -235,6 +282,7 @@ export default function Vehicles() {
         passportImages: res2?.data?.message,
         licenseImages: res3?.data?.message,
         otherImages: res4?.data?.message,
+        reference: updatedObjects,
       });
       // } else {
       // await axios.post(

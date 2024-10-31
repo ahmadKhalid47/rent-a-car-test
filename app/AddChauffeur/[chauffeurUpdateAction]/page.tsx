@@ -249,12 +249,38 @@ export default function AddChauffeur() {
         },
       });
 
+      const formData5 = new FormData();
+      formData5.append("length1", chauffeur.reference?.length);
+
+      for (let i = 0; i < chauffeur.reference?.length; i++) {
+        formData5.append("length2", chauffeur.reference[i]?.refImages?.length); // append length2 outside inner loop
+
+        for (let j = 0; j < chauffeur.reference[i]?.refImages?.length; j++) {
+          formData5.append("files", chauffeur.reference[i]?.refImages[j]); // correct file reference
+        }
+      }
+
+      const res5 = await axios.post("/api/uploadNested", formData5, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      let tempArray = chauffeur.reference;
+      for (let i = 0; i < chauffeur.reference?.length; i++) {}
+
+      const updatedObjects = tempArray.map((obj: any, index: any) => ({
+        ...obj,
+        refImages: res5?.data?.message[index].map((url: any) => url),
+      }));
+
+
       await axios.post(`/api/updatechauffeur/${chauffeurUpdateAction}`, {
         ...chauffeur,
         chauffeurImage: res?.data?.message,
         passportImages: res2?.data?.message,
         licenseImages: res3?.data?.message,
         otherImages: res4?.data?.message,
+        reference: updatedObjects,
       });
 
       if (action === "close") {
