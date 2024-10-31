@@ -26,7 +26,7 @@ export default function Damages() {
   let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; 
+    const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
@@ -179,7 +179,7 @@ export default function Damages() {
             <div className="w-[100%] 900:w-[40%] h-full flex flex-col justify-start items-start pb-10">
               <div className="w-[100%] h-fit flex  justify-center items-center  bg-green-20 gap-1 sm:gap-5">
                 <button
-                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center truncate font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-center gap-3 items-center truncate font-[400] text-[14px] md:text-[16px] text-center ${
                     exterior
                       ? "bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white dark:text-white text-black"
@@ -198,7 +198,7 @@ export default function Damages() {
                   Exterior
                 </button>
                 <button
-                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-start gap-3 ps-3 md:ps-5 items-center truncate font-[400] text-[14px] md:text-[16px] leading-[19px] text-center ${
+                  className={`pe-3 md:pe-0 w-fit md:w-[150px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] border-2 border-grey flex justify-center gap-3 items-center truncate font-[400] text-[14px] md:text-[16px] text-center ${
                     !exterior
                       ? "bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white dark:text-white text-black"
@@ -438,7 +438,7 @@ export default function Damages() {
                   to upload
                 </span>
                 <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-                  Select JPG, PNG {" "}
+                  Select JPG, PNG{" "}
                 </span>
                 <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
                   Maximum size 5MB{" "}
