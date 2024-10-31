@@ -552,7 +552,7 @@ console.log("newFiles", newFiles);
                 <div
                   className={`relative rounded-[10px] overflow-hidden cursor-pointer border-black ${
                     vehicle.thumbnailImage === index
-                      ? "border-[6px] border-main-blue w-[80px] h-[80px]"
+                      ? "border-[3px] border-main-blue w-[80px] h-[80px]"
                       : "border-[1px] border-grey w-[64px] h-[64px]"
                   }`}
                   onClick={() => dispatch(setthumbnailImage(index))}
