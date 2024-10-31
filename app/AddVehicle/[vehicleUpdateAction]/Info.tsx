@@ -289,7 +289,7 @@ console.log("newFiles", newFiles);
                 href={"/Configuration/Color"}
                 className="text-[#3d84ff] no-underline hover:underline capitalize"
               >
-                Add new!!
+                Add new!
               </Link>
             </span>
           </label>

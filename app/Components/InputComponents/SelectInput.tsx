@@ -236,7 +236,7 @@ export const TempSelectInputLink: React.FC<TempSelectInputLink> = ({
             href={link}
             className="text-[#3d84ff] no-underline hover:underline capitalize"
           >
-            Add new!!
+            Add new!
           </Link>
         </span>
       </label>
