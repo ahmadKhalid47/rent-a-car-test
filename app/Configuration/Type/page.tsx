@@ -48,7 +48,7 @@ export default function Vehicles() {
     async function getData() {
       try {
         setDataLoading(true);
-        const result = await axios.post("/api/getType", {
+        const result = await axios.post("/api/getSingleConfiguration", {
           createdBy: myProfile._id,
           model: "Type",
           sortField: "Type",
@@ -69,7 +69,7 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Type.trim() === "" || interior === "" || exterior === "") {
+    if (Type.trim() === "" ) {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
@@ -154,7 +154,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Body Type
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Configuration"} className="hover:underline">
@@ -231,47 +231,50 @@ export default function Vehicles() {
                       value={Type}
                     />
                   </div>
-
-                  <div
-                    className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                  >
-                    <div className="w-full h-fit flex justify-between items-center relative">
-                      <input
-                        required={true}
-                        type={"file"}
-                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
-                        onChange={(e: any) => {
-                          setExterior(e.target?.files);
-                        }}
-                      />
-                      <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                        <img src={upload.src} />
-                        <span className="w-[70&] truncate bg-red500 leading-[24px]">
-                          {exterior[0]?.name || "Upload Exterior Image"}
-                        </span>
+                  {myProfile.admin && (
+                    <>
+                      <div
+                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                      >
+                        <div className="w-full h-fit flex justify-between items-center relative">
+                          <input
+                            required={true}
+                            type={"file"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
+                            onChange={(e: any) => {
+                              setExterior(e.target?.files);
+                            }}
+                          />
+                          <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
+                            <img src={upload.src} />
+                            <span className="w-[70&] truncate bg-red500 leading-[24px]">
+                              {exterior[0]?.name || "Upload Exterior Image"}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div
-                    className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
-                  >
-                    <div className="w-full h-fit flex justify-between items-center relative">
-                      <input
-                        required={true}
-                        type={"file"}
-                        className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
-                        onChange={(e: any) => {
-                          setInterior(e.target?.files);
-                        }}
-                      />
-                      <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                        <img src={upload.src} />
-                        <span className="w-[70&] truncate bg-red500 leading-[24px]">
-                          {interior[0]?.name || "Upload Interior Image"}
-                        </span>
+                      <div
+                        className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
+                      >
+                        <div className="w-full h-fit flex justify-between items-center relative">
+                          <input
+                            required={true}
+                            type={"file"}
+                            className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] py-2 flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate cursor-pointer"
+                            onChange={(e: any) => {
+                              setInterior(e.target?.files);
+                            }}
+                          />
+                          <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
+                            <img src={upload.src} />
+                            <span className="w-[70&] truncate bg-red500 leading-[24px]">
+                              {interior[0]?.name || "Upload Interior Image"}
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </>
+                  )}
                 </div>
 
                 <div
