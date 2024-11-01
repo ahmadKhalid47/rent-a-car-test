@@ -192,7 +192,7 @@ console.log(paginatedData);
                 }}
               ></div>
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
               Customer{" "}
               <img
                 src={arrows.src}
@@ -200,7 +200,7 @@ console.log(paginatedData);
                 onClick={() => sort("customerName")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[8%]">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%]">
               Chauffeur{" "}
               <img
                 src={arrows.src}
@@ -208,7 +208,7 @@ console.log(paginatedData);
                 onClick={() => sort("chauffeur")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
               Vehicle{" "}
               <img
                 src={arrows.src}
@@ -232,13 +232,13 @@ console.log(paginatedData);
                 onClick={() => sort("vehicleName")}
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
               Duration
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[7%]">
               Amount
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[8%] s">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[9%] s">
               Status
             </div>
             {/* <div className="text-start pe-3 truncate flex justify-between items-center w-[8.5%]">
@@ -276,13 +276,13 @@ console.log(paginatedData);
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] c">
+                  <div className="text-start pe-3 truncate w-[11%] c">
                     {item?.data?.customerName}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%]">
+                  <div className="text-start pe-3 truncate w-[11%]">
                     {item?.data?.chauffeurName}
                   </div>
-                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] c">
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[11%] c">
                     {item?.data?.vehicleName}
                   </div>
                   <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] s">
@@ -291,7 +291,7 @@ console.log(paginatedData);
                   <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] e">
                     {formatCreatedAtDate(item?.data?.dropOffDate)}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%] c">
+                  <div className="text-start pe-3 truncate w-[11%] c">
                     {item.data?.durationinDays ? (
                       <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
@@ -301,7 +301,7 @@ console.log(paginatedData);
                   <div className="text-start pe-3 truncate w-[7%]">
                     ${item?.data?.amount}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%] s">
+                  <div className="text-start pe-3 truncate w-[9%] s">
                     <div
                       className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]
                    ${

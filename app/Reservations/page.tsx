@@ -203,7 +203,7 @@ export default function Vehicles() {
             <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
                 className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
-                placeholder="Search By Name, Phone, Email, etc"
+                placeholder="Search By Vehicle, Customer, Chauffeur, etc"
                 onChange={handleSearchQueryChange}
                 value={searchQuery}
               ></input>
