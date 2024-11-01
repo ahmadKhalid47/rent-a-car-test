@@ -66,11 +66,7 @@ export default function ListView({ data }: any) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "Category",
-        },
-      });
+      await axios.delete(`/api/deleteCategory/${_id}`);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Category Deleted Successfully"));
     } catch (err) {
