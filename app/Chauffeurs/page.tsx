@@ -27,6 +27,7 @@ export default function chauffeurs() {
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
+  const [status, setStatus] = useState<any>("");
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
       key: "gender",
@@ -127,6 +128,19 @@ export default function chauffeurs() {
         });
       }
     });
+    if (status === "On Trip") {
+      filtered = filtered.filter((vehicle: any) => {
+        return vehicle?.rentOut === true;
+      });
+    } else if (status === "In Active") {
+      filtered = filtered.filter((vehicle: any) => {
+        return vehicle?.active === false;
+      });
+    } else if (status === "Available") {
+      filtered = filtered.filter((vehicle: any) => {
+        return vehicle?.active === true && !vehicle?.rentOut;
+      });
+    }
 
     setFilteredchauffeur(filtered);
   }
@@ -200,7 +214,7 @@ export default function chauffeurs() {
                 <CiSearch />
               </div>
             </div>
-            <div className="w-[144px] h-fit">
+            {/* <div className="w-[144px] h-fit">
               <div className="w-full h-fit flex justify-between items-center relative">
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
@@ -228,6 +242,31 @@ export default function chauffeurs() {
                       {rentPerDay}
                     </option>
                   ))}
+                </select>
+                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
+                  <img
+                    src={shape.src}
+                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                  />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
+                </div>
+              </div>
+            </div> */}
+            <div className="w-[144px] xs:w-[48%] lg:w-[30%] 1400:w-[24%] h-fit">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <select
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  value={status}
+                >
+                  <option value="">Status</option>
+                  <option value={"In Active"}>In Active</option>
+                  <option value={"Available"}>Available</option>
+                  <option value={"On Trip"}>On Trip</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
                   <img
