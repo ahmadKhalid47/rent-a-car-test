@@ -147,6 +147,9 @@ export default function Vehicles() {
 
     setFilteredreservations(filtered);
   }
+  useEffect(() => {
+    advanceFilterVehicles();
+  }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.trim());
@@ -194,165 +197,7 @@ export default function Vehicles() {
             </button>
           </div>
         </div>
-        {/* <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
-          <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
-              Search
-            </h3>
-            <div className="w-full h-fit flex justify-between items-center relative">
-              <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:placeholder-color"
-                placeholder="Search By Vehicle, Customer..."
-                onChange={handleSearchQueryChange}
-                value={searchQuery}
-              ></input>
-              {searchQuery && (
-                <SearchEmpty
-                  classes={"left-[72%] md:left-[79%] w-[2%] text-[20px]"}
-                  setState={setSearchQuery}
-                />
-              )}
-              <button
-                className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  advanceFilterVehicles();
-                }}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-          {!showLess ? (
-            <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[32%] h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Status
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "status"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "status"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(reservationsData.map((item) => item.data.status))
-                    ).map((status) => (
-                      <option key={status} value={status}>
-                        {status}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img
-                      src={shape.src}
-                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[32%] h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  City
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "city"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "city"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(reservationsData.map((item) => item.data.city))
-                    ).map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img
-                      src={shape.src}
-                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%] 1400:w-[32%] h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Duration
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="placeholder-color pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "duration"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "duration"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(
-                        reservationsData.map((item) => item.data.duration)
-                      )
-                    ).map((duration) => (
-                      <option key={duration} value={duration}>
-                        {duration}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img
-                      src={shape.src}
-                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : null}
 
-          <h3
-            className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-1 underline hover:no-underline cursor-pointer"
-            onClick={() => setShowLess(!showLess)}
-          >
-            {showLess ? "Advanced Filters" : "Show Less"}
-          </h3>
-        </div> */}
         <div className="h-[44px] w-full flex justify-between gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey mt-4">
           <div className="h-[44px] w-fit flex justify-start gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
             <div className="w-[320px] h-fit flex justify-between items-center relative">
@@ -377,14 +222,28 @@ export default function Vehicles() {
                 <select
                   className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
                   onChange={(e) => {
-                    setStatus(e.target.value);
+                    setAdvanceFilters((prevFilters: any) =>
+                      prevFilters.map((filter: any) =>
+                        filter.key === "status"
+                          ? { ...filter, keyValue: e.target.value }
+                          : filter
+                      )
+                    );
                   }}
-                  value={status}
+                  value={
+                    advanceFilters.find(
+                      (filter: any) => filter.key === "status"
+                    )?.keyValue || ""
+                  }
                 >
-                  <option value="">Status</option>
-                  <option value={"In Active"}>In Active</option>
-                  <option value={"Available"}>Available</option>
-                  <option value={"On Trip"}>On Trip</option>
+                  <option value="">Select</option>
+                  {Array.from(
+                    new Set(reservationsData.map((item) => item.data.status))
+                  ).map((status) => (
+                    <option key={status} value={status}>
+                      {status}
+                    </option>
+                  ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
                   <img
@@ -404,7 +263,7 @@ export default function Vehicles() {
                   onChange={(e) => {
                     setAdvanceFilters((prevFilters: any) =>
                       prevFilters.map((filter: any) =>
-                        filter.key === "gender"
+                        filter.key === "duration"
                           ? { ...filter, keyValue: e.target.value }
                           : filter
                       )
@@ -412,14 +271,18 @@ export default function Vehicles() {
                   }}
                   value={
                     advanceFilters.find(
-                      (filter: any) => filter.key === "gender"
+                      (filter: any) => filter.key === "duration"
                     )?.keyValue || ""
                   }
                 >
-                  <option value="">Gender</option>
-                  <option value={"Male"}>Male</option>
-                  <option value={"Female"}>Female</option>
-                  <option value={"Custom"}>Custom</option>
+                  <option value="">Duration</option>
+                  {Array.from(
+                    new Set(reservationsData.map((item) => item.data.duration))
+                  ).map((duration) => (
+                    <option key={duration} value={duration}>
+                      {duration}
+                    </option>
+                  ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
                   <img

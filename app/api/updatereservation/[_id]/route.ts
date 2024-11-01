@@ -7,7 +7,7 @@ export async function POST(req: Request, params: any) {
     let data = await req.json();
     let { _id } = await params.params;
     connectDb();
-    await reservationModel.updateOne(
+    let ack= await reservationModel.updateOne(
       { _id: _id },
       {
         $set: {
@@ -18,6 +18,8 @@ export async function POST(req: Request, params: any) {
         },
       }
     );
+    console.log("ack_____________", data);
+    
     return NextResponse.json({
       success: "User Created",
     });
