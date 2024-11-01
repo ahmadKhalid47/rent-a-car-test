@@ -520,3 +520,8 @@ button:active {
 .animate-zoom {
   animation: zoom 0.6s;
 }
+.Mui-selected{
+  background-color: #054B86 !important;
+}
+.Mui-selected:hover{
+opacity: 0.9;}
