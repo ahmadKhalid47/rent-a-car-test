@@ -19,6 +19,7 @@ import {
   formatCreatedAtDate,
   formatDuration,
 } from "../Components/functions/formats";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 interface dataType {
   data: Array<Object>;
@@ -145,6 +146,7 @@ export default function ListViewreservation({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
+console.log(paginatedData);
 
   return (
     <div className="w-full h-fit">
@@ -157,10 +159,11 @@ export default function ListViewreservation({ data }: dataType) {
           <span>
             <span className="cursor-pointer">
               <button
-                className={`${itemToDeleteMany.length < 1
+                className={`${
+                  itemToDeleteMany.length < 1
                     ? ""
                     : "cursor-pointer hover:underline"
-                  }`}
+                }`}
                 onClick={() => {
                   setDeleteManyPopup(true);
                 }}
@@ -189,15 +192,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
-              Vehicle{" "}
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("vehicleName")}
-              />
-            </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
               Customer{" "}
               <img
                 src={arrows.src}
@@ -205,30 +200,54 @@ export default function ListViewreservation({ data }: dataType) {
                 onClick={() => sort("customerName")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
-              City{" "}
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[8%]">
+              Chauffeur{" "}
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
+                onClick={() => sort("chauffeur")}
               />
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[12%]">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
+              Vehicle{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("vehicleName")}
+              />
+            </div>
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] s">
+              Start Date{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("vehicleName")}
+              />
+            </div>
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] e">
+              End Date{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() => sort("vehicleName")}
+              />
+            </div>
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] c">
               Duration
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[8%]">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[7%]">
               Amount
             </div>
-            <div className="text-start pe-3 flex justify-between items-center truncate w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center truncate w-[8%] s">
               Status
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[14%]">
+            {/* <div className="text-start pe-3 truncate flex justify-between items-center w-[8.5%]">
               Created At{" "}
-            </div>{" "}
-            <div className="text-center pe- flex justify-center items-center truncate w-[7%]">
+            </div>{" "} */}
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%]">
               Documents{" "}
             </div>
-            <div className="text-start pe-3 flex justify-end items-center truncate w-[7%]">
+            <div className="text-start pe-3 flex justify-end items-center truncate w-[6%]">
               Actions{" "}
             </div>
           </div>
@@ -257,27 +276,32 @@ export default function ListViewreservation({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[12%]">
-                    {item?.data?.vehicleName}
-                  </div>
-
-                  <div className="text-start pe-3 truncate w-[12%]">
+                  <div className="text-start pe-3 truncate w-[10%] c">
                     {item?.data?.customerName}
                   </div>
                   <div className="text-start pe-3 truncate w-[8%]">
-                    {item?.data?.city}
+                    {item?.data?.chauffeurName}
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%]">
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] c">
+                    {item?.data?.vehicleName}
+                  </div>
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] s">
+                    {formatCreatedAtDate(item?.data?.PickUpDate)}
+                  </div>
+                  <div className="flex justify-start item-center gap-5 text-start pe-3 truncate w-[10%] e">
+                    {formatCreatedAtDate(item?.data?.dropOffDate)}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[10%] c">
                     {item.data?.durationinDays ? (
                       <>{formatDuration(Number(item?.data?.duration))}</>
                     ) : (
                       <>{item?.data?.duration.padStart(2, "0")} Hours</>
                     )}
                   </div>
-                  <div className="text-start pe-3 truncate w-[8%]">
+                  <div className="text-start pe-3 truncate w-[7%]">
                     ${item?.data?.amount}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%]">
+                  <div className="text-start pe-3 truncate w-[8%] s">
                     <div
                       className={`w-[85px] flex justify-center items-center h-[22px] border-[1px] text-[12px] leading-[14px] text-center rounded-[5px]
                    ${
@@ -296,35 +320,43 @@ export default function ListViewreservation({ data }: dataType) {
                         : "Incomplete"}
                     </div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[14%]">
+                  {/* <div className="text-start pe-3 truncate w-[8.5%]">
                     {formatCreatedAtDate(item?.createdAt)}
-                  </div>
+                  </div> */}
+
                   <div
-                    className="flex justify-center gap-3 items-end truncate w-[7%] "
+                    className="pe-3 w-[8%] flex flex-col justify-center items-start text-[12px]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
                     }}
                   >
-                    <img
-                      src={doc2.src}
-                      className="hover:scale-[1.3] cursor-pointer "
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
                       onClick={() => {
                         router.push(`/ReservationsInfo/${item?._id}/Invoice`);
                       }}
-                      title="Invoice"
-                    />
-                    <img
-                      src={doc1.src}
-                      className="hover:scale-[1.3] cursor-pointer "
+                    >
+                      <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                        <IoDocumentTextOutline className="text-[11px]" />
+                      </div>
+                      Invoice
+                    </button>
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
                       onClick={() => {
                         router.push(`/ReservationsInfo/${item?._id}/Contract`);
                       }}
-                      title="Contract"
-                    />
+                    >
+                      <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                        <IoDocumentTextOutline className="text-[11px]" />
+                      </div>
+                      Agreement
+                    </button>
                   </div>
+
                   <div
-                    className="flex justify-end ps-2 pe-3 items-end truncate w-[7%] "
+                    className="flex justify-end pe-3 truncate gap-1 items-center w-[6%] h-[43px]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
@@ -351,7 +383,7 @@ export default function ListViewreservation({ data }: dataType) {
                   </div>
                 </Link>
                 {popup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-full h-full dark:bg-blackOpachauffeur bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position animate-zoom fixed modal-position animate-zoom">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[16px] leading-[17px]">
@@ -383,7 +415,7 @@ export default function ListViewreservation({ data }: dataType) {
                   </div>
                 ) : null}
                 {deleteManyPopup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
+                  <div className="w-full h-full dark:bg-blackOpachauffeur bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position animate-zoom">
                       <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
                         <label className="flex justify-start gap-1 items-start font-[400] text-[16px] leading-[17px]">
