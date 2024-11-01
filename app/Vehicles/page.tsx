@@ -177,6 +177,7 @@ export default function Vehicles() {
       },
     ]);
   }
+console.log(filteredVehicles);
 
   return (
     <div

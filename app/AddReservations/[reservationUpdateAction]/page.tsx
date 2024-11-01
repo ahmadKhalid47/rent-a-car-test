@@ -165,9 +165,12 @@ export default function Reservations() {
         chauffeur_id: reservation?.chauffeur_id,
         customer_id: reservation?.customer_id,
       });
-      await axios.post(`/api/updateRentOut/${reservation?.vehicle_id}`, {
-        rentOut: true,
-      });
+      await axios.post(
+        `/api/updateRentOut/${reservation?.vehicle_id}/${reservation?.chauffeur_id||""}`,
+        {
+          rentOut: true,
+        }
+      );
       if (result?.data?.success) {
         setShowSuccess(result?.data?.success);
         setShowError(null);

@@ -132,7 +132,6 @@ export default function chauffeurs() {
   }
   useEffect(() => {
     advanceFilterchauffeurs();
-    console.log(status);
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -153,6 +152,7 @@ export default function chauffeurs() {
     ]);
   }
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+console.log(filteredchauffeur);
 
   return (
     <div
