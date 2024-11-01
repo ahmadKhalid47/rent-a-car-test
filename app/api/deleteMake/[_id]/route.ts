@@ -9,7 +9,6 @@ export async function DELETE(req: Request, params: any) {
     await connectDb();
 
     const { make } = await MakeModel.findOne({ _id: _id });
-    
     const data = await MakeModel.deleteOne({ _id: _id });
     await ModelModel.deleteOne({ make: make });
 
