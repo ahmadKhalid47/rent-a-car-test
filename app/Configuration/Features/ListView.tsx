@@ -297,7 +297,7 @@ console.log(Icon[0]?.name);
             <div className="truncate flex justify-start gap-4 items-center w-[37%]">
               Icon
             </div>
-            <div className="flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%] pe-[0.33rem]">
               Actions{" "}
             </div>
           </div>

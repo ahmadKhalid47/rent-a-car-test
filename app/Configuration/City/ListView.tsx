@@ -284,7 +284,7 @@ export default function ListView({ data, makeData }: dataType) {
                 onClick={() => sort("city")}
               />{" "}
             </div>
-            <div className="truncate flex justify-end items-center w-[13%]">
+            <div className="truncate flex justify-end items-center w-[13%] pe-[0.33rem]">
               Actions{" "}
             </div>
           </div>

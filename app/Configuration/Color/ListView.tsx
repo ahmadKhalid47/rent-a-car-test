@@ -278,7 +278,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
               />
             </div>
             <div className="text-start pe-3 flex justify-start gap-4 items-center w-[64%]"></div>
-            <div className="flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%] pe-[0.33rem]">
               Actions{" "}
             </div>
           </div>

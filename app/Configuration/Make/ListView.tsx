@@ -268,7 +268,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                 onClick={() => sort("make")}
               />{" "}
             </div>
-            <div className="text-center flex justify-end items-center w-[13%]">
+            <div className="text-center flex justify-end items-center w-[13%] pe-[0.33rem]">
               Actions{" "}
             </div>
           </div>

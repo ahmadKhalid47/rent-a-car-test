@@ -289,7 +289,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("Type")}
               />
             </div>
-            <div className="flex justify-end items-center w-[13%]">
+            <div className="flex justify-end items-center w-[13%] pe-[0.33rem]">
               Actions{" "}
             </div>
           </div>
