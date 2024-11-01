@@ -81,9 +81,8 @@ export default function ListView({ data }: any) {
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
-      await axios.post(`/api/deleteManyItem`, {
+      await axios.post(`/api/deleteManyCategory`, {
         _ids: itemToDeleteMany,
-        model: "Category",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
