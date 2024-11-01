@@ -214,46 +214,6 @@ export default function chauffeurs() {
                 <CiSearch />
               </div>
             </div>
-            {/* <div className="w-[144px] h-fit">
-              <div className="w-full h-fit flex justify-between items-center relative">
-                <select
-                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
-                  onChange={(e) => {
-                    setAdvanceFilters((prevFilters: any) =>
-                      prevFilters.map((filter: any) =>
-                        filter.key === "rentPerDay"
-                          ? { ...filter, keyValue: e.target.value }
-                          : filter
-                      )
-                    );
-                  }}
-                  value={
-                    advanceFilters.find(
-                      (filter: any) => filter.key === "rentPerDay"
-                    )?.keyValue || ""
-                  }
-                >
-                  <option value="">Rent</option>
-                  {Array.from(
-                    new Set(chauffeursData.map((item) => item.data.rentPerDay))
-                  ).map((rentPerDay) => (
-                    <option key={rentPerDay} value={rentPerDay}>
-                      {global.currentCurrency}
-                      {rentPerDay}
-                    </option>
-                  ))}
-                </select>
-                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-                  <img
-                    src={shape.src}
-                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                  />
-                </div>
-                <div className="absolute left-2 text-[#808080]">
-                  <CiFilter />
-                </div>
-              </div>
-            </div> */}
             <div className="w-[144px] h-fit">
               <div className="w-full h-fit flex justify-between items-center relative">
                 <select

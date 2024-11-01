@@ -14,6 +14,7 @@ import { MediumLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { FaTimesCircle } from "react-icons/fa";
 import SearchEmpty from "../Components/functions/SearchEmpty";
+import { CiFilter, CiSearch } from "react-icons/ci";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -27,6 +28,7 @@ export default function Vehicles() {
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredreservations, setFilteredreservations] = useState<any[]>([]);
+  const [status, setStatus] = useState<any>("");
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
       key: "status",
@@ -175,7 +177,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Reservations
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               Reservations / All Reservations
@@ -183,7 +185,7 @@ export default function Vehicles() {
           </span>
           <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 router.push("/AddReservations/AddNew");
               }}
@@ -192,7 +194,7 @@ export default function Vehicles() {
             </button>
           </div>
         </div>
-        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
+        {/* <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
           <div className="w-full h-fit">
             <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
               Search
@@ -350,19 +352,103 @@ export default function Vehicles() {
           >
             {showLess ? "Advanced Filters" : "Show Less"}
           </h3>
-        </div>
-        <div className="w-full h-fit mt-4">
-          <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            <button
-              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
-              onClick={() => {
-                handleExport(reservationsData?.map((item: any) => item.data));
-              }}
-            >
-              Export
-            </button>
+        </div> */}
+        <div className="h-[44px] w-full flex justify-between gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey mt-4">
+          <div className="h-[44px] w-fit flex justify-start gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+            <div className="w-[320px] h-fit flex justify-between items-center relative">
+              <input
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
+                placeholder="Search By Name, Phone, Email, etc"
+                onChange={handleSearchQueryChange}
+                value={searchQuery}
+              ></input>
+              {searchQuery && (
+                <SearchEmpty
+                  classes={"right-2 text-[24px"}
+                  setState={setSearchQuery}
+                />
+              )}
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
+              </div>
+            </div>
+            <div className="w-[144px] h-fit">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <select
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  onChange={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  value={status}
+                >
+                  <option value="">Status</option>
+                  <option value={"In Active"}>In Active</option>
+                  <option value={"Available"}>Available</option>
+                  <option value={"On Trip"}>On Trip</option>
+                </select>
+                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
+                  <img
+                    src={shape.src}
+                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                  />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
+                </div>
+              </div>
+            </div>
+            <div className="w-[144px] h-fit">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <select
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  onChange={(e) => {
+                    setAdvanceFilters((prevFilters: any) =>
+                      prevFilters.map((filter: any) =>
+                        filter.key === "gender"
+                          ? { ...filter, keyValue: e.target.value }
+                          : filter
+                      )
+                    );
+                  }}
+                  value={
+                    advanceFilters.find(
+                      (filter: any) => filter.key === "gender"
+                    )?.keyValue || ""
+                  }
+                >
+                  <option value="">Gender</option>
+                  <option value={"Male"}>Male</option>
+                  <option value={"Female"}>Female</option>
+                  <option value={"Custom"}>Custom</option>
+                </select>
+                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
+                  <img
+                    src={shape.src}
+                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
+                  />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
+                </div>
+              </div>
+            </div>
           </div>
 
+          <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
+            <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+              <button
+                className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
+                onClick={() => {
+                  handleExport(reservationsData?.map((item: any) => item.data));
+                }}
+              >
+                Export
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full h-fit -mt-">
           {loading ? (
             <MediumLoader />
           ) : (
