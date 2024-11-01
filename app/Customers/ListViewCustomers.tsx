@@ -1,4 +1,5 @@
 import check from "@/public/check.svg";
+import vip from "@/public/vip.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
@@ -91,11 +92,12 @@ export default function ListViewcustomers({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-await axios.delete(`/api/deleteSingleItem/${_id}`, {
-  data: {
-    model: "customer",
-  },
-});      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "customer",
+        },
+      });
+      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Customer Deleted Successfully"));
     } catch (err) {
       console.log(err);
@@ -205,7 +207,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   console.log(paginatedData);
-  
+
   return (
     <div className="w-full h-fit">
       <div
@@ -275,7 +277,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 }}
               ></div>
             </div>
-            <div className="text-start flex justify-start gap-2 items-center w-[14%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[15%]">
               Customer Name{" "}
               <img
                 src={arrows.src}
@@ -316,7 +318,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                 onClick={() => sort("city")}
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%]">
+            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%]">
               Created At{" "}
             </div>{" "}
             <div className="text-start pe-3 truncate flex justify-between items-center w-[11%]">
@@ -352,8 +354,13 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[14%]">
+                  <div className="text-start pe-3 truncate w-[15%] flex justify-start gap-3 items-center">
+                    <span className="w-[90%] truncate">
+                      
                     {item?.data?.name}
+</span>
+
+                    {item?.data?.isVip && <img src={vip.src} />}
                   </div>
                   <div className="text-start pe-3 truncate w-[10%]">
                     <span
@@ -380,7 +387,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
                   <div className="text-start pe-3 truncate w-[8%]">
                     {item?.data?.city}
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%]">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {formatCreatedAtDate(item?.createdAt)}
                   </div>
                   <div
