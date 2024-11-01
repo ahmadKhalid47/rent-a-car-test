@@ -364,7 +364,7 @@ export default function ListViewcustomers({ data }: dataType) {
                   </div>
                   <div className="text-start pe-3 truncate w-[10%]">
                     <span
-                      className={`w-[93px] px-1 truncate border-[1px] rounded-[5px] h-[22px] flex justify-center items-center text-[12px]`}
+                      className={`w-[93px] px-1 truncate border-[1px] rounded-[3px] h-[22px] flex justify-center items-center text-[12px]`}
                     >
                       {item?.data?.customerType}
                     </span>
