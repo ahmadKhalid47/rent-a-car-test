@@ -224,7 +224,7 @@ export default function Vehicles() {
                   onChange={(e) => {
                     setAdvanceFilters((prevFilters: any) =>
                       prevFilters.map((filter: any) =>
-                        filter.key === "status"
+                        filter.key === "duration"
                           ? { ...filter, keyValue: e.target.value }
                           : filter
                       )
@@ -232,16 +232,16 @@ export default function Vehicles() {
                   }}
                   value={
                     advanceFilters.find(
-                      (filter: any) => filter.key === "status"
+                      (filter: any) => filter.key === "duration"
                     )?.keyValue || ""
                   }
                 >
-                  <option value="">Select</option>
+                  <option value="">Duration</option>
                   {Array.from(
-                    new Set(reservationsData.map((item) => item.data.status))
-                  ).map((status) => (
-                    <option key={status} value={status}>
-                      {status}
+                    new Set(reservationsData.map((item) => item.data.duration))
+                  ).map((duration) => (
+                    <option key={duration} value={duration}>
+                      {duration}
                     </option>
                   ))}
                 </select>
@@ -263,7 +263,7 @@ export default function Vehicles() {
                   onChange={(e) => {
                     setAdvanceFilters((prevFilters: any) =>
                       prevFilters.map((filter: any) =>
-                        filter.key === "duration"
+                        filter.key === "status"
                           ? { ...filter, keyValue: e.target.value }
                           : filter
                       )
@@ -271,16 +271,16 @@ export default function Vehicles() {
                   }}
                   value={
                     advanceFilters.find(
-                      (filter: any) => filter.key === "duration"
+                      (filter: any) => filter.key === "status"
                     )?.keyValue || ""
                   }
                 >
-                  <option value="">Duration</option>
+                  <option value="">Status</option>
                   {Array.from(
-                    new Set(reservationsData.map((item) => item.data.duration))
-                  ).map((duration) => (
-                    <option key={duration} value={duration}>
-                      {duration}
+                    new Set(reservationsData.map((item) => item.data.status))
+                  ).map((status) => (
+                    <option key={status} value={status}>
+                      {status}
                     </option>
                   ))}
                 </select>
