@@ -224,13 +224,13 @@ export default function chauffeurInfoMainPage() {
                     <span className="dark:text-white text-[#555555]">
                       Employment Type{" "}
                     </span>
-                    <span>{"---"}</span>
+                    <span>{chauffeurInfo?.employmentType}</span>
                   </div>
                   <div className="w-[45%] flex justify-between items-center">
                     <span className="dark:text-white text-[#555555]">
                       Driving Experience{" "}
                     </span>
-                    <span>{"---"}</span>
+                    <span>{chauffeurInfo?.drivingExp}</span>
                   </div>
                 </div>
                 <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
@@ -238,7 +238,7 @@ export default function chauffeurInfoMainPage() {
                     <span className="dark:text-white text-[#555555]">
                       Availability
                     </span>
-                    <span>{"---"}</span>
+                    <span>{chauffeurInfo?.availability}</span>
                   </div>
                   <div className="w-[45%] flex justify-between items-center">
                     <span className="dark:text-white text-[#555555]">
