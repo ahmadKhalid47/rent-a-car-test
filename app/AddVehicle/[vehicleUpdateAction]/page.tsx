@@ -345,7 +345,7 @@ export default function Vehicles() {
           className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-8 flex flex-col justify-start items-start relative mt-5"
         >
           <div className="w-full h-fit flex flex-col justify-start items-center">
-            <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] leading-[36px] count-button">
+            <div className="w-full h-[50px] flex justify-between items-center relative font-[500] text-[18px] md:text-[24px] count-button">
               <div className="w-[84%] h-[10px] flex justify-start items-center absolute top-[20px] left-[8%] border-[1px] border-grey dark:bg-dark1 bg-white z-[0]">
                 <div
                   className={` h-full flex justify-start items-center bg-main-blue z-[0] transitions2 rounded-full`}
@@ -358,7 +358,7 @@ export default function Vehicles() {
                     setGoToPage(0);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -373,7 +373,7 @@ export default function Vehicles() {
                     setGoToPage(1);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -388,7 +388,7 @@ export default function Vehicles() {
                     setGoToPage(2);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -404,7 +404,7 @@ export default function Vehicles() {
                     setGoToPage(3);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -419,7 +419,7 @@ export default function Vehicles() {
                     setGoToPage(4);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 4
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -434,7 +434,7 @@ export default function Vehicles() {
                     setGoToPage(5);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 5
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"

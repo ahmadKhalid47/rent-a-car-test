@@ -341,7 +341,7 @@ export default function Vehicles() {
                     setGoToPage(0);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 0
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -356,7 +356,7 @@ export default function Vehicles() {
                     setGoToPage(1);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 1
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -371,7 +371,7 @@ export default function Vehicles() {
                     setGoToPage(2);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 2
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
@@ -387,7 +387,7 @@ export default function Vehicles() {
                     setGoToPage(3);
                     submitButton();
                   }}
-                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] ${
+                  className={`w-[30px] md:w-[60px] h-[30px] md:h-[60px] pt-[0.20rem] ${
                     currentPage >= 3
                       ? "transitions2 bg-main-blue text-white"
                       : "dark:bg-dark1 bg-white border-[1px] border-grey"
