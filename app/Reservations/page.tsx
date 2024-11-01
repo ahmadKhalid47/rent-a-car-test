@@ -311,7 +311,7 @@ export default function Vehicles() {
           </div>
         </div>
 
-        <div className="w-full h-fit -mt-">
+        <div className="w-full h-fit -mt-3">
           {loading ? (
             <MediumLoader />
           ) : (
