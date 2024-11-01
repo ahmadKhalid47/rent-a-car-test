@@ -102,7 +102,6 @@ export default function Info() {
       ),
     ]);
   }, []);
-  console.log("newFiles", files, vehicle?.carImages);
 
   const thumbs: any = vehicle?.carImages?.map((file: any) => (
     <div
@@ -153,7 +152,6 @@ export default function Info() {
       (file: any) =>
         !vehicle?.carImages.some((image: any) => image.path === file.path)
     );
-console.log("newFiles", newFiles);
 
     if (newFiles.length) {
       dispatch(setCarImages([...vehicle?.carImages, ...newFiles]));
@@ -221,8 +219,8 @@ console.log("newFiles", newFiles);
           setState={setCategoryR}
           label={"Category"}
           value={vehicle.Category}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.Category?.map(
             (item: any) => item.Category
           )}
@@ -232,8 +230,8 @@ console.log("newFiles", newFiles);
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.make
             ?.filter((item: any) => item.Category.trim() === CategorySelected)
             .map((item: any) => item.make)}
@@ -243,8 +241,8 @@ console.log("newFiles", newFiles);
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make.trim() === makeSelected)
             .map((item: any) => item.model)}
@@ -254,8 +252,8 @@ console.log("newFiles", newFiles);
           setState={settypeR}
           label={"Body Type"}
           value={vehicle.type}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
@@ -265,16 +263,16 @@ console.log("newFiles", newFiles);
           setState={setyearR}
           label={"Making Year"}
           value={vehicle.year}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={years}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
@@ -298,8 +296,8 @@ console.log("newFiles", newFiles);
             <div className="w-full h-fit flex justify-between items-center absolute z-[-10] left-0 top-0">
               <select
                 className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-                required={true}
-                // required={false}
+                // required={true}
+                required={false}
                 value={vehicle.color}
                 onChange={(e) => {
                   dispatch(setcolorR(e.target.value));
@@ -397,8 +395,8 @@ console.log("newFiles", newFiles);
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "Gasoline",
             "Diesel",
@@ -423,8 +421,8 @@ console.log("newFiles", newFiles);
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "Tiptronic",
             "Dual-Clutch Transmission (DCT)",
@@ -438,16 +436,16 @@ console.log("newFiles", newFiles);
           setState={setodometerR}
           label={"Odometer"}
           value={vehicle.odometer}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
           setState={setengineVolume}
           label={"Engine Volume"}
           value={vehicle.engineVolume}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
@@ -461,16 +459,16 @@ console.log("newFiles", newFiles);
           setState={setpassengersR}
           label={"No. of Seats"}
           value={vehicle.passengers}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
         <TempSelectInputLink
           setState={setOwnershipR}
           label={"Ownership"}
           value={vehicle.Ownership}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.Ownership?.map(
             (item: any) => item.Ownership
           )?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -480,8 +478,8 @@ console.log("newFiles", newFiles);
           setState={setDrivetrainR}
           label={"Drivetrain"}
           value={vehicle.Drivetrain}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "All Wheel Drive (AWD)",
             "Front Wheel Drive (FWD)",
@@ -492,8 +490,8 @@ console.log("newFiles", newFiles);
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.country
             ?.map((item: any) => item.country)
             ?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -503,8 +501,8 @@ console.log("newFiles", newFiles);
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
             ?.map((item: any) => item.city)

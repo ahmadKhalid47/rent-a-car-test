@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import shape from "@/public/ShapeBlack.svg";
+import default_interior from "@/public/car-sedan-interior.svg";
+import default_exterior from "@/public/car-sedan-exterior.svg";
 import { useState, useEffect } from "react";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
@@ -163,7 +165,7 @@ export default function Damages() {
   let interiorImg = Configurations?.Configurations?.type.find(
     (item: any) => item.Type === vehicle.type
   )?.interior;
-
+console.log(exteriorImg);
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit">
@@ -218,7 +220,7 @@ export default function Damages() {
                   {exterior ? (
                     <div className="w-[326px] h-[408px] relative">
                       <img
-                        src={exteriorImg}
+                        src={exteriorImg || default_exterior.src}
                         className="w-[326px] h-[408px] cursor-pointer bg-white"
                         onClick={(e) => {
                           handleClick(e, true);
@@ -227,7 +229,7 @@ export default function Damages() {
                     </div>
                   ) : (
                     <img
-                      src={interiorImg}
+                      src={interiorImg || default_interior.src}
                       className="w-[326px] h-[408px] bg-white"
                       onClick={(e) => {
                         handleClick(e, false);
