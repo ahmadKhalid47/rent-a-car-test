@@ -208,7 +208,14 @@ export default function Info() {
           label={"Driving Experience"}
           value={chauffeur.drivingExp}
           required={false}
-          options={["2 Years", "5 Years", "10 Years", "10+ Years"]}
+          options={[
+            "+1 Years",
+            "+3 Years",
+            "+5 Years",
+            "+10 Years",
+            "+15 Years",
+            "+20 Years",
+          ]}
         />
         <TempSelectInput
           setState={setavailabilityR}
@@ -216,9 +223,9 @@ export default function Info() {
           value={chauffeur.availability}
           required={false}
           options={[
-            "Daytime",
-            "Nighttime",
-            "Weekends",
+            "Day-time",
+            "Night-time",
+            "Week-ends",
             "On-call",
             "Overnight",
             "Flexible",
