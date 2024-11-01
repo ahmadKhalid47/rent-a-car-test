@@ -133,7 +133,9 @@ export default function reservationInfoMainPage() {
         completeDate: currentDate,
       });
       let result2: any = await axios.post(
-        `/api/updateRentOut/${reservation?.vehicle_id}`,
+        `/api/updateRentOut/${reservation?.vehicle_id}/${
+          reservation?.chauffeur_id || ""
+        }`,
         {
           rentOut: false,
         }
