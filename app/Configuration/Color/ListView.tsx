@@ -9,7 +9,11 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
+import {
+  setAlert,
+  setSeverity,
+  setVehicleDataReloader,
+} from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -17,7 +21,10 @@ import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { sort } from "@/app/Components/functions/sortFunction";
-import { useDeleteItem } from "@/app/Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "@/app/Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -41,6 +48,7 @@ export default function ListView({ data }: dataType) {
   const dispatch = useDispatch();
   const router = useRouter();
   const deleteItem = useDeleteItem();
+  const deleteManyItems = useDeleteManyItems();
 
   useEffect(() => {
     // Create a copy of the data to avoid mutating the original array
@@ -69,25 +77,6 @@ export default function ListView({ data }: dataType) {
     page * itemsPerPage
   );
 
-
-  async function deleteManyItem() {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/deleteManyItem`, {
-        _ids: itemToDeleteMany,
-        model: "Color",
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Colors Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
-
   async function editItem(_id: any) {
     if (!isValidColor(Color)) {
       alert("Invalid color");
@@ -99,7 +88,7 @@ export default function ListView({ data }: dataType) {
       return;
     } else if (
       data.find(
-        (item:any) =>
+        (item: any) =>
           item.ColorName?.toLowerCase() === ColorName.trim().toLowerCase()
       )
     ) {
@@ -158,7 +147,6 @@ export default function ListView({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{
     [key: string]: "asc" | "desc";
   }>({});
-
 
   return (
     <div className="w-full h-fit">
@@ -357,7 +345,8 @@ export default function ListView({ data }: dataType) {
                               setDeleteLoading,
                               setPopup,
                               setItemToDelete
-                            );                          }}
+                            );
+                          }}
                           disabled={deleteLoading}
                         >
                           {deleteLoading ? <SmallLoader /> : "Yes"}
@@ -388,7 +377,13 @@ export default function ListView({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteManyItem();
+                            deleteManyItems(
+                              itemToDeleteMany,
+                              "Color",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >

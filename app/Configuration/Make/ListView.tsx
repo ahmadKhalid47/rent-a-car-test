@@ -21,7 +21,7 @@ import { FaAsterisk, FaTimes } from "react-icons/fa";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
-import { useDeleteItem } from "@/app/Components/functions/deleteFunction";
+import { useDeleteItem, useDeleteManyItems } from "@/app/Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;

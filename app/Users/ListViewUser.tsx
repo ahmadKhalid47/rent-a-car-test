@@ -21,7 +21,10 @@ import {
   addYearInDate,
   formatDate,
 } from "../Components/functions/formats";
-import { useDeleteItem } from "../Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -43,6 +46,7 @@ export default function ListViewUsers({ data }: dataType) {
   const router = useRouter();
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
   const deleteItem = useDeleteItem();
+  const deleteManyItems = useDeleteManyItems();
 
   useEffect(() => {
     setSortedData(data);
@@ -64,24 +68,6 @@ export default function ListViewUsers({ data }: dataType) {
     page * itemsPerPage
   );
 
-
-  async function deleteManyItem() {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/deleteManyItem`, {
-        _ids: itemToDeleteMany,
-        model: "registration",
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Users Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       // Check if the item is already present in the array
@@ -457,13 +443,13 @@ export default function ListViewUsers({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                                                        deleteItem(
-                                                          itemToDelete,
-                                                          "registration",
-                                                          setDeleteLoading,
-                                                          setPopup,
-                                                          setItemToDelete
-                                                        );
+                            deleteItem(
+                              itemToDelete,
+                              "registration",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >
@@ -495,7 +481,13 @@ export default function ListViewUsers({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteManyItem();
+                            deleteManyItems(
+                              itemToDeleteMany,
+                              "registration",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >

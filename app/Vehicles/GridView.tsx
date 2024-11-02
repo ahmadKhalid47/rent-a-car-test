@@ -14,7 +14,10 @@ import { SmallLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import image404 from "@/public/image404.png";
 import { PaginationComponent } from "../Components/functions/Pagination";
-import { useDeleteItem } from "../Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -31,6 +34,7 @@ export default function GridView({ data }: dataType) {
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const deleteItem = useDeleteItem();
+  const deleteManyItems = useDeleteManyItems();
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -84,24 +88,6 @@ export default function GridView({ data }: dataType) {
     }
   }
 
-  async function deleteManyItem() {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/deleteManyItem`, {
-        _ids: itemToDeleteMany,
-        model: "vehicle",
-      });
-
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Vehicles Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       // Check if the item is already present in the array
@@ -450,7 +436,13 @@ export default function GridView({ data }: dataType) {
               <button
                 className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
-                  deleteManyItem();
+                  deleteManyItems(
+                    itemToDeleteMany,
+                    "vehicle",
+                    setDeleteLoading,
+                    setPopup,
+                    setItemToDelete
+                  );
                 }}
                 disabled={deleteLoading}
               >
