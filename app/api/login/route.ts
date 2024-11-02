@@ -16,8 +16,6 @@ export async function POST(req: Request) {
     let loginData = await RegistrationModel.findOne({
       $or: [{ username: username }, { email: username }],
     });
-    console.log(loginData);
-    console.log(isPlanExpired(loginData.plan, loginData.createdAt));
 
     if (!loginData) {
       return NextResponse.json({
