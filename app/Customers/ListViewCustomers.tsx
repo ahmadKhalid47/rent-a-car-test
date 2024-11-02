@@ -434,7 +434,7 @@ export default function ListViewcustomers({ data }: dataType) {
                       </div>
                       License
                     </button>
-                    {item?.data?.otherImages?.length > 0 && (
+                    {/* {item?.data?.otherImages?.length > 0 && ( */}
                       <button
                         className="w-fit flex justify-start items-center gap-1"
                         onClick={() => {
@@ -446,7 +446,7 @@ export default function ListViewcustomers({ data }: dataType) {
                         </div>
                         Other
                       </button>
-                    )}
+                    {/* )} */}
                   </div>
                   <div
                     className="flex justify-end pe-3 truncate gap-1 items-center w-[7%] h-[43px]"
