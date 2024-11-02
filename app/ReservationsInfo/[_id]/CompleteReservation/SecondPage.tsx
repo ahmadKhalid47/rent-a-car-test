@@ -16,7 +16,7 @@ import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAlert, setSeverity } from "@/app/store/Global";
-import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import { Thumbs, Thumbs2 } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
