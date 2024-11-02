@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
-import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import { Thumbs, Thumbs2 } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Damages() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -410,7 +410,7 @@ export default function Damages() {
               </div>
 
               <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 py-[2px]">
-                <Thumbs files={files} setFiles={setFiles} />
+                <Thumbs2 files={files} setFiles={setFiles} />
               </div>
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>

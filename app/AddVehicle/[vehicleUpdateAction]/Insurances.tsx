@@ -29,24 +29,25 @@ export default function Insurances() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
-  const [insfiles, setinsFiles] = useState<any>(vehicle?.insImage);
   let global = useSelector((state: RootState) => state.Global);
+  const onDrop = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !vehicle?.insImage.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setinsImage([...vehicle?.insImage, ...uniqueFiles]));
+    }
+  });
 
-  useEffect(() => {
-    setinsFiles(vehicle.insImage);
-  }, [vehicle.insImage]);
-  const onDropPass = useFileDrop(
-    (files: any[]) => setinsFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
-  useEffect(() => {
-    dispatch(setinsImage(insfiles));
-  }, [insfiles]);
   const {
     getRootProps,
     getInputProps,
     // isDragActive,
   } = useDropzone({
-    onDrop: onDropPass,
+    onDrop: onDrop,
   });
 
   return (
@@ -164,7 +165,7 @@ export default function Insurances() {
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={insfiles} setFiles={setinsFiles} />
+          <Thumbs files={vehicle?.insImage} setFiles={setinsImage} />
         </div>
       </div>
     </div>

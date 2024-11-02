@@ -31,26 +31,41 @@ export default function FirstPage() {
     }
   }, [isMobile]);
 
-  const [fuelFiles, setfuelFiles] = useState<any>(
-    reservation?.fuelImagesCompletion
-  );
-  const [odometerFiles, setodometerFiles] = useState<any>(
-    reservation?.odometerImagesCompletion
-  );
-  useEffect(() => {
-    setfuelFiles(reservation?.fuelImagesCompletion);
-  }, [reservation?.fuelImagesCompletion]);
-  useEffect(() => {
-    setodometerFiles(reservation?.odometerImagesCompletion);
-  }, [reservation?.odometerImagesCompletion]);
 
-  const onDropFuel = useFileDrop(
-    (files: any[]) => setfuelFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
-  const onDropodometer = useFileDrop(
-    (files: any[]) =>
-      setodometerFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
+    const onDropFuel = useFileDrop((files: any[]) => {
+      const uniqueFiles = files.filter(
+        (file) =>
+          !reservation?.fuelImagesCompletion.some(
+            (existingFile: any) => existingFile.name === file.name
+          )
+      );
+      if (uniqueFiles.length > 0) {
+        dispatch(
+          setfuelImagesCompletion([
+            ...reservation?.fuelImagesCompletion,
+            ...uniqueFiles,
+          ])
+        );
+      }
+    });
+
+    const onDropodometer = useFileDrop((files: any[]) => {
+      const uniqueFiles = files.filter(
+        (file) =>
+          !reservation?.odometerImagesCompletion.some(
+            (existingFile: any) => existingFile.name === file.name
+          )
+      );
+      if (uniqueFiles.length > 0) {
+        dispatch(
+          setodometerImagesCompletion([
+            ...reservation?.odometerImagesCompletion,
+            ...uniqueFiles,
+          ])
+        );
+      }
+    });
+
 
   const { getRootProps: getRootPropsFuel, getInputProps: getInputPropsFuel } =
     useDropzone({
@@ -62,13 +77,6 @@ export default function FirstPage() {
   } = useDropzone({
     onDrop: onDropodometer,
   });
-
-  useEffect(() => {
-    dispatch(setfuelImagesCompletion(fuelFiles));
-  }, [fuelFiles]);
-  useEffect(() => {
-    dispatch(setodometerImagesCompletion(odometerFiles));
-  }, [odometerFiles]);
 
   return (
     <>
@@ -92,7 +100,7 @@ export default function FirstPage() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}
@@ -102,7 +110,10 @@ export default function FirstPage() {
           Here you can Upload Image of Fuel Status
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={fuelFiles} setFiles={setfuelFiles} />
+          <Thumbs
+            files={reservation?.fuelImagesCompletion}
+            setFiles={setfuelImagesCompletion}
+          />
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -125,7 +136,7 @@ export default function FirstPage() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}
@@ -135,7 +146,10 @@ export default function FirstPage() {
           Here you can Upload Image of Odometer
         </span>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={odometerFiles} setFiles={setodometerFiles} />
+          <Thumbs
+            files={reservation?.odometerImagesCompletion}
+            setFiles={setodometerImagesCompletion}
+          />
         </div>
       </div>
     </>

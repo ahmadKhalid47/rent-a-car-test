@@ -449,7 +449,7 @@ export default function SecondPage() {
                 </div>
 
                 <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto py-[2px]">
-                  <Thumbs files={files} setFiles={setFiles} />
+                  <Thumbs2 files={files} setFiles={setFiles} />
                 </div>
               </div>
               <div

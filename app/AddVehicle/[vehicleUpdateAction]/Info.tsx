@@ -3,17 +3,14 @@ import React, { useRef } from "react";
 import shape from "@/public/ShapeBlack.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
-import { FaAsterisk, FaCircle, FaTimesCircle } from "react-icons/fa";
+import { FaAsterisk } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
-import { useCallback } from "react";
 import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
 import {
   TempSelectInput,
-  TempSelectInputInfo,
   TempSelectInputLink,
 } from "../../Components/InputComponents/SelectInput";
 import {
-  setvehicleIdR,
   setmakeR,
   setmodelR,
   settypeR,
@@ -40,25 +37,20 @@ import {
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { ClassNames } from "@emotion/react";
 import Link from "next/link";
-import { setAlert, setSeverity } from "@/app/store/Global";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
   let Configurations = useSelector((state: RootState) => state.Configurations);
   let dispatch = useDispatch();
 
-  const [files, setFiles] = useState(vehicle?.carImages);
   const [countrySelected, setCountrySelected] = useState(vehicle.country);
   const [makeSelected, setMakeSelected] = useState(vehicle.make);
   const [CategorySelected, setCategorySelected] = useState(vehicle.Category);
-  useEffect(() => {
-    setFiles(vehicle?.carImages);
-  }, [vehicle?.carImages]);
+
   useEffect(() => {
     setCategorySelected(vehicle.Category);
   }, [vehicle.Category]);
@@ -69,53 +61,20 @@ export default function Info() {
     setCountrySelected(vehicle.country);
   }, [vehicle.country]);
 
-  const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; 
-
-    const filteredFiles = acceptedFiles?.filter((file: any) => {
-      if (!allowedTypes.includes(file.type)) {
-        dispatch(
-          setAlert(
-            `File ${file.name} is not a supported format. Please upload JPG or PNG files.`
-          )
-        );
-        dispatch(setSeverity("error"));
-        return false;
-      }
-      if (file.size > maxFileSize) {
-        dispatch(
-          setAlert(`File ${file.name} is too large. Maximum size is 5MB.`)
-        );
-        dispatch(setSeverity("error"));
-
-        return false;
-      }
-      return true;
-    });
-
-    setFiles((prevFiles: any) => [
-      ...prevFiles,
-      ...filteredFiles.map((file: any) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      ),
-    ]);
-  }, []);
+  const onDrop = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !vehicle?.carImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setCarImages([...vehicle?.carImages, ...uniqueFiles]));
+    }
+  });
 
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  useEffect(() => {
-    const newFiles = files?.filter(
-      (file: any) =>
-        !vehicle?.carImages.some((image: any) => image.path === file.path)
-    );
-
-    if (newFiles.length) {
-      dispatch(setCarImages([...vehicle?.carImages, ...newFiles]));
-    }
-  }, [files, vehicle?.carImages, dispatch]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(vehicle.colorName);
@@ -178,8 +137,8 @@ export default function Info() {
           setState={setCategoryR}
           label={"Category"}
           value={vehicle.Category}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.Category?.map(
             (item: any) => item.Category
           )}
@@ -189,8 +148,8 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.make
             ?.filter((item: any) => item.Category.trim() === CategorySelected)
             .map((item: any) => item.make)}
@@ -200,8 +159,8 @@ export default function Info() {
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make.trim() === makeSelected)
             .map((item: any) => item.model)}
@@ -211,8 +170,8 @@ export default function Info() {
           setState={settypeR}
           label={"Body Type"}
           value={vehicle.type}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
@@ -222,16 +181,16 @@ export default function Info() {
           setState={setyearR}
           label={"Making Year"}
           value={vehicle.year}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={years}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
@@ -255,8 +214,8 @@ export default function Info() {
             <div className="w-full h-fit flex justify-between items-center absolute z-[-10] left-0 top-0">
               <select
                 className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-                required={true}
-                // required={false}
+                // required={true}
+                required={false}
                 value={vehicle.color}
                 onChange={(e) => {
                   dispatch(setcolorR(e.target.value));
@@ -354,8 +313,8 @@ export default function Info() {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "Gasoline",
             "Diesel",
@@ -380,8 +339,8 @@ export default function Info() {
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "Tiptronic",
             "Dual-Clutch Transmission (DCT)",
@@ -395,16 +354,16 @@ export default function Info() {
           setState={setodometerR}
           label={"Odometer"}
           value={vehicle.odometer}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
           setState={setengineVolume}
           label={"Engine Volume"}
           value={vehicle.engineVolume}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           type={"number"}
         />
         <TempTypeInput
@@ -418,16 +377,16 @@ export default function Info() {
           setState={setpassengersR}
           label={"No. of Seats"}
           value={vehicle.passengers}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
         <TempSelectInputLink
           setState={setOwnershipR}
           label={"Ownership"}
           value={vehicle.Ownership}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.Ownership?.map(
             (item: any) => item.Ownership
           )?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -437,8 +396,8 @@ export default function Info() {
           setState={setDrivetrainR}
           label={"Drivetrain"}
           value={vehicle.Drivetrain}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={[
             "All Wheel Drive (AWD)",
             "Front Wheel Drive (FWD)",
@@ -449,8 +408,8 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.country
             ?.map((item: any) => item.country)
             ?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -460,8 +419,8 @@ export default function Info() {
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          required={true}
-          // required={false}
+          // required={true}
+          required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
             ?.map((item: any) => item.city)
@@ -492,7 +451,7 @@ export default function Info() {
           </span>{" "}
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={files} setFiles={setFiles} />
+          <Thumbs files={vehicle?.carImages} setFiles={setCarImages} />
         </div>
       </div>
       {vehicle?.carImages?.length > 1 ? (

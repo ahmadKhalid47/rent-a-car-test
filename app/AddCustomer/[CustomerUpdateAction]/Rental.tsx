@@ -34,67 +34,65 @@ import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);
-  const [passfiles, setPassFiles] = useState<any>(customer?.passportImages);
-  const [licfiles, setLicFiles] = useState<any>(customer?.licenseImages);
-  const [otherfiles, setOtherFiles] = useState<any>(customer?.otherImages);
   let dispatch = useDispatch();
-  useEffect(() => {
-    setPassFiles(customer.passportImages);
-  }, [customer.passportImages]);
 
-  useEffect(() => {
-    setLicFiles(customer.licenseImages);
-  }, [customer.licenseImages]);
-
-  useEffect(() => {
-    setOtherFiles(customer.otherImages);
-  }, [customer.otherImages]);
-
-
-  const onDropPass = useFileDrop(
-    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
-  const {
-    getRootProps: getRootPropsPass,
-    getInputProps: getInputPropsPass,
-    // isDragActive,
-  } = useDropzone({
-    onDrop: onDropPass,
+  const onDropPass = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !customer.passportImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(
+        setpassportImagesR([...customer.passportImages, ...uniqueFiles])
+      );
+    }
   });
-  useEffect(() => {
-    dispatch(setpassportImagesR(passfiles));
-  }, [passfiles]);
 
-  const onDropLic = useFileDrop(
-    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
-  const {
-    getRootProps: getRootPropsLic,
-    getInputProps: getInputPropsLic,
-    // isDragActive,
-  } = useDropzone({
-    onDrop: onDropLic,
+  const { getRootProps: getRootPropsPass, getInputProps: getInputPropsPass } =
+    useDropzone({
+      onDrop: onDropPass,
+    });
+
+  const onDropLic = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !customer.licenseImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setlicenseImagesR([...customer.licenseImages, ...uniqueFiles]));
+    }
   });
-  useEffect(() => {
-    dispatch(setlicenseImagesR(licfiles));
-  }, [licfiles]);
+
+  const { getRootProps: getRootPropsLic, getInputProps: getInputPropsLic } =
+    useDropzone({
+      onDrop: onDropLic,
+    });
+
+  const onDropOther = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !customer.otherImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setotherImagesR([...customer.otherImages, ...uniqueFiles]));
+    }
+  });
+
+  const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
+    useDropzone({
+      onDrop: onDropOther,
+    });
 
   const countries: any = Country.getAllCountries().map((country: any) => ({
     value: country.isoCode,
     label: country.name,
   }));
-  const onDropOther = useFileDrop(
-    (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
-  const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
-    useDropzone({
-      onDrop: onDropOther,
-    });
-  useEffect(() => {
-    dispatch(setotherImagesR(otherfiles));
-  }, [otherfiles]);
-
 
   return (
     <div className="w-full h-fit">
@@ -179,7 +177,10 @@ export default function Rental() {
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={passfiles} setFiles={setPassFiles} />
+          <Thumbs
+            files={customer.passportImages}
+            setFiles={setpassportImagesR}
+          />
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -229,7 +230,10 @@ export default function Rental() {
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={licfiles} setFiles={setLicFiles} />
+          <Thumbs
+            files={customer.licenseImages}
+            setFiles={setlicenseImagesR}
+          />
         </div>
       </div>
 
@@ -308,7 +312,7 @@ export default function Rental() {
             </span>
           </div>
           <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-            <Thumbs files={otherfiles} setFiles={setOtherFiles} />
+            <Thumbs files={customer.otherImages} setFiles={setotherImagesR} />
           </div>
         </div>
       )}
