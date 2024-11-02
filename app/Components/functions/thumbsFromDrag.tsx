@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimesCircle } from "react-icons/fa";
-import { removing } from "./removingFileFromDrag";
+import { useDispatch } from "react-redux";
 
 interface dataType {
   files: any;
@@ -8,9 +8,24 @@ interface dataType {
 }
 
 export function Thumbs({ files, setFiles }: dataType) {
+  let dispatch = useDispatch();
+
+  function removing(file: any, files: any, setFiles: any) {
+    let array = files;
+    array = array.filter((e: any) => {
+      if (typeof e === "string") {
+        return e !== file;
+      } else if (typeof e === "object" && e !== null) {
+        return e.path !== file.path && e.preview !== file.preview;
+      }
+      return true;
+    });
+    dispatch(setFiles(array));
+  }
+
   return (
     <>
-      {files.length
+      {files?.length
         ? files?.map((file: any) => (
             <div
               key={file.name}

@@ -3,12 +3,8 @@ import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import {
-  TempTypeInput,
-} from "../../Components/InputComponents/TypeInput";
-import {
-  TempSelectInput,
-} from "../../Components/InputComponents/SelectInput";
+import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
+import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
   setpassportNumberR,
   setpassportValidR,
@@ -29,61 +25,66 @@ import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { Thumbs } from "../../Components/functions/thumbsFromDrag";
 import { useFileDrop } from "../../Components/functions/onDragFromDrag";
-import { Country} from "country-state-city";
+import { Country } from "country-state-city";
 import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 
 export default function Rental() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
-  const [passfiles, setPassFiles] = useState<any>(chauffeur?.passportImages);
-  const [licfiles, setLicFiles] = useState<any>(chauffeur?.licenseImages);
-  const [otherfiles, setOtherFiles] = useState<any>(chauffeur?.otherImages);
   let dispatch = useDispatch();
-  useEffect(() => {
-    setPassFiles(chauffeur.passportImages);
-  }, [chauffeur.passportImages]);
 
-  useEffect(() => {
-    setLicFiles(chauffeur.licenseImages);
-  }, [chauffeur.licenseImages]);
+  const onDropPass = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !chauffeur.passportImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(
+        setpassportImagesR([...chauffeur.passportImages, ...uniqueFiles])
+      );
+    }
+  });
 
-  useEffect(() => {
-    setOtherFiles(chauffeur.otherImages);
-  }, [chauffeur.otherImages]);
-
-  const onDropPass = useFileDrop(
-    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
   const { getRootProps: getRootPropsPass, getInputProps: getInputPropsPass } =
     useDropzone({
       onDrop: onDropPass,
     });
-  useEffect(() => {
-    dispatch(setpassportImagesR(passfiles));
-  }, [passfiles]);
 
-  const onDropLic = useFileDrop(
-    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
+  const onDropLic = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !chauffeur.licenseImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setlicenseImagesR([...chauffeur.licenseImages, ...uniqueFiles]));
+    }
+  });
+  
   const { getRootProps: getRootPropsLic, getInputProps: getInputPropsLic } =
-    useDropzone({
-      onDrop: onDropLic,
-    });
-  useEffect(() => {
-    dispatch(setlicenseImagesR(licfiles));
-  }, [licfiles]);
+  useDropzone({
+    onDrop: onDropLic,
+  });
+  
+  const onDropOther = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !chauffeur.otherImages.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles.length > 0) {
+      dispatch(setotherImagesR([...chauffeur.otherImages, ...uniqueFiles]));
+    }
+  });
 
-  const onDropOther = useFileDrop(
-    (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
-  );
   const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
     useDropzone({
       onDrop: onDropOther,
     });
-  useEffect(() => {
-    dispatch(setotherImagesR(otherfiles));
-  }, [otherfiles]);
-
+  
   const countries: any = Country.getAllCountries().map((country: any) => ({
     value: country.isoCode,
     label: country.name,
@@ -172,7 +173,10 @@ export default function Rental() {
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={passfiles} setFiles={setPassFiles} />
+          <Thumbs
+            files={chauffeur.passportImages}
+            setFiles={setpassportImagesR}
+          />
         </div>
       </div>
       <div className="flex flex-wrap justify-start items-start gap-x-[4%] gap-y-5 w-full h-fit dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-11 py-8">
@@ -225,7 +229,10 @@ export default function Rental() {
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          <Thumbs files={licfiles} setFiles={setLicFiles} />
+          <Thumbs
+            files={chauffeur.licenseImages}
+            setFiles={setlicenseImagesR}
+          />
         </div>
       </div>
       <div className="flex justify-start gap-3 items-center w-[100%] mt-5">
@@ -302,7 +309,10 @@ export default function Rental() {
             </span>
           </div>
           <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-            <Thumbs files={otherfiles} setFiles={setOtherFiles} />
+            <Thumbs
+              files={chauffeur.otherImages}
+              setFiles={setotherImagesR}
+            />
           </div>
         </div>
       )}
