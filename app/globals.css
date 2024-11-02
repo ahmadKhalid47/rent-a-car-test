@@ -432,7 +432,7 @@ button:active {
 .height-calc {
   height: calc(100% - 0px);
 }
-.modal-position animate-zoom {
+.modal-position {
   position: fixed;
   top: 50vh;
   transform: translateY(-50%);
