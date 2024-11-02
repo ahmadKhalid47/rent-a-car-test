@@ -67,6 +67,7 @@ import {
   addReference,
   removeReference,
   updateReference,
+  resetting,
 } from "@/app/store/Customer";
 import { Country, State, City } from "country-state-city";
 import Link from "next/link";
@@ -109,7 +110,7 @@ export default function Vehicles() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
   async function saveData(action: string) {
@@ -173,10 +174,10 @@ export default function Vehicles() {
       formData5.append("length1", customer.reference?.length);
 
       for (let i = 0; i < customer.reference?.length; i++) {
-        formData5.append("length2", customer.reference[i]?.refImages?.length); 
+        formData5.append("length2", customer.reference[i]?.refImages?.length);
 
         for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", customer.reference[i]?.refImages[j]); 
+          formData5.append("files", customer.reference[i]?.refImages[j]);
         }
       }
 
@@ -305,10 +306,10 @@ export default function Vehicles() {
       formData5.append("length1", customer.reference?.length);
 
       for (let i = 0; i < customer.reference?.length; i++) {
-        formData5.append("length2", customer.reference[i]?.refImages?.length); 
+        formData5.append("length2", customer.reference[i]?.refImages?.length);
 
         for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", customer.reference[i]?.refImages[j]); 
+          formData5.append("files", customer.reference[i]?.refImages[j]);
         }
       }
 
@@ -360,7 +361,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Add New Customer
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Customers"} className="hover:underline">
@@ -509,8 +510,50 @@ export default function Vehicles() {
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(resetState());
-                  setCurrentPage(0);
+                  dispatch(
+                    resetting(
+                      currentPage === 0
+                        ? [
+                            "alternativePhone",
+                            "city",
+                            "country",
+                            "customerImage",
+                            "customerType",
+                            "dateOfBirth",
+                            "emailAddress",
+                            "gender",
+                            "isVip",
+                            "name",
+                            "nationality",
+                            "phone",
+                            "postalCode",
+                            "state",
+                            "streetAddress",
+                          ]
+                        : currentPage === 2
+                        ? ["emergency"]
+                        : currentPage === 3
+                        ? ["reference"]
+                        : currentPage === 1
+                        ? [
+                            "passportNumber",
+                            "passportValid",
+                            "passportCountry",
+                            "passportImages",
+                            "licenseNumber",
+                            "licenseValid",
+                            "licenseCountry",
+                            "licenseImages",
+                            "idCard",
+                            "otherNumber",
+                            "otherValid",
+                            "otherCountry",
+                            "otherImages",
+                            "other",
+                          ]
+                        : null
+                    )
+                  );
                 }}
               >
                 Reset
