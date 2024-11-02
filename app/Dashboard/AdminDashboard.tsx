@@ -121,7 +121,7 @@ export default function AdminDashboard() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", {
+        const result = await axios.post("/api/getUser", {
           createdBy: myProfile._id,
         });
         setreservationsData(result.data.data);
@@ -133,25 +133,6 @@ export default function AdminDashboard() {
     }
     if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
-  const completedReservations = reservationsData.filter(
-    (item: any) => item.data.status === "complete"
-  );
-
-  const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
-  const completedReservationsToday = completedReservations.filter(
-    (item: any) => item.data.completeDate === currentDate
-  );
-  const reservationsMadeToday = reservationsData.filter(
-    (item: any) => item.data.reservationDate === currentDate
-  );
-  const totalAmount = completedReservations.reduce(
-    (sum, record) => sum + Number(record.data.amount),
-    0
-  );
-  const totalAmountToday = completedReservationsToday.reduce(
-    (sum, record) => sum + Number(record.data.amount),
-    0
-  );
 
   useEffect(() => {
     async function getData2() {
@@ -207,7 +188,11 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? VehiclesData.length : <TextLoader />}
+                    {!reservationLoading ? (
+                      reservationsData.length
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Users{" "}
@@ -220,7 +205,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? activeVehicles.length : <TextLoader />}
+                    {!vehicleLoading ? reservationsData.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Active Users

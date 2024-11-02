@@ -148,6 +148,7 @@ export default function Vehicles() {
     ]);
   }
   const handleExport = useHandleExport(); 
+console.log(UsersData);
 
   return (
     <div
@@ -339,7 +340,7 @@ export default function Vehicles() {
             <button
               className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
               onClick={() => {
-                handleExport(UsersData?.map((item: any) => item.data));
+                handleExport(UsersData?.map((item: any) => item));
               }}
             >
               Export
