@@ -217,6 +217,14 @@ export const CustomerSlice = createSlice({
       return { ...state, ...action.payload };
     },
     resetState: () => initialState,
+    resetting: (state, action) => {
+      const keysToReset = action.payload;
+      keysToReset.forEach((key: any) => {
+        if (key in state) {
+          state[key] = initialState[key];
+        }
+      });
+    },
   },
 });
 
@@ -269,6 +277,7 @@ export const {
   addReference,
   removeReference,
   updateReference,
+  resetting,
 } = CustomerSlice.actions;
 
 export default CustomerSlice.reducer;

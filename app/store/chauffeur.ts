@@ -206,6 +206,14 @@ export const chauffeurSlice = createSlice({
     removeReference: (state, action) => {
       state.reference.splice(action.payload, 1);
     },
+    resetting: (state, action) => {
+      const keysToReset = action.payload;
+      keysToReset.forEach((key: any) => {
+        if (key in state) {
+          state[key] = initialState[key];
+        }
+      });
+    },
   },
 });
 
@@ -257,6 +265,7 @@ export const {
   addReference,
   removeReference,
   updateReference,
+  resetting,
 } = chauffeurSlice.actions;
 
 export default chauffeurSlice.reducer;

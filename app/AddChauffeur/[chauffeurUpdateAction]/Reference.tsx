@@ -8,7 +8,6 @@ import ReferenceComp from "./ReferenceComp";
 export default function Reference() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   let dispatch = useDispatch();
-  console.log(chauffeur.reference);
   return (
     <div className="w-full h-fit">
       <ReferenceComp />

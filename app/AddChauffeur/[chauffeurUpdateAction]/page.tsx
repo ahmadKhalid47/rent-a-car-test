@@ -11,7 +11,7 @@ import Rental from "./Rental";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios, { AxiosResponse } from "axios";
-import { resetState, setAllValues } from "@/app/store/chauffeur";
+import { resetState, resetting, setAllValues } from "@/app/store/chauffeur";
 import { useParams, useRouter } from "next/navigation";
 import {
   LoaderOnSave,
@@ -58,7 +58,7 @@ export default function AddChauffeur() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
   async function saveData(action: string) {
@@ -123,10 +123,10 @@ export default function AddChauffeur() {
       formData5.append("length1", chauffeur.reference?.length);
 
       for (let i = 0; i < chauffeur.reference?.length; i++) {
-        formData5.append("length2", chauffeur.reference[i]?.refImages?.length); 
+        formData5.append("length2", chauffeur.reference[i]?.refImages?.length);
 
         for (let j = 0; j < chauffeur.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", chauffeur.reference[i]?.refImages[j]); 
+          formData5.append("files", chauffeur.reference[i]?.refImages[j]);
         }
       }
 
@@ -253,10 +253,10 @@ export default function AddChauffeur() {
       formData5.append("length1", chauffeur.reference?.length);
 
       for (let i = 0; i < chauffeur.reference?.length; i++) {
-        formData5.append("length2", chauffeur.reference[i]?.refImages?.length); 
+        formData5.append("length2", chauffeur.reference[i]?.refImages?.length);
 
         for (let j = 0; j < chauffeur.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", chauffeur.reference[i]?.refImages[j]); 
+          formData5.append("files", chauffeur.reference[i]?.refImages[j]);
         }
       }
 
@@ -272,7 +272,6 @@ export default function AddChauffeur() {
         ...obj,
         refImages: res5?.data?.message[index].map((url: any) => url),
       }));
-
 
       await axios.post(`/api/updatechauffeur/${chauffeurUpdateAction}`, {
         ...chauffeur,
@@ -304,7 +303,7 @@ export default function AddChauffeur() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Add New Chauffeur
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Chauffeurs"} className="hover:underline">
@@ -455,8 +454,52 @@ export default function AddChauffeur() {
                 className="px-2 md:px-0 w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(resetState());
-                  setCurrentPage(0);
+                  dispatch(
+                    resetting(
+                      currentPage === 0
+                        ? [
+                            "alternativePhone",
+                            "city",
+                            "country",
+                            "chauffeurImage",
+                            "dateOfBirth",
+                            "emailAddress",
+                            "gender",
+                            "name",
+                            "nationality",
+                            "phone",
+                            "postalCode",
+                            "state",
+                            "streetAddress",
+                            "rentPerDay",
+                            "employmentType",
+                            "drivingExp",
+                            "availability",
+                          ]
+                        : currentPage === 2
+                        ? ["emergency"]
+                        : currentPage === 3
+                        ? ["reference"]
+                        : currentPage === 1
+                        ? [
+                            "passportNumber",
+                            "passportValid",
+                            "passportCountry",
+                            "passportImages",
+                            "licenseNumber",
+                            "licenseValid",
+                            "licenseCountry",
+                            "licenseImages",
+                            "idCard",
+                            "otherNumber",
+                            "otherValid",
+                            "otherCountry",
+                            "otherImages",
+                            "other",
+                          ]
+                        : null
+                    )
+                  );
                 }}
               >
                 Reset
