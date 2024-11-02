@@ -4,8 +4,6 @@ import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
@@ -17,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { sort, sort2 } from "../Components/functions/sortFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -57,39 +56,6 @@ export default function ListView({ data }: dataType) {
     page * itemsPerPage
   );
 
-  // General sorting function
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
-
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
@@ -108,6 +74,7 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
+  
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -188,7 +155,6 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-// console.log(data?.data?.odometer);
 
   return (
     <div className="w-full h-fit">
@@ -264,7 +230,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("make")}
+                onClick={() =>
+                  sort(
+                    "make",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]"></div>
@@ -273,7 +249,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("registration")}
+                onClick={() =>
+                  sort(
+                    "registration",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]">
@@ -281,7 +267,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("type")}
+                onClick={() =>
+                  sort(
+                    "type",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
 
@@ -290,7 +286,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("year")}
+                onClick={() =>
+                  sort(
+                    "year",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
@@ -298,7 +304,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("color")}
+                onClick={() =>
+                  sort(
+                    "color",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[12%]">
@@ -306,7 +322,17 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("odometer")}
+                onClick={() =>
+                  sort(
+                    "odometer",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
@@ -314,11 +340,36 @@ export default function ListView({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
+                onClick={() =>
+                  sort(
+                    "city",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[9%]">
               Created At{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() =>
+                  sort2(
+                    "createdAt",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
+              />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
               Status
