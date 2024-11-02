@@ -32,25 +32,23 @@ export default function ListView({ data }: dataType) {
     {}
   );
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
-
-  useEffect(() => {
-    setSortedData(data);
-  }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleExport = useHandleExport(); 
 
+  useEffect(() => {
+    setSortedData(data);
+  }, [data]);
   const handleChange = (event: any, value: any) => {
     setPage(value);
   };
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
-  // Slice the data for the current page
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -74,7 +72,6 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-  
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -95,21 +92,15 @@ export default function ListView({ data }: dataType) {
   }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      // Check if the item is already present in the array
       const isPresent = prevArray.includes(_id);
-
-      // Return a new array with the item either added or removed
       if (isPresent) {
-        // Remove the item
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        // Add the item
         return [...prevArray, _id];
       }
     });
   }
   const allIds = data.map((item: any) => item?._id);
-
   async function updateActive(_id: any, active: boolean) {
     try {
       setEditLoading(true);
