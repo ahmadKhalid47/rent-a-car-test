@@ -57,7 +57,7 @@ export default function Rental() {
 
 
   const onDropPass = useFileDrop(
-    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const {
     getRootProps: getRootPropsPass,
@@ -71,7 +71,7 @@ export default function Rental() {
   }, [passfiles]);
 
   const onDropLic = useFileDrop(
-    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const {
     getRootProps: getRootPropsLic,
@@ -90,7 +90,7 @@ export default function Rental() {
   }));
   const onDropOther = useFileDrop(
     (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
     useDropzone({

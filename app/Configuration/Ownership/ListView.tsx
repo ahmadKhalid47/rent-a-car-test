@@ -46,18 +46,18 @@ export default function ListView({ data }: dataType) {
   const deleteManyItems = useDeleteManyItems();
 
   useEffect(() => {
-    // Create a copy of the data to avoid mutating the original array
+    
     const sorted = [...data].sort((a: any, b: any) => {
       const aIsUser = a.createdBy === myProfile._id;
       const bIsUser = b.createdBy === myProfile._id;
 
-      if (aIsUser && !bIsUser) return -1; // a comes before b
-      if (!aIsUser && bIsUser) return 1; // b comes before a
+      if (aIsUser && !bIsUser) return -1; 
+      if (!aIsUser && bIsUser) return 1; 
       return 0; // no change in order
     });
 
     setSortedData(sorted);
-  }, [data, myProfile._id]); // Added myProfile._id as a dependency
+  }, [data, myProfile._id]); 
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -107,15 +107,15 @@ export default function ListView({ data }: dataType) {
   }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      // Check if the item is already present in the array
+      
       const isPresent = prevArray.includes(_id);
 
-      // Return a new array with the item either added or removed
+      
       if (isPresent) {
-        // Remove the item
+
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        // Add the item
+        
         return [...prevArray, _id];
       }
     });

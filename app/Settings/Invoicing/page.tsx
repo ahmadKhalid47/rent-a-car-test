@@ -41,16 +41,13 @@ export default function AddUser() {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const input = e.target.value;
 
-    // Split the user's input into lines
     const lines = input.split("\n");
 
-    // Remove existing numbering before adding new numbers
     const cleanLines = lines.map((line) => line.replace(/^\d+\.\s*/, ""));
 
-    // Add line numbers
     const numberedLines = cleanLines
       .map((line, index) => {
-        // Only add a number if there's content on the line
+        
         return line.trim() ? `${index + 1}. ${line}` : "";
       })
       .join("\n");
@@ -59,13 +56,11 @@ export default function AddUser() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Handle backspace so that it doesn't get stuck on numbers
     if (e.key === "Backspace") {
       const { selectionStart, selectionEnd } = e.currentTarget;
       const lines = Invoicing?.terms.split("\n");
       const currentLine = lines[selectionStart ? selectionStart - 1 : 0];
 
-      // If backspace is pressed on an empty line number, allow the number to be deleted
       if (currentLine && currentLine.match(/^\d+\.\s*$/)) {
         e.preventDefault(); // Prevent the default behavior
         const newText =

@@ -70,7 +70,7 @@ export default function Info() {
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+    const allowedTypes = ["image/jpeg", "image/png"]; 
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
@@ -129,11 +129,11 @@ export default function Info() {
   function removing(file: any) {
     let array = files;
     array = array.filter((e: any) => {
-      // If the element is a string, it will be compared to the URL in the `file` object
+      
       if (typeof e === "string") {
         return e !== file;
       }
-      // If the element is an object, compare the `path` or `preview` properties
+      
       else if (typeof e === "object" && e !== null) {
         return e.path !== file.path && e.preview !== file.preview;
       }
@@ -219,8 +219,8 @@ export default function Info() {
           setState={setCategoryR}
           label={"Category"}
           value={vehicle.Category}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.Category?.map(
             (item: any) => item.Category
           )}
@@ -230,8 +230,8 @@ export default function Info() {
           setState={setmakeR}
           label={"Make"}
           value={vehicle.make}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.make
             ?.filter((item: any) => item.Category.trim() === CategorySelected)
             .map((item: any) => item.make)}
@@ -241,8 +241,8 @@ export default function Info() {
           setState={setmodelR}
           label={"Model"}
           value={vehicle.model}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.model
             ?.filter((item: any) => item.make.trim() === makeSelected)
             .map((item: any) => item.model)}
@@ -252,8 +252,8 @@ export default function Info() {
           setState={settypeR}
           label={"Body Type"}
           value={vehicle.type}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.type?.map(
             (item: any) => item.Type
           )}
@@ -263,16 +263,16 @@ export default function Info() {
           setState={setyearR}
           label={"Making Year"}
           value={vehicle.year}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={years}
         />
         <TempTypeInput
           setState={setregistrationR}
           label={"Registration No"}
           value={vehicle.registration}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"text"}
         />
         <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1">
@@ -296,8 +296,8 @@ export default function Info() {
             <div className="w-full h-fit flex justify-between items-center absolute z-[-10] left-0 top-0">
               <select
                 className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-                // required={true}
-                required={false}
+                required={true}
+                // required={false}
                 value={vehicle.color}
                 onChange={(e) => {
                   dispatch(setcolorR(e.target.value));
@@ -395,8 +395,8 @@ export default function Info() {
           setState={setfuelTypeR}
           label={"Fuel Type"}
           value={vehicle.fuelType}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[
             "Gasoline",
             "Diesel",
@@ -421,8 +421,8 @@ export default function Info() {
           setState={settransmissionR}
           label={"Transmission"}
           value={vehicle.transmission}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[
             "Tiptronic",
             "Dual-Clutch Transmission (DCT)",
@@ -436,16 +436,16 @@ export default function Info() {
           setState={setodometerR}
           label={"Odometer"}
           value={vehicle.odometer}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"number"}
         />
         <TempTypeInput
           setState={setengineVolume}
           label={"Engine Volume"}
           value={vehicle.engineVolume}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           type={"number"}
         />
         <TempTypeInput
@@ -459,16 +459,16 @@ export default function Info() {
           setState={setpassengersR}
           label={"No. of Seats"}
           value={vehicle.passengers}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Array.from({ length: 60 }, (_, i) => (i + 1).toString())}
         />
         <TempSelectInputLink
           setState={setOwnershipR}
           label={"Ownership"}
           value={vehicle.Ownership}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.Ownership?.map(
             (item: any) => item.Ownership
           )?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -478,8 +478,8 @@ export default function Info() {
           setState={setDrivetrainR}
           label={"Drivetrain"}
           value={vehicle.Drivetrain}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={[
             "All Wheel Drive (AWD)",
             "Front Wheel Drive (FWD)",
@@ -490,8 +490,8 @@ export default function Info() {
           setState={setcountryR}
           label={"Country"}
           value={vehicle.country}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.country
             ?.map((item: any) => item.country)
             ?.sort((a: string, b: string) => a.localeCompare(b))}
@@ -501,8 +501,8 @@ export default function Info() {
           setState={setcityR}
           label={"City"}
           value={vehicle.city}
-          // required={true}
-          required={false}
+          required={true}
+          // required={false}
           options={Configurations?.Configurations?.city
             ?.filter((item: any) => item.country === countrySelected)
             ?.map((item: any) => item.city)

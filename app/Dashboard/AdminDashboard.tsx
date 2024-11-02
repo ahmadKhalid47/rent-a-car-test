@@ -170,7 +170,7 @@ export default function AdminDashboard() {
     if (myProfile._id) getData2();
   }, [myProfile._id]);
 
-  // Slice the data for the current page
+
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage

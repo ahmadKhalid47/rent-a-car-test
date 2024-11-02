@@ -154,7 +154,7 @@ export default function Vehicles() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault(); 
     }
   };
 
@@ -184,10 +184,10 @@ export default function Vehicles() {
       formData2.append("length1", vehicle.damages?.length);
 
       for (let i = 0; i < vehicle.damages?.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files?.length); // append length2 outside inner loop
+        formData2.append("length2", vehicle.damages[i]?.files?.length); 
 
         for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
-          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
+          formData2.append("files", vehicle.damages[i]?.files[j]); 
         }
       }
       console.log(vehicle);
@@ -263,10 +263,10 @@ export default function Vehicles() {
       formData2.append("length1", vehicle.damages?.length);
 
       for (let i = 0; i < vehicle.damages?.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files?.length); // append length2 outside inner loop
+        formData2.append("length2", vehicle.damages[i]?.files?.length); 
 
         for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
-          formData2.append("files", vehicle.damages[i]?.files[j]); // correct file reference
+          formData2.append("files", vehicle.damages[i]?.files[j]); 
         }
       }
 

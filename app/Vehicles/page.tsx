@@ -60,7 +60,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
 
   useEffect(() => {
     async function getData() {
@@ -72,7 +72,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); // Initialize with full data
+          setFilteredVehicles(result.data.data); 
         } else {
           setShowError(result?.data?.error);
         }

@@ -99,7 +99,7 @@ export default function Profile() {
   }
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault(); 
     }
   };
 

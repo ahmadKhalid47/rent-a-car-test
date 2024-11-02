@@ -144,7 +144,7 @@ function ImageUpload({ value, action, index }: any) {
 
   const onDropOther = useFileDrop(
     (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
     useDropzone({

@@ -28,7 +28,7 @@ export default function Damages() {
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+    const allowedTypes = ["image/jpeg", "image/png"]; 
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
@@ -52,7 +52,7 @@ export default function Damages() {
     });
 
     if (filteredFiles.length > 0) {
-      // Replace the current file with the new one
+      
       setFiles([
         Object.assign(filteredFiles[0], {
           preview: URL.createObjectURL(filteredFiles[0]),
@@ -83,11 +83,11 @@ export default function Damages() {
   function removing(file: any) {
     let array = files;
     array = array.filter((e: any) => {
-      // If the element is a string, it will be compared to the URL in the `file` object
+      
       if (typeof e === "string") {
         return e !== file;
       }
-      // If the element is an object, compare the `path` or `preview` properties
+      
       else if (typeof e === "object" && e !== null) {
         return e.path !== file.path && e.preview !== file.preview;
       }

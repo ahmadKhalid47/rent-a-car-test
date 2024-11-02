@@ -30,7 +30,7 @@ export default function GridView({ data }: dataType) {
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const deleteItem = useDeleteItem();
@@ -43,7 +43,7 @@ export default function GridView({ data }: dataType) {
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Slice the data for the current page
+
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -90,15 +90,15 @@ export default function GridView({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      // Check if the item is already present in the array
+      
       const isPresent = prevArray.includes(_id);
 
-      // Return a new array with the item either added or removed
+      
       if (isPresent) {
-        // Remove the item
+
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        // Add the item
+        
         return [...prevArray, _id];
       }
     });

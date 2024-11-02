@@ -56,7 +56,7 @@ export default function Rental() {
   }, [chauffeur.otherImages]);
 
   const onDropPass = useFileDrop(
-    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setPassFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const { getRootProps: getRootPropsPass, getInputProps: getInputPropsPass } =
     useDropzone({
@@ -67,7 +67,7 @@ export default function Rental() {
   }, [passfiles]);
 
   const onDropLic = useFileDrop(
-    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setLicFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const { getRootProps: getRootPropsLic, getInputProps: getInputPropsLic } =
     useDropzone({
@@ -79,7 +79,7 @@ export default function Rental() {
 
   const onDropOther = useFileDrop(
     (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
     useDropzone({

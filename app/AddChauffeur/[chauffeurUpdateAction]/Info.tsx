@@ -50,7 +50,7 @@ export default function Info() {
   }, [chauffeur.chauffeurImage[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+    const allowedTypes = ["image/jpeg", "image/png"]; 
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
@@ -74,7 +74,7 @@ export default function Info() {
     });
 
     if (filteredFiles.length > 0) {
-      // Replace the current file with the new one
+      
       setFiles([
         Object.assign(filteredFiles[0], {
           preview: URL.createObjectURL(filteredFiles[0]),

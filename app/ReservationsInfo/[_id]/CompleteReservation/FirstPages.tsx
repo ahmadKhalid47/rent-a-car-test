@@ -45,11 +45,11 @@ export default function FirstPage() {
   }, [reservation?.odometerImagesCompletion]);
 
   const onDropFuel = useFileDrop(
-    (files: any[]) => setfuelFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setfuelFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   const onDropodometer = useFileDrop(
     (files: any[]) =>
-      setodometerFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+      setodometerFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
 
   const { getRootProps: getRootPropsFuel, getInputProps: getInputPropsFuel } =

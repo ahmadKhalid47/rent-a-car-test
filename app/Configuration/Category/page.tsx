@@ -53,7 +53,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); // Initialize with full data
+          setFilteredVehicles(result.data.data); 
         } else {
           setShowError(result?.data?.error);
         }

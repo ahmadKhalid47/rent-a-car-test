@@ -61,7 +61,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
-          setFilteredreservations(result.data.data); // Initialize with full data
+          setFilteredreservations(result.data.data); 
         } else {
           setShowError(result?.data?.error);
         }
@@ -135,11 +135,11 @@ export default function Vehicles() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "status") {
-            // Check if status is not equal
+            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          // For other keys, continue with includes check
+          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -168,7 +168,7 @@ export default function Vehicles() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
 
   return (
     <div

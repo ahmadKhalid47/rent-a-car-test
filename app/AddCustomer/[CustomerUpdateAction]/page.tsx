@@ -60,7 +60,7 @@ export default function Vehicles() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault(); 
     }
   };
   async function saveData(action: string) {
@@ -124,10 +124,10 @@ export default function Vehicles() {
       formData5.append("length1", customer.reference?.length);
 
       for (let i = 0; i < customer.reference?.length; i++) {
-        formData5.append("length2", customer.reference[i]?.refImages?.length); // append length2 outside inner loop
+        formData5.append("length2", customer.reference[i]?.refImages?.length); 
 
         for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", customer.reference[i]?.refImages[j]); // correct file reference
+          formData5.append("files", customer.reference[i]?.refImages[j]); 
         }
       }
 
@@ -256,10 +256,10 @@ export default function Vehicles() {
       formData5.append("length1", customer.reference?.length);
 
       for (let i = 0; i < customer.reference?.length; i++) {
-        formData5.append("length2", customer.reference[i]?.refImages?.length); // append length2 outside inner loop
+        formData5.append("length2", customer.reference[i]?.refImages?.length); 
 
         for (let j = 0; j < customer.reference[i]?.refImages?.length; j++) {
-          formData5.append("files", customer.reference[i]?.refImages[j]); // correct file reference
+          formData5.append("files", customer.reference[i]?.refImages[j]); 
         }
       }
 

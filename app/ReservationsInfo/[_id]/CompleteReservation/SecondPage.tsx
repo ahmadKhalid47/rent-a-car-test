@@ -36,7 +36,7 @@ export default function SecondPage() {
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; 
-    const allowedTypes = ["image/jpeg", "image/png"]; // Allowed MIME types for JPG and PNG
+    const allowedTypes = ["image/jpeg", "image/png"]; 
 
     const filteredFiles = acceptedFiles.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {

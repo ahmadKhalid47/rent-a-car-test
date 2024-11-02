@@ -113,7 +113,7 @@ export default function CarInfoMainPage() {
   const scrollLeft = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
-        left: -100, // Adjust scroll amount as needed
+        left: -100,
         behavior: "smooth",
       });
     }
@@ -122,7 +122,7 @@ export default function CarInfoMainPage() {
   const scrollRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
-        left: 100, // Adjust scroll amount as needed
+        left: 100,
         behavior: "smooth",
       });
     }

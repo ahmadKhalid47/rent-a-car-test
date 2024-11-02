@@ -117,11 +117,11 @@ export default function Vehicles() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "gender") {
-            // Check if status is not equal
+            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          // For other keys, continue with includes check
+          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -147,7 +147,7 @@ export default function Vehicles() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
 
   return (
     <div

@@ -54,7 +54,7 @@ export default function ListViewcustomers({ data }: dataType) {
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
-  // Slice the data for the current page
+
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -62,15 +62,15 @@ export default function ListViewcustomers({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      // Check if the item is already present in the array
+      
       const isPresent = prevArray.includes(_id);
 
-      // Return a new array with the item either added or removed
+      
       if (isPresent) {
-        // Remove the item
+
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        // Add the item
+        
         return [...prevArray, _id];
       }
     });

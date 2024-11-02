@@ -225,7 +225,7 @@ export default function Reservations() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault(); 
     }
   };
 

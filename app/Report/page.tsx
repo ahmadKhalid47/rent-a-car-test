@@ -37,7 +37,7 @@ export default function Vehicles() {
     []
   );
   const [reservationLoading, setreservationLoading] = useState<any>(true);
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
 
   useEffect(() => {
     if (isMobile) {

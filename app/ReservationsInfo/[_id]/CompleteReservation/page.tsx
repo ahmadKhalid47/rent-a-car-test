@@ -68,7 +68,7 @@ export default function reservationInfoMainPage() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission on Enter key
+      event.preventDefault(); 
     }
   };
 
@@ -103,10 +103,10 @@ export default function reservationInfoMainPage() {
       formData3.append("length1", reservation.damages.length);
 
       for (let i = 0; i < reservation.damages.length; i++) {
-        formData3.append("length2", reservation.damages[i]?.files.length); // append length2 outside inner loop
+        formData3.append("length2", reservation.damages[i]?.files.length); 
 
         for (let j = 0; j < reservation.damages[i]?.files.length; j++) {
-          formData3.append("files", reservation.damages[i]?.files[j]); // correct file reference
+          formData3.append("files", reservation.damages[i]?.files[j]); 
         }
       }
 

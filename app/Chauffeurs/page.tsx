@@ -60,7 +60,7 @@ export default function chauffeurs() {
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
-          setFilteredchauffeur(result.data.data); // Initialize with full data
+          setFilteredchauffeur(result.data.data); 
         } else {
           setShowError(result?.data?.error);
         }
@@ -119,11 +119,11 @@ export default function chauffeurs() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "gender") {
-            // Check if status is not equal
+            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          // For other keys, continue with includes check
+          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -165,7 +165,7 @@ export default function chauffeurs() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
   console.log(filteredchauffeur);
 
   return (

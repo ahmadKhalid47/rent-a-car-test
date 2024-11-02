@@ -59,7 +59,7 @@ export default function customers() {
 
         if (result?.data?.data) {
           setcustomersData(result.data.data);
-          setFilteredcustomer(result.data.data); // Initialize with full data
+          setFilteredcustomer(result.data.data); 
         } else {
           setShowError(result?.data?.error);
         }
@@ -118,11 +118,11 @@ export default function customers() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "gender") {
-            // Check if status is not equal
+            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          // For other keys, continue with includes check
+          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -152,7 +152,7 @@ export default function customers() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const handleExport = useHandleExport(); 
 
   return (
     <div

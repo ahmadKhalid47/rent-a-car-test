@@ -36,7 +36,7 @@ export default function Insurances() {
     setinsFiles(vehicle.insImage);
   }, [vehicle.insImage]);
   const onDropPass = useFileDrop(
-    (files: any[]) => setinsFiles((prevFiles: any) => [...prevFiles, ...files]) // Callback to handle filtered files
+    (files: any[]) => setinsFiles((prevFiles: any) => [...prevFiles, ...files]) 
   );
   useEffect(() => {
     dispatch(setinsImage(insfiles));
