@@ -1,15 +1,10 @@
 "use client";
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
-import { useState } from "react";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import {
-  TempTypeInput,
-} from "../../Components/InputComponents/TypeInput";
-import {
-  TempSelectInput,
-} from "../../Components/InputComponents/SelectInput";
+import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
+import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
   setalternativePhoneR,
   setcityR,
@@ -39,15 +34,10 @@ import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Info() {
   let dispatch = useDispatch();
-
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
-  const [files, setFiles] = useState<any>(chauffeur.chauffeurImage);
-  useEffect(() => {
-    setFiles(chauffeur?.chauffeurImage);
-  }, [chauffeur.chauffeurImage[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; 
+    const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
@@ -71,25 +61,20 @@ export default function Info() {
     });
 
     if (filteredFiles.length > 0) {
-      
-      setFiles([
-        Object.assign(filteredFiles[0], {
-          preview: URL.createObjectURL(filteredFiles[0]),
-        }),
-      ]);
+      dispatch(
+        setchauffeurImageR([
+          Object.assign(filteredFiles[0], {
+            preview: URL.createObjectURL(filteredFiles[0]),
+          }),
+        ])
+      );
     }
   }, []);
-
-
-
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
   });
-  useEffect(() => {
-    dispatch(setchauffeurImageR(files));
-  }, [files]);
 
   let { countries, states, cities } = CountryStateCity(
     chauffeur.country,
@@ -264,7 +249,10 @@ export default function Info() {
         </div>
 
         <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
-          <Thumbs files={files} setFiles={setFiles} />
+          <Thumbs
+            files={chauffeur.chauffeurImage}
+            setFiles={setchauffeurImageR}
+          />
         </div>
       </div>
     </div>

@@ -35,13 +35,7 @@ import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Info() {
   const dispatch = useDispatch();
-
   const customer = useSelector((state: RootState) => state.Customer);
-  const [files, setFiles] = useState<any>(customer?.customerImage || []);
-  useEffect(() => {
-    setFiles(customer.customerImage);
-  }, [customer.customerImage]);
-  
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; 
@@ -69,12 +63,13 @@ export default function Info() {
     });
 
     if (filteredFiles.length > 0) {
-      
-      setFiles([
-        Object.assign(filteredFiles[0], {
-          preview: URL.createObjectURL(filteredFiles[0]),
-        }),
-      ]);
+      dispatch(
+        setcustomerImageR([
+          Object.assign(filteredFiles[0], {
+            preview: URL.createObjectURL(filteredFiles[0]),
+          }),
+        ])
+      );
     }
   }, []);
 
@@ -84,11 +79,6 @@ export default function Info() {
     multiple: false,
   });
 
-  useEffect(() => {
-    // Optional: Check if files have actually changed to prevent unnecessary dispatch
-    // This requires a deep comparison if files is an array or object
-    dispatch(setcustomerImageR(files));
-  }, [files, dispatch]);
 
   const { countries, states, cities } = CountryStateCity(
     customer.country,
@@ -241,7 +231,7 @@ export default function Info() {
         </div>
 
         <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
-          <Thumbs files={files} setFiles={setFiles} />
+          <Thumbs files={customer.customerImage} setFiles={setcustomerImageR} />
         </div>
       </div>
     </div>

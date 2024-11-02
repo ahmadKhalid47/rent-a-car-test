@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
-import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
 import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
