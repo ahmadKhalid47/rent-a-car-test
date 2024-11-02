@@ -1,3 +1,4 @@
+import { sort } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
@@ -57,39 +58,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
-
-  // General sorting function
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
 
   async function deleteItem(_id: any) {
     try {
@@ -281,7 +249,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("name")}
+                onClick={() =>
+                  sort(
+                    "name",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[12%]">
@@ -289,7 +267,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("phone")}
+                onClick={() =>
+                  sort(
+                    "phone",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[17%]">
@@ -297,7 +285,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("emailAddress")}
+                onClick={() =>
+                  sort(
+                    "emailAddress",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[8%]">
@@ -305,7 +303,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("gender")}
+                onClick={() =>
+                  sort(
+                    "gender",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[8%]">
@@ -313,7 +321,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
+                onClick={() =>
+                  sort(
+                    "city",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[10%]">
@@ -321,7 +339,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("rentPerDay")}
+                onClick={() =>
+                  sort(
+                    "rentPerDay",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[9%]">

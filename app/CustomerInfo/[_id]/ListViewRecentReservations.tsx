@@ -1,3 +1,4 @@
+import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -17,38 +18,6 @@ export default function ListViewRecentReservations({ data }: dataType) {
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
 
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
-
   return (
     <div className="w-full h-fit">
       <h3
@@ -61,7 +30,17 @@ export default function ListViewRecentReservations({ data }: dataType) {
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div
               className="text-start truncate ps-3 flex justify-start gap-2 items-center w-[16%]"
-              onClick={() => sort("vehicleName")}
+              onClick={() =>
+                sort(
+                  "vehicleName",
+                  currentSortKey,
+                  sortOrder,
+                  sortedData,
+                  setSortedData,
+                  setSortOrder,
+                  setCurrentSortKey
+                )
+              }
             >
               Vehicle Name{" "}
               <img
@@ -71,7 +50,17 @@ export default function ListViewRecentReservations({ data }: dataType) {
             </div>{" "}
             <div
               className="text-start truncate flex justify-start gap-2 items-center w-[16%]"
-              onClick={() => sort("chauffeurName")}
+              onClick={() =>
+                sort(
+                  "chauffeurName",
+                  currentSortKey,
+                  sortOrder,
+                  sortedData,
+                  setSortedData,
+                  setSortOrder,
+                  setCurrentSortKey
+                )
+              }
             >
               Chauffeur Name{" "}
               <img
@@ -81,7 +70,17 @@ export default function ListViewRecentReservations({ data }: dataType) {
             </div>
             <div
               className="text-start truncate flex justify-start gap-2 items-center w-[10%]"
-              onClick={() => sort("city")}
+              onClick={() =>
+                sort(
+                  "city",
+                  currentSortKey,
+                  sortOrder,
+                  sortedData,
+                  setSortedData,
+                  setSortOrder,
+                  setCurrentSortKey
+                )
+              }
             >
               City{" "}
               <img

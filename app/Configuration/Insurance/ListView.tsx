@@ -1,3 +1,4 @@
+import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
 import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
@@ -9,7 +10,11 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
+import {
+  setAlert,
+  setSeverity,
+  setVehicleDataReloader,
+} from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -74,11 +79,11 @@ export default function ListView({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-await axios.delete(`/api/deleteSingleItem/${_id}`, {
-  data: {
-    model: "Insurance",
-  },
-});
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "Insurance",
+        },
+      });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Insurance Deleted Successfully"));
     } catch (err) {
@@ -116,7 +121,7 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
       return;
     } else if (
       data.find(
-        (item:any) =>
+        (item: any) =>
           item.Insurance?.toLowerCase() === Insurance.trim().toLowerCase()
       )
     ) {
@@ -176,40 +181,6 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
     {}
   );
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-    if (key === "ID") {
-      setReverse(!reverse);
-    }
-  };
 
   return (
     <div className="w-full h-fit">
@@ -264,18 +235,23 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
-              {/* <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("ID")}
-              /> */}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[15%]">
               Company Name
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Insurance")}
+                onClick={() =>
+                  sort(
+                    "Insurance",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[62%]">
@@ -283,7 +259,17 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("recurring")}
+                onClick={() =>
+                  sort(
+                    "recurring",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-center  flex justify-end items-center w-[13%] pe-[0.33rem]">

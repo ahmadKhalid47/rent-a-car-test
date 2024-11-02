@@ -24,6 +24,7 @@ import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
+import { sort } from "@/app/Components/functions/sortFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -174,40 +175,7 @@ export default function ListView({ data, makeData }: dataType) {
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
     {}
   );
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
 
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-    if (key === "ID") {
-      setReverse(!reverse);
-    }
-  };
   return (
     <div className="w-full h-fit">
       <h3
@@ -262,18 +230,23 @@ export default function ListView({ data, makeData }: dataType) {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
-              {/* <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("ID")}
-              /> */}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[15%]">
               Country
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("country")}
+                onClick={() =>
+                  sort(
+                    "country"
+                    , currentSortKey
+                    , sortOrder
+                    , sortedData
+                    , setSortedData
+                    , setSortOrder
+                    , setCurrentSortKey
+                  )
+                }
               />{" "}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[62%]">
@@ -281,7 +254,17 @@ export default function ListView({ data, makeData }: dataType) {
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("city")}
+                onClick={() =>
+                  sort(
+                    "city",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />{" "}
             </div>
             <div className="truncate flex justify-end items-center w-[13%] pe-[0.33rem]">

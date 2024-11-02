@@ -15,6 +15,7 @@ import { TextLoader } from "../Components/Loader";
 
 import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { sort } from "../Components/functions/sortFunction";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -175,38 +176,7 @@ export default function AdminDashboard() {
     page * itemsPerPage
   );
 
-  // General sorting function
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
 
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -285,7 +255,12 @@ export default function AdminDashboard() {
                       <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
-                          onClick={() => sort("make")}
+                          onClick={() => sort("make", currentSortKey
+, sortOrder
+, sortedData
+, setSortedData
+, setSortOrder
+, setCurrentSortKey)}
                         >
                           Name{" "}
                           <img
@@ -295,7 +270,12 @@ export default function AdminDashboard() {
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 2 cursor-pointer"
-                          onClick={() => sort("registration")}
+                          onClick={() => sort("registration", currentSortKey
+, sortOrder
+, sortedData
+, setSortedData
+, setSortOrder
+, setCurrentSortKey)}
                         >
                           Username{" "}
                           <img
@@ -305,7 +285,12 @@ export default function AdminDashboard() {
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[20%] 3 cursor-pointer"
-                          onClick={() => sort("year")}
+                          onClick={() => sort("year", currentSortKey
+, sortOrder
+, sortedData
+, setSortedData
+, setSortOrder
+, setCurrentSortKey)}
                         >
                           Email{" "}
                           <img
@@ -315,7 +300,12 @@ export default function AdminDashboard() {
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[18%] 4 cursor-pointer"
-                          onClick={() => sort("type")}
+                          onClick={() => sort("type", currentSortKey
+, sortOrder
+, sortedData
+, setSortedData
+, setSortOrder
+, setCurrentSortKey)}
                         >
                           Company{" "}
                           <img
@@ -325,7 +315,12 @@ export default function AdminDashboard() {
                         </div>
                         <div
                           className="text-start pe-3 flex justify-between items-center w-[16%] 6 cursor-pointer"
-                          onClick={() => sort("color")}
+                          onClick={() => sort("color", currentSortKey
+, sortOrder
+, sortedData
+, setSortedData
+, setSortOrder
+, setCurrentSortKey)}
                         >
                           Expiry Date{" "}
                           <img

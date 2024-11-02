@@ -1,3 +1,4 @@
+import { sort } from "@/app/Components/functions/sortFunction";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
@@ -61,39 +62,6 @@ export default function ListViewreservation({ data }: dataType) {
     page * itemsPerPage
   );
 
-  // General sorting function
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-  };
-
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
@@ -146,7 +114,7 @@ export default function ListViewreservation({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-console.log(paginatedData);
+  console.log(paginatedData);
 
   return (
     <div className="w-full h-fit">
@@ -197,7 +165,17 @@ console.log(paginatedData);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("customerName")}
+                onClick={() =>
+                  sort(
+                    "customerName",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%]">
@@ -205,7 +183,17 @@ console.log(paginatedData);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("chauffeur")}
+                onClick={() =>
+                  sort(
+                    "chauffeur",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
@@ -213,7 +201,17 @@ console.log(paginatedData);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("vehicleName")}
+                onClick={() =>
+                  sort(
+                    "vehicleName",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] s">
@@ -221,7 +219,17 @@ console.log(paginatedData);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("vehicleName")}
+                onClick={() =>
+                  sort(
+                    "vehicleName",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] e">
@@ -229,7 +237,17 @@ console.log(paginatedData);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("vehicleName")}
+                onClick={() =>
+                  sort(
+                    "vehicleName",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">

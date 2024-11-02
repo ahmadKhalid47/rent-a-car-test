@@ -1,3 +1,4 @@
+import { sort } from "@/app/Components/functions/sortFunction";
 import upload from "@/public/Paper Upload blue.svg";
 import arrows from "@/public/arrows.svg";
 import shape from "@/public/ShapeBlack.svg";
@@ -11,7 +12,11 @@ import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { setAlert, setSeverity, setVehicleDataReloader } from "@/app/store/Global";
+import {
+  setAlert,
+  setSeverity,
+  setVehicleDataReloader,
+} from "@/app/store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -72,11 +77,11 @@ export default function ListView({ data }: dataType) {
   async function deleteItem(_id: any) {
     try {
       setDeleteLoading(true);
-await axios.delete(`/api/deleteSingleItem/${_id}`, {
-  data: {
-    model: "Feature",
-  },
-});
+      await axios.delete(`/api/deleteSingleItem/${_id}`, {
+        data: {
+          model: "Feature",
+        },
+      });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Selective Feature Deleted Successfully"));
     } catch (err) {
@@ -114,7 +119,8 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
       return;
     } else if (
       data.find(
-        (item:any) => item.Feature?.toLowerCase() === Feature.trim().toLowerCase()
+        (item: any) =>
+          item.Feature?.toLowerCase() === Feature.trim().toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -183,41 +189,6 @@ await axios.delete(`/api/deleteSingleItem/${_id}`, {
   const [sortOrder, setSortOrder] = useState<{
     [key: string]: "asc" | "desc";
   }>({});
-  const sort = (key: string) => {
-    const newSortOrder =
-      currentSortKey === key
-        ? sortOrder[key] === "asc"
-          ? "desc"
-          : "asc" // Toggle sort order for the same key
-        : "asc"; // Default to "asc" for a new key
-
-    const sorted = [...sortedData].sort((a: any, b: any) => {
-      let fieldA =
-        key === "vehicleId" ? JSON.parse(a?.data?.[key]) : a?.data?.[key];
-      let fieldB = b?.data?.[key];
-
-      if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
-      }
-      if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
-      }
-
-      if (newSortOrder === "asc") {
-        return fieldA > fieldB ? 1 : -1;
-      } else {
-        return fieldA < fieldB ? 1 : -1;
-      }
-    });
-
-    setSortedData(sorted);
-    setSortOrder((prev) => ({ ...prev, [key]: newSortOrder }));
-    setCurrentSortKey(key);
-    if (key === "ID") {
-      setReverse(!reverse);
-    }
-  };
-console.log(Icon[0]?.name);
 
   return (
     <div className="w-full h-fit">
@@ -272,18 +243,23 @@ console.log(Icon[0]?.name);
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[5%]">
               Sr#
-              {/* <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("ID")}
-              /> */}
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
               Feature Type
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Box")}
+                onClick={() =>
+                  sort(
+                    "Box",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>{" "}
             <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
@@ -291,7 +267,17 @@ console.log(Icon[0]?.name);
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-                onClick={() => sort("Feature")}
+                onClick={() =>
+                  sort(
+                    "Feature",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
               />
             </div>
             <div className="truncate flex justify-start gap-4 items-center w-[37%]">
