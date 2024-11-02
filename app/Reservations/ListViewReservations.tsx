@@ -21,6 +21,7 @@ import {
   formatDuration,
 } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { useDeleteItem } from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -41,6 +42,7 @@ export default function ListViewreservation({ data }: dataType) {
   const dispatch = useDispatch();
   const router = useRouter();
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const deleteItem = useDeleteItem();
 
   useEffect(() => {
     setSortedData(data);
@@ -62,24 +64,6 @@ export default function ListViewreservation({ data }: dataType) {
     page * itemsPerPage
   );
 
-  async function deleteItem(_id: any) {
-    try {
-      setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "reservation",
-        },
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Reservation Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -114,8 +98,6 @@ export default function ListViewreservation({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-  console.log(paginatedData);
-
   return (
     <div className="w-full h-fit">
       <div
@@ -338,10 +320,6 @@ export default function ListViewreservation({ data }: dataType) {
                         : "Incomplete"}
                     </div>
                   </div>
-                  {/* <div className="text-start pe-3 truncate w-[8.5%]">
-                    {formatCreatedAtDate(item?.createdAt)}
-                  </div> */}
-
                   <div
                     className="pe-3 w-[8%] flex flex-col justify-center items-start text-[12px]"
                     onClick={(event) => {
@@ -422,7 +400,13 @@ export default function ListViewreservation({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteItem(itemToDelete);
+                            deleteItem(
+                              itemToDelete,
+                              "reservation",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >

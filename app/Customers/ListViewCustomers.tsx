@@ -18,6 +18,7 @@ import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
+import { useDeleteItem } from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -36,6 +37,7 @@ export default function ListViewcustomers({ data }: dataType) {
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
+  const deleteItem = useDeleteItem();
 
   useEffect(() => {
     setSortedData(data);
@@ -57,24 +59,6 @@ export default function ListViewcustomers({ data }: dataType) {
     page * itemsPerPage
   );
 
-  async function deleteItem(_id: any) {
-    try {
-      setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "customer",
-        },
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Customer Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -505,7 +489,13 @@ export default function ListViewcustomers({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteItem(itemToDelete);
+                                                        deleteItem(
+                                                          itemToDelete,
+                                                          "customer",
+                                                          setDeleteLoading,
+                                                          setPopup,
+                                                          setItemToDelete
+                                                        );
                           }}
                           disabled={deleteLoading}
                         >

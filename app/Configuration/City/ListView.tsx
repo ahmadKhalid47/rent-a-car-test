@@ -25,6 +25,7 @@ import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { sort } from "@/app/Components/functions/sortFunction";
+import { useDeleteItem } from "@/app/Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -48,6 +49,7 @@ export default function ListView({ data, makeData }: dataType) {
   const [Make, setMake] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+  const deleteItem = useDeleteItem();
 
   useEffect(() => {
     // Create a copy of the data to avoid mutating the original array
@@ -75,26 +77,6 @@ export default function ListView({ data, makeData }: dataType) {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
-
-  async function deleteItem(_id: any) {
-    try {
-      setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "City",
-        },
-      });
-
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective City Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
 
   async function deleteManyItem() {
     try {
@@ -379,7 +361,13 @@ export default function ListView({ data, makeData }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteItem(itemToDelete);
+                            deleteItem(
+                              itemToDelete,
+                              "City",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >

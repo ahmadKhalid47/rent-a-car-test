@@ -14,6 +14,7 @@ import { SmallLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import image404 from "@/public/image404.png";
 import { PaginationComponent } from "../Components/functions/Pagination";
+import { useDeleteItem } from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -29,6 +30,7 @@ export default function GridView({ data }: dataType) {
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
+  const deleteItem = useDeleteItem();
 
   const handleChange = (event: any, value: any) => {
     setPage(value);
@@ -59,24 +61,7 @@ export default function GridView({ data }: dataType) {
       setIsOpen(e);
     }
   };
-  async function deleteItem(_id: any) {
-    try {
-      setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "vehicle",
-        },
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Vehicle Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
+
   async function updateActive(_id: any, active: boolean) {
     try {
       // setEditLoading(true);
@@ -429,7 +414,13 @@ export default function GridView({ data }: dataType) {
               <button
                 className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                 onClick={() => {
-                  deleteItem(itemToDelete);
+                  deleteItem(
+                    itemToDelete,
+                    "vehicle",
+                    setDeleteLoading,
+                    setPopup,
+                    setItemToDelete
+                  );
                 }}
                 disabled={deleteLoading}
               >

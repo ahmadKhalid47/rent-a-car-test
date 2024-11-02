@@ -18,6 +18,7 @@ import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
+import { useDeleteItem } from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -38,6 +39,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   const dispatch = useDispatch();
   const router = useRouter();
   const handleExport = useHandleExport(); // Use the hook to get the handleExport function
+  const deleteItem = useDeleteItem();
 
   useEffect(() => {
     setSortedData(data);
@@ -59,24 +61,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
     page * itemsPerPage
   );
 
-  async function deleteItem(_id: any) {
-    try {
-      setDeleteLoading(true);
-      await axios.delete(`/api/deleteSingleItem/${_id}`, {
-        data: {
-          model: "chauffeur",
-        },
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(setAlert("Selective Chauffeur Deleted Successfully"));
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
   async function deleteManyItem() {
     try {
       setDeleteLoading(true);
@@ -447,17 +431,17 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       License
                     </button>
                     {/* {item?.data?.otherImages?.length > 0 && ( */}
-                      <button
-                        className="w-fit flex justify-start items-center gap-1"
-                        onClick={() => {
-                          openModal(0, item?.data?.otherImages);
-                        }}
-                      >
-                        <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
-                          <IoDocumentTextOutline className="text-[11px]" />
-                        </div>
-                        Other
-                      </button>
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
+                      onClick={() => {
+                        openModal(0, item?.data?.otherImages);
+                      }}
+                    >
+                      <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                        <IoDocumentTextOutline className="text-[11px]" />
+                      </div>
+                      Other
+                    </button>
                     {/* )} */}
                   </div>
                   <div
@@ -517,7 +501,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                            deleteItem(itemToDelete);
+                            deleteItem(
+                              itemToDelete,
+                              "chauffeur",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >
