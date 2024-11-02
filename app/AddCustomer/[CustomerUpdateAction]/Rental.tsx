@@ -2,15 +2,11 @@
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
-import { useCallback } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import {
   TempTypeInput,
-  TypeInput,
 } from "../../Components/InputComponents/TypeInput";
 import {
-  SelectInput,
   TempSelectInput,
 } from "../../Components/InputComponents/SelectInput";
 import {
@@ -31,10 +27,9 @@ import {
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { removing } from "../../Components/functions/removingFileFromDrag";
 import { Thumbs } from "../../Components/functions/thumbsFromDrag";
 import { useFileDrop } from "../../Components/functions/onDragFromDrag";
-import { Country, State, City } from "country-state-city";
+import { Country } from "country-state-city";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 
 export default function Rental() {

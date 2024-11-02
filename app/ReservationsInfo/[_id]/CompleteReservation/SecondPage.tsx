@@ -16,6 +16,7 @@ import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAlert, setSeverity } from "@/app/store/Global";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -69,41 +70,6 @@ export default function SecondPage() {
     ]);
   }, []);
 
-  const thumbs: any = files.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file.preview}
-          alt={file.name}
-          className="w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
-        {file.name}
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute top-[2px] right-[2px]"
-        onClick={() => removing(file)}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
-  function removing(file: any) {
-    let array = files;
-    array = array.filter((e: any) => {
-      if (typeof e === "string") {
-        return e !== file;
-      } else if (typeof e === "object" && e !== null) {
-        return e.path !== file.path && e.preview !== file.preview;
-      }
-      return true;
-    });
-    setFiles(array);
-  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -293,7 +259,7 @@ export default function SecondPage() {
                                 ? "bg-orange-500"
                                 : mark.degree === "Very High"
                                 ? "bg-red-500"
-                            : "bg-gray-400"
+                                : "bg-gray-400"
                             } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
@@ -316,7 +282,7 @@ export default function SecondPage() {
                                 ? "bg-orange-500"
                                 : mark.degree === "Very High"
                                 ? "bg-red-500"
-                            : "bg-gray-400"
+                                : "bg-gray-400"
                             } text-[8px] flex justify-center items-center font-[600]`}
                             key={index}
                             style={{
@@ -472,7 +438,7 @@ export default function SecondPage() {
                     to upload
                   </span>
                   <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-                    Select JPG, PNG {" "}
+                    Select JPG, PNG{" "}
                   </span>
                   <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
                     Maximum size 5MB{" "}
@@ -483,7 +449,7 @@ export default function SecondPage() {
                 </div>
 
                 <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 overflow-auto py-[2px]">
-                  {thumbs}
+                  <Thumbs files={files} setFiles={setFiles} />
                 </div>
               </div>
               <div

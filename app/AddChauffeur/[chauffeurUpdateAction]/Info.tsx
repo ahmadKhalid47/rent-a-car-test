@@ -2,16 +2,12 @@
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useState } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   TempTypeInput,
-  TypeInput,
 } from "../../Components/InputComponents/TypeInput";
-import vip from "@/public/vip.svg";
 import {
-  SelectInput,
   TempSelectInput,
 } from "../../Components/InputComponents/SelectInput";
 import {
@@ -39,6 +35,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 import { setAlert, setSeverity } from "@/app/store/Global";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Info() {
   let dispatch = useDispatch();
@@ -83,33 +80,8 @@ export default function Info() {
     }
   }, []);
 
-  const thumbs: any = files.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file.preview ? file.preview : file}
-          alt={file.name}
-          className="w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
-        {file.name}
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing()}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
 
-  function removing() {
-    setFiles([]);
-  }
+
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -292,7 +264,7 @@ export default function Info() {
         </div>
 
         <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
-          {thumbs}
+          <Thumbs files={files} setFiles={setFiles} />
         </div>
       </div>
     </div>

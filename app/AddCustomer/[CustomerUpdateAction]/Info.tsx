@@ -3,14 +3,11 @@ import React from "react";
 import vip from "@/public/vip.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useState, useEffect, useCallback } from "react";
-import { FaTimesCircle } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import {
   TempTypeInput,
-  TypeInput,
 } from "../../Components/InputComponents/TypeInput";
 import {
-  SelectInput,
   TempSelectInput,
 } from "../../Components/InputComponents/SelectInput";
 import {
@@ -34,19 +31,17 @@ import { RootState } from "@/app/store";
 import { useSelector, useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 import { setAlert, setSeverity } from "@/app/store/Global";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Info() {
   const dispatch = useDispatch();
 
   const customer = useSelector((state: RootState) => state.Customer);
   const [files, setFiles] = useState<any>(customer?.customerImage || []);
-
-  // Removed the useEffect that was causing the loop
-  /*
   useEffect(() => {
     setFiles(customer.customerImage);
   }, [customer.customerImage]);
-  */
+  
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024; 
@@ -83,33 +78,6 @@ export default function Info() {
     }
   }, []);
 
-  const thumbs: any = files.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file.preview ? file.preview : file}
-          alt={file.name}
-          className="w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
-        {file.name}
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing()}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
-
-  function removing() {
-    setFiles([]);
-  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -265,7 +233,7 @@ export default function Info() {
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}
@@ -273,7 +241,7 @@ export default function Info() {
         </div>
 
         <div className="w-full h-fit flex justify-start items-center gap-5 py-[2px]">
-          {thumbs}
+          <Thumbs files={files} setFiles={setFiles} />
         </div>
       </div>
     </div>

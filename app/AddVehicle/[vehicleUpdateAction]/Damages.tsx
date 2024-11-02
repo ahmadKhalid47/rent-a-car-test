@@ -2,7 +2,7 @@
 import shape from "@/public/ShapeBlack.svg";
 import default_interior from "@/public/car-sedan-interior.svg";
 import default_exterior from "@/public/car-sedan-exterior.svg";
-import { FaTimesCircle, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Damages() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -60,41 +61,6 @@ export default function Damages() {
       ]);
     }
   }, []);
-
-  const thumbs: any = files.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img src={file.preview} alt={file.name} className="w-[64px] h-[64px]" />
-      </div>
-      <span className="w-[64px] truncate font-[400] text-[10px] leading-[12px] text-grey text-center">
-        {file.name}
-      </span>
-      <span
-        className="cursor-pointer truncate font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing(file)}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
-  function removing(file: any) {
-    let array = files;
-    array = array.filter((e: any) => {
-      
-      if (typeof e === "string") {
-        return e !== file;
-      }
-      
-      else if (typeof e === "object" && e !== null) {
-        return e.path !== file.path && e.preview !== file.preview;
-      }
-      return true;
-    });
-    setFiles(array);
-  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -444,7 +410,7 @@ export default function Damages() {
               </div>
 
               <div className="w-full h-fit flex justify-start items-start mt-5 gap-5 bg-300 py-[2px]">
-                {thumbs}
+                <Thumbs files={files} setFiles={setFiles} />
               </div>
             </div>
             <div className={`w-full flex justify-end gap-4 items-center pt-4`}>

@@ -30,7 +30,6 @@ import {
   TempTypeInputLimit,
 } from "../../Components/InputComponents/TypeInput";
 import { useParams } from "next/navigation";
-import { SmallLoader } from "@/app/Components/Loader";
 import { PasswordStrength } from "@/app/Components/functions/strengthChecker";
 import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
 import { setAlert, setSeverity } from "@/app/store/Global";
@@ -41,18 +40,6 @@ export default function Info({ score, message }: any) {
   const [files, setFiles] = useState<any>(User.profilePic);
   const params = useParams();
   const { UserUpdateAction } = params;
-  const [strength, setStrength] = useState<PasswordStrength>({
-    criteria: {
-      length: false,
-      lowercase: false,
-      uppercase: false,
-      number: false,
-      specialCharacter: false,
-    },
-    score: 0,
-    message: "",
-    guide: "",
-  });
 
   useEffect(() => {
     setFiles(User.profilePic);

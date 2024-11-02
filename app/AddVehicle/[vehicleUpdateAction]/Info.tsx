@@ -45,6 +45,7 @@ import "react-calendar/dist/Calendar.css";
 import { ClassNames } from "@emotion/react";
 import Link from "next/link";
 import { setAlert, setSeverity } from "@/app/store/Global";
+import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -103,48 +104,6 @@ export default function Info() {
     ]);
   }, []);
 
-  const thumbs: any = vehicle?.carImages?.map((file: any) => (
-    <div
-      key={file.name}
-      className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
-    >
-      <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-        <img
-          src={file.preview ? file.preview : file}
-          alt={file.name}
-          className="w-[64px] h-[64px]"
-        />
-      </div>
-      <span className="w-[64px] font-[400] text-[10px] leading-[12px] text-grey truncate">
-        {file?.name}
-      </span>
-      <span
-        className="cursor-pointer font-[400] text-[14px] leading-[12px] text-red-500 absolute -top-[2px] -right-[2px]"
-        onClick={() => removing(file)}
-      >
-        <FaTimesCircle />
-      </span>
-    </div>
-  ));
-  function removing(file: any) {
-    let array = files;
-    array = array.filter((e: any) => {
-      
-      if (typeof e === "string") {
-        return e !== file;
-      }
-      
-      else if (typeof e === "object" && e !== null) {
-        return e.path !== file.path && e.preview !== file.preview;
-      }
-      return true;
-    });
-    setFiles(array);
-    if (vehicle.thumbnailImage + 1 >= files.length) {
-      dispatch(setthumbnailImage(files.length - 2));
-    }
-    dispatch(setCarImages(array));
-  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   useEffect(() => {
@@ -533,7 +492,7 @@ export default function Info() {
           </span>{" "}
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-          {thumbs}
+          <Thumbs files={files} setFiles={setFiles} />
         </div>
       </div>
       {vehicle?.carImages?.length > 1 ? (
