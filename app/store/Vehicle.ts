@@ -38,10 +38,10 @@ const initialState: any = {
   insRecurringDate: "",
   insDeductible: "",
   insRemarks: "",
-  insImage: [],
   fuelCapacity: "",
   engineVolume: "",
   vinNo: "",
+  insImage: [],
   features: [],
   otherNote: "",
   damages: [],
@@ -199,6 +199,14 @@ export const VehicleSlice = createSlice({
       return { ...state, ...action.payload };
     },
     resetState: () => initialState,
+    resetting: (state, action) => {
+      const keysToReset = action.payload;
+      keysToReset.forEach((key:any) => {
+        if (key in state) {
+          state[key] = initialState[key];
+        }
+      });
+    },
   },
 });
 
@@ -252,6 +260,7 @@ export const {
   setinsRecurringDate,
   setinsRemarks,
   setinsImage,
+  resetting,
 } = VehicleSlice.actions;
 
 export default VehicleSlice.reducer;

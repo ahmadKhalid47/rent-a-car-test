@@ -40,10 +40,9 @@ export default function Feature() {
   ];
   useEffect(() => {
     if (vehicle.features === "") {
-      setFeaturesSubmitArray("");
+      setFeaturesSubmitArray([""]);
     }
   }, [vehicle.features]);
-  console.log(vehicle.features);
 
   return (
     <div className="w-full h-fit">
@@ -68,7 +67,7 @@ export default function Feature() {
                   <button
                     className={`w-[100%] sm:w-[48%] lg:w-[20%] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] truncate px-3
                 ${
-                  featuresSubmitArray?.includes(item)
+                  vehicle.features?.includes(item)
                     ? "bg-main-blue text-white font-[500] border-2 border-transparent"
                     : "dark:bg-dark1 input-color border-2 border-grey font-[400]"
                 } 
@@ -80,7 +79,7 @@ export default function Feature() {
                   >
                     <img
                       className={`w-[20px] h-[20px] ${
-                        featuresSubmitArray?.includes(item)
+                        vehicle.features?.includes(item)
                           ? "filter brightness-[0] invert"
                           : ""
                       }`}

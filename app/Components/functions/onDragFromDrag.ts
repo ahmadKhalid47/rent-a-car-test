@@ -4,7 +4,7 @@ let allowedTypes = ["image/jpeg", "image/png"];
 export const useFileDrop = (setFilesCallback: (files: any[]) => void) => {
   return useCallback(
     (acceptedFiles: any) => {
-      const filteredFiles = acceptedFiles.filter((file: any) => {
+      const filteredFiles = acceptedFiles?.filter((file: any) => {
         if (!allowedTypes.includes(file.type)) {
           alert(
             `File ${

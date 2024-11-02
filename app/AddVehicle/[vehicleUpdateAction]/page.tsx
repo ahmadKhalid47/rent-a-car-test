@@ -14,64 +14,15 @@ import Damages from "./Damages";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios from "axios";
-import {
-  LoaderOnSave,
-  SmallLoader,
-} from "../../Components/Loader";
+import { LoaderOnSave, SmallLoader } from "../../Components/Loader";
 import { useRouter } from "next/navigation";
 import {
   resetState,
   setAllValues,
-  setfeatures,
-  setotherNote,
 } from "@/app/store/Vehicle";
 import { setConfigurations } from "@/app/store/Configurations";
 import Link from "next/link";
-import {
-  setmakeR,
-  setmodelR,
-  settypeR,
-  setyearR,
-  setregistrationR,
-  setcolorR,
-  setfuelTypeR,
-  settransmissionR,
-  setodometerR,
-  setpassengersR,
-  setcountryR,
-  setcityR,
-  setCarImages,
-  setthumbnailImage,
-  setengineVolume,
-  setvinNo,
-  setfuelCapacity,
-  setcolorNameR,
-  setCategoryR,
-  setOwnershipR,
-  setDrivetrainR,
-  setinsNo,
-  setinsCompany,
-  setinsEnd,
-  setinsStart,
-  setinsPayable,
-  setinsDeductible,
-  setinsRecurringPeriod,
-  setinsRecurringDate,
-  setinsRemarks,
-  setinsImage,
-  setrentHour,
-  setrentDay,
-  setrentWeek,
-  setrentMonth,
-  setmlDay,
-  setmlWeek,
-  setmlMonth,
-  setmlFee,
-  setlateHour,
-  setlateDay,
-  setdamages,
-  setdamageImagesToDelete,
-} from "@/app/store/Vehicle";
+import { resetting } from "@/app/store/Vehicle";
 
 export default function Vehicles() {
   const params = useParams();
@@ -154,7 +105,7 @@ export default function Vehicles() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
 
@@ -184,10 +135,10 @@ export default function Vehicles() {
       formData2.append("length1", vehicle.damages?.length);
 
       for (let i = 0; i < vehicle.damages?.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files?.length); 
+        formData2.append("length2", vehicle.damages[i]?.files?.length);
 
         for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
-          formData2.append("files", vehicle.damages[i]?.files[j]); 
+          formData2.append("files", vehicle.damages[i]?.files[j]);
         }
       }
       console.log(vehicle);
@@ -263,10 +214,10 @@ export default function Vehicles() {
       formData2.append("length1", vehicle.damages?.length);
 
       for (let i = 0; i < vehicle.damages?.length; i++) {
-        formData2.append("length2", vehicle.damages[i]?.files?.length); 
+        formData2.append("length2", vehicle.damages[i]?.files?.length);
 
         for (let j = 0; j < vehicle.damages[i]?.files?.length; j++) {
-          formData2.append("files", vehicle.damages[i]?.files[j]); 
+          formData2.append("files", vehicle.damages[i]?.files[j]);
         }
       }
 
@@ -306,12 +257,6 @@ export default function Vehicles() {
       formRef.current?.click();
     }
   };
-
-  function resetting(resetableArray: any) {
-    for (let i = 0; i < resetableArray.length; i++) {
-      dispatch(resetableArray[i](""));
-    }
-  }
 
   return (
     <div
@@ -526,65 +471,66 @@ export default function Vehicles() {
                 className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                 onClick={(e) => {
                   e.preventDefault();
-                  // dispatch(resetState());
-                  resetting(
-                    currentPage === 0
-                      ? [
-                          setmakeR,
-                          setmodelR,
-                          settypeR,
-                          setyearR,
-                          setregistrationR,
-                          setcolorR,
-                          setfuelTypeR,
-                          settransmissionR,
-                          setodometerR,
-                          setpassengersR,
-                          setcountryR,
-                          setcityR,
-                          setCarImages,
-                          setthumbnailImage,
-                          setengineVolume,
-                          setvinNo,
-                          setfuelCapacity,
-                          setcolorNameR,
-                          setCategoryR,
-                          setOwnershipR,
-                          setDrivetrainR,
-                        ]
-                      : currentPage === 1
-                      ? [setfeatures]
-                      : currentPage === 2
-                      ? [
-                          setinsNo,
-                          setinsCompany,
-                          setinsEnd,
-                          setinsStart,
-                          setinsPayable,
-                          setinsDeductible,
-                          setinsRecurringPeriod,
-                          setinsRecurringDate,
-                          setinsRemarks,
-                          setinsImage,
-                        ]
-                      : currentPage === 3
-                      ? [
-                          setrentHour,
-                          setrentDay,
-                          setrentWeek,
-                          setrentMonth,
-                          setmlDay,
-                          setmlWeek,
-                          setmlMonth,
-                          setmlFee,
-                          setlateHour,
-                          setlateDay,
-                        ]
-                      : currentPage === 4
-                      ? [setdamages, setdamageImagesToDelete]
-                      : currentPage === 5
-                      ? [setotherNote]
-                      : null
+                  dispatch(
+                    resetting(
+                      currentPage === 0
+                        ? [
+                            "make",
+                            "model",
+                            "type",
+                            "year",
+                            "registration",
+                            "color",
+                            "fuelType",
+                            "transmission",
+                            "odometer",
+                            "passengers",
+                            "country",
+                            "city",
+                            "CarImage",
+                            "thumbnailImage",
+                            "engineVolume",
+                            "vinNo",
+                            "fuelCapacity",
+                            "colorName",
+                            "Category",
+                            "Ownership",
+                            "Drivetrain",
+                          ]
+                        : currentPage === 1
+                        ? ["features"]
+                        : currentPage === 2
+                        ? [
+                            "insNo",
+                            "insCompany",
+                            "insEnd",
+                            "insStart",
+                            "insPayable",
+                            "insDeductible",
+                            "insRecurringPeriod",
+                            "insRecurringDate",
+                            "insRemarks",
+                            "insImage",
+                          ]
+                        : currentPage === 3
+                        ? [
+                            "rentHour",
+                            "rentDay",
+                            "rentWeek",
+                            "rentMonth",
+                            "mlDay",
+                            "mlWeek",
+                            "mlMonth",
+                            "mlFee",
+                            "lateHour",
+                            "lateDay",
+                          ]
+                        : currentPage === 4
+                        ? ["damages", "damageImagesToDelete"]
+                        : currentPage === 5
+                        ? ["otherNote"]
+                        : null
+                    )
                   );
                 }}
               >

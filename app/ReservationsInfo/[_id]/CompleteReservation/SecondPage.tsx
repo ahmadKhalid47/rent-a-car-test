@@ -39,7 +39,7 @@ export default function SecondPage() {
     const maxFileSize = 5 * 1024 * 1024; 
     const allowedTypes = ["image/jpeg", "image/png"]; 
 
-    const filteredFiles = acceptedFiles.filter((file: any) => {
+    const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes.includes(file.type)) {
         dispatch(
           setAlert(
