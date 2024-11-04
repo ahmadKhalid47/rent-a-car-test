@@ -17,6 +17,7 @@ import {
 } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 export default function customers() {
   let global = useSelector((state: RootState) => state.Global);
@@ -168,7 +169,7 @@ export default function customers() {
     state: "State",
     city: "City",
     postalCode: "Postal Code",
-    chauffeurImage: "Chauffeur Image",
+    customerImage: "Customer Image",
     reference: "Reference",
     emergency: "Emergency",
     additional: "Additional",
@@ -209,7 +210,11 @@ export default function customers() {
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Customers
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
-              Customers / All Customers
+              <Link href={"/Customers"} className="hover:underline">
+                Customers
+              </Link>
+              {" / "}
+              All Customers
             </span>
           </span>
           <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">

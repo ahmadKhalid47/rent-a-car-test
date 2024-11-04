@@ -12,11 +12,7 @@ import Others from "./Others";
 import Feature from "./Feature";
 import Info from "./Info";
 import axios from "axios";
-import {
-  LoaderOnSave,
-  MediumLoader,
-  SmallLoader,
-} from "../../Components/Loader";
+import { LoaderOnSave, SmallLoader } from "../../Components/Loader";
 import { useParams, useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/reservations";
 import Link from "next/link";
@@ -166,7 +162,9 @@ export default function Reservations() {
         customer_id: reservation?.customer_id,
       });
       await axios.post(
-        `/api/updateRentOut/${reservation?.vehicle_id}/${reservation?.chauffeur_id||""}`,
+        `/api/updateRentOut/${reservation?.vehicle_id}/${
+          reservation?.chauffeur_id || ""
+        }`,
         {
           rentOut: true,
         }
@@ -225,7 +223,7 @@ export default function Reservations() {
   };
   const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
 
@@ -239,7 +237,7 @@ export default function Reservations() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Add New Reservation
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Reservations"} className="hover:underline">
