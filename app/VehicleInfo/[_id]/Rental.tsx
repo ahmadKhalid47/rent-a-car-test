@@ -12,18 +12,18 @@ export default function Rental() {
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Hour</span>
           <span>
-            {vehicleInfo.rentHour
+            {vehicleInfo?.rentHour
               ? `${global.currentCurrency} ` +
-                vehicleInfo.rentHour.toLocaleString("en-US")
+                vehicleInfo?.rentHour.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Day</span>
           <span>
-            {vehicleInfo.rentDay
+            {vehicleInfo?.rentDay
               ? `${global.currentCurrency} ` +
-                vehicleInfo.rentDay.toLocaleString("en-US")
+                vehicleInfo?.rentDay.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -32,18 +32,18 @@ export default function Rental() {
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Week</span>
           <span>
-            {vehicleInfo.rentWeek
+            {vehicleInfo?.rentWeek
               ? `${global.currentCurrency} ` +
-                vehicleInfo.rentWeek.toLocaleString("en-US")
+                vehicleInfo?.rentWeek.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Rent Per Month</span>
           <span>
-            {vehicleInfo.rentMonth
+            {vehicleInfo?.rentMonth
               ? `${global.currentCurrency} ` +
-                vehicleInfo.rentMonth.toLocaleString("en-US")
+                vehicleInfo?.rentMonth.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -54,9 +54,9 @@ export default function Rental() {
             Mileage Limit Per Day
           </span>
           <span>
-            {vehicleInfo.mlDay
+            {vehicleInfo?.mlDay
               ? `${global.currentCurrency} ` +
-                vehicleInfo.mlDay.toLocaleString("en-US")
+                vehicleInfo?.mlDay.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -65,9 +65,9 @@ export default function Rental() {
             Mileage Limit Per Week
           </span>
           <span>
-            {vehicleInfo.mlWeek
+            {vehicleInfo?.mlWeek
               ? `${global.currentCurrency} ` +
-                vehicleInfo.mlWeek.toLocaleString("en-US")
+                vehicleInfo?.mlWeek.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -78,9 +78,9 @@ export default function Rental() {
             Mileage Limit Per Month
           </span>
           <span>
-            {vehicleInfo.mlMonth
+            {vehicleInfo?.mlMonth
               ? `${global.currentCurrency} ` +
-                vehicleInfo.mlMonth.toLocaleString("en-US")
+                vehicleInfo?.mlMonth.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -89,9 +89,9 @@ export default function Rental() {
             Excess Mileage Fee 
           </span>
           <span>
-            {vehicleInfo.mlFee
+            {vehicleInfo?.mlFee
               ? `${global.currentCurrency} ` +
-                vehicleInfo.mlFee.toLocaleString("en-US")
+                vehicleInfo?.mlFee.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -102,9 +102,9 @@ export default function Rental() {
             Late Return Fee Per Hour
           </span>
           <span>
-            {vehicleInfo.lateHour
+            {vehicleInfo?.lateHour
               ? `${global.currentCurrency} ` +
-                vehicleInfo.lateHour.toLocaleString("en-US")
+                vehicleInfo?.lateHour.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -113,9 +113,9 @@ export default function Rental() {
             Late Return Fee Per Day
           </span>
           <span>
-            {vehicleInfo.lateDay
+            {vehicleInfo?.lateDay
               ? `${global.currentCurrency} ` +
-                vehicleInfo.lateDay.toLocaleString("en-US")
+                vehicleInfo?.lateDay.toLocaleString("en-US")
               : "---"}
           </span>
         </div>

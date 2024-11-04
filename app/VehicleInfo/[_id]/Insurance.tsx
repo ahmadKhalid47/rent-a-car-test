@@ -14,16 +14,16 @@ export default function Insurance() {
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Policy No</span>
           <span>
-            {vehicleInfo.insNo
-              ? vehicleInfo.insNo.toLocaleString("en-US")
+            {vehicleInfo?.insNo
+              ? vehicleInfo?.insNo.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Start Date </span>
           <span>
-            {vehicleInfo.insStart
-              ? vehicleInfo.insStart.toLocaleString("en-US")
+            {vehicleInfo?.insStart
+              ? vehicleInfo?.insStart.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -32,16 +32,16 @@ export default function Insurance() {
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Valid Until </span>
           <span>
-            {vehicleInfo.insEnd
-              ? vehicleInfo.insEnd.toLocaleString("en-US")
+            {vehicleInfo?.insEnd
+              ? vehicleInfo?.insEnd.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Company</span>
           <span>
-            {vehicleInfo.insCompany
-              ? vehicleInfo.insCompany.toLocaleString("en-US")
+            {vehicleInfo?.insCompany
+              ? vehicleInfo?.insCompany.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -50,9 +50,9 @@ export default function Insurance() {
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Charge Payable</span>
           <span>
-            {vehicleInfo.insPayable
+            {vehicleInfo?.insPayable
               ? `${global.currentCurrency} ` +
-                vehicleInfo.insPayable.toLocaleString("en-US")
+                vehicleInfo?.insPayable.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -61,9 +61,9 @@ export default function Insurance() {
             Charge Deductible
           </span>
           <span>
-            {vehicleInfo.insDeductible
+            {vehicleInfo?.insDeductible
               ? `${global.currentCurrency} ` +
-                vehicleInfo.insDeductible.toLocaleString("en-US")
+                vehicleInfo?.insDeductible.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -74,16 +74,16 @@ export default function Insurance() {
             Recurring Period
           </span>
           <span>
-            {vehicleInfo.insRecurringPeriod
-              ? vehicleInfo.insRecurringPeriod.toLocaleString("en-US")
+            {vehicleInfo?.insRecurringPeriod
+              ? vehicleInfo?.insRecurringPeriod.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Recurring Date</span>
           <span>
-            {vehicleInfo.insRecurringDate
-              ? vehicleInfo.insRecurringDate.toLocaleString("en-US")
+            {vehicleInfo?.insRecurringDate
+              ? vehicleInfo?.insRecurringDate.toLocaleString("en-US")
               : "---"}
           </span>
         </div>
@@ -124,8 +124,8 @@ export default function Insurance() {
         <div className="w-[100%] flex justify-start gap-2 items-center">
           <span className="dark:text-white text-[#555555]">Remarks</span>
           <span>
-            {vehicleInfo.insRemarks
-              ? vehicleInfo.insRemarks.toLocaleString("en-US")
+            {vehicleInfo?.insRemarks
+              ? vehicleInfo?.insRemarks.toLocaleString("en-US")
               : "---"}
           </span>
         </div>

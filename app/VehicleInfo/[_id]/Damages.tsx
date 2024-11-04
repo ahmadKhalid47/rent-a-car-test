@@ -28,15 +28,15 @@ export default function Damages({ toggle }: any) {
     if (myProfile._id) getData2();
   }, [myProfile._id]);
   let exteriorImg = Configurations?.Configurations?.type?.find(
-    (item: any) => item.Type === vehicleInfo.type
+    (item: any) => item.Type === vehicleInfo?.type
   )?.exterior;
   let interiorImg = Configurations?.Configurations?.type?.find(
-    (item: any) => item.Type === vehicleInfo.type
+    (item: any) => item.Type === vehicleInfo?.type
   )?.interior;
 
   return (
     <div className="w-full h-full py-4 px-5 flex justify-between items-start">
-      {vehicleInfo.damages.length > 0 ? (
+      {vehicleInfo?.damages.length > 0 ? (
         <>
           <div className="w-[35%] h-full flex flex-col justify-center items-start order-[1px] border-grey">
             <div className="w-[130px] h-[180px] flex flex-col justify-start items-start relative">
@@ -44,7 +44,7 @@ export default function Damages({ toggle }: any) {
                 src={toggle ? exteriorImg : interiorImg}
                 className="h-full"
               />
-              {vehicleInfo.damages.map((item: any, index: any) => (
+              {vehicleInfo?.damages.map((item: any, index: any) => (
                 <>
                   {!toggle ? (
                     item.exterior === toggle ? (
@@ -113,7 +113,7 @@ export default function Damages({ toggle }: any) {
               </span>
             </div>{" "}
             <div className="w-[100%] h-full-50px flex flex-col justify-start items-start overflow-auto scroll2">
-              {vehicleInfo.damages.map(
+              {vehicleInfo?.damages.map(
                 (item: any, index: number) =>
                   item.exterior === toggle && (
                     <div className="w-full h-[35px] flex justify-between items-end border-b-[2px]">

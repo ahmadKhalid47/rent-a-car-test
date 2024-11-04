@@ -139,7 +139,7 @@ export default function CarInfoMainPage() {
 
   return (
     <>
-      {vehicleInfo && (
+      {/* {vehicleInfo && ( */}
         <div className="w-fit h-fit mt-[90px] pt-5">
           <div
             className={`${
@@ -340,7 +340,7 @@ export default function CarInfoMainPage() {
                           Drivetrain
                         </span>
                         <span>
-                          {"("}
+                          {vehicleInfo?.Drivetrain&&"("}
                           {vehicleInfo?.Drivetrain?.split("(")[1]}
                         </span>
                       </div>
@@ -446,7 +446,7 @@ export default function CarInfoMainPage() {
             </div>
           </div>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 }

@@ -16,7 +16,6 @@ export default function Additional() {
   ];
   let configArray: any = Configurations?.Configurations?.feature;
 
-  console.log(configArray);
   const [filteredData, setFilteredData] = useState<any>([]);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function Additional() {
     );
     setFilteredData(result);
   }, [configArray]);
-  console.log(filteredData);
 
   return (
     <div
@@ -47,7 +45,7 @@ export default function Additional() {
           {open && (
             <div className="w-[100%] min-h-[150px] max-h-fit g-orange-500 flex justify-between">
               {categories.map((categoryItem) => (
-                <div className="w-[33%] min-h-fit max-h-full bg-[#F7F7F7] border-[1px] border-grey rounded-[10px] pb-2">
+                <div className="w-[33%] min-h-fit max-h-full dark:bg-dark2 bg-[#F7F7F7] border-[1px] border-grey rounded-[10px] pb-2">
                   <span className="font-[600] text-[12px] xs:text-[14px] px-3 py-2 dark:text-white text-black flex flex-col justify-start items-start">
                     {categoryItem}
                   </span>
@@ -60,7 +58,7 @@ export default function Additional() {
                             key={index}
                           >
                             <img
-                              className={`w-[20px] h-[20px]`}
+                              className={`w-[20px] h-[20px] dark:filter dark:brightness-[0] dark:invert`}
                               src={item.Icon ? item.Icon : demyIcon.src}
                               alt=""
                             />
