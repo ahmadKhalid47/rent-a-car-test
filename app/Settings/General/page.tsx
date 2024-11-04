@@ -35,29 +35,29 @@ export default function AddUser() {
   const [darkModeLoading, setDarkModeLoading] = useState<any>(false);
   const router = useRouter();
 
-  const currencySymbols: any = [
-    "$",
-    "€",
-    "₨",
-    "£",
-    "¥",
-    "A$",
-    "C$",
-    "CHF",
-    "¥",
-    "₹",
-    "NZ$",
-    "kr",
-    "kr",
-    "$",
-    "S$",
-    "HK$",
-    "R",
-    "₽",
-    "₺",
-    "R$",
-    "د.إ",
+  const currencySymbols = [
+    { symbol: "$", currency: "US Dollar" },
+    { symbol: "€", currency: "Euro" },
+    { symbol: "₨", currency: "Pakistani Rupee" },
+    { symbol: "£", currency: "British Pound" },
+    { symbol: "¥", currency: "Japanese Yen" },
+    { symbol: "A$", currency: "Australian Dollar" },
+    { symbol: "C$", currency: "Canadian Dollar" },
+    { symbol: "CHF", currency: "Swiss Franc" },
+    { symbol: "¥", currency: "Chinese Yuan" },
+    { symbol: "₹", currency: "Indian Rupee" },
+    { symbol: "NZ$", currency: "New Zealand Dollar" },
+    { symbol: "kr", currency: "Swedish Krona" },
+    { symbol: "$", currency: "Mexican Peso" },
+    { symbol: "S$", currency: "Singapore Dollar" },
+    { symbol: "HK$", currency: "Hong Kong Dollar" },
+    { symbol: "R", currency: "South African Rand" },
+    { symbol: "₽", currency: "Russian Ruble" },
+    { symbol: "₺", currency: "Turkish Lira" },
+    { symbol: "R$", currency: "Brazilian Real" },
+    { symbol: "د.إ", currency: "UAE Dirham" },
   ];
+
   const unitSymbols: any = ["KM", "Miles"];
 
   useEffect(() => {
@@ -113,6 +113,7 @@ export default function AddUser() {
     const storedTheme = localStorage.getItem("theme");
     setThemeToShow(storedTheme);
   }, [global.theme]);
+  console.log(currencySymbols);
 
   return (
     <div
@@ -158,8 +159,8 @@ export default function AddUser() {
                       >
                         <option value={""}>Select</option>
                         {currencySymbols?.map((item: any, index: number) => (
-                          <option value={item} key={index}>
-                            {item}
+                          <option value={item.symbol} key={index}>
+                            {item.currency} ({item.symbol})
                           </option>
                         ))}
                       </select>
@@ -209,7 +210,7 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px] border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
