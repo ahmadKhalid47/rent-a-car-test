@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as XLSX from "xlsx";
 import { SmallLoader } from "../Loader";
+import { renameKeys2 } from "./exportFunction";
 
 const ExcelUpload = ({ model }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,7 +21,7 @@ const ExcelUpload = ({ model }: any) => {
         createdBy: myProfile._id,
         modelName: model,
       });
-      
+
       dispatch(setAlert("Data Imported Successfully"));
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
     } catch (err) {
@@ -40,9 +41,23 @@ const ExcelUpload = ({ model }: any) => {
       const workbook = XLSX.read(data, { type: "array" });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
+      const keyMap = {
+        Make: "make",
+        Model: "model",
+        Body_Type: "type",
+        Color_Name: "ColorName",
+        Country: "country",
+        City: "city",
+        Insurance_Company_Name: "Insurance",
+        Recurring_Period: "recurring",
+        Exterior: "exterior",
+        Interior: "interior",
+      };
+
+      const renamedArray = renameKeys2(jsonData, keyMap);
 
       // Call saveImport with jsonData
-      saveImport(jsonData);
+      saveImport(renamedArray);
     };
 
     reader.readAsArrayBuffer(file);
