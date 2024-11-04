@@ -132,7 +132,7 @@ export default function CarInfoMainPage() {
     { title: "Insurance Info", content: <Insurance /> },
     { title: "Others", content: <Other /> },
   ];
-  const accordionItems2 = [
+  const accordionItems2 = [ 
     { title: "Exterior", content: <Damages toggle={true} /> },
     { title: "Interior", content: <Damages toggle={false} /> },
   ];
