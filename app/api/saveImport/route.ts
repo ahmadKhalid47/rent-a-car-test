@@ -40,9 +40,17 @@ const modelsMap: { [key: string]: any } = {
   type: TypeModel,
 };
 
-// Filter out unwanted fields from the data
+// Filter out unwanted fields and trim string values in data
 function filterData(data: DataItem) {
   const { createdAt, createdBy, updatedAt, _id, __v, ...filteredData } = data;
+
+  // Trim string properties in filteredData
+  for (const key in filteredData) {
+    if (typeof filteredData[key] === "string") {
+      filteredData[key] = filteredData[key].trim();
+    }
+  }
+
   return filteredData;
 }
 
@@ -53,7 +61,7 @@ async function saveData(
   createdBy: string,
   isAdmin: boolean
 ) {
-  const filteredData = filterData(data); // Filter out unwanted fields
+  const filteredData = filterData(data); // Filter out unwanted fields and trim data
 
   // Check if the data already exists for the same createdBy only if user is admin
   if (isAdmin) {

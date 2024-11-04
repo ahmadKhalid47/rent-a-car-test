@@ -40,7 +40,6 @@ const ExcelUpload = ({ model }: any) => {
       const workbook = XLSX.read(data, { type: "array" });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
-      console.log(jsonData);
 
       // Call saveImport with jsonData
       saveImport(jsonData);
