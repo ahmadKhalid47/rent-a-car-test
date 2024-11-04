@@ -17,6 +17,7 @@ import {
 } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 export default function chauffeurs() {
   let global = useSelector((state: RootState) => state.Global);
@@ -222,9 +223,14 @@ export default function chauffeurs() {
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Chauffeurs
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
-              Chauffeurs / All Chauffeurs
+              <Link href={"/Chauffeurs"} className="hover:underline">
+                Chauffeurs
+              </Link>
+              {" / "}
+              All Chauffeur
             </span>
           </span>
+
           <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
             <button
               className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
