@@ -294,7 +294,9 @@ export default function ListView({ data, CategoryData }: dataType) {
                   </div>
                   <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
-                      !reverse ? index + 1 : paginatedData.length - index
+                      !reverse
+                        ? (page - 1) * itemsPerPage + 1 + index
+                        : paginatedData.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
 

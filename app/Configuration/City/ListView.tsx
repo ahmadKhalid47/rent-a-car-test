@@ -1,11 +1,7 @@
-import check from "@/public/check.svg";
 import shape from "@/public/ShapeBlack.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import Link from "next/link";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";
@@ -16,7 +12,6 @@ import {
   setSeverity,
   setVehicleDataReloader,
 } from "@/app/store/Global";
-import { setAllValues } from "@/app/store/Vehicle";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -202,13 +197,13 @@ export default function ListView({ data, makeData }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
                   sort(
-                    "country"
-                    , currentSortKey
-                    , sortOrder
-                    , sortedData
-                    , setSortedData
-                    , setSortOrder
-                    , setCurrentSortKey
+                    "country",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
                   )
                 }
               />{" "}
@@ -263,7 +258,9 @@ export default function ListView({ data, makeData }: dataType) {
                   </div>
                   <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
-                      !reverse ? index + 1 : paginatedData.length - index
+                      !reverse
+                        ? (page - 1) * itemsPerPage + 1 + index
+                        : paginatedData.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-3 truncate w-[15%]">

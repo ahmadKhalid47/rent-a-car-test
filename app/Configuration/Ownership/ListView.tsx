@@ -237,7 +237,9 @@ export default function ListView({ data }: dataType) {
                   </div>
                   <div className="text-start pe-3 w-[5%]">
                     {JSON.stringify(
-                      !reverse ? index + 1 : paginatedData.length - index
+                      !reverse
+                        ? (page - 1) * itemsPerPage + 1 + index
+                        : paginatedData.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
 
@@ -312,7 +314,7 @@ export default function ListView({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                                                        deleteItem(
+                            deleteItem(
                               itemToDelete,
                               "Ownership",
                               setDeleteLoading,
