@@ -2,6 +2,7 @@ import { useHandleExport } from "./exportFunction";
 
 const ExcelDownload = ({ data }: any) => {
   const handleExport = useHandleExport();
+  console.log(data);
 
   return (
     <button
