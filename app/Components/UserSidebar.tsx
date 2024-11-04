@@ -253,7 +253,7 @@ export default function UserSidebar() {
                   ? "justify-start ps-5"
                   : "justify-center px-0"
               } bg-main-blue-hover  ${
-                pathName.includes("/AddCustomer")
+                pathName?.includes("/AddCustomer")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}

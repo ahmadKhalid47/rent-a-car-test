@@ -82,14 +82,14 @@ export default function ListView({ data }: dataType) {
       alert("Invalid color");
       return;
     }
-    if (Color.trim() === "" || ColorName.trim() === "") {
+    if (Color?.trim() === "" || ColorName?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       data.find(
         (item: any) =>
-          item.ColorName?.toLowerCase() === ColorName.trim().toLowerCase()
+          item.ColorName?.toLowerCase() === ColorName?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -116,7 +116,7 @@ export default function ListView({ data }: dataType) {
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       
-      const isPresent = prevArray.includes(_id);
+      const isPresent = prevArray?.includes(_id);
 
       
       if (isPresent) {

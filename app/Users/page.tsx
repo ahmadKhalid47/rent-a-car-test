@@ -86,12 +86,12 @@ export default function Vehicles() {
       const { name, username, email, city, company } = vehicle;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        username?.toLowerCase().includes(lowercasedQuery) ||
-        email?.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        company?.toLowerCase().includes(lowercasedQuery) ||
-        username?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        username?.toLowerCase()?.includes(lowercasedQuery) ||
+        email?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        company?.toLowerCase()?.includes(lowercasedQuery) ||
+        username?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredUser(filtered);
@@ -105,8 +105,8 @@ export default function Vehicles() {
       const { name, phone } = vehicle;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        phone?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        phone?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
 
@@ -131,7 +131,7 @@ export default function Vehicles() {
   }
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
     setAdvanceFilters([
       {
         key: "gender",

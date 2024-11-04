@@ -66,14 +66,14 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Ownership.trim() === "") {
+    if (Ownership?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
         (item) =>
-          item.Ownership?.toLowerCase() === Ownership.trim().toLowerCase()
+          item.Ownership?.toLowerCase() === Ownership?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -116,7 +116,7 @@ export default function Vehicles() {
     const filtered = vehiclesData.filter((vehicle) => {
       const { Ownership } = vehicle;
 
-      return Ownership?.toLowerCase().includes(lowercasedQuery);
+      return Ownership?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

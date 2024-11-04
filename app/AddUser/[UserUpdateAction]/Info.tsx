@@ -48,7 +48,7 @@ export default function Info({ score, message }: any) {
     const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"];
     const filteredFiles = acceptedFiles?.filter((file: any) => {
-      if (!allowedTypes.includes(file.type)) {
+      if (!allowedTypes?.includes(file.type)) {
         dispatch(
           setAlert(
             `File ${file.name} is not a supported format. Please upload JPG or PNG files.`

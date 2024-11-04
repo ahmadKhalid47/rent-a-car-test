@@ -69,13 +69,13 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Type.trim() === "" ) {
+    if (Type?.trim() === "" ) {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.Type?.toLowerCase() === Type.trim().toLowerCase()
+        (item) => item.Type?.toLowerCase() === Type?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -139,7 +139,7 @@ export default function Vehicles() {
     const filtered = vehiclesData.filter((vehicle) => {
       const { Type } = vehicle;
 
-      return Type?.toLowerCase().includes(lowercasedQuery);
+      return Type?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

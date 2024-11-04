@@ -78,16 +78,16 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Model.trim() === "" || Make.trim() === "" || Category.trim() === "") {
+    if (Model?.trim() === "" || Make?.trim() === "" || Category?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
         (item) =>
-          item.model?.toLowerCase() === Model.trim().toLowerCase() &&
-          item.make?.toLowerCase() === Make.trim().toLowerCase() &&
-          item.Category?.toLowerCase() === Category.trim().toLowerCase()
+          item.model?.toLowerCase() === Model?.trim()?.toLowerCase() &&
+          item.make?.toLowerCase() === Make?.trim()?.toLowerCase() &&
+          item.Category?.toLowerCase() === Category?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -136,9 +136,9 @@ export default function Vehicles() {
       const { make, model, Category } = vehicle;
 
       return (
-        Category?.toLowerCase().includes(lowercasedQuery) ||
-        make?.toLowerCase().includes(lowercasedQuery) ||
-        model?.toLowerCase().includes(lowercasedQuery)
+        Category?.toLowerCase()?.includes(lowercasedQuery) ||
+        make?.toLowerCase()?.includes(lowercasedQuery) ||
+        model?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredVehicles(filtered);

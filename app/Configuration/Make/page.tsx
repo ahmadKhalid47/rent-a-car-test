@@ -75,15 +75,15 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (make.trim() === "" || Category.trim() === "") {
+    if (make?.trim() === "" || Category?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
         (item) =>
-          item.make?.toLowerCase() === make.trim().toLowerCase() &&
-          item.Category?.toLowerCase() === Category.trim().toLowerCase()
+          item.make?.toLowerCase() === make?.trim()?.toLowerCase() &&
+          item.Category?.toLowerCase() === Category?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -130,8 +130,8 @@ await axios.post("/api/saveSingleConfiguration", {
       const { Category, make } = vehicle;
 
       return (
-        Category?.toLowerCase().includes(lowercasedQuery) ||
-        make?.toLowerCase().includes(lowercasedQuery)
+        Category?.toLowerCase()?.includes(lowercasedQuery) ||
+        make?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredVehicles(filtered);

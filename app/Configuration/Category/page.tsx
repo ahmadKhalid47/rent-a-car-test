@@ -67,13 +67,13 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Category.trim() === "") {
+    if (Category?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
-        (item) => item.Category?.toLowerCase() === Category.trim().toLowerCase()
+        (item) => item.Category?.toLowerCase() === Category?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -116,7 +116,7 @@ await axios.post("/api/saveSingleConfiguration", {
     const filtered = vehiclesData.filter((vehicle) => {
       const { Category } = vehicle;
 
-      return Category?.toLowerCase().includes(lowercasedQuery);
+      return Category?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

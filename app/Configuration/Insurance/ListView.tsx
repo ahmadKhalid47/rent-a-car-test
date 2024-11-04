@@ -83,14 +83,14 @@ export default function ListView({ data }: dataType) {
   );
 
   async function editItem(_id: any) {
-    if (Insurance.trim() === "" || recurring.trim() === "") {
+    if (Insurance?.trim() === "" || recurring?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       data.find(
         (item: any) =>
-          item.Insurance?.toLowerCase() === Insurance.trim().toLowerCase()
+          item.Insurance?.toLowerCase() === Insurance?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -117,7 +117,7 @@ export default function ListView({ data }: dataType) {
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       
-      const isPresent = prevArray.includes(_id);
+      const isPresent = prevArray?.includes(_id);
 
       
       if (isPresent) {

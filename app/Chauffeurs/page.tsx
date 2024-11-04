@@ -88,8 +88,8 @@ export default function chauffeurs() {
       const { name, phone } = data;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        phone?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        phone?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredchauffeur(filtered);
@@ -104,10 +104,10 @@ export default function chauffeurs() {
       const { name, phone, emailAddress, city } = data;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        emailAddress?.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        phone?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        emailAddress?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        phone?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
 
@@ -148,7 +148,7 @@ export default function chauffeurs() {
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
     setAdvanceFilters([
       {
         key: "gender",

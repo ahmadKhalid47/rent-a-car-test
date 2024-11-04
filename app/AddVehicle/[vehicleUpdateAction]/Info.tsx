@@ -151,7 +151,7 @@ export default function Info() {
           // required={true}
           required={false}
           options={Configurations?.Configurations?.make
-            ?.filter((item: any) => item.Category.trim() === CategorySelected)
+            ?.filter((item: any) => item.Category?.trim() === CategorySelected)
             .map((item: any) => item.make)}
           link={"/Configuration/Make"}
         />
@@ -162,7 +162,7 @@ export default function Info() {
           // required={true}
           required={false}
           options={Configurations?.Configurations?.model
-            ?.filter((item: any) => item.make.trim() === makeSelected)
+            ?.filter((item: any) => item.make?.trim() === makeSelected)
             .map((item: any) => item.model)}
           link={"/Configuration/Model"}
         />

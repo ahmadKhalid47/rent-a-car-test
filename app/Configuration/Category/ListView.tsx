@@ -98,14 +98,14 @@ export default function ListView({ data }: any) {
   }
 
   async function editItem(_id: any) {
-    if (Category.trim() === "") {
+    if (Category?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       data.find(
         (item: any) =>
-          item.Category?.toLowerCase() === Category.trim().toLowerCase()
+          item.Category?.toLowerCase() === Category?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -131,7 +131,7 @@ export default function ListView({ data }: any) {
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       
-      const isPresent = prevArray.includes(_id);
+      const isPresent = prevArray?.includes(_id);
 
       
       if (isPresent) {

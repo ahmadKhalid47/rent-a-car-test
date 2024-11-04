@@ -20,7 +20,7 @@ export default function Additional() {
 
   useEffect(() => {
     const result = configArray?.filter((item: any) =>
-      vehicleInfo?.features.includes(item.Feature)
+      vehicleInfo?.features?.includes(item.Feature)
     );
     setFilteredData(result);
   }, [configArray]);

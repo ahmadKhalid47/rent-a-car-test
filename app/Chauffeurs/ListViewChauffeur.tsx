@@ -65,7 +65,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
       
-      const isPresent = prevArray.includes(_id);
+      const isPresent = prevArray?.includes(_id);
 
       
       if (isPresent) {

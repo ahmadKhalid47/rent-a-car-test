@@ -48,7 +48,7 @@ export default function AddUser() {
     const numberedLines = cleanLines
       .map((line, index) => {
         
-        return line.trim() ? `${index + 1}. ${line}` : "";
+        return line?.trim() ? `${index + 1}. ${line}` : "";
       })
       .join("\n");
 

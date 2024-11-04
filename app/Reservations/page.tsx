@@ -97,11 +97,11 @@ export default function Vehicles() {
       } = data;
 
       return (
-        vehicleName?.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        amount?.toLowerCase().includes(lowercasedQuery) ||
-        duration?.toLowerCase().includes(lowercasedQuery) ||
-        customerName?.toLowerCase().includes(lowercasedQuery)
+        vehicleName?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        amount?.toLowerCase()?.includes(lowercasedQuery) ||
+        duration?.toLowerCase()?.includes(lowercasedQuery) ||
+        customerName?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredreservations(filtered);
@@ -121,11 +121,11 @@ export default function Vehicles() {
       } = data;
 
       return (
-        vehicleName?.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        amount?.toLowerCase().includes(lowercasedQuery) ||
-        duration?.toLowerCase().includes(lowercasedQuery) ||
-        customerName?.toLowerCase().includes(lowercasedQuery)
+        vehicleName?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        amount?.toLowerCase()?.includes(lowercasedQuery) ||
+        duration?.toLowerCase()?.includes(lowercasedQuery) ||
+        customerName?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     advanceFilters.forEach(({ key, keyValue }: any) => {
@@ -150,7 +150,7 @@ export default function Vehicles() {
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
     setAdvanceFilters([
       {
         key: "status",

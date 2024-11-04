@@ -88,8 +88,8 @@ export default function customers() {
       const { name, phone } = data;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        phone?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        phone?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredcustomer(filtered);
@@ -104,10 +104,10 @@ export default function customers() {
       const { name, phone, emailAddress, city } = data;
 
       return (
-        name?.toLowerCase().includes(lowercasedQuery) ||
-        emailAddress?.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        phone?.toLowerCase().includes(lowercasedQuery)
+        name?.toLowerCase()?.includes(lowercasedQuery) ||
+        emailAddress?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        phone?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
 
@@ -136,7 +136,7 @@ export default function customers() {
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
     setAdvanceFilters([
       {
         key: "gender",

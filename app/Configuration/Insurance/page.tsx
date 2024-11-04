@@ -76,14 +76,14 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Insurance.trim() === "" || recurring.trim() === "") {
+    if (Insurance?.trim() === "" || recurring?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
         (item) =>
-          item.Insurance?.toLowerCase() === Insurance.trim().toLowerCase()
+          item.Insurance?.toLowerCase() === Insurance?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -138,8 +138,8 @@ await axios.post("/api/saveSingleConfiguration", {
       const { Insurance, recurring } = vehicle;
 
       return (
-        Insurance?.toLowerCase().includes(lowercasedQuery) ||
-        recurring.toLowerCase().includes(lowercasedQuery)
+        Insurance?.toLowerCase()?.includes(lowercasedQuery) ||
+        recurring?.toLowerCase()?.includes(lowercasedQuery)
       );
     });
     setFilteredVehicles(filtered);

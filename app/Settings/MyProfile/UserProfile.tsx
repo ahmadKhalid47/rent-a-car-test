@@ -59,7 +59,7 @@ export default function UserProfile() {
       <TempTypeInfoShow label={"City"} value={myProfile.city} />
       {myProfile?.profilePic &&
         (myProfile?.profilePic[0] instanceof File ||
-          myProfile?.profilePic.includes("blob:")) && (
+          myProfile?.profilePic?.includes("blob:")) && (
           <div
             className={`w-full h-fit md:h-[100px] pt-6 flex flex-wrap gap-y-2 ${"justify-end"} items-center gap-4`}
           >

@@ -138,7 +138,7 @@ export default function AdminSidebar() {
                   ? "justify-start ps-5"
                   : "justify-center px-0"
               } bg-main-blue-hover  ${
-                pathName.includes("/AddUser") ? "bg-main-blue text-white" : ""
+                pathName?.includes("/AddUser") ? "bg-main-blue text-white" : ""
               } hover:text-white rounded-[10px]`}
             >
               {global.sidebarShow ? "New User" : null}

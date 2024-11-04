@@ -25,7 +25,7 @@ export default function Feature() {
 
   function handleClick(name: string) {
     setFeaturesSubmitArray((prevArray: any) => {
-      const newArray = prevArray.includes(name)
+      const newArray = prevArray?.includes(name)
         ? prevArray.filter((item: any) => item !== name)
         : [...prevArray, name];
 

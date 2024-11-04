@@ -33,7 +33,7 @@ export default function Info({ data, loading }: dataType) {
       const { data } = vehicle;
       const { name } = data;
 
-      return name?.toLowerCase().includes(lowercasedQuery);
+      return name?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredCustomer(filtered);
   }
@@ -56,7 +56,7 @@ export default function Info({ data, loading }: dataType) {
   }, [reservation.customer_id, filteredCustomer]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
   }
 
   return (

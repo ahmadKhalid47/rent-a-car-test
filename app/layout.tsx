@@ -31,7 +31,7 @@ export default function RootLayout({
 
   useEffect(() => {
     if (isVerified === false) {
-      if (!pathName.includes("forgotPassword")) {
+      if (!pathName?.includes("forgotPassword")) {
         router.push("/");
       }
     } else if (isVerified === true && pathName === "/") {
@@ -71,7 +71,7 @@ export default function RootLayout({
                 className={`${
                   pathName &&
                   pathName !== "/" &&
-                  !pathName.includes("forgotPassword") &&
+                  !pathName?.includes("forgotPassword") &&
                   isVerified
                     ? "flex justify-start items-start relative flex-wrap"
                     : ""
@@ -79,7 +79,7 @@ export default function RootLayout({
               >
                 {pathName &&
                 pathName !== "/" &&
-                !pathName.includes("forgotPassword") &&
+                !pathName?.includes("forgotPassword") &&
                 isVerified ? (
                   <>
                     <Sidebar />

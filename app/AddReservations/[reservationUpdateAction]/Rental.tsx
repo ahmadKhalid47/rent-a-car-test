@@ -40,7 +40,7 @@ export default function Rental({ data, loading }: dataType) {
       const { data } = vehicle;
       const { name } = data;
 
-      return name?.toLowerCase().includes(lowercasedQuery);
+      return name?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredchauffeur(filtered);
   }
@@ -63,7 +63,7 @@ export default function Rental({ data, loading }: dataType) {
   }, [reservation.chauffeur_id, filteredchauffeur]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(event.target.value.trim());
+    setSearchQuery(event.target.value?.trim());
   }
 
   return (

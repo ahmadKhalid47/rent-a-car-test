@@ -100,9 +100,9 @@ export default function Vehicles() {
   }, [isMobile]);
 
   function handleSearch(e: any) {
-    let searchQuery = e.target.value?.toLowerCase().trim();
+    let searchQuery = e.target.value?.toLowerCase()?.trim();
     let filter = settingsArray.filter((item: any) =>
-      item.prefixes.includes(searchQuery)
+      item.prefixes?.includes(searchQuery)
     );
     setFilteredSettings(filter);
   }

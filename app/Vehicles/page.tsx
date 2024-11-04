@@ -100,11 +100,11 @@ export default function Vehicles() {
       const { data } = vehicle;
       const { registration, city, make, model } = data;
 
-      const carName = `${make} ${model}`.toLowerCase();
+      const carName = `${make} ${model}`?.toLowerCase();
       return (
-        registration.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        carName.includes(lowercasedQuery)
+        registration?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        carName?.includes(lowercasedQuery)
       );
     });
     setFilteredVehicles(filtered);
@@ -118,11 +118,11 @@ export default function Vehicles() {
       const { data } = vehicle;
       const { registration, city, make, model } = data;
 
-      const carName = `${make} ${model}`.toLowerCase();
+      const carName = `${make} ${model}`?.toLowerCase();
       return (
-        registration.toLowerCase().includes(lowercasedQuery) ||
-        city?.toLowerCase().includes(lowercasedQuery) ||
-        carName.includes(lowercasedQuery)
+        registration?.toLowerCase()?.includes(lowercasedQuery) ||
+        city?.toLowerCase()?.includes(lowercasedQuery) ||
+        carName?.includes(lowercasedQuery)
       );
     });
     advanceFilters.forEach(({ key, keyValue }: any) => {

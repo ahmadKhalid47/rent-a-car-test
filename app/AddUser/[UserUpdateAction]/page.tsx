@@ -61,7 +61,7 @@ export default function AddUser() {
   async function saveData(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (User.verifyPassword.trim() !== User.password.trim()) {
+    if (User.verifyPassword?.trim() !== User.password?.trim()) {
       dispatch(setAlert("Passwords did not matched"));
       dispatch(setSeverity("error"));
       return;

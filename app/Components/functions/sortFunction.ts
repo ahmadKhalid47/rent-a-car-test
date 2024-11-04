@@ -20,10 +20,10 @@ export const sort = (
     let fieldB = b?.data?.[key];
 
     if (typeof fieldA === "string") {
-      fieldA = fieldA.toLowerCase();
+      fieldA = fieldA?.toLowerCase();
     }
     if (typeof fieldB === "string") {
-      fieldB = fieldB.toLowerCase();
+      fieldB = fieldB?.toLowerCase();
     }
 
     if (newSortOrder === "asc") {
@@ -66,10 +66,10 @@ export const sort = (
       let fieldB = b?.[key];
 
       if (typeof fieldA === "string") {
-        fieldA = fieldA.toLowerCase();
+        fieldA = fieldA?.toLowerCase();
       }
       if (typeof fieldB === "string") {
-        fieldB = fieldB.toLowerCase();
+        fieldB = fieldB?.toLowerCase();
       }
 
       if (newSortOrder === "asc") {

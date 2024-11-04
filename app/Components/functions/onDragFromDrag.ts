@@ -5,7 +5,7 @@ export const useFileDrop = (setFilesCallback: (files: any[]) => void) => {
   return useCallback(
     (acceptedFiles: any) => {
       const filteredFiles = acceptedFiles?.filter((file: any) => {
-        if (!allowedTypes.includes(file.type)) {
+        if (!allowedTypes?.includes(file.type)) {
           alert(
             `File ${
               file.name

@@ -57,7 +57,7 @@ export default function ListView({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      const isPresent = prevArray.includes(_id);
+      const isPresent = prevArray?.includes(_id);
       if (isPresent) {
         return prevArray.filter((item: any) => item !== _id);
       } else {

@@ -68,14 +68,14 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Color.trim() === "" || ColorName.trim() === "") {
+    if (Color?.trim() === "" || ColorName?.trim() === "") {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
     } else if (
       vehiclesData.find(
         (item) =>
-          item.ColorName?.toLowerCase() === ColorName.trim().toLowerCase()
+          item.ColorName?.toLowerCase() === ColorName?.trim()?.toLowerCase()
       )
     ) {
       dispatch(setAlert("This Item Already Exists"));
@@ -131,7 +131,7 @@ await axios.post("/api/saveSingleConfiguration", {
     const filtered = vehiclesData.filter((vehicle) => {
       const { ColorName } = vehicle;
 
-      return ColorName?.toLowerCase().includes(lowercasedQuery);
+      return ColorName?.toLowerCase()?.includes(lowercasedQuery);
     });
     setFilteredVehicles(filtered);
   }

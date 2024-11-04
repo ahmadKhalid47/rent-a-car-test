@@ -189,7 +189,7 @@ export default function Vehicles() {
     }
 
     if (regNo) {
-      const lowercasedQuery = regNo.toLowerCase();
+      const lowercasedQuery = regNo?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
         return keyValueInVehicle === lowercasedQuery;

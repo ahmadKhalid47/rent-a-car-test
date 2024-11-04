@@ -141,7 +141,7 @@ export default function UserDashboard() {
     }
 
     if (regNo) {
-      const lowercasedQuery = regNo.toLowerCase();
+      const lowercasedQuery = regNo?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
         const keyValueInVehicle = vehicle.data.registration?.trim()?.toLowerCase();
         return keyValueInVehicle === lowercasedQuery;
@@ -435,7 +435,7 @@ export default function UserDashboard() {
                       value={model}
                       required={false}
                       options={Configurations?.model
-                        ?.filter((item: any) => item.make.trim() === make)
+                        ?.filter((item: any) => item.make?.trim() === make)
                         .map((item: any) => item.model)}
                     />
                   </div>
