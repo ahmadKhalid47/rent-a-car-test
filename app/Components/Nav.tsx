@@ -55,7 +55,7 @@ export default function Nav() {
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
+      !dropdownRef.current?.contains(event.target as Node)
     ) {
       setIsOpen(false);
     }
