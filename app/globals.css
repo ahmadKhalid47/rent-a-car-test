@@ -438,6 +438,20 @@ button:active {
   transform: translateY(-50%);
 }
 
+.modal-animation {
+  animation: scaleUp 0.4s ease-out forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5) translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(-50%);
+    opacity: 1;
+  }
+}
 .bg-check {
   padding: 0px;
   margin: 0%;
@@ -524,4 +538,5 @@ button:active {
   background-color: #054B86 !important;
 }
 .Mui-selected:hover{
-opacity: 0.9;}
+opacity: 0.9;
+}

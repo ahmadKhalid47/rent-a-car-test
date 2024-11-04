@@ -125,17 +125,17 @@ export default function UserDashboard() {
     let filtered: any = activeVehicles;
 
     if (make) {
-      const lowercasedQuery = make?.toLowerCase();
+      const lowercasedQuery = make?.trim()?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.make?.trim()?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
 
     if (model) {
-      const lowercasedQuery = model?.toLowerCase();
+      const lowercasedQuery = model?.trim()?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.model?.trim()?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
@@ -143,7 +143,7 @@ export default function UserDashboard() {
     if (regNo) {
       const lowercasedQuery = regNo.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.registration?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.registration?.trim()?.toLowerCase();
         return keyValueInVehicle === lowercasedQuery;
         // return keyValueInVehicle?.includes(lowercasedQuery);
       });
@@ -225,17 +225,17 @@ export default function UserDashboard() {
     let filtered: any = VehiclesData;
 
     if (make) {
-      const lowercasedQuery = make?.toLowerCase();
+      const lowercasedQuery = make?.trim()?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.make?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.make?.trim()?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
 
     if (model) {
-      const lowercasedQuery = model?.toLowerCase();
+      const lowercasedQuery = model?.trim()?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.model?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.model?.trim()?.toLowerCase();
         return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
@@ -435,7 +435,7 @@ export default function UserDashboard() {
                       value={model}
                       required={false}
                       options={Configurations?.model
-                        ?.filter((item: any) => item.make === make)
+                        ?.filter((item: any) => item.make.trim() === make)
                         .map((item: any) => item.model)}
                     />
                   </div>
