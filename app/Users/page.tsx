@@ -11,7 +11,10 @@ import ListViewUser from "./ListViewUser";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
-import { useHandleExport } from "../Components/functions/exportFunction";
+import {
+  renameKeys2,
+  useHandleExport,
+} from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 
 export default function Vehicles() {
@@ -117,11 +120,9 @@ export default function Vehicles() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "gender") {
-            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -147,7 +148,29 @@ export default function Vehicles() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); 
+  const handleExport = useHandleExport();
+  const keyMap = {
+    _id: "_id",
+    profilePic: "Profile Pic",
+    username: "User Name",
+    firstName: "First Name",
+    lastName: "Last Name",
+    name: "Name",
+    phone: "Phone",
+    email: "Email",
+    address: "Address",
+    company: "Company",
+    country: "Country",
+    state: "State",
+    city: "City",
+    plan: "Plan",
+    password: "password",
+    verifyPassword: "Verify Password",
+    admin: "admin",
+    expiryDate: "Expiry Date",
+  };
+
+  const renamedArray = renameKeys2(UsersData, keyMap);
 
   return (
     <div
@@ -159,7 +182,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Users
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               Users / All Users
@@ -339,7 +362,12 @@ export default function Vehicles() {
             <button
               className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
               onClick={() => {
-                handleExport(UsersData?.map((item: any) => item));
+                handleExport(
+                  renamedArray?.map((item: any) => {
+                    const { _id, __v, admin, password,fptoken, ...rest } = item;
+                    return rest;
+                  })
+                );
               }}
             >
               Export

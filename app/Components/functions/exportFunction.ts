@@ -60,3 +60,19 @@ export function renameKeys(array: any, keyMap: any) {
     return newItem;
   });
 }
+
+export function renameKeys2(array: any, keyMap: any) {
+  return array.map((item: any) => {
+    // Create a shallow copy of the item
+    let newItem: any = { ...item };
+
+    // Rename keys in 'data' object
+    newItem = Object.keys(newItem).reduce((acc: any, key: any) => {
+      const newKey: any = keyMap[key] || key; // Use mapped key if exists, else keep original
+      acc[newKey] = newItem[key];
+      return acc;
+    }, {});
+
+    return newItem;
+  });
+}

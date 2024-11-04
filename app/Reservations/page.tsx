@@ -11,7 +11,7 @@ import ListViewReservations from "./ListViewReservations";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { MediumLoader } from "../Components/Loader";
-import { useHandleExport } from "../Components/functions/exportFunction";
+import { renameKeys, useHandleExport } from "../Components/functions/exportFunction";
 import { FaTimesCircle } from "react-icons/fa";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
@@ -167,6 +167,42 @@ export default function Vehicles() {
     ]);
   }
   const handleExport = useHandleExport();
+  const keyMap = {
+    customer_id: "customer_id",
+    customerName: "Customer Name",
+    chauffeur_id: "chauffeur_id",
+    chauffeurName: "Chauffeur Name",
+    vehicle_id: "vehicle_id",
+    vehicleName: "Vehicle Name",
+    reservationDate: "Reservation Date",
+    odometer: "Odometer",
+    fuelStatus: "Fuel Status",
+    securityDeposit: "Security Deposit",
+    country: "Country",
+    city: "City",
+    PickUpAddress: "Pick Up Address",
+    PickUpDate: "Pick Up Date",
+    PickUpTime: "Pick Up Time",
+    dropOffAddress: "Drop Off Address",
+    dropOffDate: "Drop Off Date",
+    dropOffTime: "Drop Off Time",
+    discount: "Discount",
+    withChauffeur: "With Chauffeur",
+    duration: "duration",
+    durationinDays: "Duration In Days",
+    vatInclude: "Vat Include",
+    amount: "Amount",
+    carTotal: "Car Total Rent",
+    chauffeurTotal: "Chauffeur Total Rent",
+    fuelCompletion: "Fuel On Completion",
+    fuelImagesCompletion: "Fuel Images On Completion",
+    odometerCompletion: "Odometer On Completion",
+    odometerImagesCompletion: "Odometer Images On Completion",
+    damages: "Damages",
+    status: "Status",
+  };
+
+  const renamedArray = renameKeys(reservationsData, keyMap);
 
   return (
     <div
@@ -301,7 +337,7 @@ export default function Vehicles() {
                 className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
                   handleExport(
-                    reservationsData?.map((item: any) => {
+                    renamedArray?.map((item: any) => {
                       const { vehicle_id, chauffeur_id, customer_id, ...rest } =
                         item.data;
                       return rest;

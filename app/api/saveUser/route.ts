@@ -72,7 +72,7 @@ export async function POST(req: Request) {
       password: hashedPassword,
       admin: false,
       address: "address",
-      expiryDate: "address",
+      expiryDate: "_",
     }).save();
     console.log(savedData);
 
