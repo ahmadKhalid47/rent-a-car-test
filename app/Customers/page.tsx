@@ -11,7 +11,10 @@ import ListViewCustomer from "./ListViewCustomers";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
-import { useHandleExport } from "../Components/functions/exportFunction";
+import {
+  renameKeys,
+  useHandleExport,
+} from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 
@@ -59,7 +62,7 @@ export default function customers() {
 
         if (result?.data?.data) {
           setcustomersData(result.data.data);
-          setFilteredcustomer(result.data.data); 
+          setFilteredcustomer(result.data.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -118,11 +121,9 @@ export default function customers() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "gender") {
-            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -152,7 +153,45 @@ export default function customers() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); 
+  const handleExport = useHandleExport();
+  const keyMap = {
+    name: "Name",
+    gender: "Gender",
+    dateOfBirth: "Date Of Birth",
+    nationality: "Nationality",
+    emailAddress: "Email Address",
+    phone: "Phone",
+    alternativePhone: "Alternative Phone",
+    rentPerDay: "Rent Per Day",
+    streetAddress: "Street Address",
+    country: "Country",
+    state: "State",
+    city: "City",
+    postalCode: "Postal Code",
+    chauffeurImage: "Chauffeur Image",
+    reference: "Reference",
+    emergency: "Emergency",
+    additional: "Additional",
+    passportNumber: "Passport Number",
+    passportValid: "Passport Valid",
+    passportCountry: "Passport Country",
+    passportImages: "Passport Images",
+    licenseNumber: "License Number",
+    licenseValid: "License Valid",
+    licenseCountry: "License Country",
+    licenseImages: "License Images",
+    other: "Other",
+    otherNumber: "Other Number",
+    otherValid: "Other Valid",
+    otherCountry: "Other Country",
+    otherImages: "Other Images",
+    employmentType: "Employment Type",
+    drivingExp: "Driving Exp",
+    availability: "Availability",
+    idCard: "Id Card",
+  };
+
+  const renamedArray = renameKeys(customersData, keyMap);
 
   return (
     <div
@@ -164,7 +203,7 @@ export default function customers() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Customers
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               Customers / All Customers
@@ -281,7 +320,7 @@ export default function customers() {
               <button
                 className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
-                  handleExport(customersData?.map((item: any) => item.data));
+                  handleExport(renamedArray?.map((item: any) => item.data));
                 }}
               >
                 Export
