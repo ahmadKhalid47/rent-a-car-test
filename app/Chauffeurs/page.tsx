@@ -232,7 +232,7 @@ export default function chauffeurs() {
                 router.push("/AddChauffeur/AddNew");
               }}
             >
-              Add New chauffeur
+              Add Chauffeur
             </button>
           </div>
         </div>
