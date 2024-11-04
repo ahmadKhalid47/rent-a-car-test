@@ -6,7 +6,7 @@ import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
-import { setdamages, setdamageImagesToDelete } from "@/app/store/Vehicle";
+import { setdamages} from "@/app/store/Vehicle";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import React, { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
@@ -105,8 +105,6 @@ export default function Damages() {
     // Extract files from the selected damage
     const filesToDelete = selectedDamage.files;
 
-    // Dispatch the entire array of files to be deleted
-    dispatch(setdamageImagesToDelete(filesToDelete));
 
     // Create a new array without the deleted damage
     const updatedDamages = damages.filter((_: any, i: any) => i !== index);

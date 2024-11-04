@@ -45,7 +45,6 @@ const initialState: any = {
   otherNote: "",
   damages: [],
   carImages: [],
-  damageImagesToDelete: [],
   thumbnailImage: 0,
 };
 
@@ -185,9 +184,6 @@ export const VehicleSlice = createSlice({
     setfuelCapacity: (state, action) => {
       state.fuelCapacity = action.payload;
     },
-    setdamageImagesToDelete: (state, action) => {
-      state.damageImagesToDelete.push(...action.payload);
-    },
     setthumbnailImage: (state, action) => {
       state.thumbnailImage = action.payload;
     },
@@ -238,7 +234,6 @@ export const {  setmakeR,
   setdamages,
   setCarImages,
   setAllValues,
-  setdamageImagesToDelete,
   setthumbnailImage,
   setvinNo,
   resetState,

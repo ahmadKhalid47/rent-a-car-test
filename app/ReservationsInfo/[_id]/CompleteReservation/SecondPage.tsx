@@ -10,7 +10,7 @@ import { useDropzone } from "react-dropzone";
 import shape from "@/public/ShapeBlack.svg";
 import { FaTimesCircle, FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
-import { setdamages, setdamageImagesToDelete } from "@/app/store/reservations";
+import { setdamages} from "@/app/store/reservations";
 import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
@@ -110,7 +110,6 @@ export default function SecondPage() {
 
     const filesToDelete = selectedDamage.files;
 
-    dispatch(setdamageImagesToDelete(filesToDelete));
 
     const updatedDamages = damages.filter((_: any, i: any) => i !== index);
 

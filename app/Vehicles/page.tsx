@@ -14,7 +14,7 @@ import { FaList } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
-import { useHandleExport } from "../Components/functions/exportFunction";
+import { renameKeys, useHandleExport } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
@@ -153,7 +153,6 @@ export default function Vehicles() {
 
   useEffect(() => {
     advanceFilterVehicles();
-    console.log(status);
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -177,7 +176,56 @@ export default function Vehicles() {
       },
     ]);
   }
-  console.log(filteredVehicles);
+
+  const keyMap = {
+    make: "Make",
+    Category: "Category",
+    model: "Model",
+    type: "Type",
+    year: "Year",
+    registration: "Registration",
+    color: "Color",
+    colorName: "Color Name",
+    fuelType: "Fuel Type",
+    transmission: "Transmission",
+    odometer: "Odometer",
+    passengers: "Passengers",
+    country: "Country",
+    Ownership: "Ownership",
+    Drivetrain: "Drivetrain",
+    city: "City",
+    postalCode: "PostalCode",
+    lateHour: "Late Fee Per Hour",
+    lateDay: "Late Fee Per Day",
+    rentHour: "Vehicle Rent Per Hour",
+    rentDay: "Vehicle Rent Per Day",
+    rentWeek: "Vehicle Rent Per Week",
+    rentMonth: "Vehicle Rent Per Month",
+    mlFee: "Milage Fee",
+    mlDay: "Milage Day",
+    mlWeek: "Milage Week",
+    mlMonth: "Milage Month",
+    insNo: "Insurance No",
+    insCompany: "Insurance Company",
+    insStart: "Insurance Start",
+    insEnd: "Insurance End",
+    insPayable: "Insurance Payable",
+    insRecurringPeriod: "Insurance Recurring_Period",
+    insRecurringDate: "Insurance RecurringDate",
+    insDeductible: "Insurance Deductible",
+    insRemarks: "Insurance Remarks",
+    fuelCapacity: "Fuel Capacity",
+    engineVolume: "Engine Volume",
+    vinNo: "Vin No",
+    insImage: "Insurance Image",
+    features: "Features",
+    otherNote: "Other Note",
+    damages: "Damages",
+    carImages: "Car Images",
+    thumbnailImage: "thumbnailImage",
+  };
+
+  const renamedArray = renameKeys(vehiclesData, keyMap);
 
   return (
     <div
@@ -316,9 +364,8 @@ export default function Vehicles() {
               className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
               onClick={() => {
                 handleExport(
-                  vehiclesData?.map((item: any) => {
-                    const { vehicleId, ...rest } =
-                      item.data;
+                  renamedArray?.map((item: any) => {
+                    const { vehicleId, thumbnailImage, ...rest } = item.data;
                     return rest;
                   })
                 );

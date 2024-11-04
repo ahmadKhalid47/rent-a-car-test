@@ -32,7 +32,6 @@ const initialState: any = {
   odometerCompletion: "",
   odometerImagesCompletion: [],
   damages: [],
-  damageImagesToDelete: [],
   status: "inComplete",
 };
 
@@ -130,9 +129,6 @@ export const reservationSlice = createSlice({
     setchauffeurTotal: (state, action) => {
       state.chauffeurTotal = action.payload;
     },
-    setdamageImagesToDelete: (state, action) => {
-      state.damageImagesToDelete.push(...action.payload);
-    },
     setstatus: (state, action) => {
       state.status = action.payload;
     },
@@ -177,7 +173,6 @@ export const {
   setodometerCompletion,
   setodometerImagesCompletion,
   setdamages,
-  setdamageImagesToDelete,
   setstatus,
   setdurationinDays,
   setcarTotal,

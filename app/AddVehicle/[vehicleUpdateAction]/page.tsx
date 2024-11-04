@@ -526,7 +526,7 @@ export default function Vehicles() {
                             "lateDay",
                           ]
                         : currentPage === 4
-                        ? ["damages", "damageImagesToDelete"]
+                        ? ["damages"]
                         : currentPage === 5
                         ? ["otherNote"]
                         : null

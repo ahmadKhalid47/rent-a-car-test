@@ -42,3 +42,21 @@ export const useHandleExport = () => {
 
   return handleExport;
 };
+
+// Key Name Changer
+
+export function renameKeys(array: any, keyMap: any) {
+  return array.map((item: any) => {
+    // Create a shallow copy of the item
+    const newItem: any = { ...item };
+
+    // Rename keys in 'data' object
+    newItem.data = Object.keys(newItem.data).reduce((acc: any, key: any) => {
+      const newKey: any = keyMap[key] || key; // Use mapped key if exists, else keep original
+      acc[newKey] = newItem.data[key];
+      return acc;
+    }, {});
+
+    return newItem;
+  });
+}
