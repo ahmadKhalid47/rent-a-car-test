@@ -12,7 +12,7 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
 
   async function updateActive(_id: any, active: boolean) {
     try {
-      let result: any = await axios.post(`/api/configurationActive/${_id}`, {
+      await axios.post(`/api/configurationActive/${_id}`, {
         active: !active,
         model,
       });
@@ -34,7 +34,7 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
     <img
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
-      className={`translate-y-[1px] hover:scale-[1.3] cursor-pointer ${
+      className={`translate-y-[1px] ${
         admin ? "hover:scale-[1.3] cursor-pointer" : "grayscale opacity-50"
       }`}
       onClick={() => {
