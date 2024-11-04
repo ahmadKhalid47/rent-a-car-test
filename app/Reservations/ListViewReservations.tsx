@@ -1,17 +1,12 @@
 import { sort } from "@/app/Components/functions/sortFunction";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
-import doc1 from "@/public/doc (1).svg";
-import doc2 from "@/public/doc (2).svg";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useHandleExport } from "../Components/functions/exportFunction";
@@ -31,7 +26,6 @@ interface dataType {
 }
 
 export default function ListViewreservation({ data }: dataType) {
-  let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -41,10 +35,7 @@ export default function ListViewreservation({ data }: dataType) {
     [key: string]: "asc" | "desc";
   }>({});
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
-  const dispatch = useDispatch();
   const router = useRouter();
-  const handleExport = useHandleExport(); 
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
 
@@ -53,7 +44,6 @@ export default function ListViewreservation({ data }: dataType) {
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
-  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {

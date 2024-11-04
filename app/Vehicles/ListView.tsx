@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { useHandleExport } from "../Components/functions/exportFunction";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort, sort2 } from "../Components/functions/sortFunction";
@@ -39,7 +38,6 @@ export default function ListView({ data }: dataType) {
   const itemsPerPage = 12;
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleExport = useHandleExport();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
 

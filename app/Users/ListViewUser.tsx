@@ -41,10 +41,8 @@ export default function ListViewUsers({ data }: dataType) {
     [key: string]: "asc" | "desc";
   }>({});
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const [itemToActiveMany, setItemToActiveMany] = useState<any>([]);
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleExport = useHandleExport(); 
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
 

@@ -148,7 +148,6 @@ export default function Vehicles() {
     ]);
   }
   const handleExport = useHandleExport(); 
-console.log(UsersData);
 
   return (
     <div

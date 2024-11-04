@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { FaEllipsisVertical } from "react-icons/fa6";
 import { useState } from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-// import { SmallLoader } from "../Loader";
-// import { useHandleExport } from "../functions/exportFunction";
 import { SmallLoader } from "../Components/Loader";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import image404 from "@/public/image404.png";
@@ -30,7 +26,6 @@ export default function GridView({ data }: dataType) {
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const handleExport = useHandleExport(); 
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const deleteItem = useDeleteItem();

@@ -60,7 +60,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  const handleExport = useHandleExport(); 
+  const handleExport = useHandleExport();
 
   useEffect(() => {
     async function getData() {
@@ -72,7 +72,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); 
+          setFilteredVehicles(result.data.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -315,7 +315,13 @@ export default function Vehicles() {
             <button
               className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
               onClick={() => {
-                handleExport(vehiclesData?.map((item: any) => item.data));
+                handleExport(
+                  vehiclesData?.map((item: any) => {
+                    const { vehicleId, ...rest } =
+                      item.data;
+                    return rest;
+                  })
+                );
               }}
             >
               Export

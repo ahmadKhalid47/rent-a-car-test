@@ -61,7 +61,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
-          setFilteredreservations(result.data.data); 
+          setFilteredreservations(result.data.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -135,11 +135,9 @@ export default function Vehicles() {
           const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
 
           if (key === "status") {
-            
             return keyValueInVehicle === lowercasedQuery;
           }
 
-          
           return keyValueInVehicle?.includes(lowercasedQuery);
         });
       }
@@ -168,7 +166,7 @@ export default function Vehicles() {
       },
     ]);
   }
-  const handleExport = useHandleExport(); 
+  const handleExport = useHandleExport();
 
   return (
     <div
@@ -302,7 +300,13 @@ export default function Vehicles() {
               <button
                 className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
                 onClick={() => {
-                  handleExport(reservationsData?.map((item: any) => item.data));
+                  handleExport(
+                    reservationsData?.map((item: any) => {
+                      const { vehicle_id, chauffeur_id, customer_id, ...rest } =
+                        item.data;
+                      return rest;
+                    })
+                  );
                 }}
               >
                 Export

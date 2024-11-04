@@ -21,7 +21,6 @@ export default function chauffeurs() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
   const [showError, setShowError] = useState(null);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
@@ -166,7 +165,6 @@ export default function chauffeurs() {
     ]);
   }
   const handleExport = useHandleExport(); 
-  console.log(filteredchauffeur);
 
   return (
     <div
