@@ -295,7 +295,7 @@ export default function Vehicles() {
                 className={`w-[44px] flex justify-center items-center h-[44px] rounded-[6px] ${
                   gridView
                     ? "bg-main-blue text-white"
-                    : "dark:bg-dark2 bg-light-grey text-black border-[1px] border-grey"
+                    : "dark:bg-dark2 bg-light-grey dark:text-white text-black border-[1px] border-grey"
                 } text-[20px]`}
                 onClick={() => setGridView(true)}
               >
@@ -305,7 +305,7 @@ export default function Vehicles() {
                 className={`w-[44px] flex justify-center items-center h-[44px] rounded-[6px] ${
                   !gridView
                     ? "bg-main-blue text-white"
-                    : "dark:bg-dark2 bg-light-grey text-black border-[1px] border-grey"
+                    : "dark:bg-dark2 bg-light-grey dark:text-white text-black border-[1px] border-grey"
                 } text-[20px]`}
                 onClick={() => setGridView(false)}
               >
