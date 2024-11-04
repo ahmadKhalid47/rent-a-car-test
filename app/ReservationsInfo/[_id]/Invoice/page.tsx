@@ -11,7 +11,6 @@ import { useParams, useRouter } from "next/navigation";
 import { formatId, formatListing } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
-import carLogo from "@/public/car.svg";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
 import Link from "next/link";

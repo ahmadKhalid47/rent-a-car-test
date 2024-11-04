@@ -5,8 +5,6 @@ import shape from "@/public/ShapeBlack.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import demyIcon from "@/public/features (1).png";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SmallLoader } from "@/app/Components/Loader";

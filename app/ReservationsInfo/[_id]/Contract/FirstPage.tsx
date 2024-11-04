@@ -4,7 +4,6 @@ import {
   formatDuration,
   formatId,
 } from "@/app/Components/functions/formats";
-import carLogo from "@/public/car.svg";
 import { RootState } from "@/app/store";
 
 export default function FirstPage({
@@ -20,8 +19,6 @@ export default function FirstPage({
   let companyProfile: any = useSelector(
     (state: RootState) => state.companyProfile
   );
-  console.log(Number(data?.duration));
-  console.log(data?.durationinDays);
 
   return (
     <div
