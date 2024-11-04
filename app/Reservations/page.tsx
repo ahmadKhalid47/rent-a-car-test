@@ -221,12 +221,6 @@ export default function Vehicles() {
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Reservations
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
-              Reservations / All Reservations
-            </span>
-          </span>
-          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
-            All Reservations
-            <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Reservations"} className="hover:underline">
                 Reservations
               </Link>

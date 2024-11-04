@@ -19,6 +19,7 @@ import SearchEmpty from "../Components/functions/SearchEmpty";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -243,9 +244,14 @@ export default function Vehicles() {
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Vehicles
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
-              Vehicles / All Vehicles
+              <Link href={"/Vehicles"} className="hover:underline">
+                Vehicles
+              </Link>
+              {" / "}
+              All Vehicles
             </span>
           </span>
+
           <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
             <button
               className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
