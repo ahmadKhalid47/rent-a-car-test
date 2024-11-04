@@ -270,7 +270,7 @@ export default function Vehicles() {
         <div className="w-[100%]  flex justify-start items-end">
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             {vehicleUpdateAction !== "AddNew"
-              ? "Update Vehicle " + vehicle.vehicleId
+              ? "Update Vehicle " 
               : "Add New Vehicle"}
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               {" "}

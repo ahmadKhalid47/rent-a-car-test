@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  vehicleId: "",
   make: "",
   Category: "",
   model: "",
@@ -54,9 +53,6 @@ export const VehicleSlice = createSlice({
   name: "Vehicle",
   initialState,
   reducers: {
-    setvehicleIdR: (state, action) => {
-      state.vehicleId = action.payload;
-    },
     setmakeR: (state, action) => {
       state.make = action.payload;
     },
@@ -210,9 +206,7 @@ export const VehicleSlice = createSlice({
   },
 });
 
-export const {
-  setvehicleIdR,
-  setmakeR,
+export const {  setmakeR,
   setCategoryR,
   setmodelR,
   settypeR,

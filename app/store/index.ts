@@ -4,7 +4,6 @@ import myProfile from "./myProfile";
 import userProfile from "./userProfile";
 import companyProfile from "./companyProfile";
 import Vehicle from "./Vehicle";
-import VehicleUpdate from "./VehicleUpdate";
 import VehicleInfo from "./vehicleInfo";
 import Configurations from "./Configurations";
 import Customer from "./Customer";
@@ -25,7 +24,6 @@ const rootReducer = combineReducers({
   userProfile: userProfile,
   companyProfile: companyProfile,
   Vehicle: Vehicle,
-  VehicleUpdate: VehicleUpdate,
   VehicleInfo: VehicleInfo,
   Configurations: Configurations,
   Customer: Customer,
