@@ -168,6 +168,9 @@ export default function Vehicles() {
     verifyPassword: "Verify Password",
     admin: "admin",
     expiryDate: "Expiry Date",
+    createdBy: "Created By",
+    createdAt: "Created At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys2(UsersData, keyMap);

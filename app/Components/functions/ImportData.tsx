@@ -52,6 +52,9 @@ const ExcelUpload = ({ model }: any) => {
         Recurring_Period: "recurring",
         Exterior: "exterior",
         Interior: "interior",
+        Created_By: "createdBy",
+        Created_At: "createdAt",
+        Active: "active",
       };
 
       const renamedArray = renameKeys2(jsonData, keyMap);

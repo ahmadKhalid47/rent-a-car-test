@@ -189,6 +189,9 @@ export default function customers() {
     drivingExp: "Driving Exp",
     availability: "Availability",
     idCard: "Id Card",
+    createdBy: "Created By",
+    createdAt: "Created At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys(customersData, keyMap);

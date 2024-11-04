@@ -200,6 +200,9 @@ export default function Vehicles() {
     odometerImagesCompletion: "Odometer Images On Completion",
     damages: "Damages",
     status: "Status",
+    createdBy: "Created By",
+    createdAt: "Created At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys(reservationsData, keyMap);

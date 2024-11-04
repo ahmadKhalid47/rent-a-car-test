@@ -223,6 +223,9 @@ export default function Vehicles() {
     damages: "Damages",
     carImages: "Car Images",
     thumbnailImage: "thumbnailImage",
+    createdBy: "Created By",
+    createdAt: "Created At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys(vehiclesData, keyMap);

@@ -13,6 +13,9 @@ const ExcelDownload = ({ data }: any) => {
     recurring: "Recurring_Period",
     exterior: "Exterior",
     interior: "Interior",
+    createdBy: "Created_By",
+    createdAt: "Created_At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys2(data, keyMap);

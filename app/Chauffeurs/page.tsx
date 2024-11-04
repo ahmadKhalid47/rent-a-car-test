@@ -202,6 +202,9 @@ export default function chauffeurs() {
     drivingExp: "Driving Exp",
     availability: "Availability",
     idCard: "Id Card",
+    createdBy: "Created By",
+    createdAt: "Created At",
+    active: "Active",
   };
 
   const renamedArray = renameKeys(chauffeursData, keyMap);
