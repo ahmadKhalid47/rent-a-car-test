@@ -263,7 +263,7 @@ export default function UserDashboard() {
         <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-8 mt-5">
           <div className="w-[100%] flex justify-start items-start flex-col">
             <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%]">
-              Cars Details
+              Vehicles Details
             </span>
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
@@ -275,7 +275,7 @@ export default function UserDashboard() {
                     {!vehicleLoading ? VehiclesData.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Total Cars{" "}
+                    Total Vehicles{" "}
                   </div>
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function UserDashboard() {
                     {!vehicleLoading ? activeVehicles.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Cars Available
+                    Vehicles Available
                   </div>
                 </div>
               </div>
@@ -301,7 +301,7 @@ export default function UserDashboard() {
                     {!vehicleLoading ? rentOutVehicles.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Cars Rented Out{" "}
+                    Vehicles Rented Out{" "}
                   </div>
                 </div>
               </div>
@@ -409,7 +409,7 @@ export default function UserDashboard() {
                       ? "Not Available"
                       : carAvailable === 1
                       ? "Hooray! " + carAvailable + " Car Available !"
-                      : "Hooray! " + carAvailable + " Cars Available !"
+                      : "Hooray! " + carAvailable + " Vehicles Available !"
                     : ""}
                 </h1>
               </div>

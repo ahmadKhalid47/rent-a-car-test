@@ -262,7 +262,7 @@ export default function UserInfoMainPage() {
                       {!vehicleLoading ? VehiclesData.length : <TextLoader />}
                     </div>
                     <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                      Total Cars{" "}
+                      Total Vehicles{" "}
                     </div>
                   </div>
                 </div>
