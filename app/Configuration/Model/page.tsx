@@ -64,7 +64,7 @@ export default function Vehicles() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); 
+          setFilteredVehicles(result.data.data);
         } else {
           setShowError(result?.data?.error);
         }
@@ -78,7 +78,11 @@ export default function Vehicles() {
   }, [global.vehicleDataReloader, myProfile._id]);
 
   async function save(action: string) {
-    if (Model?.trim() === "" || Make?.trim() === "" || Category?.trim() === "") {
+    if (
+      Model?.trim() === "" ||
+      Make?.trim() === "" ||
+      Category?.trim() === ""
+    ) {
       dispatch(setAlert("Please fill the input"));
       dispatch(setSeverity("error"));
       return;
@@ -143,6 +147,7 @@ export default function Vehicles() {
     });
     setFilteredVehicles(filtered);
   }
+  console.log(filteredVehicles);
 
   return (
     <div
