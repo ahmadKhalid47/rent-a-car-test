@@ -47,7 +47,7 @@ export default function RootLayout({
         await axios.post("/api/verifyToken");
         setIsVerified(true);
       } catch (err) {
-        setIsVerified(false);
+        // setIsVerified(false);
       } finally {
         setLoading(false);
       }
