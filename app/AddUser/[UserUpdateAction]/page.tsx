@@ -197,7 +197,7 @@ export default function AddUser() {
 
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   };
   useEffect(() => {
@@ -221,8 +221,8 @@ export default function AddUser() {
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
-        <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+        <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Add New User
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Users"} className="hover:underline">
@@ -232,35 +232,33 @@ export default function AddUser() {
               Add New User
             </span>
           </span>
+          {UserUpdateAction !== "AddNew" && (
+            <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
+              <button
+                onClick={() => {
+                  setEditPopup(true);
+                  setOldPassword("");
+                  setNewPassword("");
+                  setStrength({
+                    criteria: {
+                      length: false,
+                      lowercase: false,
+                      uppercase: false,
+                      number: false,
+                      specialCharacter: false,
+                    },
+                    score: 0,
+                    message: "",
+                    guide: "",
+                  });
+                }}
+                className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              >
+                Change Password
+              </button>
+            </div>
+          )}
         </div>
-        {UserUpdateAction !== "AddNew" && (
-          <div
-            className={`w-full h-fit flex justify-end items-center bg-red-30`}
-          >
-            <button
-              onClick={() => {
-                setEditPopup(true);
-                setOldPassword("");
-                setNewPassword("");
-                setStrength({
-                  criteria: {
-                    length: false,
-                    lowercase: false,
-                    uppercase: false,
-                    number: false,
-                    specialCharacter: false,
-                  },
-                  score: 0,
-                  message: "",
-                  guide: "",
-                });
-              }}
-              className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-            >
-              Change Password
-            </button>
-          </div>
-        )}
         <form
           onSubmit={UserUpdateAction === "AddNew" ? saveData : updateData}
           onKeyDown={handleKeyDown}
