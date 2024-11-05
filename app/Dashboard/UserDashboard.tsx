@@ -26,9 +26,9 @@ export default function UserDashboard() {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
-  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
+  const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [Configurations, setConfigurationsData] = useState<any>([]);
   const [make, setMake] = useState<any>("");
@@ -44,14 +44,16 @@ export default function UserDashboard() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+
   useEffect(() => {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", {
+        const result = await axios.post("/api/getUserDashboard", {
           createdBy: myProfile._id,
         });
-        setVehiclesData(result.data.data);
+        setVehiclesData(result.data.vehicleData,);
+        setreservationsData(result.data.reservationData,);
       } catch (error) {
         console.log(error);
       } finally {
@@ -60,6 +62,7 @@ export default function UserDashboard() {
     }
     if (myProfile._id) getData();
   }, [myProfile._id]);
+
   const activeVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === false && item.active === true
   );
@@ -67,22 +70,23 @@ export default function UserDashboard() {
     (item: any) => item.rentOut === true
   );
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", {
-          createdBy: myProfile._id,
-        });
-        setreservationsData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setreservationLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       setreservationLoading(true);
+  //       const result = await axios.post("/api/getreservation", {
+  //         createdBy: myProfile._id,
+  //       });
+  //       setreservationsData(result.data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     } finally {
+  //       setreservationLoading(false);
+  //     }
+  //   }
+  //   if (myProfile._id) getData();
+  // }, [global.vehicleDataReloader, myProfile._id]);
+
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
   );
@@ -143,7 +147,9 @@ export default function UserDashboard() {
     if (regNo) {
       const lowercasedQuery = regNo?.toLowerCase();
       filtered = filtered.filter((vehicle: any) => {
-        const keyValueInVehicle = vehicle.data.registration?.trim()?.toLowerCase();
+        const keyValueInVehicle = vehicle.data.registration
+          ?.trim()
+          ?.toLowerCase();
         return keyValueInVehicle === lowercasedQuery;
         // return keyValueInVehicle?.includes(lowercasedQuery);
       });
@@ -318,7 +324,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? (
+                    {!vehicleLoading ? (
                       reservationsMadeToday.length
                     ) : (
                       <TextLoader />
@@ -335,11 +341,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? (
-                      reservationsData.length
-                    ) : (
-                      <TextLoader />
-                    )}
+                    {!vehicleLoading ? reservationsData.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Reservations{" "}
@@ -359,7 +361,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? (
+                    {!vehicleLoading ? (
                       `${global.currentCurrency} ` +
                       totalAmountToday.toLocaleString("en-US")
                     ) : (
@@ -377,7 +379,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? (
+                    {!vehicleLoading ? (
                       `${global.currentCurrency} ` +
                       totalAmount.toLocaleString("en-US")
                     ) : (
@@ -507,7 +509,7 @@ export default function UserDashboard() {
                   <span className="w-[30%]">Vehicle</span>
                   <span className="w-[35%]">Duration</span>
                 </div>
-                {reservationLoading ? (
+                {vehicleLoading ? (
                   <>
                     <div className="pt-5 w-full">
                       <MediumLoader />
