@@ -27,7 +27,7 @@ export const LicenseCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
           <span className="w-full">{info?.licenseCountry}</span>
         </div>
       </div>
-      <div className="w-[100%] h-fit dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-1">
+      <div className="w-[100%] h-fit dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-2">
         <div className="relative w-full h-[157px] flex justify-center items-center">
           <img
             src={info?.licenseImages[currentIndex]}

@@ -7,6 +7,7 @@ export default function Insurance() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   const [currentIndex, setCurrentIndex] = useState(0);
   let global = useSelector((state: RootState) => state.Global);
+  console.log(vehicleInfo?.insImage);
 
   return (
     <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
@@ -88,38 +89,38 @@ export default function Insurance() {
           </span>
         </div>
       </div>
+        {vehicleInfo?.insImage?.length ? (
       <div className="w-[100%] h-fit dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-2">
-        <div className="relative w-full h-[157px] flex justify-center items-center">
-          {vehicleInfo?.insImage?.length && (
+          <div className="relative w-full h-[157px] flex justify-center items-center">
             <img
               src={vehicleInfo?.insImage[currentIndex]}
               className="w-[250px] h-[157px] rounded-[10px]"
             />
-          )}
-          <button
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) =>
-                  (prev - 1 + vehicleInfo?.insImage?.length) %
-                  vehicleInfo?.insImage?.length
-              );
-            }}
-          >
-            <FaChevronLeft />
-          </button>
-          <button
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) => (prev + 1) % vehicleInfo?.insImage?.length
-              );
-            }}
-          >
-            <FaChevronRight />
-          </button>
-        </div>
+            <button
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) =>
+                    (prev - 1 + vehicleInfo?.insImage?.length) %
+                    vehicleInfo?.insImage?.length
+                );
+              }}
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) => (prev + 1) % vehicleInfo?.insImage?.length
+                );
+              }}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
       </div>
+        ) : null}
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-start items-center">
         <div className="w-[100%] flex justify-start gap-2 items-center">
           <span className="dark:text-white text-[#555555]">Remarks</span>
