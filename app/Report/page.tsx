@@ -12,10 +12,10 @@ import { TextLoader, MediumLoader } from "../Components/Loader";
 import { GrPowerReset } from "react-icons/gr";
 import { useHandleExport } from "../Components/functions/exportFunction";
 // import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);
