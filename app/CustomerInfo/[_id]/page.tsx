@@ -244,7 +244,7 @@ export default function CustomerInfoMainPage() {
                     <span>{CustomerInfo?.city}</span>
                   </div>
                 </div>
-                <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center">
+                <div className="w-[100%] dark:text-white text-black  text-[14px] font-[400] flex justify-between items-center bg-yellow-00 -mt-[6px]">
                   <div className="w-[45%] flex justify-between items-center">
                     <span className="dark:text-white text-[#555555]">
                       Postal/ZIP Code

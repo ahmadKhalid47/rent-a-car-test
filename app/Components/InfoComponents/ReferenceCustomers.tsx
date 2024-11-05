@@ -12,7 +12,6 @@ export const ReferenceCustomers: React.FC<InfoComponentProps> = ({
   const info = useSelector((state: RootState) => state[infoKey][infoKey]);
   const [refIndex, setRefIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(info?.reference);
 
   return (
     <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
