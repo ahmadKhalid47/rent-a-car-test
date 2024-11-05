@@ -166,88 +166,98 @@ export default function ListViewUsers({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() =>
-                sort(
-                  "name",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
               Full Name{" "}
               <img
+                onClick={() =>
+                  sort(
+                    "name",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[10%]"
-              onClick={() =>
-                sort(
-                  "name",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[10%]">
               Username{" "}
               <img
+                onClick={() =>
+                  sort(
+                    "name",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[12%]"
-              onClick={() =>
-                sort(
-                  "name",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
               Company{" "}
               <img
+                onClick={() =>
+                  sort(
+                    "name",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[13%]"
-              onClick={() =>
-                sort(
-                  "phone",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[13%]">
               Email{" "}
               <img
+                onClick={() =>
+                  sort(
+                    "phone",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
+            </div>
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[6%]">
+              City{" "}
+              <img
+                onClick={() =>
+                  sort(
+                    "gender",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[6%]"
+              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
               onClick={() =>
                 sort(
                   "gender",
@@ -260,14 +270,10 @@ export default function ListViewUsers({ data }: dataType) {
                 )
               }
             >
-              City{" "}
-              <img
-                src={arrows.src}
-                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
-              />
+              Active Plan{" "}
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
               onClick={() =>
                 sort(
                   "gender",
@@ -283,23 +289,7 @@ export default function ListViewUsers({ data }: dataType) {
               Started At{" "}
             </div>
             <div
-              className="text-start pe-3 flex justify-between items-center w-[9%]"
-              onClick={() =>
-                sort(
-                  "gender",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
-              Expiry Date
-            </div>
-            <div
-              className="text-start pe-3 flex justify-between items-center w-[9%]"
+              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
               onClick={() =>
                 sort(
                   "city",
@@ -312,7 +302,7 @@ export default function ListViewUsers({ data }: dataType) {
                 )
               }
             >
-              Active Plan{" "}
+              Expiry Date
               <img
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
@@ -364,10 +354,10 @@ export default function ListViewUsers({ data }: dataType) {
                     {item?.city}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {item?.createdAt && formatDate(item?.createdAt)}
+                    {item?.plan}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {item?.plan}
+                    {item?.createdAt && formatDate(item?.createdAt)}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
                     {item?.createdAt
