@@ -1,4 +1,4 @@
-import { sort } from "@/app/Components/functions/sortFunction";
+import { sort, sort2 } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
@@ -320,8 +320,23 @@ export default function ListViewchauffeurs({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[9%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-2 items-center w-[9%]">
               Created At{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() =>
+                  sort2(
+                    "createdAt",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
+              />{" "}
             </div>{" "}
             <div className="text-start pe-3 truncate flex justify-between items-center w-[11%]">
               Documents{" "}

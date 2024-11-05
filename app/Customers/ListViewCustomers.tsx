@@ -1,4 +1,4 @@
-import { sort } from "@/app/Components/functions/sortFunction";
+import { sort, sort2 } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
 import vip from "@/public/vip.svg";
 import unCheck from "@/public/uncheck.svg";
@@ -18,7 +18,10 @@ import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
-import { useDeleteItem, useDeleteManyItems } from "../Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -54,7 +57,6 @@ export default function ListViewcustomers({ data }: dataType) {
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
-
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -62,15 +64,11 @@ export default function ListViewcustomers({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      
       const isPresent = prevArray?.includes(_id);
 
-      
       if (isPresent) {
-
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        
         return [...prevArray, _id];
       }
     });
@@ -304,9 +302,24 @@ export default function ListViewcustomers({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%]">
+            <div className="text-start pe-3 truncate flex justify-start gap-2 items-center w-[8%]">
               Created At{" "}
-            </div>{" "}
+              <img
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                onClick={() =>
+                  sort2(
+                    "createdAt",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
+              />{" "}
+            </div>
             <div className="text-start pe-3 truncate flex justify-between items-center w-[11%]">
               Documents{" "}
             </div>{" "}
@@ -403,17 +416,17 @@ export default function ListViewcustomers({ data }: dataType) {
                       License
                     </button>
                     {/* {item?.data?.otherImages?.length > 0 && ( */}
-                      <button
-                        className="w-fit flex justify-start items-center gap-1"
-                        onClick={() => {
-                          openModal(0, item?.data?.otherImages);
-                        }}
-                      >
-                        <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
-                          <IoDocumentTextOutline className="text-[11px]" />
-                        </div>
-                        Other
-                      </button>
+                    <button
+                      className="w-fit flex justify-start items-center gap-1"
+                      onClick={() => {
+                        openModal(0, item?.data?.otherImages);
+                      }}
+                    >
+                      <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                        <IoDocumentTextOutline className="text-[11px]" />
+                      </div>
+                      Other
+                    </button>
                     {/* )} */}
                   </div>
                   <div
@@ -473,13 +486,13 @@ export default function ListViewcustomers({ data }: dataType) {
                         <button
                           className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
                           onClick={() => {
-                                                        deleteItem(
-                                                          itemToDelete,
-                                                          "customer",
-                                                          setDeleteLoading,
-                                                          setPopup,
-                                                          setItemToDelete
-                                                        );
+                            deleteItem(
+                              itemToDelete,
+                              "customer",
+                              setDeleteLoading,
+                              setPopup,
+                              setItemToDelete
+                            );
                           }}
                           disabled={deleteLoading}
                         >
