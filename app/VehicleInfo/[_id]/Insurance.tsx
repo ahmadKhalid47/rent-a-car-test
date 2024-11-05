@@ -10,7 +10,7 @@ export default function Insurance() {
   console.log(vehicleInfo?.insImage);
 
   return (
-    <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-1 overflow-auto">
+    <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-2 overflow-auto">
       <div className="w-[100%] dark:text-white text-black text-[14px] font-[400] flex justify-between items-center">
         <div className="w-[47%] flex justify-between items-center">
           <span className="dark:text-white text-[#555555]">Policy No</span>
