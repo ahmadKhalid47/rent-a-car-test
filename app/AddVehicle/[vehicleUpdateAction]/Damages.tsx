@@ -119,6 +119,7 @@ export default function Damages() {
   useEffect(() => {
     setDamageType("");
     setDegree("");
+    setDescription("");
     setFiles([]);
   }, [popup]);
 
