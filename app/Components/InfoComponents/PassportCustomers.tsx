@@ -7,7 +7,9 @@ import image404 from "@/public/image404.png";
 type InfoComponentProps = {
   infoKey: "chauffeurInfo" | "CustomerInfo";
 };
-export const PassportCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
+export const PassportCustomers: React.FC<InfoComponentProps> = ({
+  infoKey,
+}) => {
   const info = useSelector((state: RootState) => state[infoKey][infoKey]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -30,36 +32,36 @@ export const PassportCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => 
         </div>
       </div>
       <div className="w-[100%] h-fit dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-2">
-        <div className="relative w-full h-[157px] flex justify-center items-center">
-          {info?.passportImages?.length && (
+        {info?.passportImages?.length > 0 && (
+          <div className="relative w-full h-[157px] flex justify-center items-center">
             <img
               src={info?.passportImages[currentIndex]}
               className="w-[250px] h-[157px] rounded-[10px]"
             />
-          )}
-          <button
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) =>
-                  (prev - 1 + info?.passportImages?.length) %
-                  info?.passportImages?.length
-              );
-            }}
-          >
-            <FaChevronLeft />
-          </button>
-          <button
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) => (prev + 1) % info?.passportImages?.length
-              );
-            }}
-          >
-            <FaChevronRight />
-          </button>
-        </div>
+            <button
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) =>
+                    (prev - 1 + info?.passportImages?.length) %
+                    info?.passportImages?.length
+                );
+              }}
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) => (prev + 1) % info?.passportImages?.length
+                );
+              }}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -28,34 +28,36 @@ export const LicenseCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
         </div>
       </div>
       <div className="w-[100%] h-fit dark:text-white text-black text-[14px] font-[400] flex justify-between items-center mt-2">
-        <div className="relative w-full h-[157px] flex justify-center items-center">
-          <img
-            src={info?.licenseImages[currentIndex]}
-            className="w-[250px] h-[157px] rounded-[10px]"
-          />
-          <button
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) =>
-                  (prev - 1 + info?.licenseImages?.length) %
-                  info?.licenseImages?.length
-              );
-            }}
-          >
-            <FaChevronLeft />
-          </button>
-          <button
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
-            onClick={() => {
-              setCurrentIndex(
-                (prev) => (prev + 1) % info?.licenseImages?.length
-              );
-            }}
-          >
-            <FaChevronRight />
-          </button>
-        </div>
+        {info?.licenseImages?.length>0 && (
+          <div className="relative w-full h-[157px] flex justify-center items-center">
+            <img
+              src={info?.licenseImages[currentIndex]}
+              className="w-[250px] h-[157px] rounded-[10px]"
+            />
+            <button
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) =>
+                    (prev - 1 + info?.licenseImages?.length) %
+                    info?.licenseImages?.length
+                );
+              }}
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
+              onClick={() => {
+                setCurrentIndex(
+                  (prev) => (prev + 1) % info?.licenseImages?.length
+                );
+              }}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
