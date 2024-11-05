@@ -73,7 +73,6 @@ export default function Info() {
     }
   });
 
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -162,7 +161,11 @@ export default function Info() {
           required={true}
           // required={false}
           options={Configurations?.Configurations?.model
-            ?.filter((item: any) => item.make?.trim() === makeSelected)
+            ?.filter(
+              (item: any) =>
+                item.make?.trim() === makeSelected &&
+                item.Category?.trim() === CategorySelected
+            )
             .map((item: any) => item.model)}
           link={"/Configuration/Model"}
         />
