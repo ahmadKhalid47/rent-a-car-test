@@ -99,9 +99,10 @@ export default function ListViewchauffeurs({ data }: dataType) {
   async function UpdateActiveManyItem(active: boolean) {
     try {
       setDeleteLoading(true);
-      await axios.post(`/api/updateManyActivechauffeur`, {
+      await axios.post(`/api/updateMultipleActive`, {
         _ids: itemToDeleteMany,
         active: active,
+        model: "chauffeur",
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(

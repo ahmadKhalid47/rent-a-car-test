@@ -90,9 +90,10 @@ export default function ListView({ data }: dataType) {
   async function UpdateActiveManyItem(active: boolean) {
     try {
       setDeleteLoading(true);
-      let result: any = await axios.post(`/api/updateManyActive`, {
+      await axios.post(`/api/updateMultipleActive`, {
         _ids: itemToDeleteMany,
         active: active,
+        model: "vehicle",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

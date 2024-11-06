@@ -6,7 +6,6 @@ export async function POST(req: Request, params: any) {
   try {
     let { active, _ids } = await req.json(); 
     connectDb();
-console.log(active, _ids);
     
     await VehicleModel.updateMany(
       { _id: { $in: _ids } },

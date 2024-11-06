@@ -1,23 +1,33 @@
 import connectDb from "@/app/models/connectDb";
-import CustomerModel from "@/app/models/customer";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, params: any) {
+export async function POST(req: Request) {
   try {
-    let { active, _ids } = await req.json(); 
+    const { active, _ids, model } = await req.json();
+
+    // Connect to the database
     connectDb();
-console.log(active, _ids);
-    
-    await CustomerModel.updateMany(
-      { _id: { $in: _ids } },
-      { $set: { active: active } }
+
+    // Dynamically import the model based on the `model` parameter
+    const Model = await import(`@/app/models/${model}`).then(
+      (mod) => mod.default
     );
 
+    // Check if Model was successfully imported
+    if (!Model) {
+      return NextResponse.json({
+        error: "Invalid model specified",
+      });
+    }
+
+    // Update multiple documents
+    await Model.updateMany({ _id: { $in: _ids } }, { $set: { active } });
+
     return NextResponse.json({
-      success: "Customers updated successfully",
+      success: `${model}s updated successfully`,
     });
   } catch (err) {
-    console.log("err: ", err);
+    console.error("Error: ", err);
     return NextResponse.json({
       error: "Can't process your request at the moment",
     });
