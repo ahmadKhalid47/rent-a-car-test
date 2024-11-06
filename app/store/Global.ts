@@ -7,7 +7,6 @@ const initialState = {
   check: "",
   vehicleDataReloader: 0,
   myProfileReloader: 0,
-  companyProfileReloader: 0,
   currentCurrency: "",
   unit: "KM",
   theme: "",
@@ -52,9 +51,6 @@ export const GlobalSlice = createSlice({
     setSeverity: (state, action) => {
       state.severity = action.payload;
     },
-    setcompanyProfileReloader: (state, action) => {
-      state.companyProfileReloader = action.payload;
-    },
   },
 });
 
@@ -65,7 +61,6 @@ export const {
   setCheck,
   setVehicleDataReloader,
   setMyProfileReloader,
-  setcompanyProfileReloader,
   setcurrentCurrency,
   setunit,
   setTheme,

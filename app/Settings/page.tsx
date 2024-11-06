@@ -6,16 +6,12 @@ import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import settings1 from "@/public/settings (10).svg";
-import settings2 from "@/public/settings (7).svg";
 import settings3 from "@/public/settings (6).svg";
 import settings9 from "@/public/settings (1).svg";
 import settings10 from "@/public/settings (4).svg";
-import settings12 from "@/public/settings (9).svg";
-import settings13 from "@/public/Company.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MediumLoader } from "../Components/Loader";
-import { LinearProgress } from "@mui/material";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -50,13 +46,6 @@ export default function Vehicles() {
           heading: "My Profile",
           text: "Manage your personal info along with login credentials.",
           prefixes: "my profiles username email address profile pic password",
-        },
-        {
-          link: "Settings/CompanyProfile",
-          img: settings13,
-          heading: "Company Profile",
-          text: "Upload your company logo to build your brand identity.",
-          prefixes: "company profiles logos",
         },
         {
           link: "Settings/General",
@@ -117,7 +106,7 @@ export default function Vehicles() {
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Settings
           </span>
         </div>

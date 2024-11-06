@@ -13,6 +13,7 @@ import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
+import demyIcon from "@/public/features (1).png";
 import Link from "next/link";
 
 export default function reservationInfoMainPage() {
@@ -104,9 +105,6 @@ function PrintCom({ data, id }: any) {
   let dispatch = useDispatch();
   let Invoicing = useSelector((state: RootState) => state.Invoicing);
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let companyProfile: any = useSelector(
-    (state: RootState) => state.companyProfile
-  );
   // Customer Data
   useEffect(() => {
     async function getData() {
@@ -156,27 +154,24 @@ function PrintCom({ data, id }: any) {
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
             <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-3">
-              <img
-                src={companyProfile?.profilePic}
-                className={`w-[120px] h-[40px]`}
-              />
+              <img src={demyIcon.src} className={`w-[120px] h-[40px]`} />
             </div>
             <div className="w-full h-fit flex justify-between items-center mt-1">
               <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">
                 <span className="text-[17px] font-[700] leading-[20px] text-main-blue">
                   Invoice To:
                 </span>
-                <span >
+                <span>
                   {customersData?.data?.name
                     ? customersData?.data?.name
                     : "---"}
                 </span>
-                <span >
+                <span>
                   {customersData?.data?.streetAddress
                     ? customersData?.data?.streetAddress
                     : "---"}
                 </span>
-                <span >
+                <span>
                   {customersData?.data?.city
                     ? customersData?.data?.city
                     : "---"}
@@ -185,12 +180,12 @@ function PrintCom({ data, id }: any) {
                     ? customersData?.data?.country
                     : "---"}
                 </span>
-                <span >
+                <span>
                   {customersData?.data?.phone
                     ? customersData?.data?.phone
                     : "---"}
                 </span>
-                <span >
+                <span>
                   {customersData?.data?.emailAddress
                     ? customersData?.data?.emailAddress
                     : "---"}
@@ -201,9 +196,9 @@ function PrintCom({ data, id }: any) {
                   Rapid Rent a Car
                 </span>
                 <span className="text-transparent">transparent</span>
-                <span >{myProfile?.address}</span>
-                <span >{myProfile?.phone}</span>
-                <span >{myProfile?.email}</span>
+                <span>{myProfile?.address}</span>
+                <span>{myProfile?.phone}</span>
+                <span>{myProfile?.email}</span>
               </div>
             </div>
             <div className="w-full h-fit flex flex-col justify-between items-center mt-6">

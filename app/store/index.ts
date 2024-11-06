@@ -2,7 +2,6 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import Global from "./Global";
 import myProfile from "./myProfile";
 import userProfile from "./userProfile";
-import companyProfile from "./companyProfile";
 import Vehicle from "./Vehicle";
 import VehicleInfo from "./vehicleInfo";
 import Configurations from "./Configurations";
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   Global: Global,
   myProfile: myProfile,
   userProfile: userProfile,
-  companyProfile: companyProfile,
   Vehicle: Vehicle,
   VehicleInfo: VehicleInfo,
   Configurations: Configurations,

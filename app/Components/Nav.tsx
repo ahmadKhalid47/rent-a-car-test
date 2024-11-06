@@ -20,24 +20,12 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
   set_idR,
-  setaddressR,
-  setadminR,
   setAllValues,
-  setemailR,
-  setfirstNameR,
-  setlastNameR,
-  setphoneR,
   setprofilePicR,
-  setusernameR,
   setuserR,
 } from "../store/myProfile";
-import {
-  setprofilePicR as setCompanyLogo,
-  setprofilePic2R as setCompanyLogo2,
-} from "../store/companyProfile";
 import { Logout, Person2Outlined, Settings } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-import { Alert } from "@mui/material";
 import { setConfigurations } from "../store/Configurations";
 
 export default function Nav() {
@@ -139,36 +127,6 @@ export default function Nav() {
       getData();
     }
   }, [myProfile.user, global.myProfileReloader]);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const result = await axios.post("/api/getcompanyProfile", {
-          createdBy: myProfile._id,
-        });
-        const profilePic = result?.data?.data?.profilePic;
-        const profilePic2 = result?.data?.data?.profilePic2;
-        if (typeof window !== "undefined") {
-          localStorage.setItem("companyLogo", profilePic);
-          localStorage.setItem("companyLogo2", profilePic2);
-          dispatch(setCompanyLogo([profilePic]));
-          dispatch(setCompanyLogo2([profilePic2]));
-        }
-      } catch (error) {
-        console.error("Error fetching company profile:", error);
-      }
-    }
-    if (typeof window !== "undefined") {
-      const storedLogo = localStorage.getItem("companyLogo");
-      const storedLogo2 = localStorage.getItem("companyLogo2");
-      if (storedLogo && storedLogo2) {
-        dispatch(setCompanyLogo([storedLogo]));
-        dispatch(setCompanyLogo2([storedLogo2]));
-      } else {
-        if (myProfile._id) getData();
-      }
-    }
-  }, [myProfile._id, global.companyProfileReloader]);
 
   useEffect(() => {
     let currencyInLS: any = undefined;

@@ -1,36 +1,15 @@
 "use client";
 import React from "react";
-
 import loginPage1 from "@/public/Vector 11.png";
 import loginPage2 from "@/public/Vector 10 (1).png";
 import White from "@/public/DashboardLogo.svg";
 import Login from "./Components/Login";
 import ForgotPassword from "./Components/ForgotPassword";
 import { RootState } from "./store";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
-import axios from "axios";
-import {
-  setprofilePicR as setCompanyLogo,
-  setprofilePic2R as setCompanyLogo2,
-} from "./store/companyProfile";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
-  const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let companyProfile: any = useSelector(
-    (state: RootState) => state.companyProfile
-  );
-  let dispatch = useDispatch();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedLogo2 = localStorage.getItem("companyLogo");
-      dispatch(setCompanyLogo([storedLogo2]));
-    }
-  }, []);
 
   return (
     <div className="w-full h-fit">
