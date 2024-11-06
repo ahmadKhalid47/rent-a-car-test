@@ -25,7 +25,7 @@ export default function Vehicles() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  
+
   const [UsersData, setUsersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredUser, setFilteredUser] = useState<any[]>([]);
@@ -365,7 +365,8 @@ export default function Vehicles() {
               onClick={() => {
                 handleExport(
                   renamedArray?.map((item: any) => {
-                    const { _id, __v, admin, password,fptoken, ...rest } = item;
+                    const { _id, __v, admin, password, fptoken, ...rest } =
+                      item;
                     return rest;
                   })
                 );

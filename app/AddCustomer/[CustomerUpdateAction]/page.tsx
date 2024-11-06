@@ -13,15 +13,8 @@ import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
 import axios, { AxiosResponse } from "axios";
-import {
-  LoaderOnSave,
-  SmallLoader,
-} from "../../Components/Loader";
-import {
-  setAllValues,
-  resetState,
-  resetting,
-} from "@/app/store/Customer";
+import { LoaderOnSave, SmallLoader } from "../../Components/Loader";
+import { setAllValues, resetState, resetting } from "@/app/store/Customer";
 import Link from "next/link";
 
 export default function Vehicles() {
