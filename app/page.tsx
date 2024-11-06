@@ -8,7 +8,7 @@ import ForgotPassword from "./Components/ForgotPassword";
 import { RootState } from "./store";
 import { useSelector } from "react-redux";
 
-export default function Vehicles() {
+export default function App() {
   let global = useSelector((state: RootState) => state.Global);
 
   return (

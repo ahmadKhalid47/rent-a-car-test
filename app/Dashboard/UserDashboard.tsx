@@ -19,7 +19,6 @@ import Link from "next/link";
 import { formatDate2 } from "../Components/functions/formats";
 import { TypeInput } from "../Components/InputComponents/TypeInput";
 import { SelectInput } from "../Components/InputComponents/SelectInput";
-import BasicLineChart from "../Components/Graph";
 
 export default function UserDashboard() {
   const global = useSelector((state: RootState) => state.Global);
@@ -27,7 +26,6 @@ export default function UserDashboard() {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
-  const [reservationLoading, setreservationLoading] = useState<any>(true);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
@@ -53,8 +51,8 @@ export default function UserDashboard() {
         const result = await axios.post("/api/getUserDashboard", {
           createdBy: myProfile._id,
         });
-        setVehiclesData(result.data.vehicleData,);
-        setreservationsData(result.data.reservationData,);
+        setVehiclesData(result.data.vehicleData);
+        setreservationsData(result.data.reservationData);
       } catch (error) {
         console.log(error);
       } finally {
@@ -109,7 +107,6 @@ export default function UserDashboard() {
   }, [myProfile._id]);
 
   function submitButton() {
-    // let filtered: any = VehiclesData;
     let filtered: any = activeVehicles;
 
     if (make) {
@@ -138,8 +135,6 @@ export default function UserDashboard() {
         // return keyValueInVehicle?.includes(lowercasedQuery);
       });
     }
-
-    // Create a lookup map for vehicle name and corresponding make/model
     const allFilteredReservations: any[] = [];
 
     filtered.forEach((vehicle: any) => {
@@ -149,11 +144,9 @@ export default function UserDashboard() {
         (reservation: any) => reservation.data.vehicle_id === vehicleId
       );
 
-      // Add the filtered reservations to the combined array
       allFilteredReservations.push(...filteredReservations);
     });
 
-    // Output filtered reservations
     let filteredReservations = allFilteredReservations;
     if (date || time) {
       filteredReservations = filterReservationsByDateTime(
@@ -182,7 +175,6 @@ export default function UserDashboard() {
         `${reservation.data.dropOffDate}T${reservation.data.dropOffTime}`
       );
 
-      // Check for both date and time
       if (date && time) {
         const selectedDateTime = new Date(`${date}T${time}`);
         return (
@@ -191,7 +183,6 @@ export default function UserDashboard() {
         );
       }
 
-      // Check only for date
       if (date && !time) {
         const selectedDate = new Date(date);
         const pickUpDate = new Date(reservation.data.PickUpDate);
@@ -199,7 +190,6 @@ export default function UserDashboard() {
         return selectedDate >= pickUpDate && selectedDate <= dropOffDate;
       }
 
-      // Check only for time
       if (!date && time) {
         const selectedTime = time;
         const pickUpTime = reservation.data.PickUpTime;
@@ -242,7 +232,6 @@ export default function UserDashboard() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
-      {/* <BasicLineChart/> */}
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
