@@ -141,8 +141,6 @@ export default function Vehicles() {
           formData2.append("files", vehicle.damages[i]?.files[j]);
         }
       }
-      console.log(vehicle);
-      console.log("res4?.data?.message", res4?.data?.message);
 
       const res2 = await axios.post("/api/uploadNested", formData2, {
         headers: {

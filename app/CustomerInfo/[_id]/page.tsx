@@ -53,8 +53,6 @@ export default function CustomerInfoMainPage() {
         setLoading(true);
         let result: any = await axios.post(`/api/getCustomerInfo/${_id}`);
         if (result?.data?.data) {
-          console.log(result?.data?.data);
-
           dispatch(
             setCustomerInfo({
               ...result?.data?.data?.data,
@@ -73,7 +71,6 @@ export default function CustomerInfoMainPage() {
     }
     getData();
   }, []);
-  console.log(reservationsData);
   const accordionItems = [
     {
       title: `${CustomerInfo?.idCard ? "ID Card" : "Passport"}`,

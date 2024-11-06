@@ -129,7 +129,7 @@ export default function Damages() {
   let interiorImg = Configurations?.Configurations?.type.find(
     (item: any) => item.Type === vehicle.type
   )?.interior;
-  console.log(damageType);
+
   return (
     <div className="w-full h-fit">
       <div className="w-full h-fit">

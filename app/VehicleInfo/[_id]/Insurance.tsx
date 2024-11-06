@@ -7,7 +7,6 @@ export default function Insurance() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   const [currentIndex, setCurrentIndex] = useState(0);
   let global = useSelector((state: RootState) => state.Global);
-  console.log(vehicleInfo?.insImage);
 
   return (
     <div className="w-full h-full py-3 px-5 flex justify-start flex-col items-start gap-2 overflow-auto">

@@ -19,8 +19,6 @@ export default function SecondPage({
     (item: any) => item.Type === VehiclesData?.data?.type
   )?.interior;
 
-  console.log(VehiclesData?.data?.otherNote);
-
   return (
     <div
       className={`w-full h-[1123px] flex justify-center flex-wrap items-start gap-x-[5%] gap-y-[5%] py-7 px-6 relative g-dark1 bg-white text-black`}

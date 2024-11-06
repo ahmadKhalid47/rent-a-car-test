@@ -12,6 +12,4 @@ export function removing(file: any, files: any, setFiles: any) {
     return true;
   });
   setFiles(array);
-console.log(array);
-
 }

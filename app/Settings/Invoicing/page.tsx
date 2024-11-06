@@ -78,7 +78,6 @@ export default function AddUser() {
           createdBy: myProfile._id,
         });
         dispatch(setAllValues(result.data.data[0].data));
-        console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }
@@ -104,7 +103,6 @@ export default function AddUser() {
 
   function lengthMeasure(content: any) {
     let contentArray = content.split("").length;
-    console.log(contentArray);
     return contentArray;
   }
 

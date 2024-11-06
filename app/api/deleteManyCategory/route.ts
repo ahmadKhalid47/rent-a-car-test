@@ -12,7 +12,6 @@ export async function POST(req: Request) {
     
     for (const _id of _ids) {
       const Category = await CategoryModel.findOne({ _id: _id });
-      console.log("Category____", Category,_ids);
 
       if (Category) {
         await MakeModel.deleteMany({ Category: Category.Category });

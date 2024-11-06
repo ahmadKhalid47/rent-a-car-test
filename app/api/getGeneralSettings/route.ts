@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       .find({ createdBy })
       .sort({ _id: -1 })
       .lean();
-    console.log(data);
     return NextResponse.json({
       data,
     });

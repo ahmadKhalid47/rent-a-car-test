@@ -53,8 +53,6 @@ export default function chauffeurInfoMainPage() {
         setLoading(true);
         let result: any = await axios.post(`/api/getchauffeurInfo/${_id}`);
         if (result?.data?.data) {
-          console.log(result?.data?.data);
-
           dispatch(
             setchauffeurInfo({
               ...result?.data?.data?.data,

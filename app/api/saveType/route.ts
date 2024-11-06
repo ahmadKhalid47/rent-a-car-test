@@ -5,8 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     let { Type, exterior, interior, createdBy } = await req.json();
-console.log(Type, exterior, interior);
-
     connectDb();
     await new TypeModel({
       Type,

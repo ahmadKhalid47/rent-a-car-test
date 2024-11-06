@@ -147,7 +147,6 @@ export default function Vehicles() {
     });
     setFilteredVehicles(filtered);
   }
-  console.log(filteredVehicles);
 
   return (
     <div

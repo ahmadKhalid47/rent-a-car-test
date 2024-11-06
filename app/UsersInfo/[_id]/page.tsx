@@ -57,7 +57,6 @@ export default function UserInfoMainPage() {
     }
     getData();
   }, []);
-  console.log(UserInfo);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   useEffect(() => {

@@ -45,7 +45,6 @@ export default function UserProfile() {
       setSaveLoading(false);
     }
   }
-  console.log(myProfile?.profilePic);
 
   return (
     <div className="w-full flex flex-wrap justify-between items-start">

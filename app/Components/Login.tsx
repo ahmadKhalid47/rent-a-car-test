@@ -38,7 +38,6 @@ export default function Login() {
         window.location.reload();
       } else {
         dispatch(setAlert(result?.data?.error));
-        console.log(result?.data?.error);
         dispatch(setSeverity("error"));
       }
     } catch (error: any) {

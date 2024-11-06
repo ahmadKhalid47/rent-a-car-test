@@ -23,7 +23,6 @@ export async function POST(req: Request) {
     await connectDb();
     const data = await registrationModel.findOne({ admin: true });
     let dataPassword: any = data.password;
-    console.log(oldPassword, dataPassword);
 
     if (!(await verifyPassword(oldPassword, dataPassword))) {
       return NextResponse.json({

@@ -11,7 +11,6 @@ export async function POST(req: Request, params: any) {
       ...userData,
       profilePic: [userData.profilePic],
     };
-    console.log(data);
     return NextResponse.json({
       data,
     });

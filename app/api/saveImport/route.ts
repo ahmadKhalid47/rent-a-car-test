@@ -70,9 +70,6 @@ async function saveData(
     if (!existingData) {
       const newData = new Model({ ...filteredData, createdBy });
       await newData.save();
-      console.log("data saved: ", filteredData);
-    } else {
-      console.log("data already exists for admin, skipping: ", filteredData);
     }
   } else {
     // If not admin, save only if it doesn't already exist
@@ -81,12 +78,6 @@ async function saveData(
     if (!existingData) {
       const newData = new Model({ ...filteredData, createdBy });
       await newData.save();
-      console.log("data saved: ", filteredData);
-    } else {
-      console.log(
-        "data already exists for non-admin, skipping: ",
-        filteredData
-      );
     }
   }
 }

@@ -7,7 +7,6 @@ interface dataType {
 }
 
 export default function Emergencyreservations({ data, loading }: dataType) {
-console.log(data?.data?.carImages[data?.data.thumbnailImage]);
 
   return (
     <div className="w-full flex justify-between items-center  px-[70px] py-[20px]">

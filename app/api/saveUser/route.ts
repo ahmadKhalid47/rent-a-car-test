@@ -74,7 +74,6 @@ export async function POST(req: Request) {
       address: "address",
       expiryDate: "_",
     }).save();
-    console.log(savedData);
 
     return NextResponse.json({
       success: "User Created",

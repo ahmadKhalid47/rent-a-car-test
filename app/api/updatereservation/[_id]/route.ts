@@ -18,7 +18,6 @@ export async function POST(req: Request, params: any) {
         },
       }
     );
-    console.log("ack_____________", data);
     
     return NextResponse.json({
       success: "User Created",

@@ -164,8 +164,6 @@ export default function reservationInfoMainPage() {
     return diffDays;
   }
 
-  console.log(getDateDifference(currentDate, pickUpDate));
-
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">
       <div

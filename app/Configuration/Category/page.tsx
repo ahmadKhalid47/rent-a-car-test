@@ -29,7 +29,6 @@ export default function Vehicles() {
   const [Category, setCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
-  console.log(vehiclesData);
 
   useEffect(() => {
     if (isMobile) {

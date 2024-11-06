@@ -8,7 +8,7 @@ import ReferenceComp from "./ReferenceComp";
 export default function Reference() {
   let Customer = useSelector((state: RootState) => state.Customer);
   let dispatch = useDispatch();
-  console.log(Customer.reference);
+
   return (
     <div className="w-full h-fit">
       <ReferenceComp />

@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   setAlert,
-  setLoginPageR,
   setMyProfileReloader,
   setSeverity,
   setSidebarShowR,
@@ -19,10 +18,7 @@ import axios, { AxiosResponse } from "axios";
 import { Alert } from "@mui/material";
 import { MediumLoader, SmallLoader } from "@/app/Components/Loader";
 import { setprofilePicR } from "@/app/store/myProfile";
-import { TempTypeInputWidth } from "@/app/Components/InputComponents/TypeInput";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Diversity1TwoTone } from "@mui/icons-material";
 import AdminProfile from "./AdminProfile";
 import UserProfile from "./UserProfile";
 import { FaAsterisk } from "react-icons/fa6";
@@ -37,10 +33,6 @@ export default function Profile() {
   let myProfile: any = useSelector((state: RootState) => state.myProfile);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [showError, setShowError] = useState(null);
-  const [showSuccess, setShowSuccess] = useState(null);
-  const [loading, setLoading] = useState<any>(false);
-  const [saveloading, setSaveLoading] = useState<any>(false);
   const [selectedPic, setSelectedPic] = useState<any>("");
   const [oldPassword, setOldPassword] = useState<any>("");
   const [newPassword, setNewPassword] = useState<any>("");
@@ -59,8 +51,7 @@ export default function Profile() {
     message: "",
     guide: "",
   });
-  const router = useRouter();
-  console.log(newPassword, strength);
+
   async function editPassword(e: any) {
     e.preventDefault();
     if (oldPassword === newPassword) {
@@ -83,7 +74,6 @@ export default function Profile() {
         newPassword,
         _id: myProfile._id,
       });
-      console.log(result?.data);
       if (result?.data?.success) {
         dispatch(setAlert("Password Updated Successfully!"));
         setEditPopup(false);
@@ -124,8 +114,7 @@ export default function Profile() {
         });
       }
 
-      setSaveLoading(true);
-      let result: any = await axios.post(`/api/updateRegistration/${user}`, {
+      await axios.post(`/api/updateRegistration/${user}`, {
         ...myProfile,
         profilePic: res?.data?.message[0],
       });
@@ -138,8 +127,6 @@ export default function Profile() {
       dispatch(setAlert("Profile Updated Successfully"));
     } catch (err) {
       console.log(err);
-    } finally {
-      setSaveLoading(false);
     }
   }
   const handleImageChange = (e: any) => {
@@ -159,29 +146,11 @@ export default function Profile() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
-      {showError ? (
-        <Alert
-          variant="filled"
-          severity="error"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showError}
-        </Alert>
-      ) : showSuccess ? (
-        <Alert
-          variant="filled"
-          severity="success"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showSuccess}
-        </Alert>
-      ) : null}
-
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             My Profile
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Settings"} className="hover:underline">
@@ -243,7 +212,7 @@ export default function Profile() {
                       }}
                       className="px-2 md:px-0 w-fit md:w-[260px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
                     >
-                      {loading ? <SmallLoader /> : "Change Password"}
+                      Change Password
                     </button>
                   </div>
                 </div>
