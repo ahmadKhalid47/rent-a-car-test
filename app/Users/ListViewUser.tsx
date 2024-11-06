@@ -5,7 +5,6 @@ import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { SmallLoader } from "../Components/Loader";
 import { useRouter } from "next/navigation";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import {

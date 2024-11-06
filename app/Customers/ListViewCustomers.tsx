@@ -9,7 +9,6 @@ import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SmallLoader } from "../Components/Loader";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
 import { setAlert, setVehicleDataReloader } from "../store/Global";

@@ -6,7 +6,7 @@ import axios from "axios";
 import { setAlert, setVehicleDataReloader } from "../store/Global";
 import { RootState } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-import { SmallLoader } from "../Components/Loader";
+
 import image404 from "@/public/image404.png";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import {
