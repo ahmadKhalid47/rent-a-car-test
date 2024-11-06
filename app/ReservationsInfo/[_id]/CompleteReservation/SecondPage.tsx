@@ -144,7 +144,6 @@ export default function SecondPage() {
         );
         if (result?.data?.data) {
           dispatch(setVehicleInfo(result?.data?.data?.data));
-        } else {
         }
       } catch (error: any) {
         console.log(error);

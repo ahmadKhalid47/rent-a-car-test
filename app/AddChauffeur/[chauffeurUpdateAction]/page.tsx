@@ -81,8 +81,6 @@ export default function AddChauffeur() {
       for (let i = 0; i < chauffeur?.passportImages.length; i++) {
         if (chauffeur?.passportImages[i] instanceof File) {
           formData2.append("files", chauffeur?.passportImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(chauffeur?.passportImages[i]);
         }
       }
       const res2 = await axios.post("/api/upload", formData2, {
@@ -95,8 +93,6 @@ export default function AddChauffeur() {
       for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
         if (chauffeur?.licenseImages[i] instanceof File) {
           formData3.append("files", chauffeur?.licenseImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(chauffeur?.licenseImages[i]);
         }
       }
       const res3 = await axios.post("/api/upload", formData3, {
@@ -109,8 +105,6 @@ export default function AddChauffeur() {
       for (let i = 0; i < chauffeur?.otherImages.length; i++) {
         if (chauffeur?.otherImages[i] instanceof File) {
           formData4.append("files", chauffeur?.otherImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(chauffeur?.otherImages[i]);
         }
       }
       const res4 = await axios.post("/api/upload", formData4, {

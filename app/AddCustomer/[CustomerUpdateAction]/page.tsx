@@ -83,8 +83,6 @@ export default function Vehicles() {
       for (let i = 0; i < customer.passportImages.length; i++) {
         if (customer.passportImages[i] instanceof File) {
           formData2.append("files", customer.passportImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(customer.passportImages[i]);
         }
       }
       const res2 = await axios.post("/api/upload", formData2, {
@@ -97,8 +95,6 @@ export default function Vehicles() {
       for (let i = 0; i < customer.licenseImages.length; i++) {
         if (customer.licenseImages[i] instanceof File) {
           formData3.append("files", customer.licenseImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(customer.licenseImages[i]);
         }
       }
       const res3 = await axios.post("/api/upload", formData3, {
@@ -111,8 +107,6 @@ export default function Vehicles() {
       for (let i = 0; i < customer?.otherImages.length; i++) {
         if (customer?.otherImages[i] instanceof File) {
           formData4.append("files", customer?.otherImages[i]);
-        } else {
-          // alreadyUploadedFiles.push(customer?.otherImages[i]);
         }
       }
       const res4 = await axios.post("/api/upload", formData4, {
