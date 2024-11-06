@@ -71,23 +71,6 @@ export default function UserDashboard() {
     (item: any) => item.rentOut === true
   );
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     try {
-  //       setreservationLoading(true);
-  //       const result = await axios.post("/api/getreservation", {
-  //         createdBy: myProfile._id,
-  //       });
-  //       setreservationsData(result.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setreservationLoading(false);
-  //     }
-  //   }
-  //   if (myProfile._id) getData();
-  // }, [global.vehicleDataReloader, myProfile._id]);
-
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
   );

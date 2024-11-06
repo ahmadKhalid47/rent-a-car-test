@@ -64,9 +64,11 @@ export default function UserInfoMainPage() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: UserInfo?._id,
-        });
+                  modelName: "vehicle",
+                });
+
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -83,8 +85,9 @@ export default function UserInfoMainPage() {
     async function getData() {
       try {
         setCustomerLoading(true);
-        const result = await axios.post("/api/getCustomer", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: UserInfo?._id,
+          modelName: "customer",
         });
         setCustomersData(result.data.data);
       } catch (error) {
@@ -102,8 +105,9 @@ export default function UserInfoMainPage() {
     async function getData() {
       try {
         setChauffeurLoading(true);
-        const result = await axios.post("/api/getChauffeur", {
-          createdBy: UserInfo?._id,
+        const result = await axios.post("/api/getSortedLeanData", {
+          createdBy: UserInfo._id,
+          modelName: "chauffeur",
         });
         setChauffeursData(result.data.data);
       } catch (error) {
@@ -121,9 +125,11 @@ export default function UserInfoMainPage() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: UserInfo?._id,
+          modelName: "reservation",
         });
+
         setreservationsData(result.data.data);
       } catch (error) {
         console.log(error);

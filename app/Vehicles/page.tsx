@@ -14,7 +14,10 @@ import { FaList } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
-import { renameKeys, useHandleExport } from "../Components/functions/exportFunction";
+import {
+  renameKeys,
+  useHandleExport,
+} from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { FaFilter, FaSearch } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
@@ -67,8 +70,9 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getVehicle", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "vehicle",
         });
 
         if (result?.data?.data) {

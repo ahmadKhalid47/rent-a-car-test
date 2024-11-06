@@ -57,9 +57,11 @@ export default function chauffeurs() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getchauffeur", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "chauffeur",
         });
+
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);

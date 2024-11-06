@@ -56,9 +56,11 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getreservation", {
-          createdBy: myProfile._id,
-        });
+                const result = await axios.post("/api/getSortedLeanData", {
+                  createdBy: myProfile._id,
+                  modelName: "reservation",
+                });
+
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);

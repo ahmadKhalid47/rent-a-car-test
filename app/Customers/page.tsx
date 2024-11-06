@@ -57,8 +57,9 @@ export default function customers() {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getCustomer", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "customer",
         });
 
         if (result?.data?.data) {

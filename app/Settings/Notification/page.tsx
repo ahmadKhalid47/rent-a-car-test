@@ -32,9 +32,11 @@ export default function AddUser() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getNotification", {
-          createdBy: myProfile._id,
-        });
+                const result = await axios.post("/api/getSortedLeanData", {
+                  createdBy: myProfile._id,
+                  modelName: "notificationSetting",
+                });
+
         setNewCar(result?.data?.data?.newCar);
         setNewChauffeur(result?.data?.data?.newChauffeur);
         setNewCustomer(result?.data?.data?.newCustomer);

@@ -191,8 +191,9 @@ function PrintCom({ data, id }: any) {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getAgreement", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "updateAgreement",
         });
         dispatch(setAllAgreementValues(result.data.data[0].data));
       } catch (error) {

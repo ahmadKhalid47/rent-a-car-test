@@ -38,11 +38,11 @@ export default function AddUser() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getAgreement", {
+        const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "updateAgreement",
         });
         dispatch(setAllValues(result.data.data[0].data));
-        console.log(result.data.data[0].data);
       } catch (error) {
         console.log(error);
       }

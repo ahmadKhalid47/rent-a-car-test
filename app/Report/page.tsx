@@ -49,9 +49,10 @@ export default function Vehicles() {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.post("/api/getVehicle", {
-          createdBy: myProfile._id,
-        });
+                const result = await axios.post("/api/getSortedLeanData", {
+                  createdBy: myProfile._id,
+                  modelName: "vehicle",
+                });
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
@@ -104,9 +105,11 @@ export default function Vehicles() {
     async function getData() {
       try {
         setreservationLoading(true);
-        const result = await axios.post("/api/getreservation", {
+                const result = await axios.post("/api/getSortedLeanData", {
           createdBy: myProfile._id,
+          modelName: "reservation",
         });
+
         setreservationsData(result.data.data);
         setFilterReservationsData(result.data.data);
       } catch (error) {

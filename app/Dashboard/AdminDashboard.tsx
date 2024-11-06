@@ -98,9 +98,11 @@ export default function AdminDashboard() {
     async function getData() {
       try {
         setvehicleLoading(true);
-        const result = await axios.post("/api/getVehicle", {
-          createdBy: myProfile._id,
-        });
+                const result = await axios.post("/api/getSortedLeanData", {
+                  createdBy: myProfile._id,
+                  modelName: "vehicle",
+                });
+
         setVehiclesData(result.data.data);
       } catch (error) {
         console.log(error);
