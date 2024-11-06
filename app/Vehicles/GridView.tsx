@@ -383,42 +383,6 @@ export default function GridView({ data }: dataType) {
           </div>
         ))}
       </div>
-      {deleteManyPopup ? (
-        <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-          <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white  z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation">
-            <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
-              <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                Are you sure you want to delete selected items?
-              </label>
-            </div>
-            <div className={`w-full flex justify-end gap-4 items-center pt-4`}>
-              <button
-                className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  setDeleteManyPopup(false);
-                }}
-              >
-                No
-              </button>
-              <button
-                className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  deleteManyItems(
-                    itemToDeleteMany,
-                    "vehicle",
-                    setDeleteLoading,
-                    setPopup,
-                    setItemToDelete
-                  );
-                }}
-                disabled={deleteLoading}
-              >
-                {deleteLoading ? <SmallLoader /> : "Yes"}
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
       <div className="w-full h-[32px] mt-5 md:mt-10 flex justify-between items-center">
         <div className="font-[400] text-[10px] sm:text-[14px] leading-[17px] text-[#878787]">
           Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
@@ -450,7 +414,7 @@ export default function GridView({ data }: dataType) {
           )
         }
         deleteLoading={deleteLoading}
-        isMultiple={true} // Displays the multiple items deletion message
+        isMultiple={true}
       />
     </div>
   );

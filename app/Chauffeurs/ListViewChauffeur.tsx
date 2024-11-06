@@ -549,7 +549,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
           )
         }
         deleteLoading={deleteLoading}
-        isMultiple={true} // Displays the multiple items deletion message
+        isMultiple={true}
       />
     </div>
   );
