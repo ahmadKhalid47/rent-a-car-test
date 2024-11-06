@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import {PassportCustomers} from "../../Components/InfoComponents/PassportCustomers";
-import {LicenseCustomers} from "../../Components/InfoComponents/LicenseCustomers";
-import {EmergencyCustomers} from "../../Components/InfoComponents/EmergencyCustomers";
-import {ReferenceCustomers} from "../../Components/InfoComponents/ReferenceCustomers";
-import {AdditionalCustomers} from "../../Components/InfoComponents/AdditionalCustomers";
-import {OtherCustomers} from "../../Components/InfoComponents/OtherCustomers";
+import { PassportCustomers } from "../../Components/InfoComponents/PassportCustomers";
+import { LicenseCustomers } from "../../Components/InfoComponents/LicenseCustomers";
+import { EmergencyCustomers } from "../../Components/InfoComponents/EmergencyCustomers";
+import { ReferenceCustomers } from "../../Components/InfoComponents/ReferenceCustomers";
+import { AdditionalCustomers } from "../../Components/InfoComponents/AdditionalCustomers";
+import { OtherCustomers } from "../../Components/InfoComponents/OtherCustomers";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -24,7 +24,6 @@ import { MediumLoader } from "@/app/Components/Loader";
 import ListViewRecentReservations from "./ListViewRecentReservations";
 
 export default function CustomerInfoMainPage() {
-  let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -42,10 +41,8 @@ export default function CustomerInfoMainPage() {
   const [loading, setLoading] = useState<any>(true);
   const [open, setOpen] = useState<any>(true);
   const [open2, setOpen2] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
-  let { CustomerInfo } = useSelector(
-    (state: RootState) => state.CustomerInfo
-  );
+
+  let { CustomerInfo } = useSelector((state: RootState) => state.CustomerInfo);
 
   useEffect(() => {
     async function getData() {
@@ -60,8 +57,6 @@ export default function CustomerInfoMainPage() {
               active: result?.data?.data?.active,
             })
           );
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -96,28 +91,26 @@ export default function CustomerInfoMainPage() {
       content: <AdditionalCustomers infoKey="CustomerInfo" />,
     },
   ];
- useEffect(() => {
-   async function getData() {
-     try {
-       setLoading(true);
-       const result = await axios.post("/api/getReservationsOfCustomer", {
-         createdBy: myProfile._id,
-         customer_id: _id,
-       });
+  useEffect(() => {
+    async function getData() {
+      try {
+        setLoading(true);
+        const result = await axios.post("/api/getReservationsOfCustomer", {
+          createdBy: myProfile._id,
+          customer_id: _id,
+        });
 
-       if (result?.data?.data) {
-         setreservationsData(result.data.data);
-       } else {
-         setShowError(result?.data?.error);
-       }
-     } catch (error) {
-       console.log(error);
-     } finally {
-       setLoading(false);
-     }
-   }
-   if (myProfile._id) getData();
- }, [global.vehicleDataReloader, myProfile._id]);
+        if (result?.data?.data) {
+          setreservationsData(result.data.data);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (myProfile._id) getData();
+  }, [global.vehicleDataReloader, myProfile._id]);
 
   return (
     <div className="w-fit h-fit mt-[90px] pt-5">

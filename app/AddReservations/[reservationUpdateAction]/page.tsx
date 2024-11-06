@@ -26,14 +26,12 @@ export default function Reservations() {
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
   let dispatch = useDispatch();
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   let [goToPage, setGoToPage] = useState(0);
   const [loading, setLoading] = useState<any>(false);
-  const [showSuccess, setShowSuccess] = useState(null);
   const formRef = useRef<any>(null);
   const params = useParams();
   const router = useRouter();
@@ -57,8 +55,6 @@ export default function Reservations() {
         });
         if (result?.data?.data) {
           setCustomersData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -80,8 +76,6 @@ export default function Reservations() {
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -103,8 +97,6 @@ export default function Reservations() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -134,8 +126,6 @@ export default function Reservations() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -171,13 +161,6 @@ export default function Reservations() {
           rentOut: true,
         }
       );
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-      } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
-      }
       dispatch(setAlert("Reservation Saved Successfully"));
     } catch (error: any) {
       console.log(error);

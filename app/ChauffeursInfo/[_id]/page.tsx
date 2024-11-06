@@ -24,7 +24,6 @@ import { AdditionalCustomers } from "@/app/Components/InfoComponents/AdditionalC
 import { OtherCustomers } from "@/app/Components/InfoComponents/OtherCustomers";
 
 export default function chauffeurInfoMainPage() {
-  let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -42,7 +41,6 @@ export default function chauffeurInfoMainPage() {
   const [loading, setLoading] = useState<any>(true);
   const [open, setOpen] = useState<any>(true);
   const [open2, setOpen2] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
   let { chauffeurInfo } = useSelector(
     (state: RootState) => state.chauffeurInfo
   );
@@ -60,8 +58,6 @@ export default function chauffeurInfoMainPage() {
               active: result?.data?.data?.active,
             })
           );
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -108,8 +104,6 @@ export default function chauffeurInfoMainPage() {
 
        if (result?.data?.data) {
          setreservationsData(result.data.data);
-       } else {
-         setShowError(result?.data?.error);
        }
      } catch (error) {
        console.log(error);

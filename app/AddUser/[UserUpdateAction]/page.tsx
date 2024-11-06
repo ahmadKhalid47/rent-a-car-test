@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -25,11 +24,8 @@ export default function AddUser() {
   const { UserUpdateAction } = params;
   let global = useSelector((state: RootState) => state.Global);
   let User: any = useSelector((state: RootState) => state.userProfile);
-  let myProfile: any = useSelector((state: RootState) => state.myProfile);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [loading, setLoading] = useState<any>(false);
-  const [showSuccess, setShowSuccess] = useState(null);
-  const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const [oldPassword, setOldPassword] = useState<any>("");
@@ -83,21 +79,10 @@ export default function AddUser() {
           },
         });
       }
-      let result: any = await axios.post(`/api/saveUser`, {
+      await axios.post(`/api/saveUser`, {
         ...User,
         profilePic: res?.data?.message,
       });
-
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-        router.push("/Users");
-      } else {
-        setShowError(result?.data?.error);
-        dispatch(setAlert(result?.data?.error));
-        dispatch(setSeverity("error"));
-        setShowSuccess(null);
-      }
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -113,8 +98,6 @@ export default function AddUser() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);

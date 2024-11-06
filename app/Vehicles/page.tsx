@@ -32,7 +32,7 @@ export default function Vehicles() {
   const [gridView, setGridView] = useState(false);
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
@@ -78,8 +78,6 @@ export default function Vehicles() {
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
           setFilteredVehicles(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

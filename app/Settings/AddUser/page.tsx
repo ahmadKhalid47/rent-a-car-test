@@ -7,10 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { FormEvent, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { Alert } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { SmallLoader } from "@/app/Components/Loader";
 import { FaAsterisk } from "react-icons/fa";
 
@@ -18,10 +15,7 @@ export default function AddUser() {
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
-  const [showError, setShowError] = useState(null);
-  const [showSuccess, setShowSuccess] = useState(null);
   const [loading, setLoading] = useState<any>(false);
-  const router = useRouter();
 
   useEffect(() => {
     if (isMobile) {
@@ -45,13 +39,6 @@ export default function AddUser() {
     try {
       setLoading(true);
       let result: any = await axios.post(`/api/addAgent`, formDataObj);
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-      } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
-      }
     } catch (error: any) {
       console.log(error);
     } finally {
@@ -65,29 +52,11 @@ export default function AddUser() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
-      {showError ? (
-        <Alert
-          variant="filled"
-          severity="error"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showError}
-        </Alert>
-      ) : showSuccess ? (
-        <Alert
-          variant="filled"
-          severity="success"
-          className="absolute w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {showSuccess}
-        </Alert>
-      ) : null}
-
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="w-[100%]  flex justify-start items-end">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Add New User
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               Users / Add New User

@@ -26,7 +26,6 @@ export default function chauffeurs() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredchauffeur, setFilteredchauffeur] = useState<any[]>([]);
@@ -66,8 +65,6 @@ export default function chauffeurs() {
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
           setFilteredchauffeur(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

@@ -23,7 +23,7 @@ export default function reservationInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,8 +41,6 @@ export default function reservationInfoMainPage() {
         let result: any = await axios.post(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);

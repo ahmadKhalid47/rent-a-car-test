@@ -23,7 +23,7 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [makeData, setMakeData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -65,8 +65,6 @@ export default function Vehicles() {
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
           setFilteredVehicles(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

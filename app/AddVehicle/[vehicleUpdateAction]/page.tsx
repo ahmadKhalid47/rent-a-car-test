@@ -42,8 +42,6 @@ export default function Vehicles() {
   const [goToPage, setGoToPage] = useState(0);
   const vehicle = useSelector((state: RootState) => state.Vehicle);
   const [loading, setLoading] = useState<any>(false);
-  const [showSuccess, setShowSuccess] = useState(null);
-  const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
@@ -57,8 +55,6 @@ export default function Vehicles() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -86,8 +82,6 @@ export default function Vehicles() {
         });
         if (result) {
           dispatch(setConfigurations(result?.data?.wholeData));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -155,7 +149,7 @@ export default function Vehicles() {
         files: res2?.data?.message[index].map((url: any) => url),
       }));
 
-      let result: any = await axios.post(`/api/saveVehicle`, {
+      await axios.post(`/api/saveVehicle`, {
         vehicle: {
           ...vehicle,
           carImages: res?.data?.message,
@@ -164,13 +158,6 @@ export default function Vehicles() {
         },
         createdBy: myProfile._id,
       });
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-      } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
-      }
       dispatch(setAlert("Vehicle Saved Successfully"));
     } catch (error: any) {
       console.log(error);
@@ -187,8 +174,6 @@ export default function Vehicles() {
   async function updateData(action: string) {
     try {
       setLoading(true);
-      const damageImages = vehicle.damages.map((damage: any) => damage.files);
-
       const formData = new FormData();
       for (let i = 0; i < vehicle.carImages?.length; i++) {
         formData.append("files", vehicle.carImages[i]);

@@ -27,7 +27,7 @@ export default function customers() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const [customersData, setcustomersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredcustomer, setFilteredcustomer] = useState<any[]>([]);
@@ -65,8 +65,6 @@ export default function customers() {
         if (result?.data?.data) {
           setcustomersData(result.data.data);
           setFilteredcustomer(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

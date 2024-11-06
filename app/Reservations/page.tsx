@@ -25,7 +25,7 @@ export default function Vehicles() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredreservations, setFilteredreservations] = useState<any[]>([]);
@@ -65,8 +65,6 @@ export default function Vehicles() {
         if (result?.data?.data) {
           setreservationsData(result.data.data);
           setFilteredreservations(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

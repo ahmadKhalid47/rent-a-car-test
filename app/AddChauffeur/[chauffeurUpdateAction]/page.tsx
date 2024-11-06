@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -15,7 +14,6 @@ import { resetState, resetting, setAllValues } from "@/app/store/chauffeur";
 import { useParams, useRouter } from "next/navigation";
 import {
   LoaderOnSave,
-  MediumLoader,
   SmallLoader,
 } from "../../Components/Loader";
 import Link from "next/link";
@@ -31,8 +29,6 @@ export default function AddChauffeur() {
   let [currentPage, setCurrentPage] = useState(0);
   let [goToPage, setGoToPage] = useState(0);
   const [loading, setLoading] = useState<any>(false);
-  const [showSuccess, setShowSuccess] = useState(null);
-  const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
@@ -137,7 +133,7 @@ export default function AddChauffeur() {
         refImages: res5?.data?.message[index].map((url: any) => url),
       }));
 
-      let result: any = await axios.post(`/api/savechauffeur`, {
+      await axios.post(`/api/savechauffeur`, {
         chauffeur: {
           ...chauffeur,
           chauffeurImage: res?.data?.message,
@@ -148,13 +144,6 @@ export default function AddChauffeur() {
         },
         createdBy: myProfile._id,
       });
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-      } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
-      }
       dispatch(setAlert("Chauffeur Saved Successfully"));
     } catch (error: any) {
       console.log(error);
@@ -178,8 +167,6 @@ export default function AddChauffeur() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);

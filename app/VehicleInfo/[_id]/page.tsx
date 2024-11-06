@@ -18,13 +18,10 @@ import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import {
-  FaChevronCircleLeft,
-  FaChevronCircleRight,
   FaChevronDown,
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
-import ListViewreservation from "@/app/Reservations/ListViewReservations";
 import { MediumLoader } from "@/app/Components/Loader";
 import ListViewRecentReservations from "./ListViewRecentReservations";
 
@@ -34,10 +31,9 @@ export default function CarInfoMainPage() {
   const [open, setOpen] = useState<any>(true);
   const [open2, setOpen2] = useState<any>(true);
   const [loading, setLoading] = useState<any>(true);
-  let [activeButton, setActiveButton] = useState("General");
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
   let global = useSelector((state: RootState) => state.Global);
-  const [showError, setShowError] = useState(null);
+  
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [imageIndex, setImageIndex] = useState<any>(
@@ -73,8 +69,6 @@ export default function CarInfoMainPage() {
               rentOut: result?.data?.data?.rentOut,
             })
           );
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -96,8 +90,6 @@ export default function CarInfoMainPage() {
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

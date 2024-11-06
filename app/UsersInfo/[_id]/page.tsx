@@ -1,12 +1,9 @@
 "use client";
 import d1 from "@/public/dashboard (1).svg";
 import d3 from "@/public/dashboard (3).svg";
-import d5 from "@/public/dashboard (5).svg";
-import d6 from "@/public/dashboard (6).svg";
 import d7 from "@/public/dashboard (7).svg";
 import d4 from "@/public/ad (1).svg";
 import d2 from "@/public/ad (2).svg";
-
 import React from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -22,7 +19,6 @@ import { setUserInfo } from "@/app/store/UserInfo";
 import { TextLoader } from "@/app/Components/Loader";
 
 export default function UserInfoMainPage() {
-  let [activeButton, setActiveButton] = useState("General");
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -36,7 +32,7 @@ export default function UserInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   let { UserInfo } = useSelector((state: RootState) => state.UserInfo);
 
   useEffect(() => {
@@ -46,8 +42,6 @@ export default function UserInfoMainPage() {
         let result: any = await axios.post(`/api/getUserInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setUserInfo(result?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);

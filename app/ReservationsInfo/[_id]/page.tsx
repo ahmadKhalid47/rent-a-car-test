@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
-import vip from "@/public/vip.svg";
-import Generalreservation from "./Generalreservation";
 import Identityreservation from "./Identityreservation";
-import Emergencyreservation from "./Emergencyreservation";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -49,7 +46,7 @@ export default function reservationInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const router = useRouter();
   // Customer Data
   useEffect(() => {
@@ -62,8 +59,6 @@ export default function reservationInfoMainPage() {
 
         if (result?.data?.data) {
           setCustomersData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -86,8 +81,6 @@ export default function reservationInfoMainPage() {
 
         if (result?.data?.data) {
           setchauffeursData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -110,8 +103,6 @@ export default function reservationInfoMainPage() {
 
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -129,8 +120,6 @@ export default function reservationInfoMainPage() {
         let result: any = await axios.post(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setreservationInfo(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);

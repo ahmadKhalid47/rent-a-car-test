@@ -25,7 +25,7 @@ export default function Vehicles() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
+  
   const [UsersData, setUsersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredUser, setFilteredUser] = useState<any[]>([]);
@@ -62,8 +62,6 @@ export default function Vehicles() {
         if (result?.data?.data) {
           setUsersData(result.data.data);
           setFilteredUser(result.data.data);
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);

@@ -23,7 +23,6 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
-  const [showError, setShowError] = useState(null);
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
@@ -56,8 +55,6 @@ export default function Vehicles() {
         if (result?.data?.data) {
           setVehiclesData(result.data.data);
           setFilteredVehicles(result.data.data); 
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error) {
         console.log(error);
@@ -92,7 +89,6 @@ export default function Vehicles() {
         },
       });
 
-      // setCountryReloader(CountryReloader + 1);
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(setAlert("Country Saved Successfully"));
       if (action === "close") {
@@ -105,7 +101,7 @@ export default function Vehicles() {
       setLoading("");
     }
   }
-  let { countries, cities } = CountryCity(country);
+  let { countries } = CountryCity(country);
   useEffect(() => {
     filterVehicles();
   }, [searchQuery, vehiclesData]);
