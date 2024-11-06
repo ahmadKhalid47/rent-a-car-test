@@ -70,8 +70,9 @@ export default function ListView({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
   async function updateActive(_id: any, active: boolean) {
     try {
-      await axios.post(`/api/updateActive/${_id}`, {
+      await axios.post(`/api/updateSingleActive/${_id}`, {
         active: !active,
+        model: "vehicle",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));

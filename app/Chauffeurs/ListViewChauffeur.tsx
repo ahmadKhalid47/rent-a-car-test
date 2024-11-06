@@ -77,8 +77,9 @@ export default function ListViewchauffeurs({ data }: dataType) {
   async function updateActive(_id: any, active: boolean) {
     try {
       setEditLoading(true);
-      await axios.post(`/api/updateActivechauffeur/${_id}`, {
+      await axios.post(`/api/updateSingleActive/${_id}`, {
         active: !active,
+        model: "chauffeur",
       });
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
       dispatch(

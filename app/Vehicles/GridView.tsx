@@ -35,21 +35,12 @@ export default function GridView({ data }: dataType) {
     setPage(value);
   };
   const dispatch = useDispatch();
-
   const totalPages = Math.ceil(data.length / itemsPerPage);
-
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
   const router = useRouter();
-
-  const content = (
-    <div className="flex flex-col justify-start items-start">
-      Delete Edit Active
-    </div>
-  );
-
   const [isOpen, setIsOpen] = useState("");
 
   const toggleDropdown = (e: any) => {
@@ -62,9 +53,9 @@ export default function GridView({ data }: dataType) {
 
   async function updateActive(_id: any, active: boolean) {
     try {
-      // setEditLoading(true);
-      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+      await axios.post(`/api/updateSingleActive/${_id}`, {
         active: !active,
+        model: "vehicle",
       });
 
       dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
@@ -77,8 +68,6 @@ export default function GridView({ data }: dataType) {
       );
     } catch (err) {
       console.log(err);
-    } finally {
-      // setEditLoading(false);
     }
   }
 
