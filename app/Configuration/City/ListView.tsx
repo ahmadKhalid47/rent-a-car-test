@@ -13,14 +13,17 @@ import {
   setVehicleDataReloader,
 } from "@/app/store/Global";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import { CountryCity } from "@/app/Components/functions/CountryStateCity";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { sort } from "@/app/Components/functions/sortFunction";
-import { useDeleteItem, useDeleteManyItems } from "@/app/Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "@/app/Components/functions/deleteFunction";
+import ConfirmationPopup from "@/app/Components/functions/Popups";
 
 interface dataType {
   data: Array<Object>;
@@ -43,23 +46,21 @@ export default function ListView({ data, makeData }: dataType) {
   const [city, setCity] = useState("");
   const [Make, setMake] = useState("");
   const dispatch = useDispatch();
-  const router = useRouter();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
 
   useEffect(() => {
-    
     const sorted = [...data].sort((a: any, b: any) => {
       const aIsUser = a.createdBy === myProfile._id;
       const bIsUser = b.createdBy === myProfile._id;
 
-      if (aIsUser && !bIsUser) return -1; 
-      if (!aIsUser && bIsUser) return 1; 
-      return 0; // no change in order
+      if (aIsUser && !bIsUser) return -1;
+      if (!aIsUser && bIsUser) return 1;
+      return 0; 
     });
 
     setSortedData(sorted);
-  }, [data, myProfile._id]); 
+  }, [data, myProfile._id]);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -67,7 +68,6 @@ export default function ListView({ data, makeData }: dataType) {
   };
 
   const totalPages = Math.ceil(sortedData.length / itemsPerPage);
-
 
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
@@ -108,15 +108,11 @@ export default function ListView({ data, makeData }: dataType) {
   }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      
       const isPresent = prevArray?.includes(_id);
 
-      
       if (isPresent) {
-
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        
         return [...prevArray, _id];
       }
     });
@@ -134,6 +130,15 @@ export default function ListView({ data, makeData }: dataType) {
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
     {}
   );
+  const handleDeleteConfirm = () => {
+    deleteItem(
+      itemToDelete,
+      "City",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete
+    );
+  };
 
   return (
     <div className="w-full h-fit">
@@ -318,44 +323,6 @@ export default function ListView({ data, makeData }: dataType) {
                     />
                   </div>
                 </div>
-                {popup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation fixed modal-position modal-animation">
-                      <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
-                        <label className="flex justify-start gap-1 items-start font-[400] text-[16px] leading-[17px]">
-                          Are you sure you want to delete this item ?
-                        </label>
-                      </div>
-                      <div
-                        className={`w-full flex justify-end gap-4 items-center pt-4`}
-                      >
-                        <button
-                          className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            setPopup(false);
-                          }}
-                        >
-                          No
-                        </button>
-                        <button
-                          className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            deleteItem(
-                              itemToDelete,
-                              "City",
-                              setDeleteLoading,
-                              setPopup,
-                              setItemToDelete
-                            );
-                          }}
-                          disabled={deleteLoading}
-                        >
-                          {deleteLoading ? <SmallLoader /> : "Yes"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation fixed modal-position modal-animation">
@@ -394,6 +361,7 @@ export default function ListView({ data, makeData }: dataType) {
                     </div>
                   </div>
                 ) : null}
+
                 {editPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position modal-animation">
@@ -492,6 +460,12 @@ export default function ListView({ data, makeData }: dataType) {
           />
         </div>
       </div>
+      <ConfirmationPopup
+        popup={popup}
+        onCancel={() => setPopup(false)}
+        onConfirm={handleDeleteConfirm}
+        deleteLoading={deleteLoading}
+      />
     </div>
   );
 }

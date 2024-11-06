@@ -1,19 +1,12 @@
 import { sort } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
-import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { SmallLoader } from "../Components/Loader";
-import { RootState } from "../store";
-import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "../store/Global";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { useHandleExport } from "../Components/functions/exportFunction";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import {
   addDayInDate,
@@ -25,13 +18,13 @@ import {
   useDeleteItem,
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
+import ConfirmationPopup from "../Components/functions/Popups";
 
 interface dataType {
   data: Array<Object>;
 }
 
 export default function ListViewUsers({ data }: dataType) {
-  let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -41,7 +34,6 @@ export default function ListViewUsers({ data }: dataType) {
     [key: string]: "asc" | "desc";
   }>({});
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const dispatch = useDispatch();
   const router = useRouter();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
@@ -51,7 +43,6 @@ export default function ListViewUsers({ data }: dataType) {
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
-  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -85,45 +76,17 @@ export default function ListViewUsers({ data }: dataType) {
 
   async function updateActive(_id: any, active: boolean) {
     return;
-    // try {
-    //   setEditLoading(true);
-    //   let result: any = await axios.post(`/api/updateActiveUser/${_id}`, {
-    //     active: !active,
-    //   });
-    //   dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-    //   dispatch(setAlert(!active ? "Selective User Activated Successfully" : "Selective User Deactivated Successfully"));
-    // } catch (err) {
-    //   console.log(err);
-    // } finally {
-    //   setEditLoading(false);
-    // }
   }
 
-  async function UpdateActiveManyItem(active: boolean) {
-    try {
-      setDeleteLoading(true);
-      let result: any = await axios.post(`/api/updateManyActiveUser`, {
-        _ids: itemToDeleteMany,
-        active: active,
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          active
-            ? `Selective Users Activated Successfully`
-            : "Selective Users Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
-
-  console.log(paginatedData);
+  const handleDeleteConfirm = () => {
+    deleteItem(
+      itemToDelete,
+      "registration",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete
+    );
+  };
   return (
     <div className="w-full h-fit">
       <h3
@@ -409,44 +372,12 @@ export default function ListViewUsers({ data }: dataType) {
                     />
                   </div>
                 </Link>
-                {popup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation fixed modal-position modal-animation">
-                      <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
-                        <label className="flex justify-start gap-1 items-start font-[400] text-[16px] leading-[17px]">
-                          Are you sure you want to delete this item ?
-                        </label>
-                      </div>
-                      <div
-                        className={`w-full flex justify-end gap-4 items-center pt-4`}
-                      >
-                        <button
-                          className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            setPopup(false);
-                          }}
-                        >
-                          No
-                        </button>
-                        <button
-                          className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            deleteItem(
-                              itemToDelete,
-                              "registration",
-                              setDeleteLoading,
-                              setPopup,
-                              setItemToDelete
-                            );
-                          }}
-                          disabled={deleteLoading}
-                        >
-                          {deleteLoading ? <SmallLoader /> : "Yes"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
+                <ConfirmationPopup
+                  popup={popup}
+                  onCancel={() => setPopup(false)}
+                  onConfirm={handleDeleteConfirm}
+                  deleteLoading={deleteLoading}
+                />{" "}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation">

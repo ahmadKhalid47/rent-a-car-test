@@ -45,9 +45,7 @@ export default function Feature({ data, loading }: dataType) {
   useEffect(() => {
     filterVehicle();
   }, [searchQuery, VehiclesData]);
-console.log(reservation?.vehicle_id);
-
-  // Scroll to the selected vehicle when it changes
+  
   useEffect(() => {
     const selectedIndex = filteredVehicle.findIndex(
       (item: any) => item._id === reservation.vehicle_id
@@ -96,7 +94,7 @@ console.log(reservation?.vehicle_id);
           filteredVehicle?.map((item: any, index: number) => (
             <div
               key={item._id}
-              ref={(el: any) => (vehicleRefs.current[index] = el)} // Store ref for each vehicle
+              ref={(el: any) => (vehicleRefs.current[index] = el)}
               className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] h-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">

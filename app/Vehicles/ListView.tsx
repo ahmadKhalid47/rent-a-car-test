@@ -1,3 +1,4 @@
+import ConfirmationPopup from "../Components/functions/Popups";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import arrows from "@/public/arrows.svg";
@@ -15,7 +16,10 @@ import { useRouter } from "next/navigation";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort, sort2 } from "../Components/functions/sortFunction";
-import { useDeleteItem, useDeleteManyItems } from "../Components/functions/deleteFunction";
+import {
+  useDeleteItem,
+  useDeleteManyItems,
+} from "../Components/functions/deleteFunction";
 
 interface dataType {
   data: Array<Object>;
@@ -34,7 +38,6 @@ export default function ListView({ data }: dataType) {
   const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
-  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
   const dispatch = useDispatch();
   const router = useRouter();
@@ -68,8 +71,7 @@ export default function ListView({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
   async function updateActive(_id: any, active: boolean) {
     try {
-      setEditLoading(true);
-      let result: any = await axios.post(`/api/updateActive/${_id}`, {
+      await axios.post(`/api/updateActive/${_id}`, {
         active: !active,
       });
 
@@ -83,8 +85,6 @@ export default function ListView({ data }: dataType) {
       );
     } catch (err) {
       console.log(err);
-    } finally {
-      setEditLoading(false);
     }
   }
   async function UpdateActiveManyItem(active: boolean) {
@@ -111,7 +111,15 @@ export default function ListView({ data }: dataType) {
       setItemToDelete(null);
     }
   }
-
+  const handleDeleteConfirm = () => {
+    deleteItem(
+      itemToDelete,
+      "vehicle",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete
+    );
+  };
   return (
     <div className="w-full h-fit">
       <div
@@ -474,44 +482,12 @@ export default function ListView({ data }: dataType) {
                     />
                   </div>
                 </Link>
-                {popup ? (
-                  <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
-                    <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation fixed modal-position modal-animation">
-                      <div className="w-full h-fit flex flex-col justify-start items-start gap-1">
-                        <label className="flex justify-start gap-1 items-start font-[400] text-[16px] leading-[17px]">
-                          Are you sure you want to delete this item ?
-                        </label>
-                      </div>
-                      <div
-                        className={`w-full flex justify-end gap-4 items-center pt-4`}
-                      >
-                        <button
-                          className="px-2 md:px-0 w-fit md:w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] dark:bg-dark1 input-color border-2 border-grey text-main-blue  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            setPopup(false);
-                          }}
-                        >
-                          No
-                        </button>
-                        <button
-                          className="w-[140px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-                          onClick={() => {
-                            deleteItem(
-                              itemToDelete,
-                              "vehicle",
-                              setDeleteLoading,
-                              setPopup,
-                              setItemToDelete
-                            );
-                          }}
-                          disabled={deleteLoading}
-                        >
-                          {deleteLoading ? <SmallLoader /> : "Yes"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
+                <ConfirmationPopup
+                  popup={popup}
+                  onCancel={() => setPopup(false)}
+                  onConfirm={handleDeleteConfirm}
+                  deleteLoading={deleteLoading}
+                />{" "}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%]  sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%]  gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation">

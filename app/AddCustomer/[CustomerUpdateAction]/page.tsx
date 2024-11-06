@@ -15,61 +15,13 @@ import { FormEvent, useState, useEffect, useRef, KeyboardEvent } from "react";
 import axios, { AxiosResponse } from "axios";
 import {
   LoaderOnSave,
-  MediumLoader,
   SmallLoader,
 } from "../../Components/Loader";
 import {
-  setcustomerTypeR,
-  setnameR,
-  setgenderR,
-  setdateOfBirthR,
-  setnationalityR,
-  setcolorR,
-  setemailAddressR,
-  setphoneR,
-  setalternativePhoneR,
-  setpassengersR,
-  setstreetAddressR,
-  setcountryR,
-  setcityR,
-  setpostalCodeR,
-  setisVipR,
-  setcustomerImageR,
   setAllValues,
   resetState,
-  setstateR,
-  setref1NameR,
-  setref1PhoneR,
-  setref1AddressR,
-  setref1RelationR,
-  setref2NameR,
-  setref2PhoneR,
-  setref2AddressR,
-  setref2RelationR,
-  setpassportNumberR,
-  setpassportValidR,
-  setpassportCountryR,
-  setpassportImagesR,
-  setlicenseNumberR,
-  setlicenseValidR,
-  setlicenseCountryR,
-  setlicenseImagesR,
-  setidCardR,
-  setotherNumberR,
-  setotherValidR,
-  setotherCountryR,
-  setotherImagesR,
-  setotherR,
-  addContact,
-  removeContact,
-  updateContact,
-  setadditionalR,
-  addReference,
-  removeReference,
-  updateReference,
   resetting,
 } from "@/app/store/Customer";
-import { Country, State, City } from "country-state-city";
 import Link from "next/link";
 
 export default function Vehicles() {
@@ -82,8 +34,6 @@ export default function Vehicles() {
   let [currentPage, setCurrentPage] = useState(0);
   let [goToPage, setGoToPage] = useState(0);
   const [loading, setLoading] = useState<any>(false);
-  const [showSuccess, setShowSuccess] = useState(null);
-  const [showError, setShowError] = useState(null);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
   const router = useRouter();
   const formRef = useRef<any>(null);
@@ -205,13 +155,6 @@ export default function Vehicles() {
         },
         createdBy: myProfile._id,
       });
-      if (result?.data?.success) {
-        setShowSuccess(result?.data?.success);
-        setShowError(null);
-      } else {
-        setShowError(result?.data?.error);
-        setShowSuccess(null);
-      }
       dispatch(setAlert("Customer Saved Successfully"));
     } catch (error: any) {
       console.log(error);
@@ -235,8 +178,6 @@ export default function Vehicles() {
         );
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
-        } else {
-          setShowError(result?.data?.error);
         }
       } catch (error: any) {
         console.log(error);
@@ -258,12 +199,6 @@ export default function Vehicles() {
   async function updateData(action: string) {
     try {
       setLoading(true);
-      const carImages = customer.customerImage;
-
-      // if (
-      //   Array.isArray(carImages) &&
-      //   carImages.some((item) => item instanceof File)
-      // ) {
       const formData = new FormData();
       let res: AxiosResponse<any, any> | null = null;
       if (customer?.customerImage[0] instanceof File) {
@@ -334,12 +269,6 @@ export default function Vehicles() {
         otherImages: res4?.data?.message,
         reference: updatedObjects,
       });
-      // } else {
-      // await axios.post(
-      //   `/api/updateCustomer/${CustomerUpdateAction}`,
-      //   customer
-      // );
-      // }
       if (action === "close") {
         router.push("/Customers");
       }

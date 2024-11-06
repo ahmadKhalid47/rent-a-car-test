@@ -32,7 +32,6 @@ export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   let global = useSelector((state: RootState) => state.Global);
   let dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -102,7 +101,6 @@ export default function Nav() {
   useEffect(() => {
     async function getData() {
       try {
-        setLoading(true);
         const result = await axios.post(
           `/api/getRegistration/${myProfile.user}`,
           {
@@ -115,8 +113,6 @@ export default function Nav() {
         dispatch(setAllValues(result?.data?.data));
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
     if (
@@ -208,15 +204,12 @@ export default function Nav() {
   useEffect(() => {
     async function getData2() {
       try {
-        setLoading(true);
         let result: any = await axios.post(`/api/getConfigurations`, {
           createdBy: myProfile._id,
         });
         dispatch(setConfigurations(result?.data?.wholeData));
       } catch (error: any) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -264,16 +257,6 @@ export default function Nav() {
 
       <ToastContainer />
       </div>
-      {/* {global.alert ? (
-        <Alert
-          variant="filled"
-          severity={global.severity as "success" | "error" | "info" | "warning"}
-          className="fixed w-fit z-[100] top-2 right-2 alert-animation capitalize"
-        >
-          {global.alert}
-        </Alert>
-      ) : null} */}
-
       <button
         onClick={() => {
           dispatch(setSidebarShowR(!global.sidebarShow));
