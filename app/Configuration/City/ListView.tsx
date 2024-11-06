@@ -56,7 +56,7 @@ export default function ListView({ data, makeData }: dataType) {
 
       if (aIsUser && !bIsUser) return -1;
       if (!aIsUser && bIsUser) return 1;
-      return 0; 
+      return 0;
     });
 
     setSortedData(sorted);
@@ -124,7 +124,7 @@ export default function ListView({ data, makeData }: dataType) {
   const userData = data.filter(
     (item: any) => item?.createdBy === myProfile._id
   );
-  let { countries, cities } = CountryCity(Make);
+  let { cities } = CountryCity(Make);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [reverse, setReverse] = useState<any>(false);
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
@@ -461,10 +461,26 @@ export default function ListView({ data, makeData }: dataType) {
         </div>
       </div>
       <ConfirmationPopup
+        isMultiple={false}
         popup={popup}
         onCancel={() => setPopup(false)}
         onConfirm={handleDeleteConfirm}
         deleteLoading={deleteLoading}
+      />
+      <ConfirmationPopup
+        popup={deleteManyPopup}
+        onCancel={() => setDeleteManyPopup(false)}
+        onConfirm={() =>
+          deleteManyItems(
+            itemToDeleteMany,
+            "City",
+            setDeleteLoading,
+            setDeleteManyPopup,
+            setItemToDeleteMany
+          )
+        }
+        deleteLoading={deleteLoading}
+        isMultiple={true} // Displays the multiple items deletion message
       />
     </div>
   );

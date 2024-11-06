@@ -56,7 +56,7 @@ export default function ListView({ data }: dataType) {
 
       if (aIsUser && !bIsUser) return -1;
       if (!aIsUser && bIsUser) return 1;
-      return 0; 
+      return 0;
     });
 
     setSortedData(sorted);
@@ -459,11 +459,27 @@ export default function ListView({ data }: dataType) {
         </div>
       </div>
       <ConfirmationPopup
+        isMultiple={false}
         popup={popup}
         onCancel={() => setPopup(false)}
         onConfirm={handleDeleteConfirm}
         deleteLoading={deleteLoading}
       />{" "}
+      <ConfirmationPopup
+        popup={deleteManyPopup}
+        onCancel={() => setDeleteManyPopup(false)}
+        onConfirm={() =>
+          deleteManyItems(
+            itemToDeleteMany,
+            "Color",
+            setDeleteLoading,
+            setDeleteManyPopup,
+            setItemToDeleteMany
+          )
+        }
+        deleteLoading={deleteLoading}
+        isMultiple={true} // Displays the multiple items deletion message
+      />
     </div>
   );
 }

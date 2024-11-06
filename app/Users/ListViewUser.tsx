@@ -372,12 +372,6 @@ export default function ListViewUsers({ data }: dataType) {
                     />
                   </div>
                 </Link>
-                <ConfirmationPopup
-                  popup={popup}
-                  onCancel={() => setPopup(false)}
-                  onConfirm={handleDeleteConfirm}
-                  deleteLoading={deleteLoading}
-                />{" "}
                 {deleteManyPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-0 left-0 flex justify-center item-start sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[500px] h-fit border-[1px] border-grey rounded-[10px] flex flex-wrap justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-10 px-1 xs:px-3 md:px-10 modal-position modal-animation">
@@ -435,6 +429,28 @@ export default function ListViewUsers({ data }: dataType) {
           />
         </div>
       </div>
+      <ConfirmationPopup
+        isMultiple={false}
+        popup={popup}
+        onCancel={() => setPopup(false)}
+        onConfirm={handleDeleteConfirm}
+        deleteLoading={deleteLoading}
+      />{" "}
+      <ConfirmationPopup
+        popup={deleteManyPopup}
+        onCancel={() => setDeleteManyPopup(false)}
+        onConfirm={() =>
+          deleteManyItems(
+            itemToDeleteMany,
+            "registration",
+            setDeleteLoading,
+            setDeleteManyPopup,
+            setItemToDeleteMany
+          )
+        }
+        deleteLoading={deleteLoading}
+        isMultiple={true} // Displays the multiple items deletion message
+      />
     </div>
   );
 }

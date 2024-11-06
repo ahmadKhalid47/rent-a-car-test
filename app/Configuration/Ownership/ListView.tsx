@@ -19,6 +19,7 @@ import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { useDeleteItem, useDeleteManyItems } from "@/app/Components/functions/deleteFunction";
+import ConfirmationPopup from "@/app/Components/functions/Popups";
 
 interface dataType {
   data: Array<Object>;
@@ -89,7 +90,7 @@ export default function ListView({ data }: dataType) {
 
     try {
       setEditLoading(true);
-      let result: any = await axios.post(`/api/updateOwnership/${_id}`, {
+      await axios.post(`/api/updateOwnership/${_id}`, {
         Ownership,
       });
 
@@ -130,6 +131,15 @@ export default function ListView({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{ [key: string]: "asc" | "desc" }>(
     {}
   );
+  const handleDeleteConfirm = () => {
+    deleteItem(
+      itemToDelete,
+      "Ownership",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete
+    );
+  };
 
   return (
     <div className="w-full h-fit">
@@ -397,6 +407,28 @@ export default function ListView({ data }: dataType) {
           />
         </div>
       </div>
+      <ConfirmationPopup
+        isMultiple={false}
+        popup={popup}
+        onCancel={() => setPopup(false)}
+        onConfirm={handleDeleteConfirm}
+        deleteLoading={deleteLoading}
+      />{" "}
+      <ConfirmationPopup
+        popup={deleteManyPopup}
+        onCancel={() => setDeleteManyPopup(false)}
+        onConfirm={() =>
+          deleteManyItems(
+            itemToDeleteMany,
+            "Ownership",
+            setDeleteLoading,
+            setDeleteManyPopup,
+            setItemToDeleteMany
+          )
+        }
+        deleteLoading={deleteLoading}
+        isMultiple={true} // Displays the multiple items deletion message
+      />
     </div>
   );
 }
