@@ -2,8 +2,6 @@ import jwt from "jsonwebtoken";
 import { serialize } from "cookie";
 
 export function setTokenToCookies(userData, rememberMe) {
-  console.log("token_____", rememberMe);
-
   const securityKey = process.env.SECURITY_KEY;
   const tokenExpiry = rememberMe ? "7d" : "1h"; // 7 days or 1 hour
   const cookieExpiry = rememberMe ? 7 * 24 * 60 * 60 : 3600; // 7 days or 1 hour in seconds
