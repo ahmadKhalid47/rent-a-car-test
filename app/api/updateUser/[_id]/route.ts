@@ -19,12 +19,6 @@ export async function POST(req: Request, params: any) {
       plan,
       password,
     } = data;
-    
-    console.log(
-      "_______________________________________________________",
-      password
-    );
-
     let { _id } = await params.params;
     connectDb();
     let profilePicString =
