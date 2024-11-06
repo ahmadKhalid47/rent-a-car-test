@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Switch from "@mui/material/Switch";
 import shape from "@/public/ShapeBlack.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
@@ -20,7 +21,6 @@ import {
   setvatIncludeR,
   setvatPercentageR,
 } from "@/app/store/Invoicing";
-import { Switch } from "@/components/ui/switch";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -113,7 +113,6 @@ export default function AddUser() {
     const storedTheme = localStorage.getItem("theme");
     setThemeToShow(storedTheme);
   }, [global.theme]);
-  console.log(currencySymbols);
 
   return (
     <div
@@ -303,8 +302,10 @@ export default function AddUser() {
                       <Switch
                         disabled={loading}
                         checked={Invoicing.vatInclude}
-                        onCheckedChange={(checked) => {
-                          dispatch(setvatIncludeR(checked));
+                        onChange={(
+                          event: React.ChangeEvent<HTMLInputElement>
+                        ) => {
+                          dispatch(setvatIncludeR(event.target.checked));
                         }}
                       />
                     </div>

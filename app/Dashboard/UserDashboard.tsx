@@ -19,6 +19,7 @@ import Link from "next/link";
 import { formatDate2 } from "../Components/functions/formats";
 import { TypeInput } from "../Components/InputComponents/TypeInput";
 import { SelectInput } from "../Components/InputComponents/SelectInput";
+import BasicLineChart from "../Components/Graph";
 
 export default function UserDashboard() {
   const global = useSelector((state: RootState) => state.Global);
@@ -258,6 +259,7 @@ export default function UserDashboard() {
         global.sidebarShow ? "nav-width" : "nav-closed-width"
       } absolute right-0 w-fit h-fit mt-[90px] pt-5 transitions dark:text-white text-black`}
     >
+      {/* <BasicLineChart/> */}
       <div
         className={`w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >

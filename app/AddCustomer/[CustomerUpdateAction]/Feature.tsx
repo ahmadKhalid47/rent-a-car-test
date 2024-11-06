@@ -7,7 +7,6 @@ import {
 } from "@/app/store/Customer";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import "antd/dist/reset.css";
 import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import { Relation } from "@/app/AddChauffeur/[chauffeurUpdateAction]/Feature";
 

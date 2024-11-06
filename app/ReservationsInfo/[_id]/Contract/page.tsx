@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-
-import upload from "@/public/Paper Upload.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";

@@ -2,12 +2,12 @@
 import React from "react";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
-import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { formatId, formatListing } from "@/app/Components/functions/formats";
 import { setAllValues } from "@/app/store/reservations";
 import { useReactToPrint } from "react-to-print";
