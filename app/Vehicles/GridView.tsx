@@ -38,7 +38,6 @@ export default function GridView({ data }: dataType) {
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -85,15 +84,11 @@ export default function GridView({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      
       const isPresent = prevArray?.includes(_id);
 
-      
       if (isPresent) {
-
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        
         return [...prevArray, _id];
       }
     });
@@ -383,17 +378,14 @@ export default function GridView({ data }: dataType) {
           </div>
         ))}
       </div>
-      <div className="w-full h-[32px] mt-5 md:mt-10 flex justify-between items-center">
-        <div className="font-[400] text-[10px] sm:text-[14px] leading-[17px] text-[#878787]">
-          Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
-          {Math.min(page * itemsPerPage, data.length)} of {data.length} data
-        </div>
-        <PaginationComponent
-          totalPages={totalPages}
-          page={page}
-          handleChange={handleChange}
-        />
-      </div>
+      <PaginationComponent
+        page={page}
+        itemsPerPage={itemsPerPage}
+        data={data}
+        paginatedData={paginatedData}
+        totalPages={totalPages}
+        handleChange={handleChange}
+      />
       <ConfirmationPopup
         isMultiple={false}
         popup={popup}

@@ -15,9 +15,9 @@ import { useDispatch } from "react-redux";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
 import ActiveButton from "@/app/Components/functions/ActiveButton";
 import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultiple";
-import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { sort } from "@/app/Components/functions/sortFunction";
 import ConfirmationPopup from "@/app/Components/functions/Popups";
+import { PaginationComponent } from "@/app/Components/functions/Pagination";
 
 export default function ListView({ data }: any) {
   let global = useSelector((state: RootState) => state.Global);
@@ -316,7 +316,6 @@ export default function ListView({ data }: any) {
                   </div>
                 </div>
 
-
                 {editPopup ? (
                   <div className="w-full h-full dark:bg-blackOpacity bg-[rgba(255,255,255,0.9) rounded-[10px] absolute top-[0px] left-0 flex justify-center item-center sm:items-center z-[10]">
                     <div className="w-[90%] sm:w-[600px] h-[430px] border-[1px] border-grey rounded-[10px] mt-0 flex flex-col justify-between items-start gap-x-[4%] gap-y-5 dark:bg-dark1 bg-white z-[15]  py-3 xs:py-5 md:py-14 px-1 xs:px-3 md:px-10 modal-position modal-animation">
@@ -369,19 +368,14 @@ export default function ListView({ data }: any) {
           )}
         </div>
       </div>
-      <div className="w-full h-[32px] mt-10 flex justify-between items-center">
-        <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
-          Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
-          {Math.min(page * itemsPerPage, data.length)} of {data.length} data
-        </div>
-        <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <PaginationComponent
-            totalPages={totalPages}
-            page={page}
-            handleChange={handleChange}
-          />
-        </div>
-      </div>
+      <PaginationComponent
+        page={page}
+        itemsPerPage={itemsPerPage}
+        data={data}
+        paginatedData={paginatedData}
+        totalPages={totalPages}
+        handleChange={handleChange}
+      />
       <ConfirmationPopup
         isMultiple={false}
         popup={popup}

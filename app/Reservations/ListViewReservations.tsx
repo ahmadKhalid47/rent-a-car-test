@@ -361,19 +361,14 @@ export default function ListViewreservation({ data }: dataType) {
           )}
         </div>
       </div>
-      <div className="w-full h-[32px] mt-10 flex justify-between items-center">
-        <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
-          Showing {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0} -{" "}
-          {Math.min(page * itemsPerPage, data.length)} of {data.length} data
-        </div>
-        <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
-          <PaginationComponent
-            totalPages={totalPages}
-            page={page}
-            handleChange={handleChange}
-          />
-        </div>
-      </div>
+      <PaginationComponent
+        page={page}
+        itemsPerPage={itemsPerPage}
+        data={data}
+        paginatedData={paginatedData}
+        totalPages={totalPages}
+        handleChange={handleChange}
+      />
       <ConfirmationPopup
         isMultiple={false}
         popup={popup}
