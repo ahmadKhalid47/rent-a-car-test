@@ -27,6 +27,7 @@ import {
 import { Logout, Person2Outlined, Settings } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { setConfigurations } from "../store/Configurations";
+import Image from "next/image";
 
 export default function Nav() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -254,8 +255,7 @@ export default function Nav() {
       } h-[90px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px] flex justify-between items-center border-b-[2px] z-[20] float-end fixed dark:bg-dark1 bg-white right-0 transitions`}
     >
       <div className="absolute">
-
-      <ToastContainer />
+        <ToastContainer />
       </div>
       <button
         onClick={() => {
@@ -263,8 +263,11 @@ export default function Nav() {
           dispatch(setSidebarShowTempR(!global.sidebarShowTemp));
         }}
       >
-        <img
+        <Image
           src={bar.src}
+          alt=""
+          width={0}
+          height={0}
           className={`${
             global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
           } h-full dark:filter dark:brightness-[0] dark:invert cursor-pointer`}
