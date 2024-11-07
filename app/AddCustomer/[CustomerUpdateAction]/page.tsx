@@ -277,13 +277,17 @@ export default function Vehicles() {
       >
         <div className="w-[100%]  flex justify-start items-end">
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
-            Add New Customer
+            {CustomerUpdateAction !== "AddNew"
+              ? "Update Customer "
+              : "Add New Customer"}
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
               <Link href={"/Customers"} className="hover:underline">
                 Customers
               </Link>
               {" / "}
-              Add New Customer
+              {CustomerUpdateAction !== "AddNew"
+                ? "Update Customer "
+                : "Add New Customer"}
             </span>
           </span>
         </div>
