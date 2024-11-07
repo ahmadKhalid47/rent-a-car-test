@@ -31,36 +31,22 @@ export default function UserSidebar() {
   }, [isMobile]);
 
   useEffect(() => {
-    if (
-      pathName === "/Customers" ||
-      pathName === "/CustomerInfo" ||
-      pathName?.includes("/AddCustomer")
-    ) {
+    if (pathName?.includes("Customer")) {
       setChevronState("Customers");
       setChevronStateClose("Customers");
-    } else if (
-      pathName === "/Chauffeurs" ||
-      pathName === "/ChauffeursInfo" ||
-      pathName?.includes("/AddChauffeur")
-    ) {
+    } else if (pathName?.includes("Chauffeur")) {
       setChevronState("Chauffeurs");
       setChevronStateClose("Chauffeurs");
     } else if (
-      pathName === "/Vehicles" ||
-      pathName?.includes("/VehicleInfo") ||
-      pathName?.includes("/AddVehicle") ||
-      pathName?.includes("/Configuration")
+      pathName?.includes("Vehicle") ||
+      pathName?.includes("Configuration")
     ) {
       setChevronState("Vehicles");
       setChevronStateClose("Vehicles");
-    } else if (
-      pathName === "/Reservations" ||
-      pathName?.includes("/ReservationsInfo") ||
-      pathName?.includes("/AddReservations")
-    ) {
+    } else if (pathName?.includes("Reservations")) {
       setChevronState("Reservations");
       setChevronStateClose("Reservations");
-    } else if (pathName?.includes("/Settings")) {
+    } else if (pathName?.includes("Settings")) {
       setChevronState("Settings");
       setChevronStateClose("Settings");
     } else if (pathName === "/Dashboard") {
@@ -95,7 +81,7 @@ export default function UserSidebar() {
         <TbLayoutDashboardFilled
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span >{global.sidebarShow ? "Dashboard" : null}</span>
+        <span>{global.sidebarShow ? "Dashboard" : null}</span>
       </Link>
 
       <div
@@ -152,7 +138,7 @@ export default function UserSidebar() {
                   : "justify-center px-0"
               } bg-main-blue-hover ${
                 pathName === "/Reservations" ||
-                pathName?.includes("/ReservationsInfo")
+                pathName?.includes("ReservationsInfo")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}
@@ -253,7 +239,7 @@ export default function UserSidebar() {
                   ? "justify-start ps-5"
                   : "justify-center px-0"
               } bg-main-blue-hover  ${
-                pathName?.includes("/AddCustomer")
+                pathName?.includes("AddCustomer")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}
@@ -316,7 +302,7 @@ export default function UserSidebar() {
                   : "justify-center px-0"
               } bg-main-blue-hover ${
                 pathName === "/Chauffeurs" ||
-                pathName?.includes("/ChauffeursInfo")
+                pathName?.includes("ChauffeursInfo")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}
@@ -400,7 +386,7 @@ export default function UserSidebar() {
                   ? "justify-start ps-5"
                   : "justify-center px-0"
               } bg-main-blue-hover ${
-                pathName === "/Vehicles" || pathName?.includes("/VehicleInfo")
+                pathName === "/Vehicles" || pathName?.includes("VehicleInfo")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}
@@ -444,7 +430,7 @@ export default function UserSidebar() {
                   ? "justify-start ps-5"
                   : "justify-center px-0"
               } bg-main-blue-hover ${
-                pathName?.includes("/Configuration")
+                pathName?.includes("Configuration")
                   ? "bg-main-blue text-white"
                   : ""
               } hover:text-white rounded-[10px]`}
@@ -469,7 +455,7 @@ export default function UserSidebar() {
         <TbTargetArrow
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span >{global.sidebarShow ? "Report" : null}</span>
+        <span>{global.sidebarShow ? "Report" : null}</span>
       </Link>
       <Link
         href="/Settings"
@@ -486,7 +472,7 @@ export default function UserSidebar() {
         <RiSettings4Fill
           className={`${global.sidebarShow ? "" : "fixed"} text-[24px]`}
         />
-        <span >{global.sidebarShow ? "Settings" : null}</span>
+        <span>{global.sidebarShow ? "Settings" : null}</span>
       </Link>
     </div>
   );
