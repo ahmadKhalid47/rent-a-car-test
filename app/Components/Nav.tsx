@@ -270,7 +270,7 @@ export default function Nav() {
           height={0}
           className={`${
             global.sidebarShow ? "w-[90px] 400:w-[70px] 500:w-full" : "w-full"
-          } h-full dark:filter dark:brightness-[0] dark:invert cursor-pointer`}
+          } h-full dark:filter dark:brightness-[0] dark:invert cursor-pointer hover:opacity-80`}
         />
       </button>
       <div className="w-[300px] h-fit flex justify-end items-center gap-1 md:gap-4 relative">
