@@ -223,7 +223,6 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -245,7 +244,6 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -308,11 +306,21 @@ export default function ListView({ data }: dataType) {
                     {item?.Feature}
                   </div>
                   <div className="text-start pe-3 truncate w-[37%] h-[100%] flex justify-start items-center gap-5">
-                    <img
-                      className="w-[20px] h-[20px] bg-white"
-                      src={item?.Icon || demyIcon.src}
-                      alt=""
-                    />
+                    {item?.Icon ? (
+                      <img
+                        className="w-[20px] h-[20px] bg-white"
+                        src={item?.Icon}
+                        alt=""
+                      />
+                    ) : (
+                      <Image
+                        className="w-[20px] h-[20px] bg-white"
+                        width={20}
+                        height={20}
+                        alt=""
+                        src={demyIcon.src}
+                      />
+                    )}
                   </div>
                   <div
                     className="flex justify-end  gap-[6px] items-center w-[13%] h-full"
@@ -332,7 +340,6 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className={` ${
@@ -354,7 +361,6 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className={`${
                         item?.createdBy === myProfile._id
@@ -441,7 +447,6 @@ export default function ListView({ data }: dataType) {
                                   alt=""
                                   width={32}
                                   height={32}
-                                  
                                 />
                                 <span className="w-[70&] truncate bg-red500 leading-[24px]">
                                   {Icon[0]?.name || "Upload Icon"}
