@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { sort } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
 import arrows from "@/public/arrows.svg";
@@ -50,7 +51,6 @@ export default function ListViewUsers({ data }: dataType) {
 
   const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
 
-
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -58,15 +58,11 @@ export default function ListViewUsers({ data }: dataType) {
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      
       const isPresent = prevArray?.includes(_id);
 
-      
       if (isPresent) {
-
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        
         return [...prevArray, _id];
       }
     });
@@ -117,7 +113,8 @@ export default function ListViewUsers({ data }: dataType) {
             <div className="text-center w-[3%] flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany?.length === data?.length && data?.length !== 0
+                  itemToDeleteMany?.length === data?.length &&
+                  data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
@@ -352,7 +349,11 @@ export default function ListViewUsers({ data }: dataType) {
                         updateActive(item?._id, item?.active);
                       }}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"
@@ -376,7 +377,7 @@ export default function ListViewUsers({ data }: dataType) {
           )}
         </div>
       </div>
-            <PaginationComponent
+      <PaginationComponent
         page={page}
         itemsPerPage={itemsPerPage}
         data={data}

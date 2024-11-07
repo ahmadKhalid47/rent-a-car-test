@@ -1,3 +1,4 @@
+import Image from "next/image";
 import arrows from "@/public/arrows.svg";
 import { HexColorPicker } from "react-colorful";
 import edit from "@/public/Layer_1 (2).svg";
@@ -195,7 +196,9 @@ export default function ListView({ data }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -286,7 +289,11 @@ export default function ListView({ data }: dataType) {
                       admin={item?.createdBy === myProfile._id}
                     />
 
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={` ${

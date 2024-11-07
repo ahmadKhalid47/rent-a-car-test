@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
 import { GoTriangleDown } from "react-icons/go";
@@ -316,7 +317,11 @@ export default function ListView({ data, makeData }: dataType) {
                       admin={item?.createdBy === myProfile._id}
                     />
 
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={` ${

@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
-
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import { useState, useEffect } from "react";
@@ -208,7 +208,9 @@ export default function ListView({ data, CategoryData }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -314,7 +316,11 @@ export default function ListView({ data, CategoryData }: dataType) {
                       model={"Make"}
                       admin={item?.createdBy === myProfile._id}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={`${
@@ -370,7 +376,7 @@ export default function ListView({ data, CategoryData }: dataType) {
                             ))}
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                            <GoTriangleDown className="text-[18px]" />
                           </div>
                         </div>
                       </div>

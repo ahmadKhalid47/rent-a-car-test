@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ConfirmationPopup from "../Components/functions/Popups";
 import { sort, sort2 } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
@@ -138,7 +139,8 @@ export default function ListViewcustomers({ data }: dataType) {
 
   const closeModal = () => setIsOpen(false);
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images?.length);
+  const nextSlide = () =>
+    setCurrentIndex((prev) => (prev + 1) % images?.length);
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + images?.length) % images?.length);
 
@@ -210,7 +212,8 @@ export default function ListViewcustomers({ data }: dataType) {
             <div className="text-center w-[4%]  flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany?.length === data?.length && data?.length !== 0
+                  itemToDeleteMany?.length === data?.length &&
+                  data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
@@ -454,7 +457,11 @@ export default function ListViewcustomers({ data }: dataType) {
                         updateActive(item?._id, item?.active);
                       }}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"

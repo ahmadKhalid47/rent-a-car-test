@@ -320,7 +320,11 @@ export default function ListView({ data }: dataType) {
                       admin={item?.createdBy === myProfile._id}
                     />
 
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={` ${

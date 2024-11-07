@@ -19,6 +19,7 @@ import {
   useDeleteItem,
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
+import Image from "next/image";
 
 interface dataType {
   data: Array<Object>;
@@ -179,7 +180,8 @@ export default function ListView({ data }: dataType) {
             <div className="truncate  w-[4%]  flex justify-start ps-3 items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany?.length === data?.length && data?.length !== 0
+                  itemToDeleteMany?.length === data?.length &&
+                  data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
@@ -463,7 +465,11 @@ export default function ListView({ data }: dataType) {
                         updateActive(item?._id, item?.active);
                       }}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"

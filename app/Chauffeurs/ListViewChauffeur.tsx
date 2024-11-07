@@ -21,6 +21,7 @@ import {
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
+import Image from "next/image";
 
 interface dataType {
   data: Array<Object>;
@@ -464,7 +465,11 @@ export default function ListViewchauffeurs({ data }: dataType) {
                         updateActive(item?._id, item?.active);
                       }}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"

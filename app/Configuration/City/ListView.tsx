@@ -1,4 +1,5 @@
 import { GoTriangleDown } from "react-icons/go";
+import Image from "next/image";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -290,7 +291,11 @@ export default function ListView({ data, makeData }: dataType) {
                       admin={item?.createdBy === myProfile._id}
                     />
 
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={` ${

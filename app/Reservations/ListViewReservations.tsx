@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ConfirmationPopup from "../Components/functions/Popups";
 import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
@@ -335,7 +336,11 @@ export default function ListViewreservation({ data }: dataType) {
                       event.stopPropagation();
                     }}
                   >
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] z-[200]"

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import arrows from "@/public/arrows.svg";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
@@ -55,7 +56,7 @@ export default function ListView({ data }: dataType) {
 
       if (aIsUser && !bIsUser) return -1;
       if (!aIsUser && bIsUser) return 1;
-      return 0; 
+      return 0;
     });
 
     setSortedData(sorted);
@@ -136,7 +137,6 @@ export default function ListView({ data }: dataType) {
     );
   };
 
-
   return (
     <div className="w-full h-fit">
       <h3
@@ -182,7 +182,9 @@ export default function ListView({ data }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -263,7 +265,11 @@ export default function ListView({ data }: dataType) {
                       admin={item?.createdBy === myProfile._id}
                     />
 
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={` ${

@@ -18,6 +18,7 @@ import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultipl
 import { sort } from "@/app/Components/functions/sortFunction";
 import ConfirmationPopup from "@/app/Components/functions/Popups";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
+import Image from "next/image";
 
 export default function ListView({ data }: any) {
   let global = useSelector((state: RootState) => state.Global);
@@ -282,7 +283,11 @@ export default function ListView({ data }: any) {
                       model={"Category"}
                       admin={item?.createdBy === myProfile._id}
                     />
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={edit.src}
                       title="Edit"
                       className={`${
