@@ -148,7 +148,7 @@ function SettingBox({ link, img, heading, text }: any) {
   return (
     <Link
       href={link}
-      className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2 list-hover"
+      className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2 card  "
     >
       <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
         <Image alt="" width={25} height={25} src={img.src} />
