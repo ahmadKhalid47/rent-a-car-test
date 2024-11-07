@@ -393,7 +393,15 @@ export default function ListViewcustomers({ data }: dataType) {
                   <div className="text-start pe-3 truncate w-[15%] flex justify-start gap-3 items-center">
                     <span className="w-[90%] truncate">{item?.data?.name}</span>
 
-                    {item?.data?.isVip && <img src={vip.src} />}
+                    {item?.data?.isVip && (
+                      <Image
+                        alt=""
+                        width={21}
+                        height={15}
+                        priority={true}
+                        src={vip.src}
+                      />
+                    )}
                   </div>
                   <div className="text-start pe-3 truncate w-[10%]">
                     <span

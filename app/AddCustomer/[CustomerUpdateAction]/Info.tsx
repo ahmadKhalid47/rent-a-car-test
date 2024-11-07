@@ -193,7 +193,11 @@ export default function Info() {
                 className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
                 onChange={(e) => dispatch(setisVipR(e.target.checked))}
               />
-              <img
+              <Image
+                alt=""
+                width={21}
+                height={15}
+                priority={true}
                 src={vip.src}
                 className="dark:filter dark:brightness-[0] dark:invert"
               />
