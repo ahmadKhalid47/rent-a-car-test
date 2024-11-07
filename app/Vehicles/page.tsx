@@ -29,9 +29,8 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [gridView, setGridView] = useState(false);
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  
+
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
@@ -311,7 +310,7 @@ export default function Vehicles() {
                   ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
@@ -333,7 +332,7 @@ export default function Vehicles() {
                   <option value={"On Trip"}>On Trip</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
