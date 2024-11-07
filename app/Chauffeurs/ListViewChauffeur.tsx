@@ -208,7 +208,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
             <div className="text-center w-[4%]  flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany?.length === data?.length && data?.length !== 0
+                  itemToDeleteMany?.length === data?.length &&
+                  data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
@@ -457,7 +458,11 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       event.stopPropagation();
                     }}
                   >
-                    <img
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
                       className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"

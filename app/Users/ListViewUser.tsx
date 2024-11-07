@@ -340,15 +340,6 @@ export default function ListViewUsers({ data }: dataType) {
                       event.stopPropagation();
                     }}
                   >
-                    <img
-                      // src={item.active ? check.src : unCheck.src}
-                      src={check.src}
-                      title={item.active ? "Inactive" : "Active"}
-                      className="translate-y-[1px] hover:scale-[1.3]"
-                      onClick={() => {
-                        updateActive(item?._id, item?.active);
-                      }}
-                    />
                     <Image
                       alt=""
                       width={16}

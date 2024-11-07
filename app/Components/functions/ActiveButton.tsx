@@ -3,6 +3,7 @@ import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
 import check from "@/public/check.svg";
 import unCheck from "@/public/uncheck.svg";
 import axios from "axios";
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -31,7 +32,11 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
   }
 
   return (
-    <img
+    <Image
+      alt=""
+      width={16}
+      height={16}
+      priority={true}
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
       className={`translate-y-[1px] ${
