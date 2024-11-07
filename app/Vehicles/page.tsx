@@ -19,7 +19,6 @@ import {
   useHandleExport,
 } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
-import { FaFilter, FaSearch } from "react-icons/fa";
 import { CiFilter } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
