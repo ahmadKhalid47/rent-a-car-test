@@ -1,5 +1,5 @@
 "use client";
-import shape from "@/public/ShapeBlack.svg";
+
 import React from "react";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -325,38 +325,4 @@ await axios.post("/api/saveSingleConfiguration", {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="w-[100%] h-fit flex flex-col justify-start items-start gap-1">
-                  <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                    Select Recurring Period
-                    <FaAsterisk className="text-[8px] text-red-500" />
-                  </label>
-                  <div className="w-full h-fit flex justify-between items-center relative">
-                    <select
-                      className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey"
-                      required={true}
-                      onChange={(e) => {
-                        setrecurring(e.target.value);
-                      }}
-                      value={recurring}
-                    >
-                      <option value={""}>Select</option>
-                      {options?.map((item: any, key: number) => (
-                        <option value={item} key={key}>
-                          {item ? item : "Select"}
-                        </option>
-                      ))}{" "}
-                      {other && <option value={other}>{other}</option>}
-                      <option value={"Other"}>Other</option>
-                    </select>
-                    <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                      <img
-                        src={shape.src}
-                        className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                      />
-                    </div>
-                  </div>
-                </div> */
 }

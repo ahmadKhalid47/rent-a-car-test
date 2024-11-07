@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
-import shape from "@/public/Shape2.svg";
+import { GoTriangleDown } from "react-icons/go";
 import ListView from "./ListView";
 import GridView from "./GridView";
 import { HiViewGrid } from "react-icons/hi";
@@ -312,10 +312,7 @@ export default function Vehicles() {
                   ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-                  <img
-                    src={shape.src}
-                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                  />
+<GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
@@ -337,10 +334,7 @@ export default function Vehicles() {
                   <option value={"On Trip"}>On Trip</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-                  <img
-                    src={shape.src}
-                    className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                  />
+<GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />

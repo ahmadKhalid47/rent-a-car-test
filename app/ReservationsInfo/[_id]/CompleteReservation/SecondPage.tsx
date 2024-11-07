@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { GoTriangleDown } from "react-icons/go";
 import { useDropzone } from "react-dropzone";
-import shape from "@/public/ShapeBlack.svg";
 import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
 import { setdamages} from "@/app/store/reservations";
@@ -368,10 +368,7 @@ export default function SecondPage() {
                     <option value="Scratch">Scratch</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img
-                      src={shape.src}
-                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                    />
+<GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
               </div>
@@ -393,10 +390,7 @@ export default function SecondPage() {
                     <option value="Very High">Very High</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                    <img
-                      src={shape.src}
-                      className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                    />
+<GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
               </div>

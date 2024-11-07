@@ -1,6 +1,6 @@
 import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
-import shape from "@/public/ShapeBlack.svg";
+
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import { useState, useEffect } from "react";
@@ -385,10 +385,7 @@ export default function ListView({ data, makeData }: dataType) {
                             )}
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                            <img
-                              src={shape.src}
-                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                            />
+<GoTriangleDown className="text-[18px]" />
                           </div>
                         </div>
                         <div className="w-full h-fit flex justify-between items-center relative">
@@ -412,10 +409,7 @@ export default function ListView({ data, makeData }: dataType) {
                               ))}
                           </select>
                           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                            <img
-                              src={shape.src}
-                              className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                            />
+<GoTriangleDown className="text-[18px]" />
                           </div>
                         </div>
 

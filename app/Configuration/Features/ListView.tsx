@@ -2,7 +2,7 @@ import Image from "next/image";
 import { sort } from "@/app/Components/functions/sortFunction";
 import upload from "@/public/Paper Upload blue.svg";
 import arrows from "@/public/arrows.svg";
-import shape from "@/public/ShapeBlack.svg";
+import { GoTriangleDown } from "react-icons/go";
 import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import demyIcon from "@/public/features (1).png";
@@ -389,10 +389,7 @@ export default function ListView({ data }: dataType) {
                               </option>
                             </select>
                             <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                              <img
-                                src={shape.src}
-                                className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                              />
+                              <GoTriangleDown className="text-[18px]" />{" "}
                             </div>
                           </div>
                         </div>

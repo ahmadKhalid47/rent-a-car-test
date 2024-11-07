@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import shape from "@/public/ShapeBlack.svg";
+import { GoTriangleDown } from "react-icons/go";
 import upload from "@/public/Paper Upload.svg";
 import { useEffect, useState } from "react";
 import { FaAsterisk } from "react-icons/fa";
@@ -228,10 +228,7 @@ export default function Info() {
                 <option value={vehicle.color}></option>
               </select>
               <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-                <img
-                  src={shape.src}
-                  className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-                />
+                <GoTriangleDown className="text-[18px]" />{" "}
               </div>
             </div>
             <div
@@ -305,10 +302,7 @@ export default function Info() {
             </div>
 
             <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-              <img
-                src={shape.src}
-                className="w-[10.5px]  dark:filter dark:brightness-[0] dark:invert"
-              />
+              <GoTriangleDown className="text-[18px]" />{" "}
             </div>
           </div>
         </div>
