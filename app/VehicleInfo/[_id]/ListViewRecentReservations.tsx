@@ -30,7 +30,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
         <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div
-              className="text-start truncate ps-3 flex justify-start gap-2 items-center w-[16%]"
+              className="text-start ps-3 flex justify-start gap-2 items-center w-[16%]"
               onClick={() =>
                 sort(
                   "customerName",
@@ -53,7 +53,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start truncate flex justify-start gap-2 items-center w-[16%]"
+              className="text-start flex justify-start gap-2 items-center w-[16%]"
               onClick={() =>
                 sort(
                   "vehicleName",
@@ -76,7 +76,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
               />
             </div>
             <div
-              className="text-start truncate flex justify-start gap-2 items-center w-[10%]"
+              className="text-start flex justify-start gap-2 items-center w-[10%]"
               onClick={() =>
                 sort(
                   "city",
@@ -98,7 +98,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               Start Date{" "}
               <Image
                 alt=""
@@ -108,7 +108,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               End Date{" "}
               <Image
                 alt=""
@@ -118,7 +118,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               Duration
               <Image
                 alt=""
@@ -128,7 +128,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               Amount
               <Image
                 alt=""
@@ -138,7 +138,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               Status
               <Image
                 alt=""
