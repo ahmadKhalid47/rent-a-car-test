@@ -174,7 +174,7 @@ export default function UserInfoMainPage() {
                     <img
                       alt=""
                       src={
-                        UserInfo?.profilePic[0]
+                        UserInfo?.profilePic[0]?.includes("http")
                           ? UserInfo?.profilePic[0]
                           : image404.src
                       }
