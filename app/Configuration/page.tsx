@@ -105,7 +105,7 @@ export default function Vehicles() {
               {configArray.map((item) => (
                 <Link
                   href={item.href}
-                  className="w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-center gap-3 md:gap-3 lg:gap-4 items-center relative flex-col hover:opacity-[0.9]"
+                  className="card w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-center gap-3 md:gap-3 lg:gap-4 items-center relative flex-col"
                 >
                   <div className="w-fit h-fit flex justify-center items-center">
                     <Image

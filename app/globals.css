@@ -540,3 +540,21 @@ button:active {
 .Mui-selected:hover{
 opacity: 0.9;
 }
+
+.parent {
+  overflow: hidden; 
+}
+
+.card {
+  max-width: 300px;
+  margin: auto;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
