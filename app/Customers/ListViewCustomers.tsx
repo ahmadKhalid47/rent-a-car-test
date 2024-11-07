@@ -226,7 +226,11 @@ export default function ListViewcustomers({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[15%]">
               Customer Name{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -245,7 +249,11 @@ export default function ListViewcustomers({ data }: dataType) {
             <div className="text-start flex justify-start gap-2 items-center w-[10%]"></div>
             <div className="text-start flex justify-start gap-2 items-center w-[12%]">
               Phone{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -263,7 +271,11 @@ export default function ListViewcustomers({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[17%]">
               Email{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -281,7 +293,11 @@ export default function ListViewcustomers({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[8%]">
               Gender{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -299,7 +315,11 @@ export default function ListViewcustomers({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center w-[8%]">
               City{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -317,7 +337,11 @@ export default function ListViewcustomers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 truncate flex justify-start gap-2 items-center w-[8%]">
               Created At{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>

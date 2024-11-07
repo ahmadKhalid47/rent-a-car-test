@@ -1,5 +1,6 @@
 import { sort } from "@/app/Components/functions/sortFunction";
 import arrows from "@/public/arrows.svg";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -43,7 +44,11 @@ export default function ListViewRecentReservations({ data }: dataType) {
               }
             >
               Customer Name{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -63,7 +68,11 @@ export default function ListViewRecentReservations({ data }: dataType) {
               }
             >
               Chauffeur Name{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -83,42 +92,66 @@ export default function ListViewRecentReservations({ data }: dataType) {
               }
             >
               City{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Start Date{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               End Date{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Duration
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Amount
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Status
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />

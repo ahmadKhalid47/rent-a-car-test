@@ -16,6 +16,7 @@ import { TextLoader } from "../Components/Loader";
 import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort } from "../Components/functions/sortFunction";
+import Image from "next/image";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -207,7 +208,11 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? reservationsData?.length : <TextLoader />}
+                    {!vehicleLoading ? (
+                      reservationsData?.length
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Active Users
@@ -254,8 +259,13 @@ export default function AdminDashboard() {
                           }
                         >
                           Name{" "}
-                          <img
-                            src={arrows.src}
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
+                src={arrows.src}
+
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
@@ -274,7 +284,11 @@ export default function AdminDashboard() {
                           }
                         >
                           Username{" "}
-                          <img
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            priority={true}
                             src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
@@ -294,7 +308,11 @@ export default function AdminDashboard() {
                           }
                         >
                           Email{" "}
-                          <img
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            priority={true}
                             src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
@@ -314,8 +332,13 @@ export default function AdminDashboard() {
                           }
                         >
                           Company{" "}
-                          <img
-                            src={arrows.src}
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
+                src={arrows.src}
+
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
@@ -334,8 +357,13 @@ export default function AdminDashboard() {
                           }
                         >
                           Expiry Date{" "}
-                          <img
-                            src={arrows.src}
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
+                src={arrows.src}
+
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
@@ -388,7 +416,9 @@ export default function AdminDashboard() {
                   <div className="w-full h-[32px] mt-10 flex justify-between items-center">
                     <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
                       Showing{" "}
-                      {paginatedData?.length ? (page - 1) * itemsPerPage + 1 : 0}{" "}
+                      {paginatedData?.length
+                        ? (page - 1) * itemsPerPage + 1
+                        : 0}{" "}
                       - {Math.min(page * itemsPerPage, data?.length)} of{" "}
                       {data?.length} data
                     </div>

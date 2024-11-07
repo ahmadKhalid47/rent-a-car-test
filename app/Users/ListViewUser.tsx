@@ -127,7 +127,11 @@ export default function ListViewUsers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
               Full Name{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 onClick={() =>
                   sort(
                     "name",
@@ -145,7 +149,12 @@ export default function ListViewUsers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 flex justify-start gap-2 items-center w-[10%]">
               Username{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
+                src={arrows.src}
                 onClick={() =>
                   sort(
                     "name",
@@ -157,13 +166,16 @@ export default function ListViewUsers({ data }: dataType) {
                     setCurrentSortKey
                   )
                 }
-                src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
             <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
               Company{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 onClick={() =>
                   sort(
                     "name",
@@ -181,7 +193,11 @@ export default function ListViewUsers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 flex justify-start gap-2 items-center w-[13%]">
               Email{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 onClick={() =>
                   sort(
                     "phone",
@@ -199,7 +215,11 @@ export default function ListViewUsers({ data }: dataType) {
             </div>
             <div className="text-start pe-3 flex justify-start gap-2 items-center w-[6%]">
               City{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 onClick={() =>
                   sort(
                     "gender",
@@ -262,7 +282,11 @@ export default function ListViewUsers({ data }: dataType) {
               }
             >
               Expiry Date
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />

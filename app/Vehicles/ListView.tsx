@@ -194,7 +194,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
               Vehicle Name{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -213,7 +217,11 @@ export default function ListView({ data }: dataType) {
             <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]"></div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[8%]">
               Reg No{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -231,7 +239,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]">
               VIN No{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -250,7 +262,11 @@ export default function ListView({ data }: dataType) {
 
             <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
               Year{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -268,7 +284,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
               Color{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -286,7 +306,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[12%]">
               Odometer{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -304,7 +328,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
               City{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -322,7 +350,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[9%]">
               Created At{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>

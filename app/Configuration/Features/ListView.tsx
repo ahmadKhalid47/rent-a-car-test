@@ -219,7 +219,11 @@ export default function ListView({ data }: dataType) {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
               Feature Type
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -237,7 +241,11 @@ export default function ListView({ data }: dataType) {
             </div>{" "}
             <div className="pe-3 flex justify-start gap-3 items-center w-[20%]">
               Feature
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>

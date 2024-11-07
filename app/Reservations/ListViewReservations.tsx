@@ -122,7 +122,11 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
               Customer{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -140,7 +144,11 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%]">
               Chauffeur{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -158,7 +166,11 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
               Vehicle{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -176,7 +188,11 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] s">
               Start Date{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -194,7 +210,11 @@ export default function ListViewreservation({ data }: dataType) {
             </div>
             <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] e">
               End Date{" "}
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>

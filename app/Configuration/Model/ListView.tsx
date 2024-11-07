@@ -209,7 +209,11 @@ export default function ListView({ data, makeData }: dataType) {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[10%]">
               Category
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -227,7 +231,11 @@ export default function ListView({ data, makeData }: dataType) {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[10%]">
               Make
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -245,7 +253,11 @@ export default function ListView({ data, makeData }: dataType) {
             </div>
             <div className="pe-3 flex justify-start gap-3 items-center w-[57%]">
               Model
-              <img
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                priority={true}
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
