@@ -24,7 +24,7 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
-  
+
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [popup, setPopup] = useState(false);
@@ -228,7 +228,7 @@ export default function Vehicles() {
                       ))}
                     </select>
                     <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                      <GoTriangleDown className="text-[18px]" />
                     </div>
                   </div>
 
