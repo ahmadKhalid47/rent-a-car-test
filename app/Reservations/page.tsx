@@ -11,7 +11,10 @@ import ListViewReservations from "./ListViewReservations";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { MediumLoader } from "../Components/Loader";
-import { renameKeys, useHandleExport } from "../Components/functions/exportFunction";
+import {
+  renameKeys,
+  useHandleExport,
+} from "../Components/functions/exportFunction";
 import { FaTimesCircle } from "react-icons/fa";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
@@ -25,7 +28,7 @@ export default function Vehicles() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  
+
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredreservations, setFilteredreservations] = useState<any[]>([]);
@@ -56,11 +59,10 @@ export default function Vehicles() {
     async function getData() {
       try {
         setLoading(true);
-                const result = await axios.post("/api/getSortedLeanData", {
-                  createdBy: myProfile._id,
-                  modelName: "reservation",
-                });
-
+        const result = await axios.post("/api/getSortedLeanData", {
+          createdBy: myProfile._id,
+          modelName: "reservation",
+        });
 
         if (result?.data?.data) {
           setreservationsData(result.data.data);
@@ -288,7 +290,7 @@ export default function Vehicles() {
                   ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
@@ -324,7 +326,7 @@ export default function Vehicles() {
                   ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />

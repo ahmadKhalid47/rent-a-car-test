@@ -66,15 +66,15 @@ export default function ListViewreservation({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-    const handleDeleteConfirm = () => {
-      deleteItem(
-        itemToDelete,
-        "reservations",
-        setDeleteLoading,
-        setPopup,
-        setItemToDelete
-      );
-    };
+  const handleDeleteConfirm = () => {
+    deleteItem(
+      itemToDelete,
+      "reservations",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete
+    );
+  };
 
   return (
     <div className="w-full h-fit">
@@ -121,7 +121,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
+            <div className="text-start flex justify-start gap-2 items-center w-[11%] c">
               Customer{" "}
               <Image
                 alt=""
@@ -142,7 +142,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[11%]">
               Chauffeur{" "}
               <Image
                 alt=""
@@ -163,7 +163,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
+            <div className="text-start flex justify-start gap-2 items-center w-[11%] c">
               Vehicle{" "}
               <Image
                 alt=""
@@ -184,7 +184,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] s">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%] s">
               Start Date{" "}
               <Image
                 alt=""
@@ -205,7 +205,7 @@ export default function ListViewreservation({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[10%] e">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%] e">
               End Date{" "}
               <Image
                 alt=""
@@ -226,22 +226,19 @@ export default function ListViewreservation({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[11%] c">
+            <div className="text-start flex justify-start gap-2 items-center w-[11%] c">
               Duration
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[7%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[7%]">
               Amount
             </div>
-            <div className="text-start flex justify-start gap-2 items-center truncate w-[9%] s">
+            <div className="text-start flex justify-start gap-2 items-center w-[9%] s">
               Status
             </div>
-            {/* <div className="text-start pe-3 truncate flex justify-between items-center w-[8.5%]">
-              Created At{" "}
-            </div>{" "} */}
-            <div className="text-start pe-3 truncate flex justify-between items-center w-[8%]">
+            <div className="text-start pe-3 flex justify-between items-center w-[8%]">
               Documents{" "}
             </div>
-            <div className="text-start pe-3 flex justify-end items-center truncate w-[6%]">
+            <div className="text-start pe-3 flex justify-end items-center w-[6%]">
               Actions{" "}
             </div>
           </div>

@@ -192,7 +192,7 @@ export default function ListView({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[10%]">
               Vehicle Name{" "}
               <Image
                 alt=""
@@ -214,7 +214,7 @@ export default function ListView({ data }: dataType) {
               />
             </div>
             <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]"></div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[8%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[8%]">
               Reg No{" "}
               <Image
                 alt=""
@@ -235,7 +235,7 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[11%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[11%]">
               VIN No{" "}
               <Image
                 alt=""
@@ -257,7 +257,7 @@ export default function ListView({ data }: dataType) {
               />
             </div>
 
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[6%]">
               Year{" "}
               <Image
                 alt=""
@@ -278,7 +278,7 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[6%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[6%]">
               Color{" "}
               <Image
                 alt=""
@@ -299,7 +299,7 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[12%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[12%]">
               Odometer{" "}
               <Image
                 alt=""
@@ -320,7 +320,7 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[7%] ">
               City{" "}
               <Image
                 alt=""
@@ -341,7 +341,7 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[9%]">
+            <div className="text-start flex justify-start gap-2 items-center w-[9%]">
               Created At{" "}
               <Image
                 alt=""
@@ -362,10 +362,10 @@ export default function ListView({ data }: dataType) {
                 }
               />
             </div>
-            <div className="text-start truncate flex justify-start gap-2 items-center w-[7%] ">
+            <div className="text-start flex justify-start gap-2 items-center w-[7%] ">
               Status
             </div>
-            <div className="text-start flex justify-end pe-3 truncate items-center w-[7%] ">
+            <div className="text-start flex justify-end pe-3 items-center w-[7%] ">
               Actions{" "}
             </div>
           </div>
