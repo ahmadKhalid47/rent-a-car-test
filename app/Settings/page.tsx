@@ -124,7 +124,7 @@ export default function Vehicles() {
             </div>
           </div> */}
           <div className="w-full h-fit flex flex-wrap justify-between  gap-2 md:gap-8 items-start mt-5 md:mt-0">
-            {filteredSettings.length > 0 ? (
+            {filteredSettings?.length > 0 ? (
               filteredSettings.map((item: any) => (
                 <SettingBox
                   link={item.link}

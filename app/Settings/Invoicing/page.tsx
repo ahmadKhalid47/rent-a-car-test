@@ -64,7 +64,7 @@ export default function AddUser() {
       if (currentLine && currentLine.match(/^\d+\.\s*$/)) {
         e.preventDefault(); // Prevent the default behavior
         const newText =
-          Invoicing?.terms.substring(0, selectionStart - currentLine.length) +
+          Invoicing?.terms.substring(0, selectionStart - currentLine?.length) +
           Invoicing?.terms.substring(selectionEnd);
         dispatch(settermsR(newText));
       }
@@ -102,7 +102,7 @@ export default function AddUser() {
   }
 
   function lengthMeasure(content: any) {
-    let contentArray = content.split("").length;
+    let contentArray = content.split("")?.length;
     return contentArray;
   }
 

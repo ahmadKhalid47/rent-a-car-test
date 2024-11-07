@@ -78,7 +78,7 @@ export default function reservationInfoMainPage() {
       );
 
       const formData = new FormData();
-      for (let i = 0; i < reservation.fuelImagesCompletion.length; i++) {
+      for (let i = 0; i < reservation.fuelImagesCompletion?.length; i++) {
         formData.append("files", reservation.fuelImagesCompletion[i]);
       }
       const res = await axios.post("/api/uploadWithCondition", formData, {
@@ -88,7 +88,7 @@ export default function reservationInfoMainPage() {
       });
 
       const formData2 = new FormData();
-      for (let i = 0; i < reservation.odometerImagesCompletion.length; i++) {
+      for (let i = 0; i < reservation.odometerImagesCompletion?.length; i++) {
         formData2.append("files", reservation.odometerImagesCompletion[i]);
       }
       const res2 = await axios.post("/api/uploadWithCondition", formData2, {
@@ -98,12 +98,12 @@ export default function reservationInfoMainPage() {
       });
 
       const formData3 = new FormData();
-      formData3.append("length1", reservation.damages.length);
+      formData3.append("length1", reservation.damages?.length);
 
-      for (let i = 0; i < reservation.damages.length; i++) {
-        formData3.append("length2", reservation.damages[i]?.files.length); 
+      for (let i = 0; i < reservation.damages?.length; i++) {
+        formData3.append("length2", reservation.damages[i]?.files?.length); 
 
-        for (let j = 0; j < reservation.damages[i]?.files.length; j++) {
+        for (let j = 0; j < reservation.damages[i]?.files?.length; j++) {
           formData3.append("files", reservation.damages[i]?.files[j]); 
         }
       }
@@ -114,7 +114,7 @@ export default function reservationInfoMainPage() {
         },
       });
       let tempArray = reservation.damages;
-      for (let i = 0; i < reservation.damages.length; i++) {}
+      for (let i = 0; i < reservation.damages?.length; i++) {}
 
       const updatedObjects = tempArray.map((obj: any, index: any) => ({
         ...obj,

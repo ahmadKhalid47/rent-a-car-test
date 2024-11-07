@@ -37,7 +37,7 @@ export default function Insurances() {
           (existingFile: any) => existingFile.name === file.name
         )
     );
-    if (uniqueFiles.length > 0) {
+    if (uniqueFiles?.length > 0) {
       dispatch(setinsImage([...vehicle?.insImage, ...uniqueFiles]));
     }
   });

@@ -159,7 +159,7 @@ export default function AdminDashboard() {
     page * itemsPerPage
   );
 
-  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
   const handleChange = (event: any, value: any) => {
     setPage(value);
   };
@@ -191,7 +191,7 @@ export default function AdminDashboard() {
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                     {!reservationLoading ? (
-                      reservationsData.length
+                      reservationsData?.length
                     ) : (
                       <TextLoader />
                     )}
@@ -207,7 +207,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? reservationsData.length : <TextLoader />}
+                    {!vehicleLoading ? reservationsData?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Active Users
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? rentOutVehicles.length : <TextLoader />}
+                    {!vehicleLoading ? rentOutVehicles?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Expired Users{" "}
@@ -343,7 +343,7 @@ export default function AdminDashboard() {
                           Actions{" "}
                         </div>
                       </div>
-                      {paginatedData.length < 1 ? (
+                      {paginatedData?.length < 1 ? (
                         <span className="p-3">No Vehicles found.</span>
                       ) : (
                         paginatedData.map((item: any, index: number) => (
@@ -388,9 +388,9 @@ export default function AdminDashboard() {
                   <div className="w-full h-[32px] mt-10 flex justify-between items-center">
                     <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
                       Showing{" "}
-                      {paginatedData.length ? (page - 1) * itemsPerPage + 1 : 0}{" "}
-                      - {Math.min(page * itemsPerPage, data.length)} of{" "}
-                      {data.length} data
+                      {paginatedData?.length ? (page - 1) * itemsPerPage + 1 : 0}{" "}
+                      - {Math.min(page * itemsPerPage, data?.length)} of{" "}
+                      {data?.length} data
                     </div>
                     <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
                       <PaginationComponent

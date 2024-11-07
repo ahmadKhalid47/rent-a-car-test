@@ -43,7 +43,7 @@ export default function Rental() {
           (existingFile: any) => existingFile.name === file.name
         )
     );
-    if (uniqueFiles.length > 0) {
+    if (uniqueFiles?.length > 0) {
       dispatch(
         setpassportImagesR([...customer.passportImages, ...uniqueFiles])
       );
@@ -62,7 +62,7 @@ export default function Rental() {
           (existingFile: any) => existingFile.name === file.name
         )
     );
-    if (uniqueFiles.length > 0) {
+    if (uniqueFiles?.length > 0) {
       dispatch(setlicenseImagesR([...customer.licenseImages, ...uniqueFiles]));
     }
   });
@@ -79,7 +79,7 @@ export default function Rental() {
           (existingFile: any) => existingFile.name === file.name
         )
     );
-    if (uniqueFiles.length > 0) {
+    if (uniqueFiles?.length > 0) {
       dispatch(setotherImagesR([...customer.otherImages, ...uniqueFiles]));
     }
   });

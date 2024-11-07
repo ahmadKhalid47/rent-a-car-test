@@ -74,7 +74,7 @@ export default function AddChauffeur() {
       }
 
       const formData2 = new FormData();
-      for (let i = 0; i < chauffeur?.passportImages.length; i++) {
+      for (let i = 0; i < chauffeur?.passportImages?.length; i++) {
         if (chauffeur?.passportImages[i] instanceof File) {
           formData2.append("files", chauffeur?.passportImages[i]);
         }
@@ -86,7 +86,7 @@ export default function AddChauffeur() {
       });
 
       const formData3 = new FormData();
-      for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
+      for (let i = 0; i < chauffeur?.licenseImages?.length; i++) {
         if (chauffeur?.licenseImages[i] instanceof File) {
           formData3.append("files", chauffeur?.licenseImages[i]);
         }
@@ -98,7 +98,7 @@ export default function AddChauffeur() {
       });
 
       const formData4 = new FormData();
-      for (let i = 0; i < chauffeur?.otherImages.length; i++) {
+      for (let i = 0; i < chauffeur?.otherImages?.length; i++) {
         if (chauffeur?.otherImages[i] instanceof File) {
           formData4.append("files", chauffeur?.otherImages[i]);
         }
@@ -201,7 +201,7 @@ export default function AddChauffeur() {
         });
       }
       const formData2 = new FormData();
-      for (let i = 0; i < chauffeur?.passportImages.length; i++) {
+      for (let i = 0; i < chauffeur?.passportImages?.length; i++) {
         formData2.append("files", chauffeur?.passportImages[i]);
       }
       const res2 = await axios.post("/api/uploadWithCondition", formData2, {
@@ -211,7 +211,7 @@ export default function AddChauffeur() {
       });
 
       const formData3 = new FormData();
-      for (let i = 0; i < chauffeur?.licenseImages.length; i++) {
+      for (let i = 0; i < chauffeur?.licenseImages?.length; i++) {
         formData3.append("files", chauffeur?.licenseImages[i]);
       }
       const res3 = await axios.post("/api/uploadWithCondition", formData3, {
@@ -221,7 +221,7 @@ export default function AddChauffeur() {
       });
 
       const formData4 = new FormData();
-      for (let i = 0; i < chauffeur?.otherImages.length; i++) {
+      for (let i = 0; i < chauffeur?.otherImages?.length; i++) {
         formData4.append("files", chauffeur?.otherImages[i]);
       }
       const res4 = await axios.post("/api/uploadWithCondition", formData4, {

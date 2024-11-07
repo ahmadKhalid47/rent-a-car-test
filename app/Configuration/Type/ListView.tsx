@@ -69,7 +69,7 @@ export default function ListView({ data }: dataType) {
     setPage(value);
   };
 
-  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
 
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
@@ -94,7 +94,7 @@ export default function ListView({ data }: dataType) {
     try {
       setEditLoading(true);
       const formData = new FormData();
-      for (let i = 0; i < exterior.length; i++) {
+      for (let i = 0; i < exterior?.length; i++) {
         formData.append("files", exterior[i]);
       }
       const res = await axios.post("/api/upload", formData, {
@@ -104,7 +104,7 @@ export default function ListView({ data }: dataType) {
       });
 
       const formData2 = new FormData();
-      for (let i = 0; i < interior.length; i++) {
+      for (let i = 0; i < interior?.length; i++) {
         formData2.append("files", interior[i]);
       }
       const res2 = await axios.post("/api/upload", formData2, {
@@ -167,22 +167,22 @@ export default function ListView({ data }: dataType) {
     <div className="w-full h-fit">
       <h3
         className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
+          itemToDeleteMany?.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
-          {userData.length > 0 && itemToDeleteMany.length >= 1 && (
+          {userData?.length > 0 && itemToDeleteMany?.length >= 1 && (
             <>
               <button
                 className={`${
-                  itemToDeleteMany.length < 1
+                  itemToDeleteMany?.length < 1
                     ? ""
                     : "cursor-pointer hover:underline"
                 }`}
                 onClick={() => {
                   setDeleteManyPopup(true);
                 }}
-                disabled={itemToDeleteMany.length < 1 ? true : false}
+                disabled={itemToDeleteMany?.length < 1 ? true : false}
               >
                 Delete Multiple
               </button>
@@ -198,17 +198,17 @@ export default function ListView({ data }: dataType) {
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="w-[3%] flex justify-start  items-center">
-              {userData.length > 0 && (
+              {userData?.length > 0 && (
                 <div
                   className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                    itemToDeleteMany.length === userData.length &&
-                    userData.length !== 0
+                    itemToDeleteMany?.length === userData?.length &&
+                    userData?.length !== 0
                       ? "bg-check"
                       : ""
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany.length !== userData.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length ? allIds : []
                     );
                   }}
                 ></div>
@@ -239,7 +239,7 @@ export default function ListView({ data }: dataType) {
               Actions{" "}
             </div>
           </div>
-          {paginatedData.length < 1 ? (
+          {paginatedData?.length < 1 ? (
             <span className="p-3">No Types found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (
@@ -269,7 +269,7 @@ export default function ListView({ data }: dataType) {
                     {JSON.stringify(
                       !reverse
                         ? (page - 1) * itemsPerPage + 1 + index
-                        : paginatedData.length - index
+                        : paginatedData?.length - index
                     ).padStart(2, "0")}{" "}
                   </div>
                   <div className="text-start pe-3 w-[77%]">{item?.Type}</div>

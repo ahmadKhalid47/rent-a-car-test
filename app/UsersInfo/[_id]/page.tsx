@@ -258,7 +258,7 @@ export default function UserInfoMainPage() {
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                      {!vehicleLoading ? VehiclesData.length : <TextLoader />}
+                      {!vehicleLoading ? VehiclesData?.length : <TextLoader />}
                     </div>
                     <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                       Total Vehicles{" "}
@@ -272,7 +272,7 @@ export default function UserInfoMainPage() {
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                       {!reservationLoading ? (
-                        reservationsData.length
+                        reservationsData?.length
                       ) : (
                         <TextLoader />
                       )}
@@ -288,7 +288,7 @@ export default function UserInfoMainPage() {
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                      {!CustomerLoading ? CustomersData.length : <TextLoader />}
+                      {!CustomerLoading ? CustomersData?.length : <TextLoader />}
                     </div>
                     <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                       Total Customers{" "}
@@ -302,7 +302,7 @@ export default function UserInfoMainPage() {
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                       {!ChauffeurLoading ? (
-                        ChauffeursData.length
+                        ChauffeursData?.length
                       ) : (
                         <TextLoader />
                       )}

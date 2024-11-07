@@ -84,7 +84,7 @@ export default function Vehicles() {
     try {
       setLoading(action);
       const formData = new FormData();
-      for (let i = 0; i < exterior.length; i++) {
+      for (let i = 0; i < exterior?.length; i++) {
         formData.append("files", exterior[i]);
       }
       const res = await axios.post("/api/upload", formData, {
@@ -94,7 +94,7 @@ export default function Vehicles() {
       });
 
       const formData2 = new FormData();
-      for (let i = 0; i < interior.length; i++) {
+      for (let i = 0; i < interior?.length; i++) {
         formData2.append("files", interior[i]);
       }
       const res2 = await axios.post("/api/upload", formData2, {

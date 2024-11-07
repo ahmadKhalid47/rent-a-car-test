@@ -73,7 +73,7 @@ export default function Feature() {
                 />
               </div>
             </div>
-            {chauffeur?.emergency.length - 1 !== index && (
+            {chauffeur?.emergency?.length - 1 !== index && (
               <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1 mt-5">
                 <button
                   className="flex justify-center gap-3 items-center w-[200px] py-2 md:py-0 h-fit md:h-[43px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
@@ -89,7 +89,7 @@ export default function Feature() {
           </>
         ))}
 
-        {chauffeur?.emergency.length < 4 && (
+        {chauffeur?.emergency?.length < 4 && (
           <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-1 mt-5">
             <button
               className="flex justify-center gap-3 items-center w-[200px] py-2 md:py-0 h-fit md:h-[43px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"

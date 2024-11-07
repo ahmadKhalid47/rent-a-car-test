@@ -68,7 +68,7 @@ export default function Info({ score, message }: any) {
       return true;
     });
 
-    if (filteredFiles.length > 0) {
+    if (filteredFiles?.length > 0) {
       setFiles([
         Object.assign(filteredFiles[0], {
           preview: URL.createObjectURL(filteredFiles[0]),

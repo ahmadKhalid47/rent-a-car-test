@@ -160,7 +160,7 @@ export default function CarInfoMainPage() {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    {vehicleInfo?.carImages.length > 1 && (
+                    {vehicleInfo?.carImages?.length > 1 && (
                       <div className="w-[100%] h-[70px] relative flex justify-center">
                         <div
                           className="w-full-70px h-[70px] flex justify-start items-center gap-[8px] overflow-x-auto whitespace-nowrap scroll"
@@ -361,7 +361,7 @@ export default function CarInfoMainPage() {
                           No. of Damages
                         </span>
                         <span className="w-[60px] h-[27px] flex justify-center items-center border-[1px] border-grey rounded-[3px] bg-light-grey">
-                          {vehicleInfo?.damages.length}
+                          {vehicleInfo?.damages?.length}
                         </span>
                       </div>
                     </div>

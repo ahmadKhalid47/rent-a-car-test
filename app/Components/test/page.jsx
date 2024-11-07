@@ -8,7 +8,7 @@ export default function UploadForm() {
 
   const handleInputChange = async () => {
     const formData = new FormData();
-    for (let i = 0; i < selectedFiles.length; i++) {
+    for (let i = 0; i < selectedFiles?.length; i++) {
       formData.append("files", selectedFiles[i]);
     }
     const res = await axios.post("/api/upload", formData, {

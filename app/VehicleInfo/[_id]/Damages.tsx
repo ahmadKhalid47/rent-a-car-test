@@ -36,7 +36,7 @@ export default function Damages({ toggle }: any) {
 
   return (
     <div className="w-full h-full py-4 px-5 flex justify-between items-start">
-      {vehicleInfo?.damages.length > 0 ? (
+      {vehicleInfo?.damages?.length > 0 ? (
         <>
           <div className="w-[35%] h-full flex flex-col justify-center items-start order-[1px] border-grey">
             <div className="w-[130px] h-[180px] flex flex-col justify-start items-start relative">

@@ -154,11 +154,11 @@ export default function UserDashboard() {
         date,
         time
       );
-      setCarAvailable(filtered.length - filteredReservations.length);
+      setCarAvailable(filtered?.length - filteredReservations?.length);
     } else if (!date && !time && !make && !model && !regNo) {
       setCarAvailable(undefined);
     } else {
-      setCarAvailable(filtered.length);
+      setCarAvailable(filtered?.length);
     }
   }
 
@@ -252,7 +252,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? VehiclesData.length : <TextLoader />}
+                    {!vehicleLoading ? VehiclesData?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Vehicles{" "}
@@ -265,7 +265,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? activeVehicles.length : <TextLoader />}
+                    {!vehicleLoading ? activeVehicles?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Vehicles Available
@@ -278,7 +278,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? rentOutVehicles.length : <TextLoader />}
+                    {!vehicleLoading ? rentOutVehicles?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Vehicles Rented Out{" "}
@@ -299,7 +299,7 @@ export default function UserDashboard() {
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
                     {!vehicleLoading ? (
-                      reservationsMadeToday.length
+                      reservationsMadeToday?.length
                     ) : (
                       <TextLoader />
                     )}
@@ -315,7 +315,7 @@ export default function UserDashboard() {
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? reservationsData.length : <TextLoader />}
+                    {!vehicleLoading ? reservationsData?.length : <TextLoader />}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Reservations{" "}

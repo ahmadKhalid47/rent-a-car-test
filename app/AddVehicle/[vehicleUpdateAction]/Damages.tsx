@@ -52,7 +52,7 @@ export default function Damages() {
       return true;
     });
 
-    if (filteredFiles.length > 0) {
+    if (filteredFiles?.length > 0) {
       
       setFiles([
         Object.assign(filteredFiles[0], {
@@ -85,7 +85,7 @@ export default function Damages() {
 
   function save() {
     let tempObj = {
-      ...marks[marks.length - 1],
+      ...marks[marks?.length - 1],
       damageType,
       degree,
       description,
@@ -301,7 +301,7 @@ export default function Damages() {
                     </span>
                   </div>
                 ))}
-                {vehicle.damages.length === 0 ? (
+                {vehicle.damages?.length === 0 ? (
                   <span className="mx-auto mt-10 md:mt-[35%] truncate font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                     Tap on the vehicle's part to add damage
                   </span>

@@ -14,14 +14,14 @@ export interface PasswordStrength {
 
 export function checkPasswordStrength(password: string): PasswordStrength {
   const criteria = {
-    length: password.length >= 6,
+    length: password?.length >= 6,
     lowercase: /[a-z]/.test(password),
     uppercase: /[A-Z]/.test(password),
     number: /\d/.test(password),
     specialCharacter: /[!@#$%^&*(),.?":{}|<>]/.test(password),
   };
 
-  const score = Object.values(criteria).filter(Boolean).length;
+  const score = Object.values(criteria).filter(Boolean)?.length;
   let message = "";
   let guide = "";
 
@@ -39,7 +39,7 @@ export function checkPasswordStrength(password: string): PasswordStrength {
   }
 
   // Guide for unmet criteria
-  if (!criteria.length)
+  if (!criteria?.length)
     guide += "Password must be at least 6 characters long. ";
   if (!criteria.lowercase) guide += "Add lowercase letters. ";
   if (!criteria.uppercase) guide += "Add uppercase letters. ";

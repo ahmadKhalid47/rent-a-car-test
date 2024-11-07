@@ -60,7 +60,7 @@ export default function Info() {
       return true;
     });
 
-    if (filteredFiles.length > 0) {
+    if (filteredFiles?.length > 0) {
       dispatch(
         setchauffeurImageR([
           Object.assign(filteredFiles[0], {

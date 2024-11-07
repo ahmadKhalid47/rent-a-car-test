@@ -91,7 +91,7 @@ export default function SecondPage() {
 
   function save() {
     let tempObj = {
-      ...marks[marks.length - 1],
+      ...marks[marks?.length - 1],
       damageType,
       degree,
       description,
@@ -338,7 +338,7 @@ export default function SecondPage() {
                     </p>
                   </div>
                 ))}
-                {reservation?.damages.length === 0 ? (
+                {reservation?.damages?.length === 0 ? (
                   <p className="mx-auto mt-10 md:mt-[45%] font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[24px] text-start">
                     Tap on the vehicle's part to add damage
                   </p>

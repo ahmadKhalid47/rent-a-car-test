@@ -54,7 +54,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
     setPage(value);
   };
 
-  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
 
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
@@ -137,9 +137,9 @@ export default function ListViewchauffeurs({ data }: dataType) {
 
   const closeModal = () => setIsOpen(false);
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images?.length);
   const prevSlide = () =>
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentIndex((prev) => (prev - 1 + images?.length) % images?.length);
   const handleDeleteConfirm = () => {
     deleteItem(
       itemToDelete,
@@ -153,22 +153,22 @@ export default function ListViewchauffeurs({ data }: dataType) {
     <div className="w-full h-fit">
       <div
         className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
+          itemToDeleteMany?.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
-        {itemToDeleteMany.length >= 1 && (
+        {itemToDeleteMany?.length >= 1 && (
           <span>
             <span className="cursor-pointer">
               <button
                 className={`${
-                  itemToDeleteMany.length < 1
+                  itemToDeleteMany?.length < 1
                     ? ""
                     : "cursor-pointer hover:underline"
                 }`}
                 onClick={() => {
                   setDeleteManyPopup(true);
                 }}
-                disabled={itemToDeleteMany.length < 1 ? true : false}
+                disabled={itemToDeleteMany?.length < 1 ? true : false}
               >
                 Delete Multiple
               </button>
@@ -176,7 +176,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
             <span className="ps-1"></span>|<span className="ps-1"></span>
             <span
               className={`${
-                itemToDeleteMany.length < 1
+                itemToDeleteMany?.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
@@ -188,7 +188,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
             </span>
             <span
               className={`${
-                itemToDeleteMany.length < 1
+                itemToDeleteMany?.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
@@ -207,13 +207,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
             <div className="text-center w-[4%]  flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length === data.length && data.length !== 0
+                  itemToDeleteMany?.length === data?.length && data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length !== data.length ? allIds : []
+                    itemToDeleteMany?.length !== data?.length ? allIds : []
                   );
                 }}
               ></div>
@@ -352,7 +352,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
             </div>
           </div>
 
-          {paginatedData.length < 1 ? (
+          {paginatedData?.length < 1 ? (
             <span className="p-3">No Chauffeurs found. </span>
           ) : (
             paginatedData.map((item: any, index: number) => (

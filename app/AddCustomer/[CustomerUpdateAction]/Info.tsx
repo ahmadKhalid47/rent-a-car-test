@@ -62,7 +62,7 @@ export default function Info() {
       return true;
     });
 
-    if (filteredFiles.length > 0) {
+    if (filteredFiles?.length > 0) {
       dispatch(
         setcustomerImageR([
           Object.assign(filteredFiles[0], {

@@ -35,7 +35,7 @@ export default function GridView({ data }: dataType) {
     setPage(value);
   };
   const dispatch = useDispatch();
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(data?.length / itemsPerPage);
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -122,22 +122,22 @@ export default function GridView({ data }: dataType) {
     <div className="w-full h-fit">
       <div
         className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
+          itemToDeleteMany?.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
-        {itemToDeleteMany.length >= 1 && (
+        {itemToDeleteMany?.length >= 1 && (
           <span>
             <span>
               <button
                 className={`${
-                  itemToDeleteMany.length < 1
+                  itemToDeleteMany?.length < 1
                     ? ""
                     : "cursor-pointer hover:underline"
                 }`}
                 onClick={() => {
                   setDeleteManyPopup(true);
                 }}
-                disabled={itemToDeleteMany.length < 1 ? true : false}
+                disabled={itemToDeleteMany?.length < 1 ? true : false}
               >
                 Delete Multiple
               </button>
@@ -145,7 +145,7 @@ export default function GridView({ data }: dataType) {
             <span className="ps-1"></span>|<span className="ps-1"></span>
             <span
               className={`${
-                itemToDeleteMany.length < 1
+                itemToDeleteMany?.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
@@ -157,7 +157,7 @@ export default function GridView({ data }: dataType) {
             </span>
             <span
               className={`${
-                itemToDeleteMany.length < 1
+                itemToDeleteMany?.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
@@ -176,20 +176,20 @@ export default function GridView({ data }: dataType) {
             <div className="w-[100%] sm:w-[330px] 1400:w-[340px] 2xl:w-[90%] flex justify-start gap-2 items-center mt-4">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length === data.length && data.length !== 0
+                  itemToDeleteMany?.length === data?.length && data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length !== data.length ? allIds : []
+                    itemToDeleteMany?.length !== data?.length ? allIds : []
                   );
                 }}
               ></div>
               <span
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length !== data.length ? allIds : []
+                    itemToDeleteMany?.length !== data?.length ? allIds : []
                   );
                 }}
                 className="text-[14px] font-[600] cursor-pointer"

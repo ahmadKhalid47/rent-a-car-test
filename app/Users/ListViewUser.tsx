@@ -48,7 +48,7 @@ export default function ListViewUsers({ data }: dataType) {
     setPage(value);
   };
 
-  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
 
 
   const paginatedData = sortedData.slice(
@@ -90,21 +90,21 @@ export default function ListViewUsers({ data }: dataType) {
     <div className="w-full h-fit">
       <h3
         className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
-          itemToDeleteMany.length < 1 ? "text-grey" : " text-main-blue"
+          itemToDeleteMany?.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
         <span>
           <span className="cursor-pointer">
             <button
               className={`${
-                itemToDeleteMany.length < 1
+                itemToDeleteMany?.length < 1
                   ? ""
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
                 setDeleteManyPopup(true);
               }}
-              disabled={itemToDeleteMany.length < 1 ? true : false}
+              disabled={itemToDeleteMany?.length < 1 ? true : false}
             >
               Delete Multiple
             </button>
@@ -117,13 +117,13 @@ export default function ListViewUsers({ data }: dataType) {
             <div className="text-center w-[3%] flex justify-center items-center">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany.length === data.length && data.length !== 0
+                  itemToDeleteMany?.length === data?.length && data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
                 onClick={() => {
                   setItemToDeleteMany(
-                    itemToDeleteMany.length !== data.length ? allIds : []
+                    itemToDeleteMany?.length !== data?.length ? allIds : []
                   );
                 }}
               ></div>
@@ -275,7 +275,7 @@ export default function ListViewUsers({ data }: dataType) {
             </div>
           </div>
 
-          {paginatedData.length < 1 ? (
+          {paginatedData?.length < 1 ? (
             <span className="p-3">No Users found.</span>
           ) : (
             paginatedData.map((item: any, index: number) => (

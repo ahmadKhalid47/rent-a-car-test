@@ -85,7 +85,7 @@ export default function Vehicles() {
     try {
       setLoading(action);
       const formData = new FormData();
-      for (let i = 0; i < Icon.length; i++) {
+      for (let i = 0; i < Icon?.length; i++) {
         formData.append("files", Icon[i]);
       }
       const res = await axios.post("/api/upload", formData, {

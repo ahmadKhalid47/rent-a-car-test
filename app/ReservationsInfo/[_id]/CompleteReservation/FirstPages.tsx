@@ -39,7 +39,7 @@ export default function FirstPage() {
             (existingFile: any) => existingFile.name === file.name
           )
       );
-      if (uniqueFiles.length > 0) {
+      if (uniqueFiles?.length > 0) {
         dispatch(
           setfuelImagesCompletion([
             ...reservation?.fuelImagesCompletion,
@@ -56,7 +56,7 @@ export default function FirstPage() {
             (existingFile: any) => existingFile.name === file.name
           )
       );
-      if (uniqueFiles.length > 0) {
+      if (uniqueFiles?.length > 0) {
         dispatch(
           setodometerImagesCompletion([
             ...reservation?.odometerImagesCompletion,

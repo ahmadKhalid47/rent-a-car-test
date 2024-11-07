@@ -12,7 +12,7 @@ export async function POST(req) {
     const form = await req.formData();
     const files = form.getAll("files");
 
-    if (files.length > 0) {
+    if (files?.length > 0) {
       const uploadPromises = files.map(async (item) => {
         if (typeof item === "string" && item.startsWith("http")) {
           return item;

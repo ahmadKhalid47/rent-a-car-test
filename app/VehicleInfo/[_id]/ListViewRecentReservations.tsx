@@ -124,7 +124,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
               />
             </div>
           </div>
-          {data.length < 1 ? (
+          {data?.length < 1 ? (
             <span className="p-3">No Reservations found.</span>
           ) : (
             data.map((item: any, index: number) => (

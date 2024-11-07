@@ -68,7 +68,7 @@ export default function Info() {
           (existingFile: any) => existingFile.name === file.name
         )
     );
-    if (uniqueFiles.length > 0) {
+    if (uniqueFiles?.length > 0) {
       dispatch(setCarImages([...vehicle?.carImages, ...uniqueFiles]));
     }
   });

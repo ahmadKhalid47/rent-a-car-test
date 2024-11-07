@@ -14,9 +14,9 @@ export const OtherCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
   const navigateImage = (direction: "left" | "right") => {
     setCurrentIndex((prev) => {
       if (direction === "left") {
-        return (prev - 1 + info.otherImages.length) % info.otherImages.length;
+        return (prev - 1 + info.otherImages?.length) % info.otherImages?.length;
       }
-      return (prev + 1) % info.otherImages.length;
+      return (prev + 1) % info.otherImages?.length;
     });
   };
 
@@ -49,7 +49,7 @@ export const OtherCustomers: React.FC<InfoComponentProps> = ({ infoKey }) => {
                 alt="Customer"
                 onError={(e) => (e.currentTarget.src = "fallback-image-url")}
               />
-              {info.otherImages.length > 1 && (
+              {info.otherImages?.length > 1 && (
                 <>
                   <button
                     className="absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2"
