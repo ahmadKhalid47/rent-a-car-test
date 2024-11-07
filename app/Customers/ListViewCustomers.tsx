@@ -470,9 +470,13 @@ export default function ListViewcustomers({ data }: dataType) {
                       }}
                     />
 
-                    <img
-                      className="hover:scale-[1.3] cursor-pointer"
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      priority={true}
                       src={deleteIcon.src}
+                      className="hover:scale-[1.3] cursor-pointer"
                       title="Delete"
                       onClick={() => {
                         setPopup(true);
