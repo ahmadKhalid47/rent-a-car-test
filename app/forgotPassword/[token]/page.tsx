@@ -18,6 +18,7 @@ import {
   PasswordStrength,
 } from "@/app/Components/functions/strengthChecker";
 import PasswordStrengthShower from "@/app/Components/functions/PasswordStrengthShower";
+import Image from "next/image";
 export default function ResetPassword() {
   const params = useParams();
   const { token } = params;
@@ -113,27 +114,36 @@ export default function ResetPassword() {
         <Loader />
       ) : (
         <>
-          {isVerified !== false ? (
+          {isVerified === false ? (
             <ExpiredPage />
           ) : (
             <div className="w-full h-fit">
               <div className="w-full h-[100vh] flex flex-col lg:flex-row justify-center items-center">
                 <div className="w-full lg:w-[50%] h-[40%] sm:h-[50%] lg:h-full flex justify-center items-center bg-main-blue relative">
-                  <img
-                    src={loginPage2.src}
-                    className="w-[100% h-[90%] absolute bottom-0 right-0"
-                  />
-                  <img
-                    src={loginPage1.src}
-                    className="w-[100%] h-[50%] absolute bottom-0 left-0"
-                  />
-
+                  <div className="w-full h-[90%] absolute bottom-0 right-0">
+                    <Image
+                      src={loginPage2.src}
+                      alt="Login Page"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className="w-[100%] h-[50%] absolute bottom-0 left-0">
+                    <Image
+                      src={loginPage1.src}
+                      alt="Login Page"
+                      layout="fill"
+                    />
+                  </div>
                   <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-                    <div className="w-fit h-[100vh] absolute top-0 z-[100] pt-10">
-                      <img
-                        src={White.src}
-                        className="z-10 w-[120px] sm:w-[191px] h-[55px]"
-                      />
+                    <div className="w-fit h-[100vh] absolute top-0 z-[100]">
+                      <div className="z-10 w-[120px] sm:w-[191px] h-[55px] absolute top-10">
+                        <Image
+                          src={White.src}
+                          alt="Login Page"
+                          layout="fill"
+                          className="z-10 w-[120px] sm:w-[191px] h-[55px]"
+                        />
+                      </div>
                     </div>
 
                     <h1 className="font-[600] text-[40px] sm:text-[70px] leading-[40px] sm:leading-[73px] capitalize text-white">

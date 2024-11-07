@@ -23,8 +23,8 @@ export default function App() {
             <Image src={loginPage1.src} alt="Login Page" layout="fill" />
           </div>
           <div className="w-[90%] sm:w-fit h-fit flex flex-col justify-center items-start gap-2 sm:gap-[20px] z-[10]">
-            <div className="w-fit h-[100vh] absolute top-0 z-[100] pt-10">
-              <div className="z-10 w-[120px] sm:w-[191px] h-[55px]">
+            <div className="w-fit h-[100vh] absolute top-0 z-[100]">
+              <div className="z-10 w-[120px] sm:w-[191px] h-[55px] absolute top-10">
                 <Image
                   src={White.src}
                   alt="Login Page"
