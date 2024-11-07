@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import upload from "@/public/Paper Upload blue.svg";
 import shape from "@/public/ShapeBlack.svg";
 import React from "react";
@@ -260,7 +261,13 @@ export default function Vehicles() {
                           }}
                         />
                         <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                          <img src={upload.src} />
+                                    <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
                           <span className="w-[70&] truncate bg-red500 leading-[24px]">
                             {Icon[0]?.name || "Upload Icon"}
                           </span>

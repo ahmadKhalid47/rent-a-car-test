@@ -23,7 +23,6 @@ import {
   setpassengersR,
   setcountryR,
   setcityR,
-  setpostalCodeR,
   setCarImages,
   setthumbnailImage,
   setengineVolume,
@@ -41,6 +40,7 @@ import "react-calendar/dist/Calendar.css";
 import Link from "next/link";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
+import Image from "next/image";
 
 export default function Info() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -440,7 +440,13 @@ export default function Info() {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>

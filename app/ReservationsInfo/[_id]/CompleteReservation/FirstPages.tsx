@@ -1,10 +1,11 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { RootState } from "@/app/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
@@ -31,41 +32,39 @@ export default function FirstPage() {
     }
   }, [isMobile]);
 
-
-    const onDropFuel = useFileDrop((files: any[]) => {
-      const uniqueFiles = files.filter(
-        (file) =>
-          !reservation?.fuelImagesCompletion.some(
-            (existingFile: any) => existingFile.name === file.name
-          )
+  const onDropFuel = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !reservation?.fuelImagesCompletion.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles?.length > 0) {
+      dispatch(
+        setfuelImagesCompletion([
+          ...reservation?.fuelImagesCompletion,
+          ...uniqueFiles,
+        ])
       );
-      if (uniqueFiles?.length > 0) {
-        dispatch(
-          setfuelImagesCompletion([
-            ...reservation?.fuelImagesCompletion,
-            ...uniqueFiles,
-          ])
-        );
-      }
-    });
+    }
+  });
 
-    const onDropodometer = useFileDrop((files: any[]) => {
-      const uniqueFiles = files.filter(
-        (file) =>
-          !reservation?.odometerImagesCompletion.some(
-            (existingFile: any) => existingFile.name === file.name
-          )
+  const onDropodometer = useFileDrop((files: any[]) => {
+    const uniqueFiles = files.filter(
+      (file) =>
+        !reservation?.odometerImagesCompletion.some(
+          (existingFile: any) => existingFile.name === file.name
+        )
+    );
+    if (uniqueFiles?.length > 0) {
+      dispatch(
+        setodometerImagesCompletion([
+          ...reservation?.odometerImagesCompletion,
+          ...uniqueFiles,
+        ])
       );
-      if (uniqueFiles?.length > 0) {
-        dispatch(
-          setodometerImagesCompletion([
-            ...reservation?.odometerImagesCompletion,
-            ...uniqueFiles,
-          ])
-        );
-      }
-    });
-
+    }
+  });
 
   const { getRootProps: getRootPropsFuel, getInputProps: getInputPropsFuel } =
     useDropzone({
@@ -93,7 +92,13 @@ export default function FirstPage() {
           {...getRootPropsFuel()}
         >
           <input {...getInputPropsFuel()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -129,7 +134,13 @@ export default function FirstPage() {
           {...getRootPropsodometer()}
         >
           <input {...getInputPropsodometer()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>

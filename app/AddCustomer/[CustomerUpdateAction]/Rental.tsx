@@ -31,6 +31,7 @@ import { Thumbs } from "../../Components/functions/thumbsFromDrag";
 import { useFileDrop } from "../../Components/functions/onDragFromDrag";
 import { Country } from "country-state-city";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import Image from "next/image";
 
 export default function Rental() {
   let customer = useSelector((state: RootState) => state.Customer);
@@ -163,7 +164,13 @@ export default function Rental() {
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
-          <img src={upload.src} />
+                    <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -216,7 +223,13 @@ export default function Rental() {
           {...getRootPropsLic()}
         >
           <input {...getInputPropsLic()} />
-          <img src={upload.src} />
+                    <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -295,7 +308,13 @@ export default function Rental() {
             {...getRootPropsOther()}
           >
             <input {...getInputPropsOther()} />
-            <img src={upload.src} />
+                      <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
             <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
               Drag & Drop or
               <span className="text-link-blue cursor-pointer">

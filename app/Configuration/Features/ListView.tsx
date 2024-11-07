@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { sort } from "@/app/Components/functions/sortFunction";
 import upload from "@/public/Paper Upload blue.svg";
 import arrows from "@/public/arrows.svg";
@@ -53,18 +54,17 @@ export default function ListView({ data }: dataType) {
   const deleteManyItems = useDeleteManyItems();
 
   useEffect(() => {
-    
     const sorted = [...data].sort((a: any, b: any) => {
       const aIsUser = a.createdBy === myProfile._id;
       const bIsUser = b.createdBy === myProfile._id;
 
-      if (aIsUser && !bIsUser) return -1; 
-      if (!aIsUser && bIsUser) return 1; 
-      return 0; 
+      if (aIsUser && !bIsUser) return -1;
+      if (!aIsUser && bIsUser) return 1;
+      return 0;
     });
 
     setSortedData(sorted);
-  }, [data, myProfile._id]); 
+  }, [data, myProfile._id]);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -72,7 +72,6 @@ export default function ListView({ data }: dataType) {
   };
 
   const totalPages = Math.ceil(sortedData?.length / itemsPerPage);
-
 
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,
@@ -125,15 +124,11 @@ export default function ListView({ data }: dataType) {
   }
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
-      
       const isPresent = prevArray?.includes(_id);
 
-      
       if (isPresent) {
-
         return prevArray.filter((item: any) => item !== _id);
       } else {
-        
         return [...prevArray, _id];
       }
     });
@@ -211,7 +206,9 @@ export default function ListView({ data }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -426,7 +423,13 @@ export default function ListView({ data }: dataType) {
                                 }}
                               />
                               <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                                <img src={upload.src} />
+                                <Image
+                                  src={upload.src}
+                                  alt=""
+                                  width={32}
+                                  height={32}
+                                  priority={true}
+                                />
                                 <span className="w-[70&] truncate bg-red500 leading-[24px]">
                                   {Icon[0]?.name || "Upload Icon"}
                                 </span>

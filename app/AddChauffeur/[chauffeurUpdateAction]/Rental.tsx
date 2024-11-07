@@ -26,6 +26,7 @@ import { Thumbs } from "../../Components/functions/thumbsFromDrag";
 import { useFileDrop } from "../../Components/functions/onDragFromDrag";
 import { Country } from "country-state-city";
 import { FiPlusCircle, FiMinusCircle } from "react-icons/fi";
+import Image from "next/image";
 
 export default function Rental() {
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
@@ -61,12 +62,12 @@ export default function Rental() {
       dispatch(setlicenseImagesR([...chauffeur.licenseImages, ...uniqueFiles]));
     }
   });
-  
+
   const { getRootProps: getRootPropsLic, getInputProps: getInputPropsLic } =
-  useDropzone({
-    onDrop: onDropLic,
-  });
-  
+    useDropzone({
+      onDrop: onDropLic,
+    });
+
   const onDropOther = useFileDrop((files: any[]) => {
     const uniqueFiles = files.filter(
       (file) =>
@@ -83,7 +84,7 @@ export default function Rental() {
     useDropzone({
       onDrop: onDropOther,
     });
-  
+
   const countries: any = Country.getAllCountries().map((country: any) => ({
     value: country.isoCode,
     label: country.name,
@@ -158,7 +159,13 @@ export default function Rental() {
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -214,7 +221,13 @@ export default function Rental() {
           {...getRootPropsLic()}
         >
           <input {...getInputPropsLic()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -291,7 +304,13 @@ export default function Rental() {
             {...getRootPropsOther()}
           >
             <input {...getInputPropsOther()} />
-            <img src={upload.src} />
+            <Image
+              src={upload.src}
+              alt=""
+              width={32}
+              height={32}
+              priority={true}
+            />
             <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
               Drag & Drop or
               <span className="text-link-blue cursor-pointer">
@@ -308,10 +327,7 @@ export default function Rental() {
             </span>
           </div>
           <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">
-            <Thumbs
-              files={chauffeur.otherImages}
-              setFiles={setotherImagesR}
-            />
+            <Thumbs files={chauffeur.otherImages} setFiles={setotherImagesR} />
           </div>
         </div>
       )}

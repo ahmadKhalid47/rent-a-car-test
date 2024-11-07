@@ -14,6 +14,7 @@ import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
 import { useDropzone } from "react-dropzone";
 import { useFileDrop } from "@/app/Components/functions/onDragFromDrag";
+import Image from "next/image";
 
 export default function ReferenceComp() {
   let Customer = useSelector((state: RootState) => state.Customer);
@@ -165,7 +166,13 @@ function ImageUpload({ value, action, index }: any) {
         {...getRootPropsOther()}
       >
         <input {...getInputPropsOther()} />
-        <img src={upload.src} />
+                  <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
         <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
           Drag & Drop or
           <span className="text-link-blue cursor-pointer"> choose file </span>

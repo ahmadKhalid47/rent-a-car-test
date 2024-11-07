@@ -19,6 +19,7 @@ import Link from "next/link";
 import { formatDate2 } from "../Components/functions/formats";
 import { TypeInput } from "../Components/InputComponents/TypeInput";
 import { SelectInput } from "../Components/InputComponents/SelectInput";
+import Image from "next/image";
 
 export default function UserDashboard() {
   const global = useSelector((state: RootState) => state.Global);
@@ -248,7 +249,13 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d7.src} />
+                  <Image
+                    src={d7.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -261,7 +268,13 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d6.src} />
+                  <Image
+                    src={d6.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -274,7 +287,13 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d5.src} />
+                  <Image
+                    src={d5.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -294,7 +313,13 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d4.src} />
+                  <Image
+                    src={d4.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -311,11 +336,21 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d3.src} />
+                  <Image
+                    src={d3.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? reservationsData?.length : <TextLoader />}
+                    {!vehicleLoading ? (
+                      reservationsData?.length
+                    ) : (
+                      <TextLoader />
+                    )}
                   </div>
                   <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                     Total Reservations{" "}
@@ -331,7 +366,13 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d2.src} />
+                  <Image
+                    src={d2.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -349,7 +390,13 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d1.src} />
+                  <Image
+                    src={d1.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority={true}
+                  />{" "}
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">

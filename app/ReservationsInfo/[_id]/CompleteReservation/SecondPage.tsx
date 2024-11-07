@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { RootState } from "@/app/store";
@@ -8,15 +9,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import shape from "@/public/ShapeBlack.svg";
-import { FaTimesCircle, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
 import { setdamages} from "@/app/store/reservations";
 import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
-import image404 from "@/public/image404.png";
 import { MediumLoader } from "@/app/Components/Loader";
 import { setAlert, setSeverity } from "@/app/store/Global";
-import { Thumbs, Thumbs2 } from "@/app/Components/functions/thumbsFromDrag";
+import { Thumbs2 } from "@/app/Components/functions/thumbsFromDrag";
 
 export default function SecondPage() {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
@@ -426,7 +426,13 @@ export default function SecondPage() {
                   {...getRootProps()}
                 >
                   <input {...getInputProps()} />
-                  <img src={upload.src} />
+                            <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
                   <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
                     Drag & Drop or
                     <span className="text-link-blue cursor-pointer">

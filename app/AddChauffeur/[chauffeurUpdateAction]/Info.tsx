@@ -31,6 +31,7 @@ import { useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import Image from "next/image";
 
 export default function Info() {
   let dispatch = useDispatch();
@@ -234,7 +235,13 @@ export default function Info() {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-          <img src={upload.src} />
+                    <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>

@@ -4,12 +4,8 @@ import vip from "@/public/vip.svg";
 import upload from "@/public/Paper Upload.svg";
 import { useState, useEffect, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import {
-  TempTypeInput,
-} from "../../Components/InputComponents/TypeInput";
-import {
-  TempSelectInput,
-} from "../../Components/InputComponents/SelectInput";
+import { TempTypeInput } from "../../Components/InputComponents/TypeInput";
+import { TempSelectInput } from "../../Components/InputComponents/SelectInput";
 import {
   setalternativePhoneR,
   setcityR,
@@ -32,14 +28,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { CountryStateCity } from "../../Components/functions/CountryStateCity";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import { Thumbs } from "@/app/Components/functions/thumbsFromDrag";
+import Image from "next/image";
 
 export default function Info() {
   const dispatch = useDispatch();
   const customer = useSelector((state: RootState) => state.Customer);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; 
-    const allowedTypes = ["image/jpeg", "image/png"]; 
+    const maxFileSize = 5 * 1024 * 1024;
+    const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes?.includes(file.type)) {
@@ -73,12 +70,10 @@ export default function Info() {
     }
   }, []);
 
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
   });
-
 
   const { countries, states, cities } = CountryStateCity(
     customer.country,
@@ -216,7 +211,13 @@ export default function Info() {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-          <img src={upload.src} />
+          <Image
+            src={upload.src}
+            alt=""
+            width={32}
+            height={32}
+            priority={true}
+          />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
