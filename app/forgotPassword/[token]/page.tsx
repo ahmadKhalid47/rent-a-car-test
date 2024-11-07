@@ -113,7 +113,7 @@ export default function ResetPassword() {
         <Loader />
       ) : (
         <>
-          {isVerified === false ? (
+          {isVerified !== false ? (
             <ExpiredPage />
           ) : (
             <div className="w-full h-fit">

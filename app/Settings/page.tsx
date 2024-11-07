@@ -12,6 +12,7 @@ import settings10 from "@/public/settings (4).svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MediumLoader } from "../Components/Loader";
+import Image from "next/image";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -150,7 +151,7 @@ function SettingBox({ link, img, heading, text }: any) {
       className="w-full lg:w-[48%] py-3 md:py-0 h-fit md:h-[100px] flex justify-start gap-4 items-center px-2 md:px-5 dark:bg-dark1 bg-white rounded-[10px] border-grey border-2"
     >
       <div className="w-[50px] h-[50px] bg-main-blue rounded-[10px] flex justify-center items-center">
-        <img src={img.src} className={`w-[25px] h-[25px]`} />
+        <Image alt="" width={25} height={25} src={img.src} />
       </div>
       <div className="h-full w-[100%] flex flex-col justify-center item-start">
         <h3 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[20px]">

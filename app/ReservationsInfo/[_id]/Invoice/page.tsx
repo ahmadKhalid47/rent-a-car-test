@@ -15,6 +15,7 @@ import { MediumLoader } from "@/app/Components/Loader";
 import { setAllValues as setAllInvoiceValues } from "@/app/store/Invoicing";
 import demyIcon from "@/public/features (1).png";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function reservationInfoMainPage() {
   let reservation = useSelector((state: RootState) => state.reservation);
@@ -152,7 +153,12 @@ function PrintCom({ data, id }: any) {
               <span className="font-[600]"> #{formatId(id)}</span>
             </h2>
             <div className="w-full h-fit rounded-[10px] text-black font-[500] text-[18px] leading-[21px] text-center flex justify-end items-center mt-3">
-              <img src={demyIcon.src} className={`w-[120px] h-[40px]`} />
+              <Image
+                alt=""
+                width={120}
+                height={40}
+                src={demyIcon.src}
+              />
             </div>
             <div className="w-full h-fit flex justify-between items-center mt-1">
               <div className="w-[50%] h-fit flex flex-col justify-start items-start text-[14px] font-[400] leading-[17px] text-black">

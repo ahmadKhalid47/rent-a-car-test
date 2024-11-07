@@ -187,7 +187,7 @@ export default function AdminDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d1.src} />
+                  <Image src={d1.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d2.src} />
+                  <Image src={d2.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <img src={d3.src} />
+                  <Image src={d3.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -259,13 +259,11 @@ export default function AdminDashboard() {
                           }
                         >
                           Name{" "}
-              <Image
-                alt=""
-                width={10}
-                height={10}
-                
-                src={arrows.src}
-
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
@@ -288,7 +286,6 @@ export default function AdminDashboard() {
                             alt=""
                             width={10}
                             height={10}
-                            
                             src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
@@ -312,7 +309,6 @@ export default function AdminDashboard() {
                             alt=""
                             width={10}
                             height={10}
-                            
                             src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
@@ -332,13 +328,11 @@ export default function AdminDashboard() {
                           }
                         >
                           Company{" "}
-              <Image
-                alt=""
-                width={10}
-                height={10}
-                
-                src={arrows.src}
-
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
@@ -357,13 +351,11 @@ export default function AdminDashboard() {
                           }
                         >
                           Expiry Date{" "}
-              <Image
-                alt=""
-                width={10}
-                height={10}
-                
-                src={arrows.src}
-
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            src={arrows.src}
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>

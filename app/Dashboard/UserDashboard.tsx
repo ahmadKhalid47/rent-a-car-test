@@ -249,13 +249,7 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d7.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d7.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -268,13 +262,7 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d6.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d6.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -287,13 +275,7 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d5.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d5.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -313,13 +295,7 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d4.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d4.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -336,13 +312,7 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d3.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d3.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -366,13 +336,7 @@ export default function UserDashboard() {
             <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d2.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />
+                  <Image src={d2.src} alt="" width={40} height={40} />
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -390,13 +354,7 @@ export default function UserDashboard() {
               </div>
               <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                 <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image
-                    src={d1.src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    
-                  />{" "}
+                  <Image src={d1.src} alt="" width={40} height={40} />{" "}
                 </div>
                 <div>
                   <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
