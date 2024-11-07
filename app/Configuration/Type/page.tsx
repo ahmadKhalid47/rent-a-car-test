@@ -250,7 +250,7 @@ export default function Vehicles() {
             alt=""
             width={32}
             height={32}
-            priority={true}
+            
           />
                             <span className="w-[70&] truncate bg-red500 leading-[24px]">
                               {exterior[0]?.name || "Upload Exterior Image"}
@@ -276,7 +276,7 @@ export default function Vehicles() {
             alt=""
             width={32}
             height={32}
-            priority={true}
+            
           />
                             <span className="w-[70&] truncate bg-red500 leading-[24px]">
                               {interior[0]?.name || "Upload Interior Image"}

@@ -8,6 +8,7 @@ import { SideBarLoader } from "./Loader";
 import { setSidebarShowR } from "../store/Global";
 import Link from "next/link";
 import Logo from "@/public/CarRentalDashboard.svg";
+import Image from "next/image";
 
 export default function Sidebar() {
   let global = useSelector((state: RootState) => state.Global);
@@ -26,15 +27,13 @@ export default function Sidebar() {
     >
       <div className="w-full h-[90px] dark:bg-dark1 bg-white flex justify-center border-b-[2px] transitions">
         <div className="w-full h-full flex justify-center items-center">
-          <Link
-            href={"/Dashboard"}
-            className="w-fit h-fit"
-          >
-            <img
+          <Link href={"/Dashboard"} className="w-fit h-fit">
+            <Image
+              alt=""
+              width={global.sidebarShow ? 172 : 60}
+              height={global.sidebarShow ? 60 : 25}
+              
               src={Logo.src}
-              className={`${
-                global.sidebarShow ? "w-[172px] h-[50px]" : "w-[60px] h-[25px]"
-              }`}
             />
           </Link>
         </div>

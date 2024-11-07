@@ -36,7 +36,7 @@ export default function ActiveButton({ active, _id, model, admin }: any) {
       alt=""
       width={16}
       height={16}
-      priority={true}
+      
       src={active ? check.src : unCheck.src}
       title={active ? "Inactive" : "Active"}
       className={`translate-y-[1px] ${

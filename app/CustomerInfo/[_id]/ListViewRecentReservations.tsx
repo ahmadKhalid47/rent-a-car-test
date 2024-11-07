@@ -48,7 +48,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -72,7 +72,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -96,7 +96,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -107,7 +107,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -118,7 +118,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -129,7 +129,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -140,7 +140,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -151,7 +151,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />

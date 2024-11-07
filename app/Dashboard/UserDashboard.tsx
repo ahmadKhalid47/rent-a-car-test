@@ -254,7 +254,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -273,7 +273,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -292,7 +292,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -318,7 +318,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -341,7 +341,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -371,7 +371,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />
                 </div>
                 <div>
@@ -395,7 +395,7 @@ export default function UserDashboard() {
                     alt=""
                     width={40}
                     height={40}
-                    priority={true}
+                    
                   />{" "}
                 </div>
                 <div>

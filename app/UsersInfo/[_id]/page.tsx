@@ -17,6 +17,7 @@ import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { setUserInfo } from "@/app/store/UserInfo";
 import { TextLoader } from "@/app/Components/Loader";
+import Image from "next/image";
 
 export default function UserInfoMainPage() {
   let global = useSelector((state: RootState) => state.Global);
@@ -32,7 +33,7 @@ export default function UserInfoMainPage() {
   const params = useParams(); // Get all route parameters
   const { _id } = params;
   const [loading, setLoading] = useState<any>(true);
-  
+
   let { UserInfo } = useSelector((state: RootState) => state.UserInfo);
 
   useEffect(() => {
@@ -59,8 +60,8 @@ export default function UserInfoMainPage() {
         setvehicleLoading(true);
         const result = await axios.post("/api/getSortedLeanData", {
           createdBy: UserInfo?._id,
-                  modelName: "vehicle",
-                });
+          modelName: "vehicle",
+        });
 
         setVehiclesData(result.data.data);
       } catch (error) {
@@ -171,12 +172,12 @@ export default function UserInfoMainPage() {
                 <div className="">
                   <div className="w-[155px] h-[155px] rounded-2xl ">
                     <img
+                      alt=""
                       src={
-                        UserInfo?.profilePic
+                        UserInfo?.profilePic[0]
                           ? UserInfo?.profilePic[0]
                           : image404.src
                       }
-                      alt="image-0"
                       style={{ width: "100%", height: "100%" }}
                       className="rounded-[10px]"
                     />
@@ -254,7 +255,7 @@ export default function UserInfoMainPage() {
               <div className="w-full h-fit flex flex-wrap justify-start items-start gap-8 overflow-auto scroll">
                 <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                   <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                    <img src={d7.src} />
+                    <Image alt="" width={40} height={40} src={d7.src} />
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -267,7 +268,7 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                   <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                    <img src={d3.src} />
+                    <Image alt="" width={40} height={40} src={d3.src} />
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -284,11 +285,15 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                   <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                    <img src={d4.src} />
+                    <Image alt="" width={40} height={40} src={d4.src} />
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                      {!CustomerLoading ? CustomersData?.length : <TextLoader />}
+                      {!CustomerLoading ? (
+                        CustomersData?.length
+                      ) : (
+                        <TextLoader />
+                      )}
                     </div>
                     <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
                       Total Customers{" "}
@@ -297,7 +302,7 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                   <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                    <img src={d2.src} />
+                    <Image alt="" width={40} height={40} src={d2.src} />
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
@@ -314,7 +319,7 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
                   <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                    <img src={d1.src} />
+                    <Image alt="" width={40} height={40} src={d1.src} />
                   </div>
                   <div>
                     <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">

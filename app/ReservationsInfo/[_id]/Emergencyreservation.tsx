@@ -14,7 +14,7 @@ export default function Emergencyreservations({ data, loading }: dataType) {
         <div className="w-[150px] h-[150px] rounded-2xl ">
           <img
             src={data?.data?.carImages[data?.data.thumbnailImage]||image404.src}
-            alt="image-0"
+            
             style={{ width: "100%", height: "100%" }}
             className="rounded-[10px]"
           />

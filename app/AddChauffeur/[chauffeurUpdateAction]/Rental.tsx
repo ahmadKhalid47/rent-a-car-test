@@ -164,7 +164,7 @@ export default function Rental() {
             alt=""
             width={32}
             height={32}
-            priority={true}
+            
           />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
@@ -226,7 +226,7 @@ export default function Rental() {
             alt=""
             width={32}
             height={32}
-            priority={true}
+            
           />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
@@ -309,7 +309,7 @@ export default function Rental() {
               alt=""
               width={32}
               height={32}
-              priority={true}
+              
             />
             <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
               Drag & Drop or

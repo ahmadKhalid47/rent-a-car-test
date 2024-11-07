@@ -263,7 +263,7 @@ export default function Vehicles() {
                             alt=""
                             width={32}
                             height={32}
-                            priority={true}
+                            
                           />
                           <span className="w-[70&] truncate bg-red500 leading-[24px]">
                             {Icon[0]?.name || "Upload Icon"}

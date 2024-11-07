@@ -218,7 +218,7 @@ export default function Others({ chauffeurData, vehicleData }: dataType) {
         <Image
           width={66}
           height={49}
-          priority={true}
+          
           alt={""}
           src={car.src}
           className="mt-2"

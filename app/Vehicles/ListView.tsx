@@ -198,7 +198,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -221,7 +221,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -243,7 +243,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -266,7 +266,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -288,7 +288,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -310,7 +310,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -332,7 +332,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -354,7 +354,7 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                priority={true}
+                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -493,7 +493,7 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      priority={true}
+                      
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
                       className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
@@ -505,7 +505,7 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      priority={true}
+                      
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"
@@ -518,7 +518,7 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      priority={true}
+                      
                       src={deleteIcon.src}
                       className="hover:scale-[1.3] cursor-pointer"
                       title="Delete"

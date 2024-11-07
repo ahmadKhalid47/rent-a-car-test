@@ -19,6 +19,7 @@ import configImg8 from "@/public/configImg (6).svg";
 import configImg9 from "@/public/configImg (7).svg";
 import configImg10 from "@/public/configImg (8).svg";
 import { setConfigurations } from "../store/Configurations";
+import Image from "next/image";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -107,9 +108,12 @@ export default function Vehicles() {
                   className="w-[100%] lg:w-[18.50%] h-[155px] dark:bg-dark1 bg-white rounded-[10px] border-[1px] border-grey px-0 md:px-5 lg:px-2 1400:px-5 py-2 xs:py-5 flex justify-center gap-3 md:gap-3 lg:gap-4 items-center relative flex-col hover:opacity-[0.9]"
                 >
                   <div className="w-fit h-fit flex justify-center items-center">
-                    <img
+                    <Image
+                      alt=""
+                      width={30}
+                      height={30}
                       src={item.img.src}
-                      className="dark:filter dark:brightness-[0] dark:invert w-[30px] h-[30px]"
+                      className="dark:filter dark:brightness-[0] dark:invert"
                     />
                   </div>
                   <span className="font-[600] text-[18px] xs:text-[24px] leading-none">
