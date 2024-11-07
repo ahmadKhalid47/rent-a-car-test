@@ -338,7 +338,7 @@ export default function GridView({ data }: dataType) {
                             >
                               Edit
                             </button>
-                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
+                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-[#d9d9d9]"></div>
                             <button
                               className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                               onClick={() => {
@@ -348,7 +348,7 @@ export default function GridView({ data }: dataType) {
                             >
                               Delete
                             </button>
-                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-t-[1px border-[#d9d9d9]"></div>
+                            <div className="mx-auto mt-1 mb-1 w-[100%] h-[0px] border-[#d9d9d9]"></div>
                             <button
                               className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                               onClick={() => {

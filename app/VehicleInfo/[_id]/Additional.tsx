@@ -33,7 +33,7 @@ export default function Additional() {
     >
       {Configurations?.Configurations?.feature ? (
         <div className="w-[100%] g-blue-500 min-h-[200px] max-h-fit flex flex-col items-start gap-2">
-          <div className="w-full h-[50px] g-pink-400 flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black">
+          <div className="w-full h-[50px] g-pink-400 flex justify-between items-center font-[600] text-[15px] xs:text-[24px] dark:text-white text-black">
             Features{" "}
             <FaChevronDown
               className={`w-4 h-4 transition-transform cursor-pointer ${

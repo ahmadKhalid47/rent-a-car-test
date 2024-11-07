@@ -211,7 +211,7 @@ export default function Info() {
           Add Image
         </h3>
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
           {...getRootProps()}
         >
           <input {...getInputProps()} />

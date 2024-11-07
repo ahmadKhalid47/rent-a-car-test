@@ -361,7 +361,7 @@ export default function Damages() {
                 Add Images
               </h3>
               <div
-                className="w-full h-[110px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+                className="w-full h-[110px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />

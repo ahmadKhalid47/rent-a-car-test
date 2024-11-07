@@ -280,7 +280,7 @@ export default function CustomerInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
             <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
               <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black">
+                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] dark:text-white text-black">
                   Recent Reservations
                   <FaChevronDown
                     className={`w-4 h-4 transition-transform cursor-pointer ${
@@ -304,7 +304,7 @@ export default function CustomerInfoMainPage() {
           <div className="w-full h-fit flex justify-start flex-col items-start gap-x-[5%] gap-y-4 rounded-[10px] py-7 border-[1px] border-grey dark:bg-dark1 bg-white px-10">
             <div className="w-full h-fit dark:bg-dark1 flex justify-between items-center">
               <div className="w-[100%] h-fit flex flex-col items-start gap-2">
-                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] leading-[0px dark:text-white text-black">
+                <div className="w-full flex justify-between items-center font-[600] text-[15px] xs:text-[24px] dark:text-white text-black">
                   Violations{" "}
                   <FaChevronDown
                     className={`w-4 h-4 transition-transform cursor-pointer ${

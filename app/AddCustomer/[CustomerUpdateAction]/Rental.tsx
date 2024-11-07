@@ -160,7 +160,7 @@ export default function Rental() {
         </span>
 
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
@@ -219,7 +219,7 @@ export default function Rental() {
           Upload Driving License*
         </span>
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
           {...getRootPropsLic()}
         >
           <input {...getInputPropsLic()} />
@@ -304,7 +304,7 @@ export default function Rental() {
           </span>
 
           <div
-            className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+            className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
             {...getRootPropsOther()}
           >
             <input {...getInputPropsOther()} />

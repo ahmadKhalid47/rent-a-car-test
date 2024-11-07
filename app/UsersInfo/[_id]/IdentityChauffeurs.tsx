@@ -65,7 +65,7 @@ export default function Generalchauffeur() {
           </p>
         </div>
         <div
-          className="w-[100%] h-fit flex justify-between items-start py-[3px] cursor-pointer border-b-[2px font-[400]"
+          className="w-[100%] h-fit flex justify-between items-start py-[3px] cursor-pointer font-[400]"
           onClick={() => {
             setActiveField("license");
             setImageIndex(0);

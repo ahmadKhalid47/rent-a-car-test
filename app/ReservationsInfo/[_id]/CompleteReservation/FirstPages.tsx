@@ -88,7 +88,7 @@ export default function FirstPage() {
           options={[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
         />
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
           {...getRootPropsFuel()}
         >
           <input {...getInputPropsFuel()} />
@@ -130,7 +130,7 @@ export default function FirstPage() {
           type={"number"}
         />
         <div
-          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center gap-[7px cursor-pointer"
+          className="w-full h-[170px] rounded-[12px] border-dashed border-2 flex flex-col justify-center items-center cursor-pointer"
           {...getRootPropsodometer()}
         >
           <input {...getInputPropsodometer()} />

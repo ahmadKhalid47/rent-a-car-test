@@ -278,7 +278,7 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-fit py-4 flex justify-between items-center border-b-[1px border-grey">
+              <div className="w-full h-fit py-4 flex justify-between items-center border-grey">
                 <div className="w-fit flex flex-col justify-start items-start">
                   <h3 className="font-[400] text-[14px] xs:text-[16px] md:text-[20px] leading-[23px] w-[100%]">
                     Include VAT Percentage{" "}

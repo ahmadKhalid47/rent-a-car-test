@@ -33,7 +33,7 @@ export default function ReferenceChauffeurs() {
             Father
           </p>
         </div>
-        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] border-b-[2px font-[400]">
+        <div className="w-[100%] h-fit flex justify-between items-start py-[3px] font-[400]">
           <p className="w-[20%] text-start text-[18px] leading-[27px]">
             Lina Smith
           </p>

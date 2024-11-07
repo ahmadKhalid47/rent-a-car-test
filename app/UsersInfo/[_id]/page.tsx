@@ -150,7 +150,7 @@ export default function UserInfoMainPage() {
           global.sidebarShow ? "nav-width" : "nav-closed-width"
         } h-fit absolute right-0 flex flex-col justify-start items-start gap-[20px]   pe-[10px] md:pe-[50px] ps-[10px] md:ps-[20px]  pb-14`}
       >
-        <div className="w-full h-[200px  px-6">
+        <div className="w-full  px-6">
           <span className="font-[600] text-[25px] leading-[38px] dark:text-white text-black capitalize">
             {UserInfo?.name ? UserInfo?.name : "---"}
           </span>
