@@ -7,14 +7,14 @@
   background-color: #0094da;
 }
 .bg-main-dark-blue {
-  background-color:#054B86;
+  background-color: #054b86;
 }
 
 .border-main-blue {
   border-color: #0094da;
 }
 .border-main-dark-blue {
-  border-color: #054B86;
+  border-color: #054b86;
 }
 
 .bg-main-red {
@@ -28,7 +28,7 @@
   color: #0094da;
 }
 .text-main-dark-blue {
-  color: #054B86;
+  color: #054b86;
 }
 
 .bg-main-blue-hover:hover {
@@ -510,16 +510,16 @@ button:active {
 .overscroll-behavior-block {
   overscroll-behavior-block: contain;
 }
-.hover-none{
+.hover-none {
   opacity: 1;
 }
-.hover-none:hover{
+.hover-none:hover {
   opacity: 1;
 }
-.hover-none:active{
+.hover-none:active {
   opacity: 1;
 }
-.hover-none:focus{
+.hover-none:focus {
   opacity: 1;
 }
 @keyframes zoom {
@@ -534,15 +534,15 @@ button:active {
 .animate-zoom {
   animation: zoom 0.6s;
 }
-.Mui-selected{
-  background-color: #054B86 !important;
+.Mui-selected {
+  background-color: #054b86 !important;
 }
-.Mui-selected:hover{
-opacity: 0.9;
+.Mui-selected:hover {
+  opacity: 0.9;
 }
 
 .parent {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .card {
@@ -557,4 +557,8 @@ opacity: 0.9;
 
 .card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.list-hover:hover {
+  transform: scale(1.005);
 }

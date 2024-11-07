@@ -230,7 +230,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -253,7 +252,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -275,7 +273,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -297,7 +294,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -319,7 +315,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -341,7 +336,6 @@ export default function ListViewcustomers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -372,7 +366,7 @@ export default function ListViewcustomers({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/CustomerInfo/${item?._id}`}
-                  className={`w-full h-fit flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
+                  className={`w-full h-fit flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
@@ -394,13 +388,7 @@ export default function ListViewcustomers({ data }: dataType) {
                     <span className="w-[90%] truncate">{item?.data?.name}</span>
 
                     {item?.data?.isVip && (
-                      <Image
-                        alt=""
-                        width={21}
-                        height={15}
-                        
-                        src={vip.src}
-                      />
+                      <Image alt="" width={21} height={15} src={vip.src} />
                     )}
                   </div>
                   <div className="text-start pe-3 truncate w-[10%]">
@@ -485,7 +473,6 @@ export default function ListViewcustomers({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={item.active ? check.src : unCheck.src}
                       title={item.active ? "Inactive" : "Active"}
                       className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
@@ -497,7 +484,6 @@ export default function ListViewcustomers({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"
@@ -510,7 +496,6 @@ export default function ListViewcustomers({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className="hover:scale-[1.3] cursor-pointer"
                       title="Delete"

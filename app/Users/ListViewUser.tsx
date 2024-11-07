@@ -131,7 +131,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 onClick={() =>
                   sort(
                     "name",
@@ -153,7 +152,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 onClick={() =>
                   sort(
@@ -175,7 +173,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 onClick={() =>
                   sort(
                     "name",
@@ -197,7 +194,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 onClick={() =>
                   sort(
                     "phone",
@@ -219,7 +215,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 onClick={() =>
                   sort(
                     "gender",
@@ -286,7 +281,6 @@ export default function ListViewUsers({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -303,7 +297,7 @@ export default function ListViewUsers({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/UsersInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover ${
                     index % 2 !== 0
                       ? "dark:bg-dark2 bg-light-grey"
                       : "dark:bg-dark1 bg-white"
@@ -368,7 +362,6 @@ export default function ListViewUsers({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className="hover:scale-[1.3] cursor-pointer"
@@ -380,7 +373,6 @@ export default function ListViewUsers({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className="hover:scale-[1.3] cursor-pointer"
                       title="Delete"
