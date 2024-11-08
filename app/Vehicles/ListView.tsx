@@ -343,15 +343,7 @@ export default function ListView({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/VehicleInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize border-grey list-hover dark:bg-dark1 bg-white 
-                         ${
-                           index ===
-                             Math.min(page * itemsPerPage, data?.length) - 1 ||
-                           index + 12 === data?.length - 1
-                             ? ""
-                             : "border-b-2"
-                         }
-                      `}
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize border-grey list-hover dark:bg-dark1 bg-white border-b-2`}
                 >
                   <div className="truncate  w-[4%]  flex justify-start ps-3 items-center">
                     <div
