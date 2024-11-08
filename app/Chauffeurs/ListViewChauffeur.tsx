@@ -6,11 +6,8 @@ import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { RootState } from "../store";
 import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "../store/Global";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { formatCreatedAtDate } from "../Components/functions/formats";
@@ -23,6 +20,7 @@ import {
 import ConfirmationPopup from "../Components/functions/Popups";
 import Image from "next/image";
 import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
+import useItemToDelete from "../Components/functions/smallFunctions";
 
 interface dataType {
   data: Array<Object>;
@@ -38,8 +36,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{
     [key: string]: "asc" | "desc";
   }>({});
-  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
-  const dispatch = useDispatch();
+  const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+    useItemToDelete();
   const router = useRouter();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
@@ -49,7 +47,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
   }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
-  const [editLoading, setEditLoading] = useState(false);
   const itemsPerPage = 12;
 
   const handleChange = (event: any, value: any) => {
@@ -63,17 +60,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
     page * itemsPerPage
   );
 
-  function handlePushItem(_id: any) {
-    setItemToDeleteMany((prevArray: any) => {
-      const isPresent = prevArray?.includes(_id);
-
-      if (isPresent) {
-        return prevArray.filter((item: any) => item !== _id);
-      } else {
-        return [...prevArray, _id];
-      }
-    });
-  }
   const allIds = data.map((item: any) => item?._id);
   const { updateActiveManyItem } = useUpdateActiveManyItem();
 

@@ -21,7 +21,7 @@ import ActiveButtonMultiple from "@/app/Components/functions/ActiveButtonMultipl
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import ConfirmationPopup from "@/app/Components/functions/Popups";
 import { GoTriangleDown } from "react-icons/go";
-
+import useItemToDelete from "@/app/Components/functions/smallFunctions";
 interface dataType {
   data: Array<Object>;
   CategoryData: Array<Object>;
@@ -34,7 +34,8 @@ export default function ListView({ data, CategoryData }: dataType) {
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+    useItemToDelete();
   const [itemToEdit, setItemToEdit] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
@@ -135,17 +136,6 @@ export default function ListView({ data, CategoryData }: dataType) {
       setEditPopup(false);
       setItemToEdit(null);
     }
-  }
-  function handlePushItem(_id: any) {
-    setItemToDeleteMany((prevArray: any) => {
-      const isPresent = prevArray?.includes(_id);
-
-      if (isPresent) {
-        return prevArray.filter((item: any) => item !== _id);
-      } else {
-        return [...prevArray, _id];
-      }
-    });
   }
   const allIds = data
     .filter((item: any) => item?.createdBy === myProfile._id)

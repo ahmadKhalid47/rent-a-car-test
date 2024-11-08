@@ -10,6 +10,7 @@ import {
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
 import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
+import useItemToDelete from "@/app/Components/functions/smallFunctions";
 
 interface dataType {
   data: Array<Object>;
@@ -21,7 +22,8 @@ export default function GridView({ data }: dataType) {
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  const [itemToDeleteMany, setItemToDeleteMany] = useState<any>([]);
+    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+    useItemToDelete();
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
@@ -46,17 +48,6 @@ export default function GridView({ data }: dataType) {
   };
 
 
-  function handlePushItem(_id: any) {
-    setItemToDeleteMany((prevArray: any) => {
-      const isPresent = prevArray?.includes(_id);
-
-      if (isPresent) {
-        return prevArray.filter((item: any) => item !== _id);
-      } else {
-        return [...prevArray, _id];
-      }
-    });
-  }
   const allIds = data.map((item: any) => item?._id);
 
   const { updateActiveManyItem } = useUpdateActiveManyItem();
