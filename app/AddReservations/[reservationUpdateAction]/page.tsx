@@ -16,6 +16,7 @@ import { LoaderOnSave, SmallLoader } from "../../Components/Loader";
 import { useParams, useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/reservations";
 import Link from "next/link";
+import { useFetchData } from "@/app/Components/functions/apiCallingHooks";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);
@@ -26,13 +27,13 @@ export default function Reservations() {
   const [customerloading, setcustomerLoading] = useState<any>(true);
   const [chauffeursloading, setchauffeursLoading] = useState<any>(true);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
-  let dispatch = useDispatch();
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<any>(true);
   let [goToPage, setGoToPage] = useState(0);
-  const [loading, setLoading] = useState<any>(false);
   const formRef = useRef<any>(null);
+  let dispatch = useDispatch();
   const params = useParams();
   const router = useRouter();
   const { reservationUpdateAction } = params;
@@ -44,68 +45,24 @@ export default function Reservations() {
     }
   }, [isMobile]);
 
-  // Customer Data
-  useEffect(() => {
-    async function getData() {
-      try {
-        setcustomerLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "customer",
-        });
-        if (result?.data?.data) {
-          setCustomersData(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setcustomerLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id]);
-  // Chauffeur Data
-  useEffect(() => {
-    async function getData() {
-      try {
-        setchauffeursLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "chauffeur",
-        });
-
-        if (result?.data?.data) {
-          setchauffeursData(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setchauffeursLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id]);
-  // vehicle Data
-  useEffect(() => {
-    async function getData() {
-      try {
-        setvehicleLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "vehicle",
-        });
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setvehicleLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id]);
+  useFetchData({
+    modelName: "vehicle",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setLoading: setvehicleLoading,
+  });
+  useFetchData({
+    modelName: "customer",
+    createdBy: myProfile._id,
+    setData: setCustomersData,
+    setLoading: setcustomerLoading,
+  });
+  useFetchData({
+    modelName: "chauffeur",
+    createdBy: myProfile._id,
+    setData: setchauffeursData,
+    setLoading: setchauffeursLoading,
+  });
 
   const customerDataById = customersData.find(
     (customer: any) => customer._id === reservation?.customer_id
@@ -146,7 +103,7 @@ export default function Reservations() {
   async function saveData(action: string) {
     try {
       setLoading(true);
-      let result: any = await axios.post(`/api/savereservation`, {
+      await axios.post(`/api/savereservation`, {
         reservation,
         createdBy: myProfile._id,
         vehicle_id: reservation?.vehicle_id,

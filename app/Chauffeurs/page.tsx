@@ -18,6 +18,7 @@ import {
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function chauffeurs() {
   let global = useSelector((state: RootState) => state.Global);
@@ -52,28 +53,14 @@ export default function chauffeurs() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "chauffeur",
-        });
 
-
-        if (result?.data?.data) {
-          setchauffeursData(result.data.data);
-          setFilteredchauffeur(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id, global.vehicleDataReloader]);
+  useFetchData({
+    modelName: "chauffeur",
+    createdBy: myProfile._id,
+    setData: setchauffeursData,
+    setFilteredData: setFilteredchauffeur,
+    setLoading: setLoading,
+  });
 
   useEffect(() => {
     filterchauffeur();
@@ -275,7 +262,7 @@ export default function chauffeurs() {
                   <option value={"On Trip"}>On Trip</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
@@ -307,7 +294,7 @@ export default function chauffeurs() {
                   <option value={"Custom"}>Custom</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />

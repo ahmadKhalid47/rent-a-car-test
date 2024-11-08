@@ -11,11 +11,8 @@ import { SelectInputWidth } from "../Components/InputComponents/SelectInput";
 import { TextLoader, MediumLoader } from "../Components/Loader";
 import { GrPowerReset } from "react-icons/gr";
 import { useHandleExport } from "../Components/functions/exportFunction";
-// import { Pie } from "react-chartjs-2";
-// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
-
-// ChartJS.register(ArcElement, Tooltip, Legend);
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);
@@ -39,7 +36,9 @@ export default function Vehicles() {
     []
   );
   const [reservationLoading, setreservationLoading] = useState<any>(true);
-  const handleExport = useHandleExport(); 
+  const handleExport = useHandleExport();
+  const [loading, setLoading] = useState<any>(true);
+  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
   useEffect(() => {
     if (isMobile) {
@@ -48,21 +47,14 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData() {
-      try {
-                const result = await axios.post("/api/getSortedLeanData", {
-                  createdBy: myProfile._id,
-                  modelName: "vehicle",
-                });
-        setVehiclesData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+
+  useFetchData({
+    modelName: "vehicle",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    setLoading: setLoading,
+  });
 
   function filterReg() {
     let filtered: any = VehiclesData;
@@ -88,25 +80,16 @@ export default function Vehicles() {
     }
     return filtered;
   }
-  useEffect(() => {
-    async function getData() {
-      try {
-        setreservationLoading(true);
-                const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "reservation",
-        });
+ 
+  useFetchData({
+    modelName: "reservation",
+    createdBy: myProfile._id,
+    setData: setreservationsData,
+    setFilteredData: setFilterReservationsData,
+    setLoading: setreservationLoading,
+  });
 
-        setreservationsData(result.data.data);
-        setFilterReservationsData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setreservationLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
   const [completedReservations, setCompletedReservations] = useState(
     reservationsData.filter((item: any) => item?.data?.status === "complete")
@@ -299,26 +282,6 @@ export default function Vehicles() {
     upComingReservations?.length,
   ]);
 
-  // about graph
-  const data = {
-    labels: ["Complete", "Cancel", "Pending", "Upcoming"],
-    datasets: [
-      {
-        label: "Reservations",
-        backgroundColor: ["#4CAF50", "#FF4C4C", "#FFA500", "#42A5F5"],
-        data: [
-          completedReservations?.length,
-          canceledReservations?.length,
-          pendingReservations?.length,
-          upComingReservations?.length,
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
-  const options = {
-    maintainAspectRatio: false, // Ensures custom sizing works
-  };
 
   return (
     <div
@@ -330,7 +293,7 @@ export default function Vehicles() {
         className={` w-full h-fit flex flex-col justify-start items-start gap-[0px] md:gap-[20px] pe-[10px] md:pe-[50px] ps-[10px] md:ps-[40px] pb-10`}
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
-                    <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+          <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             Report
           </span>
         </div>
@@ -518,15 +481,6 @@ export default function Vehicles() {
                   </div>
                 </div>
               </div>
-              {/* <div className="w-[45%] h-[360px] flex justify-center items-center">
-                {configurationsLoading ? (
-                  <MediumLoader />
-                ) : (
-                  <div className="w-[100%] h-[330px] flex justify-center items-center">
-                    <Pie data={data} options={options} />
-                  </div>
-                )}
-              </div> */}
             </div>
           </div>
         </div>

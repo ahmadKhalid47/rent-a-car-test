@@ -19,6 +19,7 @@ import { FaTimesCircle } from "react-icons/fa";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -55,27 +56,14 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "reservation",
-        });
 
-        if (result?.data?.data) {
-          setreservationsData(result.data.data);
-          setFilteredreservations(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  useFetchData({
+    modelName: "reservation",
+    createdBy: myProfile._id,
+    setData: setreservationsData,
+    setFilteredData: setFilteredreservations,
+    setLoading: setLoading,
+  });
 
   useEffect(() => {
     filterreservations();

@@ -18,6 +18,7 @@ import Link from "next/link";
 import { setUserInfo } from "@/app/store/UserInfo";
 import { TextLoader } from "@/app/Components/Loader";
 import Image from "next/image";
+import { useFetchData } from "@/app/Components/functions/apiCallingHooks";
 
 export default function UserInfoMainPage() {
   let global = useSelector((state: RootState) => state.Global);
@@ -52,87 +53,41 @@ export default function UserInfoMainPage() {
     }
     getData();
   }, []);
+  
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setvehicleLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: UserInfo?._id,
-          modelName: "vehicle",
-        });
-
-        setVehiclesData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setvehicleLoading(false);
-      }
-    }
-    if (UserInfo?._id) getData();
-  }, [UserInfo?._id]);
-
   const [CustomersData, setCustomersData] = useState<any[]>([]);
   const [CustomerLoading, setCustomerLoading] = useState<any>(true);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setCustomerLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: UserInfo?._id,
-          modelName: "customer",
-        });
-        setCustomersData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setCustomerLoading(false);
-      }
-    }
-    if (UserInfo?._id) getData();
-  }, [UserInfo?._id]);
-
   const [ChauffeursData, setChauffeursData] = useState<any[]>([]);
   const [ChauffeurLoading, setChauffeurLoading] = useState<any>(true);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setChauffeurLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: UserInfo._id,
-          modelName: "chauffeur",
-        });
-        setChauffeursData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setChauffeurLoading(false);
-      }
-    }
-    if (UserInfo?._id) getData();
-  }, [UserInfo?._id]);
-
   const [reservationLoading, setreservationLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setreservationLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: UserInfo?._id,
-          modelName: "reservation",
-        });
+  
+  useFetchData({
+    modelName: "vehicle",
+    createdBy: UserInfo._id,
+    setData: setVehiclesData,
+    setLoading: setvehicleLoading,
+  });
+  useFetchData({
+    modelName: "customer",
+    createdBy: UserInfo._id,
+    setData: setCustomersData,
+    setLoading: setCustomerLoading,
+  });
+  useFetchData({
+    modelName: "chauffeur",
+    createdBy: UserInfo._id,
+    setData: setChauffeursData,
+    setLoading: setChauffeurLoading,
+  });
+  useFetchData({
+    modelName: "reservation",
+    createdBy: UserInfo._id,
+    setData: setreservationsData,
+    setLoading: setreservationLoading,
+  });
 
-        setreservationsData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setreservationLoading(false);
-      }
-    }
-    if (UserInfo?._id) getData();
-  }, [global.vehicleDataReloader, UserInfo?._id]);
 
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"

@@ -22,6 +22,7 @@ import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -30,10 +31,10 @@ export default function Vehicles() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [gridView, setGridView] = useState(false);
   const [loading, setLoading] = useState<any>(true);
+  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
   const [status, setStatus] = useState<any>("");
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
@@ -64,27 +65,13 @@ export default function Vehicles() {
   }, [isMobile]);
   const handleExport = useHandleExport();
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "vehicle",
-        });
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  useFetchData({
+    modelName: "vehicle",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    setLoading: setLoading,
+  });
 
   useEffect(() => {
     filterVehicles();

@@ -17,6 +17,7 @@ import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort } from "../Components/functions/sortFunction";
 import Image from "next/image";
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -92,24 +93,14 @@ export default function AdminDashboard() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setvehicleLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "vehicle",
-        });
 
-        setVehiclesData(result.data.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setvehicleLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id]);
+  useFetchData({
+    modelName: "vehicle",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setLoading: setvehicleLoading,
+  });
+
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );

@@ -18,6 +18,7 @@ import {
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { useFetchData } from "../Components/functions/apiCallingHooks";
 
 export default function customers() {
   let global = useSelector((state: RootState) => state.Global);
@@ -27,7 +28,7 @@ export default function customers() {
   const router = useRouter();
   const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
-  
+
   const [customersData, setcustomersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredcustomer, setFilteredcustomer] = useState<any[]>([]);
@@ -53,27 +54,15 @@ export default function customers() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
-          createdBy: myProfile._id,
-          modelName: "customer",
-        });
 
-        if (result?.data?.data) {
-          setcustomersData(result.data.data);
-          setFilteredcustomer(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [myProfile._id, global.vehicleDataReloader]);
+
+  useFetchData({
+    modelName: "customer",
+    createdBy: myProfile._id,
+    setData: setcustomersData,
+    setFilteredData: setFilteredcustomer,
+    setLoading: setLoading,
+  });
 
   useEffect(() => {
     filtercustomer();
@@ -275,7 +264,7 @@ export default function customers() {
                   ))}
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
@@ -307,7 +296,7 @@ export default function customers() {
                   <option value={"Custom"}>Custom</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
                 <div className="absolute left-2 text-[#808080]">
                   <CiFilter />
