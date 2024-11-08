@@ -11,20 +11,25 @@ export function useFetchData({
   setData,
   setFilteredData,
   setLoading,
+  apiName,
+  sortField,
 }: any) {
   let global = useSelector((state: RootState) => state.Global);
+  console.log(apiName);
+  
   useEffect(() => {
     async function getData() {
       try {
         setLoading(true);
-        const result = await axios.post("/api/getSortedLeanData", {
+        const result = await axios.post(`/api/${apiName}`, {
           createdBy,
           modelName,
+          sortField,
         });
         if (result?.data?.data) {
           setData(result.data.data);
           if (setFilteredData) {
-            setFilteredData(result.data.data); // Only set filtered data if the function is provided
+            setFilteredData(result.data.data);
           }
         }
       } catch (error) {

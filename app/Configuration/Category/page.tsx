@@ -15,6 +15,7 @@ import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 import { CiSearch } from "react-icons/ci";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -40,28 +41,29 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setDataLoading(true);
-        const result = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Category",
-          sortField: "Category",
-        });
+  // useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       setDataLoading(true);
+  //       const result = await axios.post("/api/getSingleConfiguration", {
+  //         createdBy: myProfile._id,
+  //         model: "Category",
+  //         sortField: "Category",
+  //       });
 
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  //       if (result?.data?.data) {
+  //         setVehiclesData(result.data.data);
+  //         setFilteredVehicles(result.data.data);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     } finally {
+  //       setDataLoading(false);
+  //     }
+  //   }
+  //   if (myProfile._id) getData();
+  // }, [global.vehicleDataReloader, myProfile._id]);
+
 
   async function save(action: string) {
     if (Category?.trim() === "") {
@@ -230,14 +232,4 @@ export default function Vehicles() {
       </div>
     </div>
   );
-}
-
-{
-  /* <button
-       className="w-[230px] py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] xs:text-[14px] md:text-[18px] leading-[21px] text-center"
-       onClick={() => save("new")}
-       disabled={loading === "" ? false : true}
-     >
-       {loading === "new" ? <SmallLoader /> : "Save and New"}
-     </button> */
 }

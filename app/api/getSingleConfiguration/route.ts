@@ -4,11 +4,12 @@ import RegistrationModel from "@/app/models/registration";
 
 export async function POST(req: Request) {
   try {
-    const { model, createdBy, sortField } = await req.json();
+    const { modelName, createdBy, sortField } = await req.json();
+console.log(sortField);
 
-    if (!model || !createdBy) {
+    if (!modelName || !createdBy) {
       return NextResponse.json(
-        { error: "model and createdBy are required" },
+        { error: "modelName and createdBy are required" },
         { status: 400 }
       );
     }
@@ -16,8 +17,8 @@ export async function POST(req: Request) {
     await connectDb();
     const adminCheck = await RegistrationModel.findOne({ admin: true });
 
-    // Dynamically import the specified model
-    const Model = await import(`@/app/models/${model}`).then(
+    // Dynamically import the specified modelName
+    const Model = await import(`@/app/models/${modelName}`).then(
       (mod) => mod.default
     );
 
