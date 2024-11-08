@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setfeatures } from "@/app/store/Vehicle";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Feature() {
   let vehicle = useSelector((state: RootState) => state.Vehicle);
@@ -77,7 +78,9 @@ export default function Feature() {
                       handleClick(item);
                     }}
                   >
-                    <img
+                    <Image
+                      width={20}
+                      height={20}
                       className={`w-[20px] h-[20px] ${
                         vehicle.features?.includes(item)
                           ? "filter brightness-[0] invert"

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -32,7 +33,9 @@ export function Thumbs({ files, setFiles }: dataType) {
               className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
             >
               <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-                <img
+                <Image
+                  width={64}
+                  height={64}
                   src={file.preview ? file.preview : file}
                   alt={file.name}
                   className="w-[64px] h-[64px]"

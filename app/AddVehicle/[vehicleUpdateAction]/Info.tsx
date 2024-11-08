@@ -434,13 +434,7 @@ export default function Info() {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-          <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+          <Image src={upload.src} alt="" width={32} height={32} />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -476,7 +470,8 @@ export default function Info() {
                   }`}
                   onClick={() => dispatch(setthumbnailImage(index))}
                 >
-                  <img
+                  <Image
+                    layout="fill"
                     src={file.preview ? file.preview : file}
                     alt={file.name}
                     className="w-[100%] h-[100%]"

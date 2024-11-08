@@ -483,7 +483,13 @@ export default function ListViewchauffeurs({ data }: dataType) {
                     </span>
                     <div className="relative max-w-3xl w-full animate-zoom">
                       <div className="relative">
-                        <img src={images[currentIndex]} className="w-full" />
+                        <Image
+                          alt=""
+                          width={768}
+                          height={0}
+                          src={images[currentIndex]}
+                          className="w-full"
+                        />
                       </div>
                       <button
                         className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-3xl p-2"

@@ -22,6 +22,7 @@ import { EmergencyCustomers } from "@/app/Components/InfoComponents/EmergencyCus
 import { ReferenceCustomers } from "@/app/Components/InfoComponents/ReferenceCustomers";
 import { AdditionalCustomers } from "@/app/Components/InfoComponents/AdditionalCustomers";
 import { OtherCustomers } from "@/app/Components/InfoComponents/OtherCustomers";
+import Image from "next/image";
 
 export default function chauffeurInfoMainPage() {
   let global = useSelector((state: RootState) => state.Global);
@@ -140,7 +141,10 @@ export default function chauffeurInfoMainPage() {
             <div className="w-full h-fit flex justify-between items-star rounded-[10px]">
               <div className="w-[36%] flex justify-center items-center">
                 <div className="w-[267px] h-[267px] flex justify-between items-start rounded-full overflow-hidden border-[1px] border-grey dark:bg-dark1 bg-white">
-                  <img
+                  <Image
+                    alt=""
+                    width={267}
+                    height={267}
                     src={chauffeurInfo?.chauffeurImage || image404.src}
                     className="w-full h-full"
                   />

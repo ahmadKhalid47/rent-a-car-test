@@ -97,14 +97,9 @@ export default function Info({ data, loading }: dataType) {
               className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey relative">
-                <Image
+                <img
                   alt=""
-                  layout="fill"
-                  src={
-                    item.data.customerImage
-                      ? item.data.customerImage
-                      : image404.src
-                  }
+                  src={item?.data?.customerImage || image404.src}
                 />
               </div>
               <div className="w-full sm:w-[55%] h-fit flex justify-center sm:justify-start flex-wrap items-center gap-1">

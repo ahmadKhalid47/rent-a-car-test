@@ -86,7 +86,9 @@ export default function Info({ score, message }: any) {
           className="w-fit h-fit flex flex-col justify-center items-center gap-[5px] relative"
         >
           <div className="relative w-[64px] h-[64px] rounded-[10px] border-[1px] border-grey overflow-hidden">
-            <img
+            <Image
+              width={64}
+              height={64}
               src={file?.preview ? file.preview : file}
               alt={file?.name}
               className="w-[64px] h-[64px]"
@@ -236,20 +238,14 @@ export default function Info({ score, message }: any) {
           {...getRootProps()}
         >
           <input {...getInputProps()} />
-                    <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+          <Image src={upload.src} alt="" width={32} height={32} />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
             to upload
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Select JPG, PNG {" "}
+            Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
             Maximum size 5MB{" "}

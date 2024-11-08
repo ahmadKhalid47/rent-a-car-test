@@ -6,7 +6,7 @@ import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import upload from "@/public/Paper Upload.svg";
-import { setdamages} from "@/app/store/Vehicle";
+import { setdamages } from "@/app/store/Vehicle";
 import { setAlert, setSeverity } from "@/app/store/Global";
 import React, { useEffect, useState } from "react";
 import { RootState } from "@/app/store";
@@ -30,7 +30,7 @@ export default function Damages() {
 
   const onDrop = useCallback((acceptedFiles: any) => {
     const maxFileSize = 5 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"]; 
+    const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes?.includes(file.type)) {
@@ -54,7 +54,6 @@ export default function Damages() {
     });
 
     if (filteredFiles?.length > 0) {
-      
       setFiles([
         Object.assign(filteredFiles[0], {
           preview: URL.createObjectURL(filteredFiles[0]),
@@ -105,7 +104,6 @@ export default function Damages() {
 
     // Extract files from the selected damage
     const filesToDelete = selectedDamage.files;
-
 
     // Create a new array without the deleted damage
     const updatedDamages = damages.filter((_: any, i: any) => i !== index);
@@ -184,7 +182,10 @@ export default function Damages() {
                 <div className="w-[326px] h-fit sm:h-[408px]  relative Damage-Zooming">
                   {exterior ? (
                     <div className="w-[326px] h-[408px] relative">
-                      <img
+                      <Image
+                        alt=""
+                        width={326}
+                        height={408}
                         src={exteriorImg || default_exterior.src}
                         className="w-[326px] h-[408px] cursor-pointer bg-white"
                         onClick={(e) => {
@@ -193,7 +194,10 @@ export default function Damages() {
                       />
                     </div>
                   ) : (
-                    <img
+                    <Image
+                      alt=""
+                      width={326}
+                      height={408}
                       src={interiorImg || default_interior.src}
                       className="w-[326px] h-[408px] bg-white"
                       onClick={(e) => {
@@ -277,7 +281,10 @@ export default function Damages() {
 
                 {vehicle?.damages?.map((item: any, key: number) => (
                   <div className="w-full h-[60px] mt-1 flex justify-between items-end border-b-[2px]">
-                    <img
+                    <Image
+                      alt=""
+                      width={80}
+                      height={50}
                       className="w-[80px] h-[50px] mb-2 truncate font-[400] text-[12px] xs:text-[14px] md:text-[18px] leading-none rounded-[5px]"
                       src={
                         item?.files[0] instanceof File
@@ -335,7 +342,7 @@ export default function Damages() {
                   <option value="Very High">Very High</option>
                 </select>
                 <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                  <GoTriangleDown className="text-[18px]" />
                 </div>
               </div>
             </div>
@@ -365,13 +372,7 @@ export default function Damages() {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-                          <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+                <Image src={upload.src} alt="" width={32} height={32} />
                 <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
                   Drag & Drop or
                   <span className="text-link-blue cursor-pointer">
@@ -454,7 +455,7 @@ export function Relation({ value, action }: any) {
             ))}
           </select>
           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+            <GoTriangleDown className="text-[18px]" />
           </div>
         </div>
       </div>
