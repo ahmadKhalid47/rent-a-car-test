@@ -18,6 +18,7 @@ import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort } from "../Components/functions/sortFunction";
 import Image from "next/image";
 import { useFetchData } from "../Components/functions/apiCalling";
+import RevenueChart from "../Components/functions/Graphs";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -200,6 +201,14 @@ export default function AdminDashboard() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="w-[100%] flex justify-start items-start flex-col">
+            <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
+              Revenue Summary
+            </span>
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey mt-5 relative">
+              <RevenueChart/>
             </div>
           </div>
           <div className="w-full h-fit flex justify-between items-start">
