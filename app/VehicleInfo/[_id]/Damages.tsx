@@ -1,32 +1,13 @@
 "use client";
 import React from "react";
 import { RootState } from "@/app/store";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { setConfigurations } from "@/app/store/Configurations";
-import axios from "axios";
+import { useSelector } from "react-redux";
 import ImageModal from "@/app/Components/functions/ImageModal";
 
 export default function Damages({ toggle }: any) {
   let { vehicleInfo } = useSelector((state: RootState) => state.VehicleInfo);
   let Configurations = useSelector((state: RootState) => state.Configurations);
-  const myProfile: any = useSelector((state: RootState) => state.myProfile);
-  let dispatch = useDispatch();
 
-  useEffect(() => {
-    async function getData2() {
-      try {
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        dispatch(setConfigurations(result?.data?.wholeData));
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
   let exteriorImg = Configurations?.Configurations?.type?.find(
     (item: any) => item.Type === vehicleInfo?.type
   )?.exterior;

@@ -76,16 +76,13 @@ export default function AdminDashboard() {
   useEffect(() => {
     setSortedData(data);
   }, []);
-  // }, [data]);
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const itemsPerPage = 12;
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
-  const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
-  const [Configurations, setConfigurationsData] = useState<any>([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -99,10 +96,10 @@ export default function AdminDashboard() {
     async function getData() {
       try {
         setvehicleLoading(true);
-                const result = await axios.post("/api/getSortedLeanData", {
-                  createdBy: myProfile._id,
-                  modelName: "vehicle",
-                });
+        const result = await axios.post("/api/getSortedLeanData", {
+          createdBy: myProfile._id,
+          modelName: "vehicle",
+        });
 
         setVehiclesData(result.data.data);
       } catch (error) {
@@ -113,9 +110,6 @@ export default function AdminDashboard() {
     }
     if (myProfile._id) getData();
   }, [myProfile._id]);
-  const activeVehicles = VehiclesData.filter(
-    (item: any) => item.rentOut === false && item.active === true
-  );
   const rentOutVehicles = VehiclesData.filter(
     (item: any) => item.rentOut === true
   );
@@ -136,24 +130,6 @@ export default function AdminDashboard() {
     }
     if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
-
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        setConfigurationsData(result?.data?.wholeData);
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setConfigurationsLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
-
 
   const paginatedData = sortedData.slice(
     (page - 1) * itemsPerPage,

@@ -35,22 +35,6 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        dispatch(setConfigurations(result?.data?.wholeData));
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
 
   const configArray = [
     {

@@ -168,24 +168,6 @@ function PrintCom({ data, id }: any) {
     }
   }, [data?.vehicle_id]);
 
-  // Configuration Data
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setcustomerLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        dispatch(setConfigurations(result?.data?.wholeData));
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setcustomerLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
-
   useEffect(() => {
     async function getData() {
       try {

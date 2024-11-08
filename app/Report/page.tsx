@@ -20,6 +20,9 @@ import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  let { Configurations } = useSelector(
+    (state: RootState) => state.Configurations
+  );
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
@@ -30,7 +33,6 @@ export default function Vehicles() {
   const [toDate, setToDate] = useState<any>("");
   const [carAvailable, setCarAvailable] = useState<any>(undefined);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
-  const [Configurations, setConfigurationsData] = useState<any>([]);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [vehicle, setVehicle] = useState<any>("All Vehicles");
   const [filterReservationsData, setFilterReservationsData] = useState<any[]>(
@@ -61,22 +63,7 @@ export default function Vehicles() {
     }
     if (myProfile._id) getData();
   }, [global.vehicleDataReloader, myProfile._id]);
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        setConfigurationsData(result?.data?.wholeData);
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setConfigurationsLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
+
   function filterReg() {
     let filtered: any = VehiclesData;
 
@@ -156,22 +143,7 @@ export default function Vehicles() {
       "Upcoming Reservations": upComingReservations?.length,
     },
   ]);
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        setConfigurationsData(result?.data?.wholeData);
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setConfigurationsLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
+
   function submitButton() {
     let filtered: any = VehiclesData;
 

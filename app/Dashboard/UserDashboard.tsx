@@ -24,13 +24,13 @@ import Image from "next/image";
 export default function UserDashboard() {
   const global = useSelector((state: RootState) => state.Global);
   const myProfile: any = useSelector((state: RootState) => state.myProfile);
+  let {Configurations} = useSelector((state: RootState) => state.Configurations);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [configurationsLoading, setConfigurationsLoading] = useState<any>(true);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
-  const [Configurations, setConfigurationsData] = useState<any>([]);
   const [make, setMake] = useState<any>("");
   const [model, setModel] = useState<any>("");
   const [regNo, setRegNo] = useState<any>("");
@@ -89,23 +89,7 @@ export default function UserDashboard() {
     (sum, record) => sum + Number(record.data.amount),
     0
   );
-
-  useEffect(() => {
-    async function getData2() {
-      try {
-        setConfigurationsLoading(true);
-        let result: any = await axios.post(`/api/getConfigurations`, {
-          createdBy: myProfile._id,
-        });
-        setConfigurationsData(result?.data?.wholeData);
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setConfigurationsLoading(false);
-      }
-    }
-    if (myProfile._id) getData2();
-  }, [myProfile._id]);
+console.log(Configurations);
 
   function submitButton() {
     let filtered: any = activeVehicles;

@@ -54,6 +54,12 @@ export default function RootLayout({
     }
     verifyTokenApi();
   }, []);
+  // console.log("loading", loading);
+  // console.log("isVerified", isVerified);
+  // console.log(
+  //   "isVerified === undefined || loading",
+  //   isVerified === undefined || loading
+  // );
 
   return (
     <StoreProvider>

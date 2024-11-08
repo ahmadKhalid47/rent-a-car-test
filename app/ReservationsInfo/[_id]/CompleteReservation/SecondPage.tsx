@@ -11,7 +11,7 @@ import { GoTriangleDown } from "react-icons/go";
 import { useDropzone } from "react-dropzone";
 import { FaTrash } from "react-icons/fa";
 import { useCallback } from "react";
-import { setdamages} from "@/app/store/reservations";
+import { setdamages } from "@/app/store/reservations";
 import { setConfigurations } from "@/app/store/Configurations";
 import { setVehicleInfo } from "@/app/store/vehicleInfo";
 import { MediumLoader } from "@/app/Components/Loader";
@@ -36,8 +36,8 @@ export default function SecondPage() {
   let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024; 
-    const allowedTypes = ["image/jpeg", "image/png"]; 
+    const maxFileSize = 5 * 1024 * 1024;
+    const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes?.includes(file.type)) {
@@ -69,7 +69,6 @@ export default function SecondPage() {
       ),
     ]);
   }, []);
-
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -110,7 +109,6 @@ export default function SecondPage() {
 
     const filesToDelete = selectedDamage.files;
 
-
     const updatedDamages = damages.filter((_: any, i: any) => i !== index);
 
     setDamages(updatedDamages);
@@ -122,19 +120,6 @@ export default function SecondPage() {
     setDegree("");
     setFiles([]);
   }, [popup]);
-
-  useEffect(() => {
-    async function getData2() {
-      try {
-        let result: any = await axios.post(`/api/getConfigurations`, {createdBy: myProfile._id});
-        dispatch(setConfigurations(result?.data?.wholeData));
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-      }
-    }
-    getData2();
-  }, []);
 
   useEffect(() => {
     async function getData() {
@@ -154,7 +139,6 @@ export default function SecondPage() {
       getData();
     }
   }, [reservation.vehicle_id]);
-
 
   let exteriorImg = Configurations
     ? Configurations.type?.find((item: any) => item.Type === vehicleInfo?.type)
@@ -368,7 +352,7 @@ export default function SecondPage() {
                     <option value="Scratch">Scratch</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                    <GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
               </div>
@@ -390,7 +374,7 @@ export default function SecondPage() {
                     <option value="Very High">Very High</option>
                   </select>
                   <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                    <GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
               </div>
@@ -420,13 +404,7 @@ export default function SecondPage() {
                   {...getRootProps()}
                 >
                   <input {...getInputProps()} />
-                            <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+                  <Image src={upload.src} alt="" width={32} height={32} />
                   <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
                     Drag & Drop or
                     <span className="text-link-blue cursor-pointer">
