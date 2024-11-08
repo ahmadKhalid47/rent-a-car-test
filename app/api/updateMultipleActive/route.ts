@@ -3,8 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request, params: any) {
   try {
-    const { active, model } = await req.json();
-    const { _id } = params.params;
+    const { active, model,_ids } = await req.json();
+    // const { _id } = params.params;
+console.log(active, model, _ids);
 
     connectDb();
 
@@ -17,7 +18,7 @@ export async function POST(req: Request, params: any) {
       return NextResponse.json({ error: "Model not found" });
     }
 
-    await Model.updateOne({ _id }, { $set: { active } });
+    await Model.updateMany({ _id: { $in: _ids } }, { $set: { active } });
 
     return NextResponse.json({ success: "User status updated" });
   } catch (err) {

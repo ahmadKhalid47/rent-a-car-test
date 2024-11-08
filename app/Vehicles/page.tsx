@@ -22,7 +22,7 @@ import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
-import { useFetchData } from "../Components/functions/apiCallingHooks";
+import { useFetchData } from "../Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);

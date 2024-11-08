@@ -18,7 +18,7 @@ import {
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import Link from "next/link";
-import { useFetchData } from "../Components/functions/apiCallingHooks";
+import { useFetchData } from "../Components/functions/apiCalling";
 
 export default function chauffeurs() {
   let global = useSelector((state: RootState) => state.Global);

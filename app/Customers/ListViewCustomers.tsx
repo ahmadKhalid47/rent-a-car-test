@@ -23,6 +23,7 @@ import {
   useDeleteItem,
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
+import useUpdateActiveManyItem from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
@@ -98,30 +99,18 @@ export default function ListViewcustomers({ data }: dataType) {
     }
   }
 
-  async function UpdateActiveManyItem(active: boolean) {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/updateMultipleActive`, {
-        _ids: itemToDeleteMany,
-        active: active,
-        model: "customer",
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          active
-            ? `Selective Customers Activated Successfully`
-            : "Selective Customers Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
+  const { updateActiveManyItem } = useUpdateActiveManyItem();
+
+  const handleActivateVehicles = (active: any) => {
+    updateActiveManyItem({
+      active: active,
+      itemToDeleteMany,
+      model: "customer",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete,
+    });
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState([]);
@@ -186,7 +175,7 @@ export default function ListViewcustomers({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(true);
+                handleActivateVehicles(true);
               }}
             >
               Active /
@@ -198,7 +187,7 @@ export default function ListViewcustomers({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(false);
+                handleActivateVehicles(false);
               }}
             >
               Inactive Multiple

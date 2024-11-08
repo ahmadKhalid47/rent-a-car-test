@@ -17,7 +17,7 @@ import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort } from "../Components/functions/sortFunction";
 import Image from "next/image";
-import { useFetchData } from "../Components/functions/apiCallingHooks";
+import { useFetchData } from "../Components/functions/apiCalling";
 
 export default function AdminDashboard() {
   const data: any = [

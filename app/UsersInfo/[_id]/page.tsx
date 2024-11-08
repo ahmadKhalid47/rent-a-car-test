@@ -18,7 +18,7 @@ import Link from "next/link";
 import { setUserInfo } from "@/app/store/UserInfo";
 import { TextLoader } from "@/app/Components/Loader";
 import Image from "next/image";
-import { useFetchData } from "@/app/Components/functions/apiCallingHooks";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function UserInfoMainPage() {
   let global = useSelector((state: RootState) => state.Global);

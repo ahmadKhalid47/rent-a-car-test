@@ -12,7 +12,7 @@ import { TextLoader, MediumLoader } from "../Components/Loader";
 import { GrPowerReset } from "react-icons/gr";
 import { useHandleExport } from "../Components/functions/exportFunction";
 import { TypeInputWidth } from "../Components/InputComponents/TypeInput";
-import { useFetchData } from "../Components/functions/apiCallingHooks";
+import { useFetchData } from "../Components/functions/apiCalling";
 
 export default function Vehicles() {
   const global = useSelector((state: RootState) => state.Global);

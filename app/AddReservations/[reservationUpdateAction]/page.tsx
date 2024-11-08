@@ -16,7 +16,7 @@ import { LoaderOnSave, SmallLoader } from "../../Components/Loader";
 import { useParams, useRouter } from "next/navigation";
 import { resetState, setAllValues } from "@/app/store/reservations";
 import Link from "next/link";
-import { useFetchData } from "@/app/Components/functions/apiCallingHooks";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Reservations() {
   let global = useSelector((state: RootState) => state.Global);

@@ -22,6 +22,7 @@ import {
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
 import Image from "next/image";
+import useUpdateActiveManyItem from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
@@ -96,31 +97,18 @@ export default function ListViewchauffeurs({ data }: dataType) {
       setEditLoading(false);
     }
   }
+  const { updateActiveManyItem } = useUpdateActiveManyItem();
 
-  async function UpdateActiveManyItem(active: boolean) {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/updateMultipleActive`, {
-        _ids: itemToDeleteMany,
-        active: active,
-        model: "chauffeur",
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          active
-            ? `Selective Chauffeurs Activated Successfully`
-            : "Selective Chauffeurs Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
+  const handleActivateVehicles = (active: any) => {
+    updateActiveManyItem({
+      active: active,
+      itemToDeleteMany,
+      model: "chauffeur",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete,
+    });
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState([]);
@@ -182,7 +170,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(true);
+                handleActivateVehicles(true);
               }}
             >
               Active /
@@ -194,7 +182,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(false);
+                handleActivateVehicles(false);
               }}
             >
               Inactive Multiple
