@@ -14,6 +14,7 @@ import {
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
+import useUpdateActiveManyItem from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
@@ -83,32 +84,18 @@ export default function GridView({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-  async function UpdateActiveManyItem(active: boolean) {
-    try {
-      setDeleteLoading(true);
-      await axios.post(`/api/updateMultipleActive`, {
-        _ids: itemToDeleteMany,
-        active: active,
-        model: "vehicle",
-      });
 
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          active
-            ? "Selective Vehicles Activated Successfully"
-            : "Selective Vehicles Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDeleteLoading(false);
-      setPopup(false);
-      setItemToDelete(null);
-    }
-  }
-
+  const { updateActiveManyItem } = useUpdateActiveManyItem();
+  const handleActivateVehicles = (active: any) => {
+    updateActiveManyItem({
+      active: active,
+      itemToDeleteMany,
+      model: "vehicle",
+      setDeleteLoading,
+      setPopup,
+      setItemToDelete,
+    });
+  };
   const handleDeleteConfirm = () => {
     deleteItem(
       itemToDelete,
@@ -118,6 +105,7 @@ export default function GridView({ data }: dataType) {
       setItemToDelete
     );
   };
+  
   return (
     <div className="w-full h-fit">
       <div
@@ -150,7 +138,7 @@ export default function GridView({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(true);
+                handleActivateVehicles(true);
               }}
             >
               Active /
@@ -162,7 +150,7 @@ export default function GridView({ data }: dataType) {
                   : "cursor-pointer hover:underline"
               }`}
               onClick={() => {
-                UpdateActiveManyItem(false);
+                handleActivateVehicles(false);
               }}
             >
               Inactive Multiple
