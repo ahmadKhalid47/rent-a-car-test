@@ -8,14 +8,12 @@ import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { GoTriangleDown } from "react-icons/go";
 import ListViewReservations from "./ListViewReservations";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { MediumLoader } from "../Components/Loader";
 import {
   renameKeys,
   useHandleExport,
 } from "../Components/functions/exportFunction";
-import { FaTimesCircle } from "react-icons/fa";
 import SearchEmpty from "../Components/functions/SearchEmpty";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import Link from "next/link";
@@ -27,7 +25,6 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
 
   const [reservationsData, setreservationsData] = useState<any[]>([]);
@@ -157,6 +154,7 @@ export default function Vehicles() {
       },
     ]);
   }
+
   const handleExport = useHandleExport();
   const keyMap = {
     customer_id: "customer_id",

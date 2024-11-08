@@ -26,7 +26,6 @@ export default function customers() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
 
   const [customersData, setcustomersData] = useState<any[]>([]);
