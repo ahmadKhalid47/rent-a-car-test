@@ -105,3 +105,5 @@ const useUpdateActiveManyItem = () => {
 };
 
 export default useUpdateActiveManyItem;
+
+// single active / inactive api calling
