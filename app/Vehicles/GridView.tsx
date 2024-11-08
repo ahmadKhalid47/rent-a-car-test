@@ -9,8 +9,11 @@ import {
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
-import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
+import useUpdateActive, {
+  useUpdateActiveManyItem,
+} from "../Components/functions/apiCalling";
 import useItemToDelete from "@/app/Components/functions/smallFunctions";
+import Image from "next/image";
 
 interface dataType {
   data: Array<Object>;
@@ -22,7 +25,7 @@ export default function GridView({ data }: dataType) {
   const [popup, setPopup] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+  const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
     useItemToDelete();
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const deleteItem = useDeleteItem();
@@ -46,7 +49,6 @@ export default function GridView({ data }: dataType) {
       setIsOpen(e);
     }
   };
-
 
   const allIds = data.map((item: any) => item?._id);
 
@@ -138,7 +140,8 @@ export default function GridView({ data }: dataType) {
             <div className="w-[100%] sm:w-[330px] 1400:w-[340px] 2xl:w-[90%] flex justify-start gap-2 items-center mt-4">
               <div
                 className={`w-[15px] h-[15px] rounded-[1px] cursor-pointer ${
-                  itemToDeleteMany?.length === data?.length && data?.length !== 0
+                  itemToDeleteMany?.length === data?.length &&
+                  data?.length !== 0
                     ? "bg-check"
                     : ""
                 } border-2 border-dark-grey`}
@@ -214,14 +217,15 @@ export default function GridView({ data }: dataType) {
                   </div>
                 </div>
               </div>
-              <div className="w-[100%] h-[173px] flex justify-center items-center gap-1">
+              <div className="w-[100%] h-[173px] flex justify-center items-center gap-1 relative">
                 {item?.data?.carImages ? (
-                  <img
+                  <Image
+                    alt=""
+                    layout="fill"
                     src={
                       item?.data?.carImages[item?.data?.thumbnailImage] ||
                       image404.src
                     }
-                    className="h-full"
                   />
                 ) : null}
               </div>

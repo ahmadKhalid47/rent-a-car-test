@@ -30,7 +30,7 @@ export default function Reservations() {
   const [customersData, setCustomersData] = useState<any[]>([]);
   const [chauffeursData, setchauffeursData] = useState<any[]>([]);
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<any>(true);
+  const [loading, setLoading] = useState<any>(false);
   let [goToPage, setGoToPage] = useState(0);
   const formRef = useRef<any>(null);
   let dispatch = useDispatch();

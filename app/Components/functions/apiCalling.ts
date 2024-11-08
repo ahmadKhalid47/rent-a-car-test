@@ -15,7 +15,6 @@ export function useFetchData({
   sortField,
 }: any) {
   let global = useSelector((state: RootState) => state.Global);
-  console.log(apiName);
   
   useEffect(() => {
     async function getData() {

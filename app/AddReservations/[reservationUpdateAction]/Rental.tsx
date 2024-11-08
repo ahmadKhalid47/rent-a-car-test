@@ -11,6 +11,7 @@ import {
 } from "@/app/store/reservations";
 import image404 from "@/public/image404.png";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
+import Image from "next/image";
 
 interface dataType {
   data: Array<Object>;
@@ -148,8 +149,10 @@ export default function Rental({ data, loading }: dataType) {
               className="w-[100%] rounded-[15px] px-5 py-6 flex flex-col sm:flex-row justify-start gap-4 items-center relative"
             >
               <div className="w-[133px] overflow-hidden rounded-[10px] border-[1px] border-grey">
-                <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey">
-                  <img
+                <div className="w-[130px] h-[130px] object-cover overflow-hidden rounded-[10px] border-[1px] border-grey relative">
+                  <Image
+                    alt=""
+                    layout="fill"
                     src={
                       item.data.chauffeurImage
                         ? item.data.chauffeurImage
