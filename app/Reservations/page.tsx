@@ -30,7 +30,6 @@ export default function Vehicles() {
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredreservations, setFilteredreservations] = useState<any[]>([]);
-  const [status, setStatus] = useState<any>("");
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
       key: "status",
@@ -100,7 +99,6 @@ export default function Vehicles() {
     filtered = reservationsData.filter((vehicle) => {
       const { data } = vehicle;
       const {
-        chauffeurName,
         vehicleName,
         customerName,
         city,
@@ -135,7 +133,7 @@ export default function Vehicles() {
   }
   useEffect(() => {
     advanceFilterVehicles();
-  }, [advanceFilters, status]);
+  }, [advanceFilters]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value?.trim());
