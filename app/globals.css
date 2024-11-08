@@ -557,3 +557,8 @@ button:active {
 .list-hover:hover {
   transform: scale(1.005);
 }
+
+.MuiAreaElement-root, .MuiAreaElement-series-auto-generated-id-0, .css-1la267r-MuiAreaElement-root{
+  background-color: red !important;
+  color: red !important;
+}
