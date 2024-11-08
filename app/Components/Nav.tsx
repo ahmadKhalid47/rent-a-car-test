@@ -126,64 +126,46 @@ export default function Nav() {
   }, [myProfile.user, global.myProfileReloader]);
 
   useEffect(() => {
-    let currencyInLS: any = undefined;
-    async function getData() {
+    let currencyInLS: string | null = null;
+    let unitInLS: string | null = null;
+
+    async function fetchData() {
       try {
         const result = await axios.post("/api/getGeneralSettings", {
           createdBy: myProfile._id,
         });
-        dispatch(
-          setcurrentCurrency(
-            result.data.data[0].currency ? result.data.data[0].currency : "$"
-          )
-        );
+        const data = result.data.data[0];
+
+        const currency = data.currency || "$";
+        const unit = data.unit || "$";
+
+        dispatch(setcurrentCurrency(currency));
+        dispatch(setunit(unit));
+
         if (typeof window !== "undefined") {
-          localStorage.setItem("currency", result.data.data[0].currency);
-          let value = localStorage.getItem("currency");
-          currencyInLS = value;
+          localStorage.setItem("currency", currency);
+          localStorage.setItem("unit", unit);
+          currencyInLS = currency;
+          unitInLS = unit;
         }
       } catch (error) {
         console.log(error);
       }
     }
+
     if (typeof window !== "undefined") {
-      let value = localStorage.getItem("currency");
-      currencyInLS = value;
+      currencyInLS = localStorage.getItem("currency");
+      unitInLS = localStorage.getItem("unit");
     }
-    if (!currencyInLS && myProfile._id) {
-      getData();
+
+    if ((!currencyInLS || !unitInLS) && myProfile._id) {
+      fetchData();
+    } else {
+      dispatch(setcurrentCurrency(currencyInLS || "$"));
+      dispatch(setunit(unitInLS || "$"));
     }
-    dispatch(setcurrentCurrency(currencyInLS ? currencyInLS : "$"));
   }, [myProfile._id]);
 
-  useEffect(() => {
-    let unitInLS: any = undefined;
-    async function getData() {
-      try {
-        const result = await axios.post("/api/getGeneralSettings", {
-          createdBy: myProfile._id,
-        });
-        dispatch(
-          setunit(result.data.data[0].unit ? result.data.data[0].unit : "$")
-        );
-        if (typeof window !== "undefined") {
-          localStorage.setItem("unit", result.data.data[0].unit);
-          let value = localStorage.getItem("unit");
-          unitInLS = value;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (typeof window !== "undefined") {
-      let value = localStorage.getItem("unit");
-      unitInLS = value;
-    }
-    if (!unitInLS && myProfile._id) {
-      getData();
-    }
-    dispatch(setunit(unitInLS ? unitInLS : "$"));
-  }, [myProfile._id]);
 
   async function logout() {
     try {

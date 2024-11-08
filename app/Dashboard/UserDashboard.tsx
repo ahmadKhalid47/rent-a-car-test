@@ -89,7 +89,6 @@ export default function UserDashboard() {
     (sum, record) => sum + Number(record.data.amount),
     0
   );
-console.log(Configurations);
 
   function submitButton() {
     let filtered: any = activeVehicles;
