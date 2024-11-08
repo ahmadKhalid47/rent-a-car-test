@@ -5,7 +5,6 @@ import RegistrationModel from "@/app/models/registration";
 export async function POST(req: Request) {
   try {
     const { modelName, createdBy, sortField } = await req.json();
-console.log(sortField);
 
     if (!modelName || !createdBy) {
       return NextResponse.json(

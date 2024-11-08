@@ -9,7 +9,6 @@ import { setSidebarShowR } from "@/app/store/Global";
 import { GoTriangleDown } from "react-icons/go";
 import ListViewChauffeur from "./ListViewChauffeur";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { MediumLoader } from "../Components/Loader";
 import {
   renameKeys,
@@ -55,6 +54,7 @@ export default function chauffeurs() {
   }, [isMobile]);
 
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "chauffeur",
     createdBy: myProfile._id,
     setData: setchauffeursData,

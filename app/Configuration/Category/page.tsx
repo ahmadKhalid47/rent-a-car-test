@@ -41,29 +41,15 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     try {
-  //       setDataLoading(true);
-  //       const result = await axios.post("/api/getSingleConfiguration", {
-  //         createdBy: myProfile._id,
-  //         model: "Category",
-  //         sortField: "Category",
-  //       });
-
-  //       if (result?.data?.data) {
-  //         setVehiclesData(result.data.data);
-  //         setFilteredVehicles(result.data.data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setDataLoading(false);
-  //     }
-  //   }
-  //   if (myProfile._id) getData();
-  // }, [global.vehicleDataReloader, myProfile._id]);
-
+  useFetchData({
+    modelName: "Category",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    setLoading: setDataLoading,
+    apiName: "getSingleConfiguration",
+    sortField: "Category",
+  });
 
   async function save(action: string) {
     if (Category?.trim() === "") {

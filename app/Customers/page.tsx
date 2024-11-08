@@ -55,6 +55,7 @@ export default function customers() {
 
 
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "customer",
     createdBy: myProfile._id,
     setData: setcustomersData,

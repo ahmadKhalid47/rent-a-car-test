@@ -46,18 +46,21 @@ export default function Reservations() {
   }, [isMobile]);
 
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "vehicle",
     createdBy: myProfile._id,
     setData: setVehiclesData,
     setLoading: setvehicleLoading,
   });
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "customer",
     createdBy: myProfile._id,
     setData: setCustomersData,
     setLoading: setcustomerLoading,
   });
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "chauffeur",
     createdBy: myProfile._id,
     setData: setchauffeursData,

@@ -66,6 +66,7 @@ export default function Vehicles() {
   const handleExport = useHandleExport();
 
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "vehicle",
     createdBy: myProfile._id,
     setData: setVehiclesData,

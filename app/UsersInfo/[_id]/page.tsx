@@ -64,24 +64,28 @@ export default function UserInfoMainPage() {
   const [reservationsData, setreservationsData] = useState<any[]>([]);
   
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "vehicle",
     createdBy: UserInfo._id,
     setData: setVehiclesData,
     setLoading: setvehicleLoading,
   });
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "customer",
     createdBy: UserInfo._id,
     setData: setCustomersData,
     setLoading: setCustomerLoading,
   });
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "chauffeur",
     createdBy: UserInfo._id,
     setData: setChauffeursData,
     setLoading: setChauffeurLoading,
   });
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "reservation",
     createdBy: UserInfo._id,
     setData: setreservationsData,

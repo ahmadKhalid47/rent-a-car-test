@@ -16,6 +16,7 @@ import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
 import { CiSearch } from "react-icons/ci";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -23,7 +24,6 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const [loading, setLoading] = useState<any>("");
   const [dataLoading, setDataLoading] = useState<any>(true);
-  
   const [vehiclesData, setVehiclesData] = useState<any[]>([]);
   const [makeData, setMakeData] = useState<any[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
@@ -31,7 +31,6 @@ export default function Vehicles() {
   const [Category, setCategory] = useState("");
   const [Model, setModel] = useState("");
   const [Make, setMake] = useState("");
-  // const [ModelReloader, setModelReloader] = useState(0);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
@@ -46,34 +45,23 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setDataLoading(true);
-        const result = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Model",
-          sortField: "Model",
-        });
-        const result2 = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Make",
-          sortField: "Make",
-        });
-        setMakeData(result2?.data?.data);
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  useFetchData({
+    modelName: "Model",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setLoading: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    apiName: "getSingleConfiguration",
+    sortField: "Model",
+  });
+  useFetchData({
+    modelName: "Make",
+    createdBy: myProfile._id,
+    setData: setMakeData,
+    setLoading: setDataLoading,
+    apiName: "getSingleConfiguration",
+    sortField: "Make",
+  });
 
   async function save(action: string) {
     if (
@@ -241,7 +229,7 @@ export default function Vehicles() {
                       )}
                     </select>
                     <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                      <GoTriangleDown className="text-[18px]" />
                     </div>
                   </div>
                   <div className="w-full h-fit flex justify-between items-center relative">
@@ -263,7 +251,7 @@ export default function Vehicles() {
                         ))}
                     </select>
                     <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+                      <GoTriangleDown className="text-[18px]" />
                     </div>
                   </div>
 

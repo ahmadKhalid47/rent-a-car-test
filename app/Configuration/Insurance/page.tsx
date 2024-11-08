@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { RootState } from "@/app/store";
 import { FaAsterisk, FaTimes } from "react-icons/fa";
@@ -16,6 +15,7 @@ import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
 import { CiSearch } from "react-icons/ci";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -31,7 +31,6 @@ export default function Vehicles() {
   const [recurring, setrecurring] = useState("");
   let [other, setOther] = useState("");
   let [otherPopUp, setOtherPopUp] = useState(false);
-  const [Category, setCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
@@ -50,28 +49,15 @@ export default function Vehicles() {
     setOtherPopup(true);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setDataLoading(true);
-        const result = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Insurance",
-          sortField: "Insurance",
-        });
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data); 
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  useFetchData({
+    modelName: "Insurance",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    setLoading: setDataLoading,
+    apiName: "getSingleConfiguration",
+    sortField: "Insurance",
+  });
 
   async function save(action: string) {
     if (Insurance?.trim() === "" || recurring?.trim() === "") {
@@ -113,14 +99,6 @@ await axios.post("/api/saveSingleConfiguration", {
     }
   }
 
-  let options = [
-    "Daily",
-    "Weekly",
-    "Three Weekly",
-    "Monthly",
-    "Six Monthly",
-    "Yearly",
-  ];
   useEffect(() => {
     filterVehicles();
   }, [searchQuery, vehiclesData]);

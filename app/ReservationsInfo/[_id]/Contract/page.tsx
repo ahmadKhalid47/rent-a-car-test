@@ -15,7 +15,6 @@ import { useReactToPrint } from "react-to-print";
 import { MediumLoader } from "@/app/Components/Loader";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
-import { setConfigurations } from "@/app/store/Configurations";
 import ThirdPage from "./ThirdPage";
 import Link from "next/link";
 
@@ -26,7 +25,6 @@ export default function reservationInfoMainPage() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const params = useParams(); // Get all route parameters
   const { _id } = params;
-  const [loading, setLoading] = useState<any>(true);
   
   useEffect(() => {
     if (isMobile) {
@@ -39,15 +37,12 @@ export default function reservationInfoMainPage() {
   useEffect(() => {
     async function getData() {
       try {
-        setLoading(true);
         let result: any = await axios.post(`/api/getreservationInfo/${_id}`);
         if (result?.data?.data) {
           dispatch(setAllValues(result?.data?.data?.data));
         }
       } catch (error: any) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
     getData();

@@ -49,6 +49,7 @@ export default function Vehicles() {
   }, [isMobile]);
 
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "vehicle",
     createdBy: myProfile._id,
     setData: setVehiclesData,
@@ -82,6 +83,7 @@ export default function Vehicles() {
   }
  
   useFetchData({
+    apiName: "getSortedLeanData",
     modelName: "reservation",
     createdBy: myProfile._id,
     setData: setreservationsData,

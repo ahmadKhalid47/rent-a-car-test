@@ -17,6 +17,7 @@ import Link from "next/link";
 import ImportExportButtons from "@/app/Components/functions/ImportExportButtons";
 import { CiSearch } from "react-icons/ci";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -45,27 +46,15 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setDataLoading(true);
-        const result = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Type",
-          sortField: "Type",
-        });
-
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+  useFetchData({
+    modelName: "Type",
+    createdBy: myProfile._id,
+    setData: setVehiclesData,
+    setFilteredData: setFilteredVehicles,
+    setLoading: setDataLoading,
+    apiName: "getSingleConfiguration",
+    sortField: "Type",
+  });
 
   async function save(action: string) {
     if (Type?.trim() === "" ) {
@@ -104,7 +93,7 @@ export default function Vehicles() {
         },
       });
 
-      let result: any = await axios.post(`/api/saveType`, {
+      await axios.post(`/api/saveType`, {
         Type,
         exterior: res?.data?.message,
         interior: res2?.data?.message,

@@ -18,6 +18,7 @@ import ImportExportButtons from "@/app/Components/functions/ImportExportButtons"
 import { CiSearch } from "react-icons/ci";
 import SearchEmpty from "@/app/Components/functions/SearchEmpty";
 import { GoTriangleDown } from "react-icons/go";
+import { useFetchData } from "@/app/Components/functions/apiCalling";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -45,28 +46,17 @@ export default function Vehicles() {
     setPopup(true);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        setDataLoading(true);
-        const result = await axios.post("/api/getSingleConfiguration", {
-          createdBy: myProfile._id,
-          model: "Feature",
-          sortField: "Feature",
-        });
 
-        if (result?.data?.data) {
-          setVehiclesData(result.data.data);
-          setFilteredVehicles(result.data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setDataLoading(false);
-      }
-    }
-    if (myProfile._id) getData();
-  }, [global.vehicleDataReloader, myProfile._id]);
+    useFetchData({
+      modelName: "Feature",
+      createdBy: myProfile._id,
+      setData: setVehiclesData,
+      setFilteredData: setFilteredVehicles,
+      setLoading: setDataLoading,
+      apiName: "getSingleConfiguration",
+      sortField: "Feature",
+    });
+
 
   async function save(action: string) {
     if (Feature?.trim() === "" || Box?.trim() === "") {
