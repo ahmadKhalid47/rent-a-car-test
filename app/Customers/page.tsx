@@ -27,7 +27,6 @@ export default function customers() {
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
   const [loading, setLoading] = useState<any>(true);
-
   const [customersData, setcustomersData] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredcustomer, setFilteredcustomer] = useState<any[]>([]);
@@ -119,9 +118,9 @@ export default function customers() {
 
     setFilteredcustomer(filtered);
   }
+
   useEffect(() => {
     advanceFiltercustomers();
-    console.log(status);
   }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
