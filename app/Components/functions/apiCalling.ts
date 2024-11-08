@@ -1,8 +1,10 @@
-// get Data and set in State
-
+import { useDispatch, useSelector } from "react-redux";
+import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
+import { RootState } from "@/app/store";
 import { useEffect } from "react";
 import axios from "axios";
 
+// get Data and set in State
 export function useFetchData({
   modelName,
   createdBy,
@@ -19,7 +21,6 @@ export function useFetchData({
           createdBy,
           modelName,
         });
-
         if (result?.data?.data) {
           setData(result.data.data);
           if (setFilteredData) {
@@ -32,7 +33,6 @@ export function useFetchData({
         setLoading(false);
       }
     }
-
     if (createdBy) getData();
   }, [
     createdBy,
@@ -46,22 +46,8 @@ export function useFetchData({
 
 // multiple active / inactive api calling
 
-import { useDispatch, useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "@/app/store/Global";
-import { RootState } from "@/app/store";
-
-type UpdateActiveManyItemProps = {
-  active: boolean;
-  itemToDeleteMany: string[];
-  model: string;
-  setDeleteLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setPopup: React.Dispatch<React.SetStateAction<boolean>>;
-  setItemToDelete: React.Dispatch<React.SetStateAction<any>>;
-};
-
-const useUpdateActiveManyItem = () => {
+export const useUpdateActiveManyItem = () => {
   const dispatch = useDispatch();
-
   const updateActiveManyItem = async ({
     active,
     itemToDeleteMany,
@@ -69,9 +55,7 @@ const useUpdateActiveManyItem = () => {
     setDeleteLoading,
     setPopup,
     setItemToDelete,
-  }: UpdateActiveManyItemProps) => {
-    console.log(active, model);
-
+  }: any) => {
     try {
       setDeleteLoading(true);
       await axios.post(`/api/updateMultipleActive`, {
@@ -79,7 +63,6 @@ const useUpdateActiveManyItem = () => {
         active: active,
         model: model,
       });
-
       dispatch(setVehicleDataReloader((prev: any) => prev + 1));
       dispatch(
         setAlert(
@@ -104,6 +87,37 @@ const useUpdateActiveManyItem = () => {
   return { updateActiveManyItem };
 };
 
-export default useUpdateActiveManyItem;
-
 // single active / inactive api calling
+
+const useUpdateActive = () => {
+  const dispatch = useDispatch();
+
+  const updateActive = async ({ _id, active, model }: any) => {
+    try {
+      await axios.post(`/api/updateSingleActive/${_id}`, {
+        active: active,
+        model: model,
+      });
+
+      dispatch(setVehicleDataReloader((prev: any) => prev + 1));
+      dispatch(
+        setAlert(
+          active
+            ? `Selective ${
+                model.charAt(0).toUpperCase() + model.slice(1)
+              } Activated Successfully`
+            : `Selective ${
+                model.charAt(0).toUpperCase() + model.slice(1)
+              } Deactivated Successfully`
+        )
+      );
+    } catch (err) {
+      console.error(err);
+      dispatch(setAlert("An error occurred while updating the item."));
+    }
+  };
+
+  return { updateActive };
+};
+
+export default useUpdateActive;

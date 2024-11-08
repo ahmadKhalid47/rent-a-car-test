@@ -336,11 +336,7 @@ export default function AdminDashboard() {
                         paginatedData.map((item: any, index: number) => (
                           <div key={index} className="w-full">
                             <div
-                              className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
-                                index % 2 !== 0
-                                  ? "dark:bg-dark2 bg-light-grey"
-                                  : "dark:bg-dark1 bg-white"
-                              } border-b-2 border-grey`}
+                              className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize dark:bg-dark1 bg-white border-b-2 border-grey`}
                             >
                               <div className="text-start pe-3 break-words w-[16%] 1 ps-5">
                                 {item?.data?.name}

@@ -228,11 +228,7 @@ export default function ListView({ data }: dataType) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
-                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
-                    index % 2 !== 0
-                      ? "dark:bg-dark2 bg-white"
-                      : "dark:bg-dark1 bg-white"
-                  } border-b-2 border-grey`}
+                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize dark:bg-dark1 bg-white border-b-2 border-grey`}
                 >
                   <div className="w-[3%]   flex justify-start items-center">
                     {item?.createdBy === myProfile._id && (

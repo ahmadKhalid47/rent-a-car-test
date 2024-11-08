@@ -22,7 +22,7 @@ import {
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
 import Image from "next/image";
-import useUpdateActiveManyItem from "../Components/functions/apiCalling";
+import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
@@ -75,28 +75,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-
-  async function updateActive(_id: any, active: boolean) {
-    try {
-      setEditLoading(true);
-      await axios.post(`/api/updateSingleActive/${_id}`, {
-        active: !active,
-        model: "chauffeur",
-      });
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          !active
-            ? "Selective Chauffeur Activated Successfully"
-            : "Selective Chauffeur Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setEditLoading(false);
-    }
-  }
   const { updateActiveManyItem } = useUpdateActiveManyItem();
 
   const handleActivateVehicles = (active: any) => {
@@ -109,6 +87,16 @@ export default function ListViewchauffeurs({ data }: dataType) {
       setItemToDelete,
     });
   };
+  const { updateActive } = useUpdateActive();
+
+  const handleActivateSingleVehicle = (_id: any, active: any) => {
+    updateActive({
+      _id: _id,
+      active: !active,
+      model: "chauffeur",
+    });
+  };
+
 
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState([]);
@@ -370,11 +358,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/ChauffeursInfo/${item?._id}`}
-                  className={`w-full h-fit flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover ${
-                    index % 2 !== 0
-                      ? "dark:bg-dark2 bg-light-grey"
-                      : "dark:bg-dark1 bg-white"
-                  } border-b-2 border-grey`}
+                  className={`w-full h-fit flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover dark:bg-dark1 bg-white border-b-2 border-grey`}
                 >
                   <div className="text-center w-[4%]  flex justify-center items-center">
                     <div
@@ -475,7 +459,7 @@ export default function ListViewchauffeurs({ data }: dataType) {
                       title={item.active ? "Inactive" : "Active"}
                       className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
-                        updateActive(item?._id, item?.active);
+                        handleActivateSingleVehicle(item?._id, item?.active);
                       }}
                     />
                     <Image

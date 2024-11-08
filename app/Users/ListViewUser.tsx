@@ -297,11 +297,7 @@ export default function ListViewUsers({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/UsersInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover ${
-                    index % 2 !== 0
-                      ? "dark:bg-dark2 bg-light-grey"
-                      : "dark:bg-dark1 bg-white"
-                  } border-b-2 border-grey`}
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize list-hover dark:bg-dark1 bg-white border-b-2 border-grey`}
                 >
                   <div className="text-center w-[3%] flex justify-center items-center">
                     <div

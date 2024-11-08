@@ -2,11 +2,6 @@ import Link from "next/link";
 import { FaEllipsisVertical } from "react-icons/fa6";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import { setAlert, setVehicleDataReloader } from "../store/Global";
-import { RootState } from "../store";
-import { useDispatch, useSelector } from "react-redux";
-
 import image404 from "@/public/image404.png";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import {
@@ -14,14 +9,13 @@ import {
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
-import useUpdateActiveManyItem from "../Components/functions/apiCalling";
+import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
 }
 
 export default function GridView({ data }: dataType) {
-  let global = useSelector((state: RootState) => state.Global);
   const [page, setPage] = useState(1);
   const itemsPerPage = 12;
   const [popup, setPopup] = useState(false);
@@ -35,7 +29,6 @@ export default function GridView({ data }: dataType) {
   const handleChange = (event: any, value: any) => {
     setPage(value);
   };
-  const dispatch = useDispatch();
   const totalPages = Math.ceil(data?.length / itemsPerPage);
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
@@ -52,25 +45,6 @@ export default function GridView({ data }: dataType) {
     }
   };
 
-  async function updateActive(_id: any, active: boolean) {
-    try {
-      await axios.post(`/api/updateSingleActive/${_id}`, {
-        active: !active,
-        model: "vehicle",
-      });
-
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          !active
-            ? "Selective Vehicle Activated Successfully"
-            : "Selective Vehicle Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   function handlePushItem(_id: any) {
     setItemToDeleteMany((prevArray: any) => {
@@ -105,7 +79,16 @@ export default function GridView({ data }: dataType) {
       setItemToDelete
     );
   };
-  
+  const { updateActive } = useUpdateActive();
+
+  const handleActivateSingleVehicle = (_id: any, active: any) => {
+    updateActive({
+      _id: _id,
+      active: !active,
+      model: "vehicle",
+    });
+  };
+
   return (
     <div className="w-full h-fit">
       <div
@@ -340,7 +323,10 @@ export default function GridView({ data }: dataType) {
                             <button
                               className="px-4 py-2 dark:hover:bg-slate-500 hover:bg-gray-200 w-[85%] rounded-[5px] text-start"
                               onClick={() => {
-                                updateActive(item?._id, item?.active);
+                                handleActivateSingleVehicle(
+                                  item?._id,
+                                  item?.active
+                                );
                               }}
                             >
                               {item.active ? "Inactive" : "Active"}

@@ -240,11 +240,7 @@ export default function ListView({ data }: any) {
             paginatedData.map((item: any, index: number) => (
               <div key={index} className="w-full">
                 <div
-                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize ${
-                    index % 2 !== 0
-                      ? "dark:bg-dark2 bg-white"
-                      : "dark:bg-dark1 bg-white"
-                  } 
+                  className={`px-5 w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize dark:bg-dark1 bg-white 
                   ${
                     index === Math.min(page * itemsPerPage, data?.length) - 1 ||
                     index + 12 === data?.length - 1

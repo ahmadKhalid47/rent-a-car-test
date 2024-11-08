@@ -6,11 +6,6 @@ import edit from "@/public/Layer_1 (2).svg";
 import deleteIcon from "@/public/Group 9.svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { RootState } from "../store";
-import { useSelector } from "react-redux";
-import { setAlert, setVehicleDataReloader } from "../store/Global";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { formatCreatedAtDate } from "../Components/functions/formats";
 import { PaginationComponent } from "../Components/functions/Pagination";
@@ -20,14 +15,15 @@ import {
   useDeleteManyItems,
 } from "../Components/functions/deleteFunction";
 import Image from "next/image";
-import useUpdateActiveManyItem from "../Components/functions/apiCalling";
+import useUpdateActive, {
+  useUpdateActiveManyItem,
+} from "../Components/functions/apiCalling";
 
 interface dataType {
   data: Array<Object>;
 }
 
 export default function ListView({ data }: dataType) {
-  let global = useSelector((state: RootState) => state.Global);
   const [popup, setPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -40,7 +36,6 @@ export default function ListView({ data }: dataType) {
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const itemsPerPage = 12;
-  const dispatch = useDispatch();
   const router = useRouter();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();
@@ -70,26 +65,6 @@ export default function ListView({ data }: dataType) {
     });
   }
   const allIds = data.map((item: any) => item?._id);
-  async function updateActive(_id: any, active: boolean) {
-    try {
-      await axios.post(`/api/updateSingleActive/${_id}`, {
-        active: !active,
-        model: "vehicle",
-      });
-
-      dispatch(setVehicleDataReloader(global.vehicleDataReloader + 1));
-      dispatch(
-        setAlert(
-          !active
-            ? "Selective Vehicle Activated Successfully"
-            : "Selective Vehicle Deactivated Successfully"
-        )
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   const { updateActiveManyItem } = useUpdateActiveManyItem();
 
   const handleActivateVehicles = (active: any) => {
@@ -100,6 +75,15 @@ export default function ListView({ data }: dataType) {
       setDeleteLoading,
       setPopup,
       setItemToDelete,
+    });
+  };
+  const { updateActive } = useUpdateActive();
+
+  const handleActivateSingleVehicle = (_id: any, active: any) => {
+    updateActive({
+      _id: _id,
+      active: !active,
+      model: "vehicle",
     });
   };
 
@@ -366,12 +350,7 @@ export default function ListView({ data }: dataType) {
               <div key={index} className="w-full">
                 <Link
                   href={`/VehicleInfo/${item?._id}`}
-                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize border-grey list-hover
-                     ${
-                       index % 2 !== 0
-                         ? "dark:bg-dark2 bg-light-gre"
-                         : "dark:bg-dark1 bg-whit"
-                     } 
+                  className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize border-grey list-hover dark:bg-dark1 bg-white 
                          ${
                            index ===
                              Math.min(page * itemsPerPage, data?.length) - 1 ||
@@ -479,7 +458,7 @@ export default function ListView({ data }: dataType) {
                       title={item.active ? "Inactive" : "Active"}
                       className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
                       onClick={() => {
-                        updateActive(item?._id, item?.active);
+                        handleActivateSingleVehicle(item?._id, item?.active);
                       }}
                     />
                     <Image
