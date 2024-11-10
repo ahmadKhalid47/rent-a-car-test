@@ -33,6 +33,7 @@ export default function Vehicles() {
   const [Make, setMake] = useState("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
+console.log(vehiclesData);
 
   useEffect(() => {
     if (isMobile) {
@@ -49,7 +50,7 @@ export default function Vehicles() {
     modelName: "Model",
     createdBy: myProfile._id,
     setData: setVehiclesData,
-    setLoading: setVehiclesData,
+    setLoading: setDataLoading,
     setFilteredData: setFilteredVehicles,
     apiName: "getSingleConfiguration",
     sortField: "Model",
