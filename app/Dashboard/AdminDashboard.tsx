@@ -437,7 +437,7 @@ export default function AdminDashboard() {
                                 <span className="bg-main-blue text-white px-2 py-[2px] text-[12px] rounded-[5px]">
                                   Renew
                                 </span>
-                                <MdEmail className="text-main-dark-blue hover:scale-[1.3] cursor-pointer text-[16px]" />
+                                <MdEmail className="text-main-dark-blue hover:scale-[1.3] cursor-pointer text-[18px]" />
                               </div>
                             </div>
                           </div>
