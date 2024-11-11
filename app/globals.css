@@ -558,7 +558,12 @@ button:active {
   transform: scale(1.005);
 }
 
-.MuiAreaElement-root, .MuiAreaElement-series-auto-generated-id-0, .css-1la267r-MuiAreaElement-root{
-  background-color: red !important;
-  color: red !important;
+
+.css-1c81190-MuiLineElement-root {
+  stroke: #054b86 !important;
+}
+
+.css-1gpzkxk-MuiMarkElement-root {
+stroke:white !important;
+fill  : #054b86 !important;
 }
