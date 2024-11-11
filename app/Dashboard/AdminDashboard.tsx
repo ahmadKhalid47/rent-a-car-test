@@ -155,7 +155,7 @@ export default function AdminDashboard() {
 
   const Box = ({ img, loading, value, label }: any) => {
     return (
-      <div className="w-[345px] h-[108px] flex justify-between items-center gap-x-[5%] gap-y-[5%] ps-4 pe-5 rounded-[10px] border-2 border-grey box-gradient relative">
+      <div className="w-[345px] h-[108px] flex justify-between items-center gap-x-[5%] gap-y-[5%] ps-4 pe-5 rounded-[10px] border-[1px] border-grey box-gradient relative">
         <div className="">
           <div className="font-[400] text-[15px] sm:text-[20px] leading-[18px] sm:leading-[27px]">
             {label}
@@ -256,7 +256,7 @@ export default function AdminDashboard() {
                   </Link>
                 </div>
                 <div className="w-full h-fit mt-2">
-                  <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey relative">
+                  <div className="w-full h-fit overflow-auto rounded-[10px] border-[1px] border-grey relative">
                     <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
                       <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
                         <div

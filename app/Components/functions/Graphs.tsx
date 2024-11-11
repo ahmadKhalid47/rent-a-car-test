@@ -34,14 +34,18 @@ export default function RevenueChart() {
         xAxis={[{ scaleType: "point", data: xLabels }]}
         yAxis={[{ scaleType: "linear", data: yLabels }]}
         grid={{ vertical: true, horizontal: true }}
-        slotProps={{
-          legend: {
-            direction: "row",
-            position: { vertical: "top", horizontal: "left" },
-            itemGap: 62,
-          },
+        sx={{
+          fill: "url(#myGradient) !important",
         }}
-      ></LineChart>{" "}
+      >
+        
+      <defs>
+        <linearGradient id="myGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: "blue", stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: "red", stopOpacity: 1 }} />
+        </linearGradient>
+      </defs>
+    </LineChart>
     </div>
   );
 }
