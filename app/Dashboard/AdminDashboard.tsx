@@ -7,9 +7,11 @@ import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useEffect, useState } from "react";
-import d1 from "@/public/ad (1).svg";
-import d2 from "@/public/ad (2).svg";
-import d3 from "@/public/ad (3).svg";
+import d1 from "@/public/admin dashboard (1).svg";
+import d2 from "@/public/admin dashboard (2).svg";
+import d3 from "@/public/admin dashboard (3).svg";
+import d4 from "@/public/admin dashboard (4).svg";
+import d5 from "@/public/admin dashboard (5).svg";
 import axios from "axios";
 import { TextLoader } from "../Components/Loader";
 
@@ -19,6 +21,7 @@ import { sort } from "../Components/functions/sortFunction";
 import Image from "next/image";
 import { useFetchData } from "../Components/functions/apiCalling";
 import RevenueChart from "../Components/functions/Graphs";
+import { GoTriangleDown } from "react-icons/go";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -134,6 +137,24 @@ export default function AdminDashboard() {
     setPage(value);
   };
 
+  const Box = ({ img, loading, value, label }: any) => {
+    return (
+      <div className="w-[345px] h-[108px] flex justify-between items-center gap-x-[5%] gap-y-[5%] ps-4 pe-5 rounded-[10px] border-2 border-grey box-gradient relative">
+        <div className="">
+          <div className="font-[400] text-[15px] sm:text-[20px] leading-[18px] sm:leading-[27px]">
+            {label}
+          </div>
+          <div className="font-[400] text-[15px] sm:text-[30px] leading-[18px] sm:leading-[39px] h-[39px]">
+            {!loading ? value : <TextLoader />}
+          </div>
+        </div>
+        <div className="w-[65px] h-[65px] rounded-[10px] flex justify-center items-center">
+          <Image src={img.src} alt="" width={50} height={50} />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div
       className={`${
@@ -145,70 +166,63 @@ export default function AdminDashboard() {
       >
         <div className="h-[44px] w-[100%] gap-y-3 sm:gap-y-0 flex flex-wrap justify-between md:justify-start items-center">
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
-            Admin Dashboard
+            Hello!👋 Super Admin.
           </span>
         </div>
-        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-5 md:py-10 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-5 mt-5">
+        <div className="w-full h-fit flex flex-col justify-start items-start gap-5">
           <div className="w-[100%] flex justify-start items-start flex-col">
-            <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
-              Users Details
-            </span>
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 py-7 px-6 rounded-[10px] border-2 border-grey dark:bg-dark2 bg-light-grey relative">
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
-                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image src={d1.src} alt="" width={40} height={40} />
-                </div>
-                <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!reservationLoading ? (
-                      reservationsData?.length
-                    ) : (
-                      <TextLoader />
-                    )}
-                  </div>
-                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Total Users{" "}
-                  </div>
-                </div>
-              </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
-                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image src={d2.src} alt="" width={40} height={40} />
-                </div>
-                <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? (
-                      reservationsData?.length
-                    ) : (
-                      <TextLoader />
-                    )}
-                  </div>
-                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Active Users
-                  </div>
-                </div>
-              </div>
-              <div className="w-[290px] h-[100px] flex justify-start flex-wrap items-center gap-x-[5%] gap-y-[5%] ps-4 rounded-[10px] border-2 border-grey dark:bg-dark1 bg-white relative">
-                <div className="w-[65px] h-[65px] bg-main-blue rounded-[10px] flex justify-center items-center">
-                  <Image src={d3.src} alt="" width={40} height={40} />
-                </div>
-                <div>
-                  <div className="font-[400] text-[15px] sm:text-[26px] leading-[18px] sm:leading-[39px] h-[39px]">
-                    {!vehicleLoading ? rentOutVehicles?.length : <TextLoader />}
-                  </div>
-                  <div className="font-[400] text-[15px] sm:text-[18px] leading-[18px] sm:leading-[27px]">
-                    Expired Users{" "}
+            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 relative">
+              <Box
+                img={d5}
+                loading={reservationLoading}
+                value={0}
+                label="Total Users"
+              />
+              <Box
+                img={d4}
+                loading={reservationLoading}
+                value={0}
+                label="Active Users"
+              />
+              <Box
+                img={d3}
+                loading={reservationLoading}
+                value={0}
+                label="Inactive Users"
+              />
+              <Box
+                img={d2}
+                loading={reservationLoading}
+                value={0}
+                label="Monthly Revenue"
+              />
+              <Box
+                img={d1}
+                loading={reservationLoading}
+                value={0}
+                label="Total Revenue"
+              />
+            </div>
+          </div>
+          <div className="w-[100%] flex justify-start items-start flex-col border-[1px] border-light-grey rounded-[16px]">
+            <div className="w-[100%] flex justify-between items-center pt-6 px-5 -mb-4">
+              <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
+                Revenue Summary
+              </span>
+              <div className="w-[100%] sm:w-[200px] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black me-7">
+                <div className="w-full h-fit flex justify-between items-center relative">
+                  <select className="pe-6 font-[400] text-[14px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-[1px] border-grey">
+                    <option value="">Jan 2024 - Jun 2024</option>
+                    <option value="">July 2024 - Dec 2024</option>
+                  </select>
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                    <GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[100%] flex justify-start items-start flex-col">
-            <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px] mt-5">
-              Revenue Summary
-            </span>
-            <div className="w-full h-fit flex justify-start flex-wrap items-start gap-x-3 gap-y-3 rounded-[10px] dark:bg-dark2 bg-light-grey relative">
-              <RevenueChart/>
+            <div className="w-full h-fit flex justify-start flex-wrap items-start relative">
+              <RevenueChart />
             </div>
           </div>
           <div className="w-full h-fit flex justify-between items-start">

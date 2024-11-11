@@ -567,3 +567,7 @@ button:active {
 stroke:white !important;
 fill  : #054b86 !important;
 }
+
+.box-gradient {
+  background: linear-gradient(to right, white , rgba(0, 148, 218,0.07) );
+}

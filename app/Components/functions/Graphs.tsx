@@ -24,7 +24,7 @@ export default function RevenueChart() {
   }, []);
 
   return (
-    <div ref={chartRef} style={{ width: "100%" }}>
+    <div ref={chartRef} style={{ width: "100%" }} className="bg-pink-70">
       <LineChart
         width={width}
         height={350}
