@@ -35,7 +35,7 @@ export default function ListViewcustomers({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{
     [key: string]: "asc" | "desc";
   }>({});
-    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+  const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
     useItemToDelete();
   const router = useRouter();
   const deleteItem = useDeleteItem();
@@ -62,7 +62,7 @@ export default function ListViewcustomers({ data }: dataType) {
   const allIds = data.map((item: any) => item?._id);
 
   const { updateActiveManyItem } = useUpdateActiveManyItem();
-  
+
   const handleActivateVehicles = (active: any) => {
     updateActiveManyItem({
       active: active,

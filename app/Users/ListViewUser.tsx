@@ -1,4 +1,6 @@
+import vip from "@/public/vip.svg";
 import Image from "next/image";
+import unCheck from "@/public/uncheck.svg";
 import { sort } from "@/app/Components/functions/sortFunction";
 import check from "@/public/check.svg";
 import arrows from "@/public/arrows.svg";
@@ -33,7 +35,7 @@ export default function ListViewUsers({ data }: dataType) {
   const [sortOrder, setSortOrder] = useState<{
     [key: string]: "asc" | "desc";
   }>({});
-    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+  const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
     useItemToDelete();
   const router = useRouter();
   const deleteItem = useDeleteItem();
@@ -115,8 +117,8 @@ export default function ListViewUsers({ data }: dataType) {
                 }}
               ></div>
             </div>
-            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
-              Full Name{" "}
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[17%]">
+              Name{" "}
               <Image
                 alt=""
                 width={10}
@@ -136,7 +138,7 @@ export default function ListViewUsers({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[10%]">
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
               Username{" "}
               <Image
                 alt=""
@@ -178,8 +180,8 @@ export default function ListViewUsers({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[13%]">
-              Email{" "}
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[12%]">
+              Phone{" "}
               <Image
                 alt=""
                 width={10}
@@ -199,15 +201,15 @@ export default function ListViewUsers({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[6%]">
-              City{" "}
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[18%]">
+              Email{" "}
               <Image
                 alt=""
                 width={10}
                 height={10}
                 onClick={() =>
                   sort(
-                    "gender",
+                    "email",
                     currentSortKey,
                     sortOrder,
                     sortedData,
@@ -220,57 +222,44 @@ export default function ListViewUsers({ data }: dataType) {
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
             </div>
-            <div
-              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
-              onClick={() =>
-                sort(
-                  "gender",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
-              Active Plan{" "}
-            </div>
-            <div
-              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
-              onClick={() =>
-                sort(
-                  "gender",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
-              Started At{" "}
-            </div>
-            <div
-              className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]"
-              onClick={() =>
-                sort(
-                  "city",
-                  currentSortKey,
-                  sortOrder,
-                  sortedData,
-                  setSortedData,
-                  setSortOrder,
-                  setCurrentSortKey
-                )
-              }
-            >
-              Expiry Date
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[8%]">
+              City{" "}
               <Image
                 alt=""
                 width={10}
                 height={10}
+                onClick={() =>
+                  sort(
+                    "city",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
+                src={arrows.src}
+                className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+              />
+            </div>
+            <div className="text-start pe-3 flex justify-start gap-2 items-center w-[9%]">
+              Subscription
+              <Image
+                alt=""
+                width={10}
+                height={10}
+                onClick={() =>
+                  sort(
+                    "",
+                    currentSortKey,
+                    sortOrder,
+                    sortedData,
+                    setSortedData,
+                    setSortOrder,
+                    setCurrentSortKey
+                  )
+                }
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
               />
@@ -301,28 +290,51 @@ export default function ListViewUsers({ data }: dataType) {
                       }}
                     ></div>
                   </div>
-                  <div className="text-start pe-3 truncate w-[12%]">
+                  <div className="text-start pe-4 truncate w-[17%] flex justify-start gap-3 items-center">
                     {item?.name}
+
+                    {item?.data?.isVip && (
+                      <Image alt="" width={21} height={15} src={vip.src} />
+                    )}
                   </div>
-                  <div className="text-start pe-3 truncate w-[10%]">
+                  <div className="text-start pe-3 truncate w-[12%]">
                     {item?.username}
                   </div>
                   <div className="text-start pe-3 truncate w-[12%]">
                     {item?.company}
                   </div>
-                  <div className="text-start pe-3 truncate w-[13%]">
+                  <div className="text-start pe-3 truncate w-[12%]">
+                    {item?.phone}
+                  </div>
+                  <div className="text-start pe-3 truncate w-[18%]">
                     {item?.email}
                   </div>
-                  <div className="text-start pe-3 truncate w-[6%]">
+                  <div className="text-start pe-3 truncate w-[8%]">
                     {item?.city}
                   </div>
                   <div className="text-start pe-3 truncate w-[9%]">
-                    {item?.plan}
+                    <div
+                      className={`flex justify-center px-2 items-center w-fit h-[22px] border-[1px] text-[12px] rounded-[5px] ${
+                        index === 7
+                          ? "trial-status"
+                          : index === 0
+                          ? "progress-status"
+                          : index === 5
+                          ? "pending-status"
+                          : "complete-status"
+                      }
+                          `}
+                    >
+                      {index === 7
+                        ? "Trail"
+                        : index === 0
+                        ? "Expired"
+                        : index === 5
+                        ? "Pending"
+                        : "Active"}
+                    </div>{" "}
                   </div>
-                  <div className="text-start pe-3 truncate w-[9%]">
-                    {item?.createdAt && formatDate(item?.createdAt)}
-                  </div>
-                  <div className="text-start pe-3 truncate w-[9%]">
+                  {/* <div className="text-start pe-3 truncate w-[12%]">
                     {item?.createdAt
                       ? item?.plan === "3-Day Trial"
                         ? formatDate(addDayInDate(item?.createdAt, 3))
@@ -336,14 +348,26 @@ export default function ListViewUsers({ data }: dataType) {
                         ? formatDate(addYearInDate(item?.createdAt, 1))
                         : null
                       : null}
-                  </div>
+                  </div> */}
                   <div
-                    className="flex justify-end pe-3 gap-3 items-center w-[8%] h-full"
+                    className="flex justify-end pe-3 truncate gap-1 items-center w-[8%] h-[43px]"
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
                     }}
                   >
+                    <Image
+                      alt=""
+                      width={16}
+                      height={16}
+                      src={item?.active ? check.src : unCheck.src}
+                      title={item.active ? "Inactive" : "Active"}
+                      className="translate-y-[1px] hover:scale-[1.3] cursor-pointer"
+                      // onClick={() => {
+                      //   handleActivateSingleVehicle(item?._id, item?.active);
+                      // }}
+                    />
+
                     <Image
                       alt=""
                       width={16}
