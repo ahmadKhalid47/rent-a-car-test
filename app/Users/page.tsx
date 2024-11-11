@@ -16,6 +16,8 @@ import {
   useHandleExport,
 } from "../Components/functions/exportFunction";
 import SearchEmpty from "../Components/functions/SearchEmpty";
+import Link from "next/link";
+import { CiFilter, CiSearch } from "react-icons/ci";
 
 export default function Vehicles() {
   let global = useSelector((state: RootState) => state.Global);
@@ -23,7 +25,6 @@ export default function Vehicles() {
   let dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
   const router = useRouter();
-  const [showLess, setShowLess] = useState(true);
   const [loading, setLoading] = useState<any>(true);
 
   const [UsersData, setUsersData] = useState<any[]>([]);
@@ -31,7 +32,7 @@ export default function Vehicles() {
   const [filteredUser, setFilteredUser] = useState<any[]>([]);
   const [advanceFilters, setAdvanceFilters] = useState<any>([
     {
-      key: "gender",
+      key: "subscription",
       keyValue: "",
     },
     {
@@ -60,8 +61,8 @@ export default function Vehicles() {
         });
 
         if (result?.data?.data) {
-          setUsersData(result.data.data);
-          setFilteredUser(result.data.data);
+          setUsersData(result.data?.data);
+          setFilteredUser(result.data?.data);
         }
       } catch (error) {
         console.log(error);
@@ -115,9 +116,9 @@ export default function Vehicles() {
       if (keyValue) {
         const lowercasedQuery = keyValue?.toLowerCase();
         filtered = filtered.filter((vehicle: any) => {
-          const keyValueInVehicle = vehicle.data[key]?.toLowerCase();
+          const keyValueInVehicle = vehicle[key]?.toLowerCase();
 
-          if (key === "gender") {
+          if (key === "city") {
             return keyValueInVehicle === lowercasedQuery;
           }
 
@@ -128,12 +129,15 @@ export default function Vehicles() {
 
     setFilteredUser(filtered);
   }
+  useEffect(() => {
+    advanceFilterVehicles();
+  }, [advanceFilters, status]);
 
   function handleSearchQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value?.trim());
     setAdvanceFilters([
       {
-        key: "gender",
+        key: "subscription",
         keyValue: "",
       },
       {
@@ -186,12 +190,16 @@ export default function Vehicles() {
           <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[25px] leading-none dark:text-white text-black w-[100%] md:w-[50%] h-[44px]">
             All Users
             <span className="text-grey font-[400] text-[12px] xs:text-[14px] md:text-[16px] leading-none">
-              Users / All Users
+              <Link href={"/Users"} className="hover:underline">
+                Users{" "}
+              </Link>
+              {" / "}
+              All Users{" "}
             </span>
           </span>
           <div className="flex justify-end items-center w-[100%] md:w-[50%] h-[44px]">
             <button
-              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[10px] bg-main-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
+              className="w-fit px-3 md:px-6 py-2 md:py-0 h-fit md:h-[44px] rounded-[5px] bg-main-dark-blue text-white  font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
               onClick={() => {
                 router.push("/AddUser/AddNew");
               }}
@@ -200,173 +208,118 @@ export default function Vehicles() {
             </button>
           </div>
         </div>
-        <div className="w-full h-fit dark:bg-dark2 bg-light-grey rounded-xl border-2 border-grey py-4 px-1 xs:px-3 md:px-11 flex flex-col justify-start items-start gap-[15px] mt-5">
-          <div className="w-full h-fit">
-            <h3 className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-">
-              Search
-            </h3>
-            <div className="w-full h-fit flex justify-between items-center relative">
+        <div className="h-[44px] w-full flex justify-between gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey mt-4">
+          <div className="h-[44px] w-fit flex justify-start gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+            <div className="w-[320px] h-fit flex justify-between items-center relative">
               <input
-                className="px-2 w-[75%] md:w-[82%] h-[43px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-xl border-2 leading-[19px] border-grey placeholder:"
-                placeholder="Search By Full Name, Phone..."
+                className="pe-7 ps-7  w-[100%] h-[44px] flex justify-between items-center text-[14px] xs:text-[16px] dark:bg-dark1 bg-white rounded-[5px] border-2 leading-[19px] border-grey placeholder:text-[#808080] truncate"
+                placeholder="Search By Name, Phone, Email, etc"
                 onChange={handleSearchQueryChange}
                 value={searchQuery}
               ></input>
               {searchQuery && (
                 <SearchEmpty
-                  classes={"left-[72%] md:left-[79%] w-[2%] text-[20px]"}
+                  classes={"right-2 text-[24px"}
                   setState={setSearchQuery}
                 />
               )}
-
-              <button
-                className="w-[24%] md:w-[17%] px-3 h-[43px] rounded-[10px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] leading-[21px] text-center"
-                onClick={() => {
-                  advanceFilterVehicles();
-                }}
-              >
-                Search
-              </button>
+              <div className="absolute left-2 text-[#808080]">
+                <CiSearch />
+              </div>
             </div>
-          </div>
-          {!showLess ? (
-            <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Gender
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "gender"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "gender"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(UsersData.map((item) => item.data.gender))
-                    ).map((gender) => (
-                      <option key={gender} value={gender}>
-                        {gender}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
-                  </div>
+            <div className="w-[150px] h-fit">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <select
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  onChange={(e) => {
+                    setAdvanceFilters((prevFilters: any) =>
+                      prevFilters.map((filter: any) =>
+                        filter.key === "subscription"
+                          ? { ...filter, keyValue: e.target.value }
+                          : filter
+                      )
+                    );
+                  }}
+                  value={
+                    advanceFilters.find(
+                      (filter: any) => filter.key === "subscription"
+                    )?.keyValue || ""
+                  }
+                >
+                  <option value="">Subscription</option>
+                  {Array.from(
+                    new Set(UsersData.map((item) => item.subscription))
+                  ).map((subscription) => (
+                    <option key={subscription} value={subscription}>
+                      {subscription}
+                    </option>
+                  ))}
+                </select>
+                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
+                  <GoTriangleDown className="text-[18px]" />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
                 </div>
               </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  Postal/Zip Code
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "postalCode"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "postalCode"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(UsersData.map((item) => item.data.postalCode))
-                    ).map((postalCode) => (
-                      <option key={postalCode} value={postalCode}>
-                        {postalCode}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
-                  </div>
-                </div>
-              </div>
-              <div className="w-[100%] xs:w-[48%] lg:w-[30%]  h-fit flex flex-col justify-start items-start gap-1">
-                <label className="flex justify-start gap-1 items-start font-[400] text-[14px] leading-[17px]">
-                  City
-                </label>
-                <div className="w-full h-fit flex justify-between items-center relative">
-                  <select
-                    className="pe-10 font-[400] text-[16px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
-                    onChange={(e) => {
-                      setAdvanceFilters((prevFilters: any) =>
-                        prevFilters.map((filter: any) =>
-                          filter.key === "city"
-                            ? { ...filter, keyValue: e.target.value }
-                            : filter
-                        )
-                      );
-                    }}
-                    value={
-                      advanceFilters.find(
-                        (filter: any) => filter.key === "city"
-                      )?.keyValue || ""
-                    }
-                  >
-                    <option value="">Select</option>
-                    {Array.from(
-                      new Set(UsersData.map((item) => item.data.city))
-                    ).map((city) => (
+            </div>
+            <div className="w-[144px] h-fit">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <select
+                  className="truncate pe-3 font-[400] text-[14px] xs:text-[16px] leading-[19px] ps-6 w-[100%] h-[44px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[5px] border-2 border-grey "
+                  onChange={(e) => {
+                    setAdvanceFilters((prevFilters: any) =>
+                      prevFilters.map((filter: any) =>
+                        filter.key === "city"
+                          ? { ...filter, keyValue: e.target.value }
+                          : filter
+                      )
+                    );
+                  }}
+                  value={
+                    advanceFilters.find((filter: any) => filter.key === "city")
+                      ?.keyValue || ""
+                  }
+                >
+                  <option value="">City</option>
+                  {Array.from(new Set(UsersData.map((item) => item.city))).map(
+                    (city) => (
                       <option key={city} value={city}>
                         {city}
                       </option>
-                    ))}
-                  </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
-                  </div>
+                    )
+                  )}
+                </select>
+                <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-[5px]] flex justify-center items-center pointer-events-none">
+                  <GoTriangleDown className="text-[18px]" />
+                </div>
+                <div className="absolute left-2 text-[#808080]">
+                  <CiFilter />
                 </div>
               </div>
             </div>
-          ) : null}
-
-          <h3
-            className="font-[400] text-[14px] xs:text-[16px] leading-[19px] dark:text-white text-black pb-1 underline hover:no-underline cursor-pointer"
-            // onClick={() => setShowLess(!showLess)}
-          >
-            {/* {showLess ? "Advanced Filters" : "Show Less"} */}
-          </h3>
-        </div>
-        <div className="w-full h-fit mt-4">
-          <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
-            <button
-              className="hover:no-underline w-fit px-3 md:px-6 h-[24px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[14px] flex justify-center items-center leading-[0px]"
-              onClick={() => {
-                handleExport(
-                  renamedArray?.map((item: any) => {
-                    const { _id, __v, admin, password, fptoken, ...rest } =
-                      item;
-                    return rest;
-                  })
-                );
-              }}
-            >
-              Export
-            </button>
           </div>
 
+          <div className="w-full flex flex-wrap gap-y-2 1400:flex-nowrap h-fit justify-between items-center">
+            <div className="h-[24px] w-full flex justify-end gap-2 items-center font-[400] text-[14px] sm:text-[18px] text-grey">
+              <button
+                className="hover:no-underline w-[112px] h-[44px] rounded-[6px] bg-main-blue text-white font-[500] text-[12px] md:text-[18px] flex justify-center items-center leading-[0px]"
+                onClick={() => {
+                  handleExport(
+                    renamedArray?.map((item: any) => {
+                      const { _id, __v, admin, password, fptoken, ...rest } =
+                        item;
+                      return rest;
+                    })
+                  );
+                }}
+              >
+                Export
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="w-full h-fit -mt-3">
           {loading ? <MediumLoader /> : <ListViewUser data={filteredUser} />}
         </div>
       </div>

@@ -76,29 +76,29 @@ export default function ListViewUsers({ data }: dataType) {
   };
   return (
     <div className="w-full h-fit">
-      <h3
-        className={`w-fit flex justify-between items-end font-[400] h-[24px] mt-[-24px] text-[14px] sm:text-[18px] leading-[18px] ${
+      <div
+        className={`h-[24px] w-fit flex justify-between items-end font-[400] text-[14px] sm:text-[18px] leading-[18px] ${
           itemToDeleteMany?.length < 1 ? "text-grey" : " text-main-blue"
         }  `}
       >
-        <span>
-          <span className="cursor-pointer">
-            <button
-              className={`${
-                itemToDeleteMany?.length < 1
-                  ? ""
-                  : "cursor-pointer hover:underline"
-              }`}
-              onClick={() => {
-                setDeleteManyPopup(true);
-              }}
-              disabled={itemToDeleteMany?.length < 1 ? true : false}
-            >
-              Delete Multiple
-            </button>
-          </span>
-        </span>
-      </h3>
+        {itemToDeleteMany?.length >= 1 && (
+          <span>
+            <span className="cursor-pointer">
+              <button
+                className={`${itemToDeleteMany?.length < 1
+                    ? ""
+                    : "cursor-pointer hover:underline"
+                  }`}
+                onClick={() => {
+                  setDeleteManyPopup(true);
+                }}
+                disabled={itemToDeleteMany?.length < 1 ? true : false}
+              >
+                Delete Multiple
+              </button>
+            </span>
+          </span>)}
+      </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
