@@ -558,16 +558,10 @@ button:active {
   transform: scale(1.005);
 }
 
-
-.css-1c81190-MuiLineElement-root {
-  stroke: #054b86 !important;
-}
-
-.css-1gpzkxk-MuiMarkElement-root {
-stroke:white !important;
-fill  : #054b86 !important;
-}
-
 .box-gradient {
-  background: linear-gradient(to right, white , rgba(0, 148, 218,0.07) );
+  background: linear-gradient(to right, white, rgba(0, 148, 218, 0.07));
+}
+
+.css-1t283mf-MuiAreaElement-root {
+  fill:rgba(0, 148, 218, 0.3) !important;
 }

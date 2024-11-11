@@ -26,9 +26,10 @@ export default function RevenueChart() {
   return (
     <div ref={chartRef} style={{ width: "100%" }} className="bg-pink-70">
       <LineChart
+        className="custom-gradient-fill"
         width={width}
         height={350}
-        colors={["#2F4CDD"]}
+        colors={["#054b86"]}
         series={[{ data: pData, area: true }]}
         xAxis={[{ scaleType: "point", data: xLabels }]}
         yAxis={[{ scaleType: "linear", data: yLabels }]}
@@ -40,37 +41,7 @@ export default function RevenueChart() {
             itemGap: 62,
           },
         }}
-        sx={{
-          ".css-j6h5qe-MuiAreaElement-root": {
-            fill: "url(#paint0_linear_45_2)",
-          },
-        }}
-      >
-        <Colorswitch />
-      </LineChart>{" "}
+      ></LineChart>{" "}
     </div>
   );
 }
-
-const Colorswitch = () => {
-  const { top, height, bottom } = useDrawingArea();
-  const svgHeight = top + bottom + height;
-
-  return (
-    <>
-      <defs>
-        <linearGradient
-          id="paint0_linear_45_2"
-          x1="300.25"
-          y1="46.9999"
-          x2="300.25"
-          y2={`${svgHeight}px`}
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#2F4CDD" stopOpacity="0.8" />
-          <stop offset="1" stopColor="white" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </>
-  );
-};
