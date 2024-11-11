@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   _id: "",
+  isVip: "",
   profilePic: [],
   username: "",
   firstName: "",
@@ -15,6 +16,7 @@ const initialState = {
   state: "",
   city: "",
   plan: "",
+  postal: "",
   password: "",
   verifyPassword: "",
   admin: undefined,
@@ -66,6 +68,12 @@ export const userProfileSlice = createSlice({
     setplanR: (state, action) => {
       state.plan = action.payload;
     },
+    setPostalR: (state, action) => {
+      state.postal = action.payload;
+    },
+    setisVipR: (state, action) => {
+      state.isVip = action.payload;
+    },
     setpasswordR: (state, action) => {
       state.password = action.payload;
     },
@@ -99,9 +107,11 @@ export const {
   setcountryR,
   setstateR,
   setplanR,
+  setPostalR,
   setpasswordR,
   setverifyPasswordR,
   resetState,
+  setisVipR,
 } = userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

@@ -1,4 +1,5 @@
 "use client";
+import vip from "@/public/vip.svg";
 import React from "react";
 import upload from "@/public/Paper Upload.svg";
 import { useState } from "react";
@@ -15,7 +16,8 @@ import {
   setpasswordR,
   setphoneR,
   setplanR,
-  setprofilePicR,
+  setPostalR,
+setisVipR,  setprofilePicR,
   setstateR,
   setusernameR,
   setverifyPasswordR,
@@ -197,9 +199,16 @@ export default function Info({ score, message }: any) {
           required={false}
           options={cities.map((item: any) => item.label)}
         />
+        <TempTypeInput
+          setState={setPostalR}
+          label={"Postal Code"}
+          value={User.postal}
+          required={false}
+          type={"number"}
+        />
         <TempSelectInput
           setState={setplanR}
-          label={"Plan Validity"}
+          label={"Account Type"}
           value={User.plan}
           required={true}
           options={["3-Day Trial", "1 Month", "3 Months", "6 Months", "1 Year"]}
@@ -229,6 +238,26 @@ export default function Info({ score, message }: any) {
               minLength={6}
               maxLength={30}
             />
+            <div className="w-[100%] sm:w-[48%] lg:w-[22%] h-fit flex flex-col justify-start items-start gap-0 sm:gap-1 bg-red-600">
+              <div className="w-full h-fit flex justify-between items-center relative">
+                <div className="pe- font-[400] text-[14px] leading-[17px] ps-2 w-[100%] h-[43px] flex  justify-start gap-2 items-center dark:bg-dark1 bg-white">
+                  <input
+                    type="checkbox"
+                    // checked={User.isVip}
+                    className="mr-2 font-[400] text-[16px] leading-[19px] ps-2 w-[19px] h-[19px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-2 border-grey"
+                    onChange={(e) => dispatch(setisVipR(e.target.checked))}
+                  />
+                  <Image
+                    alt=""
+                    width={21}
+                    height={15}
+                    src={vip.src}
+                    className="dark:filter dark:brightness-[0] dark:invert"
+                  />
+                  It’s VIP Client
+                </div>
+              </div>
+            </div>
           </>
         ) : null}
       </div>

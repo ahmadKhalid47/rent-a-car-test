@@ -15,7 +15,7 @@ const initialState: any = {
   country: "",
   city: "",
   postalCode: "",
-  isVip: "",
+  isVip: false,
   customerImage: [],
   state: "",
   ref1Name: "",
