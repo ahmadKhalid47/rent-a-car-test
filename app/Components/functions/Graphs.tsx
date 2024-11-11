@@ -38,14 +38,16 @@ export default function RevenueChart() {
           fill: "url(#myGradient) !important",
         }}
       >
-        
-      <defs>
-        <linearGradient id="myGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style={{ stopColor: "blue", stopOpacity: 1 }} />
-          <stop offset="100%" style={{ stopColor: "red", stopOpacity: 1 }} />
-        </linearGradient>
-      </defs>
-    </LineChart>
+        <defs>
+          <linearGradient id="myGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style={{ stopColor: "white", stopOpacity: 0 }} />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#0094da", stopOpacity: 1 }}
+            />
+          </linearGradient>
+        </defs>
+      </LineChart>
     </div>
   );
 }
