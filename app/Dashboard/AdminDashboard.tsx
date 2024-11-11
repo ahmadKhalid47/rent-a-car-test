@@ -14,7 +14,7 @@ import d4 from "@/public/admin dashboard (4).svg";
 import d5 from "@/public/admin dashboard (5).svg";
 import axios from "axios";
 import { TextLoader } from "../Components/Loader";
-
+import { MdEmail } from "react-icons/md";
 import { FaEllipsisH } from "react-icons/fa";
 import { PaginationComponent } from "../Components/functions/Pagination";
 import { sort } from "../Components/functions/sortFunction";
@@ -30,8 +30,9 @@ export default function AdminDashboard() {
         name: "John Smith",
         username: "username",
         email: "example@email.com",
-        companyDate: "Company name",
+        companyDate: "Basic",
         expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
       },
     },
     {
@@ -39,8 +40,9 @@ export default function AdminDashboard() {
         name: "John Smith",
         username: "username",
         email: "example@email.com",
-        companyDate: "Company name",
+        companyDate: "Basic",
         expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
       },
     },
     {
@@ -48,8 +50,9 @@ export default function AdminDashboard() {
         name: "John Smith",
         username: "username",
         email: "example@email.com",
-        companyDate: "Company name",
+        companyDate: "Basic",
         expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
       },
     },
     {
@@ -57,8 +60,9 @@ export default function AdminDashboard() {
         name: "John Smith",
         username: "username",
         email: "example@email.com",
-        companyDate: "Company name",
+        companyDate: "Basic",
         expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
       },
     },
     {
@@ -66,8 +70,19 @@ export default function AdminDashboard() {
         name: "John Smith",
         username: "username",
         email: "example@email.com",
-        companyDate: "Company name",
+        companyDate: "Basic",
         expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
+      },
+    },
+    {
+      data: {
+        name: "John Smith",
+        username: "username",
+        email: "example@email.com",
+        companyDate: "Basic",
+        expiryDate: "dd/mm/yyyy",
+        daysRemaining: "10 Days",
       },
     },
   ];
@@ -226,17 +241,17 @@ export default function AdminDashboard() {
             </div>
           </div>
           <div className="w-full h-fit flex justify-between items-start">
-            <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white mt-5 rounded-[10px] border-2 border-grey px-1 xs:px-3 md:px-6 py-6">
+            <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white">
               <div className="w-full flex flex-col justify-start items-start h-fit">
-                <h1 className="font-[400] text-[18px] xs:text-[24px] leading-2 xs:leading-[20px]">
-                  Near To Expire{" "}
-                </h1>
+                <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
+                  Renewals Due Soon{" "}
+                </span>
                 <div className="w-full h-fit mt-2">
                   <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey relative">
                     <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
                       <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
                         <div
-                          className="text-start pe-3 flex justify-between items-center w-[16%] 1 ps-5 cursor-pointer"
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 1 ps-5 cursor-pointer"
                           onClick={() =>
                             sort(
                               "make",
@@ -259,7 +274,7 @@ export default function AdminDashboard() {
                           />
                         </div>
                         <div
-                          className="text-start pe-3 flex justify-between items-center w-[16%] 2 cursor-pointer"
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[12%] 2 cursor-pointer"
                           onClick={() =>
                             sort(
                               "registration",
@@ -282,7 +297,7 @@ export default function AdminDashboard() {
                           />
                         </div>
                         <div
-                          className="text-start pe-3 flex justify-between items-center w-[20%] 3 cursor-pointer"
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[18%] 3 cursor-pointer"
                           onClick={() =>
                             sort(
                               "year",
@@ -305,7 +320,7 @@ export default function AdminDashboard() {
                           />
                         </div>
                         <div
-                          className="text-start pe-3 flex justify-between items-center w-[18%] 4 cursor-pointer"
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[12%] 4 cursor-pointer"
                           onClick={() =>
                             sort(
                               "type",
@@ -318,7 +333,7 @@ export default function AdminDashboard() {
                             )
                           }
                         >
-                          Company{" "}
+                          Plan Type{" "}
                           <Image
                             alt=""
                             width={10}
@@ -328,7 +343,7 @@ export default function AdminDashboard() {
                           />
                         </div>
                         <div
-                          className="text-start pe-3 flex justify-between items-center w-[16%] 6 cursor-pointer"
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 6 cursor-pointer"
                           onClick={() =>
                             sort(
                               "color",
@@ -341,7 +356,7 @@ export default function AdminDashboard() {
                             )
                           }
                         >
-                          Expiry Date{" "}
+                          Renewal Date{" "}
                           <Image
                             alt=""
                             width={10}
@@ -350,7 +365,30 @@ export default function AdminDashboard() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-center flex justify-center items-center w-[10%] pe-5 5">
+                        <div
+                          className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 6 cursor-pointer"
+                          onClick={() =>
+                            sort(
+                              "color",
+                              currentSortKey,
+                              sortOrder,
+                              sortedData,
+                              setSortedData,
+                              setSortOrder,
+                              setCurrentSortKey
+                            )
+                          }
+                        >
+                          Days Remaining{" "}
+                          <Image
+                            alt=""
+                            width={10}
+                            height={10}
+                            src={arrows.src}
+                            className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
+                          />
+                        </div>
+                        <div className="text-start flex justify-start items-center w-[10%] pe-5 5">
                           Actions{" "}
                         </div>
                       </div>
@@ -362,29 +400,35 @@ export default function AdminDashboard() {
                             <div
                               className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize dark:bg-dark1 bg-white border-b-2 border-grey`}
                             >
-                              <div className="text-start pe-3 break-words w-[16%] 1 ps-5">
+                              <div className="text-start pe-3 break-words w-[14%] 1 ps-5">
                                 {item?.data?.name}
                               </div>
-                              <div className="text-start pe-3 break-words w-[16%] 2">
+                              <div className="text-start pe-3 break-words w-[12%] 2">
                                 {item?.data?.username}
                               </div>
-                              <div className="text-start pe-3 break-words w-[20%] 3">
+                              <div className="text-start pe-3 break-words w-[18%] 3">
                                 {item?.data?.email}
                               </div>
-                              <div className="text-start pe-3 break-words w-[18%] 4">
+                              <div className="text-start pe-3 break-words w-[12%] 4">
                                 {item?.data?.companyDate}
                               </div>
-                              <div className="text-start pe-3 break-words w-[16%] 6">
+                              <div className="text-start pe-3 break-words w-[14%] 6">
                                 {item?.data?.expiryDate}
                               </div>
+                              <div className="text-start pe-3 break-words w-[14%] 6">
+                                {item?.data?.daysRemaining}
+                              </div>
                               <div
-                                className="flex justify-center items-center w-[10%] pe-5 5 h-full"
+                                className="flex justify-start items-center w-[10%] pe-5 5 h-full gap-1"
                                 onClick={(event) => {
                                   event.preventDefault();
                                   event.stopPropagation();
                                 }}
                               >
-                                <FaEllipsisH className="text-main-blue hover:scale-[1.3] cursor-pointer" />
+                                <span className="bg-main-blue text-white px-2 py-[2px] text-[12px] rounded-[5px]">
+                                  Renew
+                                </span>
+                                <MdEmail className="text-main-dark-blue hover:scale-[1.3] cursor-pointer text-[16px]" />
                               </div>
                             </div>
                           </div>
@@ -392,7 +436,7 @@ export default function AdminDashboard() {
                       )}
                     </div>
                   </div>
-                  <div className="w-full h-[32px] mt-10 flex justify-between items-center">
+                  <div className="w-full h-fit flex justify-between items-end">
                     <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
                       Showing{" "}
                       {paginatedData?.length
