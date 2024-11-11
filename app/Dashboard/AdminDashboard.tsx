@@ -22,6 +22,7 @@ import Image from "next/image";
 import { useFetchData } from "../Components/functions/apiCalling";
 import RevenueChart from "../Components/functions/Graphs";
 import { GoTriangleDown } from "react-icons/go";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   const data: any = [
@@ -243,9 +244,17 @@ export default function AdminDashboard() {
           <div className="w-full h-fit flex justify-between items-start">
             <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white">
               <div className="w-full flex flex-col justify-start items-start h-fit">
+                <div className="w-full flex justify-between items-end h-fit">
                 <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
                   Renewals Due Soon{" "}
                 </span>
+                  <Link
+                    href="#"
+                    className="w-fit text-[14px] font-[400] leading-[12px] hover:underline"
+                  >
+                    View More
+                  </Link>
+                </div>
                 <div className="w-full h-fit mt-2">
                   <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey relative">
                     <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
@@ -436,23 +445,11 @@ export default function AdminDashboard() {
                       )}
                     </div>
                   </div>
-                  <div className="w-full h-fit flex justify-between items-end">
-                    <div className="font-[400] text-[12px] sm:text-[14px] leading-[17px] text-[#878787]">
-                      Showing{" "}
-                      {paginatedData?.length
-                        ? (page - 1) * itemsPerPage + 1
-                        : 0}{" "}
-                      - {Math.min(page * itemsPerPage, data?.length)} of{" "}
-                      {data?.length} data
-                    </div>
-                    <div className="font-[600] text-[10px] sm:text-[14px] leading-[17px]">
                       <PaginationComponent
                         totalPages={totalPages}
                         page={page}
                         handleChange={handleChange}
                       />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
