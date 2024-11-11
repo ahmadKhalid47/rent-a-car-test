@@ -67,7 +67,7 @@ const Colorswitch = () => {
           y2={`${svgHeight}px`}
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#0094DA" stopOpacity="0.8" />
+          <stop stopColor="#2F4CDD" stopOpacity="0.8" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>

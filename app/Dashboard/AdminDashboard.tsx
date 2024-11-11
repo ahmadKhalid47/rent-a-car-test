@@ -227,11 +227,11 @@ export default function AdminDashboard() {
               </span>
               <div className="w-[100%] sm:w-[200px] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black me-7">
                 <div className="w-full h-fit flex justify-between items-center relative">
-                  <select className="pe-6 font-[400] text-[14px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-[1px] border-grey">
+                  <select className="pe-6 font-[400] text-[14px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-[1px] border-grey">
                     <option value="">Jan 2024 - Jun 2024</option>
                     <option value="">July 2024 - Dec 2024</option>
                   </select>
-                  <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
+                  <div className="w-[30px] h-[35px] dark:bg-dark1 bg-white absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
                     <GoTriangleDown className="text-[18px]" />
                   </div>
                 </div>
@@ -245,9 +245,9 @@ export default function AdminDashboard() {
             <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white">
               <div className="w-full flex flex-col justify-start items-start h-fit">
                 <div className="w-full flex justify-between items-end h-fit">
-                <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
-                  Renewals Due Soon{" "}
-                </span>
+                  <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
+                    Renewals Due Soon{" "}
+                  </span>
                   <Link
                     href="#"
                     className="w-fit text-[14px] font-[400] leading-[12px] hover:underline"
@@ -445,11 +445,11 @@ export default function AdminDashboard() {
                       )}
                     </div>
                   </div>
-                      <PaginationComponent
-                        totalPages={totalPages}
-                        page={page}
-                        handleChange={handleChange}
-                      />
+                  <PaginationComponent
+                    totalPages={totalPages}
+                    page={page}
+                    handleChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
