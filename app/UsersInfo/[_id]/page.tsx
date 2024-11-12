@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import { setSidebarShowR } from "@/app/store/Global";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import image404 from "@/public/image404.png";
 import Link from "next/link";
 import { setUserInfo } from "@/app/store/UserInfo";
@@ -25,6 +25,7 @@ import General from "@/app/Components/InfoComponents/General";
 import { MdEmail } from "react-icons/md";
 import { PaginationComponent } from "@/app/Components/functions/Pagination";
 import { GoTriangleDown } from "react-icons/go";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function UserInfoMainPage() {
   let global = useSelector((state: RootState) => state.Global);
@@ -38,23 +39,90 @@ export default function UserInfoMainPage() {
     }
   }, [isMobile]);
   const params = useParams(); // Get all route parameters
+  const router = useRouter();
   const [page, setPage] = useState(1);
   const { _id } = params;
   const itemsPerPage = 12;
   const [loading, setLoading] = useState<any>(true);
-    const data: any = [
-      {
-        data: {
-          date: "dd/mm/yyyy",
-          noOfVehicles: 10,
-          plan: "1 Month",
-          renewalDate: "dd/mm/yyyy",
-          discount: "10%",
-          totalAmount: "$ 1000",
-          status: "Active",
-        },
+  const data: any = [
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
       },
-    ];
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+    {
+      data: {
+        date: "06-11-2024",
+        noOfVehicles: 10,
+        plan: "1 Month",
+        renewalDate: "06-11-2024",
+        discount: "10%",
+        totalAmount: "$ 1000",
+        status: "Active",
+      },
+    },
+  ];
 
   const [sortedData, setSortedData] = useState<any>(data);
   const handleChange = (event: any, value: any) => {
@@ -79,7 +147,7 @@ export default function UserInfoMainPage() {
     }
     getData();
   }, []);
-  
+
   const [VehiclesData, setVehiclesData] = useState<any[]>([]);
   const [vehicleLoading, setvehicleLoading] = useState<any>(true);
   const [CustomersData, setCustomersData] = useState<any[]>([]);
@@ -88,7 +156,7 @@ export default function UserInfoMainPage() {
   const [ChauffeurLoading, setChauffeurLoading] = useState<any>(true);
   const [reservationLoading, setreservationLoading] = useState<any>(true);
   const [reservationsData, setreservationsData] = useState<any[]>([]);
-  
+
   useFetchData({
     apiName: "getSortedLeanData",
     modelName: "vehicle",
@@ -117,7 +185,6 @@ export default function UserInfoMainPage() {
     setData: setreservationsData,
     setLoading: setreservationLoading,
   });
-
 
   const completedReservations = reservationsData.filter(
     (item: any) => item.data.status === "complete"
@@ -166,7 +233,7 @@ export default function UserInfoMainPage() {
                 </div>
               </div>
               <div className="w-[64%] flex justify-start flex-col items-start gap-3">
-                <div className="w-full h-fit flex justify-between items-start py-1 border-b-2 border-color">
+                <div className="w-full h-fit flex justify-between items-center py-1 border-b-2 border-color">
                   <div className="flex flex-col justify-start items-start h-fit">
                     <span className="w-full font-[600] text-[36px] leading-none dark:text-white text-black  mt-[3px]">
                       {UserInfo?.name}
@@ -175,7 +242,7 @@ export default function UserInfoMainPage() {
                       </div>{" "}
                     </span>
                   </div>
-                  <div className="flex justify-center items-center w-[150px] h-[48px] bg-light-grey border-[1px] border-light-grey rounded-[3px] overflow-hidden text-center text-[14px] xs:text-[16px] md:text-[21px] font-[500] complete-status">
+                  <div className="flex justify-center items-center w-[112px] h-[40px] bg-light-grey border-[1px] border-light-grey rounded-[3px] overflow-hidden text-center text-[14px] xs:text-[16px] md:text-[21px] font-[500] complete-status">
                     Active{" "}
                   </div>
                 </div>
@@ -272,7 +339,7 @@ export default function UserInfoMainPage() {
             <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white">
               <div className="w-[100%] flex bg-white justify-start items-start flex-col gap-6 border-[1px] border-light-grey rounded-[10px] px-10 py-6">
                 <div className="w-[100%] flex justify-between items-center">
-                  <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
+                  <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[24px] leading-none dark:text-white text-black">
                     Subscription History{" "}
                   </span>
                   <div className="w-[100%] sm:w-[200px] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black">
@@ -301,7 +368,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[12%] 2 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 2 cursor-pointer">
                           No. of Vehicles{" "}
                           <Image
                             alt=""
@@ -311,7 +378,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[18%] 3 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[13%] 3 cursor-pointer">
                           Validity Plan{" "}
                           <Image
                             alt=""
@@ -321,7 +388,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[12%] 4 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[13%] 4 cursor-pointer">
                           Renewal Date{" "}
                           <Image
                             alt=""
@@ -331,7 +398,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 6 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[10%] 6 cursor-pointer">
                           Discount{" "}
                           <Image
                             alt=""
@@ -341,7 +408,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 6 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[13%] 6 cursor-pointer">
                           Total Amount{" "}
                           <Image
                             alt=""
@@ -351,7 +418,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 6 cursor-pointer">
+                        <div className="text-start pe-3 flex justify-start gap-3 items-center w-[10%] 6 cursor-pointer">
                           Status{" "}
                           <Image
                             alt=""
@@ -361,7 +428,7 @@ export default function UserInfoMainPage() {
                             className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                           />
                         </div>
-                        <div className="text-start flex justify-start items-center w-[10%] pe-5 5">
+                        <div className="text-start flex justify-start items-center w-[13%] pe-5 5">
                           Document
                         </div>
                       </div>
@@ -374,34 +441,73 @@ export default function UserInfoMainPage() {
                               className={`w-full h-[43px] flex justify-between items-center font-[400] text-[12px] sm:text-[14px] text-center capitalize dark:bg-dark1 bg-white border-b-2 border-grey`}
                             >
                               <div className="text-start pe-3 break-words w-[14%] 1 ps-5">
-                                {item?.data?.name}
+                                {item?.data?.date}
                               </div>
-                              <div className="text-start pe-3 break-words w-[12%] 2">
-                                {item?.data?.username}
+                              <div className="text-start pe-3 break-words w-[14%] 2">
+                                {item?.data?.noOfVehicles}
                               </div>
-                              <div className="text-start pe-3 break-words w-[18%] 3">
-                                {item?.data?.email}
+                              <div className="text-start pe-3 break-words w-[13%] 3">
+                                {item?.data?.plan}
                               </div>
-                              <div className="text-start pe-3 break-words w-[12%] 4">
-                                {item?.data?.companyDate}
+                              <div className="text-start pe-3 break-words w-[13%] 4">
+                                {item?.data?.renewalDate}
                               </div>
-                              <div className="text-start pe-3 break-words w-[14%] 6">
-                                {item?.data?.expiryDate}
+                              <div className="text-start pe-3 break-words w-[10%] 6">
+                                {item?.data?.discount}
                               </div>
-                              <div className="text-start pe-3 break-words w-[14%] 6">
-                                {item?.data?.daysRemaining}
+                              <div className="text-start pe-3 break-words w-[13%] 6">
+                                {item?.data?.totalAmount}
+                              </div>
+                              <div className="text-start pe-3 truncate w-[10%]">
+                                <div
+                                  className={`flex justify-center px-2 items-center w-fit h-[22px] border-[1px] text-[12px] rounded-[5px] ${
+                                    index === 7
+                                      ? "trial-status"
+                                      : index === 0
+                                      ? "progress-status"
+                                      : index === 5
+                                      ? "pending-status"
+                                      : "complete-status"
+                                  }`}
+                                >
+                                  {index === 7
+                                    ? "Trail"
+                                    : index === 0
+                                    ? "Expired"
+                                    : index === 5
+                                    ? "Renewed"
+                                    : "Active"}
+                                </div>{" "}
                               </div>
                               <div
-                                className="flex justify-start items-center w-[10%] pe-5 5 h-full gap-1"
+                                className="pe-3 w-[13%] flex flex-col justify-center items-start text-[12px]"
                                 onClick={(event) => {
                                   event.preventDefault();
                                   event.stopPropagation();
                                 }}
                               >
-                                <span className="bg-main-blue text-white px-2 py-[2px] text-[12px] rounded-[5px]">
-                                  Renew
-                                </span>
-                                <MdEmail className="text-main-dark-blue hover:scale-[1.3] cursor-pointer text-[18px]" />
+                                <button
+                                  className="w-fit flex justify-start items-center gap-1"
+                                  onClick={() => {
+                                    router.push(`#`);
+                                  }}
+                                >
+                                  <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                                    <IoDocumentTextOutline className="text-[11px]" />
+                                  </div>
+                                  Invoice
+                                </button>
+                                <button
+                                  className="w-fit flex justify-start items-center gap-1"
+                                  onClick={() => {
+                                    router.push(`#`);
+                                  }}
+                                >
+                                  <div className="w-[14px] h-[14px] rounded-[2px] flex justify-center items-center bg-[#0094DA33]">
+                                    <IoDocumentTextOutline className="text-[11px]" />
+                                  </div>
+                                  Payment Proof{" "}
+                                </button>
                               </div>
                             </div>
                           </div>
