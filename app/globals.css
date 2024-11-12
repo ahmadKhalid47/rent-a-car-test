@@ -573,7 +573,7 @@ button:active {
 }
 
 .css-1t283mf-MuiAreaElement-root {
-  /* fill:rgba(0, 148, 218, 0.07) !important; */
-          fill: url(#myGradient) !important;
+  fill:rgba(0, 148, 218, 0.07) !important;
+          /* fill: url(#myGradient) !important; */
 
 }
