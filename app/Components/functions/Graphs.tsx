@@ -29,14 +29,11 @@ export default function RevenueChart() {
         className="custom-gradient-fill"
         width={width}
         height={350}
-        // colors={["#054b86"]}
+        colors={["#054b86"]}
         series={[{ data: pData, area: true }]}
         xAxis={[{ scaleType: "point", data: xLabels }]}
         yAxis={[{ scaleType: "linear", data: yLabels }]}
         grid={{ vertical: true, horizontal: true }}
-        sx={{
-          fill: "url(#myGradient) !important",
-        }}
       >
         <defs>
           <linearGradient id="myGradient" x1="0%" y1="100%" x2="0%" y2="0%">

@@ -185,13 +185,13 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #fff4f2;
 }
 .pending-status {
-  border-color: #054B86;
+  border-color: #054b86;
   color: #054b86;
   background-color: #e6edf3;
 }
 .trial-status {
-  border-color: #FF9500;
-  color: #FF9500;
+  border-color: #ff9500;
+  color: #ff9500;
   background-color: #fffae5;
 }
 .cancel-status {
@@ -574,6 +574,5 @@ button:active {
 
 .css-1t283mf-MuiAreaElement-root {
   fill:rgba(0, 148, 218, 0.07) !important;
-          /* fill: url(#myGradient) !important; */
-
+  /* fill: url(#myGradient) !important; */
 }
