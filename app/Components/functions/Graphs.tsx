@@ -29,7 +29,7 @@ export default function RevenueChart() {
         className="custom-gradient-fill"
         width={width}
         height={350}
-        colors={["#054b86"]}
+        // colors={["#054b86"]}
         series={[{ data: pData, area: true }]}
         xAxis={[{ scaleType: "point", data: xLabels }]}
         yAxis={[{ scaleType: "linear", data: yLabels }]}
