@@ -45,12 +45,13 @@ export default function UserInfoMainPage() {
     const data: any = [
       {
         data: {
-          name: "John Smith",
-          username: "username",
-          email: "example@email.com",
-          companyDate: "Basic",
-          expiryDate: "dd/mm/yyyy",
-          daysRemaining: "10 Days",
+          date: "dd/mm/yyyy",
+          noOfVehicles: 10,
+          plan: "1 Month",
+          renewalDate: "dd/mm/yyyy",
+          discount: "10%",
+          totalAmount: "$ 1000",
+          status: "Active",
         },
       },
     ];
@@ -269,14 +270,14 @@ export default function UserInfoMainPage() {
           </div>
           <div className="w-full h-fit flex justify-between items-start">
             <div className="h-fit flex flex-col justify-start items-start gap-x-[4%] gap-y-5 w-full dark:bg-dark1 bg-white">
-              <div className="w-[100%] flex justify-start items-start flex-col border-[1px] border-light-grey rounded-[16px]">
-                <div className="w-[100%] flex justify-between items-center pt-6 px-5 -mb-4">
+              <div className="w-[100%] flex bg-white justify-start items-start flex-col gap-6 border-[1px] border-light-grey rounded-[10px] px-10 py-6">
+                <div className="w-[100%] flex justify-between items-center">
                   <span className="flex flex-col justify-between font-[600] text-[16px] xs:text-[18px] md:text-[20px] leading-none dark:text-white text-black">
-                    Revenue Summary
+                    Subscription History{" "}
                   </span>
-                  <div className="w-[100%] sm:w-[200px] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black me-7">
+                  <div className="w-[100%] sm:w-[200px] h-fit flex flex-col justify-start items-start gap-1 dark:text-white text-black">
                     <div className="w-full h-fit flex justify-between items-center relative">
-                      <select className="pe-6 font-[400] text-[14px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-xl border-[1px] border-grey">
+                      <select className="pe-6 font-[400] text-[14px] leading-[19px] ps-1 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 bg-white rounded-[6px] border-[1px] border-grey">
                         <option value="">Jan 2024 - Jun 2024</option>
                         <option value="">July 2024 - Dec 2024</option>
                       </select>
@@ -286,7 +287,7 @@ export default function UserInfoMainPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-fit mt-2">
+                <div className="w-full h-fit">
                   <div className="w-full h-fit overflow-auto rounded-[10px] border-[1px] border-grey relative">
                     <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
                       <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
@@ -361,7 +362,7 @@ export default function UserInfoMainPage() {
                           />
                         </div>
                         <div className="text-start flex justify-start items-center w-[10%] pe-5 5">
-                          Download
+                          Document
                         </div>
                       </div>
                       {paginatedData?.length < 1 ? (
