@@ -191,7 +191,7 @@ export default function AdminDashboard() {
               <Box
                 img={d5}
                 loading={reservationLoading}
-                value={0}
+                value={reservationsData?.length}
                 label="Total Users"
               />
               <Box
