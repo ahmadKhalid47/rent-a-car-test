@@ -572,7 +572,7 @@ button:active {
   background: linear-gradient(to right, white, rgba(0, 148, 218, 0.07));
 }
 
-.css-1t283mf-MuiAreaElement-root {
-  fill:rgba(0, 148, 218, 0.07) !important;
-  /* fill: url(#myGradient) !important; */
+.css-1t283mf-MuiAreaElement-root, .custom-gradient-fill {
+  /* fill:rgba(0, 148, 218, 0.07) !important; */
+  fill: url(#myGradient) !important;
 }
