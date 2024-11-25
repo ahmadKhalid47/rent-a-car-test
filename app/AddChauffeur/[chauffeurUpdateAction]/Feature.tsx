@@ -145,7 +145,7 @@ export function Relation({ value, action, index }: any) {
             ))}
           </select>
           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+            <GoTriangleDown className="text-[18px]" />
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ export function Relation({ value, action, index }: any) {
               className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
             >
               <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                {"Add New"}
+                {"Add New Relation"}
                 <FaAsterisk className="text-[6px]" />
               </label>
               <div className="w-full h-fit flex justify-between items-center relative">

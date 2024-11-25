@@ -135,17 +135,14 @@ export default function ReferenceComp() {
   );
 }
 
-
-
 function ImageUpload({ value, action, index }: any) {
   const [otherfiles, setOtherFiles] = useState<any>(value);
   useEffect(() => {
     setOtherFiles(value);
   }, [value]);
 
-  const onDropOther = useFileDrop(
-    (files: any[]) =>
-      setOtherFiles((prevFiles: any) => [...prevFiles, ...files]) 
+  const onDropOther = useFileDrop((files: any[]) =>
+    setOtherFiles((prevFiles: any) => [...prevFiles, ...files])
   );
   const { getRootProps: getRootPropsOther, getInputProps: getInputPropsOther } =
     useDropzone({
@@ -166,13 +163,7 @@ function ImageUpload({ value, action, index }: any) {
         {...getRootPropsOther()}
       >
         <input {...getInputPropsOther()} />
-                  <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+        <Image src={upload.src} alt="" width={32} height={32} />
         <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
           Drag & Drop or
           <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -191,7 +182,6 @@ function ImageUpload({ value, action, index }: any) {
     </>
   );
 }
-
 
 export function Relation({ value, action, index }: any) {
   let [other2, setOther2] = useState("");
@@ -231,7 +221,7 @@ export function Relation({ value, action, index }: any) {
             ))}
           </select>
           <div className="w-[30px] h-[35px] dark:bg-dark1 input-color absolute right-1 rounded-xl flex justify-center items-center pointer-events-none">
-<GoTriangleDown className="text-[18px]" />
+            <GoTriangleDown className="text-[18px]" />
           </div>
         </div>
       </div>
@@ -242,7 +232,7 @@ export function Relation({ value, action, index }: any) {
               className={`w-[100%] h-fit flex flex-col justify-start items-start gap-1`}
             >
               <label className="flex justify-start gap-1 items-start font-[600] text-[14px] leading-[17px]">
-                {"Add New"}
+                {"Add New Relation"}
                 <FaAsterisk className="text-[6px]" />
               </label>
               <div className="w-full h-fit flex justify-between items-center relative">
