@@ -89,6 +89,7 @@ export default function Rental() {
     value: country.isoCode,
     label: country.name,
   }));
+  console.log(chauffeur.idCard);
 
   return (
     <div className="w-full h-fit">
@@ -99,7 +100,7 @@ export default function Rental() {
         <div className="w-[100%] h-fit flex justify-start items-start gap-6 text-[14px]">
           <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
-              type="radio"
+              type="checkbox"
               id="document1"
               name="document"
               value="Passport"
@@ -113,7 +114,7 @@ export default function Rental() {
           </div>
           <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
-              type="radio"
+              type="checkbox"
               id="document2"
               name="document"
               value="ID Card"
@@ -159,13 +160,7 @@ export default function Rental() {
           {...getRootPropsPass()}
         >
           <input {...getInputPropsPass()} />
-          <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+          <Image src={upload.src} alt="" width={32} height={32} />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -221,13 +216,7 @@ export default function Rental() {
           {...getRootPropsLic()}
         >
           <input {...getInputPropsLic()} />
-          <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+          <Image src={upload.src} alt="" width={32} height={32} />
           <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
             Drag & Drop or
             <span className="text-link-blue cursor-pointer"> choose file </span>
@@ -304,13 +293,7 @@ export default function Rental() {
             {...getRootPropsOther()}
           >
             <input {...getInputPropsOther()} />
-            <Image
-              src={upload.src}
-              alt=""
-              width={32}
-              height={32}
-              
-            />
+            <Image src={upload.src} alt="" width={32} height={32} />
             <span className="font-[600] text-[12px] xs:text-[13px] md:text-[14px] dark:text-white text-black my-[5px]">
               Drag & Drop or
               <span className="text-link-blue cursor-pointer">

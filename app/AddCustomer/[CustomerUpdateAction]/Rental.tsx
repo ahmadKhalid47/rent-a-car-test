@@ -104,7 +104,7 @@ export default function Rental() {
         <div className="w-[100%] h-fit flex justify-start items-start gap-6 text-[14px]">
           <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
-              type="radio"
+              type="checkbox"
               id="document1"
               name="document"
               value="Passport"
@@ -118,7 +118,7 @@ export default function Rental() {
           </div>
           <div className="w-fit h-fit flex justify-start items-end gap-1 leading-none">
             <input
-              type="radio"
+              type="checkbox"
               id="document2"
               name="document"
               value="ID Card"
