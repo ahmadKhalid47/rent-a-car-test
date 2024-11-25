@@ -27,7 +27,7 @@ export default function ListViewRecentReservations({ data }: dataType) {
         }  `}
       ></h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey">
-        <div className="w-[1200px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
+        <div className="w-[1100px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div
               className="text-start ps-3 flex justify-start gap-2 items-center w-[16%]"

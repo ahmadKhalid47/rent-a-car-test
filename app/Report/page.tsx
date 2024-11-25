@@ -412,7 +412,7 @@ export default function Vehicles() {
             </span>
           </h3>
           <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2 relative">
-            <div className="w-[900px] 1200:w-full h-fit flex flex-row-revers justify-between items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
+            <div className="w-[1100px] 1200:w-full h-fit flex flex-row-revers justify-between items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
               <div className="w-[100%] 1200:w-[100%] h-[360px] flex flex-col justify-start items-start bg-light-gre overflow-hidden mt-0 leading-[17px]">
                 <div className="w-full h-[60px] flex justify-between items-center font-[600] text-[12px] sm:text-[18px] text-center border-b-[2px] border-r-2 border-grey">
                   <div className="text-start px-8 flex justify-between items-center w-[50%]">

@@ -356,7 +356,7 @@ export default function UserInfoMainPage() {
                 </div>
                 <div className="w-full h-fit">
                   <div className="w-full h-fit overflow-auto rounded-[10px] border-[1px] border-grey relative">
-                    <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
+                    <div className="w-[1100px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden mt-0 leading-[17px]">
                       <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
                         <div className="text-start pe-3 flex justify-start gap-3 items-center w-[14%] 1 ps-5 cursor-pointer">
                           Date{" "}

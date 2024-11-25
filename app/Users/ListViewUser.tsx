@@ -100,7 +100,7 @@ export default function ListViewUsers({ data }: dataType) {
           </span>)}
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
+        <div className="w-[1100px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
           <div className="w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="text-center w-[3%] flex justify-center items-center">
               <div

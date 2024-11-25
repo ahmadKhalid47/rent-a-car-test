@@ -175,7 +175,7 @@ export default function ListView({ data }: any) {
         </span>
       </h3>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
-        <div className="w-[900px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
+        <div className="w-[1100px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey-2 overflow-hidden mt-0 leading-[17px]">
           <div className="px-5 w-full h-[43px] flex justify-between items-center font-[600] text-[12px] sm:text-[14px] rounded-t-[10px] text-center border-b-2 border-grey">
             <div className="flex justify-start items-center w-[3%]">
               {userData?.length > 0 && (
