@@ -37,7 +37,7 @@ export default function Vehicles() {
   );
   const [reservationLoading, setreservationLoading] = useState<any>(true);
   const handleExport = useHandleExport();
-  const [loading, setLoading] = useState<any>(true);
+  const [loading, setLoading] = useState<any>(false);
   const [filteredVehicles, setFilteredVehicles] = useState<any[]>([]);
 
   useEffect(() => {
@@ -47,6 +47,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
+  console.log(reservationsData, VehiclesData);
 
   useFetchData({
     apiName: "getSortedLeanData",
@@ -54,7 +55,7 @@ export default function Vehicles() {
     createdBy: myProfile._id,
     setData: setVehiclesData,
     setFilteredData: setFilteredVehicles,
-    setLoading: setLoading,
+    setLoading: setConfigurationsLoading,
   });
 
   function filterReg() {
@@ -81,7 +82,7 @@ export default function Vehicles() {
     }
     return filtered;
   }
- 
+
   useFetchData({
     apiName: "getSortedLeanData",
     modelName: "reservation",
@@ -90,7 +91,6 @@ export default function Vehicles() {
     setFilteredData: setFilterReservationsData,
     setLoading: setreservationLoading,
   });
-
 
   const currentDate = new Date().toISOString().split("T")[0]; // Formats date as YYYY-MM-DD
   const [completedReservations, setCompletedReservations] = useState(
@@ -283,7 +283,6 @@ export default function Vehicles() {
     pendingReservations?.length,
     upComingReservations?.length,
   ]);
-
 
   return (
     <div
