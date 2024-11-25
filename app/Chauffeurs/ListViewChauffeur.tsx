@@ -19,7 +19,9 @@ import {
 } from "../Components/functions/deleteFunction";
 import ConfirmationPopup from "../Components/functions/Popups";
 import Image from "next/image";
-import  useUpdateActive, {useUpdateActiveManyItem} from "../Components/functions/apiCalling";
+import useUpdateActive, {
+  useUpdateActiveManyItem,
+} from "../Components/functions/apiCalling";
 import useItemToDelete from "../Components/functions/smallFunctions";
 
 interface dataType {
@@ -83,7 +85,6 @@ export default function ListViewchauffeurs({ data }: dataType) {
     });
   };
 
-
   const [isOpen, setIsOpen] = useState(false);
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -100,7 +101,8 @@ export default function ListViewchauffeurs({ data }: dataType) {
 
   const closeModal = () => setIsOpen(false);
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images?.length);
+  const nextSlide = () =>
+    setCurrentIndex((prev) => (prev + 1) % images?.length);
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + images?.length) % images?.length);
   const handleDeleteConfirm = () => {
