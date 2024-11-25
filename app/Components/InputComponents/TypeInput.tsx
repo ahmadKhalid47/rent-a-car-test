@@ -168,9 +168,6 @@ export const TempTypeInputSign: React.FC<TempTypeInputSign> = ({
   );
 };
 
-
-
-
 interface TempTypeInputLimit {
   label: string;
   setState: any;
@@ -257,6 +254,3 @@ export const TempTypeInputWidth: React.FC<TempTypeInputWidth> = ({
     </div>
   );
 };
-
-
-
