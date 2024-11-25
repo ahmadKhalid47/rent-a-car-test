@@ -47,8 +47,7 @@ export default function Vehicles() {
       dispatch(setSidebarShowR(true));
     }
   }, [isMobile]);
-  console.log(reservationsData, VehiclesData);
-
+  
   useFetchData({
     apiName: "getSortedLeanData",
     modelName: "vehicle",
