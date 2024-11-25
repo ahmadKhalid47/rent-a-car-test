@@ -199,7 +199,9 @@ export default function ListView({ data }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -214,7 +216,6 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -282,7 +283,6 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className={` ${
@@ -303,11 +303,10 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className={`${
                         item?.createdBy === myProfile._id
-                          ? "hover:scale-[1.3] cursor-pointer"
+                          ? "hover:scale-[1.3] cursor-pointer h-[16px]"
                           : "grayscale opacity-50"
                       }`}
                       title="Delete"
@@ -359,13 +358,12 @@ export default function ListView({ data }: dataType) {
                                   }}
                                 />
                                 <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                                            <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+                                  <Image
+                                    src={upload.src}
+                                    alt=""
+                                    width={32}
+                                    height={32}
+                                  />
                                   <span className="w-[70&] truncate bg-red500 leading-[24px]">
                                     {exterior[0]?.name ||
                                       "Upload Exterior Image"}
@@ -386,13 +384,12 @@ export default function ListView({ data }: dataType) {
                                   }}
                                 />
                                 <div className="z-1 w-full h-full flex justify-center gap-1 items-center bg-white absolute top-0 left-0 rounded-[5px] border-dashed border-2 border-main-dark-blue pointer-events-none text-main-dark-blue text-[18px] leading-[18px] font-[600]">
-                                            <Image
-            src={upload.src}
-            alt=""
-            width={32}
-            height={32}
-            
-          />
+                                  <Image
+                                    src={upload.src}
+                                    alt=""
+                                    width={32}
+                                    height={32}
+                                  />
                                   <span className="w-[70&] truncate bg-red500 leading-[24px]">
                                     {interior[0]?.name ||
                                       "Upload Interior Image"}

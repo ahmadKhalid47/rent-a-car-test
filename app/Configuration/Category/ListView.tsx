@@ -301,7 +301,7 @@ export default function ListView({ data }: any) {
                       src={deleteIcon.src}
                       className={`${
                         item?.createdBy === myProfile._id
-                          ? "hover:scale-[1.3] cursor-pointer"
+                          ? "hover:scale-[1.3] cursor-pointer h-[16px]"
                           : "grayscale opacity-50"
                       }`}
                       title="Delete"

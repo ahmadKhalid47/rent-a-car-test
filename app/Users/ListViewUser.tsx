@@ -85,10 +85,11 @@ export default function ListViewUsers({ data }: dataType) {
           <span>
             <span className="cursor-pointer">
               <button
-                className={`${itemToDeleteMany?.length < 1
+                className={`${
+                  itemToDeleteMany?.length < 1
                     ? ""
                     : "cursor-pointer hover:underline"
-                  }`}
+                }`}
                 onClick={() => {
                   setDeleteManyPopup(true);
                 }}
@@ -97,7 +98,8 @@ export default function ListViewUsers({ data }: dataType) {
                 Delete Multiple
               </button>
             </span>
-          </span>)}
+          </span>
+        )}
       </div>
       <div className="w-full h-fit overflow-auto rounded-[10px] border-2 border-grey mt-2">
         <div className="w-[1100px] 1200:w-full h-fit flex flex-col justify-start items-start dark:bg-dark2 bg-light-grey overflow-hidden leading-[17px]">
@@ -384,7 +386,7 @@ export default function ListViewUsers({ data }: dataType) {
                       width={16}
                       height={16}
                       src={deleteIcon.src}
-                      className="hover:scale-[1.3] cursor-pointer"
+                      className="hover:scale-[1.3] cursor-pointer h-[16px]"
                       title="Delete"
                       onClick={() => {
                         setPopup(true);

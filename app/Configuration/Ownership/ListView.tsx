@@ -174,7 +174,9 @@ export default function ListView({ data }: dataType) {
                   } border-2 border-dark-grey`}
                   onClick={() => {
                     setItemToDeleteMany(
-                      itemToDeleteMany?.length !== userData?.length ? allIds : []
+                      itemToDeleteMany?.length !== userData?.length
+                        ? allIds
+                        : []
                     );
                   }}
                 ></div>
@@ -189,7 +191,6 @@ export default function ListView({ data }: dataType) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -259,7 +260,6 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className={` ${
@@ -279,11 +279,10 @@ export default function ListView({ data }: dataType) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className={`${
                         item?.createdBy === myProfile._id
-                          ? "hover:scale-[1.3] cursor-pointer"
+                          ? "hover:scale-[1.3] cursor-pointer h-[16px]"
                           : "grayscale opacity-50"
                       }`}
                       title="Delete"
