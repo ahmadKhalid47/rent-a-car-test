@@ -28,7 +28,7 @@ export default function ListView({ data }: any) {
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-    const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
+  const [itemToDeleteMany, setItemToDeleteMany, handlePushItem] =
     useItemToDelete();
   const [itemToEdit, setItemToEdit] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -205,7 +205,6 @@ export default function ListView({ data }: any) {
                 alt=""
                 width={10}
                 height={10}
-                
                 src={arrows.src}
                 className="cursor-pointer hover:ring-8 rounded-full hover:bg-gray-200 ring-gray-200"
                 onClick={() =>
@@ -280,7 +279,6 @@ export default function ListView({ data }: any) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={edit.src}
                       title="Edit"
                       className={`${
@@ -300,7 +298,6 @@ export default function ListView({ data }: any) {
                       alt=""
                       width={16}
                       height={16}
-                      
                       src={deleteIcon.src}
                       className={`${
                         item?.createdBy === myProfile._id
