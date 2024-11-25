@@ -11,6 +11,7 @@ import Nav from "./Components/Nav";
 import axios from "axios";
 import Loader from "./Components/Loader";
 import AlertShower from "./Components/AlertShower";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,6 +78,7 @@ export default function RootLayout({
                     : ""
                 }`}
               >
+                <SpeedInsights />
                 {pathName &&
                 pathName !== "/" &&
                 !pathName?.includes("forgotPassword") &&

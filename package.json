@@ -19,6 +19,7 @@
     "@mui/x-charts": "^7.22.1",
     "@react-pdf/renderer": "^3.3.8",
     "@reduxjs/toolkit": "^2.2.4",
+    "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.3",
     "bcryptjs": "^2.4.3",
     "buffer": "^6.0.3",
