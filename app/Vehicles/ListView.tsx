@@ -37,7 +37,7 @@ export default function ListView({ data }: dataType) {
     useItemToDelete();
   const [currentSortKey, setCurrentSortKey] = useState<string | null>(null);
   const [deleteManyPopup, setDeleteManyPopup] = useState(false);
-  const itemsPerPage = 12;
+  const itemsPerPage = 1;
   const router = useRouter();
   const deleteItem = useDeleteItem();
   const deleteManyItems = useDeleteManyItems();

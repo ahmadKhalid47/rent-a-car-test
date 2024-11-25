@@ -1,8 +1,5 @@
 import { Pagination, Stack } from "@mui/material";
 
-
-
-
 import React from "react";
 
 export const PaginationComponent = ({
@@ -26,6 +23,7 @@ export const PaginationComponent = ({
             shape="rounded"
             page={page}
             onChange={handleChange}
+
             sx={{
               "& .MuiPaginationItem-root": {
                 "&.Mui-selected": {
@@ -37,7 +35,7 @@ export const PaginationComponent = ({
                 },
               },
               "& .MuiPaginationItem-previousNext": {
-                color: "#878787",
+                color: "black",
                 "&:hover": {
                   opacity: 0.9,
                 },
@@ -49,4 +47,3 @@ export const PaginationComponent = ({
     </div>
   );
 };
-

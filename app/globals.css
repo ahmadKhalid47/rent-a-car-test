@@ -572,7 +572,18 @@ button:active {
   background: linear-gradient(to right, white, rgba(0, 148, 218, 0.07));
 }
 
-.css-1t283mf-MuiAreaElement-root, .custom-gradient-fill {
+.css-1t283mf-MuiAreaElement-root,
+.custom-gradient-fill {
   /* fill:rgba(0, 148, 218, 0.07) !important; */
   fill: url(#myGradient) !important;
+}
+
+.MuiPaginationItem-previousNext svg {
+  background-image: url("/PaginationIcon.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  fill: transparent !important;
+}
+.MuiPagination-ul li:first-of-type button{
+  rotate: 180deg;
 }
