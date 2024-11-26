@@ -377,7 +377,7 @@ export default function UserDashboard() {
                     : ""}
                 </h1>
               </div>
-              {configurationsLoading ? (
+              {vehicleLoading ? (
                 <div className="pt-5 w-full">
                   <MediumLoader />
                 </div>
