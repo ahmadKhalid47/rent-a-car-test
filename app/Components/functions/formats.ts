@@ -135,3 +135,11 @@ export function isPlanExpired(plan: string, createdAt: string): boolean {
   // Check if the plan has expired by comparing the expiry date with the current date
   return currentDate > date;
 }
+
+
+
+export function filterNumber(input: string): string {
+  return input.replace(/[^a-zA-Z]/g, ""); // Allow only letters from a to z (case-insensitive)
+}
+
+

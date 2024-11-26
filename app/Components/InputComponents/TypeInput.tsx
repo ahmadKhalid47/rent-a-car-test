@@ -1,5 +1,6 @@
 import { FaAsterisk } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { filterNumber } from "../functions/formats";
 
 interface TypeInput {
   label: string;
@@ -110,12 +111,16 @@ export const TempTypeInput: React.FC<TempTypeInput> = ({
       <div className="w-full h-fit flex justify-between items-center relative">
         <input
           required={required}
-          type={type}
+          type={type === "only-text" ? "text" : type}
           autoComplete="new-password"
           className="pe-10 font-[400] text-[16px] leading-[19px] ps-2 w-[100%] h-[43px] flex justify-between items-center dark:bg-dark1 input-color rounded-xl border-2 border-grey truncate"
           placeholder={`Enter ${label}`}
           onChange={(e) => {
-            dispatch(setState(e.target.value));
+            if (type === "only-text") {
+              dispatch(setState(filterNumber(e.target.value)));
+            } else {
+              dispatch(setState(e.target.value));
+            }
           }}
           value={value}
         />
