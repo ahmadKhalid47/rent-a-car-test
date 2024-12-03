@@ -37,7 +37,7 @@ export default function Info() {
   let dispatch = useDispatch();
   let chauffeur = useSelector((state: RootState) => state.chauffeur);
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 2 * 1024 * 1024;
+    const maxFileSize = 1 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
@@ -53,7 +53,7 @@ export default function Info() {
       }
       if (file.size > maxFileSize) {
         dispatch(
-          setAlert(`File ${file.name} is too large. Maximum size is 2 MB.`)
+          setAlert(`File ${file.name} is too large. Maximum size is 1 MB.`)
         );
         dispatch(setSeverity("error"));
         return false;
@@ -251,7 +251,7 @@ export default function Info() {
             Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 2 MB{" "}
+            Maximum size 1 MB{" "}
           </span>{" "}
         </div>
 

@@ -15,8 +15,8 @@ export const useFileDrop = (setFilesCallback: (files: any[]) => void) => {
           );
           return false;
         }
-        if (file.size > 2 * 1024 * 1024) {
-          alert(`File ${file.name} is too large. Maximum size is 2 MB.`);
+        if (file.size > 1 * 1024 * 1024) {
+          alert(`File ${file.name} is too large. Maximum size is 1 MB.`);
           return false;
         }
         return true;

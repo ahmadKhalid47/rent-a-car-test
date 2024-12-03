@@ -48,7 +48,7 @@ export default function Info({ score, message }: any) {
     setFiles(User.profilePic);
   }, [User.profilePic[0]]);
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 2 * 1024 * 1024;
+    const maxFileSize = 1 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"];
     const filteredFiles = acceptedFiles?.filter((file: any) => {
       if (!allowedTypes?.includes(file.type)) {
@@ -62,7 +62,7 @@ export default function Info({ score, message }: any) {
       }
       if (file.size > maxFileSize) {
         dispatch(
-          setAlert(`File ${file.name} is too large. Maximum size is 2 MB.`)
+          setAlert(`File ${file.name} is too large. Maximum size is 1 MB.`)
         );
         dispatch(setSeverity("error"));
 
@@ -280,7 +280,7 @@ export default function Info({ score, message }: any) {
             Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 2 MB{" "}
+            Maximum size 1 MB{" "}
           </span>{" "}
         </div>
 
