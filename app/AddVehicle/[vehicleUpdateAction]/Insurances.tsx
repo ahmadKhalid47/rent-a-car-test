@@ -167,7 +167,7 @@ export default function Insurances() {
             Select JPG, PNG or PDF{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
+            Maximum size 2 MB{" "}
           </span>
         </div>
         <div className="w-full h-fit flex justify-start items-center gap-5 overflow-auto py-[2px]">

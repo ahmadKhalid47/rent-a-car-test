@@ -108,7 +108,7 @@ export default function FirstPage() {
             Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
+            Maximum size 2 MB{" "}
           </span>{" "}
         </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">
@@ -150,7 +150,7 @@ export default function FirstPage() {
             Select JPG, PNG{" "}
           </span>
           <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-            Maximum size 5MB{" "}
+            Maximum size 2 MB{" "}
           </span>{" "}
         </div>
         <span className="font-[400] text-[14px] leading-[17px] dark:text-white text-black -mt-4">

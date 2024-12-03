@@ -29,7 +29,7 @@ export default function Damages() {
   let dispatch = useDispatch();
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    const maxFileSize = 5 * 1024 * 1024;
+    const maxFileSize = 2 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png"];
 
     const filteredFiles = acceptedFiles?.filter((file: any) => {
@@ -44,7 +44,7 @@ export default function Damages() {
       }
       if (file.size > maxFileSize) {
         dispatch(
-          setAlert(`File ${file.name} is too large. Maximum size is 5MB.`)
+          setAlert(`File ${file.name} is too large. Maximum size is 2 MB.`)
         );
         dispatch(setSeverity("error"));
 
@@ -385,7 +385,7 @@ export default function Damages() {
                   Select JPG, PNG{" "}
                 </span>
                 <span className="font-[400] text-[14px] leading-[14px] text-[#515978]">
-                  Maximum size 5MB{" "}
+                  Maximum size 2 MB{" "}
                 </span>{" "}
               </div>
 
